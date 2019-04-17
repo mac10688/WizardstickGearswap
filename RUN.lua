@@ -81,7 +81,7 @@ function get_sets()
     local fast_cast_cape = { name="Ogma's cape", augments={'HP+60','Eva.+20 /Mag. Eva.+20','HP+20','"Fast Cast"+10','Spell interruption rate down-10%'}}
     local dt_cape = { name="Ogma's cape", augments={'HP+60','Eva.+20 /Mag. Eva.+20','HP+20','Enmity+10','Damage taken-5%'}}
     local atk_cape = { name="Ogma's cape", augments={'STR+20','Accuracy+20 Attack+20','Accuracy+10','"Dbl.Atk."+10','System: 1 ID: 640 Val: 4'}}
-
+    local dimi_cape = { name="Ogma's cape", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Weapon skill damage +10%','Damage taken-5%'}}
     sets.enmity = {
         neck="Futhark torque +1",
         ear1="Cryptic earring",
@@ -218,11 +218,12 @@ function get_sets()
         head={ name="Herculean Helm", augments={'Accuracy+24 Attack+24','Crit. hit damage +1%','STR+7','Accuracy+13','Attack+8'}},
         ear1="Moonshade earring",
         ear2="Ishvara earring",
-        body={ name="Herculean Vest", augments={'Attack+15','Weapon skill damage +2%','STR+7','Accuracy+2'}},
+        body="Adhemar jacket +1",
         hands={ name="Herculean Gloves", augments={'Accuracy+25 Attack+25','"Triple Atk."+3','STR+10','Accuracy+6'}},
         ring1="Petrov ring",
-        ring2="Rajas Ring",
-        waist="Latria sash",
+        ring2="Niqmaddu ring",
+        back=atk_cape,
+        waist="Ioskeha belt +1",
         legs={ name="Herculean Trousers", augments={'Accuracy+20 Attack+20','STR+6','Accuracy+11'}},
         feet="Meghanada jambeaux +2"
     }
@@ -236,11 +237,12 @@ function get_sets()
         ammo="Knobkierrie",
         head="Ayanmo zucchetto +2",
         ear1="Moonshade earring",
-        ear2="Ishvara earring",
-        body="Ayanmo corazza +2",
+        ear2="Sherida earring",
+        body="Adhemar jacket +1",
         hands="Meghanada gloves +2",
-        ring1="Petrov ring",
+        ring1="Niqmaddu ring",
         ring2="Ilabrat ring",
+        back=dimi_cape,
         waist="Latria sash", 
         legs="Samnuha tights",
         feet="Ayanmo gambieras +2"
@@ -271,16 +273,18 @@ function get_sets()
     --MDT:
     --Accuracy:
     sets.ws['Shockwave'] = { 
-        ammo="Mantoptera eye",
+        ammo="Knobkierrie",
         head="Meghanada visor +2",
-        ear1="Moonshade earring",
+        neck="Futhark torque +1",
+        ear1="Sherida earring",
         ear2="Ishvara earring",
-        body="Meghanada cuirie +2",
-        hands="Meghanada gloves +2",
+        body="Futhark coat +3",
+        hands={ name="Herculean Gloves", augments={'Accuracy+25 Attack+25','"Triple Atk."+3','STR+10','Accuracy+6'}},
         ring1="Petrov ring",
-        ring2="Rajas Ring",
+        ring2="Niqmaddu ring",
+        back=dimi_cape,
         waist="Latria sash",
-        legs="Samnuha tights",
+        legs="Futhark trousers +3",
         feet="Meghanada jambeaux +2"}
 
     sets.tank = {}
