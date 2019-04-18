@@ -281,7 +281,11 @@ function midcast(spell)
         equip(sets.midcast.enfeeble)
     elseif spell.skill == "Elemental Magic" then
         local nuke_set = Nuke_Sets[Nuke_Set_Index]
-        equip(sets.midcast.elemental[nuke_set])
+        if world.day_element == spell.element or world.weather_element == spell.element then
+            equip( set_combine(sets.midcast.elemental[nuke_set], {waist = "Hachirin-no-Obi"}))
+        else
+            equip(sets.midcast.elemental[nuke_set])
+        end
     elseif spell.skill == "Dark Magic" then
         if spell.name:contains("Drain") then
             equip(sets.midcast.drain)

@@ -240,7 +240,7 @@ end
 ---- .::Midcast Functions::. ---->
 function midcast(spell)
     -- print_set(spell)
-    if spell.action_type == 'Magic' then   
+    if spell.action_type == 'Magic' then
         -- Healing Magic --
         if string.find(spell.english, 'Cure') or string.find(spell.english, 'Cura') or string.find(spell.english, "Curaga") then
             equip(sets.midcast.cure)
@@ -259,7 +259,11 @@ function midcast(spell)
         -- Elemental Magic --      
         elseif spell.skill == 'Elemental Magic' then
             local nuke_set = NukeSet[NukeTypeIndex]
-            equip(sets.midcast.elemental[nuke_set])
+            if world.day_element == spell.element or world.weather_element == spell.element then
+                equip( set_combine(sets.midcast.elemental[nuke_set], {waist = "Hachirin-no-Obi"}))
+            else
+                equip(sets.midcast.elemental[nuke_set])
+            end
         end
     end
 end
