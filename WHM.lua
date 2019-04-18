@@ -50,15 +50,16 @@ function get_sets()
 	--- Fast Cast Sets ---
 	sets.fc = {
         main="Gada",
-        sub="Chanter's shield",
         ammo="Incantor Stone",
         head="Vanya hood",
         neck="Cleric's torque",
         ear2="Loquacious Earring",
         body="Inyanga jubbah +2",
-        hands="Kaykaus cuffs",
+        hands="Fanatic gloves",
         ring1="Prolix Ring",
-        back="Alaunus's cape",
+        ring2="Kishar ring",
+        back={ name="Alaunus's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}},
+        waist="Channeler's stone",
         legs="Lengo pants",
         feet="Kaykaus boots"
     }
@@ -191,7 +192,7 @@ function get_sets()
         head="Vanya hood",
         neck="Cleric's torque",
         body="Ebers bliaud +1",
-        back={ name="Alaunus's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','Enmity-10','Spell interruption rate down-10%'}},
+        back={ name="Alaunus's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}},
         waist="Austerity belt +1",
         legs="ebers pantaloons +1"
     }
@@ -217,7 +218,7 @@ function get_sets()
         hands="Kaykaus cuffs",
         ring1="Prolix Ring",
         ring2="Sirona's Ring",
-        back={ name="Alaunus's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','Enmity-10','Spell interruption rate down-10%'}},
+        back={ name="Alaunus's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}},
         waist="Austerity belt +1",
         legs="ebers pantaloons +1",
         feet="Kaykaus boots"
@@ -229,7 +230,7 @@ function get_sets()
         head="Umuthi Hat",
         ring1="Stikini ring",
         ring2="Stikini ring",
-        back={ name="Alaunus's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','Enmity-10','Spell interruption rate down-10%'}},
+        back={ name="Alaunus's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}},
         waist="Austerity belt +1",
         legs="Piety Pantaloons +2",
         feet="Theophany duckbills +3"
@@ -277,7 +278,7 @@ function get_sets()
         hands="Inyanga dastanas +2",
         ring1="Stikini ring",
         ring2="Kishar ring",
-        back={ name="Alaunus's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','Enmity-10','Spell interruption rate down-10%'}},
+        back={ name="Alaunus's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}},
         waist="Luminary sash",
         legs="Theophany pantaloons +3",
         feet="Theophany duckbills +3"
@@ -293,7 +294,7 @@ function get_sets()
         hands="Inyanga dastanas +2",
         ring1="Stikini ring",
         ring2="Stikini ring",
-        back={ name="Alaunus's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','Enmity-10','Spell interruption rate down-10%'}},
+        back={ name="Alaunus's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}},
         waist="Luminary sash",
         legs="Theophany pantaloons +3",
         feet="Medium's Sabots"
