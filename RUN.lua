@@ -152,10 +152,14 @@ function get_sets()
     sets.fc = {
         head="Runeist's bandeau +3", --fc 12%
         neck="Voltsurge torque", --fc 4%
+        ear1="Etiolation earring",
+        ear2="Loquacious earring",
         body="Vrikodara jupon", --fc 5%
         hands="Leyline gloves", --fc 8% (one day!) 
+        ring2="Kishar ring",
         legs="Ayanmo cosciales +2", --fc 6%
-        back=fast_cast_cape
+        back=fast_cast_cape,
+        feet="Carmine greaves +1"
     }
 
     --Enhancing magic casting time -13%
@@ -163,16 +167,19 @@ function get_sets()
         legs="Futhark trousers +3"
     })
 
-    sets.midcast = sets.enmity --set_combine(sets.fc, sets.enmity)
-
-    --Enhancing magic duration: 35%
-    sets.midcast.enhancing = {
-        head="Erilaz galea +1", --Enhancing magic effect duration +15%
-        hands="Runeist's mitons +2", --Enhancing magic skill +15
-        waist="Austerity belt +1",
-        legs="Futhark trousers +3" --Enhancing magic duration +20%
-    }
-
+    sets.midcast = set_combine(sets.enmity, {
+        ammo="Staunch tathlum +1",
+        head="Runeist's bandeau +3",
+        ear1="Etiolation earring",
+        ear2="Loquacious earring",
+        body="Vrikodara jupon",
+        hands="Leyline gloves",
+        ring2="Kishar ring",
+        back=fast_cast_cape,
+        waist="Ioskeha belt +1",
+        feet="Carmine greaves +1"
+    })
+    
     sets.midcast["Flash"] = sets.midcast
     sets.midcast.enhancing["Foil"] = sets.midcast
 
@@ -181,6 +188,14 @@ function get_sets()
     sets.midcast["Blank Gaze"] = sets.midcast
     sets.midcast["Jettatura"] = sets.midcast
     sets.midcast["Stun"] = sets.midcast
+
+    --Enhancing magic duration: 35%
+    sets.midcast.enhancing = {
+        head="Erilaz galea +1", --Enhancing magic effect duration +15%
+        hands="Runeist's mitons +2", --Enhancing magic skill +15
+        waist="Austerity belt +1",
+        legs="Futhark trousers +3" --Enhancing magic duration +20%
+    }
 
     --Regen effect duration: +21
     sets.midcast.enhancing["Regen"] = set_combine(sets.midcast.enhancing, {
