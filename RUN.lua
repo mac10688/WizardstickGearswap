@@ -189,12 +189,12 @@ function get_sets()
     sets.midcast["Stun"] = sets.midcast
 
     --Enhancing magic duration: 35%
-    sets.midcast.enhancing = set_combine(sets.fc, {
+    sets.midcast.enhancing = {
         head="Erilaz galea +1", --Enhancing magic effect duration +15%
         hands="Runeist's mitons +2", --Enhancing magic skill +15
         waist="Austerity belt +1",
         legs="Futhark trousers +3" --Enhancing magic duration +20%
-    })
+    }
 
     sets.midcast["Flash"] = sets.midcast
     sets.midcast.enhancing["Foil"] = sets.midcast
