@@ -179,23 +179,25 @@ function get_sets()
         waist="Ioskeha belt +1",
         feet="Carmine greaves +1"
     })
-    
-    sets.midcast["Flash"] = sets.midcast
-    sets.midcast.enhancing["Foil"] = sets.midcast
 
     --blu sub
     sets.midcast["Sheep Song"] = sets.midcast
     sets.midcast["Blank Gaze"] = sets.midcast
     sets.midcast["Jettatura"] = sets.midcast
+
+    --drk sub
     sets.midcast["Stun"] = sets.midcast
 
     --Enhancing magic duration: 35%
-    sets.midcast.enhancing = {
+    sets.midcast.enhancing = set_combine(sets.fc, {
         head="Erilaz galea +1", --Enhancing magic effect duration +15%
         hands="Runeist's mitons +2", --Enhancing magic skill +15
         waist="Austerity belt +1",
         legs="Futhark trousers +3" --Enhancing magic duration +20%
-    }
+    })
+
+    sets.midcast["Flash"] = sets.midcast
+    sets.midcast.enhancing["Foil"] = sets.midcast
 
     --Regen effect duration: +21
     sets.midcast.enhancing["Regen"] = set_combine(sets.midcast.enhancing, {
