@@ -36,7 +36,7 @@ function get_sets()
     sets = {}
     
      -- Buff sets: Gear that needs to be worn to actively enhance a current player buff.
-     sets.divine_caress = {hands="Ebers mitts"}
+     sets.divine_caress = {hands="Ebers mitts +1"}
      sets.afflatus_solace = {body="Ebers Bliaud +1"}
 
 	--- Sets for Enhanced Job Abilities ---
@@ -240,7 +240,7 @@ function get_sets()
         main="Beneficus",
         head="Ebers cap +1",
         body="Ebers Bliaud +1",
-        hands="Ebers mitts",
+        hands="Ebers mitts +1",
         legs="Piety Pantaloons +2",
         feet="Ebers duckbills +1"
     })
@@ -263,7 +263,7 @@ function get_sets()
         main="Bolelabunga",
         head="Inyanga tiara +2",
         body="Piety Briault +3",
-        hands="Ebers mitts",
+        hands="Ebers mitts +1",
         legs="Theophany pantaloons +3",
     })
 

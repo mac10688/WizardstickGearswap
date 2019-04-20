@@ -1,5 +1,5 @@
 Nuke_Sets = {"magic-atk-bonus", "magic-accuracy" ,"magic-burst"}
-Nuke_Set_Index = 1
+Nuke_Set_Index = 3
 
 Loupon_Idle_On = true
 
@@ -56,7 +56,6 @@ function get_sets()
         ear2="Loquacious Earring",
         ear1="Etiolation earring",
         body="Shango robe",
-        hands="Bagua mitaines +1",
         ring1="Prolix ring",
         ring2="Kishar ring",
         back={ name="Nantosuelta's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}},
@@ -87,7 +86,7 @@ function get_sets()
         head="Vanya hood",
         hands="Shrieker's cuffs",
         waist="Austerity belt +1",
-        legs="Lengo pants",
+        legs="Geomancy pants +2",
         feet="Medium's sabots"
     }
 
@@ -117,6 +116,7 @@ function get_sets()
         sub="Sors shield",
         head="Vanya hood",
         body="Vrikodara Jupon",
+        hands="Geomancy mitaines +3",
         ring1="Haoma Ring",
         ring2="Sirona's Ring",
         legs="Gyve trousers",
@@ -149,14 +149,14 @@ function get_sets()
         head=merlinic_head_mab,
         neck="Erra pendant",
         ear1="Barkarole earring",
-        ear2="Gwati earring",
-        body=merlinic_body_mab,
+        ear2="Regal earring",
+        body="Geomancy tunic +3",
         hands="Geomancy mitaines +3",
         ring1="Stikini ring",
         ring2="Stikini ring",
         waist="Luminary sash",
-        legs=merlinic_legs_mab,
-        feet=merlinic_feet_mab,
+        legs="Geomancy pants +2",
+        feet="Geomancy sandals +2",
         back={ name="Nantosuelta's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}}
     }
 
@@ -222,7 +222,7 @@ function get_sets()
         hands="Shrieker's cuffs",
         ring1="Defending Ring",
         ring2="Vengeful ring",
-        back={ name="Nantosuelta's Cape", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Pet: "Regen"+10','Pet: "Regen"+5'}},
+        back={ name="Nantosuelta's Cape", augments={'MND+20','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Pet: "Regen"+10','Pet: "Regen"+5'}},
         waist="Slipor sash",
         legs="Geomancy pants +2",
         feet="Azimuth gaiters +1"
@@ -234,7 +234,7 @@ function get_sets()
         head="Azimuth hood +1",
         neck="Bagua charm",
         hands="Geomancy mitaines +3",
-        back={ name="Nantosuelta's Cape", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Pet: "Regen"+10','Pet: "Regen"+5'}},
+        back={ name="Nantosuelta's Cape", augments={'MND+20','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Pet: "Regen"+10','Pet: "Regen"+5'}},
         feet="Bagua sandals +1"
     })
 
