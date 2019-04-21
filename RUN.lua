@@ -213,6 +213,7 @@ function get_sets()
     sets.ws = { 
         ammo="Mantoptera eye",
         head="Meghanada visor +2",
+        neck="Fotia gorget",
         ear1="Moonshade earring",
         ear2="Ishvara earring",
         body="Meghanada cuirie +2",
@@ -233,6 +234,7 @@ function get_sets()
     sets.ws['Resolution'] = { 
         ammo="Knobkierrie",
         head={ name="Herculean Helm", augments={'Accuracy+24 Attack+24','Crit. hit damage +1%','STR+7','Accuracy+13','Attack+8'}},
+        neck="Fotia gorget",
         ear1="Moonshade earring",
         ear2="Ishvara earring",
         body="Adhemar jacket +1",
@@ -253,6 +255,7 @@ function get_sets()
     sets.ws['Dimidiation'] = {
         ammo="Knobkierrie",
         head="Ayanmo zucchetto +2",
+        neck="Fotia gorget",
         ear1="Moonshade earring",
         ear2="Sherida earring",
         body="Adhemar jacket +1",
@@ -273,6 +276,7 @@ function get_sets()
     sets.ws['Herculean Slash'] = { 
         ammo="Mantoptera eye",
         head="Runeist's bandeau +3",
+        neck="Fotia gorget",
         ear1="Moonshade earring",
         ear2="Ishvara earring",
         body="Futhark coat +3",
@@ -292,7 +296,7 @@ function get_sets()
     sets.ws['Shockwave'] = { 
         ammo="Knobkierrie",
         head="Meghanada visor +2",
-        neck="Futhark torque +1",
+        neck="Fotia gorget",
         ear1="Sherida earring",
         ear2="Ishvara earring",
         body="Futhark coat +3",
