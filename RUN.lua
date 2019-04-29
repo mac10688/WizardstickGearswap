@@ -242,7 +242,7 @@ function get_sets()
         ring1="Petrov ring",
         ring2="Niqmaddu ring",
         back=atk_cape,
-        waist="Ioskeha belt +1",
+        waist="Fotia belt",
         legs={ name="Herculean Trousers", augments={'Accuracy+20 Attack+20','STR+6','Accuracy+11'}},
         feet="Meghanada jambeaux +2"
     }
@@ -263,7 +263,7 @@ function get_sets()
         ring1="Niqmaddu ring",
         ring2="Ilabrat ring",
         back=dimi_cape,
-        waist="Latria sash", 
+        waist="Fotia belt", 
         legs="Samnuha tights",
         feet="Ayanmo gambieras +2"
     }
@@ -283,7 +283,7 @@ function get_sets()
         hands="Meghanada gloves +2",
         ring1="Petrov ring",
         ring2="Supershear ring",
-        waist="Latria sash",
+        waist="Fotia belt",
         legs="Carmine cuisses +1",
         feet="Erilaz greaves +1"
     }
@@ -296,7 +296,7 @@ function get_sets()
     sets.ws['Shockwave'] = { 
         ammo="Knobkierrie",
         head="Meghanada visor +2",
-        neck="Fotia gorget",
+        neck="Futhark torque +1",
         ear1="Sherida earring",
         ear2="Ishvara earring",
         body="Futhark coat +3",
@@ -304,9 +304,10 @@ function get_sets()
         ring1="Petrov ring",
         ring2="Niqmaddu ring",
         back=dimi_cape,
-        waist="Latria sash",
+        waist="Fotia belt",
         legs="Futhark trousers +3",
-        feet="Meghanada jambeaux +2"}
+        feet="Meghanada jambeaux +2"
+    }
 
     sets.tank = {}
 

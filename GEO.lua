@@ -82,6 +82,8 @@ function get_sets()
 
     sets.midcast = {}
 
+    sets.midcast["Stun"] = sets.fc
+
     sets.midcast.conserve_mp = {
         head="Vanya hood",
         hands="Shrieker's cuffs",
@@ -133,7 +135,7 @@ function get_sets()
     })
     
     sets.midcast.drain = set_combine(sets.midcast.dark_magic, {
-        head="Bagua Galero +1",
+        head="Pixie Hairpin +1",
         neck="Erra pendant",
         ring1="Excelsis ring",
         ring2="Evanescence ring",
@@ -268,8 +270,9 @@ end
 
 function midcast(spell)
     -- print_set(spell)
-
-    if spell.name:contains("Indi-") then
+    if(sets.midcast[spell.name]) then
+        equip(sets.midcast[spell.name])
+    elseif spell.name:contains("Indi-") then
         equip(sets.midcast.geomancy.indi)
     elseif spell.name:contains("Geo-") then
         equip(sets.midcast.geomancy)
