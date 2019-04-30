@@ -226,6 +226,7 @@ function get_sets()
 
     sets.midcast.enfeebling = set_combine(sets.precast.fc, {
         main="Gada",
+        sub="Ammurapi shield",
         ammo="Hydrocera",
         head="Befouled crown",
         neck="Erra pendant",
@@ -246,6 +247,8 @@ function get_sets()
     })
 
     sets.midcast.cure = set_combine(sets.precast.fc, {
+        main="Gada",
+        sub="Ammurapi shield",
         head = "Vanya hood",
         body="Pedagogy gown +1",
         hands = "Kaykaus cuffs",
