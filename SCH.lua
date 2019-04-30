@@ -7,9 +7,13 @@ IdleSet = {"Refresh", "PDT", "MDT"}
 RegenSetIndex = 1
 RegenSet = {"Hybrid", "Duration", "Potency"}
 
+WeaponSetIndex = 1
+WeaponSet = {"Any", "Grioavolr", "Akademos"}
+
 Kiting = false
 
 send_command('bind f9 gs c CycleNukeSet')
+send_command('bind ^f9 gs c CycleWeaponSet')
 send_command('bind f10 gs c CycleRegenSet')
 send_command('bind f11 gs c CycleIdleSet')
 send_command('bind f12 gs c RefreshSet')
@@ -17,6 +21,7 @@ send_command('bind ^k gs c toggle kiting')
 
 function file_unload()
     send_command('unbind f9')
+    send_command('unbind ^f9')
     send_command('unbind f10')
     send_command('unbind f11')
     send_command('unbind f12')
@@ -30,6 +35,19 @@ function self_command(command)
 
         local nuke_set = NukeSet[NukeTypeIndex]
         add_to_chat(122, 'Nuke Set: ' .. nuke_set)
+    elseif command == "CycleWeaponSet" then
+        WeaponSetIndex = WeaponSetIndex % #WeaponSet + 1
+
+        local weapon_set = WeaponSet[WeaponSetIndex]
+        if weapon_set == 'Any' then
+            enable('main', 'sub')
+        else
+            enable('main', 'sub')
+            equip(sets.WeaponSet[weapon_set])
+            disable('main', 'sub')
+        end
+
+        add_to_chat(122, 'Weapon Set: ' .. weapon_set)
     elseif command == 'CycleIdleSet' then
         IdleSetIndex = IdleSetIndex % #IdleSet + 1
 
@@ -46,9 +64,10 @@ function self_command(command)
         local nuke_set = NukeSet[NukeTypeIndex]
         local idle_set = IdleSet[IdleSetIndex]
         local regen_set = RegenSet[RegenSetIndex]
+        local weapon_set = WeaponSet[WeaponSetIndex]
 
         equip_set(player.status)
-        add_to_chat(122, 'Nuke Set: ' .. nuke_set .. ' || Idle Set: ' .. idle_set .. ' || Regen Set: ' .. regen_set)
+        add_to_chat(122, 'Nuke Set: ' .. nuke_set .. ' || Idle Set: ' .. idle_set .. ' || Regen Set: ' .. regen_set .. ' || Weapon Set: ' .. weapon_set)
     elseif command == 'toggle kiting' then
         Kiting = not Kiting
         if Kiting then
@@ -70,6 +89,10 @@ function get_sets()
     cure_cape = { name="Lugh's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+7','"Cure" potency +10%','Spell interruption rate down-10%'}}
     int_enfeeble_cape = nuke_cape
     mnd_enfeeble_cape = healing_cape
+
+    sets.WeaponSet = {}
+    sets.WeaponSet["Akademos"] = {main="Akademos", sub="Enki strap"}
+    sets.WeaponSet["Grioavolr"] = {main="Grioavolr", sub="Enki strap"}
     
     sets.precast = {}
 
@@ -163,14 +186,14 @@ function get_sets()
         sub="Enki Strap",
         ammo="Pemphredo tathlum",
         head={ name="Merlinic Hood", augments={'Mag. Acc.+22 "Mag.Atk.Bns."+22','"Occult Acumen"+4','Mag. Acc.+11','"Mag.Atk.Bns."+8'}},
-        neck="Mizukage-no-Kubikazari",
+        neck="Argute stole +1",
         ear1="Barkarole earring",
         ear2="Friomisi earring",
         body="Jhakri robe +2",
         hands="Amalric gages +1",
         left_ring="Stikini Ring",
         right_ring="Shiva Ring +1",
-        back=nuke_back,
+        back=nuke_cape,
         waist="Eschan stone",
         legs={ name="Merlinic Shalwar", augments={'Mag. Acc.+20 "Mag.Atk.Bns."+20','Enmity-1','CHR+8','Mag. Acc.+15'}},
         feet={ name="Merlinic Crackows", augments={'Mag. Acc.+19 "Mag.Atk.Bns."+19','Magic burst dmg.+1%','INT+7','Mag. Acc.+15','"Mag.Atk.Bns."+14'}},
@@ -179,11 +202,13 @@ function get_sets()
     sets.midcast.elemental["Magic Burst"] = set_combine(sets.midcast.elemental["Magic Attack Bonus"], {
         main="Grioavolr",
         head={ name="Merlinic Hood", augments={'Attack+14','Magic burst dmg.+8%','Mag. Acc.+11',}},
-        neck="Mizukage-no-Kubikazari",
+        neck="Argute stole +1",
         hands={ name="Amalric Gages +1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20'}},
         legs={ name="Merlinic Shalwar", augments={'"Mag.Atk.Bns."+20','Magic burst dmg.+6%','Mag. Acc.+7',}},
         feet={ name="Merlinic Crackows", augments={'Mag. Acc.+19','Magic burst dmg.+5%','MND+10','"Mag.Atk.Bns."+14',}},
-        left_ring="Mujin band"
+        left_ring="Mujin band",
+        right_ring="Locus ring",
+        ear2="Static earring"
     })
 
     -- Make sure you have a non weather obi in this set. Helix get bonus naturally no need Obi.	
@@ -236,18 +261,21 @@ function get_sets()
     sets.midcast.regen = {}
     sets.midcast.regen["Hybrid"] = set_combine(sets.midcast.conserve_mp, {
         main="Bolelabunga",
+        sub="Ammurapi shield",
         head="Arbatel bonnet +1",
         body="Telchine chasuble"
     })
 
     sets.midcast.regen["Duration"] = set_combine(sets.midcast.conserve_mp, {
         main="Bolelabunga",
+        sub="Ammurapi shield",
         head="Arbatel bonnet +1",
         body="Telchine chasuble"
     })
 
     sets.midcast.regen["Potency"] = set_combine(sets.midcast.conserve_mp, {
         main="Bolelabunga",
+        sub="Ammurapi shield",
         head="Arbatel bonnet +1",
         body="Telchine chasuble"
     })
