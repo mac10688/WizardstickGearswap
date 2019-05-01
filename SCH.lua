@@ -152,10 +152,6 @@ function get_sets()
         head="Umuthi hat"
     })
 
-    sets.precast.cure = set_combine(sets.precast.fc, {
-
-    })
-
     sets.precast.fc.elemental = set_combine(sets.precast.fc, {
         legs="Mallquis trews +2",
         left_ring="Mallquis Ring",
