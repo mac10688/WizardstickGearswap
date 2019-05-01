@@ -350,3 +350,9 @@ function self_command(command)
         equip_set(player.status)
     end
 end
+
+function sub_job_change(new,old)
+    send_command('wait 2;input /lockstyleset 10')
+end
+
+send_command('wait 2;input /lockstyleset 10')

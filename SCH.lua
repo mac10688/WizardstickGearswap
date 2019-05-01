@@ -84,9 +84,10 @@ function get_sets()
     ------------------------------------------------------------------------------------------------
     ---------------------------------------- Precast Sets ------------------------------------------
     ------------------------------------------------------------------------------------------------
-    idle_cape = { name="Lugh's Cape", augments={'MND+20','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Occ. inc. resist. to stat. ailments+10'}}
+    idle_cape = { name="Lugh's Cape", augments={'MND+20','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','"Fast Cast"+10','Occ. inc. resist. to stat. ailments+10'}}
     nuke_cape = { name="Lugh's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10','Spell interruption rate down-10%'}}
     cure_cape = { name="Lugh's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+7','"Cure" potency +10%','Spell interruption rate down-10%'}}
+    fc_cape = idle_cape
     int_enfeeble_cape = nuke_cape
     mnd_enfeeble_cape = healing_cape
 
@@ -132,14 +133,18 @@ function get_sets()
     --37% fc
     sets.precast.fc = {
         main="Grioavolr", --fast cast 4%
+        ammo="Incantor stone", --fast cast 2%
         head="Merlinic hood", --fast cast 8%
-        neck="Voltsurge torque",
-        left_ear="Loquacious Earring", --fast cast 2%
-        right_ring="Prolix Ring", --fast cast 2%
+        neck="Voltsurge torque", --fast cast 4%
+        ear1="Loquacious Earring", --fast cast 2%
+        ear2="Etiolation earring", --fast cast 1%
         body="Merlinic jubbah", --fast cast 8%
+        hands="Academic's bracers +1", --fast cast 5%
         ring1="Kishar ring", --fast cast 4%
+        ring2="Prolix Ring", --fast cast 2%
+        back=fc_cape, --fast cast 10%
         waist="Channeler's stone", --fast cast 2%
-        legs="Lengo pants",
+        legs="Lengo pants", --fast cast 5%
         feet="Merlinic crackows" --fast cast 5%
     }
 
@@ -535,3 +540,9 @@ function aftercast(spell)
     --This function performs after the action has taken place
     equip_set(player.status)
 end
+
+function sub_job_change(new,old)
+    send_command('wait 2;input /lockstyleset 8')
+end
+
+send_command('wait 2;input /lockstyleset 8')

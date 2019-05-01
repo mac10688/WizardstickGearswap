@@ -469,3 +469,9 @@ end
 -- 		send_command('@input /item "Remedy" <me>')
 --     end
 -- end
+
+function sub_job_change(new,old)
+    send_command('wait 2;input /lockstyleset 11')
+end
+
+send_command('wait 2;input /lockstyleset 11')

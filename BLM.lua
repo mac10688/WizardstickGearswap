@@ -4,15 +4,20 @@ NukeSet = {"Magic Attack Bonus","Magic Burst"}
 IdleSetIndex = 1
 IdleSet = {"Refresh", "PDT", "MDT"}
 
+WeaponSetIndex = 1
+WeaponSet = {"Any", "Grioavolr", "Lathi"}
+
 Kiting = false
 
 send_command('bind f9 gs c CycleNukeSet')
+send_command('bind ^f9 gs c CycleWeaponSet')
 send_command('bind f10 gs c CycleIdleSet')
 send_command('bind f12 gs c RefreshSet')
 send_command('bind ^k gs c toggle kiting')
 
 function file_unload()
     send_command('unbind f9')
+    send_command('unbind ^f9')
     send_command('unbind f10')
     send_command('unbind f12')
     send_command('unbind ^k')
@@ -25,6 +30,19 @@ function self_command(command)
 
         local nuke_set = NukeSet[NukeTypeIndex]
         add_to_chat(122, 'Nuke Set: ' .. nuke_set)
+    elseif command == "CycleWeaponSet" then
+        WeaponSetIndex = WeaponSetIndex % #WeaponSet + 1
+
+        local weapon_set = WeaponSet[WeaponSetIndex]
+        if weapon_set == 'Any' then
+            enable('main', 'sub')
+        else
+            enable('main', 'sub')
+            equip(sets.WeaponSet[weapon_set])
+            disable('main', 'sub')
+        end
+
+        add_to_chat(122, 'Weapon Set: ' .. weapon_set)
     elseif command == 'CycleIdleSet' then
         IdleSetIndex = IdleSetIndex % #IdleSet + 1
 
@@ -53,6 +71,12 @@ function get_sets()
 
     local magic_atk_cape = { name="Taranus's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Magic Damage +10','"Mag.Atk.Bns."+10','Spell interruption rate down-10%'}}
     local idle_cape = { name="Taranus's Cape", augments={'VIT+20','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Phys. dmg. taken-10%'}}
+
+
+    sets.WeaponSet = {}
+    sets.WeaponSet["Lathi"] = {main="Lathi", sub="Enki strap"}
+    sets.WeaponSet["Grioavolr"] = {main="Grioavolr", sub="Enki strap"}
+
     ------------------------------------------------------------------------------------------------
     ---------------------------------------- Precast Sets ------------------------------------------
     ------------------------------------------------------------------------------------------------
@@ -284,3 +308,9 @@ function aftercast(spell)
     --This function performs after the action has taken place
     equip_set(player.status)
 end
+
+function sub_job_change(new,old)
+    send_command('wait 2;input /lockstyleset 12')
+end
+
+send_command('wait 2;input /lockstyleset 12')

@@ -594,3 +594,9 @@ function status_change(new,old)
 end
 
 -----------------------------------------------------------------------------------
+
+function sub_job_change(new,old)
+    send_command('wait 2;input /lockstyleset 9')
+end
+
+send_command('wait 2;input /lockstyleset 9')
