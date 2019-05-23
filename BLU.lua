@@ -1,49 +1,49 @@
-offensiveModes = {"Melee", "Nuke"}
-offensiveModeIndex = 1
-standardSets = {"Attack", "FullDT"}
-standardSetIndex = 1
+WeaponSets = {"Melee", "Nuke"}
+WeaponSetIndex = 1
 
-function user_setup()
-    send_command('bind f10 gs c CycleOffensiveMode')
-    send_command('bind f11 gs c CycleStandardSet')
-    send_command('bind f12 gs c Refresh')
-end
+StandardSets = {"Attack", "FullDT"}
+StandardSetIndex = 1
+
+
+send_command('bind f10 gs c CycleOffensiveMode')
+send_command('bind f11 gs c CycleStandardSet')
+send_command('bind f12 gs c Refresh')
+send_command('bind ^k gs c toggle kiting')
 
 function file_unload()
     send_command('unbind f10')
     send_command('unbind f11')
     send_command('unbind f12')
+    send_command('unbind ^k')
 end
-
-user_setup()
 
 function get_sets()
 --This function prepares your equipment sets.
 
     sets.engaged = {}
-    sets.offensiveMode = {}
-    sets.offensiveMode['Melee'] = {
-        main={ name="Colada", augments={'Sklchn.dmg.+2%','Accuracy+22 Attack+22','DMG:+3',}},
-        sub={ name="Colada", augments={'"Dbl.Atk."+1','DEX+6','Accuracy+8','Attack+12','DMG:+18',}}
+    sets.weaponset = {}
+    sets.weaponset['Melee'] = {
+        main={ name="Colada", augments={'Sklchn.dmg.+2%','Accuracy+22 Attack+22','DMG:+3'}},
+        sub={ name="Colada", augments={'"Dbl.Atk."+1','DEX+6','Accuracy+8','Attack+12','DMG:+18'}}
     }
 
-    sets.offensiveMode['Nuke'] = {
+    sets.weaponset['Nuke'] = {
         main='Nibiru cudgel', 
         sub='Nibiru cudgel'
     }
 
     sets.standardSet = {}
     sets.standardSet['Attack'] = {
-        ammo="Falcon eye",
-        head="Ayanmo zucchetto +2",
+        ammo="Ginsen",
+        head="Dampening tam",
         body="Adhemar Jacket +1",
         hands="Adhemar Wristbands +1",
-        legs="Jhakri slops +2",
-        feet="Battlecast gaiters",
+        legs="Samnuha tights",
+        feet="Carmine greaves +1",
         neck="Sanctity necklace",
-        waist="Zoran's belt",
-        left_ear="Steelflash earring",
-        right_ear="Bladeborn earring",
+        waist="Eschan stone",
+        left_ear="Dignitary's earring",
+        right_ear="Telos earring",
         left_ring="Epona's Ring",
         right_ring="Petrov ring",
         back="Rosmerta's cape",
@@ -52,49 +52,42 @@ function get_sets()
     sets.standardSet['FullDT'] = {
         ammo="Staunch Tathlum +1",
         head="Ayanmo zucchetto +2",
-        body="Ayanmo corazza +2",
+        body="Shamash robe",
         hands="Ayanmo manopolas +2",
         legs="Ayanmo cosciales +2",
         feet="Ayanmo gambieras +2" ,
         neck="Loricate Torque +1",
-        waist="Flume Belt",
-        left_ear="Suppanomimi",
-        right_ear="Brutal Earring",
+        waist="Flume Belt +1",
+        left_ear="Genmei earring",
+        right_ear="Etiolation earring",
         left_ring="Defending Ring",
         right_ring="Shneddick Ring",
         back="Moonbeam Cape",
     }
 	
-	sets.precast = {}	
-	sets.precast.CDC = {
+    sets.precast = {}
+    
+    sets.ws = {}
+    sets.ws["Chant du Cygne"] = {
         ammo="Falcon eye",
         head="Ayanmo zuchetto +2",
         body="Adhemar Jacket +1",
-        hands="Jhakri cuffs +2",
-        legs="Jhakri slops +2",
-        feet="Ayanmo gambieras +1",
+        hands="Adhemar Wristbands +1",
+        legs="Samnuha tights",
+        feet="Ayanmo gambieras +2",
         neck="Sanctity necklace",
         waist="Zoran's belt",
         left_ear="Moonshade earring",
         right_ear="Ishvara earring",
         left_ring="Rajas ring",
         right_ring="Petrov ring",
-        back="Rosmerta's cape",
+        back="Rosmerta's cape"
     }
-	sets.precast.FastCast = {
-        head="Herculean Helm",
-        body="Vrikodara jupon",
-        -- hands={ name="Leyline Gloves", augments={'Accuracy+14','Mag. Acc.+13','"Mag.Atk.Bns."+13','"Fast Cast"+2',}},
-        legs="Lengo pants",
-        feet="Chelona Boots",
-        neck="Voltsurge Torque",
-        left_ear="Loquac. Earring",
-        right_ear="Etiolation earring",
-        left_ring="Prolix Ring",
-        right_ring="Kishar Ring",
-        back="Swith Cape",
-    }
-	sets.precast.Sanguine = {
+
+    sets.ws["Requiescat"] = sets.ws["Chant du Cygne"]
+    sets.ws["True Strike"] = sets.ws["Chant du Cygne"]
+
+    sets.ws["Sanguine"] = {
         ammo="Ghastly Tathlum",
         head="Herculean Helm",
         body="Jhakri robe +2",
@@ -110,6 +103,21 @@ function get_sets()
         back="Cornflower Cape",
     }
 
+	sets.fc = {
+        head="Herculean Helm",
+        body="Vrikodara jupon",
+        hands="Leyline Gloves",
+        legs="Lengo pants",
+        feet="Chelona Boots",
+        neck="Voltsurge Torque",
+        left_ear="Loquac. Earring",
+        right_ear="Etiolation earring",
+        left_ring="Prolix Ring",
+        right_ring="Kishar Ring",
+        back="Swith Cape",
+    }
+	
+
 	sets.precast.Diffusion = { feet="Luhlaza Charuqs" }
 	
 	sets.midcast = {}
@@ -117,23 +125,36 @@ function get_sets()
 	sets.midcast.nuke = {
         ammo="Hydrocera",
         head="Jhakri coronal +2",
-        body="Jhakri robe +2",
-        hands="Jhakri cuffs +2",
+        body="Shamash robe",
+        hands="Amalric gages +1",
         legs="Jhakri slops +2",
         feet="Jhakri pigaches +2",
         neck="Sanctity Necklace",
         waist="Eschan Stone",
         left_ear="Friomisi earring",
-        right_ear="Hecate's Earring",
-        left_ring="Arvina ringlet +1",
-        right_ring="Shiva Ring",
+        right_ear="Regal earring",
+        left_ring="Stikini ring",
+        right_ring="Shiva Ring +1",
         back="Cornflower Cape",
     }
-	sets.midcast.MG = {
+	sets.midcast["Mighty Guard"] = {
         feet="Luhlaza Charuqs"
     }
+
+    --spell.english == 'Spectral Floe' or spell.english == 'Tenebral Crush' or spell.english == 'Anvil Lightning' or spell.english == 'Searing Tempest' or spell.english == 'Entomb' or spell.english == 'Magic Hammer' or spell.english == 'Subduction' or spell.english == 'Charged Whisker'
+    sets.midcast["Spectral Floe's"] = sets.midcast.nuke
+    sets.midcast["Tenebral Crush"] = sets.midcast.nuke
+    sets.midcast["Anvil Lightning"] = sets.midcast.nuke
+    sets.midcast["Searing Tempest"] = sets.midcast.nuke
+    sets.midcast["Entomb"] = sets.midcast.nuke
+    sets.midcast["Magic Hammer"] = sets.midcast.nuke
+    sets.midcast["Subduction"] = sets.midcast.nuke
+    sets.midcast["Charged Whisker"] = sets.midcast.nuke
+
+
+    sets.midcast["Carcharian Verve"] = sets.midcast["Mighty Guard"]
 	
-	sets.midcast.SL = {
+	sets.midcast["Sudden Lunge"] = {
         ammo="Honed Tathlum",
         head="Ayanmo zucchetto +2",
         body="Ayanmo corazza +2",
@@ -148,10 +169,12 @@ function get_sets()
         right_ring="Ayanmo ring",
         back="Cornflower Cape",
     }
+
+    sets.midcast["Sweeping Gouge"] = sets.midcast["Sudden Lunge"]
 	
 	sets.midcast.MagAcc = {
         ammo="Ghastly Tathlum",
-        body="Jhakri robe +2",
+        body="Shamash robe",
         hands="Jhakri cuffs +2",
         legs="Ayanmo cosciales +2",
         feet="Jhakri pigaches +2",
@@ -164,91 +187,108 @@ function get_sets()
         back="Cornflower Cape",
     }
 
-end
+    sets.midcast["Dream Flower"] = sets.midcast.MagAcc
 
-function SetOffensiveMode()
-    local mode = offensiveModes[offensiveModeIndex]
-    equip(sets.offensiveMode[mode])
+    sets.kiting = {
+        ring2="Shneddick ring"
+    }
 
-end
+    sets.ja = {}
 
-function SetStandardSetMode()
-    local mode = standardSets[standardSetIndex]
-    equip(sets.standardSet[mode])
 end
 
 -----------------------------------------------------------------------------------
 
 function self_command(command)
     if command == 'CycleOffensiveMode' then
-        offensiveModeIndex = offensiveModeIndex % #offensiveModes + 1
-        SetOffensiveMode()
+        WeaponSetIndex = WeaponSetIndex % #WeaponSets + 1
+        equip_set(player.status)
 
-        local mode = offensiveModes[offensiveModeIndex]
-        add_to_chat(122, 'Offensive Mode: ' .. mode)
+        local mode = WeaponSets[WeaponSetIndex]
+        add_to_chat(122, 'Weapon Set: ' .. mode)
 
     elseif command == 'CycleStandardSet' then
-        standardSetIndex = standardSetIndex % #standardSets + 1
-        SetStandardSetMode()
+        StandardSetIndex = StandardSetIndex % #StandardSets + 1
+        equip_set(player.status)
 
-        local mode = standardSets[standardSetIndex]
+        local mode = StandardSets[StandardSetIndex]
         add_to_chat(122, 'Standard Set Mode: ' .. mode)
     elseif command == 'Refresh' then
-        SetOffensiveMode()
-        SetStandardSetMode()
+        equip_set(player.status)
 
-        offensiveMode = offensiveModes[offensiveModeIndex]
-        standardSetMode = standardSets[standardSetIndex]
+        offensiveMode = WeaponSets[WeaponSetIndex]
+        standardSetMode = StandardSets[StandardSetIndex]
 
         add_to_chat(122, 'Offensive Mode: ' .. offensiveMode .. ' || Standard Set Mode: ' .. standardSetMode)
+    elseif command == 'toggle kiting' then
+        Kiting = not Kiting
+        if Kiting then
+            send_command('@input /echo ----- Kiting Set On -----')
+        else
+            send_command('@input /echo ----- Kiting Set Off -----')
+        end
+        equip_set(player.status)
     end
 end
 
 -----------------------------------------------------------------------------------
 
 function precast(spell)
---This function performs right before the action is sent to the server.
-	if spell.english == 'Chant du Cygne' or spell.english == 'Requiescat' or spell.english == 'True Strike' then
-        equip(sets.precast.CDC)
-    elseif spell.english == 'Sanguine Blade' then
-        equip(sets.midcast.Sanguine)
-    elseif spell.english == 'Diffusion' or spell.english == 'Mighty Guard' or spell.english == 'Carcharian Verve' then
-        equip(sets.precast.Diffusion)
-    elseif spell.english == 'Utsusemi: Ichi' or spell.english == 'Utsusemi: Ni' then
-        equip(sets.precast.FastCast)
-    elseif spell.skill == 'Blue Magic' then 
-        equip(sets.precast.FastCast)
+    if spell.type == "WeaponSkill" then
+        if sets.ws[spell.english] then
+            equip(sets.ws[spell.english])
+        end
+    elseif spell.type == "JobAbility" then
+        if sets.ja[spell.english] then
+            equip(sets.ja[spell.english])
+        end
+    elseif spell.type == "Magic" then
+        if sets.precast[spell.english] then
+            equip(sets.precast[spell.english])
+        else
+            equip(sets.fc)
+        end
     end
-
 end
 
 -----------------------------------------------------------------------------------
 
 function midcast(spell)
---This function performs after precast but before the action is sent to the server.
-	if spell.english == 'Spectral Floe' or spell.english == 'Tenebral Crush' or spell.english == 'Anvil Lightning' or spell.english == 'Searing Tempest' or spell.english == 'Entomb' or spell.english == 'Magic Hammer' or spell.english == 'Subduction' or spell.english == 'Charged Whisker' then 
-		equip(sets.midcast.nuke)
-    elseif spell.english == 'Sudden Lunge' or spell.english == 'Sweeping Gouge' then
-		equip(sets.midcast.SL)
-	elseif spell.english == 'Mighty Guard' or spell.english == 'Carcharian Verve' then
-		equip(sets.midcast.MG)
-    elseif spell.english == 'Dream Flower' then 
-		equip(sets.midcast.MagAcc)
-	end
+    if spell.action_type == 'Magic' then
+        if sets.midcast[spell.english] then
+            equip(sets.midcast[spell.english])
+        else
+            equip(sets.midcast.nuke)
+        end
+    end
 
+end
+
+function equip_set(status)
+
+    local weaponset = WeaponSets[WeaponSetIndex]
+    -- print(weapon_set)
+    equip(sets.weaponset[weaponset])
+
+    local mode = StandardSets[StandardSetIndex]
+    equip(sets.standardSet[mode])
+
+    if Kiting then
+        equip(sets.kiting)
+    end
 end
 
 -----------------------------------------------------------------------------------
 
 function aftercast(spell)
     --This function performs after the action has taken place
-	SetStandardSetMode()
+	equip_set(player.status)
 end
 
 -----------------------------------------------------------------------------------
 
 function status_change(new,old)
-    -- SetStandardSetMode()
+    equip_set(new)
 end
 
 -----------------------------------------------------------------------------------

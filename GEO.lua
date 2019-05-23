@@ -1,7 +1,7 @@
 Nuke_Sets = {"magic-atk-bonus", "magic-accuracy" ,"magic-burst"}
 Nuke_Set_Index = 3
 
-Loupon_Idle_On = true
+Luopan_Idle_On = true
 
 Kiting = false
 
@@ -60,7 +60,7 @@ function get_sets()
         ring2="Kishar ring",
         back={ name="Nantosuelta's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}},
         belt="Channeler's stone",
-        legs="Geomancy pants +2",
+        legs="Geomancy pants +3",
         feet="Merlinic crackows"
     }
 
@@ -82,13 +82,13 @@ function get_sets()
 
     sets.midcast = {}
 
-    sets.midcast["Stun"] = sets.fc
+    
 
     sets.midcast.conserve_mp = {
         head="Vanya hood",
         hands="Shrieker's cuffs",
         waist="Austerity belt +1",
-        legs="Geomancy pants +2",
+        legs="Geomancy pants +3",
         feet="Medium's sabots"
     }
 
@@ -148,6 +148,7 @@ function get_sets()
     sets.midcast.elemental = {}
 
     sets.midcast.elemental["magic-accuracy"] = {
+        sub="Ammurapi shield",
         head=merlinic_head_mab,
         neck="Erra pendant",
         ear1="Barkarole earring",
@@ -157,12 +158,15 @@ function get_sets()
         ring1="Stikini ring",
         ring2="Stikini ring",
         waist="Luminary sash",
-        legs="Geomancy pants +2",
+        legs="Geomancy pants +3",
         feet="Geomancy sandals +2",
         back={ name="Nantosuelta's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}}
     }
 
+    sets.midcast["Stun"] = sets.midcast.elemental["magic-accuracy"]
+
     sets.midcast.elemental["magic-atk-bonus"] = {
+        sub="Ammurapi shield",
         head=merlinic_head_mab,
         neck="Sanctity necklace",
         ear1="Barkarole earring",
@@ -191,6 +195,7 @@ function get_sets()
 
     sets.midcast.enfeeble = {
         sub="Ammurapi shield",
+        ammo="Dunna",
         head="Befouled crown",
         neck="Imbodla necklace",
         ear1="Regal earring",
@@ -201,7 +206,7 @@ function get_sets()
         ring2="Stikini ring",
         back={ name="Nantosuelta's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}},
         waist="Luminary sash",
-        legs="Geomancy pants +2",
+        legs="Geomancy pants +3",
         feet="Medium's sabots"
     }
 
@@ -220,17 +225,17 @@ function get_sets()
         neck="Loricate torque +1",
         ear1="Etiolation earring",
         ear2="Hearty earring",
-        body="Geomancy tunic +3",
+        body="Shamash robe",
         hands="Shrieker's cuffs",
         ring1="Defending Ring",
         ring2="Vengeful ring",
         back={ name="Nantosuelta's Cape", augments={'MND+20','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Pet: "Regen"+10','Pet: "Regen"+5'}},
         waist="Slipor sash",
-        legs="Geomancy pants +2",
+        legs="Geomancy pants +3",
         feet="Azimuth gaiters +1"
     }
 
-    sets.idle.loupon = set_combine(sets.idle, {
+    sets.idle.luopan = set_combine(sets.idle, {
         main="Idris",
         range="Dunna",
         head="Azimuth hood +1",
@@ -244,6 +249,8 @@ function get_sets()
         ring2="Shneddick ring"
     }
 
+    coroutine.schedule(lockstyle,2)
+
 end
 
 function precast(spell)
@@ -251,7 +258,7 @@ function precast(spell)
     
     if (sets.ja[spell.english]) then
         equip(sets.ja[spell.english])
-    elseif spell.name:contains("Cure") or spell.name:contains("Curaga") or spell.name:contains("Cura") then
+    elseif spell.name:startswith("Cure") or spell.name:startswith("Curaga") or spell.name:startswith("Cura") then
         equip(sets.fc.cure)
     elseif spell.action_type == "Magic" then
         if sets.fc[spell.name] then
@@ -272,11 +279,11 @@ function midcast(spell)
     -- print_set(spell)
     if(sets.midcast[spell.name]) then
         equip(sets.midcast[spell.name])
-    elseif spell.name:contains("Indi-") then
+    elseif spell.name:startswith("Indi-") then
         equip(sets.midcast.geomancy.indi)
-    elseif spell.name:contains("Geo-") then
+    elseif spell.name:startswith("Geo-") then
         equip(sets.midcast.geomancy)
-    elseif spell.name:contains("Cure") or spell.name:contains("Curaga") or spell.name:contains("Cura") then
+    elseif spell.name:startswith("Cure") or spell.name:startswith("Curaga") or spell.name:startswith("Cura") then
         equip(sets.midcast.cure)
     elseif spell.skill == "Enhancing Magic" then
         equip(sets.midcast.enhancing)
@@ -290,9 +297,9 @@ function midcast(spell)
             equip(sets.midcast.elemental[nuke_set])
         end
     elseif spell.skill == "Dark Magic" then
-        if spell.name:contains("Drain") then
+        if spell.name:startswith("Drain") then
             equip(sets.midcast.drain)
-        elseif spell.name:contains("Aspir") then
+        elseif spell.name:startswith("Aspir") then
             equip(sets.midcast.aspir)
         else
             equip(sets.midcast.dark_magic)
@@ -301,28 +308,29 @@ function midcast(spell)
 end
 
 function equip_set(status)
-    local set_to_equip = sets.idle
-    if pet.isvalid and Loupon_Idle_On then
-        set_to_equip = sets.idle.loupon
+    if pet.isvalid and Luopan_Idle_On then
+        equip(sets.idle.luopan)
+    else
+        equip(sets.idle)
     end
 
     if Kiting then
-        set_to_equip = set_combine(set_to_equip, sets.kiting)
+        equip(sets.kiting)
     end
-
-    equip(set_to_equip)
 end
 
 function aftercast(spell)
+    if (not spell.name:startswith('Geo-')) and spell.name ~= 'Full Circle' and spell.name ~= 'Radial Arcana' and spell.name ~= 'Mending Halation' and spell.name ~= 'Concentric Pulse' then
+        equip_set(player.status)
+    end
+end
+
+function pet_change(pet,gain)
     equip_set(player.status)
 end
 
 function status_change(new,old)
     equip_set(new)
-end
-
-function pet_change(pet,gain)
-    equip_set(player.status)
 end
 
 function self_command(command)
@@ -339,20 +347,23 @@ function self_command(command)
         end
         equip_set(player.status)
     elseif command == 'toggle loupon_idle_On' then
-        Loupon_Idle_On = not Loupon_Idle_On
-        if Loupon_Idle_On then
+        Luopan_Idle_On = not Luopan_Idle_On
+        if Luopan_Idle_On then
             send_command('@input /echo ----- Loupon Idle Set On -----')
         else
             send_command('@input /echo ----- Loupon Idle Set Off -----')
         end
         equip_set(player.status)
     elseif command == "refresh gear" then
+        lockstyle()
         equip_set(player.status)
     end
 end
 
-function sub_job_change(new,old)
-    send_command('wait 2;input /lockstyleset 10')
+function lockstyle()
+    if player.main_job == 'GEO' then send_command('@input /lockstyleset 10') end
 end
 
-send_command('wait 2;input /lockstyleset 10')
+function sub_job_change()
+    coroutine.schedule(lockstyle,4)
+end

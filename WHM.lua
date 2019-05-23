@@ -34,10 +34,20 @@ help()
 function get_sets()
 
     sets = {}
+
+    sets.conserve_mp = {
+        head="Vanya hood",
+        ear2="Calamitous earring",
+        hands="Fanatic gloves",
+        back="Fi follet cape +1",
+        waist="Austerity belt +1",
+        legs="Lengo pants",
+        feet="Medium's sabots"
+    }
     
-     -- Buff sets: Gear that needs to be worn to actively enhance a current player buff.
-     sets.divine_caress = {hands="Ebers mitts +1"}
-     sets.afflatus_solace = {body="Ebers Bliaud +1"}
+    -- Buff sets: Gear that needs to be worn to actively enhance a current player buff.
+    sets.divine_caress = {hands="Ebers mitts +1"}
+    sets.afflatus_solace = {body="Ebers Bliaud +1"}
 
 	--- Sets for Enhanced Job Abilities ---
 	
@@ -109,7 +119,21 @@ function get_sets()
         left_ring="Rajas Ring",
         right_ring="Chirich Ring",
         back="Moonbeam Cape",
-    } 
+    }
+
+    sets.ws["Mystic Boon"] = {
+        ammo="Hydrocera",
+        head="Inyanga tiara +2",
+        neck="Cleric's torque",
+        ear1="Regal earring",
+        ear2="Ishvara earring",
+        body="Shamash robe",
+        hands="Theophany mitts +2",
+        back={ name="Alaunus's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}},
+        waist="Fotia belt",
+        legs="Theophany pantaloons +3",
+        feet="Theophany duckbills +3"
+    }
 	  
 	
     sets.tp = {}
@@ -157,7 +181,7 @@ function get_sets()
         neck="Loricate Torque +1",
         ear1="Etiolation earring",
         ear2="Hearty earring",
-        body="Ayanmo corazza +2",
+        body="Shamash robe",
         hands="Ayanmo manopolas +2",
         ring1="Defending Ring",
         ring2="Ayanmo ring",
@@ -175,7 +199,7 @@ function get_sets()
         neck="Loricate Torque +1",
         ear1="Etiolation earring",
         ear2="Hearty earring",
-        body="Inyanga jubbah +2",
+        body="Shamash robe",
         hands="Shrieker's cuffs",
         ring1="Defending Ring",
         ring2="Inyanga ring",
@@ -224,6 +248,8 @@ function get_sets()
         feet="Kaykaus boots"
     }
 
+    sets.midcast.raise = set_combine(sets.conserve_mp, sets.fc)
+
     sets.midcast.enhancing = {
         main="Beneficus",
         sub="Ammurapi shield",
@@ -249,17 +275,17 @@ function get_sets()
         feet="Ebers duckbills +1"
     })
 
-    sets.midcast.protect = set_combine(sets.midcast.enhancing, {
+    sets.midcast.protect = set_combine(sets.conserve_mp, {
         ring1="Sheltered Ring",
         feet="Piety duckbills +2"
     })
 
-    sets.midcast.shell = set_combine(sets.midcast.enhancing, {
+    sets.midcast.shell = set_combine(sets.conserve_mp, {
         ring1="Sheltered Ring",
         legs="Piety Pantaloons +2"
     })
 
-    sets.midcast.regen = set_combine(sets.midcast.enhancing, {
+    sets.midcast.regen = set_combine(sets.conserve_mp, {
         main="Bolelabunga",
         head="Inyanga tiara +2",
         body="Piety Briault +3",
@@ -304,6 +330,8 @@ function get_sets()
         ring2='Shneddick ring'
     }
 
+    coroutine.schedule(lockstyle,2)
+
 end
 
 function precast(spell)
@@ -332,82 +360,80 @@ end
 
 function midcast(spell)
     -- print_set(spell)
-    local set_to_equip = sets.idle[Idle_Set_Names[Idle_Index]]
+    equip(sets.idle[Idle_Set_Names[Idle_Index]])
 	if spell.skill == 'Healing Magic' or spell.name == "Erase" then
         if spell.name:contains("Cure") then
             if buffactive['Afflatus Solace'] then
-                local solace_cure_set = set_combine(sets.afflatus_solace, sets.midcast.cure)
-                set_to_equip = set_combine(set_to_equip, solace_cure_set)
+                local solace_cure_set = set_combine(sets.midcast.cure, sets.afflatus_solace)
+                equip(solace_cure_set)
             else
-                set_to_equip = set_combine(set_to_equip, sets.midcast.cure)
+                equip(sets.midcast.cure)
             end
         elseif spell.name:contains("Curaga") or spell.name:contains("Cura") then
-            set_to_equip = set_combine(set_to_equip, sets.midcast.cure)
+            equip(sets.midcast.cure)
+        elseif spell.name:contains("Raise") or spell.name == "Arise" then
+            equip(sets.midcast.raise)
         elseif spell.name == "Cursna" then
             if buffactive['Divine Caress'] then
-                local cursna_divine_caress_set = set_combine(sets.divine_caress, sets.midcast.cursna)
-                set_to_equip = set_combine(set_to_equip, cursna_divine_caress_set)
+                local cursna_divine_caress_set = set_combine(sets.midcast.cursna, sets.divine_caress)
+                equip(cursna_divine_caress_set)
             else
-                set_to_equip = set_combine(set_to_equip, sets.midcast.cursna)
+                equip(sets.midcast.cursna)
             end            
         else
             if buffactive['Divine Caress'] then
-                local status_removal_dc = set_combine(sets.divine_caress, sets.midcast.status_removal)
-                set_to_equip = set_combine(set_to_equip, status_removal_dc)
+                local status_removal_dc = set_combine(sets.midcast.status_removal, sets.divine_caress)
+                equip(status_removal_dc)
             else
-                set_to_equip = set_combine(set_to_equip, sets.midcast.status_removal)
+                equip(sets.midcast.status_removal)
             end
         end    
 	--Enfeebling Magic	
     elseif spell.skill == 'Enfeebling Magic' then
-        set_to_equip = set_combine(set_to_equip, sets.midcast.enfeebling)		
+        equip(sets.midcast.enfeebling)		
 	--Enhancing Magic		
     elseif spell.skill == 'Enhancing Magic' then
         if spell.name == 'Stoneskin' then
-            set_to_equip = set_combine(set_to_equip, sets.midcast.stoneskin)
+            equip(sets.midcast.stoneskin)
         elseif spell.english:contains('Regen') then
-            set_to_equip = set_combine(set_to_equip, sets.midcast.regen)
+            equip(sets.midcast.regen)
         elseif spell.english:contains('Bar') then
             if buffactive['Afflatus Solace'] then
-                local bar_as = set_combine(sets.afflatus_solace, sets.midcast.bar_element)
-                set_to_equip = set_combine(set_to_equip, bar_as)
+                local bar_as = set_combine(sets.midcast.bar_element, sets.afflatus_solace)
+                equip(bar_as)
             else
-                set_to_equip = set_combine(set_to_equip, sets.midcast.bar_element)
+                equip(sets.midcast.bar_element)
             end
         elseif spell.english:contains('Protect') then
-            set_to_equip = set_combine(set_to_equip, sets.midcast.protect)
+            equip(sets.midcast.protect)
         elseif spell.english:contains('Shell') then
-            set_to_equip = set_combine(set_to_equip, sets.midcast.shell)
+            equip(sets.midcast.shell)
         elseif sets.midcast[spell.english] then
-            set_to_equip = set_combine(set_to_equip, sets.midcast[spell.english])
+            equip(sets.midcast[spell.english])
         else
-            set_to_equip = set_combine(set_to_equip, sets.midcast.enhancing)
+            equip(sets.midcast.enhancing)
         end
     elseif spell.skill == "Divine Magic" then
-        set_to_equip = set_combine(set_to_equip, sets.midcast.divine)
+        equip(sets.midcast.divine)
     end
     -- print_set(set_to_equip)
-    equip(set_to_equip)
 end
 
 function equip_set(status)
     local set_to_equip = nil
     if status=='Engaged' then
-        local tp_set_mode = TP_Set_Names[TP_Index]
         if tp_set_mode == 'None' then
-            set_to_equip= sets.idle[Idle_Set_Names[Idle_Index]]
+            equip(sets.idle[Idle_Set_Names[Idle_Index]])
         else
-            set_to_equip = sets.tp[TP_Set_Names[TP_Index]]
+            equip(sets.tp[TP_Set_Names[TP_Index]])
         end
     else
-        set_to_equip = sets.idle[Idle_Set_Names[Idle_Index]]
+        equip(sets.idle[Idle_Set_Names[Idle_Index]])
     end
 
     if Kiting then
-        set_to_equip = set_combine(set_to_equip, sets.kiting)
+        equip(sets.kiting)
     end
-
-    equip(set_to_equip)
 end
 
 function aftercast(spell)
@@ -458,6 +484,7 @@ function self_command(command)
         local kitingStatus = (Kiting and "On" or "Off")
         send_command('@input /echo Idle Set: '..Idle_Set_Names[Idle_Index]..' || TP Set: '..TP_Set_Names[TP_Index]..' || Kite: '..kitingStatus )
         equip_set(player.status)
+        lockstyle()
     end
 end
 
@@ -470,8 +497,10 @@ end
 --     end
 -- end
 
-function sub_job_change(new,old)
-    send_command('wait 2;input /lockstyleset 11')
+function lockstyle()
+    if player.main_job == 'WHM' then send_command('@input /lockstyleset 11') end
 end
 
-send_command('wait 2;input /lockstyleset 11')
+function sub_job_change()
+    coroutine.schedule(lockstyle,4)
+end

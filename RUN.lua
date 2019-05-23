@@ -49,6 +49,9 @@ HybridModeIndex = 1
 WeaponSetMode = {"epeo", "lionheart"}
 WeaponSetIndex = 1
 
+GripSetMode = {"Utu", "Mensch"}
+GripSetIndex = 1
+
 Kiting = false
 
 --Bind f9 - f12 keys 
@@ -61,6 +64,7 @@ send_command('bind ^f11 gs c Cycle HybridMode')
 send_command('bind f12 gs c Refresh')
 send_command('bind ^k gs c toggle kiting')
 send_command('bind ^w gs c cycle weaponset')
+send_command('bind ^g gs c cycle gripset')
 
 function file_unload()
     --When the file unloads, unbind the commands
@@ -73,6 +77,7 @@ function file_unload()
     send_command('unbind f12')
     send_command('unbind ^k')
     send_command('unbind ^w')
+    send_command('unbind ^g')
 end
 
 function get_sets()
@@ -97,8 +102,12 @@ function get_sets()
     }
 
     sets.weaponset = {}
-    sets.weaponset["epeo"] = {main="Epeolatry", sub="Mensch strap +1"}
-    sets.weaponset["lionheart"] = {main="Lionheart", sub="Utu grip"}
+    sets.weaponset["epeo"] = {main="Epeolatry", }
+    sets.weaponset["lionheart"] = {main="Lionheart", }
+
+    sets.gripset = {}
+    sets.gripset["Utu"] = {sub="Utu grip"}
+    sets.gripset["Mensch"] = {sub="Mensch strap +1"}
     --Be very precise about spelling the ability name or it won't be swapped to for job abilities
     sets.ja = {}
 
@@ -111,7 +120,7 @@ function get_sets()
 
     sets.ja['Valiance'] = sets.ja['Vallation']
     sets.ja['Pflug'] = {feet="Runeist's bottes +2"}
-    sets.ja['Battuta'] = {head="Futhark bandeau +2"}
+    sets.ja['Battuta'] = {head="Futhark bandeau +3"}
     sets.ja['Liement'] = set_combine(sets.enmity, {body="Futhark Coat +3"})
     
     sets.ja['Lunge'] = {
@@ -130,7 +139,7 @@ function get_sets()
 
     sets.ja['Swipe'] = sets.ja['Lunge']
     sets.ja['Gambit'] = {hands="Runeist's Mitons +2"}
-    sets.ja['Rayke'] = {feet="Futhark Bottes +1"}
+    sets.ja['Rayke'] = {feet="Futhark Boots +1"}
     sets.ja['Elemental Sforzo'] = {body="Futhark Coat 3"}
     sets.ja['Swordplay'] = {hands="Futhark Mitons +1"}
     sets.ja['Embolden'] = {back="Evasionist's cape"}
@@ -206,7 +215,7 @@ function get_sets()
 
     --Phalanx: +5
     sets.midcast.enhancing["Phalanx"] = set_combine(sets.midcast.enhancing, {
-        head="Futhark bandeau +2"
+        head="Futhark bandeau +3"
     })
 
     -- Weaponskill sets
@@ -254,7 +263,7 @@ function get_sets()
     --Accuracy:
     sets.ws['Dimidiation'] = {
         ammo="Knobkierrie",
-        head="Ayanmo zucchetto +2",
+        head="Futhark bandeau +3",
         neck="Fotia gorget",
         ear1="Moonshade earring",
         ear2="Sherida earring",
@@ -265,7 +274,7 @@ function get_sets()
         back=dimi_cape,
         waist="Fotia belt", 
         legs="Samnuha tights",
-        feet="Ayanmo gambieras +2"
+        feet="Meghanada jambeaux +2"
     }
 
     --Stat Modifier: 80% Vit
@@ -295,7 +304,7 @@ function get_sets()
     --Accuracy:
     sets.ws['Shockwave'] = { 
         ammo="Knobkierrie",
-        head="Meghanada visor +2",
+        head="Futhark bandeau +3",
         neck="Futhark torque +1",
         ear1="Sherida earring",
         ear2="Ishvara earring",
@@ -319,7 +328,7 @@ function get_sets()
     --Accuracy: 11
     sets.tank["pdt"] = {
         ammo="Staunch tathlum +1", --dt: 2
-        head="Futhark bandeau +2", --dt: 5 haste: 8
+        head="Futhark bandeau +3", --dt: 5 haste: 8
         neck="Futhark torque +1",--dt: 5
         ear1="Odnowa earring +1", --mdt: 2
         ear2="Etiolation earring",
@@ -413,6 +422,8 @@ function get_sets()
         feet="Hippomenes socks +1"
     }
 
+    coroutine.schedule(lockstyle,2)
+
 end
 
 -----------------------------------------------------------------------------------
@@ -422,6 +433,8 @@ function SetGearToState(state)
     -- print(state)
     local weaponsetMode = WeaponSetMode[WeaponSetIndex]
     equip(sets.weaponset[weaponsetMode])
+    local gripSet = GripSetMode[GripSetIndex]
+    equip(sets.gripset[gripSet])
     if state == 'Engaged' then
         local mode = Modes[ModeIndex]
         -- print(mode)
@@ -500,12 +513,17 @@ function self_command(command)
             add_to_chat(122, 'Kiting off')
         end
     elseif command == 'cycle weaponset' then
-        WeaponSetMode = {"epeo", "lionheart"}
         WeaponSetIndex = WeaponSetIndex % #WeaponSetMode + 1
 
         SetGearToState(player.status)
         local mode = WeaponSetMode[WeaponSetIndex]
         add_to_chat(122, 'Weapon Set: ' .. mode)
+    elseif command == 'cycle gripset' then
+        GripSetIndex = GripSetIndex % #GripSetMode + 1
+
+        SetGearToState(player.status)
+        local mode = GripSetMode[GripSetIndex]
+        add_to_chat(122, 'Grip Set: ' .. mode)
     elseif command == 'Refresh' then
         SetGearToState(player.status)
 
@@ -522,6 +540,7 @@ function self_command(command)
             local hybridMode = HybridModes[HybridModeIndex]
             add_to_chat(122, 'Mode: ' .. mode .. ' || Type: ' .. hybridMode .. ' || Kiting: ' .. kitingMode)
         end
+        lockstyle()
     elseif command == 'help' then
         help()
     end
@@ -595,8 +614,10 @@ end
 
 -----------------------------------------------------------------------------------
 
-function sub_job_change(new,old)
-    send_command('wait 2;input /lockstyleset 9')
+function lockstyle()
+    if player.main_job == 'RUN' then send_command('@input /lockstyleset 9') end
 end
 
-send_command('wait 2;input /lockstyleset 9')
+function sub_job_change()
+    coroutine.schedule(lockstyle,4)
+end

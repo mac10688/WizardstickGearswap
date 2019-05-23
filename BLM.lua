@@ -56,6 +56,7 @@ function self_command(command)
 
         equip_set(player.status)
         add_to_chat(122, 'Nuke Set: ' .. nuke_set .. ' Idle Set: ' .. idle_set)
+        lockstyle()
     elseif command == 'toggle kiting' then
         Kiting = not Kiting
         if Kiting then
@@ -127,7 +128,9 @@ function get_sets()
 
     sets.midcast.elemental = {}
     sets.midcast.elemental["Magic Attack Bonus"] = {
-        main={ name="Lathi", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
+        main={ name="Lathi", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15'}},
+        sub="Enki strap",
+        ammo="Pemphredo tathlum",
         sub="Enki Strap",
         head={ name="Merlinic Hood", augments={'Mag. Acc.+22 "Mag.Atk.Bns."+22','"Occult Acumen"+4','Mag. Acc.+11','"Mag.Atk.Bns."+8'}},
         body="Spaekona's Coat +2",
@@ -192,15 +195,25 @@ function get_sets()
         feet="Merlinic crackows"
     })
 
-    sets.midcast.cursna = set_combine(sets.midcast.StatusRemoval, {
-
-    })
-
     sets.midcast.enhancing_magic = set_combine(sets.midcast.conserve_mp, {
         ear1="Andoaa earring"
     })
 
     sets.ws = {}
+    sets.ws["Myrkr"] = {
+        ammo="Hydrocera",
+        head="Pixie Hairpin +1",
+        ear1="Loquacious earring",
+        ear2="Etiolation earring",
+        neck="Sanctity necklace",
+        body="Pedagogy gown +1",
+        hands="Kaykaus cuffs",
+        ring1="Prolix ring",
+        ring2="Vengeful ring",
+        waist="Luminary sash",
+        legs="Merlinic shalwar",
+        feet="Kaykaus boots"
+    }
 
     sets.idle = {}
     sets.idle["Refresh"] = {
@@ -211,7 +224,7 @@ function get_sets()
         neck="Loricate torque +1",
         ear1="Etiolation earring",
         ear2="Hearty earring",
-        body="Jhakri robe +2",
+        body="Shamash robe",
         hands="Shrieker's cuffs",
         left_ring="Defending ring",
         right_ring="Vengeful ring",
@@ -225,6 +238,8 @@ function get_sets()
     sets.kiting = {
         ring2="Shneddick ring"
     }
+
+    coroutine.schedule(lockstyle,2)
 
 end
 
@@ -309,8 +324,10 @@ function aftercast(spell)
     equip_set(player.status)
 end
 
-function sub_job_change(new,old)
-    send_command('wait 2;input /lockstyleset 12')
+function lockstyle()
+    if player.main_job == 'BLM' then send_command('@input /lockstyleset 12') end
 end
 
-send_command('wait 2;input /lockstyleset 12')
+function sub_job_change()
+    coroutine.schedule(lockstyle,4)
+end
