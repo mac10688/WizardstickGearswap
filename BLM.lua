@@ -217,9 +217,7 @@ function get_sets()
 
     sets.idle = {}
     sets.idle["Refresh"] = {
-        main="Lathi",
         ammo="Staunch tathlum +1",
-        sub="Mensch strap +1",
         head="Befouled crown",
         neck="Loricate torque +1",
         ear1="Etiolation earring",
@@ -310,13 +308,16 @@ end
 
 function equip_set(status)
     local idleSet = IdleSet[IdleSetIndex]
-    local set_to_equip = sets.idle[idleSet]
+    equip(sets.idle[idleSet])
 
-    if Kiting then
-        set_to_equip = set_combine(set_to_equip, sets.kiting)
+    local weapon_set_mode = WeaponSet[WeaponSetIndex]
+    if weapon_set_mode ~= "Any" then
+        equip(sets.WeaponSet[weapon_set_mode])
     end
 
-    equip(set_to_equip)
+    if Kiting then
+        equip(sets.kiting)
+    end
 end
 
 function aftercast(spell)
