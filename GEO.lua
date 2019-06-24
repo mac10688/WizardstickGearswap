@@ -179,16 +179,19 @@ function get_sets()
         back={ name="Nantosuelta's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}}
     }
 
+    --MB: 52
+    --MB2: 32
+    --Total MB: 82
     sets.midcast.elemental["magic-burst"] = set_combine(sets.midcast.elemental["magic-atk-bonus"], {
-        head="Ea hat",
-        neck="Mizukage-no-Kubikazari",
-        ear2="Static earring",
-        body="Ea houppelande",
-        hands="Amalric gages +1",
-        ring1="Mujin band",
-        ring2="Locus ring",
-        legs="Ea slops",
-        feet=merlinic_feet_mb
+        head="Ea hat", --MB: 6 MB2:6
+        neck="Mizukage-no-Kubikazari", -- MB: 10
+        ear2="Static earring", --MB: 5
+        body="Ea houppelande", --MB: 8 MB2:8
+        hands="Amalric gages +1", --MB2: 6
+        ring1="Mujin band", --MB2: 5
+        ring2="Locus ring", --MB: 5
+        legs="Ea slops", --MB: 7 MB2:7
+        feet=merlinic_feet_mb --MB: 11
     })
 
     sets.midcast.enfeeble = {

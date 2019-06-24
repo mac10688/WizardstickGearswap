@@ -84,7 +84,7 @@ function get_sets()
     sets.precast = {}
 
     sets.precast.ja = {}
-    sets.precast.ja['Manafont'] = { body = "Archmage's coat +2"}
+    sets.precast.ja['Manafont'] = { body = "Archmage's coat +3"}
     sets.precast.ja['Elemental Seal'] = {}
     sets.precast.ja['Mana Wall'] = {}
     sets.precast.ja['Enmity Douse'] = {}
@@ -132,7 +132,7 @@ function get_sets()
         ammo="Pemphredo tathlum",
         sub="Enki Strap",
         head="Archmage's petasos +2",
-        body="Archmage's coat +2",
+        body="Archmage's coat +3",
         hands="Archmage's gloves +2",
         legs="Archmage's tonban +2",
         feet="Archmage's sabots +3",
@@ -145,15 +145,19 @@ function get_sets()
         back=magic_atk_cape,
     }
 
+    --MB1 Total: 49
+    --MB2 Total: 32
+    --MB Total: 81
     sets.midcast.elemental["Magic Burst"] = set_combine(sets.midcast.elemental["Magic Attack Bonus"], {
-        head="Ea hat",
-        neck="Sorcerer's stole +1",
-        body="Ea houppelande",
-        hands={ name="Amalric Gages +1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20'}},
-        legs="Ea slops",
-        feet={ name="Merlinic Crackows", augments={'"Mag.Atk.Bns."+25','Magic burst dmg.+11%','Mag. Acc.+5'}},
-        left_ring="Mujin band",
-        back=magic_atk_cape
+        head="Ea hat", --MB: 6 MB2:6
+        neck="Sorcerer's stole +1", --MB: 7
+        ear2="Static earring", --MB: 5
+        body="Ea houppelande", --MB: 8 MB2:8
+        hands={ name="Amalric Gages +1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20'}}, --MB2: 6
+        legs="Ea slops", --MB: 7 MB2:7
+        feet={ name="Merlinic Crackows", augments={'"Mag.Atk.Bns."+25','Magic burst dmg.+11%','Mag. Acc.+5'}}, --MB: 11
+        left_ring="Mujin band", --MB2: 5
+        back=magic_atk_cape --MB 5
     })
 
     sets.midcast.elemental.AncientMagic = { head = "Archmage's petasos +2"}

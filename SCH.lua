@@ -96,6 +96,19 @@ function get_sets()
     int_enfeeble_cape = nuke_cape
     mnd_enfeeble_cape = cure_cape
 
+    merlinic_head_mab = { name="Merlinic Hood", augments={'Mag. Acc.+22 "Mag.Atk.Bns."+22','"Occult Acumen"+4','Mag. Acc.+11','"Mag.Atk.Bns."+8'}}
+    merlinic_head_mb = { name="Merlinic Hood", augments={'Attack+14','Magic burst dmg.+8%','Mag. Acc.+11'}}
+
+    merlinic_body_mab = { name="Merlinic Jubbah", augments={'Mag. Acc.+16 "Mag.Atk.Bns."+16','Magic dmg. taken -2%','CHR+1','Mag. Acc.+14','"Mag.Atk.Bns."+9'}}
+    merlinic_body_mb = {}
+
+    merlinic_legs_mab = { name="Merlinic Shalwar", augments={'Mag. Acc.+20 "Mag.Atk.Bns."+20','Enmity-1','CHR+8','Mag. Acc.+15'}}
+    merlinic_legs_mb = { name="Merlinic Shalwar", augments={'Mag. Acc.+22','Magic burst dmg.+10%','MND+2','"Mag.Atk.Bns."+13'}}
+
+    merlinic_feet_mab = { name="Merlinic Crackows", augments={'Mag. Acc.+19 "Mag.Atk.Bns."+19','Magic burst dmg.+1%','INT+7','Mag. Acc.+15','"Mag.Atk.Bns."+14'}}
+    merlinic_feet_mb = { name="Merlinic Crackows", augments={'"Mag.Atk.Bns."+25','Magic burst dmg.+11%','Mag. Acc.+5'}}
+
+
     sets.WeaponSet = {}
     sets.WeaponSet["None"] = {}
     sets.WeaponSet["Akademos"] = {main="Akademos", sub="Enki strap"}
@@ -110,7 +123,7 @@ function get_sets()
     sets.ja['Enlightenment'] = {body="Pedagogy gown +3"}
     sets.ja['Sublimation'] = {head="Academic's mortarboard +3", body="Pedagogy gown +3"}
     -- sets.precast.ja['Altruism'] = {}
-    sets.ja['Focalization'] = {head="Pedagogy mortarboard +2"}
+    sets.ja['Focalization'] = {head="Pedagogy mortarboard +3"}
 
     sets.engaged = {}
     sets.engaged["Accuracy"] = {
@@ -147,7 +160,7 @@ function get_sets()
     -- Dont set_combine here, as this is the last step of the precast, it will have sorted all the needed pieces already based on type of spell.
     -- Then only swap in what under this set after everything else. 
     sets.buff.grimoire = {
-		head="Pedagogy Mortarboard +2",
+		head="Pedagogy Mortarboard +3",
 		feet="Academic's loafers +3",
     }
 
@@ -204,7 +217,7 @@ function get_sets()
     sets.midcast.elemental = {}
     sets.midcast.elemental["Magic Attack Bonus"] = set_combine(sets.precast.fc, {
         ammo="Pemphredo tathlum",
-        head={ name="Merlinic Hood", augments={'Mag. Acc.+22 "Mag.Atk.Bns."+22','"Occult Acumen"+4','Mag. Acc.+11','"Mag.Atk.Bns."+8'}},
+        head=merlinic_head_mab,
         neck="Argute stole +1",
         ear1="Barkarole earring",
         ear2="Friomisi earring",
@@ -223,7 +236,7 @@ function get_sets()
         main="Gada",
         sub="Sors shield",
         ammo="Incantor Stone",
-        head={ name="Merlinic Hood", augments={'Mag. Acc.+22 "Mag.Atk.Bns."+22','"Occult Acumen"+4','Mag. Acc.+11','"Mag.Atk.Bns."+8'}},
+        head=merlinic_head_mab,
         neck="Voltsurge Torque",
         left_ear="Loquac. Earring",
         right_ear="Etiolation Earring",
@@ -231,21 +244,24 @@ function get_sets()
         hands="Academic's bracers +3",
         left_ring="Kishar Ring",
         right_ring="Prolix Ring",
-        back={ name="Lugh's Cape", augments={'MND+20','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','"Fast Cast"+10','Occ. inc. resist. to stat. ailments+10'}},
+        back=idle_cape,
         waist="Eschan stone",
         legs={ name="Lengo Pants", augments={'INT+5','Mag. Acc.+13'}},
-        feet={ name="Merlinic Crackows", augments={'Mag. Acc.+19 "Mag.Atk.Bns."+19','Magic burst dmg.+1%','INT+7','Mag. Acc.+15','"Mag.Atk.Bns."+14'}}
+        feet=merlinic_feet_mab
     }
 
+    --MB: 10 Akademos
+    --MB1: 48
+    --MB2: 12
+    --Total MB: 60
     sets.midcast.elemental["Magic Burst"] = set_combine(sets.midcast.elemental["Magic Attack Bonus"], {
-        head={ name="Merlinic Hood", augments={'"Mag.Atk.Bns."+24','Magic burst dmg.+10%','INT+9'}},
-        neck="Argute stole +1",
-        hands={ name="Amalric Gages +1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20'}},
-        legs={ name="Merlinic Shalwar", augments={'Mag. Acc.+22','Magic burst dmg.+10%','MND+2','"Mag.Atk.Bns."+13'}},
-        feet={ name="Merlinic Crackows", augments={'"Mag.Atk.Bns."+25','Magic burst dmg.+11%','Mag. Acc.+5'}},
-        left_ring="Mujin band",
-        right_ring="Shiva ring +1",
-        ear2="Friomisi earring"
+        head="Pedagogy Mortarboard +3", --MB2: 4
+        neck="Argute stole +1", --MB: 7
+        body="Merlinic Jubbah", --MB: 10
+        hands={ name="Amalric Gages +1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20'}}, --MB2: 6
+        legs=merlinic_legs_mb, --MB: 10
+        feet=merlinic_feet_mb, --MB: 11
+        left_ring="Mujin band" --MB2: 5
     })
 
     -- Make sure you have a non weather obi in this set. Helix get bonus naturally no need Obi.	
@@ -260,7 +276,6 @@ function get_sets()
 		head="Pixie Hairpin +1"
     })
     
-
     sets.midcast.enfeebling = set_combine(sets.precast.fc, {
         main="Gada",
         sub="Ammurapi shield",
