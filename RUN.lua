@@ -615,9 +615,9 @@ end
 -----------------------------------------------------------------------------------
 
 function lockstyle()
-    if player.main_job == 'RUN' then send_command('@input /lockstyleset 9') end
+    if player.main_job == 'RUN' then send_command('@input /lockstyleset 18') end
 end
 
 function sub_job_change()
-    coroutine.schedule(lockstyle,4)
+    coroutine.schedule(lockstyle,6)
 end

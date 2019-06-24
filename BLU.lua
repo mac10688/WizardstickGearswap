@@ -190,10 +190,11 @@ function get_sets()
     sets.midcast["Dream Flower"] = sets.midcast.MagAcc
 
     sets.kiting = {
-        ring2="Shneddick ring"
+        legs="Carmine cuisses +1"
     }
 
     sets.ja = {}
+    lockstyle()
 
 end
 
@@ -220,6 +221,7 @@ function self_command(command)
         standardSetMode = StandardSets[StandardSetIndex]
 
         add_to_chat(122, 'Offensive Mode: ' .. offensiveMode .. ' || Standard Set Mode: ' .. standardSetMode)
+        lockstyle()
     elseif command == 'toggle kiting' then
         Kiting = not Kiting
         if Kiting then
@@ -292,3 +294,11 @@ function status_change(new,old)
 end
 
 -----------------------------------------------------------------------------------
+
+function lockstyle()
+    if player.main_job == 'RUN' then send_command('@input /lockstyleset 16') end
+end
+
+function sub_job_change()
+    coroutine.schedule(lockstyle,6)
+end

@@ -11,7 +11,7 @@ RegenSetIndex = 1
 RegenSet = {"Potency", "Duration"}
 
 WeaponSetIndex = 1
-WeaponSet = {"None", "Grioavolr", "Akademos", "Gada"}
+WeaponSet = {"Akademos", "Grioavolr", "Gada", "None"}
 
 Kiting = false
 
@@ -106,11 +106,11 @@ function get_sets()
     sets.precast = {}
 
     sets.ja = {}
-    sets.ja['Tabula Rasa'] = { legs="Pedagogy Pants +1" }
-    sets.ja['Enlightenment'] = {body="Pedagogy gown +1"}
-    sets.ja['Sublimation'] = {head="Academic mortar +2", body="Pedagogy gown +1"}
+    sets.ja['Tabula Rasa'] = { legs="Pedagogy Pants +3" }
+    sets.ja['Enlightenment'] = {body="Pedagogy gown +3"}
+    sets.ja['Sublimation'] = {head="Academic's mortarboard +3", body="Pedagogy gown +3"}
     -- sets.precast.ja['Altruism'] = {}
-    sets.ja['Focalization'] = {head="Pedagogy mortarboard +1"}
+    sets.ja['Focalization'] = {head="Pedagogy mortarboard +2"}
 
     sets.engaged = {}
     sets.engaged["Accuracy"] = {
@@ -136,8 +136,8 @@ function get_sets()
     sets.buff['Immanence'] = {hands="Arbatel Bracers +1"}
     sets.buff['Penury'] = {legs="Arbatel Pants +1"}
     sets.buff['Parsimony'] = {legs="Arbatel Pants +1"}
-    sets.buff['Celerity'] = {feet="Pedagogy Loafers +1"}
-    sets.buff['Alacrity'] = {feet="Pedagogy Loafers +1"}
+    sets.buff['Celerity'] = {feet="Pedagogy Loafers +3"}
+    sets.buff['Alacrity'] = {feet="Pedagogy Loafers +3"}
     sets.buff['Klimaform'] = {feet="Arbatel Loafers +1"}	
     -- Ebulience set empy now as we get better damage out of a good Merlinic head
     sets.buff['Ebullience'] = {} -- I left it there still if it becomes needed so the SCH.lua file won't need modification should you want to use this set
@@ -147,25 +147,25 @@ function get_sets()
     -- Dont set_combine here, as this is the last step of the precast, it will have sorted all the needed pieces already based on type of spell.
     -- Then only swap in what under this set after everything else. 
     sets.buff.grimoire = {
-		head="Pedagogy Mortarboard +1",
-		feet="Academic's loafers +2",
+		head="Pedagogy Mortarboard +2",
+		feet="Academic's loafers +3",
     }
 
-    --37% fc
+    --64% fc
     sets.precast.fc = {
         ammo="Incantor stone", --fast cast 2%
-        head="Merlinic hood", --fast cast 8%
+        head="Academic's mortarboard +3", --fast cast 8%
         neck="Voltsurge torque", --fast cast 4%
         ear1="Loquacious Earring", --fast cast 2%
         ear2="Etiolation earring", --fast cast 1%
-        body="Merlinic jubbah", --fast cast 8%
+        body="Shango robe", --fast cast 8%
         hands="Academic's bracers +3", --fast cast 8%
         ring1="Kishar ring", --fast cast 4%
         ring2="Prolix Ring", --fast cast 2%
         back=fc_cape, --fast cast 10%
         waist="Channeler's stone", --fast cast 2%
         legs="Lengo pants", --fast cast 5%
-        feet="Merlinic crackows" --fast cast 5%
+        feet="Pedagogy loafers +3" --fast cast 8%
     }
 
     sets.precast["Stoneskin"] = set_combine(sets.precast.fc, {
@@ -208,41 +208,44 @@ function get_sets()
         neck="Argute stole +1",
         ear1="Barkarole earring",
         ear2="Friomisi earring",
-        body="Jhakri robe +2",
+        body="Pedagogy gown +3",
         hands="Amalric gages +1",
         left_ring="Stikini Ring",
         right_ring="Shiva Ring +1",
         back=nuke_cape,
         waist="Eschan stone",
-        legs={ name="Merlinic Shalwar", augments={'Mag. Acc.+20 "Mag.Atk.Bns."+20','Enmity-1','CHR+8','Mag. Acc.+15'}},
-        feet={ name="Merlinic Crackows", augments={'Mag. Acc.+19 "Mag.Atk.Bns."+19','Magic burst dmg.+1%','INT+7','Mag. Acc.+15','"Mag.Atk.Bns."+14'}},
+        legs="Pedagogy pants +3",
+        feet="Pedagogy loafers +3"
     })
 
+    --Tier 2 spells for mb without killing
     sets.midcast.elemental["Vagary"] = {
+        main="Gada",
+        sub="Sors shield",
         ammo="Incantor Stone",
-        head={ name="Peda. M.Board +1", augments={'Enh. "Altruism" and "Focalization"'}},
-        body="Shango Robe",
-        hands="Academic's bracers +3",
-        legs={ name="Lengo Pants", augments={'INT+5','Mag. Acc.+13'}},
-        feet="Academic's loafers +2",
+        head={ name="Merlinic Hood", augments={'Mag. Acc.+22 "Mag.Atk.Bns."+22','"Occult Acumen"+4','Mag. Acc.+11','"Mag.Atk.Bns."+8'}},
         neck="Voltsurge Torque",
-        waist="Channeler's Stone",
         left_ear="Loquac. Earring",
         right_ear="Etiolation Earring",
+        body="Shango Robe",
+        hands="Academic's bracers +3",
         left_ring="Kishar Ring",
         right_ring="Prolix Ring",
-        back={ name="Lugh's Cape", augments={'MND+20','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','"Fast Cast"+10','Occ. inc. resist. to stat. ailments+10'}}
+        back={ name="Lugh's Cape", augments={'MND+20','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','"Fast Cast"+10','Occ. inc. resist. to stat. ailments+10'}},
+        waist="Eschan stone",
+        legs={ name="Lengo Pants", augments={'INT+5','Mag. Acc.+13'}},
+        feet={ name="Merlinic Crackows", augments={'Mag. Acc.+19 "Mag.Atk.Bns."+19','Magic burst dmg.+1%','INT+7','Mag. Acc.+15','"Mag.Atk.Bns."+14'}}
     }
 
     sets.midcast.elemental["Magic Burst"] = set_combine(sets.midcast.elemental["Magic Attack Bonus"], {
-        head={ name="Merlinic Hood", augments={'Attack+14','Magic burst dmg.+8%','Mag. Acc.+11'}},
+        head={ name="Merlinic Hood", augments={'"Mag.Atk.Bns."+24','Magic burst dmg.+10%','INT+9'}},
         neck="Argute stole +1",
         hands={ name="Amalric Gages +1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20'}},
-        legs={ name="Merlinic Shalwar", augments={'"Mag.Atk.Bns."+20','Magic burst dmg.+6%','Mag. Acc.+7'}},
-        feet={ name="Merlinic Crackows", augments={'Mag. Acc.+19','Magic burst dmg.+5%','MND+10','"Mag.Atk.Bns."+14'}},
+        legs={ name="Merlinic Shalwar", augments={'Mag. Acc.+22','Magic burst dmg.+10%','MND+2','"Mag.Atk.Bns."+13'}},
+        feet={ name="Merlinic Crackows", augments={'"Mag.Atk.Bns."+25','Magic burst dmg.+11%','Mag. Acc.+5'}},
         left_ring="Mujin band",
-        right_ring="Locus ring",
-        ear2="Static earring"
+        right_ring="Shiva ring +1",
+        ear2="Friomisi earring"
     })
 
     -- Make sure you have a non weather obi in this set. Helix get bonus naturally no need Obi.	
@@ -262,17 +265,17 @@ function get_sets()
         main="Gada",
         sub="Ammurapi shield",
         ammo="Hydrocera",
-        head="Academic's mortarboard +2",
+        head="Academic's mortarboard +3",
         neck="Erra pendant",
         ear1="Gwati earring",
         ear2="Regal earring",
         hands="Academic's bracers +3",
         ring1="Stikini ring",
         ring2="Kishar ring",
+        back=nuke_cape,
         waist="Luminary sash",
         legs="Chironic hose",
-        feet="Academic's loafers +2",
-        back=nuke_cape
+        feet="Academic's loafers +3"
     })
 
     sets.midcast.int_enfeebling = set_combine(sets.midcast.enfeebling, {
@@ -324,9 +327,10 @@ function get_sets()
     sets.midcast.drain_aspir = set_combine(sets.precast.fc, {
         head="Pixie Hairpin +1",
         neck="Erra pendant",
-        feet="Merlinic crackows",
         ring1="Excelsis ring",
-        waist="Fucho-no-obi"
+        waist="Fucho-no-obi",
+        legs="Pedagogy pants +3",
+        feet="Merlinic crackows"
     })
 
     sets.midcast.healing = set_combine(sets.precast.fc, {
@@ -335,11 +339,9 @@ function get_sets()
 
     sets.midcast["Cursna"] = set_combine(sets.midcast.healing, {
         neck="Debilis Medallion",
-        body="Pedagogy gown +1",
-        hands="Fanatic gloves",
+        body="Pedagogy gown +3",
         ring1="Haoma's ring",
         ring2="Haoma's ring",
-        legs="Theophany pantaloons +3",
         feet="Gendewitha Galoshes"
     })
 
@@ -348,7 +350,7 @@ function get_sets()
         sub="Ammurapi shield",
         head="Arbatel bonnet +1",
         ear1="Andoaa earring",
-        body="Pedagogy gown +1",
+        body="Pedagogy gown +3",
         hands="Chironic gloves",
         waist="Olympus sash",
         ring1="Stikini ring",
@@ -356,7 +358,7 @@ function get_sets()
     })
 
     sets.midcast.storm = set_combine(sets.midcast.enhancement_duration,{
-		feet="Pedagogy loafers +1",
+		feet="Pedagogy loafers +3",
     })
 
     sets.midcast.refresh = set_combine(sets.midcast.enhancement_duration,{
@@ -373,7 +375,7 @@ function get_sets()
         ear1="Loquacious earring",
         ear2="Etiolation earring",
         neck="Sanctity necklace",
-        body="Pedagogy gown +1",
+        body="Pedagogy gown +3",
         hands="Kaykaus cuffs",
         ring1="Prolix ring",
         ring2="Vengeful ring",
@@ -383,6 +385,7 @@ function get_sets()
     }
 
     sets.idle = {
+        ammo="Staunch tathlum +1",
         head="Befouled crown",
         neck="Loricate torque +1",
         ear1="Etiolation earring",
@@ -394,7 +397,7 @@ function get_sets()
         back=idle_cape,
         waist="Slipor sash",
         legs="Assiduity pants +1",
-        feet="Pedagogy loafers +1"
+        feet="Academic's loafers +3"
     }
     sets.idle["Refresh"] = sets.idle
 
@@ -598,7 +601,7 @@ function status_change(new,old)
 end
 
 function lockstyle()
-    if player.main_job == 'SCH' then send_command('@input /lockstyleset 8') end
+    if player.main_job == 'SCH' then send_command('@input /lockstyleset 13') end
 end
 
 function sub_job_change()

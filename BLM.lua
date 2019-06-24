@@ -84,7 +84,7 @@ function get_sets()
     sets.precast = {}
 
     sets.precast.ja = {}
-    sets.precast.ja['Manafont'] = {}
+    sets.precast.ja['Manafont'] = { body = "Archmage's coat +2"}
     sets.precast.ja['Elemental Seal'] = {}
     sets.precast.ja['Mana Wall'] = {}
     sets.precast.ja['Enmity Douse'] = {}
@@ -94,7 +94,6 @@ function get_sets()
 
     --37% fc
     sets.precast.fc = {
-        main="Grioavolr", --fast cast 4%
         head="Merlinic hood", --fast cast 8%
         body="Merlinic jubbah", --fast cast 8%
         legs="Lengo pants",
@@ -128,15 +127,15 @@ function get_sets()
 
     sets.midcast.elemental = {}
     sets.midcast.elemental["Magic Attack Bonus"] = {
-        main={ name="Lathi", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15'}},
+        main="Lathi",
         sub="Enki strap",
         ammo="Pemphredo tathlum",
         sub="Enki Strap",
-        head={ name="Merlinic Hood", augments={'Mag. Acc.+22 "Mag.Atk.Bns."+22','"Occult Acumen"+4','Mag. Acc.+11','"Mag.Atk.Bns."+8'}},
-        body="Spaekona's Coat +2",
-        hands={ name="Amalric Gages +1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20'}},
-        legs={ name="Merlinic Shalwar", augments={'Mag. Acc.+20 "Mag.Atk.Bns."+20','Enmity-1','CHR+8','Mag. Acc.+15'}},
-        feet={ name="Merlinic Crackows", augments={'Mag. Acc.+19 "Mag.Atk.Bns."+19','Magic burst dmg.+1%','INT+7','Mag. Acc.+15','"Mag.Atk.Bns."+14'}},
+        head="Archmage's petasos +2",
+        body="Archmage's coat +2",
+        hands="Archmage's gloves +2",
+        legs="Archmage's tonban +2",
+        feet="Archmage's sabots +3",
         neck="Sanctity Necklace",
         waist="Eschan Stone",
         left_ear="Barkarole earring",
@@ -148,13 +147,30 @@ function get_sets()
 
     sets.midcast.elemental["Magic Burst"] = set_combine(sets.midcast.elemental["Magic Attack Bonus"], {
         head="Ea hat",
-        neck="Mizukage-no-Kubikazari",
+        neck="Sorcerer's stole +1",
+        body="Ea houppelande",
         hands={ name="Amalric Gages +1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20'}},
         legs="Ea slops",
-        feet="Jhakri pigaches +2",
+        feet={ name="Merlinic Crackows", augments={'"Mag.Atk.Bns."+25','Magic burst dmg.+11%','Mag. Acc.+5'}},
         left_ring="Mujin band",
         back=magic_atk_cape
     })
+
+    sets.midcast.elemental.AncientMagic = { head = "Archmage's petasos +2"}
+
+    sets.midcast.elemental.debuff = {
+        head="Ea hat",
+        neck="Sorcerer's stole +1",
+        ear1="Regal earring",
+        body="Ea houppelande",
+        hands="Amalric gages +1",
+        ring1="Stikini ring",
+        ring2="Shiva ring +1",
+        back=magic_atk_cape,
+        belt="Channeler's stone",
+        legs="Archmage's tonban +2",
+        feet="Jhakri pigaches +2"
+    }
 
     sets.midcast.enfeebling = set_combine(sets.midcast.fast_recast, {
         main = "Gada",
@@ -189,10 +205,14 @@ function get_sets()
         body="Telchine chasuble"
     })
 
-    sets.midcast.drain_aspir = set_combine(sets.midcast.fast_recast, {
+    sets.midcast.drain = set_combine(sets.midcast.fast_recast, {
         head="Pixie Hairpin +1",
         neck="Erra pendant",
         feet="Merlinic crackows"
+    })
+
+    sets.midcast.aspir = set_combine(sets.midcast.drain, {
+        feet="Archmage's sabots +3"
     })
 
     sets.midcast.enhancing_magic = set_combine(sets.midcast.conserve_mp, {
@@ -203,8 +223,8 @@ function get_sets()
     sets.ws["Myrkr"] = {
         ammo="Hydrocera",
         head="Pixie Hairpin +1",
-        ear1="Loquacious earring",
-        ear2="Etiolation earring",
+        ear1="Etiolation earring",
+        ear2="Loquacious earring",
         neck="Sanctity necklace",
         body="Pedagogy gown +1",
         hands="Kaykaus cuffs",
@@ -240,6 +260,9 @@ function get_sets()
     coroutine.schedule(lockstyle,2)
 
 end
+
+ElementalDebuffs = S{"Burn", "Frost", "Choke", "Rasp", "Shock", "Drown"}
+AncientMagic = S{"Flare", "Flare II", "Freeze", "Freeze II", "Tornado", "Tornado II", "Quake", "Quake II", "Burst", "Burst II", "Flood", "Flood II"}
 
 ---- .::Precast Functions::. ---->
 function precast(spell)
@@ -292,15 +315,29 @@ function midcast(spell)
         -- Enfeebling Magic --         
         elseif spell.skill == 'Enfeebling Magic' then
             equip(sets.midcast.enfeebling) 
-        elseif string.find(spell.english, 'Aspir') or string.find(spell.english, 'Drain') then
-            equip(sets.midcast.drain_aspir)
+        elseif string.find(spell.english, 'Aspir') then
+            equip(sets.midcast.aspir)
+        elseif string.find(spell.english, 'Drain') then
+            equip(sets.midcast.drain)
         -- Elemental Magic --      
         elseif spell.skill == 'Elemental Magic' then
-            local nuke_set = NukeSet[NukeTypeIndex]
-            if world.day_element == spell.element or world.weather_element == spell.element then
-                equip( set_combine(sets.midcast.elemental[nuke_set], {waist = "Hachirin-no-Obi"}))
+            if ElementalDebuffs[spell.english] then
+                equip(sets.midcast.elemental.debuff)
             else
+                local nuke_set = NukeSet[NukeTypeIndex]
                 equip(sets.midcast.elemental[nuke_set])
+                
+                if world.day_element == spell.element or world.weather_element == spell.element then
+                    equip({waist = "Hachirin-no-Obi"})
+                end
+
+                if AncientMagic[spell.egnlish] then
+                    equip(sets.midcast.elemental.AncientMagic)
+                end
+
+                if player.mpp < 60 then
+                    equip({body="Spaekona's Coat +2"})
+                end
             end
         end
     end
@@ -326,7 +363,7 @@ function aftercast(spell)
 end
 
 function lockstyle()
-    if player.main_job == 'BLM' then send_command('@input /lockstyleset 12') end
+    if player.main_job == 'BLM' then send_command('@input /lockstyleset 15') end
 end
 
 function sub_job_change()

@@ -36,17 +36,17 @@ function get_sets()
     merlinic_body_mb = {}
 
     merlinic_legs_mab = { name="Merlinic Shalwar", augments={'Mag. Acc.+20 "Mag.Atk.Bns."+20','Enmity-1','CHR+8','Mag. Acc.+15'}}
-    merlinic_legs_mb = { name="Merlinic Shalwar", augments={'"Mag.Atk.Bns."+20','Magic burst dmg.+6%','Mag. Acc.+7'}}
+    merlinic_legs_mb = { name="Merlinic Shalwar", augments={'Mag. Acc.+22','Magic burst dmg.+10%','MND+2','"Mag.Atk.Bns."+13'}}
 
     merlinic_feet_mab = { name="Merlinic Crackows", augments={'Mag. Acc.+19 "Mag.Atk.Bns."+19','Magic burst dmg.+1%','INT+7','Mag. Acc.+15','"Mag.Atk.Bns."+14'}}
-    merlinic_feet_mb = { name="Merlinic Crackows", augments={'Mag. Acc.+19','Magic burst dmg.+5%','MND+10','"Mag.Atk.Bns."+14'}}
+    merlinic_feet_mb = { name="Merlinic Crackows", augments={'"Mag.Atk.Bns."+25','Magic burst dmg.+11%','Mag. Acc.+5'}}
 
     sets.ja = {}
-    sets.ja['Bolster'] = {body="Bagua Tunic +1"}
+    sets.ja['Bolster'] = {body="Bagua Tunic +2"}
     sets.ja['Life cycle'] = {body="Geomancy tunic +3", back="Nantosuelta's cape"}
     sets.ja['Full Circle'] = {
         head="Azimuth hood +1",
-        hands="Bagua mitaines +1"
+        hands="Bagua mitaines +2"
     }
 
 
@@ -69,7 +69,7 @@ function get_sets()
     })
 
     sets.fc.elemental_magic = set_combine(sets.fc, {
-        hands="Bagua mitaines +1"
+        hands="Bagua mitaines +2"
     })
 
     sets.fc["Stoneskin"] = set_combine(sets.fc, {
@@ -81,8 +81,6 @@ function get_sets()
     sets.ws = {ear2="Moonshade Earring"}
 
     sets.midcast = {}
-
-    
 
     sets.midcast.conserve_mp = {
         head="Vanya hood",
@@ -97,7 +95,7 @@ function get_sets()
         range="Dunna",
         neck="Bagua charm",
         head="Azimuth hood +1",
-        body="Bagua tunic +1",
+        body="Bagua tunic +2",
         hands="Geomancy mitaines +3",
         back="Lifestream cape",
         feet="Medium's sabots"
@@ -107,7 +105,7 @@ function get_sets()
         main="Idris",
         range="Dunna",
         head="Azimuth hood +1",
-        body="Bagua tunic +1",
+        body="Bagua tunic +2",
         hands="Geomancy mitaines +3",
         back="Lifestream cape",
         legs="Bagua pants +1",
@@ -190,7 +188,7 @@ function get_sets()
         ring1="Mujin band",
         ring2="Locus ring",
         legs="Ea slops",
-        feet="Jhakri pigaches +2"
+        feet=merlinic_feet_mb
     })
 
     sets.midcast.enfeeble = {
@@ -361,7 +359,7 @@ function self_command(command)
 end
 
 function lockstyle()
-    if player.main_job == 'GEO' then send_command('@input /lockstyleset 10') end
+    if player.main_job == 'GEO' then send_command('@input /lockstyleset 17') end
 end
 
 function sub_job_change()

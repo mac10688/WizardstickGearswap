@@ -276,21 +276,27 @@ function get_sets()
     })
 
     sets.midcast.protect = set_combine(sets.conserve_mp, {
+        sub="Ammurapi shield",
         ring1="Sheltered Ring",
-        feet="Piety duckbills +2"
+        feet="Piety duckbills +2",
+        feet="Theophany duckbills +3"
     })
 
     sets.midcast.shell = set_combine(sets.conserve_mp, {
+        sub="Ammurapi shield",
         ring1="Sheltered Ring",
-        legs="Piety Pantaloons +2"
+        legs="Piety Pantaloons +2",
+        feet="Theophany duckbills +3"
     })
 
     sets.midcast.regen = set_combine(sets.conserve_mp, {
         main="Bolelabunga",
+        sub="Ammurapi shield",
         head="Inyanga tiara +2",
         body="Piety Briault +3",
         hands="Ebers mitts +1",
         legs="Theophany pantaloons +3",
+        feet="Theophany duckbills +3"
     })
 
     sets.midcast.enfeebling = {
@@ -498,7 +504,7 @@ end
 -- end
 
 function lockstyle()
-    if player.main_job == 'WHM' then send_command('@input /lockstyleset 11') end
+    if player.main_job == 'WHM' then send_command('@input /lockstyleset 14') end
 end
 
 function sub_job_change()
