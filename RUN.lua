@@ -85,7 +85,7 @@ function get_sets()
     local status_ailment_cape = { name="Ogma's cape", augments={'HP+60','Eva.+20 /Mag. Eva.+20','HP+20','Enmity+10','Occ. inc. resist. to stat. ailments+10'}}
     local fast_cast_cape = { name="Ogma's cape", augments={'HP+60','Eva.+20 /Mag. Eva.+20','HP+20','"Fast Cast"+10','Spell interruption rate down-10%'}}
     local dt_cape = { name="Ogma's cape", augments={'HP+60','Eva.+20 /Mag. Eva.+20','HP+20','Enmity+10','Damage taken-5%'}}
-    local atk_cape = { name="Ogma's cape", augments={'STR+20','Accuracy+20 Attack+20','Accuracy+10','"Dbl.Atk."+10','System: 1 ID: 640 Val: 4'}}
+    local atk_cape = { name="Ogma's cape", augments={'STR+20','Accuracy+20 Attack+20','Accuracy+10','"Dbl.Atk."+10','Damage taken-5%'}}
     local dimi_cape = { name="Ogma's cape", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Weapon skill damage +10%','Damage taken-5%'}}
     sets.enmity = {
         neck="Futhark torque +1",
@@ -228,7 +228,7 @@ function get_sets()
         body="Meghanada cuirie +2",
         hands="Meghanada gloves +2",
         ring1="Petrov ring",
-        ring2="Rajas Ring",
+        ring2="Regal ring",
         waist="Latria sash",
         legs="Samnuha tights",
         feet="Meghanada jambeaux +2"
@@ -248,7 +248,7 @@ function get_sets()
         ear2="Ishvara earring",
         body="Adhemar jacket +1",
         hands={ name="Herculean Gloves", augments={'Accuracy+25 Attack+25','"Triple Atk."+3','STR+10','Accuracy+6'}},
-        ring1="Petrov ring",
+        ring1="Regal ring",
         ring2="Niqmaddu ring",
         back=atk_cape,
         waist="Fotia belt",
@@ -390,7 +390,7 @@ function get_sets()
         ear2="Mache earring",
         body="Meghanada cuirie +2",
         hands="Adhemar wristbands +1",
-        left_ring="Supershear ring",
+        ring1="Regal ring",
         ring2="Moonbeam ring",
         back=atk_cape,
         waist="Ioskeha belt +1",
@@ -400,18 +400,18 @@ function get_sets()
 
     sets.engaged.hybrid = {}
     sets.engaged.hybrid["pdt"] = {
-        ammo="Ginsen",
-        head="Ayanmo zucchetto +2",
+        ammo="Yamarang",
+        head="Futhark baneau +3",
         neck="Futhark torque +1",
         ear1="Telos Earring",
         ear2="Sherida earring",
         body="Futhark coat +3",
         hands="Adhemar wristbands +1",
-        ring1="Moonbeam ring",
-        ring2="Ilabrat ring",
-        back=dt_cape,
+        ring1="Niqmaddu ring",
+        ring2="Moonbeam ring",
+        back=atk_cape,
         waist="Ioskeha belt +1",
-        legs="Meghanada chausses +2",
+        legs="Carmine cuisses +1",
         feet="Ayanmo gambieras +2"
     }
 

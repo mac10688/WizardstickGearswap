@@ -302,7 +302,7 @@ function get_sets()
     })
 
     sets.midcast.cure = set_combine(sets.precast.fc, {
-        main="Gada",
+        main="Raetic Rod +1",
         sub="Ammurapi shield",
         head="Vanya hood",
         body="Chironic doublet",
@@ -392,10 +392,10 @@ function get_sets()
         neck="Sanctity necklace",
         body="Pedagogy gown +3",
         hands="Kaykaus cuffs",
-        ring1="Prolix ring",
+        ring1="Mephitas's ring +1",
         ring2="Vengeful ring",
         waist="Luminary sash",
-        legs="Merlinic shalwar",
+        legs="Pedagogy pants +3",
         feet="Kaykaus boots"
     }
 

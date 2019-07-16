@@ -231,7 +231,7 @@ function get_sets()
     })
 	
     sets.midcast.cure = {
-        main="Queller rod",
+        main="Raetic Rod +1",
         sub="Genbu's Shield",
         ammo="Incantor Stone",
         head="Ebers cap +1",

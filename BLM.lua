@@ -5,7 +5,7 @@ IdleSetIndex = 1
 IdleSet = {"Refresh", "PDT", "MDT"}
 
 WeaponSetIndex = 1
-WeaponSet = {"Any", "Grioavolr", "Lathi"}
+WeaponSet = {"Lathi", "Grioavolr", "Any",}
 
 Kiting = false
 
@@ -127,14 +127,12 @@ function get_sets()
 
     sets.midcast.elemental = {}
     sets.midcast.elemental["Magic Attack Bonus"] = {
-        main="Lathi",
-        sub="Enki strap",
         ammo="Pemphredo tathlum",
         sub="Enki Strap",
-        head="Archmage's petasos +2",
+        head="Archmage's petasos +3",
         body="Archmage's coat +3",
         hands="Archmage's gloves +2",
-        legs="Archmage's tonban +2",
+        legs="Archmage's tonban +3",
         feet="Archmage's sabots +3",
         neck="Sanctity Necklace",
         waist="Eschan Stone",
@@ -160,7 +158,7 @@ function get_sets()
         back=magic_atk_cape --MB 5
     })
 
-    sets.midcast.elemental.AncientMagic = { head = "Archmage's petasos +2"}
+    sets.midcast.elemental.AncientMagic = { head = "Archmage's petasos +3"}
 
     sets.midcast.elemental.debuff = {
         head="Ea hat",
@@ -172,27 +170,27 @@ function get_sets()
         ring2="Shiva ring +1",
         back=magic_atk_cape,
         belt="Channeler's stone",
-        legs="Archmage's tonban +2",
+        legs="Archmage's tonban +3",
         feet="Jhakri pigaches +2"
     }
 
     sets.midcast.enfeebling = set_combine(sets.midcast.fast_recast, {
-        main = "Gada",
-        sub = "Ammurapi shield",
-        ammo="Hydrocera",
-        head = "Befouled Crown",
-        neck = "Imbodla Necklace",
+        ammo="Pemphredo tathlum",
+        head = "Archmage's petasos +3",
+        neck = "Sorcerer's stole +1",
         left_ear = "Regal earring",
         right_ear = "Dignitary's earring",
+        body = "Spaekona's coat +2",
+        hands= "Archmage's gloves +2",
         left_ring="Stikini Ring",
         right_ring="Kishar Ring",
+        back=magic_atk_cape,
         waist="Luminary Sash",
-        feet={ name="Medium's Sabots", augments={'MP+50','MND+10','"Conserve MP"+7','"Cure" potency +5%'}}
+        legs="Archmage's tonban +3",
+        feet="Archmage's sabots +3"
     })
 
     sets.midcast.cure = set_combine(sets.midcast.fast_recast, {
-        main = "Gada",
-        sub = "Sors shield",
         head = "Vanya hood",
         body = "Vrikodara jupon",
         hands = "Shrieker's cuffs",
@@ -205,7 +203,6 @@ function get_sets()
     })
 
     sets.midcast.regen = set_combine(sets.midcast.fast_recast, {
-        main="Bolelabunga",
         body="Telchine chasuble"
     })
 
@@ -230,13 +227,13 @@ function get_sets()
         ear1="Etiolation earring",
         ear2="Loquacious earring",
         neck="Sanctity necklace",
-        body="Pedagogy gown +1",
+        body="Shamash robe",
         hands="Kaykaus cuffs",
-        ring1="Prolix ring",
+        ring1="Mephitas's ring +1",
         ring2="Vengeful ring",
         waist="Luminary sash",
-        legs="Merlinic shalwar",
-        feet="Kaykaus boots"
+        legs="Ea slops",
+        feet="Archmage's sabots +3"
     }
 
     sets.idle = {}
