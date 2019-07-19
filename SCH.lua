@@ -130,7 +130,7 @@ function get_sets()
         head="Jhakri coronal +2",
         neck="Sanctity necklace",
         ear1="Telos earring",
-        ear2="Dignitary earring",
+        ear2="Dignitary's earring",
         body="Jhakri robe +2",
         hands="Jhakri cuffs +2",
         waist="Eschan stone",

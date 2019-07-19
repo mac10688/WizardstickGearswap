@@ -131,7 +131,7 @@ function get_sets()
         sub="Enki Strap",
         head="Archmage's petasos +3",
         body="Archmage's coat +3",
-        hands="Archmage's gloves +2",
+        hands="Archmage's gloves +3",
         legs="Archmage's tonban +3",
         feet="Archmage's sabots +3",
         neck="Sanctity Necklace",
@@ -181,7 +181,7 @@ function get_sets()
         left_ear = "Regal earring",
         right_ear = "Dignitary's earring",
         body = "Spaekona's coat +2",
-        hands= "Archmage's gloves +2",
+        hands= "Archmage's gloves +3",
         left_ring="Stikini Ring",
         right_ring="Kishar Ring",
         back=magic_atk_cape,
@@ -209,6 +209,7 @@ function get_sets()
     sets.midcast.drain = set_combine(sets.midcast.fast_recast, {
         head="Pixie Hairpin +1",
         neck="Erra pendant",
+        hands="Archmage's gloves +3",
         feet="Merlinic crackows"
     })
 
@@ -228,7 +229,7 @@ function get_sets()
         ear2="Loquacious earring",
         neck="Sanctity necklace",
         body="Shamash robe",
-        hands="Kaykaus cuffs",
+        hands="Telchine gloves",
         ring1="Mephitas's ring +1",
         ring2="Vengeful ring",
         waist="Luminary sash",

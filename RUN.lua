@@ -252,7 +252,7 @@ function get_sets()
         ring2="Niqmaddu ring",
         back=atk_cape,
         waist="Fotia belt",
-        legs={ name="Herculean Trousers", augments={'Accuracy+20 Attack+20','STR+6','Accuracy+11'}},
+        legs={ name="Herculean Trousers", augments={'Potency of "Cure" effect received+4%','STR+1','Weapon skill damage +8%','Accuracy+13 Attack+13','Mag. Acc.+14 "Mag.Atk.Bns."+14'}},
         feet="Meghanada jambeaux +2"
     }
     
@@ -273,7 +273,7 @@ function get_sets()
         ring2="Ilabrat ring",
         back=dimi_cape,
         waist="Fotia belt", 
-        legs="Samnuha tights",
+        legs={ name="Herculean Trousers", augments={'Potency of "Cure" effect received+4%','STR+1','Weapon skill damage +8%','Accuracy+13 Attack+13','Mag. Acc.+14 "Mag.Atk.Bns."+14'}},
         feet="Meghanada jambeaux +2"
     }
 
@@ -314,7 +314,7 @@ function get_sets()
         ring2="Niqmaddu ring",
         back=dimi_cape,
         waist="Fotia belt",
-        legs="Futhark trousers +3",
+        legs={ name="Herculean Trousers", augments={'Potency of "Cure" effect received+4%','STR+1','Weapon skill damage +8%','Accuracy+13 Attack+13','Mag. Acc.+14 "Mag.Atk.Bns."+14'}},
         feet="Meghanada jambeaux +2"
     }
 
@@ -401,7 +401,7 @@ function get_sets()
     sets.engaged.hybrid = {}
     sets.engaged.hybrid["pdt"] = {
         ammo="Yamarang",
-        head="Futhark baneau +3",
+        head="Futhark bandeau +3",
         neck="Futhark torque +1",
         ear1="Telos Earring",
         ear2="Sherida earring",
