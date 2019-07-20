@@ -383,9 +383,39 @@ function get_sets()
     sets.midcast.aquaveil = sets.midcast.refresh
 
     sets.ws = {}
-    sets.ws["Shattersoul"] = {}
+
+    --80% MND
+    sets.ws["Shattersoul"] = {
+        head="Pedagogy mortarboard +3",
+        neck="Argute stole +1",
+        ear1="Regal earring",
+        ear2="Barkarole earring",
+        body="Jhakri robe +2",
+        hands="Jhakri cuffs +2",
+        -- ring1="Mephitas's ring +1",
+        ring2="Shiva ring +1",
+        backl=nuke_cape,
+        waist="Channeler's stone",
+        legs="Mallquis trews +2",
+        feet="Academic's loafers +3"
+    }
+    -- 73~85% INT
+    sets.ws["Omniscience"] = {
+        head="Pedagogy mortarboard +3",
+        neck="Argute stole +1",
+        ear1="Regal earring",
+        ear2="Ishvara earring",
+        body="Pedagogy gown +3",
+        hands="Pedagogy bracers +2",
+        ring1="Stikini ring",
+        ring2="Stikini ring",
+        backl=cure_cape,
+        waist="Luminary sash",
+        legs="Pedagogy pants +3",
+        feet="Pedagogy loafers +3"
+    }
+
     sets.ws["Myrkr"] = {
-        ammo="Hydrocera",
         head="Pixie Hairpin +1",
         ear1="Loquacious earring",
         ear2="Etiolation earring",

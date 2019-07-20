@@ -261,6 +261,37 @@ function get_sets()
         feet="Archmage's sabots +3"
     }
 
+    -- 80% INT
+    sets.ws["Vidohunir"] = {
+        head="Archmage's petasos +3",
+        neck="Sorcerer's stole +1",
+        ear1="Regal earring",
+        ear2="Ishvara earring",
+        body="Archmage's coat +3",
+        hands="Archmage's gloves +3",
+        ring1="Shiva ring +1",
+        ring2="Vengeful ring",
+        back=magic_atk_cape,
+        waist="Channeler's stone",
+        legs="Archmage's tonban +3",
+        feet="Archmage's sabots +3"
+    }
+    -- 73~85% INT
+    sets.ws["Shattersoul"] = {
+        head="Ea hat",
+        neck="Sorcerer's stole +1",
+        ear1="Regal earring",
+        ear2="Ishvara ing",
+        body="Shamash robe",
+        hands="Archmage's gloves +3",
+        ring1="Shiva ring +1",
+        ring2="Vengeful ring",
+        back=magic_atk_cape,
+        waist="Channeler's stone",
+        legs="Jhakri slops +2",
+        feet="Jhakri pigaches +2"
+    }
+
     sets.idle = {}
     sets.idle["Refresh"] = {
         ammo="Staunch tathlum +1",
