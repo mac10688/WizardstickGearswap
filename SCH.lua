@@ -612,7 +612,7 @@ end
 function status_change(new,old)
     --This will catch when the player engages and disengages
     -- print(new)
-    equip_set(player.status)
+    equip_set(new)
 end
 
 function lockstyle()

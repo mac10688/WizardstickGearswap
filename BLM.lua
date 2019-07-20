@@ -5,13 +5,17 @@ IdleSetIndex = 1
 IdleSet = {"Refresh", "PDT", "MDT"}
 
 WeaponSetIndex = 1
-WeaponSet = {"Lathi", "Grioavolr", "Any",}
+WeaponSet = {"Lathi", "Grioavolr", "Any"}
+
+EngagedSetIndex = 1
+EngagedSet = {"None", "Accuracy"}
 
 Kiting = false
 
 send_command('bind f9 gs c CycleNukeSet')
 send_command('bind ^f9 gs c CycleWeaponSet')
 send_command('bind f10 gs c CycleIdleSet')
+send_command('bind f11 gs c CycleEngagedSet')
 send_command('bind f12 gs c RefreshSet')
 send_command('bind ^k gs c toggle kiting')
 
@@ -19,6 +23,7 @@ function file_unload()
     send_command('unbind f9')
     send_command('unbind ^f9')
     send_command('unbind f10')
+    send_command('unbind f11')
     send_command('unbind f12')
     send_command('unbind ^k')
 end
@@ -49,6 +54,12 @@ function self_command(command)
         local idle_set = IdleSet[IdleSetIndex]
         add_to_chat(122, 'Idle Set: ' .. idle_set)
         equip_set(player.status)
+    elseif command == 'CycleEngagedSet' then
+        EngagedSetIndex = EngagedSetIndex % #EngagedSet + 1
+
+        local engaged_set = EngagedSet[EngagedSetIndex]
+        add_to_chat(122, 'Engaged Set: ' .. engaged_set)
+        equip_set(player.status)
     elseif command == 'RefreshSet' then
 
         local nuke_set = NukeSet[NukeTypeIndex]
@@ -77,6 +88,19 @@ function get_sets()
     sets.WeaponSet = {}
     sets.WeaponSet["Lathi"] = {main="Lathi", sub="Enki strap"}
     sets.WeaponSet["Grioavolr"] = {main="Grioavolr", sub="Enki strap"}
+
+    sets.engaged = {}
+    sets.engaged["Accuracy"] = {
+        head="Archmage's petasos +3",
+        neck="Sanctity necklace",
+        ear1="Telos earring",
+        ear2="Dignitary's earring",
+        body="Archmage's coat +3",
+        hands="Archmage's gloves +3",
+        waist="Eschan stone",
+        legs="Archmage's tonban +3",
+        feet="Archmage's sabots +3"
+    }
 
     ------------------------------------------------------------------------------------------------
     ---------------------------------------- Precast Sets ------------------------------------------
@@ -346,8 +370,14 @@ function midcast(spell)
 end
 
 function equip_set(status)
-    local idleSet = IdleSet[IdleSetIndex]
-    equip(sets.idle[idleSet])
+    if status == "Engaged" and EngagedSet[EngagedSetIndex] ~= "None" then
+        local engagedSet = EngagedSet[EngagedSetIndex]
+        equip(sets.engaged[engagedSet])
+    else
+        local idleSet = IdleSet[IdleSetIndex]
+    -- print(idleSet)
+        equip(sets.idle[idleSet])
+    end
 
     local weapon_set_mode = WeaponSet[WeaponSetIndex]
     if weapon_set_mode ~= "Any" then
@@ -362,6 +392,12 @@ end
 function aftercast(spell)
     --This function performs after the action has taken place
     equip_set(player.status)
+end
+
+function status_change(new,old)
+    --This will catch when the player engages and disengages
+    -- print(new)
+    equip_set(new)
 end
 
 function lockstyle()
