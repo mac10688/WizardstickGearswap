@@ -253,7 +253,8 @@ function get_sets()
     sets.midcast.enhancing = {
         main="Beneficus",
         sub="Ammurapi shield",
-        head="Umuthi Hat",
+        head="Befouled crown",
+        hands="Inyanga dastanas +2",
         ring1="Stikini ring",
         ring2="Stikini ring",
         back={ name="Alaunus's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}},

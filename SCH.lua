@@ -306,7 +306,7 @@ function get_sets()
         sub="Ammurapi shield",
         head="Vanya hood",
         body="Chironic doublet",
-        hands="Kaykaus cuffs",
+        hands="Pedagogy bracers +3",
         back=cure_cape,
         ring1="Sirona'a ring",
         legs="Chironic hose",
@@ -355,6 +355,7 @@ function get_sets()
     sets.midcast["Cursna"] = set_combine(sets.midcast.healing, {
         neck="Debilis Medallion",
         body="Pedagogy gown +3",
+        hands="Pedagogy bracers +3",
         ring1="Haoma's ring",
         ring2="Haoma's ring",
         feet="Gendewitha Galoshes"
@@ -406,7 +407,7 @@ function get_sets()
         ear1="Regal earring",
         ear2="Ishvara earring",
         body="Pedagogy gown +3",
-        hands="Pedagogy bracers +2",
+        hands="Pedagogy bracers +3",
         ring1="Stikini ring",
         ring2="Stikini ring",
         backl=cure_cape,
@@ -444,6 +445,7 @@ function get_sets()
         legs="Assiduity pants +1",
         feet="Academic's loafers +3"
     }
+    
     sets.idle["Refresh"] = sets.idle
 
     sets.idle["PDT"] = set_combine(sets.idle, {
