@@ -339,7 +339,7 @@ function get_sets()
         back= dt_cape,--pdt: 5
         waist="Flume belt +1", --haste: 6 acc: 11
         legs="Erilaz leg guards +1",  --pdt: 7 haste: 6
-        feet="Erilaz greaves +1" --pdt: 5 haste: 4
+        feet="Turms leggings +1" --pdt: 5 haste: 4
     }
 
     sets.tank["mdt"] = {
@@ -355,7 +355,7 @@ function get_sets()
         back=dt_cape, --meva: 20
         waist="Flume belt +1",
         legs="Runiest's trousers +2", --mdb: 5 meva: 69 pdt: 3 rele: 6 haste: 6 status: 6
-        feet="Erilaz greaves +1" --mdb: 5 meva: 107 pdt: 5 rele: 25 haste: 4
+        feet="Turms leggings +1" --mdb: 5 meva: 107 pdt: 5 rele: 25 haste: 4
     }
 
     sets.tank["resist-status"] = set_combine( sets.tank["mdt"], {
