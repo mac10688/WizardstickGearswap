@@ -135,7 +135,8 @@ function get_sets()
         hands="Jhakri cuffs +2",
         waist="Eschan stone",
         legs="Jhakri slops +2",
-        feet="Jhakri pigaches +2"
+        feet="Jhakri pigaches +2",
+        back={ name="Lugh's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','Haste+10','Mag. Evasion+15'}}
     }
 
     ------------
@@ -445,7 +446,7 @@ function get_sets()
         legs="Assiduity pants +1",
         feet="Academic's loafers +3"
     }
-    
+
     sets.idle["Refresh"] = sets.idle
 
     sets.idle["PDT"] = set_combine(sets.idle, {

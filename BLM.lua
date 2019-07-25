@@ -99,7 +99,8 @@ function get_sets()
         hands="Archmage's gloves +3",
         waist="Eschan stone",
         legs="Archmage's tonban +3",
-        feet="Archmage's sabots +3"
+        feet="Archmage's sabots +3",
+        back={ name="Taranus's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','Haste+10','Mag. Evasion+15'}},
     }
 
     ------------------------------------------------------------------------------------------------

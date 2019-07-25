@@ -102,7 +102,7 @@ function get_sets()
         right_ear="Brutal Earring",
         left_ring="Rajas Ring",
         right_ring="Chirich Ring",
-        back="Moonbeam Cape",
+        back={ name="Alaunus's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','Haste+10','Mag. Evasion+15'}},
     }
 	
     sets.ws["Hexa Strike"] = {
@@ -118,7 +118,7 @@ function get_sets()
         right_ear="Brutal Earring",
         left_ring="Rajas Ring",
         right_ring="Chirich Ring",
-        back="Moonbeam Cape",
+        back={ name="Alaunus's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','Haste+10','Mag. Evasion+15'}},
     }
 
     sets.ws["Mystic Boon"] = {
@@ -147,11 +147,11 @@ function get_sets()
         feet="Aya. Gambieras +2",
         neck="Sanctity Necklace",
         waist="Grunfeld Rope",
-        left_ear="Cessance Earring",
-        right_ear="Telos Earring",
+        left_ear="Telos earring",
+        right_ear="Dignitary's earring",
         left_ring="Petrov Ring",
         right_ring="Hetairoi Ring",
-        back="Moonbeam Cape",
+        back={ name="Alaunus's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','Haste+10','Mag. Evasion+15'}},
     }
 
 	sets.tp['Acc'] = {
@@ -163,11 +163,11 @@ function get_sets()
         feet="Aya. Gambieras +2",
         neck="Sanctity Necklace",
         waist="Eschan stone",
-        left_ear="Cessance Earring",
-        right_ear="Brutal Earring",
+        left_ear="Telos earring",
+        right_ear="Dignitary's earring",
         left_ring="Rajas Ring",
         right_ring="Chirich Ring",
-        back="Moonbeam Cape",
+        back={ name="Alaunus's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','Haste+10','Mag. Evasion+15'}},
     }
     
     
