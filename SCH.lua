@@ -133,6 +133,7 @@ function get_sets()
         ear2="Dignitary's earring",
         body="Jhakri robe +2",
         hands="Jhakri cuffs +2",
+        ring1="Chirich Ring +1",
         waist="Eschan stone",
         legs="Jhakri slops +2",
         feet="Jhakri pigaches +2",

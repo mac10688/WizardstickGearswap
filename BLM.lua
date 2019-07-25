@@ -97,6 +97,7 @@ function get_sets()
         ear2="Dignitary's earring",
         body="Archmage's coat +3",
         hands="Archmage's gloves +3",
+        ring1="Chirich Ring +1",
         waist="Eschan stone",
         legs="Archmage's tonban +3",
         feet="Archmage's sabots +3",

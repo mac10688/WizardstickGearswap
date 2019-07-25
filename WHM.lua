@@ -166,7 +166,7 @@ function get_sets()
         left_ear="Telos earring",
         right_ear="Dignitary's earring",
         left_ring="Rajas Ring",
-        right_ring="Chirich Ring",
+        right_ring="Chirich Ring +1",
         back={ name="Alaunus's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','Haste+10','Mag. Evasion+15'}},
     }
     
