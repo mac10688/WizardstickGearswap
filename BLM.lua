@@ -91,7 +91,7 @@ function get_sets()
 
     sets.engaged = {}
     sets.engaged["Accuracy"] = {
-        head="Archmage's petasos +3",
+        head="Jhakri coronal +2",
         neck="Sanctity necklace",
         ear1="Telos earring",
         ear2="Dignitary's earring",

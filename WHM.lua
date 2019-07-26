@@ -151,7 +151,7 @@ function get_sets()
         right_ear="Dignitary's earring",
         left_ring="Petrov Ring",
         right_ring="Hetairoi Ring",
-        back={ name="Alaunus's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','Haste+10','Mag. Evasion+15'}},
+        back={ name="Alaunus's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10','Mag. Evasion+15'}}
     }
 
 	sets.tp['Acc'] = {
@@ -167,7 +167,7 @@ function get_sets()
         right_ear="Dignitary's earring",
         left_ring="Rajas Ring",
         right_ring="Chirich Ring +1",
-        back={ name="Alaunus's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','Haste+10','Mag. Evasion+15'}},
+        back={ name="Alaunus's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10','Mag. Evasion+15'}}
     }
     
     
