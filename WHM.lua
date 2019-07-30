@@ -100,8 +100,8 @@ function get_sets()
         waist="Fotia Belt",
         left_ear="Cessance Earring",
         right_ear="Brutal Earring",
-        left_ring="Rajas Ring",
-        right_ring="Chirich Ring",
+        ring1="Chirich Ring +1",
+        ring2="Chirich Ring +1",
         back={ name="Alaunus's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','Haste+10','Mag. Evasion+15'}},
     }
 	
@@ -114,10 +114,10 @@ function get_sets()
         feet="Aya. Gambieras +2",
         neck="Fotia Gorget",
         waist="Fotia Belt",
-        left_ear="Cessance Earring",
-        right_ear="Brutal Earring",
-        left_ring="Rajas Ring",
-        right_ring="Chirich Ring",
+        ear1="Cessance Earring",
+        ear2="Brutal Earring",
+        ring1="Chirich Ring +1",
+        ring2="Chirich Ring +1",
         back={ name="Alaunus's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','Haste+10','Mag. Evasion+15'}},
     }
 
@@ -166,7 +166,8 @@ function get_sets()
         left_ear="Telos earring",
         right_ear="Dignitary's earring",
         left_ring="Rajas Ring",
-        right_ring="Chirich Ring +1",
+        ring1="Chirich Ring +1",
+        ring2="Chirich Ring +1",
         back={ name="Alaunus's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10','Mag. Evasion+15'}}
     }
     

@@ -98,6 +98,7 @@ function get_sets()
         body="Archmage's coat +3",
         hands="Archmage's gloves +3",
         ring1="Chirich Ring +1",
+        ring2="Chirich Ring +1",
         waist="Eschan stone",
         legs="Archmage's tonban +3",
         feet="Archmage's sabots +3",
@@ -309,8 +310,8 @@ function get_sets()
         waist="Slipor sash",
         legs="Assiduity pants +1"
     }
-    sets.idle["PDT"] = {}
-    sets.idle["MDT"] = {}
+    sets.idle["PDT"] = sets.idle["Refresh"]
+    sets.idle["MDT"] = sets.idle["Refresh"]
 
     sets.kiting = {
         ring2="Shneddick ring"
