@@ -113,13 +113,13 @@ function get_sets()
 
     --Run job abilities
     sets.ja['Vallation'] = {
-        body="Runeist's coat +2",
+        body="Runeist's coat +3",
         legs="Futhark trousers +3",
         back=dt_cape
     }
 
     sets.ja['Valiance'] = sets.ja['Vallation']
-    sets.ja['Pflug'] = {feet="Runeist's bottes +2"}
+    sets.ja['Pflug'] = {feet="Runeist's boots +3"}
     sets.ja['Battuta'] = {head="Futhark bandeau +3"}
     sets.ja['Liement'] = set_combine(sets.enmity, {body="Futhark Coat +3"})
     
@@ -348,13 +348,13 @@ function get_sets()
         neck="Inquisitor bead necklace", --mdb: 8
         ear1="Odnowa earring +1", --dt: 2 acc: 5~10
         ear2="Hearty earring", --status: 5
-        body="Runeist's coat +2", --mdb: 6 meva: 84 haste: 4 
+        body="Runeist's coat +3", --mdb: 7 meva: 94 haste: 4 
         hands="Turms mittens +1", --mdb: 5 meva: 101 haste: 4
         ring1="Defending ring", --dt: 10
         ring2="Vengeful ring", --meva: 9
         back=dt_cape, --meva: 20
         waist="Flume belt +1",
-        legs="Runiest's trousers +2", --mdb: 5 meva: 69 pdt: 3 rele: 6 haste: 6 status: 6
+        legs="Runeist's trousers +3", --mdb: 6 meva: 99 pdt: 5 haste: 6 status: 10
         feet="Turms leggings +1" --mdb: 5 meva: 107 pdt: 5 rele: 25 haste: 4
     }
 
@@ -384,18 +384,18 @@ function get_sets()
 
     sets.engaged.pure_offense["accuracy"] = {
         ammo="Yamarang",
-        head="Meghanada visor +2",
+        head="Runeist's bandeau +3",
         neck="Ej necklace",
         ear1="Telos earring",
-        ear2="Mache earring",
-        body="Meghanada cuirie +2",
+        ear2="Dignitary's earring",
+        body="Runeist's coat +3",
         hands="Adhemar wristbands +1",
         ring1="Regal ring",
-        ring2="Moonbeam ring",
+        ring2="Chirich ring +1",
         back=atk_cape,
         waist="Ioskeha belt +1",
         legs="Carmine cuisses +1",
-        feet="Meghanada jambeaux +2"
+        feet="Runeist's boots +3"
     }
 
     sets.engaged.hybrid = {}

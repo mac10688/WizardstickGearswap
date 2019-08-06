@@ -128,7 +128,7 @@ function get_sets()
         ear1="Regal earring",
         ear2="Ishvara earring",
         body="Shamash robe",
-        hands="Theophany mitts +2",
+        hands="Theophany mitts +3",
         back={ name="Alaunus's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}},
         waist="Fotia belt",
         legs="Theophany pantaloons +3",
@@ -232,21 +232,21 @@ function get_sets()
     })
 	
     sets.midcast.cure = {
-        main="Raetic Rod +1",
+        main="Raetic Rod +1", --23%
         sub="Genbu's Shield",
         ammo="Incantor Stone",
-        head="Ebers cap +1",
-        neck="Cleric's torque",
-        ear1="Nourishing earring +1",
+        head="Ebers cap +1", --16%
+        neck="Cleric's torque", --5%
+        ear1="Nourishing earring +1", --3%
         ear2="Glorious earring",
         body="Theophany briault +3",
-        hands="Kaykaus cuffs",
+        hands="Theophany mitts +3",
         ring1="Prolix Ring",
         ring2="Sirona's Ring",
         back={ name="Alaunus's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}},
         waist="Austerity belt +1",
         legs="ebers pantaloons +1",
-        feet="Kaykaus boots"
+        feet="Kaykaus boots" -- 10%
     }
 
     sets.midcast.raise = set_combine(sets.conserve_mp, sets.fc)
