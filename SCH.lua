@@ -285,7 +285,7 @@ function get_sets()
         ammo="Hydrocera",
         head="Academic's mortarboard +3",
         neck="Erra pendant",
-        ear1="Gwati earring",
+        ear1="Dignitary's earring",
         ear2="Regal earring",
         hands="Academic's bracers +3",
         ring1="Stikini ring",

@@ -208,7 +208,7 @@ function get_sets()
         back={ name="Nantosuelta's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}},
         waist="Luminary sash",
         legs="Geomancy pants +3",
-        feet="Medium's sabots"
+        feet="Geomancy sandals +3"
     }
 
     sets.midcast.enhancing = set_combine(sets.midcast.conserve_mp, {
@@ -247,7 +247,7 @@ function get_sets()
     })
 
     sets.kiting = {
-        ring2="Shneddick ring"
+        feet="Geomancy sandals +3"
     }
 
     coroutine.schedule(lockstyle,2)

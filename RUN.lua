@@ -344,8 +344,8 @@ function get_sets()
 
     sets.tank["mdt"] = {
         ammo="Staunch tathlum +1", --dt: 2 status: 10
-        head="Erilaz galea +1", --mdb: 5 meva: 69 haste: 8
-        neck="Inquisitor bead necklace", --mdb: 8
+        head="Runeist's bandeau +3", --mdb: 3 meva: 83 haste: 8
+        neck="Futhark +1", --mdb: 8
         ear1="Odnowa earring +1", --dt: 2 acc: 5~10
         ear2="Hearty earring", --status: 5
         body="Runeist's coat +3", --mdb: 7 meva: 94 haste: 4 
