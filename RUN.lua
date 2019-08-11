@@ -141,7 +141,7 @@ function get_sets()
     sets.ja['Gambit'] = {hands="Runeist's Mitons +2"}
     sets.ja['Rayke'] = {feet="Futhark Boots +1"}
     sets.ja['Elemental Sforzo'] = {body="Futhark Coat 3"}
-    sets.ja['Swordplay'] = {hands="Futhark Mitons +1"}
+    sets.ja['Swordplay'] = {hands="Futhark Mitons +3"}
     sets.ja['Embolden'] = {back="Evasionist's cape"}
     sets.ja['Vivacious Pulse'] = {head="Erilaz galea +1"}
     sets.ja['One For All'] = set_combine(sets.enmity, {})
@@ -305,12 +305,12 @@ function get_sets()
     sets.ws['Shockwave'] = { 
         ammo="Knobkierrie",
         head="Futhark bandeau +3",
-        neck="Futhark torque +1",
+        neck="Fotia gorget",
         ear1="Sherida earring",
         ear2="Ishvara earring",
         body="Futhark coat +3",
-        hands={ name="Herculean Gloves", augments={'Accuracy+25 Attack+25','"Triple Atk."+3','STR+10','Accuracy+6'}},
-        ring1="Petrov ring",
+        hands="Meghanada gloves +2",
+        ring1="Regal ring",
         ring2="Niqmaddu ring",
         back=dimi_cape,
         waist="Fotia belt",

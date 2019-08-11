@@ -3,6 +3,9 @@ res = require('resources')
 Weapon_Sets = {"Empty", "Sword Physical Weapon Skill", "Sword Magical Weapon Skill", "Dagger Physical Weapon Skill", "Dagger Magical Weapon Skill"}
 WeaponSetsIndex = 1
 
+NukeSet = {"Low-acc", "High-acc"}
+NukeSetIndex = 1
+
 EngagedMode = {"Tank", "Offense"}
 EngagedModeIndex = 1
 
@@ -477,7 +480,7 @@ function midcast(spell)
 			
 		-- Elemental Magic --      
 		elseif spell.skill == 'Elemental Magic' then
-			local nuke_set = NukeSet[NukeTypeIndex]
+			local nuke_set = NukeSet[NukeSetIndex]
 			equip(sets.midcast.elemental[nuke_set])
 		end
 	end

@@ -42,13 +42,13 @@ function get_sets()
     merlinic_feet_mb = { name="Merlinic Crackows", augments={'"Mag.Atk.Bns."+25','Magic burst dmg.+11%','Mag. Acc.+5'}}
 
     sets.ja = {}
-    sets.ja['Bolster'] = {body="Bagua Tunic +2"}
+    sets.ja['Bolster'] = {body="Bagua tunic +3"}
     sets.ja['Life cycle'] = {body="Geomancy tunic +3", back="Nantosuelta's cape"}
     sets.ja['Full Circle'] = {
         head="Azimuth hood +1",
-        hands="Bagua mitaines +2"
+        hands="Bagua mitaines +3"
     }
-
+    sets.ja['Concentric Pulse'] = { head="Bagua galero +3" }
 
     sets.fc = {
         head=merlinic_head_mab,
@@ -69,7 +69,7 @@ function get_sets()
     })
 
     sets.fc.elemental_magic = set_combine(sets.fc, {
-        hands="Bagua mitaines +2"
+        hands="Bagua mitaines +3"
     })
 
     sets.fc["Stoneskin"] = set_combine(sets.fc, {
@@ -95,7 +95,7 @@ function get_sets()
         range="Dunna",
         neck="Bagua charm",
         head="Azimuth hood +1",
-        body="Bagua tunic +2",
+        body="Bagua tunic +3",
         hands="Geomancy mitaines +3",
         back="Lifestream cape",
         feet="Medium's sabots"
@@ -105,7 +105,7 @@ function get_sets()
         main="Idris",
         range="Dunna",
         head="Azimuth hood +1",
-        body="Bagua tunic +2",
+        body="Bagua tunic +3",
         hands="Geomancy mitaines +3",
         back="Lifestream cape",
         legs="Bagua pants +1",
@@ -169,7 +169,7 @@ function get_sets()
         neck="Sanctity necklace",
         ear1="Barkarole earring",
         ear2="Regal earring",
-        body=merlinic_body_mab,
+        body="Bagua tunic +3",
         hands="Amalric gages +1",
         ring1="Shiva ring +1",
         ring2="Jhakri ring",

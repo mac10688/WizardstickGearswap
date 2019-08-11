@@ -127,12 +127,12 @@ function get_sets()
         neck="Cleric's torque",
         ear1="Regal earring",
         ear2="Ishvara earring",
-        body="Shamash robe",
+        body="Piety briault +3",
         hands="Theophany mitts +3",
         back={ name="Alaunus's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}},
         waist="Fotia belt",
-        legs="Theophany pantaloons +3",
-        feet="Theophany duckbills +3"
+        legs="Piety pantaloons +2",
+        feet="Piety duckbills +3"
     }
 	  
 	
@@ -150,7 +150,7 @@ function get_sets()
         left_ear="Telos earring",
         right_ear="Dignitary's earring",
         left_ring="Petrov Ring",
-        right_ring="Hetairoi Ring",
+        right_ring="Chirich ring +1",
         back={ name="Alaunus's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10','Mag. Evasion+15'}}
     }
 
@@ -165,7 +165,6 @@ function get_sets()
         waist="Eschan stone",
         left_ear="Telos earring",
         right_ear="Dignitary's earring",
-        left_ring="Rajas Ring",
         ring1="Chirich Ring +1",
         ring2="Chirich Ring +1",
         back={ name="Alaunus's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10','Mag. Evasion+15'}}
@@ -280,7 +279,7 @@ function get_sets()
     sets.midcast.protect = set_combine(sets.conserve_mp, {
         sub="Ammurapi shield",
         ring1="Sheltered Ring",
-        feet="Piety duckbills +2",
+        feet="Piety duckbills +3",
         feet="Theophany duckbills +3"
     })
 
@@ -368,7 +367,7 @@ end
 
 function midcast(spell)
     -- print_set(spell)
-    equip(sets.idle[Idle_Set_Names[Idle_Index]])
+    -- equip(sets.idle[Idle_Set_Names[Idle_Index]])
 	if spell.skill == 'Healing Magic' or spell.name == "Erase" then
         if spell.name:contains("Cure") then
             if buffactive['Afflatus Solace'] then
