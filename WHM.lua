@@ -376,6 +376,9 @@ function midcast(spell)
             else
                 equip(sets.midcast.cure)
             end
+            if (world.day_element == spell.element or world.weather_element == spell.element) and spellType ~= "Helix" then
+                equip( equip(sets.midcast.cure), {waist = "Hachirin-no-Obi"})
+            end
         elseif spell.name:contains("Curaga") or spell.name:contains("Cura") then
             equip(sets.midcast.cure)
         elseif spell.name:contains("Raise") or spell.name == "Arise" then

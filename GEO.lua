@@ -285,7 +285,11 @@ function midcast(spell)
     elseif spell.name:startswith("Geo-") then
         equip(sets.midcast.geomancy)
     elseif spell.name:startswith("Cure") or spell.name:startswith("Curaga") or spell.name:startswith("Cura") then
-        equip(sets.midcast.cure)
+        if (world.day_element == spell.element or world.weather_element == spell.element) and spellType ~= "Helix" then
+            equip( equip(sets.midcast.cure), {waist = "Hachirin-no-Obi"})
+        else
+            equip(sets.midcast.cure)
+        end
     elseif spell.skill == "Enhancing Magic" then
         equip(sets.midcast.enhancing)
     elseif spell.skill == "Enfeebling Magic" then

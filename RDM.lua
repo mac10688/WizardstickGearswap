@@ -9,16 +9,16 @@ NukeSetIndex = 1
 EngagedMode = {"Tank", "Offense"}
 EngagedModeIndex = 1
 
-PhysicalAccuracyMode = {"High-acc", "Mid-acc", "Low-acc"}
+PhysicalAccuracyMode = {"High-acc", "Low-acc"}
 PhysicalAccuracyModeIndex = 1
 
 IdleMode = {"Refresh", "Damage Taken"}
-IdleModeIndex = 1
+IdleModeIndex = 2
 
 EnhancingMagicMode = {"Duration", "Potency"}
 EnhancingMagicModeIndex = 1
 
-MagicAccuracyMode = {"High-acc", "Mid-acc", "Low-acc"}
+MagicAccuracyMode = {"High-acc", "Low-acc"}
 MagicAccuracyModeIndex = 1
 
 EnspellActive = true
@@ -45,6 +45,7 @@ send_command("bind ^f10 gs Cycle PhysicalAccuracyMode")
 send_command("bind @f10 gs Toggle EnspellMode")
 send_command("bind ^f11 gs Cycle MagicMode")
 send_command("bind !f11 gs Cycle EnhancingMode")
+send_command("bind f12 gs RefreshSet")
 send_command('bind ^k gs c toggle Kiting')
 
 function file_unload()
@@ -60,45 +61,35 @@ end
 
 function get_sets()
 
-    sets.idle = {}
+	sets.idle = {}
 
-	sets.idle["Refresh"] = {
-		main="Bolelabunga",
-		sub="Ammurapi Shield",
-		ammo="Homiliary",
-		head="Viti. Chapeau +3",
-		body="Jhakri Robe +2",
-		hands={ name="Chironic Gloves", augments={'CHR+14','Attack+19','"Refresh"+1','Accuracy+16 Attack+16'}},
-		legs={ name="Chironic Hose", augments={'Pet: Mag. Acc.+16 Pet: "Mag.Atk.Bns."+16','CHR+4','"Refresh"+2','Mag. Acc.+11 "Mag.Atk.Bns."+11'}},
-		feet="Aya. Gambieras +2",
-		neck="Sanctity Necklace",
-		waist="Fucho-no-Obi",
-		left_ear="Mendi. Earring",
-		right_ear="Infused Earring",
-		left_ring="Shneddick Ring",
-		right_ring="Ayanmo Ring",
-		back={ name="Sucellos's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Cure" potency +10%','"Regen"+5',}}}
-	
-	sets.idle["Damage Taken"] = {
-		main="Bolelabunga",
-		sub="Ammurapi Shield",
-		ammo="Homiliary",
-		head="Aya. Zucchetto +2",
-		body="Ayanmo Corazza +2",
-		hands="Aya. Manopolas +2",
-		legs="Aya. Cosciales +1",
-		feet="Aya. Gambieras +2",
-		neck="Loricate Torque +1",
-		waist="Sarissapho. Belt",
-		left_ear="Genmei Earring",
-		right_ear="Odnowa Earring +1",
-		left_ring="Ayanmo Ring",
-		right_ring="Defending Ring",
-		back={ name="Sucellos's Cape", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Crit.hit rate+10','Damage taken-5%'}}
+    sets.idle["Damage Taken"] = {
+		main="Mafic cudgel",
+		sub="Genmei shield",
+		head="Befouled crown",
+		neck="Loricate torque +1",
+		ear1="Etiolation earring",
+		ear2="Hearty earring",
+		body="Shamash robe",
+		hands="Ayanmo manopolas +2",
+		ring1="Ayanmo ring",
+		ring2="Defending ring",
+		back="",
+		waist="Slipor sash",
+		legs="Ayanmo cosciales +2",
+		feet="Ayanmo gambieras +2"
 	}
 
+	sets.idle["Refresh"] = set_combine(sets.idle["Damage Taken"], {
+		main="Bolelabunga",
+		ammo="Homiliary",
+		head="Befouled crown",
+		body="Shamash robe",
+		waist="Fucho-no-Obi"
+	})
+
     sets.kite = {
-		left_ring="Shneddick Ring"
+		legs="Carmine cuisses +1"
 	}
 
 	sets.ja = {}
@@ -113,66 +104,53 @@ function get_sets()
     	
 	sets.engaged = {
 		ammo="Ginsen",
+		head="Ayanmo zucchetto +2",
 		neck="Anu Torque",
-		left_ear="Digni. Earring",
-		right_ear="Sherida Earring",
-		right_ring="Ilabrat Ring",
+		ear1="Digni. Earring",
+		ear2="Sherida Earring",
+		ring2="Ilabrat Ring",
 		body="Ayanmo Corazza +2",
-		waist="Sarissapho. Belt"
+		waist="Grunfeld rope"
 	}
 
 	sets.engaged["Low-acc"] = set_combine( sets.engaged, {
-		head={ name="Taeon Chapeau", augments={'Accuracy+20 Attack+20','"Triple Atk."+2','STR+6 DEX+6'}},
-		hands={ name="Taeon Gloves", augments={'Accuracy+14 Attack+14','"Triple Atk."+1','DEX+7'}},
-		legs={ name="Taeon Tights", augments={'Accuracy+17','"Triple Atk."+2','DEX+9'}},
-		feet={ name="Taeon Boots", augments={'Accuracy+10','"Triple Atk."+2','STR+6 DEX+6'}},
-		neck="Anu Torque",
-		left_ring="Apate Ring",
-		back="Bleating Mantle"
+
 	})
 
-	sets.engaged["Mid-acc"] = set_combine( sets.engaged["Low-acc"], {
-		hands="Aya. Manopolas +2",
-		left_ring="Apate Ring",
-		back="Enuma Mantle"
-	})
-
-	sets.engaged["High-acc"] = set_combine( sets.engaged["Mid-acc"], {
+	sets.engaged["High-acc"] = set_combine( sets.engaged["Low-acc"], {
 		ammo="Amar Cluster",
 		head="Aya. Zucchetto +2",
+		neck="Sanctity Necklace",
+		body="Ayanmo corazza +2",
+		ear1="Dignitary's earring",
+		ear2="Telos earring",
+		body="Ayanmo corazza +2",
+		ring1="Chirich ring +1",
+		ring2="Chirich ring +1",
 		legs="Aya. Cosciales +2",
 		feet="Aya. Gambieras +2",
-		neck="Sanctity Necklace",
-		left_ring="Ayanmo Ring"
 	})
 
 	sets.engaged.enspell ={
-		head="Umuthi Hat",
-		back={ name="Ghostfyre Cape", augments={'Enfb.mag. skill +10','Enha.mag. skill +4','Mag. Acc.+9','Enh. Mag. eff. dur. +20'}},
-		body="Ayanmo Corazza +2",
+		
 		hands="Aya. Manopolas +2",
-		right_ear="Hollow Earring",
-		feet="Aya. Gambieras +2"
+		back={ name="Ghostfyre Cape", augments={'Enfb.mag. skill +10','Enha.mag. skill +4','Mag. Acc.+9','Enh. Mag. eff. dur. +20'}},
 	}
 
 	sets.engaged.dw = {}
 	sets.engaged.dw["Low-acc"] = sets.engaged["Low-acc"]
-	sets.engaged.dw["Mid-acc"] = sets.engaged["Mid-acc"]
 	sets.engaged.dw["High-acc"] = set_combine(sets.engaged["High-acc"], {
 		legs={ name="Carmine Cuisses +1", augments={'Accuracy+20','Attack+12','"Dual Wield"+6'}}
 	})
 
 	sets.engaged.dw["Low-acc"].enspell = set_combine(sets.engaged.dw["Low-acc"], sets.engaged.enspell)
-	sets.engaged.dw["Mid-acc"].enspell = set_combine(sets.engaged.dw["Mid-acc"], sets.engaged.enspell)
 	sets.engaged.dw["High-acc"].enspell = set_combine(sets.engaged.dw["High-acc"], sets.engaged.enspell)
 	
 	sets.engaged.sw = {}
 	sets.engaged.sw["Low-acc"] = sets.engaged["Low-acc"]
-	sets.engaged.sw["Mid-acc"] = sets.engaged["Mid-acc"]
 	sets.engaged.sw["High-acc"] = sets.engaged["High-acc"]
 
 	sets.engaged.sw["Low-acc"].enspell = set_combine(sets.engaged.sw["Low-acc"], sets.engaged.enspell)
-	sets.engaged.sw["Mid-acc"].enspell = set_combine(sets.engaged.sw["Mid-acc"], sets.engaged.enspell)
 	sets.engaged.sw["High-acc"].enspell = set_combine(sets.engaged.sw["High-acc"], sets.engaged.enspell)
 
 	sets.engaged.sw["Damage Taken"] = {
@@ -191,27 +169,34 @@ function get_sets()
 	}
 
     sets.fc = {   
-    	ammo="Pemphredo Tathlum",
-    	head="Atro. Chapeau +2",
-    	body="Viti. Tabard +3",
-    	hands="Aya. Manopolas +2",
-    	legs="Aya. Cosciales +2",
-    	feet={ name="Merlinic Crackows", augments={'Mag. Acc.+25 "Mag.Atk.Bns."+25','Magic burst dmg.+3%','INT+9','Mag. Acc.+15','"Mag.Atk.Bns."+10'}},
-    	neck="Loricate Torque +1",
+		head="Merlinic hood",
+		neck="Voltsurge torque",
+		ear1="Etiolation earring",
+    	ear2="Loquacious earring",
+		body="Shango robe",
+    	hands="Leyline gloves",
     	waist="Sailfi Belt +1",
-    	left_ear="Genmei Earring",
-    	right_ear="Odnowa Earring +1",
-    	left_ring="Kishar Ring",
-    	right_ring="Defending Ring",
-		back={ name="Sucellos's Cape", augments={'MND+20','Accuracy+20 Attack+20','MND+10','Weapon skill damage +10%','Damage taken-5%'}}
+    	ring1="Kishar Ring",
+    	ring2="Defending Ring",
+		back={ name="Sucellos's Cape", augments={'MND+20','Accuracy+20 Attack+20','MND+10','Weapon skill damage +10%','Damage taken-5%'}},
+		legs="Aya. Cosciales +2",
+    	feet="Merlinic Crackows"
 	}
 
 	sets.midcast = {}
 	
-	sets.midcast.cure = {}
+	sets.midcast.cure = {
+		sub="Sors shield",
+		head="Vanya hood",
+		body="Vrikodara jupon",
+		hands="Kaykaus cuffs",
+		ring1="Haoma's ring",
+		ring2="Haoma's ring",
+		legs="Chironic hose",
+		feet="Kaykaus boots"
+	}
 
 	sets.midcast.enhancing = {
-		main="Crocea Mors",
 		sub="Ammurapi Shield",
 		ammo="Pemphredo Tathlum",
 		head="Befouled Crown",
@@ -221,10 +206,10 @@ function get_sets()
 		feet="Leth. Houseaux +1",
 		neck="Duelist's Torque",
 		waist="Sailfi Belt +1",
-		left_ear="Mendi. Earring",
-		right_ear="Calamitous Earring",
-		left_ring="Stikini Ring",
-		right_ring="Kishar Ring",
+		ear1="Mendi. Earring",
+		ear2="Calamitous Earring",
+		ring1="Stikini ring",
+		ring2="Stikini ring",
 		back={ name="Ghostfyre Cape", augments={'Enfb.mag. skill +10','Enha.mag. skill +4','Mag. Acc.+9','Enh. Mag. eff. dur. +20'}}
 	}
 	
@@ -235,10 +220,12 @@ function get_sets()
 	})
 
 	sets.midcast.enhancing["Duration"].Self = set_combine(sets.midcast.enhancing["Duration"], {
-		head={ name="Telchine Cap", augments={'"Conserve MP"+4','Enh. Mag. eff. dur. +10',}},
-		legs={ name="Telchine Braconi", augments={'"Fast Cast"+4','Enh. Mag. eff. dur. +5',}},
-		left_ring="Defending Ring",
-		back={ name="Sucellos's Cape", augments={'MND+20','Accuracy+20 Attack+20','MND+10','Weapon skill damage +10%','Damage taken-5%'}}
+		head="Telchine Cap",
+		body="Telchine chasuble",
+		hands="Telchine gloves",
+		back={ name="Sucellos's Cape", augments={'MND+20','Accuracy+20 Attack+20','MND+10','Weapon skill damage +10%','Damage taken-5%'}},
+		legs="Telchine Braconi",
+		feet="Telchine pigaches"
 	})
 
 	sets.midcast.enhancing["Potency"] = sets.midcast.enhancing
@@ -248,20 +235,20 @@ function get_sets()
 	})
 
 	sets.midcast.enhancing.refresh.self = set_combine(sets.midcast.enhancing["Duration"], {
-		head={ name="Telchine Cap", augments={'"Conserve MP"+4','Enh. Mag. eff. dur. +10',}},
+		head="Telchine Cap",
 		left_ring="Defending Ring",
 		back={ name="Sucellos's Cape", augments={'MND+20','Accuracy+20 Attack+20','MND+10','Weapon skill damage +10%','Damage taken-5%'}}
 	})
 
 	sets.midcast.enhancing.regen = set_combine(sets.midcast.enhancing["Duration"], {
-		body={ name="Telchine Chas.", augments={'"Fast Cast"+5'}},
+		body="Telchine Chas.",
 		back={ name="Sucellos's Cape", augments={'MND+20','Accuracy+20 Attack+20','MND+10','Weapon skill damage +10%','Damage taken-5%'}}
 	})
 
 	sets.midcast.enhancing.regen.self = set_combine(sets.midcast.enhancing["Duration"], {
-		head={ name="Telchine Cap", augments={'"Conserve MP"+4','Enh. Mag. eff. dur. +10',}},
-		body={ name="Telchine Chas.", augments={'"Fast Cast"+5',}},
-		legs={ name="Telchine Braconi", augments={'"Fast Cast"+4','Enh. Mag. eff. dur. +5',}},
+		head="Telchine Cap",
+		body="Telchine Chas.",
+		legs="Telchine Braconi",
 		back={ name="Sucellos's Cape", augments={'MND+20','Accuracy+20 Attack+20','MND+10','Weapon skill damage +10%','Damage taken-5%'}}
 	})
 
@@ -270,14 +257,15 @@ function get_sets()
 		sub="Ammurapi Shield",
 		ammo="Regal Gem",
 		head="Viti. Chapeau +3",
-		hands={ name="Kaykaus Cuffs +1", augments={'MP+80','MND+12','Mag. Acc.+20'}},
-		legs={ name="Chironic Hose", augments={'Mag. Acc.+25 "Mag.Atk.Bns."+25','"Fast Cast"+4','Mag. Acc.+15'}},
-		feet="Vitiation Boots +3",
 		neck="Duelist's Torque",
+		ear1="Digni. Earring",
+		ear2="Gwati Earring",
+		hands={ name="Kaykaus Cuffs +", augments={'MP+80','MND+12','Mag. Acc.+20'}},
+		ring1="Stikini ring",
+		ring2="Stikini ring",
 		waist="Luminary Sash",
-		left_ear="Digni. Earring",
-		right_ear="Gwati Earring",
-		left_ring="Stikini Ring",
+		legs={ name="Chironic Hose", augments={'Mag. Acc.+25 "Mag.Atk.Bns."+25','"Fast Cast"+4','Mag. Acc.+15'}},
+		feet="Vitiation Boots +3"
 	}
 
     sets.midcast.enfeebling.mnd = set_combine(sets.enfeebling, {
@@ -445,7 +433,11 @@ function midcast(spell)
 	if spell.action_type == 'Magic' then   
 		-- Healing Magic --
 		if string.find(spell.english, 'Cure') or string.find(spell.english, 'Cura') or string.find(spell.english, "Curaga") then
-			equip(sets.midcast.cure)
+			if (world.day_element == spell.element or world.weather_element == spell.element) and spellType ~= "Helix" then
+                equip( equip(sets.midcast.cure), {waist = "Hachirin-no-Obi"})
+            else
+                equip(sets.midcast.cure)
+            end
 		-- Enhancing Magic --
 		elseif spell.skill == 'Enhancing Magic' then
 			if string.find(spell.english, "Regen") then
@@ -480,8 +472,12 @@ function midcast(spell)
 			
 		-- Elemental Magic --      
 		elseif spell.skill == 'Elemental Magic' then
-			local nuke_set = NukeSet[NukeSetIndex]
-			equip(sets.midcast.elemental[nuke_set])
+			local nuke_set = NukeSet[NukeTypeIndex]
+			if (world.day_element == spell.element or world.weather_element == spell.element) and spellType ~= "Helix" then
+				equip( set_combine(sets.midcast.elemental[nuke_set], {waist = "Hachirin-no-Obi"}))
+			else
+				equip(sets.midcast.elemental[nuke_set])
+			end
 		end
 	end
 end
@@ -568,7 +564,14 @@ function self_command(command)
     elseif command == "Cycle EnhancingMode" then
         EnhancingMagicMode = EnhancingMagicModeIndex % #EnhancingMagicMode + 1
         add_to_chat(122,  "Enhancing Magic Mode" .. EnhancingMagicMode[EnhancingMagicModeIndex])
-        SetGearToState(player.status)
+		SetGearToState(player.status)
+	elseif command == 'RefreshSet' then
+
+        local nuke_set = NukeSet[NukeTypeIndex]
+        local idle_set = IdleSet[IdleSetIndex]
+
+        equip_set(player.status)
+        add_to_chat(122, 'Nuke Set: ' .. nuke_set .. ' Idle Set: ' .. idle_set)
     elseif command == "Toggle Kiting" then
         Kiting = not Kiting
         add_to_chat(122,  "Kiting Mode" .. (Kiting and "On" or "Off"))
