@@ -157,7 +157,7 @@ function get_sets()
         ring2="Stikini ring",
         waist="Luminary sash",
         legs="Geomancy pants +3",
-        feet="Geomancy sandals +2",
+        feet="Geomancy sandals +3",
         back={ name="Nantosuelta's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}}
     }
 
@@ -165,7 +165,7 @@ function get_sets()
 
     sets.midcast.elemental["magic-atk-bonus"] = {
         sub="Ammurapi shield",
-        head=merlinic_head_mab,
+        head="Bagua galero +3",
         neck="Sanctity necklace",
         ear1="Barkarole earring",
         ear2="Regal earring",
