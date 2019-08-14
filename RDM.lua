@@ -33,7 +33,7 @@ MndEnfeebles = S{"Paralyze", "Paralyze II"
 				, "Frazzle", "Frazzle II", "Frazzle III"
 			}
 
-IntEnfeebles = S{"Blind", "Blind II", "Bind"}
+IntEnfeebles = S{"Bind"}
 
 MagicAccEnfeebles = S{"Gravity", "Gravity II", "Break", "Inundation", "Sleep", "Sleep II", "Dispel", "Dia", "Dia II", "Dia III"}
 
@@ -63,6 +63,10 @@ function file_unload()
 end
 
 function get_sets()
+
+	Cape = {}
+	Cape.Int = { name="Sucellos's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','"Fast Cast"+10','Phys. dmg. taken-10%',}}
+
 
 	sets.idle = {}
 
