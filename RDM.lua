@@ -1,6 +1,6 @@
 res = require('resources')
 
-Weapon_Sets = {"Empty", "Sword", "Dagger"}
+Weapon_Sets = {"Empty", "Sword", "Dagger", "Staff"}
 WeaponSetsIndex = 1
 
 NukeSet = {"Low Acc", "High Acc", "Magic Burst"}
