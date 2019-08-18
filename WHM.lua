@@ -322,7 +322,7 @@ function get_sets()
         ammo="Hydrocera",
         neck="Erra pendant",
         ear1="Gwati earring",
-        ear2="Hermetic earring",
+        ear2="Regal earring",
         body="Theophany briault +3",
         hands="Inyanga dastanas +2",
         ring1="Stikini ring",

@@ -68,8 +68,10 @@ end
 function get_sets()
 
     Cape = {}
-    Cape.Int = { name="Sucellos's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','"Fast Cast"+10','Phys. dmg. taken-10%',}}
-
+    Cape.Int = { name="Sucellos's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10','Mag. Evasion+15'}}
+    Cape.Mnd = { name="Sucellos's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','"Cure" potency +10%','Mag. Evasion+15'}}
+    Cape.Melee = { name="Sucellos's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Dbl.Atk."+10','Damage taken-5%'}}
+    Cape.Ws = { name="Sucellos's Cape", augments={'STR+20','Accuracy+20 Attack+20','Attack+10','Weapon skill damage +10%','Damage taken-5%'}}
 
     sets.idle = {}
 
@@ -84,7 +86,7 @@ function get_sets()
         hands="Ayanmo manopolas +2",
         ring1="Ayanmo ring",
         ring2="Defending ring",
-        back="",
+        back=Cape.Int,
         waist="Slipor sash",
         legs="Ayanmo cosciales +2",
         feet="Ayanmo gambieras +2"
@@ -117,8 +119,9 @@ function get_sets()
         neck="Anu Torque",
         ear1="Digni. Earring",
         ear2="Sherida Earring",
-        ring2="Ilabrat Ring",
         body="Ayanmo Corazza +2",
+        ring2="Ilabrat Ring",
+        back=Cape.Melee,
         waist="Grunfeld rope"
     }
 
@@ -188,7 +191,6 @@ function get_sets()
         waist="Sailfi Belt +1",
         ring1="Kishar Ring",
         ring2="Defending Ring",
-        back={ name="Sucellos's Cape", augments={'MND+20','Accuracy+20 Attack+20','MND+10','Weapon skill damage +10%','Damage taken-5%'}},
         legs="Aya. Cosciales +2",
         feet="Merlinic Crackows"
     }
@@ -202,6 +204,7 @@ function get_sets()
         hands="Kaykaus cuffs",
         ring1="Haoma's ring",
         ring2="Haoma's ring",
+        back=Cape.Mnd,
         legs="Chironic hose",
         feet="Kaykaus boots"
     }
@@ -220,7 +223,7 @@ function get_sets()
         ear2="Calamitous Earring",
         ring1="Stikini ring",
         ring2="Stikini ring",
-        back=Cape.Int
+        back=Cape.Mnd
         }
     
     sets.midcast.enhancing["Duration"] = set_combine(sets.midcast.enhancing, {
@@ -248,8 +251,7 @@ function get_sets()
     sets.midcast.enhancing.refresh.Self = set_combine(sets.midcast.enhancing["Duration"], {
         head="Telchine Cap",
         body="Atrophy Tabard +2",
-        legs="Lethargy Fuseau +1",
-        left_ring="Defending Ring"
+        legs="Lethargy Fuseau +1"
     })
 
     sets.midcast.enhancing.regen = set_combine(sets.midcast.enhancing["Duration"], {
@@ -283,24 +285,21 @@ function get_sets()
     }
 
     sets.midcast.enfeebling.mnd = set_combine(sets.midcast.enfeebling, {
+        back=Cape.Mnd
     })
 
     sets.midcast.enfeebling.mnd["High Acc"] = set_combine(sets.midcast.enfeebling.mnd, {
-        body="Atrophy Tabard +3",
-        right_ring="Sangoma Ring",
     })
             
     sets.midcast.enfeebling.mnd["Low Acc"] = set_combine(sets.midcast.enfeebling.mnd, {
-        right_ring="Kishar Ring"
+        ring2="Kishar Ring"
     })
 
     sets.midcast.enfeebling.int = set_combine(sets.midcast.enfeebling, {
-        back=Cape.int
+        back=Cape.Int
     })
         
     sets.midcast.enfeebling.int["High Acc"] = set_combine(sets.midcast.enfeebling.int, {
-        body="Atrophy Tabard +2",
-        right_ring="Sangoma Ring"
     })
             
     sets.midcast.enfeebling.int["Low Acc"]= set_combine(sets.midcast.enfeebling.int, {
@@ -308,20 +307,27 @@ function get_sets()
         right_ring="Kishar Ring"
     })
 
+    merlinic_head_mab = { name="Merlinic Hood", augments={'Mag. Acc.+22 "Mag.Atk.Bns."+22','"Occult Acumen"+4','Mag. Acc.+11','"Mag.Atk.Bns."+8'}}
+    merlinic_body_mab = { name="Merlinic Jubbah", augments={'Mag. Acc.+16 "Mag.Atk.Bns."+16','Magic dmg. taken -2%','CHR+1','Mag. Acc.+14','"Mag.Atk.Bns."+9'}}
+    merlinic_legs_mab = { name="Merlinic Shalwar", augments={'Mag. Acc.+20 "Mag.Atk.Bns."+20','Enmity-1','CHR+8','Mag. Acc.+15'}}
+    merlinic_feet_mab = { name="Merlinic Crackows", augments={'Mag. Acc.+19 "Mag.Atk.Bns."+19','Magic burst dmg.+1%','INT+7','Mag. Acc.+15','"Mag.Atk.Bns."+14'}}
+
     sets.midcast.elemental = {
         ammo="Pemphredo tathlum",
-        head="Viti. Chapeau +1",
+        head=merlinic_head_mab,
         neck="Sanctity Necklace",
         ear1="Barkarole earring",
         ear2="Friomisi earring",
-        body="Jhakri robe +2",
+        body=merlinic_body_mab,
         hands="Amalric gages +1",
         left_ring="Shiva Ring",
         right_ring="Shiva Ring +1",
-        back=Cape.int,
+        back=Cape.Int,
         waist="Eschan stone",
-        legs="Amalric Slops +1",
-        feet="Jhakri Pigaches +2",}
+        legs=merlinic_legs_mab,
+        feet=merlinic_feet_mab
+    }
+
     sets.midcast.elemental["Low Acc"] = set_combine(sets.midcast.elemental, {})
     sets.midcast.elemental["High Acc"] = set_combine(sets.midcast.elemental, {})
     sets.midcast.elemental["Magic Burst"] = set_combine(sets.midcast.elemental, {
@@ -329,16 +335,16 @@ function get_sets()
         sub="Enki strap",
         ammo="Pemphredo Tathlum",
         head="Ea hat",
-        body="Ea houppelande",
-        hands="Amalric gages +1",
-        legs="Ea slops",
-        feet={ name="Merlinic Crackows", augments={'"Mag.Atk.Bns."+25','Magic burst dmg.+11%','Mag. Acc.+5',}},
         neck="Mizu. Kubikazari",
-        waist="Eschan Stone",
         ear1="Friomisi Earring",
         ear2="Static Earring",
+        body="Ea houppelande",
+        hands="Amalric gages +1",
         ring1="Locus Ring",
-        ring2="Mujin Band"
+        ring2="Mujin Band",
+        waist="Eschan Stone",
+        legs="Ea slops",
+        feet={ name="Merlinic Crackows", augments={'"Mag.Atk.Bns."+25','Magic burst dmg.+11%','Mag. Acc.+5'}},
     })
 
     sets.ws = {}
@@ -357,7 +363,7 @@ function get_sets()
         left_ring="Jhakri Ring",
         right_ring="Apate Ring",
         back=Cape.Int,
-        }
+    }
 
     sets.ws.physical = {
         ammo="Amar Cluster",
@@ -372,7 +378,7 @@ function get_sets()
         right_ear="Sherida Earring",
         left_ring="Jhakri Ring",
         right_ring="Apate Ring",
-        back=Cape.Int
+        back=Cape.Ws
     }
         
     sets.ws["Red Lotus Blade"] = sets.ws.magic
@@ -387,8 +393,7 @@ function get_sets()
         ammo="Regal Gem",
         feet="Vitiation Boots +3",
         waist="Luminary Sash",		
-        right_ring="Rajas Ring",
-        back=Cape.Int
+        right_ring="Rajas Ring"
     })
 
     sets.ws["Death Blossom"] = sets.ws["Savage Blade"]
@@ -396,8 +401,7 @@ function get_sets()
     sets.ws["Sanguine Blade"] = set_combine(sets.ws.magic, {
         head="Pixie Hairpin +1",
         waist="Luminary Sash",
-        right_ring="Stikini Ring",
-        back=Cape.int
+        right_ring="Stikini Ring"
     })
 
     sets.ws["Chant du Cygne"] = set_combine(sets.ws.physical, {
@@ -405,8 +409,7 @@ function get_sets()
         body="Ayanmo Corazza +2",
         legs="Viti. Tights +1",
         feet="Aya. Gambieras +2",
-        left_ring="Ilabrat Ring",
-        back=Cape.int
+        left_ring="Ilabrat Ring"
     })
 
     sets.ws["Requiescat"] = set_combine(sets.ws.physical, {
@@ -427,7 +430,6 @@ function get_sets()
         feet="Aya. Gambieras +2",
         left_ring="Apate Ring",
         right_ring="Ilabrat Ring",
-        back={ name="Sucellos's Cape", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Crit.hit rate+10','Damage taken-5%'}}
     })
 
     sets.ws["Aeolian Edge"] = set_combine(sets.ws.magic, {
@@ -442,8 +444,7 @@ function get_sets()
         feet="Aya. Gambieras +2",
         neck="Anu Torque",
         left_ring="Apate Ring",
-        right_ring="Ilabrat Ring",
-        back={ name="Sucellos's Cape", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Crit.hit rate+10','Damage taken-5%'}}
+        right_ring="Ilabrat Ring"
     })
 
 end
