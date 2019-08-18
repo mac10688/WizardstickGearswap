@@ -227,15 +227,17 @@ function get_sets()
         }
     
     sets.midcast.enhancing["Duration"] = set_combine(sets.midcast.enhancing, {
-        head="Leth. Chappel +1",
-        hands="Atrophy Gloves +1",
-        legs="Leth. Fuseau +1",
+        head="Telchine Cap",
+        body="Telchine body",
+        hands="Atrophy gloves +1",
+        legs="Telchine Braconi",
+        feet="Telchine pigaches"
     })
 
     sets.midcast.enhancing["Duration"].Self = set_combine(sets.midcast.enhancing["Duration"], {
         head="Telchine Cap",
-        body="Vitiation Tabard +2",
-        hands="Telchine Gloves",
+        body="Telchine body",
+        hands="Atrophy gloves +1",
         legs="Telchine Braconi",
         feet="Telchine pigaches"
     })
@@ -244,26 +246,16 @@ function get_sets()
     sets.midcast.enhancing["Potency"].Self = sets.midcast.enhancing
 
     sets.midcast.enhancing.refresh = set_combine(sets.midcast.enhancing["Duration"], {
-        body="Atrophy Tabard +2",
-        legs="Lethargy Fuseau +1"
     })
 
     sets.midcast.enhancing.refresh.Self = set_combine(sets.midcast.enhancing["Duration"], {
-        head="Telchine Cap",
-        body="Atrophy Tabard +2",
-        legs="Lethargy Fuseau +1"
     })
 
     sets.midcast.enhancing.regen = set_combine(sets.midcast.enhancing["Duration"], {
-        body="Telchine Chas.",
-        back={ name="Sucellos's Cape", augments={'MND+20','Accuracy+20 Attack+20','MND+10','Weapon skill damage +10%','Damage taken-5%'}}
     })
 
     sets.midcast.enhancing.regen.Self = set_combine(sets.midcast.enhancing["Duration"], {
-        head="Telchine Cap",
-        body="Telchine Chas.",
-        legs="Telchine Braconi",
-        back={ name="Sucellos's Cape", augments={'MND+20','Accuracy+20 Attack+20','MND+10','Weapon skill damage +10%','Damage taken-5%'}}
+
     })
 
     sets.midcast.enfeebling = {
@@ -330,6 +322,8 @@ function get_sets()
 
     sets.midcast.elemental["Low Acc"] = set_combine(sets.midcast.elemental, {})
     sets.midcast.elemental["High Acc"] = set_combine(sets.midcast.elemental, {})
+
+    merlinic_feet_mb = { name="Merlinic Crackows", augments={'"Mag.Atk.Bns."+25','Magic burst dmg.+11%','Mag. Acc.+5'}}
     sets.midcast.elemental["Magic Burst"] = set_combine(sets.midcast.elemental, {
         main="Grioavolr",
         sub="Enki strap",
@@ -344,7 +338,7 @@ function get_sets()
         ring2="Mujin Band",
         waist="Eschan Stone",
         legs="Ea slops",
-        feet={ name="Merlinic Crackows", augments={'"Mag.Atk.Bns."+25','Magic burst dmg.+11%','Mag. Acc.+5'}},
+        feet=merlinic_feet_mb
     })
 
     sets.ws = {}
