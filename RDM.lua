@@ -120,9 +120,12 @@ function get_sets()
         ear1="Digni. Earring",
         ear2="Sherida Earring",
         body="Ayanmo Corazza +2",
+        ring1="Shukuyu ring",
         ring2="Ilabrat Ring",
         back=Cape.Melee,
-        waist="Grunfeld rope"
+        waist="Grunfeld rope",
+        legs="Carmine cuisses +1",
+        feet="Carmine greaves +1"
     }
 
     sets.engaged["Low Acc"] = set_combine( sets.engaged, {
