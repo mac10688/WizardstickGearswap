@@ -220,8 +220,8 @@ function get_sets()
 
     -- Weaponskill sets
     sets.ws = { 
-        ammo="Mantoptera eye",
-        head="Meghanada visor +2",
+        ammo="Knobkierrie",
+        head={ name="Herculean Helm", augments={'Weapon skill damage +4%','Accuracy+7 Attack+7'}},
         neck="Fotia gorget",
         ear1="Moonshade earring",
         ear2="Ishvara earring",
@@ -242,7 +242,7 @@ function get_sets()
     --Accuracy:
     sets.ws['Resolution'] = { 
         ammo="Knobkierrie",
-        head={ name="Herculean Helm", augments={'Accuracy+24 Attack+24','Crit. hit damage +1%','STR+7','Accuracy+13','Attack+8'}},
+        head={ name="Herculean Helm", augments={'Weapon skill damage +4%','Accuracy+7 Attack+7'}},
         neck="Fotia gorget",
         ear1="Moonshade earring",
         ear2="Ishvara earring",
@@ -263,7 +263,7 @@ function get_sets()
     --Accuracy:
     sets.ws['Dimidiation'] = {
         ammo="Knobkierrie",
-        head="Futhark bandeau +3",
+        head={ name="Herculean Helm", augments={'Weapon skill damage +4%','Accuracy+7 Attack+7'}},
         neck="Fotia gorget",
         ear1="Moonshade earring",
         ear2="Sherida earring",
@@ -291,7 +291,7 @@ function get_sets()
         body="Futhark coat +3",
         hands="Meghanada gloves +2",
         ring1="Petrov ring",
-        ring2="Supershear ring",
+        ring2="Regal ring",
         waist="Fotia belt",
         legs="Carmine cuisses +1",
         feet="Erilaz greaves +1"

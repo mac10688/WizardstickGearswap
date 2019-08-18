@@ -245,7 +245,8 @@ function get_sets()
     })
 
     sets.midcast.enhancing_magic = set_combine(sets.midcast.conserve_mp, {
-        ear1="Andoaa earring"
+        ear1="Andoaa earring",
+        waist="Olympus sash"
     })
 
     sets.ws = {}
@@ -271,7 +272,7 @@ function get_sets()
         ear1="Regal earring",
         ear2="Ishvara earring",
         body="Archmage's coat +3",
-        hands="Archmage's gloves +3",
+        hands="Jhakri cuffs +2",
         ring1="Shiva ring +1",
         ring2="Vengeful ring",
         back=magic_atk_cape,
@@ -286,7 +287,7 @@ function get_sets()
         ear1="Regal earring",
         ear2="Ishvara ing",
         body="Shamash robe",
-        hands="Archmage's gloves +3",
+        hands="Jhakri cuffs +2",
         ring1="Shiva ring +1",
         ring2="Vengeful ring",
         back=magic_atk_cape,

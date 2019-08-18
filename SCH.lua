@@ -411,7 +411,7 @@ function get_sets()
         ear1="Regal earring",
         ear2="Ishvara earring",
         body="Pedagogy gown +3",
-        hands="Pedagogy bracers +3",
+        hands="Jhakri cuffs +2",
         ring1="Stikini ring",
         ring2="Stikini ring",
         backl=cure_cape,

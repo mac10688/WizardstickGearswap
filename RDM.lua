@@ -107,8 +107,9 @@ function get_sets()
 
     sets.weapons = {}
     sets.weapons["Empty"] = {}
-    sets.weapons["Sword"] = {main = "Colada"}
-    sets.weapons["Dagger"] = {main = "Malevolence"}
+    sets.weapons["Sword"] = {main = "Colada", sub="Genmei shield"}
+    sets.weapons["Dagger"] = {main = "Malevolence", sub="Genmei shield"}
+    sets.weapons["Staff"] = {main = "Grioavolr", sub="Enki strap"}
         
     sets.engaged = {
         ammo="Ginsen",
@@ -182,7 +183,7 @@ function get_sets()
         neck="Voltsurge torque",
         ear1="Etiolation earring",
         ear2="Loquacious earring",
-        body="Shango robe",
+        body="Vitiation tabard +1",
         hands="Leyline gloves",
         waist="Sailfi Belt +1",
         ring1="Kishar Ring",
