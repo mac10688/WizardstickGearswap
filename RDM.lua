@@ -349,33 +349,33 @@ function get_sets()
     sets.ws.magic = {
         ammo="Pemphredo Tathlum",
         head="Viti. Chapeau +2",
+        neck="Fotia gorget",
+        ear1="Ishvara Earring",
+        ear2="Friomisi Earring",
         body="Jhakri Robe +2",
         hands="Jhakri Cuffs +2",
-        legs="Jhakri Slops +2",
-        feet="Vitiation Boots +3",
-        neck="Sanctity Necklace",
-        waist="Acuity Belt +1",
-        left_ear="Ishvara Earring",
-        right_ear="Friomisi Earring",
-        left_ring="Jhakri Ring",
-        right_ring="Apate Ring",
+        ring1="Jhakri Ring",
+        ring2="Apate Ring",
         back=Cape.Int,
+        waist="Fotia belt",
+        legs="Jhakri Slops +2",
+        feet="Vitiation Boots +3"
     }
 
     sets.ws.physical = {
-        ammo="Amar Cluster",
+        ammo="Ginsen",
         head="Viti. Chapeau +1",
+        neck="Fotia gorget",
+        ear1="Ishvara Earring",
+        ear2="Sherida Earring",
         body="Viti. Tabard +1",
         hands="Atrophy Gloves +2",
+        ring1="Jhakri Ring",
+        ring2="Apate Ring",
+        back=Cape.Ws,
+        waist="Fotia belt",
         legs="Jhakri Slops +2",
-        feet="Jhakri Pigaches +2",
-        neck="Caro Necklace",
-        waist="Sulla Belt",
-        left_ear="Ishvara Earring",
-        right_ear="Sherida Earring",
-        left_ring="Jhakri Ring",
-        right_ring="Apate Ring",
-        back=Cape.Ws
+        feet="Jhakri Pigaches +2"
     }
         
     sets.ws["Red Lotus Blade"] = sets.ws.magic
@@ -387,61 +387,27 @@ function get_sets()
     sets.ws["Vorpal Blade"] = sets.ws.physical
 
     sets.ws["Savage Blade"] = set_combine( sets.ws.physical, {
-        ammo="Regal Gem",
-        feet="Vitiation Boots +3",
-        waist="Luminary Sash",		
-        right_ring="Rajas Ring"
     })
 
     sets.ws["Death Blossom"] = sets.ws["Savage Blade"]
 
     sets.ws["Sanguine Blade"] = set_combine(sets.ws.magic, {
         head="Pixie Hairpin +1",
-        waist="Luminary Sash",
-        right_ring="Stikini Ring"
     })
 
     sets.ws["Chant du Cygne"] = set_combine(sets.ws.physical, {
-        ammo="Ginsen",
-        body="Ayanmo Corazza +2",
-        legs="Viti. Tights +1",
-        feet="Aya. Gambieras +2",
-        left_ring="Ilabrat Ring"
     })
 
     sets.ws["Requiescat"] = set_combine(sets.ws.physical, {
-        ammo="Regal Gem",
-        body="Viti. Tabard +3",
-        hands="Atrophy Gloves +2",
-        legs="Viti. Tights +3",
-        feet="Vitiation Boots +3",
-        waist="Luminary Sash",
-        left_ring="Stikini Ring",
-        right_ring="Ilabrat Ring",
     })
     
     sets.ws["Evisceration"] = set_combine(sets.ws.physical, {
-        ammo="Ginsen",
-        body="Ayanmo Corazza +2",
-        legs="Viti. Tights +3",
-        feet="Aya. Gambieras +2",
-        left_ring="Apate Ring",
-        right_ring="Ilabrat Ring",
     })
 
     sets.ws["Aeolian Edge"] = set_combine(sets.ws.magic, {
-        head="Jhakri Coronal +2",
-        feet="Vitiation Boots +3"
     })
 
     sets.ws["Exenterator"] = set_combine(sets.ws.physical, {
-        ammo="Ginsen",
-        body="Ayanmo Corazza +2",
-        legs="Aya. Cosciales +2",
-        feet="Aya. Gambieras +2",
-        neck="Anu Torque",
-        left_ring="Apate Ring",
-        right_ring="Ilabrat Ring"
     })
 
 end
