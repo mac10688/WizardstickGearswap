@@ -313,7 +313,7 @@ function get_sets()
         ring2="Kishar ring",
         back={ name="Alaunus's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}},
         waist="Luminary sash",
-        legs="Theophany pantaloons +3",
+        legs="Chironic hose",
         feet="Theophany duckbills +3"
     }
 
