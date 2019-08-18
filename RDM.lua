@@ -78,6 +78,7 @@ function get_sets()
     sets.idle["Damage Taken"] = {
         main="Mafic cudgel",
         sub="Genmei shield",
+        ammo="Staunch tathlum +1",
         head="Befouled crown",
         neck="Loricate torque +1",
         ear1="Etiolation earring",
@@ -170,18 +171,19 @@ function get_sets()
     sets.engaged.sw["High Acc"].enspell = set_combine(sets.engaged.sw["High Acc"], sets.engaged.enspell)
 
     sets.engaged.sw["Damage Taken"] = {
-        ammo="Ginsen",
+        ammo="Staunch tathlum +1",
         head="Aya. Zucchetto +2",
+        neck="Loricate Torque +1",
+        ear1="Genmei Earring",
+        ear2="Odnowa Earring +1",
         body="Ayanmo Corazza +2",
         hands="Aya. Manopolas +2",
+        ring1="Ayanmo Ring",
+        ring2="Defending Ring",
+        back=Cape.Int,
+        waist="Slipor sash",
         legs="Aya. Cosciales +2",
-        feet="Aya. Gambieras +2",
-        neck="Loricate Torque",
-        left_ear="Genmei Earring",
-        right_ear="Odnowa Earring +1",
-        left_ring="Ayanmo Ring",
-        right_ring="Defending Ring",
-        back=Cape.Int
+        feet="Aya. Gambieras +2"
     }
 
     sets.fc = {   
@@ -191,9 +193,7 @@ function get_sets()
         ear2="Loquacious earring",
         body="Vitiation tabard +1",
         hands="Leyline gloves",
-        waist="Sailfi Belt +1",
         ring1="Kishar Ring",
-        ring2="Defending Ring",
         legs="Aya. Cosciales +2",
         feet="Merlinic Crackows"
     }
@@ -216,18 +216,18 @@ function get_sets()
         sub="Ammurapi Shield",
         ammo="Pemphredo Tathlum",
         head="Befouled Crown",
-        body="Viti. Tabard +1",
-        hands="Vitiation gloves +1",
-        legs="Atrophy Tights +1",
-        feet="Leth. Houseaux +1",
         neck="Duelist's Torque +1",
-        waist="Sailfi Belt +1",
         ear1="Mendi. Earring",
         ear2="Calamitous Earring",
+        body="Viti. Tabard +1",
+        hands="Vitiation gloves +1",
         ring1="Stikini ring",
         ring2="Stikini ring",
+        waist="Olympus sash",
+        legs="Atrophy Tights +1",
+        feet="Leth. Houseaux +1",
         back=Cape.Mnd
-        }
+    }
     
     sets.midcast.enhancing["Duration"] = set_combine(sets.midcast.enhancing, {
         head="Telchine Cap",
@@ -238,11 +238,7 @@ function get_sets()
     })
 
     sets.midcast.enhancing["Duration"].Self = set_combine(sets.midcast.enhancing["Duration"], {
-        head="Telchine Cap",
-        body="Telchine body",
-        hands="Atrophy gloves +1",
-        legs="Telchine Braconi",
-        feet="Telchine pigaches"
+
     })
 
     sets.midcast.enhancing["Potency"] = sets.midcast.enhancing
