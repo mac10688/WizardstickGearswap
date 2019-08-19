@@ -309,7 +309,8 @@ function get_sets()
         right_ring="Vengeful ring",
         back=idle_cape,
         waist="Slipor sash",
-        legs="Assiduity pants +1"
+        legs="Assiduity pants +1",
+        feet="Archmage's sabots +3"
     }
     sets.idle["PDT"] = sets.idle["Refresh"]
     sets.idle["MDT"] = sets.idle["Refresh"]
