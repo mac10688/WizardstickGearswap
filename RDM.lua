@@ -63,6 +63,7 @@ function file_unload()
     send_command('unbind !f11')
     send_command("unbind f12")
     send_command('unbind ^k')
+    enable('main', 'sub')
 end
 
 function get_sets()
