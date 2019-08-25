@@ -332,6 +332,12 @@ function status_change(new,old)
     equip_set(new)
 end
 
+function buff_change(buff,gain)
+    if windower.wc_match(buff, "terror|petrification|stun|sleep") then
+        equip_set(player.status)
+    end
+end
+
 function self_command(command)
     if command == 'cycle nuke_sets' then
         Nuke_Set_Index = Nuke_Set_Index % #Nuke_Sets + 1

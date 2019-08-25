@@ -234,7 +234,7 @@ function get_sets()
         feet="Pedagogy loafers +3"
     })
 
-    --Tier 2 spells for mb without killing
+    --Tier 3 spells for mb without killing
     sets.midcast.elemental["Vagary"] = {
         main="Gada",
         sub="Sors shield",
@@ -649,6 +649,12 @@ function status_change(new,old)
     --This will catch when the player engages and disengages
     -- print(new)
     equip_set(new)
+end
+
+function buff_change(buff,gain)
+    if windower.wc_match(buff, "terror|petrification|stun|sleep") then
+        equip_set(player.status)
+    end
 end
 
 function lockstyle()

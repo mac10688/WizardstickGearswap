@@ -438,6 +438,12 @@ function status_change(new,old)
     equip_set(new)
 end
 
+function buff_change(buff,gain)
+    if windower.wc_match(buff, "terror|petrification|stun|sleep") then
+        equip_set(player.status)
+    end
+end
+
 function lockstyle()
     if player.main_job == 'BLM' then send_command('@input /lockstyleset 15') end
 end

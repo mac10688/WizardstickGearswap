@@ -614,6 +614,14 @@ end
 
 -----------------------------------------------------------------------------------
 
+function buff_change(buff,gain)
+    if windower.wc_match(buff, "terror|petrification|stun|sleep") then
+        SetGearToState(player.status)
+    end
+end
+
+-----------------------------------------------------------------------------------
+
 function lockstyle()
     if player.main_job == 'RUN' then send_command('@input /lockstyleset 18') end
 end

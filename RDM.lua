@@ -1,6 +1,7 @@
 res = require('resources')
+require('sets')
 
-Weapon_Sets = {"Empty", "Sword", "Dagger", "Staff"}
+Weapon_Sets = {"Empty", "Sword", "Dagger", "Staff", "Dual Wield"}
 WeaponSetsIndex = 1
 
 NukeSet = {"Low Acc", "High Acc", "Magic Burst"}
@@ -37,7 +38,6 @@ IntEnfeebles = S{"Bind"}
 
 MagicAccEnfeebles = S{"Gravity", "Gravity II", "Break", "Inundation", "Sleep", "Sleep II", "Dispel", "Dia", "Dia II", "Dia III"}
 
-
 send_command("bind f9 gs c TankMode")
 send_command("bind ^f9 gs c Cycle IdleMode")
 send_command("bind f10 gs c OffensiveMode")
@@ -68,6 +68,8 @@ end
 
 function get_sets()
 
+    -- local test = (Enspells * buffactive.keyset())
+    -- print_set(buffactive)
     Cape = {}
     Cape.Int = { name="Sucellos's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10','Mag. Evasion+15'}}
     Cape.Mnd = { name="Sucellos's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','"Cure" potency +10%','Mag. Evasion+15'}}
@@ -114,15 +116,16 @@ function get_sets()
     sets.weapons["Sword"] = {main = "Colada", sub="Genmei shield"}
     sets.weapons["Dagger"] = {main = "Malevolence", sub="Genmei shield"}
     sets.weapons["Staff"] = {main = "Grioavolr", sub="Enki strap"}
+    sets.weapons["Dual Wield"] = {main = "Kaja sword", sub = "Kaja knife"}
         
     sets.engaged = {
         ammo="Ginsen",
         head="Ayanmo zucchetto +2",
         neck="Anu Torque",
-        ear1="Digni. Earring",
+        ear1="Dignitary's earring",
         ear2="Sherida Earring",
         body="Ayanmo Corazza +2",
-        ring1="Shukuyu ring",
+        ring1="Chirich ring +1",
         ring2="Ilabrat Ring",
         back=Cape.Melee,
         waist="Grunfeld rope",
@@ -135,21 +138,13 @@ function get_sets()
     })
 
     sets.engaged["High Acc"] = set_combine( sets.engaged["Low Acc"], {
-        ammo="Amar Cluster",
-        head="Aya. Zucchetto +2",
         neck="Sanctity Necklace",
-        body="Ayanmo corazza +2",
-        ear1="Dignitary's earring",
         ear2="Telos earring",
-        body="Ayanmo corazza +2",
-        ring1="Chirich ring +1",
         ring2="Chirich ring +1",
-        legs="Aya. Cosciales +2",
-        feet="Aya. Gambieras +2",
+        feet="Aya. Gambieras +2"
     })
 
     sets.engaged.enspell ={
-        
         hands="Aya. Manopolas +2",
         legs="Vitiation Tights +1",
         back={ name="Ghostfyre Cape", augments={'Enfb.mag. skill +10','Enha.mag. skill +4','Mag. Acc.+9','Enh. Mag. eff. dur. +20'}},
@@ -233,22 +228,32 @@ function get_sets()
     sets.midcast.enhancing["Duration"] = set_combine(sets.midcast.enhancing, {
         head="Telchine Cap",
         body="Telchine body",
-        hands="Atrophy gloves +1",
+        hands="Atrophy gloves +2",
         legs="Telchine Braconi",
-        feet="Telchine pigaches"
+        feet="Lethargy houseaux +1"
     })
 
     sets.midcast.enhancing["Duration"].Self = set_combine(sets.midcast.enhancing["Duration"], {
-
+        feet="Telchine pigaches"
     })
 
     sets.midcast.enhancing["Potency"] = sets.midcast.enhancing
     sets.midcast.enhancing["Potency"].Self = sets.midcast.enhancing
 
+    sets.midcast.enhancing.spikes = set_combine(sets.midcast.enhancing, {
+        legs="Vitiation tights +1"
+    })
+
+    sets.midcast.enhancing.gain = set_combine(sets.midcast.enhancing, {
+        hands="Vitiation Gloves +1"
+    })
+
     sets.midcast.enhancing.refresh = set_combine(sets.midcast.enhancing["Duration"], {
+        legs="Lethargy fuseau +1"
     })
 
     sets.midcast.enhancing.refresh.Self = set_combine(sets.midcast.enhancing["Duration"], {
+        legs="Lethargy fuseau +1"
     })
 
     sets.midcast.enhancing.regen = set_combine(sets.midcast.enhancing["Duration"], {
@@ -262,11 +267,11 @@ function get_sets()
         main="Gada",
         sub="Ammurapi Shield",
         ammo="Regal Gem",
-        head="Vitiation chapeau +1",
+        head="Atrophy chapeau +2",
         neck="Duelist's Torque +1",
         ear1="Digni. Earring",
         ear2="Gwati Earring",
-        body="Atrophy Tabard +1",
+        body="Atrophy Tabard +2",
         hands="Vitiation gloves +1",
         ring1="Stikini ring",
         ring2="Stikini ring",
@@ -449,6 +454,10 @@ function midcast(spell)
                 else
                     equip(sets.midcast.enhancing.refresh)
                 end
+            elseif string.find(spell.english, "Spikes") then
+                equip(sets.midcast.enhancing.spikes)
+            elseif spell.english:startswith("Gain-") then
+                equip(sets.midcast.enhancing.gain)
             else
                 if(spell.target.name == player.name) then
                     local enhancingMode = EnhancingMagicMode[EnhancingMagicModeIndex]
@@ -494,22 +503,52 @@ function status_change(new, old)
     SetGearToState(new)
 end
 
+function buff_change(buff,gain)
+    -- print_set(buff)
+    if windower.wc_match(buff, "terror|petrification|stun|sleep") then
+        SetGearToState(player.status)
+    elseif S{"Enstone", "Enstone II", "Enwater", "Enwater II", "Enaero", "Enaero II", "Enfire", "Enfire II", "Enthunder", "Enhunder II", "Enblizzard", "Enblizzard II"}[buff] then
+        SetGearToState(player.status)
+    end
+end
+
 function SetGearToState(state)
+    -- print(buffactive["Enstone"])
     if state == "Engaged" then
         local engagedMode = EngagedMode[EngagedModeIndex]
         if engagedMode == "Tank" then
             equip(sets.engaged.sw["Damage Taken"])
         else
             local accuracyMode = PhysicalAccuracyMode[PhysicalAccuracyModeIndex]
+            local enspellWeatherMapping = {['Earth']={"Enstone", "Enstone II"},
+                                           ['Water']= {"Enwater", "Enwater II"},
+                                           ['Air']={"Enaero", "Enaero II"},
+                                           ['Fire']={"Enfire", "Enfire II"},
+                                           ['Ice']={"Enblizzard", "Enblizzard II"},
+                                           ['Lightning']={"Enthunder", "Enthunder II"},
+                                           ['Light']={"Enthunder", "Enthunder II"},
+                                           ['Dark']={"Enblizzard", "Enblizzard II"}}
             if IsDualWield() then
-                if EnspellActive then
+                if EnspellActive and IsEnspellActive() then
                     equip(sets.engaged.dw[accuracyMode].enspell)
+
+                    local buffToCheckForObiForDay = enspellWeatherMapping[world.day_element] or {"", ""}
+                    local buffToCheckForObiForWeather = enspellWeatherMapping[world.weather_element] or {"", ""}
+                    if buffactive[buffToCheckForObiForDay[1]] or buffactive[buffToCheckForObiForDay[2]] or buffactive[buffToCheckForObiForWeather[1]] or buffactive[buffToCheckForObiForWeather[2]] then
+                        equip({waist = "Hachirin-no-Obi"})
+                    end
                 else
                     equip(sets.engaged.dw[accuracyMode])
                 end
             else
-                if EnspellActive then
+                if EnspellActive and IsEnspellActive() then
                     equip(sets.engaged.sw[accuracyMode].enspell)
+                    
+                    local buffToCheckForObiForDay = enspellWeatherMapping[world.day_element] or {"", ""}
+                    local buffToCheckForObiForWeather = enspellWeatherMapping[world.weather_element] or {"", ""}
+                    if buffactive[buffToCheckForObiForDay[1]] or buffactive[buffToCheckForObiForDay[2]] or buffactive[buffToCheckForObiForWeather[1]] or buffactive[buffToCheckForObiForWeather[2]] then
+                        equip({waist = "Hachirin-no-Obi"})
+                    end
                 else
                     equip(sets.engaged.sw[accuracyMode])
                 end
@@ -533,6 +572,16 @@ function SetGearToState(state)
        disable('main', 'sub')
    end
 
+end
+
+function IsEnspellActive()
+    return (
+        buffactive["Enstone"] or buffactive["Enstone II"]
+        or buffactive["Enwater"] or buffactive["Enwater II"]
+        or buffactive["Enaero"] or buffactive["Enaero II"]
+        or buffactive["Enfire"] or buffactive["Enfire II"]
+        or buffactive["Enblizzard"] or buffactive["Enblizzard II"]
+        or buffactive["Enthunder"] or buffactive["Enthunder II"])
 end
 
 function IsDualWield()

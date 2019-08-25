@@ -454,6 +454,12 @@ function status_change(new,old)
     equip_set(new)
 end
 
+function buff_change(buff,gain)
+    if windower.wc_match(buff, "terror|petrification|stun|sleep") then
+        equip_set(player.status)
+    end
+end
+
 function self_command(command)
     if command == 'cycle TP set' then
         TP_Index = TP_Index % #TP_Set_Names + 1
