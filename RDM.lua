@@ -248,10 +248,12 @@ function get_sets()
     })
 
     sets.midcast.enhancing.refresh = set_combine(sets.midcast.enhancing["Duration"], {
+        body="Atrophy tabard +3",
         legs="Lethargy fuseau +1"
     })
 
     sets.midcast.enhancing.refresh.Self = set_combine(sets.midcast.enhancing["Duration"], {
+        body="Atrophy tabard +3",
         legs="Lethargy fuseau +1"
     })
 
