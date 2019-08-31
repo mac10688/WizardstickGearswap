@@ -1,5 +1,4 @@
 res = require('resources')
-require('sets')
 
 Weapon_Sets = {"Empty", "Sword", "Dagger", "Staff", "Dual Wield"}
 WeaponSetsIndex = 1
@@ -183,7 +182,7 @@ function get_sets()
     }
 
     sets.fc = {   
-        head="Atrophy chapeau +1",
+        head="Atrophy chapeau +2",
         neck="Voltsurge torque",
         ear1="Etiolation earring",
         ear2="Loquacious earring",
@@ -220,7 +219,7 @@ function get_sets()
         ring1="Stikini ring",
         ring2="Stikini ring",
         waist="Olympus sash",
-        legs="Atrophy Tights +1",
+        legs="Atrophy Tights +2",
         feet="Leth. Houseaux +1",
         back=Cape.Mnd
     }
@@ -270,8 +269,8 @@ function get_sets()
         head="Atrophy chapeau +2",
         neck="Duelist's Torque +1",
         ear1="Digni. Earring",
-        ear2="Gwati Earring",
-        body="Atrophy Tabard +2",
+        ear2="Regal earring",
+        body="Atrophy Tabard +3",
         hands="Vitiation gloves +1",
         ring1="Stikini ring",
         ring2="Stikini ring",
