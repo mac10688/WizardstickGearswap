@@ -67,8 +67,6 @@ end
 
 function get_sets()
 
-    -- local test = (Enspells * buffactive.keyset())
-    -- print_set(buffactive)
     Cape = {}
     Cape.Int = { name="Sucellos's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10','Mag. Evasion+15'}}
     Cape.Mnd = { name="Sucellos's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','"Cure" potency +10%','Mag. Evasion+15'}}
@@ -112,8 +110,8 @@ function get_sets()
 
     sets.weapons = {}
     sets.weapons["Empty"] = {}
-    sets.weapons["Sword"] = {main = "Colada", sub="Genmei shield"}
-    sets.weapons["Dagger"] = {main = "Malevolence", sub="Genmei shield"}
+    sets.weapons["Sword"] = {main = "Kaja Sword", sub="Genmei shield"}
+    sets.weapons["Dagger"] = {main = "Kaja knife", sub="Genmei shield"}
     sets.weapons["Staff"] = {main = "Grioavolr", sub="Enki strap"}
     sets.weapons["Dual Wield"] = {main = "Kaja sword", sub = "Kaja knife"}
         
