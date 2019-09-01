@@ -128,9 +128,7 @@ function get_sets()
     
     sets.midcast.drain = set_combine(sets.midcast.dark_magic, {
         head="Pixie Hairpin +1",
-        neck="Erra pendant",
-        ring1="Excelsis ring",
-        ring2="Evanescence ring",
+        ring2="Excelsis ring",
         waist="Fucho-no-obi",
         feet="Merlinic crackows"
     })

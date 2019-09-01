@@ -324,6 +324,21 @@ function get_sets()
         feet=merlinic_feet_mab
     }
 
+    sets.midcast.dark_magic = set_combine(sets.midcast.elemental, {
+        head="Pixie hairpin +1",
+        neck="Erra pendant",
+        ring1="Evanescence ring",
+        waist="Fucho-no-obi",
+    })
+    
+    sets.midcast.drain = set_combine(sets.midcast.dark_magic, {
+        ring2="Excelsis ring",
+        waist="Fucho-no-obi",
+        feet="Merlinic crackows"
+    })
+
+    sets.midcast.aspir = sets.midcast.drain
+
     sets.midcast.elemental["Low Acc"] = set_combine(sets.midcast.elemental, {})
     sets.midcast.elemental["High Acc"] = set_combine(sets.midcast.elemental, {})
 
@@ -487,6 +502,14 @@ function midcast(spell)
                 equip( set_combine(sets.midcast.elemental[nuke_set], {waist = "Hachirin-no-Obi"}))
             else
                 equip(sets.midcast.elemental[nuke_set])
+            end
+        elseif spell.skill == "Dark Magic" then
+            if spell.name:startswith("Drain") then
+                equip(sets.midcast.drain)
+            elseif spell.name:startswith("Aspir") then
+                equip(sets.midcast.aspir)
+            else
+                equip(sets.midcast.dark_magic)
             end
         end
     end
