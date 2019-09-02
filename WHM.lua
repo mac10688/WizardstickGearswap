@@ -240,11 +240,11 @@ function get_sets()
         ear2="Glorious earring",
         body="Theophany briault +3",
         hands="Theophany mitts +3",
-        ring1="Prolix Ring",
+        ring1="Persis ring",
         ring2="Sirona's Ring",
         back={ name="Alaunus's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}},
         waist="Austerity belt +1",
-        legs="ebers pantaloons +1",
+        legs="Ebers pantaloons +1",
         feet="Kaykaus boots" -- 10%
     }
 

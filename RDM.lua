@@ -123,7 +123,7 @@ function get_sets()
         ear2="Sherida Earring",
         body="Ayanmo Corazza +2",
         ring1="Chirich ring +1",
-        ring2="Ilabrat Ring",
+        ring2="Hetairoi ring",
         back=Cape.Melee,
         waist="Grunfeld rope",
         legs="Carmine cuisses +1",
@@ -199,7 +199,7 @@ function get_sets()
         body="Vrikodara jupon",
         hands="Kaykaus cuffs",
         ring1="Haoma's ring",
-        ring2="Haoma's ring",
+        ring2="Persis ring",
         back=Cape.Mnd,
         legs="Chironic hose",
         feet="Kaykaus boots"
