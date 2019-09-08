@@ -209,7 +209,7 @@ function get_sets()
         neck = "Sorcerer's stole +1",
         left_ear = "Regal earring",
         right_ear = "Dignitary's earring",
-        body = "Spaekona's coat +2",
+        body = "Spaekona's coat +3",
         hands= "Archmage's gloves +3",
         left_ring="Stikini Ring",
         right_ring="Kishar Ring",
@@ -399,8 +399,8 @@ function midcast(spell)
                     equip(sets.midcast.elemental.AncientMagic)
                 end
 
-                if player.mpp < 60 then
-                    equip({body="Spaekona's Coat +2"})
+                if player.mp < 600 then
+                    equip({body="Spaekona's Coat +3"})
                 end
             end
         end

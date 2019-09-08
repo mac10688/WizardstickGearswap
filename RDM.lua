@@ -107,6 +107,7 @@ function get_sets()
 
     sets.ja = {}
     sets.ja["Convert"] = {}
+    sets.ja["Saboteur"] = {hands="Lethargy gantherots +1"}
 
     sets.weapons = {}
     sets.weapons["Empty"] = {}
@@ -148,8 +149,11 @@ function get_sets()
     }
 
     sets.engaged.dw = {}
-    sets.engaged.dw["Low Acc"] = sets.engaged["Low Acc"]
-    sets.engaged.dw["High Acc"] = set_combine(sets.engaged["High Acc"], {
+    sets.engaged.dw["Low Acc"] = set_combine(sets.engaged["Low Acc"], {
+        waist="Reiki yotai"
+    })
+
+    sets.engaged.dw["High Acc"] = set_combine(sets.engaged.dw["Low Acc"], {
         legs={ name="Carmine Cuisses +1", augments={'Accuracy+20','Attack+12','"Dual Wield"+6'}}
     })
 
@@ -224,7 +228,7 @@ function get_sets()
     
     sets.midcast.enhancing["Duration"] = set_combine(sets.midcast.enhancing, {
         head="Telchine Cap",
-        body="Telchine body",
+        body="Telchine chasuble",
         hands="Atrophy gloves +2",
         legs="Telchine Braconi",
         feet="Lethargy houseaux +1"
@@ -288,7 +292,8 @@ function get_sets()
     })
             
     sets.midcast.enfeebling.mnd["Low Acc"] = set_combine(sets.midcast.enfeebling.mnd, {
-        ring2="Kishar Ring"
+        ring2="Kishar Ring",
+        body="Lethargy sayon +1"
     })
 
     sets.midcast.enfeebling.int = set_combine(sets.midcast.enfeebling, {
@@ -316,7 +321,7 @@ function get_sets()
         ear2="Friomisi earring",
         body=merlinic_body_mab,
         hands="Amalric gages +1",
-        left_ring="Shiva Ring",
+        left_ring="Mallquis ring",
         right_ring="Shiva Ring +1",
         back=Cape.Int,
         waist="Eschan stone",
@@ -371,7 +376,7 @@ function get_sets()
         body="Jhakri Robe +2",
         hands="Jhakri Cuffs +2",
         ring1="Jhakri Ring",
-        ring2="Apate Ring",
+        ring2="Shiva ring +1",
         back=Cape.Int,
         waist="Fotia belt",
         legs="Jhakri Slops +2",
@@ -387,7 +392,7 @@ function get_sets()
         body="Viti. Tabard +1",
         hands="Jhakri cuffs +2",
         ring1="Jhakri Ring",
-        ring2="Apate Ring",
+        ring2="Ilabrat ring",
         back=Cape.Ws,
         waist="Fotia belt",
         legs="Jhakri Slops +2",
@@ -493,6 +498,10 @@ function midcast(spell)
                 equip(sets.midcast.enfeebling.int["High Acc"])
             else
                 equip(sets.midcast.enfeebling)
+            end
+
+            if buffactive["Saboteur"] then
+                equip(sets.ja["Saboteur"])
             end
             
         -- Elemental Magic --      
