@@ -275,7 +275,7 @@ function get_sets()
         ear1="Digni. Earring",
         ear2="Regal earring",
         body="Atrophy Tabard +3",
-        hands="Vitiation gloves +1",
+        hands="Lethargy gantherots +1",
         ring1="Stikini ring",
         ring2="Stikini ring",
         waist="Luminary Sash",
