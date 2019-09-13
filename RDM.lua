@@ -108,6 +108,7 @@ function get_sets()
     sets.ja = {}
     sets.ja["Convert"] = {}
     sets.ja["Saboteur"] = {hands="Lethargy gantherots +1"}
+    sets.ja["Chainspell"] = {body="Vitiation tabard +3"}
 
     sets.weapons = {}
     sets.weapons["Empty"] = {}
@@ -188,7 +189,7 @@ function get_sets()
         neck="Voltsurge torque",
         ear1="Etiolation earring",
         ear2="Loquacious earring",
-        body="Vitiation tabard +1",
+        body="Vitiation tabard +3",
         hands="Leyline gloves",
         ring1="Kishar Ring",
         legs="Aya. Cosciales +2",
@@ -216,7 +217,7 @@ function get_sets()
         neck="Duelist's Torque +1",
         ear1="Mendi. Earring",
         ear2="Calamitous Earring",
-        body="Viti. Tabard +1",
+        body="Vitiation Tabard +3",
         hands="Vitiation gloves +1",
         ring1="Stikini ring",
         ring2="Stikini ring",
@@ -228,7 +229,6 @@ function get_sets()
     
     sets.midcast.enhancing["Duration"] = set_combine(sets.midcast.enhancing, {
         head="Telchine Cap",
-        body="Telchine chasuble",
         hands="Atrophy gloves +2",
         legs="Telchine Braconi",
         feet="Lethargy houseaux +1"
@@ -369,7 +369,7 @@ function get_sets()
     
     sets.ws.magic = {
         ammo="Pemphredo Tathlum",
-        head="Viti. Chapeau +2",
+        head="Vitiation Chapeau +1",
         neck="Fotia gorget",
         ear1="Ishvara Earring",
         ear2="Friomisi Earring",
@@ -385,11 +385,11 @@ function get_sets()
 
     sets.ws.physical = {
         ammo="Ginsen",
-        head="Viti. Chapeau +1",
+        head="Vitiation Chapeau +1",
         neck="Fotia gorget",
         ear1="Ishvara Earring",
         ear2="Sherida Earring",
-        body="Viti. Tabard +1",
+        body="Vitiation tabard +3",
         hands="Jhakri cuffs +2",
         ring1="Jhakri Ring",
         ring2="Ilabrat ring",

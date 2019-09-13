@@ -532,7 +532,7 @@ function precast(spell)
         else
             equip(sets.ws)
         end
-    end    
+    end
 end
 
 ---- .::Midcast Functions::. ---->
