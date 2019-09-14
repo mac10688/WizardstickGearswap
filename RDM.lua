@@ -185,15 +185,12 @@ function get_sets()
     }
 
     sets.fc = {   
-        head="Atrophy chapeau +2",
-        neck="Voltsurge torque",
+        head="Atrophy chapeau +3",
         ear1="Etiolation earring",
-        ear2="Loquacious earring",
         body="Vitiation tabard +3",
         hands="Leyline gloves",
         ring1="Kishar Ring",
-        legs="Aya. Cosciales +2",
-        feet="Merlinic Crackows"
+        legs="Aya. Cosciales +2"
     }
 
     sets.midcast = {}
@@ -270,7 +267,7 @@ function get_sets()
         main="Gada",
         sub="Ammurapi Shield",
         ammo="Regal Gem",
-        head="Atrophy chapeau +2",
+        head="Atrophy chapeau +3",
         neck="Duelist's Torque +1",
         ear1="Digni. Earring",
         ear2="Regal earring",
