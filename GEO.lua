@@ -238,6 +238,17 @@ function get_sets()
         feet="Bagua sandals +1"
     })
 
+    sets.engaged = {ring2="Chirich ring +1"}
+
+    sets.kiting = {
+        feet="Geomancy sandals +3"
+    }
+
+    --To add more ws sets, just add sets.ws["<ws name>"]. Capitalization matters.
+    sets.ws['Exudation'] = set_combine(sets.ws, {ear2="Odnowa earring +1"})
+    sets.ws['Black Halo'] = set_combine(sets.ws, {ear2="Odnowa earring +1"})
+    sets.ws['Flash Nova'] = set_combine(sets.ws, {ear2="Odnowa earring +1"})
+
     sets.kiting = {
         feet="Geomancy sandals +3"
     }
@@ -304,8 +315,11 @@ function midcast(spell)
     end
 end
 
+
 function equip_set(status)
-    if pet.isvalid and Luopan_Idle_On then
+    if status == 'Engaged' then
+        equip(sets.engaged)
+    elseif pet.isvalid and Luopan_Idle_On then
         equip(sets.idle.luopan)
     else
         equip(sets.idle)

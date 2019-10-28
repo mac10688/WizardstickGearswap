@@ -246,7 +246,7 @@ function get_sets()
         neck="Fotia gorget",
         ear1="Moonshade earring",
         ear2="Ishvara earring",
-        body="Adhemar jacket +1",
+        body="Futhark coat +3",
         hands={ name="Herculean Gloves", augments={'Accuracy+25 Attack+25','"Triple Atk."+3','STR+10','Accuracy+6'}},
         ring1="Regal ring",
         ring2="Niqmaddu ring",
@@ -267,14 +267,14 @@ function get_sets()
         neck="Fotia gorget",
         ear1="Moonshade earring",
         ear2="Sherida earring",
-        body="Adhemar jacket +1",
+        body="Futhark coat +3",
         hands="Meghanada gloves +2",
         ring1="Niqmaddu ring",
         ring2="Ilabrat ring",
         back=dimi_cape,
         waist="Fotia belt", 
-        legs={ name="Herculean Trousers", augments={'Potency of "Cure" effect received+4%','STR+1','Weapon skill damage +8%','Accuracy+13 Attack+13','Mag. Acc.+14 "Mag.Atk.Bns."+14'}},
-        feet="Meghanada jambeaux +2"
+        legs="Lustratio subligar +1",
+        feet="Lustratio leggings +1"
     }
 
     --Stat Modifier: 80% Vit
