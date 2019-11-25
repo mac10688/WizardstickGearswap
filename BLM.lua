@@ -88,8 +88,8 @@ function get_sets()
 
 
     sets.WeaponSet = {}
-    sets.WeaponSet["Lathi"] = {main="Lathi", sub="Enki strap"}
-    sets.WeaponSet["Grioavolr"] = {main="Grioavolr", sub="Enki strap"}
+    sets.WeaponSet["Lathi"] = {main="Lathi", sub="Khonsu"}
+    sets.WeaponSet["Grioavolr"] = {main="Grioavolr", sub="Khonsu"}
 
     sets.engaged = {}
     sets.engaged["Accuracy"] = {
@@ -157,7 +157,6 @@ function get_sets()
     sets.midcast.elemental = {}
     sets.midcast.elemental["Magic Attack Bonus"] = {
         ammo="Pemphredo tathlum",
-        sub="Enki Strap",
         head="Archmage's petasos +3",
         body="Archmage's coat +3",
         hands="Archmage's gloves +3",
@@ -399,7 +398,7 @@ function midcast(spell)
                     equip(sets.midcast.elemental.AncientMagic)
                 end
 
-                if player.mp < 600 then
+                if player.mp < 1000 then
                     equip({body="Spaekona's Coat +3"})
                 end
             end

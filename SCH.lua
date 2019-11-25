@@ -111,8 +111,8 @@ function get_sets()
 
     sets.WeaponSet = {}
     sets.WeaponSet["None"] = {}
-    sets.WeaponSet["Akademos"] = {main="Akademos", sub="Enki strap"}
-    sets.WeaponSet["Grioavolr"] = {main="Grioavolr", sub="Enki strap"}
+    sets.WeaponSet["Akademos"] = {main="Akademos", sub="Khonsu"}
+    sets.WeaponSet["Grioavolr"] = {main="Grioavolr", sub="Khonsu"}
     sets.WeaponSet["Gada"] = {main="Gada", sub="Ammurapi shield"}
 
     
@@ -172,8 +172,8 @@ function get_sets()
         ammo="Incantor stone", --fast cast 2%
         head="Academic's mortarboard +3", --fast cast 8%
         neck="Voltsurge torque", --fast cast 4%
-        ear1="Loquacious Earring", --fast cast 2%
-        ear2="Etiolation earring", --fast cast 1%
+        ear1="Etiolation earring", --fast cast 2%
+        ear2="Loquacious Earring", --fast cast 1%
         body="Shango robe", --fast cast 8%
         hands="Academic's bracers +3", --fast cast 8%
         ring1="Kishar ring", --fast cast 4%
@@ -241,8 +241,8 @@ function get_sets()
         ammo="Incantor Stone",
         head=merlinic_head_mab,
         neck="Voltsurge Torque",
-        left_ear="Loquac. Earring",
-        right_ear="Etiolation Earring",
+        ear1="Etiolation Earring",
+        ear2="Loquac. Earring",
         body="Shango Robe",
         hands="Academic's bracers +3",
         left_ring="Kishar Ring",
@@ -422,8 +422,8 @@ function get_sets()
 
     sets.ws["Myrkr"] = {
         head="Pixie Hairpin +1",
-        ear1="Loquacious earring",
-        ear2="Etiolation earring",
+        ear1="Etiolation earring",
+        ear2="Loquacious earring",
         neck="Sanctity necklace",
         body="Pedagogy gown +3",
         hands="Kaykaus cuffs",

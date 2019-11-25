@@ -112,10 +112,10 @@ function get_sets()
 
     sets.weapons = {}
     sets.weapons["Empty"] = {}
-    sets.weapons["Sword"] = {main = "Kaja Sword", sub="Genmei shield"}
-    sets.weapons["Dagger"] = {main = "Kaja knife", sub="Genmei shield"}
+    sets.weapons["Sword"] = {main = "Crocea Mors", sub="Genmei shield"}
+    sets.weapons["Dagger"] = {main = "Crocea Mors", sub="Genmei shield"}
     sets.weapons["Staff"] = {main = "Grioavolr", sub="Enki strap"}
-    sets.weapons["Dual Wield"] = {main = "Kaja sword", sub = "Kaja knife"}
+    sets.weapons["Dual Wield"] = {main = "Crocea Mors", sub = "Kaja knife"}
         
     sets.engaged = {
         ammo="Ginsen",
@@ -145,7 +145,7 @@ function get_sets()
 
     sets.engaged.enspell ={
         hands="Aya. Manopolas +2",
-        legs="Vitiation Tights +1",
+        legs="Vitiation Tights +2",
         back={ name="Ghostfyre Cape", augments={'Enfb.mag. skill +10','Enha.mag. skill +4','Mag. Acc.+9','Enh. Mag. eff. dur. +20'}},
     }
 
@@ -226,7 +226,7 @@ function get_sets()
     
     sets.midcast.enhancing["Duration"] = set_combine(sets.midcast.enhancing, {
         head="Telchine Cap",
-        hands="Atrophy gloves +2",
+        hands="Atrophy gloves +3",
         legs="Telchine Braconi",
         feet="Lethargy houseaux +1"
     })
@@ -239,7 +239,7 @@ function get_sets()
     sets.midcast.enhancing["Potency"].Self = sets.midcast.enhancing
 
     sets.midcast.enhancing.spikes = set_combine(sets.midcast.enhancing, {
-        legs="Vitiation tights +1"
+        legs="Vitiation tights +2"
     })
 
     sets.midcast.enhancing.gain = set_combine(sets.midcast.enhancing, {
@@ -387,7 +387,7 @@ function get_sets()
         ear1="Ishvara Earring",
         ear2="Sherida Earring",
         body="Vitiation tabard +3",
-        hands="Jhakri cuffs +2",
+        hands="Atrophy gloves +3",
         ring1="Jhakri Ring",
         ring2="Ilabrat ring",
         back=Cape.Ws,
