@@ -136,7 +136,8 @@ function get_sets()
     sets.precast.fc.elemental = set_combine(sets.precast.fc, {
         legs="Mallquis trews +2",
         left_ring="Mallquis Ring",
-        left_ear="Barkarole earring"
+        left_ear="Barkarole earring",
+        feet="Spaekona's sabots +3"
     })
 
     sets.precast.fc.enhancing = set_combine(sets.precast.fc, {})
@@ -172,14 +173,14 @@ function get_sets()
     }
 
     --MB1 Total: 49
-    --MB2 Total: 32
-    --MB Total: 81
+    --MB2 Total: 34
+    --MB Total: 83
     sets.midcast.elemental["Magic Burst"] = set_combine(sets.midcast.elemental["Magic Attack Bonus"], {
-        head="Ea hat", --MB: 6 MB2:6
+        head="Ea hat +1", --MB: 6 MB2:6
         neck="Sorcerer's stole +1", --MB: 7
         ear2="Static earring", --MB: 5
         body="Ea houppelande", --MB: 8 MB2:8
-        hands={ name="Amalric Gages +1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20'}}, --MB2: 6
+        hands="Spaekona's gloves +3", --MB2: 8
         legs="Ea slops", --MB: 7 MB2:7
         feet={ name="Merlinic Crackows", augments={'"Mag.Atk.Bns."+25','Magic burst dmg.+11%','Mag. Acc.+5'}}, --MB: 11
         left_ring="Mujin band", --MB2: 5
@@ -189,7 +190,7 @@ function get_sets()
     sets.midcast.elemental.AncientMagic = { head = "Archmage's petasos +3"}
 
     sets.midcast.elemental.debuff = {
-        head="Ea hat",
+        head="Ea hat +1",
         neck="Sorcerer's stole +1",
         ear1="Regal earring",
         body="Ea houppelande",
@@ -209,13 +210,13 @@ function get_sets()
         left_ear = "Regal earring",
         right_ear = "Dignitary's earring",
         body = "Spaekona's coat +3",
-        hands= "Archmage's gloves +3",
+        hands= "Spaekona's gloves +3",
         left_ring="Stikini Ring",
         right_ring="Kishar Ring",
         back=magic_atk_cape,
         waist="Luminary Sash",
         legs="Archmage's tonban +3",
-        feet="Archmage's sabots +3"
+        feet="Spaekona's sabots +3"
     })
 
     sets.midcast.cure = set_combine(sets.midcast.fast_recast, {
@@ -258,12 +259,12 @@ function get_sets()
         ear2="Loquacious earring",
         neck="Sanctity necklace",
         body="Shamash robe",
-        hands="Telchine gloves",
+        hands="Spaekona's gloves +3",
         ring1="Mephitas's ring +1",
         ring2="Persis ring",
         waist="Luminary sash",
         legs="Ea slops",
-        feet="Archmage's sabots +3"
+        feet="Spaekona's sabots +3"
     }
 
     -- 80% INT
@@ -283,7 +284,7 @@ function get_sets()
     }
     -- 73~85% INT
     sets.ws["Shattersoul"] = {
-        head="Ea hat",
+        head="Ea hat +1",
         neck="Sorcerer's stole +1",
         ear1="Regal earring",
         ear2="Ishvara ing",

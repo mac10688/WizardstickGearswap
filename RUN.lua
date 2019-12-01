@@ -248,8 +248,9 @@ function get_sets()
         ear2="Ishvara earring",
         body="Futhark coat +3",
         hands={ name="Herculean Gloves", augments={'Accuracy+25 Attack+25','"Triple Atk."+3','STR+10','Accuracy+6'}},
-        ring1="Regal ring",
-        ring2="Niqmaddu ring",
+        ring1="Niqmaddu ring",
+        ring2="Regal ring",
+        
         back=atk_cape,
         waist="Fotia belt",
         legs={ name="Herculean Trousers", augments={'Potency of "Cure" effect received+4%','STR+1','Weapon skill damage +8%','Accuracy+13 Attack+13','Mag. Acc.+14 "Mag.Atk.Bns."+14'}},
@@ -310,8 +311,9 @@ function get_sets()
         ear2="Ishvara earring",
         body="Futhark coat +3",
         hands="Meghanada gloves +2",
-        ring1="Regal ring",
-        ring2="Niqmaddu ring",
+        ring1="Niqmaddu ring",
+        ring2="Regal ring",
+        
         back=dimi_cape,
         waist="Fotia belt",
         legs={ name="Herculean Trousers", augments={'Potency of "Cure" effect received+4%','STR+1','Weapon skill damage +8%','Accuracy+13 Attack+13','Mag. Acc.+14 "Mag.Atk.Bns."+14'}},
@@ -330,8 +332,9 @@ function get_sets()
         ammo="Staunch tathlum +1", --dt: 2
         head="Futhark bandeau +3", --dt: 5 haste: 8
         neck="Futhark torque +1",--dt: 5
-        ear1="Odnowa earring +1", --mdt: 2
-        ear2="Etiolation earring",
+        ear1="Etiolation earring",
+        ear2="Odnowa earring +1", --mdt: 2
+        
         body="Futhark coat +3", --dt: 7 haste: 4
         hands="Turms mittens +1", --pdt: 2 haste: 5
         ring1="Defending ring", --dt: 10

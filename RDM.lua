@@ -349,7 +349,7 @@ function get_sets()
         main="Grioavolr",
         sub="Enki strap",
         ammo="Pemphredo Tathlum",
-        head="Ea hat",
+        head="Ea hat +1",
         neck="Mizu. Kubikazari",
         ear1="Friomisi Earring",
         ear2="Static Earring",

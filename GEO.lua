@@ -172,10 +172,10 @@ function get_sets()
     }
 
     --MB: 52
-    --MB2: 32
-    --Total MB: 82
+    --MB2: 33
+    --Total MB: 83
     sets.midcast.elemental["magic-burst"] = set_combine(sets.midcast.elemental["magic-atk-bonus"], {
-        head="Ea hat", --MB: 6 MB2:6
+        head="Ea hat +1", --MB: 7 MB2:7
         neck="Mizukage-no-Kubikazari", -- MB: 10
         ear2="Static earring", --MB: 5
         body="Ea houppelande", --MB: 8 MB2:8
