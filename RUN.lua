@@ -250,7 +250,6 @@ function get_sets()
         hands={ name="Herculean Gloves", augments={'Accuracy+25 Attack+25','"Triple Atk."+3','STR+10','Accuracy+6'}},
         ring1="Niqmaddu ring",
         ring2="Regal ring",
-        
         back=atk_cape,
         waist="Fotia belt",
         legs={ name="Herculean Trousers", augments={'Potency of "Cure" effect received+4%','STR+1','Weapon skill damage +8%','Accuracy+13 Attack+13','Mag. Acc.+14 "Mag.Atk.Bns."+14'}},
@@ -313,7 +312,6 @@ function get_sets()
         hands="Meghanada gloves +2",
         ring1="Niqmaddu ring",
         ring2="Regal ring",
-        
         back=dimi_cape,
         waist="Fotia belt",
         legs={ name="Herculean Trousers", augments={'Potency of "Cure" effect received+4%','STR+1','Weapon skill damage +8%','Accuracy+13 Attack+13','Mag. Acc.+14 "Mag.Atk.Bns."+14'}},
@@ -334,7 +332,6 @@ function get_sets()
         neck="Futhark torque +1",--dt: 5
         ear1="Etiolation earring",
         ear2="Odnowa earring +1", --mdt: 2
-        
         body="Futhark coat +3", --dt: 7 haste: 4
         hands="Turms mittens +1", --pdt: 2 haste: 5
         ring1="Defending ring", --dt: 10
@@ -349,8 +346,8 @@ function get_sets()
         ammo="Staunch tathlum +1", --dt: 2 status: 10
         head="Runeist's bandeau +3", --mdb: 3 meva: 83 haste: 8
         neck="Futhark +1", --mdb: 8
-        ear1="Odnowa earring +1", --dt: 2 acc: 5~10
-        ear2="Hearty earring", --status: 5
+        ear1="Hearty earring", --status: 5
+        ear2="Odnowa earring +1", --dt: 2 acc: 5~10
         body="Runeist's coat +3", --mdb: 7 meva: 94 haste: 4 
         hands="Turms mittens +1", --mdb: 5 meva: 101 haste: 4
         ring1="Defending ring", --dt: 10
@@ -393,8 +390,8 @@ function get_sets()
         ear2="Dignitary's earring",
         body="Runeist's coat +3",
         hands="Adhemar wristbands +1",
-        ring1="Regal ring",
-        ring2="Chirich ring +1",
+        ring1="Chirich ring +1",
+        ring2="Regal ring",
         back=atk_cape,
         waist="Ioskeha belt +1",
         legs="Carmine cuisses +1",

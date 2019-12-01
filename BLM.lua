@@ -173,14 +173,14 @@ function get_sets()
     }
 
     --MB1 Total: 49
-    --MB2 Total: 34
-    --MB Total: 83
+    --MB2 Total: 32
+    --MB Total: 81
     sets.midcast.elemental["Magic Burst"] = set_combine(sets.midcast.elemental["Magic Attack Bonus"], {
         head="Ea hat +1", --MB: 6 MB2:6
         neck="Sorcerer's stole +1", --MB: 7
         ear2="Static earring", --MB: 5
         body="Ea houppelande", --MB: 8 MB2:8
-        hands="Spaekona's gloves +3", --MB2: 8
+        hands="Amalric gages +1", --MB2: 6
         legs="Ea slops", --MB: 7 MB2:7
         feet={ name="Merlinic Crackows", augments={'"Mag.Atk.Bns."+25','Magic burst dmg.+11%','Mag. Acc.+5'}}, --MB: 11
         left_ring="Mujin band", --MB2: 5
@@ -258,12 +258,12 @@ function get_sets()
         ear1="Etiolation earring",
         ear2="Loquacious earring",
         neck="Sanctity necklace",
-        body="Shamash robe",
+        body="Spaekona's coat +3",
         hands="Spaekona's gloves +3",
         ring1="Mephitas's ring +1",
         ring2="Persis ring",
         waist="Luminary sash",
-        legs="Ea slops",
+        legs="Spaekona's tonban +2",
         feet="Spaekona's sabots +3"
     }
 
