@@ -112,6 +112,8 @@ function get_sets()
     ------------------------------------------------------------------------------------------------
     sets.precast = {}
 
+    
+
     sets.precast.ja = {}
     sets.precast.ja['Manafont'] = { body = "Archmage's coat +3"}
     sets.precast.ja['Elemental Seal'] = {}
@@ -132,6 +134,8 @@ function get_sets()
         ring2="Prolix Ring", --fast cast 2%
         ring1="Kishar ring" --fast cast 4%
     }
+
+    
 
     sets.precast.fc.elemental = set_combine(sets.precast.fc, {
         legs="Mallquis trews +2",
@@ -171,6 +175,16 @@ function get_sets()
         right_ring="Shiva Ring +1",
         back=magic_atk_cape,
     }
+
+    sets.precast['Impact'] = set_combine(sets.precast.fc, {
+        head=empty,
+        body='Twilight cloak'
+    })
+
+    sets.midcast['Impact'] = set_combine(sets.midcast.elemental["Magic Attack Bonus"], {
+        head=empty,
+        body='Twilight cloak'
+    })
 
     --MB1 Total: 49
     --MB2 Total: 32
@@ -331,7 +345,9 @@ AncientMagic = S{"Flare", "Flare II", "Freeze", "Freeze II", "Tornado", "Tornado
 ---- .::Precast Functions::. ---->
 function precast(spell)
     -- print_set(spell)
-    if spell.action_type == 'Magic' then
+    if sets.precast[spell.english] then
+        equip(sets.precast[spell.english])
+    elseif spell.action_type == 'Magic' then
         -- Everything that have a specific name set -- 
         if sets.precast[spell.english] then
             equip(sets.precast[spell.english]) 
@@ -365,7 +381,9 @@ end
 ---- .::Midcast Functions::. ---->
 function midcast(spell)
     -- print_set(spell)
-    if spell.action_type == 'Magic' then
+    if sets.midcast[spell.english] then
+        equip(sets.midcast[spell.english])
+    elseif spell.action_type == 'Magic' then
         -- Healing Magic --
         if string.find(spell.english, 'Cure') or string.find(spell.english, 'Cura') or string.find(spell.english, "Curaga") then
             equip(sets.midcast.cure)

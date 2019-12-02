@@ -203,6 +203,16 @@ function get_sets()
         feet="Geomancy sandals +3"
     }
 
+    sets.fc['Impact'] = set_combine(sets.fc, {
+        head=empty,
+        body='Twilight cloak'
+    })
+
+    sets.midcast['Impact'] = set_combine(sets.midcast.elemental["magic-atk-bonus"], {
+        head=empty,
+        body='Twilight cloak'
+    })
+
     sets.midcast.enhancing = set_combine(sets.midcast.conserve_mp, {
         sub="Ammurapi shield",
         head="Befouled crown",
@@ -259,8 +269,9 @@ end
 
 function precast(spell)
     -- print_set(spell)
-    
-    if (sets.ja[spell.english]) then
+    if sets.fc[spell.english] then
+        equip(sets.fc[spell.english])
+    elseif (sets.ja[spell.english]) then
         equip(sets.ja[spell.english])
     elseif spell.name:startswith("Cure") or spell.name:startswith("Curaga") or spell.name:startswith("Cura") then
         equip(sets.fc.cure)

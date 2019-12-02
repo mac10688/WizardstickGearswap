@@ -362,6 +362,16 @@ function get_sets()
         feet=merlinic_feet_mb
     })
 
+    sets.fc['Impact'] = set_combine(sets.fc, {
+        head=empty,
+        body='Twilight cloak'
+    })
+
+    sets.midcast['Impact'] = set_combine(sets.midcast.elemental["High Acc"], {
+        head=empty,
+        body='Twilight cloak'
+    })
+
     sets.ws = {}
     
     sets.ws.magic = {
@@ -432,7 +442,9 @@ end
 
 function precast(spell)
     -- print_set(spell)
-    if spell.action_type == "Magic" then
+    if sets.fc[spell.name] then
+        equip(sets.fc[spell.name])
+    elseif spell.action_type == "Magic" then
         equip(sets.fc)
     elseif spell.type == "WeaponSkill" then
         if sets.ws[spell.name] then
@@ -449,7 +461,9 @@ function midcast(spell)
     -- print_set(spell)
     if spell.action_type == 'Magic' then   
         -- Healing Magic --
-        if string.find(spell.english, 'Cure') or string.find(spell.english, 'Cura') or string.find(spell.english, "Curaga") then
+        if sets.midcast[spell.english] then
+            equip(sets.midcast[spell.english])
+        elseif string.find(spell.english, 'Cure') or string.find(spell.english, 'Cura') or string.find(spell.english, "Curaga") then
             if (world.day_element == spell.element or world.weather_element == spell.element) and spellType ~= "Helix" then
                 equip( equip(sets.midcast.cure), {waist = "Hachirin-no-Obi"})
             else

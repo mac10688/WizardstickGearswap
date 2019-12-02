@@ -334,6 +334,16 @@ function get_sets()
     sets.midcast["Sneak"] = sets.midcast.enhancement_duration
     sets.midcast["Invisible"] = sets.midcast.enhancement_duration
 
+    sets.precast['Impact'] = set_combine(sets.precast.fc, {
+        head=empty,
+        body='Twilight cloak'
+    })
+
+    sets.midcast['Impact'] = set_combine(sets.midcast.elemental["Magic Attack Bonus"], {
+        head=empty,
+        body='Twilight cloak'
+    })
+
     sets.midcast.regen = {}
     sets.midcast.regen["Potency"] = set_combine(sets.midcast.enhancement_duration, {
         main="Bolelabunga",
@@ -541,7 +551,9 @@ function midcast(spell)
     local spellType = spell_maps[spell.name]
     if spell.action_type == 'Magic' then   
         -- Healing Magic --
-        if spellType == "Cure" or spellType == "Curaga" then
+        if sets.midcast[spell.english] then
+            equip(sets.midcast[spell.english])
+        elseif spellType == "Cure" or spellType == "Curaga" then
             if (world.day_element == spell.element or world.weather_element == spell.element) and spellType ~= "Helix" then
                 equip( equip(sets.midcast.cure), {waist = "Hachirin-no-Obi"})
             else

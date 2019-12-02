@@ -333,6 +333,16 @@ function get_sets()
         feet="Medium's Sabots"
     }
 
+    sets.fc['Impact'] = set_combine(sets.fc, {
+        head=empty,
+        body='Twilight cloak'
+    })
+
+    sets.midcast['Impact'] = set_combine(sets.midcast.enfeebling, {
+        head=empty,
+        body='Twilight cloak'
+    })
+
     sets.kiting = {
         ring2='Shneddick ring'
     }
@@ -343,8 +353,9 @@ end
 
 function precast(spell)
     -- print_set(spell)
-    
-    if (sets.ja[spell.english]) then
+    if sets.fc[spell.english] then
+        equip(sets.fc[spell.english])
+    elseif (sets.ja[spell.english]) then
         equip(sets.ja[spell.english])
     elseif spell.skill == 'Healing Magic' then
         if spell.name:contains("Cure") or spell.name:contains("Curaga") or spell.name:contains("Cura") then
@@ -368,7 +379,9 @@ end
 function midcast(spell)
     -- print_set(spell)
     -- equip(sets.idle[Idle_Set_Names[Idle_Index]])
-	if spell.skill == 'Healing Magic' or spell.name == "Erase" then
+	if sets.midcast[spell.english] then
+        equip(sets.midcast[spell.english])
+    elseif spell.skill == 'Healing Magic' or spell.name == "Erase" then
         if spell.name:contains("Cure") then
             if buffactive['Afflatus Solace'] then
                 local solace_cure_set = set_combine(sets.midcast.cure, sets.afflatus_solace)
