@@ -438,6 +438,8 @@ function get_sets()
     sets.ws["Exenterator"] = set_combine(sets.ws.physical, {
     })
 
+    coroutine.schedule(lockstyle,4)
+
 end
 
 function precast(spell)
@@ -626,6 +628,14 @@ function IsEnspellActive()
         or buffactive["Enthunder"] or buffactive["Enthunder II"])
 end
 
+function lockstyle()
+    if player.main_job == 'RDM' then send_command('@input /lockstyleset 22') end
+end
+
+function sub_job_change()
+    coroutine.schedule(lockstyle,4)
+end
+
 function IsDualWield()
     local equipment = windower.ffxi.get_items('equipment')
     local sub = windower.ffxi.get_items(equipment.sub_bag, equipment.sub)
@@ -673,6 +683,8 @@ function self_command(command)
 
         SetGearToState(player.status)
         add_to_chat(122, 'Nuke Set: ' .. nuke_set .. ' Idle Set: ' .. idle_set)
+
+        lockstyle()
     elseif command == "Toggle Kiting" then
         Kiting = not Kiting
         add_to_chat(122,  "Kiting Mode: " .. (Kiting and "On" or "Off"))
