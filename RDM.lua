@@ -123,8 +123,8 @@ function get_sets()
         neck="Anu Torque",
         ear1="Dignitary's earring",
         ear2="Sherida Earring",
-        body="Ayanmo Corazza +2",
-        ring1="Chirich ring +1",
+        body="Vitiation tabard +3",
+        ring1={name="Chirich ring +1", bag="wardrobe"},
         ring2="Hetairoi ring",
         back=Cape.Melee,
         waist="Grunfeld rope",
@@ -139,7 +139,7 @@ function get_sets()
     sets.engaged["High Acc"] = set_combine( sets.engaged["Low Acc"], {
         neck="Sanctity Necklace",
         ear2="Telos earring",
-        ring2="Chirich ring +1",
+        ring2={name="Chirich ring +1", bag="wardrobe3"},
         feet="Aya. Gambieras +2"
     })
 

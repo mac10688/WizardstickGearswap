@@ -87,6 +87,12 @@ function get_sets()
     local dt_cape = { name="Ogma's cape", augments={'HP+60','Eva.+20 /Mag. Eva.+20','HP+20','Enmity+10','Damage taken-5%'}}
     local atk_cape = { name="Ogma's cape", augments={'STR+20','Accuracy+20 Attack+20','Accuracy+10','"Dbl.Atk."+10','Damage taken-5%'}}
     local dimi_cape = { name="Ogma's cape", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Weapon skill damage +10%','Damage taken-5%'}}
+
+    local herc_head_ws = { name="Herculean Helm", augments={'DEX+1','CHR+3','Weapon skill damage +5%','Accuracy+17 Attack+17','Mag. Acc.+20 "Mag.Atk.Bns."+20'}}
+    local herc_hand_ws = { name="Herculean Gloves", augments={'AGI+1','STR+12','Weapon skill damage +8%','Accuracy+11 Attack+11'}}
+    local herc_body_ws = { name="Herculean Vest", augments={'Attack+25','Weapon skill damage +3%','Accuracy+8 Attack+8'}}
+    local herc_legs_ws = { name="Herculean Trousers", augments={'Potency of "Cure" effect received+4%','STR+1','Weapon skill damage +8%','Accuracy+13 Attack+13','Mag. Acc.+14 "Mag.Atk.Bns."+14'}}
+
     sets.enmity = {
         neck="Futhark torque +1",
         ear1="Cryptic earring",
@@ -221,16 +227,16 @@ function get_sets()
     -- Weaponskill sets
     sets.ws = { 
         ammo="Knobkierrie",
-        head={ name="Herculean Helm", augments={'Weapon skill damage +4%','Accuracy+7 Attack+7'}},
+        head=herc_head_ws,
         neck="Fotia gorget",
         ear1="Moonshade earring",
         ear2="Ishvara earring",
-        body="Meghanada cuirie +2",
-        hands="Meghanada gloves +2",
+        body=herc_body_ws,
+        hands=herc_hand_ws,
         ring1="Petrov ring",
         ring2="Regal ring",
-        waist="Latria sash",
-        legs="Samnuha tights",
+        waist="Fotia belt",
+        legs=herc_legs_ws,
         feet="Meghanada jambeaux +2"
     }
     
@@ -242,17 +248,17 @@ function get_sets()
     --Accuracy:
     sets.ws['Resolution'] = { 
         ammo="Knobkierrie",
-        head={ name="Herculean Helm", augments={'Weapon skill damage +4%','Accuracy+7 Attack+7'}},
+        head= herc_head_ws,
         neck="Fotia gorget",
         ear1="Moonshade earring",
         ear2="Ishvara earring",
         body="Futhark coat +3",
-        hands={ name="Herculean Gloves", augments={'Accuracy+25 Attack+25','"Triple Atk."+3','STR+10','Accuracy+6'}},
+        hands=herc_hand_ws,
         ring1="Niqmaddu ring",
         ring2="Regal ring",
         back=atk_cape,
         waist="Fotia belt",
-        legs={ name="Herculean Trousers", augments={'Potency of "Cure" effect received+4%','STR+1','Weapon skill damage +8%','Accuracy+13 Attack+13','Mag. Acc.+14 "Mag.Atk.Bns."+14'}},
+        legs=herc_legs_ws,
         feet="Meghanada jambeaux +2"
     }
     
@@ -263,12 +269,12 @@ function get_sets()
     --Accuracy:
     sets.ws['Dimidiation'] = {
         ammo="Knobkierrie",
-        head={ name="Herculean Helm", augments={'Weapon skill damage +4%','Accuracy+7 Attack+7'}},
+        head= herc_head_ws,
         neck="Fotia gorget",
         ear1="Moonshade earring",
         ear2="Sherida earring",
         body="Futhark coat +3",
-        hands="Meghanada gloves +2",
+        hands=herc_hand_ws,
         ring1="Niqmaddu ring",
         ring2="Ilabrat ring",
         back=dimi_cape,
@@ -284,16 +290,16 @@ function get_sets()
     --Accuracy:
     sets.ws['Herculean Slash'] = { 
         ammo="Mantoptera eye",
-        head="Runeist's bandeau +3",
+        head=herc_head_ws,
         neck="Fotia gorget",
         ear1="Moonshade earring",
         ear2="Ishvara earring",
         body="Futhark coat +3",
-        hands="Meghanada gloves +2",
+        hands=herc_hand_ws,
         ring1="Petrov ring",
         ring2="Regal ring",
         waist="Fotia belt",
-        legs="Carmine cuisses +1",
+        legs=herc_legs_ws,
         feet="Erilaz greaves +1"
     }
 
@@ -304,17 +310,17 @@ function get_sets()
     --Accuracy:
     sets.ws['Shockwave'] = { 
         ammo="Knobkierrie",
-        head="Futhark bandeau +3",
+        head=herc_head_ws,
         neck="Fotia gorget",
         ear1="Sherida earring",
         ear2="Ishvara earring",
         body="Futhark coat +3",
-        hands="Meghanada gloves +2",
+        hands=herc_hand_ws,
         ring1="Niqmaddu ring",
         ring2="Regal ring",
         back=dimi_cape,
         waist="Fotia belt",
-        legs={ name="Herculean Trousers", augments={'Potency of "Cure" effect received+4%','STR+1','Weapon skill damage +8%','Accuracy+13 Attack+13','Mag. Acc.+14 "Mag.Atk.Bns."+14'}},
+        legs=herc_legs_ws,
         feet="Meghanada jambeaux +2"
     }
 
