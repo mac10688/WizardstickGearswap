@@ -43,7 +43,7 @@ OffenseModeIndex = 1
 TankModes = {"pdt", "mdt", "resist-status"}
 TankModeIndex = 1
 
-HybridModes = {"pdt", "mdt"}
+HybridModes = {"pdt", "mdt", "th"}
 HybridModeIndex = 1
 
 WeaponSetMode = {"epeo", "lionheart"}
@@ -422,6 +422,11 @@ function get_sets()
     }
 
     sets.engaged.hybrid["mdt"] = sets.engaged.hybrid["pdt"]
+
+    sets.engaged.hybrid["th"] = set_combine(sets.engaged.hybrid["pdt"], {
+        body={ name="Herculean Vest", augments={'Accuracy+1','INT+1','"Treasure Hunter"+2','Accuracy+10 Attack+10'}},
+        waist="Chaac belt"
+    })
 
     sets.kiting = {
         legs="Carmine cuisses +1",

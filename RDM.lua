@@ -1,16 +1,16 @@
 res = require('resources')
 
 Weapon_Sets = {"Empty", "Sword", "Dagger", "Staff", "Dual Wield"}
-WeaponSetsIndex = 1
+WeaponSetsIndex = 2
 
 NukeSet = {"Low Acc", "High Acc", "Magic Burst"}
-NukeSetIndex = 1
+NukeSetIndex = 3
 
 EngagedMode = {"Tank", "Offense"}
-EngagedModeIndex = 1
+EngagedModeIndex = 2
 
 PhysicalAccuracyMode = {"High Acc", "Low Acc"}
-PhysicalAccuracyModeIndex = 1
+PhysicalAccuracyModeIndex = 2
 
 IdleMode = {"Refresh", "Damage Taken"}
 IdleModeIndex = 2
