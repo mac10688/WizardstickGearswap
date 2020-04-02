@@ -123,13 +123,14 @@ function get_sets()
     sets.precast.ja['Subtle Sorcery'] = {}
     sets.precast.ja['Cascade'] = {}
 
-    --37% fc
+    --41% fc
     sets.precast.fc = {
         head="Merlinic hood", --fast cast 8%
         body="Merlinic jubbah", --fast cast 8%
         legs="Lengo pants",
         feet="Merlinic crackows", --fast cast 5%
         waist="Channeler's stone", --fast cast 2%
+        left_ear="Malignance earring", --fast cast 4%
         right_ear="Loquacious Earring", --fast cast 2%
         ring2="Prolix Ring", --fast cast 2%
         ring1="Kishar ring" --fast cast 4%
@@ -170,7 +171,7 @@ function get_sets()
         neck="Sanctity Necklace",
         waist="Eschan Stone",
         left_ear="Barkarole earring",
-        right_ear="Friomisi earring",
+        right_ear="Malignance earring",
         left_ring="Stikini Ring",
         right_ring="Shiva Ring +1",
         back=magic_atk_cape,
@@ -222,7 +223,7 @@ function get_sets()
         head = "Archmage's petasos +3",
         neck = "Sorcerer's stole +1",
         left_ear = "Regal earring",
-        right_ear = "Dignitary's earring",
+        right_ear="Malignance earring",
         body = "Spaekona's coat +3",
         hands= "Spaekona's gloves +3",
         left_ring="Stikini Ring",
@@ -261,8 +262,13 @@ function get_sets()
     })
 
     sets.midcast.enhancing_magic = set_combine(sets.midcast.conserve_mp, {
+        head="Telchine cap",
         ear1="Andoaa earring",
-        waist="Olympus sash"
+        body="Telchine chasuble",
+        hands="Telchine gloves",
+        waist="Olympus sash",
+        legs="Telchine braconi",
+        feet="Telchine pigaches"
     })
 
     sets.ws = {}
@@ -275,7 +281,7 @@ function get_sets()
         body="Spaekona's coat +3",
         hands="Spaekona's gloves +3",
         ring1="Mephitas's ring +1",
-        ring2="Persis ring",
+        ring2="Mephitas's ring",
         waist="Luminary sash",
         legs="Spaekona's tonban +2",
         feet="Spaekona's sabots +3"

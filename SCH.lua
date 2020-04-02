@@ -223,7 +223,7 @@ function get_sets()
         head=merlinic_head_mab,
         neck="Argute stole +1",
         ear1="Barkarole earring",
-        ear2="Friomisi earring",
+        ear2="Malignance earring",
         body="Pedagogy gown +3",
         hands="Amalric gages +1",
         left_ring="Stikini Ring",

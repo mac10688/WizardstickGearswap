@@ -216,8 +216,12 @@ function get_sets()
 
     --Regen effect duration: +21
     sets.midcast.enhancing["Regen"] = set_combine(sets.midcast.enhancing, {
-        head="Runeist's bandeau +3"
+        head="Runeist's bandeau +3",
+        neck="Sacro Gorget"
     })
+    sets.midcast.enhancing["Regen II"] = sets.midcast.enhancing["Regen"]
+    sets.midcast.enhancing["Regen III"] = sets.midcast.enhancing["Regen"]
+    sets.midcast.enhancing["Regen IV"] = sets.midcast.enhancing["Regen"]
 
     --Phalanx: +5
     sets.midcast.enhancing["Phalanx"] = set_combine(sets.midcast.enhancing, {

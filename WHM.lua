@@ -170,7 +170,6 @@ function get_sets()
         back={ name="Alaunus's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10','Mag. Evasion+15'}}
     }
     
-    
     sets.idle = {}
 	
 	sets.idle['PDT'] = {
@@ -259,22 +258,34 @@ function get_sets()
         ring2="Stikini ring",
         back={ name="Alaunus's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}},
         waist="Austerity belt +1",
-        legs="Piety Pantaloons +2",
+        legs="Piety Pantaloons +3",
         feet="Theophany duckbills +3"
     }
+
+    sets.midcast.enhancing.duration = set_combine(sets.midcast.enhancing, {
+        sub="Ammurapi shield",
+        head="Telchine cap",
+        body="Telchine chasuble",
+        hands="Telchine gloves",
+        legs="Telchine braconi",
+    })
 
     sets.midcast.bar_element = set_combine( sets.midcast.enhancing, {
         main="Beneficus",
         head="Ebers cap +1",
         body="Ebers Bliaud +1",
         hands="Ebers mitts +1",
-        legs="Piety Pantaloons +2",
+        legs="Piety Pantaloons +3",
         feet="Ebers duckbills +1"
     })
     
-    sets.midcast['Auspice'] = set_combine( sets.midcast.enhancing, {
+    sets.midcast['Auspice'] = set_combine( sets.midcast.enhancing.duration, {
         feet="Ebers duckbills +1"
     })
+
+    sets.midcast['Aurorastorm'] = sets.midcast.enhancing.duration
+
+    sets.midcast['Haste'] = sets.midcast.enhancing.duration
 
     sets.midcast.protect = set_combine(sets.conserve_mp, {
         sub="Ammurapi shield",
@@ -286,7 +297,7 @@ function get_sets()
     sets.midcast.shell = set_combine(sets.conserve_mp, {
         sub="Ammurapi shield",
         ring1="Sheltered Ring",
-        legs="Piety Pantaloons +2",
+        legs="Piety Pantaloons +3",
         feet="Theophany duckbills +3"
     })
 
@@ -321,7 +332,7 @@ function get_sets()
         main="Gada",
         ammo="Hydrocera",
         neck="Erra pendant",
-        ear1="Gwati earring",
+        ear1="Malignance earring",
         ear2="Regal earring",
         body="Theophany briault +3",
         hands="Inyanga dastanas +2",

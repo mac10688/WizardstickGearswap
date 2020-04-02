@@ -1,6 +1,6 @@
 res = require('resources')
 
-Weapon_Sets = {"Empty", "Sword", "Dagger", "Staff", "Dual Wield"}
+Weapon_Sets = {"Empty", "Sword", "Magic Accuracy", "Staff", "Dual Wield", "Odin"}
 WeaponSetsIndex = 2
 
 NukeSet = {"Low Acc", "High Acc", "Magic Burst"}
@@ -79,12 +79,12 @@ function get_sets()
         main="Mafic cudgel",
         sub="Genmei shield",
         ammo="Staunch tathlum +1",
-        head="Befouled crown",
+        head="Vitiation chapeau +3",
         neck="Loricate torque +1",
         ear1="Etiolation earring",
         ear2="Hearty earring",
         body="Shamash robe",
-        hands="Ayanmo manopolas +2",
+        hands="Malignance gloves",
         ring1="Ayanmo ring",
         ring2="Defending ring",
         back=Cape.Int,
@@ -96,7 +96,7 @@ function get_sets()
     sets.idle["Refresh"] = set_combine(sets.idle["Damage Taken"], {
         main="Bolelabunga",
         ammo="Homiliary",
-        head="Befouled crown",
+        head="Vitiation chapeau +3",
         body="Shamash robe",
         waist="Fucho-no-Obi"
     })
@@ -113,9 +113,10 @@ function get_sets()
     sets.weapons = {}
     sets.weapons["Empty"] = {}
     sets.weapons["Sword"] = {main = "Crocea Mors", sub="Genmei shield"}
-    sets.weapons["Dagger"] = {main = "Crocea Mors", sub="Genmei shield"}
+    sets.weapons["Magic Accuracy"] = {main = "Crocea Mors", sub="Ammurapi shield"}
     sets.weapons["Staff"] = {main = "Grioavolr", sub="Enki strap"}
-    sets.weapons["Dual Wield"] = {main = "Crocea Mors", sub = "Kaja knife"}
+    sets.weapons["Dual Wield"] = {main = "Crocea Mors", sub = "Daybreak"}
+    sets.weapons["Odin"] = {main = "Wind Knife", sub = "Qutrub Knife"}
         
     sets.engaged = {
         ammo="Ginsen",
@@ -124,12 +125,13 @@ function get_sets()
         ear1="Dignitary's earring",
         ear2="Sherida Earring",
         body="Vitiation tabard +3",
+        hands="Maglignance gloves",
         ring1={name="Chirich ring +1", bag="wardrobe"},
         ring2="Hetairoi ring",
         back=Cape.Melee,
         waist="Grunfeld rope",
         legs="Carmine cuisses +1",
-        feet="Carmine greaves +1"
+        feet="Vitiation boots +3"
     }
 
     sets.engaged["Low Acc"] = set_combine( sets.engaged, {
@@ -145,8 +147,9 @@ function get_sets()
 
     sets.engaged.enspell ={
         hands="Aya. Manopolas +2",
-        legs="Vitiation Tights +2",
-        back={ name="Ghostfyre Cape", augments={'Enfb.mag. skill +10','Enha.mag. skill +4','Mag. Acc.+9','Enh. Mag. eff. dur. +20'}},
+        legs="Vitiation Tights +3",
+        -- back={ name="Ghostfyre Cape", augments={'Enfb.mag. skill +10','Enha.mag. skill +4','Mag. Acc.+9','Enh. Mag. eff. dur. +20'}},
+        waist="Orpheus's sash"
     }
 
     sets.engaged.dw = {}
@@ -187,6 +190,7 @@ function get_sets()
     sets.fc = {   
         head="Atrophy chapeau +3",
         ear1="Etiolation earring",
+        ear2="Malignance earring",
         body="Vitiation tabard +3",
         hands="Leyline gloves",
         ring1="Kishar Ring",
@@ -239,11 +243,11 @@ function get_sets()
     sets.midcast.enhancing["Potency"].Self = sets.midcast.enhancing
 
     sets.midcast.enhancing.spikes = set_combine(sets.midcast.enhancing, {
-        legs="Vitiation tights +2"
+        legs="Vitiation tights +3"
     })
 
     sets.midcast.enhancing.gain = set_combine(sets.midcast.enhancing, {
-        hands="Vitiation Gloves +1"
+        hands="Vitiation Gloves +3"
     })
 
     sets.midcast.enhancing.refresh = set_combine(sets.midcast.enhancing["Duration"], {
@@ -267,9 +271,9 @@ function get_sets()
         main="Gada",
         sub="Ammurapi Shield",
         ammo="Regal Gem",
-        head="Atrophy chapeau +3",
+        head="Vitiation chapeau +3",
         neck="Duelist's Torque +1",
-        ear1="Digni. Earring",
+        ear1="Malignance earring",
         ear2="Regal earring",
         body="Atrophy Tabard +3",
         hands="Lethargy gantherots +1",
@@ -278,7 +282,7 @@ function get_sets()
         waist="Luminary Sash",
         back=Cape.Int,
         legs="Chironic hose",
-        feet="Vitiation Boots +1"
+        feet="Vitiation Boots +3"
     }
 
     sets.midcast.enfeebling.mnd = set_combine(sets.midcast.enfeebling, {
@@ -315,7 +319,7 @@ function get_sets()
         head=merlinic_head_mab,
         neck="Sanctity Necklace",
         ear1="Barkarole earring",
-        ear2="Friomisi earring",
+        ear2="Malignance earring",
         body=merlinic_body_mab,
         hands="Amalric gages +1",
         left_ring="Mallquis ring",
@@ -351,7 +355,7 @@ function get_sets()
         ammo="Pemphredo Tathlum",
         head="Ea hat +1",
         neck="Mizu. Kubikazari",
-        ear1="Friomisi Earring",
+        ear1="Malignance earring",
         ear2="Static Earring",
         body="Ea houppelande",
         hands="Amalric gages +1",
@@ -361,6 +365,8 @@ function get_sets()
         legs="Ea slops",
         feet=merlinic_feet_mb
     })
+
+    sets.midcast["Paralyze"] = sets.midcast.enfeebling.mnd["Low Acc"]
 
     sets.fc['Impact'] = set_combine(sets.fc, {
         head=empty,
@@ -376,10 +382,10 @@ function get_sets()
     
     sets.ws.magic = {
         ammo="Pemphredo Tathlum",
-        head="Vitiation Chapeau +1",
+        head="Vitiation Chapeau +3",
         neck="Fotia gorget",
         ear1="Ishvara Earring",
-        ear2="Friomisi Earring",
+        ear2="Malignance earring",
         body="Jhakri Robe +2",
         hands="Jhakri Cuffs +2",
         ring1="Jhakri Ring",
@@ -392,7 +398,7 @@ function get_sets()
 
     sets.ws.physical = {
         ammo="Ginsen",
-        head="Vitiation Chapeau +1",
+        head="Vitiation Chapeau +3",
         neck="Fotia gorget",
         ear1="Ishvara Earring",
         ear2="Sherida Earring",
@@ -421,6 +427,7 @@ function get_sets()
 
     sets.ws["Sanguine Blade"] = set_combine(sets.ws.magic, {
         head="Pixie Hairpin +1",
+        waist="Orpheus's sash"
     })
 
     sets.ws["Chant du Cygne"] = set_combine(sets.ws.physical, {
@@ -520,7 +527,9 @@ function midcast(spell)
         -- Elemental Magic --      
         elseif spell.skill == 'Elemental Magic' then
             local nuke_set = NukeSet[NukeSetIndex]
-            if (world.day_element == spell.element or world.weather_element == spell.element) and spellType ~= "Helix" then
+            if (spell.target.distance < 5) then
+                equip( set_combine(sets.midcast.elemental[nuke_set], {waist = "Orpheus's sash"}))
+            elseif (world.day_element == spell.element or world.weather_element == spell.element) and spellType ~= "Helix" then
                 equip( set_combine(sets.midcast.elemental[nuke_set], {waist = "Hachirin-no-Obi"}))
             else
                 equip(sets.midcast.elemental[nuke_set])
@@ -575,28 +584,25 @@ function SetGearToState(state)
             if IsDualWield() then
                 if EnspellActive and IsEnspellActive() then
                     equip(sets.engaged.dw[accuracyMode].enspell)
-
-                    local buffToCheckForObiForDay = enspellWeatherMapping[world.day_element] or {"", ""}
-                    local buffToCheckForObiForWeather = enspellWeatherMapping[world.weather_element] or {"", ""}
-                    if buffactive[buffToCheckForObiForDay[1]] or buffactive[buffToCheckForObiForDay[2]] or buffactive[buffToCheckForObiForWeather[1]] or buffactive[buffToCheckForObiForWeather[2]] then
-                        equip({waist = "Hachirin-no-Obi"})
-                    end
                 else
                     equip(sets.engaged.dw[accuracyMode])
                 end
             else
                 if EnspellActive and IsEnspellActive() then
                     equip(sets.engaged.sw[accuracyMode].enspell)
-                    
-                    local buffToCheckForObiForDay = enspellWeatherMapping[world.day_element] or {"", ""}
-                    local buffToCheckForObiForWeather = enspellWeatherMapping[world.weather_element] or {"", ""}
-                    if buffactive[buffToCheckForObiForDay[1]] or buffactive[buffToCheckForObiForDay[2]] or buffactive[buffToCheckForObiForWeather[1]] or buffactive[buffToCheckForObiForWeather[2]] then
-                        equip({waist = "Hachirin-no-Obi"})
-                    end
                 else
                     equip(sets.engaged.sw[accuracyMode])
                 end
+                
             end
+
+            -- if EnspellActive and IsEnspellActive() then
+            --     local buffToCheckForObiForDay = enspellWeatherMapping[world.day_element] or {"", ""}
+            --     local buffToCheckForObiForWeather = enspellWeatherMapping[world.weather_element] or {"", ""}
+            --     if buffactive[buffToCheckForObiForDay[1]] or buffactive[buffToCheckForObiForDay[2]] or buffactive[buffToCheckForObiForWeather[1]] or buffactive[buffToCheckForObiForWeather[2]] then
+            --         equip({waist = "Hachirin-no-Obi"})
+            --     end
+            -- end
         end
         
    else
