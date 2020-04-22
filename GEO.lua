@@ -53,7 +53,7 @@ function get_sets()
         ring1="Prolix ring",
         ring2="Kishar ring",
         back={ name="Nantosuelta's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}},
-        belt="Channeler's stone",
+        belt="Embla sash",
         legs="Geomancy pants +3",
         feet="Merlinic crackows"
     }
@@ -145,8 +145,8 @@ function get_sets()
         ear2="Regal earring",
         body="Geomancy tunic +3",
         hands="Geomancy mitaines +3",
-        ring1="Stikini ring",
-        ring2="Stikini ring",
+        ring1="Stikini ring +1",
+        ring2="Stikini ring +1",
         waist="Luminary sash",
         legs="Geomancy pants +3",
         feet="Geomancy sandals +3",
@@ -171,9 +171,9 @@ function get_sets()
         back={ name="Nantosuelta's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}}
     }
 
-    --MB: 52
-    --MB2: 33
-    --Total MB: 83
+    --MB: 53
+    --MB2: 34
+    --Total MB: 84
     sets.midcast.elemental["magic-burst"] = set_combine(sets.midcast.elemental["magic-atk-bonus"], {
         head="Ea hat +1", --MB: 7 MB2:7
         neck="Mizukage-no-Kubikazari", -- MB: 10
@@ -182,7 +182,7 @@ function get_sets()
         hands="Amalric gages +1", --MB2: 6
         ring1="Mujin band", --MB2: 5
         ring2="Locus ring", --MB: 5
-        legs="Ea slops", --MB: 7 MB2:7
+        legs="Ea slops +1", --MB: 8 MB2:8
         feet=merlinic_feet_mb --MB: 11
     })
 
@@ -195,8 +195,8 @@ function get_sets()
         ear2="Malignance earring",
         body="Geomancy tunic +3",
         hands="Geomancy mitaines +3",
-        ring1="Stikini ring",
-        ring2="Stikini ring",
+        ring1="Stikini ring +1",
+        ring2="Stikini ring +1",
         back={ name="Nantosuelta's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}},
         waist="Luminary sash",
         legs="Geomancy pants +3",
@@ -216,8 +216,9 @@ function get_sets()
     sets.midcast.enhancing = set_combine(sets.midcast.conserve_mp, {
         sub="Ammurapi shield",
         head="Befouled crown",
-        ring1="Stikini ring",
-        ring2="Stikini ring"
+        ring1="Stikini ring +1",
+        ring2="Stikini ring +1",
+        waist="Embla sash"
     })
 
     sets.idle = {

@@ -23,11 +23,11 @@ function get_sets()
     sets.idle['regen'] = {}
 
     sets.ws = {
-        head={ name="Herculean Helm", augments={'DEX+1','CHR+3','Weapon skill damage +5%','Accuracy+17 Attack+17','Mag. Acc.+20 "Mag.Atk.Bns."+20',}},
-        body={ name="Herculean Vest", augments={'Accuracy+28','Weapon skill damage +4%','DEX+10','Attack+3',}},
-        hands={ name="Herculean Gloves", augments={'AGI+1','STR+12','Weapon skill damage +8%','Accuracy+11 Attack+11',}},
-        legs={ name="Lustr. Subligar +1", augments={'Accuracy+20','DEX+8','Crit. hit rate+3%',}},
-        feet={ name="Lustra. Leggings +1", augments={'HP+65','STR+15','DEX+15',}},
+        head={ name="Herculean Helm", augments={'DEX+1','CHR+3','Weapon skill damage +5%','Accuracy+17 Attack+17','Mag. Acc.+20 "Mag.Atk.Bns."+20'}},
+        body={ name="Herculean Vest", augments={'Accuracy+28','Weapon skill damage +4%','DEX+10','Attack+3'}},
+        hands={ name="Herculean Gloves", augments={'AGI+1','STR+12','Weapon skill damage +8%','Accuracy+11 Attack+11'}},
+        legs={ name="Lustr. Subligar +1", augments={'Accuracy+20','DEX+8','Crit. hit rate+3%'}},
+        feet={ name="Lustra. Leggings +1", augments={'HP+65','STR+15','DEX+15'}},
         neck="Fotia Gorget",
         waist="Fotia Belt",
         left_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
@@ -44,7 +44,7 @@ function get_sets()
         neck="Anu torque",
         ear1="Sherida earring",
         ear2="Telos earring",
-        body="Adhemar jacket +1",
+        body={ name="Herculean Vest", augments={'Accuracy+1','INT+1','"Treasure Hunter"+2','Accuracy+10 Attack+10'}},
         hands="Malignance gloves",
         ring1="Moonbeam ring",
         ring2="Chirich ring +1",
@@ -111,7 +111,9 @@ function precast(spell)
 end
 
 function midcast(spell)
-    equip(sets.midcast.fastcast)
+    if spell.action_type == 'Magic' then
+        equip(sets.midcast.fastcast)
+    end
 end
 
 function aftercast(spell)

@@ -116,7 +116,7 @@ function get_sets()
     sets.weapons["Magic Accuracy"] = {main = "Crocea Mors", sub="Ammurapi shield"}
     sets.weapons["Staff"] = {main = "Grioavolr", sub="Enki strap"}
     sets.weapons["Dual Wield"] = {main = "Crocea Mors", sub = "Daybreak"}
-    sets.weapons["Odin"] = {main = "Wind Knife", sub = "Qutrub Knife"}
+    sets.weapons["Odin"] = {main = "Aern Dagger", sub = "Qutrub Knife"}
         
     sets.engaged = {
         ammo="Ginsen",
@@ -124,7 +124,7 @@ function get_sets()
         neck="Anu Torque",
         ear1="Dignitary's earring",
         ear2="Sherida Earring",
-        body="Vitiation tabard +3",
+        body="Malignance tabard",
         hands="Maglignance gloves",
         ring1={name="Chirich ring +1", bag="wardrobe"},
         ring2="Hetairoi ring",
@@ -194,6 +194,7 @@ function get_sets()
         body="Vitiation tabard +3",
         hands="Leyline gloves",
         ring1="Kishar Ring",
+        waist="Embla Sash",
         legs="Aya. Cosciales +2"
     }
 
@@ -220,9 +221,9 @@ function get_sets()
         ear2="Calamitous Earring",
         body="Vitiation Tabard +3",
         hands="Vitiation gloves +1",
-        ring1="Stikini ring",
-        ring2="Stikini ring",
-        waist="Olympus sash",
+        ring1="Stikini ring +1",
+        ring2="Stikini ring +1",
+        waist="Embla sash",
         legs="Atrophy Tights +2",
         feet="Leth. Houseaux +1",
         back=Cape.Mnd
@@ -273,12 +274,12 @@ function get_sets()
         ammo="Regal Gem",
         head="Vitiation chapeau +3",
         neck="Duelist's Torque +1",
-        ear1="Malignance earring",
-        ear2="Regal earring",
+        ear1="Regal earring",
+        ear2="Malignance earring",
         body="Atrophy Tabard +3",
         hands="Lethargy gantherots +1",
-        ring1="Stikini ring",
-        ring2="Stikini ring",
+        ring1="Stikini ring +1",
+        ring2="Stikini ring +1",
         waist="Luminary Sash",
         back=Cape.Int,
         legs="Chironic hose",
@@ -362,7 +363,7 @@ function get_sets()
         ring1="Locus Ring",
         ring2="Mujin Band",
         waist="Eschan Stone",
-        legs="Ea slops",
+        legs="Ea slops +1",
         feet=merlinic_feet_mb
     })
 
@@ -376,6 +377,14 @@ function get_sets()
     sets.midcast['Impact'] = set_combine(sets.midcast.elemental["High Acc"], {
         head=empty,
         body='Twilight cloak'
+    })
+
+    sets.fc['Dispelga'] = set_combine(sets.fc, {
+        main="Daybreak"
+    })
+
+    sets.midcast['Dispelga'] = set_combine(sets.midcast.enfeebling.int["High Acc"], {
+        main="Daybreak"
     })
 
     sets.ws = {}

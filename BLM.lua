@@ -123,13 +123,13 @@ function get_sets()
     sets.precast.ja['Subtle Sorcery'] = {}
     sets.precast.ja['Cascade'] = {}
 
-    --41% fc
+    --44% fc
     sets.precast.fc = {
         head="Merlinic hood", --fast cast 8%
         body="Merlinic jubbah", --fast cast 8%
         legs="Lengo pants",
         feet="Merlinic crackows", --fast cast 5%
-        waist="Channeler's stone", --fast cast 2%
+        waist="Embla sash", --fast cast 5%
         left_ear="Malignance earring", --fast cast 4%
         right_ear="Loquacious Earring", --fast cast 2%
         ring2="Prolix Ring", --fast cast 2%
@@ -172,7 +172,7 @@ function get_sets()
         waist="Eschan Stone",
         left_ear="Barkarole earring",
         right_ear="Malignance earring",
-        left_ring="Stikini Ring",
+        left_ring="Stikini Ring +1",
         right_ring="Shiva Ring +1",
         back=magic_atk_cape,
     }
@@ -187,16 +187,16 @@ function get_sets()
         body='Twilight cloak'
     })
 
-    --MB1 Total: 49
-    --MB2 Total: 32
-    --MB Total: 81
+    --MB1 Total: 50
+    --MB2 Total: 33
+    --MB Total: 83
     sets.midcast.elemental["Magic Burst"] = set_combine(sets.midcast.elemental["Magic Attack Bonus"], {
         head="Ea hat +1", --MB: 6 MB2:6
         neck="Sorcerer's stole +1", --MB: 7
         ear2="Static earring", --MB: 5
         body="Ea houppelande", --MB: 8 MB2:8
         hands="Amalric gages +1", --MB2: 6
-        legs="Ea slops", --MB: 7 MB2:7
+        legs="Ea slops +1", --MB: 8 MB2:8
         feet={ name="Merlinic Crackows", augments={'"Mag.Atk.Bns."+25','Magic burst dmg.+11%','Mag. Acc.+5'}}, --MB: 11
         left_ring="Mujin band", --MB2: 5
         back=magic_atk_cape --MB 5
@@ -210,10 +210,10 @@ function get_sets()
         ear1="Regal earring",
         body="Ea houppelande",
         hands="Amalric gages +1",
-        ring1="Stikini ring",
+        ring1="Stikini ring +1",
         ring2="Shiva ring +1",
         back=magic_atk_cape,
-        belt="Channeler's stone",
+        waist="Embla sash",
         legs="Archmage's tonban +3",
         feet="Jhakri pigaches +2"
     }
@@ -226,7 +226,7 @@ function get_sets()
         right_ear="Malignance earring",
         body = "Spaekona's coat +3",
         hands= "Spaekona's gloves +3",
-        left_ring="Stikini Ring",
+        left_ring="Stikini Ring +1",
         right_ring="Kishar Ring",
         back=magic_atk_cape,
         waist="Luminary Sash",
@@ -241,7 +241,7 @@ function get_sets()
         ring1 = "Haoma's ring",
         ring2 = "Haoma's ring",
         back = "Solemnity cape",
-        waist = "Channeler's stone",
+        waist = "Embla sash",
         legs = "Gyve trousers",
         feet = "Medium's sabots"
     })
@@ -266,7 +266,7 @@ function get_sets()
         ear1="Andoaa earring",
         body="Telchine chasuble",
         hands="Telchine gloves",
-        waist="Olympus sash",
+        waist="Embla sash",
         legs="Telchine braconi",
         feet="Telchine pigaches"
     })
@@ -298,7 +298,7 @@ function get_sets()
         ring1="Shiva ring +1",
         ring2="Persis ring",
         back=magic_atk_cape,
-        waist="Channeler's stone",
+        waist="Fotia belt",
         legs="Archmage's tonban +3",
         feet="Archmage's sabots +3"
     }
@@ -313,7 +313,7 @@ function get_sets()
         ring1="Shiva ring +1",
         ring2="Persis ring",
         back=magic_atk_cape,
-        waist="Channeler's stone",
+        waist="Fotia belt",
         legs="Jhakri slops +2",
         feet="Jhakri pigaches +2"
     }

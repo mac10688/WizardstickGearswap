@@ -90,7 +90,7 @@ function get_sets()
 
     local herc_head_ws = { name="Herculean Helm", augments={'DEX+1','CHR+3','Weapon skill damage +5%','Accuracy+17 Attack+17','Mag. Acc.+20 "Mag.Atk.Bns."+20'}}
     local herc_hand_ws = { name="Herculean Gloves", augments={'AGI+1','STR+12','Weapon skill damage +8%','Accuracy+11 Attack+11'}}
-    local herc_body_ws = { name="Herculean Vest", augments={'Attack+25','Weapon skill damage +3%','Accuracy+8 Attack+8'}}
+    local herc_body_ws = { name="Herculean Vest", augments={'Accuracy+28','Weapon skill damage +4%','DEX+10','Attack+3'}}
     local herc_legs_ws = { name="Herculean Trousers", augments={'Potency of "Cure" effect received+4%','STR+1','Weapon skill damage +8%','Accuracy+13 Attack+13','Mag. Acc.+14 "Mag.Atk.Bns."+14'}}
 
     sets.enmity = {
@@ -225,7 +225,10 @@ function get_sets()
 
     --Phalanx: +5
     sets.midcast.enhancing["Phalanx"] = set_combine(sets.midcast.enhancing, {
-        head="Futhark bandeau +3"
+        head="Futhark bandeau +3",
+        body={ name="Herculean Vest", augments={'STR+2','AGI+2','Phalanx +4','Mag. Acc.+10 "Mag.Atk.Bns."+10'}},
+        ring1="Stikini ring +1",
+        ring2="Stikini ring +1",
     })
 
     -- Weaponskill sets
@@ -355,7 +358,7 @@ function get_sets()
     sets.tank["mdt"] = {
         ammo="Staunch tathlum +1", --dt: 2 status: 10
         head="Runeist's bandeau +3", --mdb: 3 meva: 83 haste: 8
-        neck="Futhark +1", --mdb: 8
+        neck="Futhark torque +1", --mdb: 8
         ear1="Hearty earring", --status: 5
         ear2="Odnowa earring +1", --dt: 2 acc: 5~10
         body="Runeist's coat +3", --mdb: 7 meva: 94 haste: 4 

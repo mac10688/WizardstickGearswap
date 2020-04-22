@@ -121,7 +121,7 @@ function get_sets()
     sets.ja = {}
     sets.ja['Tabula Rasa'] = { legs="Pedagogy Pants +3" }
     sets.ja['Enlightenment'] = {body="Pedagogy gown +3"}
-    sets.ja['Sublimation'] = {head="Academic's mortarboard +3", body="Pedagogy gown +3"}
+    sets.ja['Sublimation'] = {head="Academic's mortarboard +3", body="Pedagogy gown +3", waist="Embla sash"}
     -- sets.precast.ja['Altruism'] = {}
     sets.ja['Focalization'] = {head="Pedagogy mortarboard +3"}
 
@@ -167,7 +167,7 @@ function get_sets()
 		feet="Academic's loafers +3",
     }
 
-    --64% fc
+    --67% fc
     sets.precast.fc = {
         ammo="Incantor stone", --fast cast 2%
         head="Academic's mortarboard +3", --fast cast 8%
@@ -179,7 +179,7 @@ function get_sets()
         ring1="Kishar ring", --fast cast 4%
         ring2="Prolix Ring", --fast cast 2%
         back=fc_cape, --fast cast 10%
-        waist="Channeler's stone", --fast cast 2%
+        waist="Embla sash", --fast cast 5%
         legs="Lengo pants", --fast cast 5%
         feet="Pedagogy loafers +3" --fast cast 8%
     }
@@ -226,7 +226,7 @@ function get_sets()
         ear2="Malignance earring",
         body="Pedagogy gown +3",
         hands="Amalric gages +1",
-        left_ring="Stikini Ring",
+        left_ring="Stikini Ring +1",
         right_ring="Shiva Ring +1",
         back=nuke_cape,
         waist="Eschan stone",
@@ -289,8 +289,8 @@ function get_sets()
         ear2="Regal earring",
         body="Academic's gown +3",
         hands="Academic's bracers +3",
-        ring1="Stikini ring",
-        ring2="Kishar ring",
+        ring1="Stikini ring +1",
+        ring2="Kishar ring +1",
         back=nuke_cape,
         waist="Luminary sash",
         legs="Chironic hose",
@@ -382,9 +382,9 @@ function get_sets()
         ear1="Andoaa earring",
         body="Pedagogy gown +3",
         hands="Chironic gloves",
-        waist="Olympus sash",
-        ring1="Stikini ring",
-        ring2="Stikini ring"
+        waist="Embla sash",
+        ring1="Stikini ring +1",
+        ring2="Stikini ring +1"
     })
 
     sets.midcast.storm = set_combine(sets.midcast.enhancement_duration,{
@@ -410,7 +410,6 @@ function get_sets()
         ring1="Shiva ring +1",
         ring2="Persis ring",
         backl=nuke_cape,
-        waist="Channeler's stone",
         legs="Mallquis trews +2",
         feet="Academic's loafers +3"
     }
@@ -422,7 +421,7 @@ function get_sets()
         ear2="Ishvara earring",
         body="Pedagogy gown +3",
         hands="Jhakri cuffs +2",
-        ring1="Stikini ring",
+        ring1="Stikini ring +1",
         ring2="Persis ring",
         backl=cure_cape,
         waist="Luminary sash",

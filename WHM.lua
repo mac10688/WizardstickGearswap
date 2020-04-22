@@ -69,7 +69,7 @@ function get_sets()
         ring1="Prolix Ring",
         ring2="Kishar ring",
         back={ name="Alaunus's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}},
-        waist="Channeler's stone",
+        waist="Embla Sash",
         legs="Lengo pants",
         feet="Kaykaus boots"
     }
@@ -253,11 +253,12 @@ function get_sets()
         main="Beneficus",
         sub="Ammurapi shield",
         head="Befouled crown",
+        ear1="Andoaa earring",
         hands="Inyanga dastanas +2",
-        ring1="Stikini ring",
-        ring2="Stikini ring",
+        ring1="Stikini ring +1",
+        ring2="Stikini ring +1",
         back={ name="Alaunus's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}},
-        waist="Austerity belt +1",
+        waist="Olympus sash",
         legs="Piety Pantaloons +3",
         feet="Theophany duckbills +3"
     }
@@ -274,7 +275,7 @@ function get_sets()
         main="Beneficus",
         head="Ebers cap +1",
         body="Ebers Bliaud +1",
-        hands="Ebers mitts +1",
+        -- hands="Ebers mitts +1",
         legs="Piety Pantaloons +3",
         feet="Ebers duckbills +1"
     })
@@ -320,7 +321,7 @@ function get_sets()
         ear2="Regal earring",
         body="Theophany briault +3",
         hands="Inyanga dastanas +2",
-        ring1="Stikini ring",
+        ring1="Stikini ring +1",
         ring2="Kishar ring",
         back={ name="Alaunus's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}},
         waist="Luminary sash",
@@ -336,8 +337,8 @@ function get_sets()
         ear2="Regal earring",
         body="Theophany briault +3",
         hands="Inyanga dastanas +2",
-        ring1="Stikini ring",
-        ring2="Stikini ring",
+        ring1="Stikini ring +1",
+        ring2="Stikini ring +1",
         back={ name="Alaunus's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}},
         waist="Luminary sash",
         legs="Theophany pantaloons +3",
