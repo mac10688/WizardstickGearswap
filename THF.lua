@@ -30,6 +30,7 @@ function get_sets()
         feet={ name="Lustra. Leggings +1", augments={'HP+65','STR+15','DEX+15'}},
         neck="Fotia Gorget",
         waist="Fotia Belt",
+        back={ name="Toutatis's Cape", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Weapon skill damage +10%','Damage taken-5%'}},
         left_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
         right_ear="Ishvara Earring",
         left_ring="Regal Ring",
@@ -44,11 +45,12 @@ function get_sets()
         neck="Anu torque",
         ear1="Sherida earring",
         ear2="Telos earring",
-        body={ name="Herculean Vest", augments={'Accuracy+1','INT+1','"Treasure Hunter"+2','Accuracy+10 Attack+10'}},
+        body="Malignance tabard",
         hands="Malignance gloves",
         ring1="Moonbeam ring",
-        ring2="Chirich ring +1",
+        ring2={name="Chirich ring +1", bag="wardrobe"},
         waist="Chaac belt",
+        back={ name="Toutatis's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Attack+10','Haste+10','Damage taken-5%'}},
         legs="Samnuha tights",
         feet="Meghanada jambeaux +2"
     }
@@ -77,7 +79,7 @@ end
 --Read the current state of engaged mode, tank mode and kiting mode to determine the gear to put on
 function SetGearToState(status)
     
-    if player.in_combat then
+    if status == "Engaged" then
         local offensiveSpecMode = OffensiveSpecModes[OffensiveSpecModeIndex]
         equip(sets.melee[offensiveSpecMode])
     else

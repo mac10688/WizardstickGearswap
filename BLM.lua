@@ -139,6 +139,7 @@ function get_sets()
     
 
     sets.precast.fc.elemental = set_combine(sets.precast.fc, {
+        head="Spaekona's petasos +3",
         legs="Mallquis trews +2",
         left_ring="Mallquis Ring",
         left_ear="Barkarole earring",
@@ -187,9 +188,9 @@ function get_sets()
         body='Twilight cloak'
     })
 
-    --MB1 Total: 50
+    --MB1 Total: 49
     --MB2 Total: 33
-    --MB Total: 83
+    --MB Total: 82
     sets.midcast.elemental["Magic Burst"] = set_combine(sets.midcast.elemental["Magic Attack Bonus"], {
         head="Ea hat +1", --MB: 6 MB2:6
         neck="Sorcerer's stole +1", --MB: 7
@@ -197,7 +198,7 @@ function get_sets()
         body="Ea houppelande", --MB: 8 MB2:8
         hands="Amalric gages +1", --MB2: 6
         legs="Ea slops +1", --MB: 8 MB2:8
-        feet={ name="Merlinic Crackows", augments={'"Mag.Atk.Bns."+25','Magic burst dmg.+11%','Mag. Acc.+5'}}, --MB: 11
+        feet="Spaekona's sabots +3", --MB: 10
         left_ring="Mujin band", --MB2: 5
         back=magic_atk_cape --MB 5
     })
@@ -220,7 +221,7 @@ function get_sets()
 
     sets.midcast.enfeebling = set_combine(sets.midcast.fast_recast, {
         ammo="Pemphredo tathlum",
-        head = "Archmage's petasos +3",
+        head = "Spaekona's petasos +3",
         neck = "Sorcerer's stole +1",
         left_ear = "Regal earring",
         right_ear="Malignance earring",
@@ -264,8 +265,11 @@ function get_sets()
     sets.midcast.enhancing_magic = set_combine(sets.midcast.conserve_mp, {
         head="Telchine cap",
         ear1="Andoaa earring",
+        ear2="Mimir earring",
         body="Telchine chasuble",
         hands="Telchine gloves",
+        ring1="Stikini ring +1",
+        ring2="Stikini ring +1",
         waist="Embla sash",
         legs="Telchine braconi",
         feet="Telchine pigaches"

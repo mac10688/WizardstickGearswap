@@ -87,7 +87,7 @@ function get_sets()
     sets.midcast.geomancy = set_combine(sets.midcast.conserve_mp, {
         main="Idris", 
         range="Dunna",
-        neck="Bagua charm",
+        neck="Bagua charm +2",
         head="Azimuth hood +1",
         body="Bagua tunic +3",
         hands="Geomancy mitaines +3",
@@ -216,6 +216,8 @@ function get_sets()
     sets.midcast.enhancing = set_combine(sets.midcast.conserve_mp, {
         sub="Ammurapi shield",
         head="Befouled crown",
+        ear1="Andoaa earring",
+        ear2="Mimir earring",
         ring1="Stikini ring +1",
         ring2="Stikini ring +1",
         waist="Embla sash"
@@ -243,7 +245,7 @@ function get_sets()
         main="Idris",
         range="Dunna",
         head="Azimuth hood +1",
-        neck="Bagua charm",
+        neck="Bagua charm +2",
         hands="Geomancy mitaines +3",
         back={ name="Nantosuelta's Cape", augments={'MND+20','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Pet: "Regen"+10','Pet: "Regen"+5'}},
         feet="Bagua sandals +1"

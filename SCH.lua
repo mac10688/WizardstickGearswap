@@ -380,6 +380,7 @@ function get_sets()
         sub="Ammurapi shield",
         head="Arbatel bonnet +1",
         ear1="Andoaa earring",
+        ear2="Mimir earring",
         body="Pedagogy gown +3",
         hands="Chironic gloves",
         waist="Embla sash",

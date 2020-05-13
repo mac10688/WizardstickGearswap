@@ -252,13 +252,15 @@ function get_sets()
     sets.midcast.enhancing = {
         main="Beneficus",
         sub="Ammurapi shield",
-        head="Befouled crown",
+        head="Telchine cap",
         ear1="Andoaa earring",
+        ear2="Mimir earring",
+        body="Telchine chasuble",
         hands="Inyanga dastanas +2",
         ring1="Stikini ring +1",
         ring2="Stikini ring +1",
         back={ name="Alaunus's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}},
-        waist="Olympus sash",
+        waist="Embla sash",
         legs="Piety Pantaloons +3",
         feet="Theophany duckbills +3"
     }

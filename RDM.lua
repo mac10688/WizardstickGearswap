@@ -1,6 +1,6 @@
 res = require('resources')
 
-Weapon_Sets = {"Empty", "Sword", "Magic Accuracy", "Staff", "Dual Wield", "Odin"}
+Weapon_Sets = {"Empty", "Sword", "Magic Accuracy", "Staff", "Dual Wield", "Odin", "Savage"}
 WeaponSetsIndex = 2
 
 NukeSet = {"Low Acc", "High Acc", "Magic Burst"}
@@ -117,6 +117,7 @@ function get_sets()
     sets.weapons["Staff"] = {main = "Grioavolr", sub="Enki strap"}
     sets.weapons["Dual Wield"] = {main = "Crocea Mors", sub = "Daybreak"}
     sets.weapons["Odin"] = {main = "Aern Dagger", sub = "Qutrub Knife"}
+    sets.weapons["Savage"] = {main = "Naegling", sub = "Tauret"}
         
     sets.engaged = {
         ammo="Ginsen",
@@ -217,8 +218,8 @@ function get_sets()
         ammo="Pemphredo Tathlum",
         head="Befouled Crown",
         neck="Duelist's Torque +1",
-        ear1="Mendi. Earring",
-        ear2="Calamitous Earring",
+        ear1="Andoaa earring",
+        ear2="Mimir earring",
         body="Vitiation Tabard +3",
         hands="Vitiation gloves +1",
         ring1="Stikini ring +1",
@@ -287,6 +288,7 @@ function get_sets()
     }
 
     sets.midcast.enfeebling.mnd = set_combine(sets.midcast.enfeebling, {
+        ear1="Snotra Earring",
         back=Cape.Mnd
     })
 
