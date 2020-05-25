@@ -191,7 +191,7 @@ function get_sets()
         hands="Leyline gloves",
         ring2="Kishar ring",
         back=fast_cast_cape,
-        waist="Ioskeha belt +1",
+        waist="Audumbla sash",
         feet="Carmine greaves +1"
     })
 
@@ -209,7 +209,7 @@ function get_sets()
         ear1="Andoaa earring",
         ear2="Mimir earring",
         hands="Runeist's mitons +2", --Enhancing magic skill +15
-        waist="Olympus sash",
+        waist="Audumbla sash",
         legs="Futhark trousers +3" --Enhancing magic duration +20%
     }
 

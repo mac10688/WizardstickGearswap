@@ -102,7 +102,7 @@ function get_sets()
         body="Bagua tunic +3",
         hands="Geomancy mitaines +3",
         back="Lifestream cape",
-        legs="Bagua pants +1",
+        legs="Bagua pants +3",
         feet="Azimuth gaiters +1"
     })
 
@@ -200,7 +200,7 @@ function get_sets()
         back={ name="Nantosuelta's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}},
         waist="Luminary sash",
         legs="Geomancy pants +3",
-        feet="Geomancy sandals +3"
+        feet="Bagua sandals +3"
     }
 
     sets.fc['Impact'] = set_combine(sets.fc, {
@@ -248,7 +248,7 @@ function get_sets()
         neck="Bagua charm +2",
         hands="Geomancy mitaines +3",
         back={ name="Nantosuelta's Cape", augments={'MND+20','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Pet: "Regen"+10','Pet: "Regen"+5'}},
-        feet="Bagua sandals +1"
+        feet="Bagua sandals +3"
     })
 
     sets.engaged = {ring2="Chirich ring +1"}
