@@ -21,7 +21,6 @@ EnhancingMagicModeIndex = 1
 MagicAccuracyMode = {"High Acc", "Low Acc"}
 MagicAccuracyModeIndex = 1
 
-EnspellActive = true
 Kiting = false
 
 MndEnfeebles = S{"Paralyze", "Paralyze II"
@@ -41,7 +40,6 @@ send_command("bind f9 gs c TankMode")
 send_command("bind ^f9 gs c Cycle IdleMode")
 send_command("bind f10 gs c OffensiveMode")
 send_command("bind ^f10 gs c Cycle PhysicalAccuracyMode")
-send_command("bind @f10 gs c Toggle EnspellMode")
 send_command("bind !f10 gs c Cycle WeaponSet")
 send_command("bind ^f11 gs c Cycle MagicMode")
 send_command('bind @f11 gs c Cycle NukeSet')
@@ -53,7 +51,6 @@ send_command('bind ^k gs c Toggle Kiting')
 function file_unload()
     send_command('unbind f9')
     send_command('unbind ^f9')
-    send_command('unbind f10')
     send_command('unbind ^f10')
     send_command('unbind @f10')
     send_command('unbind !f10')
@@ -593,13 +590,13 @@ function SetGearToState(state)
                                            ['Light']={"Enthunder", "Enthunder II"},
                                            ['Dark']={"Enblizzard", "Enblizzard II"}}
             if IsDualWield() then
-                if EnspellActive and IsEnspellActive() then
+                if IsEnspellActive() then
                     equip(sets.engaged.dw[accuracyMode].enspell)
                 else
                     equip(sets.engaged.dw[accuracyMode])
                 end
             else
-                if EnspellActive and IsEnspellActive() then
+                if IsEnspellActive() then
                     equip(sets.engaged.sw[accuracyMode].enspell)
                 else
                     equip(sets.engaged.sw[accuracyMode])
@@ -676,10 +673,6 @@ function self_command(command)
     elseif command == "Cycle PhysicalAccuracyMode" then
         PhysicalAccuracyModeIndex = PhysicalAccuracyModeIndex % #PhysicalAccuracyMode + 1
         add_to_chat(122,  "Physical Accuracy Mode: " .. PhysicalAccuracyMode[PhysicalAccuracyModeIndex])
-        SetGearToState(player.status)
-    elseif command == "Toggle EnspellMode" then
-        EnspellActive = not EnspellActive
-        add_to_chat(122,  "Enspell Mode: " .. (EnspellActive and "On" or "Off"))
         SetGearToState(player.status)
     elseif command == "Cycle MagicMode" then
         MagicAccuracyModeIndex = MagicAccuracyModeIndex % #MagicAccuracyMode + 1
