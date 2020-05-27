@@ -1,24 +1,12 @@
 res = require('resources')
 
-Weapon_Sets = {"Empty", "Sword", "Magic Accuracy", "Staff", "Dual Wield", "Odin", "Savage"}
+Weapon_Sets = {"Sword", "Magic Accuracy", "Staff", "Dual Wield", "Odin", "Savage"}
 WeaponSetsIndex = 2
 
-NukeSet = {"Low Acc", "High Acc", "Magic Burst"}
-NukeSetIndex = 3
-
-EngagedMode = {"Tank", "Offense"}
-EngagedModeIndex = 2
-
-PhysicalAccuracyMode = {"High Acc", "Low Acc"}
+PhysicalAccuracyMode = {"High Acc", "Multi-Attack"}
 PhysicalAccuracyModeIndex = 2
 
-IdleMode = {"Refresh", "Damage Taken"}
-IdleModeIndex = 2
-
-EnhancingMagicMode = {"Duration", "Potency"}
-EnhancingMagicModeIndex = 1
-
-MagicAccuracyMode = {"High Acc", "Low Acc"}
+MagicAccuracyMode = {"High Acc", "Potency"}
 MagicAccuracyModeIndex = 1
 
 Kiting = false
@@ -36,30 +24,19 @@ IntEnfeebles = S{"Bind"}
 
 MagicAccEnfeebles = S{"Gravity", "Gravity II", "Break", "Inundation", "Sleep", "Sleep II", "Dispel", "Dia", "Dia II", "Dia III"}
 
-send_command("bind f9 gs c TankMode")
-send_command("bind ^f9 gs c Cycle IdleMode")
-send_command("bind f10 gs c OffensiveMode")
 send_command("bind ^f10 gs c Cycle PhysicalAccuracyMode")
 send_command("bind !f10 gs c Cycle WeaponSet")
 send_command("bind ^f11 gs c Cycle MagicMode")
-send_command('bind @f11 gs c Cycle NukeSet')
-send_command("bind !f11 gs c Cycle EnhancingMode")
 send_command("bind f12 gs c RefreshSet")
 send_command('bind ^k gs c Toggle Kiting')
 
 
 function file_unload()
-    send_command('unbind f9')
-    send_command('unbind ^f9')
     send_command('unbind ^f10')
-    send_command('unbind @f10')
     send_command('unbind !f10')
     send_command('unbind ^f11')
-    send_command('unbind @f11')
-    send_command('unbind !f11')
     send_command("unbind f12")
     send_command('unbind ^k')
-    enable('main', 'sub')
 end
 
 function get_sets()
@@ -72,7 +49,7 @@ function get_sets()
 
     sets.idle = {}
 
-    sets.idle["Damage Taken"] = {
+    sets.idle = {
         main="Mafic cudgel",
         sub="Genmei shield",
         ammo="Staunch tathlum +1",
@@ -90,14 +67,6 @@ function get_sets()
         feet="Ayanmo gambieras +2"
     }
 
-    sets.idle["Refresh"] = set_combine(sets.idle["Damage Taken"], {
-        main="Bolelabunga",
-        ammo="Homiliary",
-        head="Vitiation chapeau +3",
-        body="Shamash robe",
-        waist="Fucho-no-Obi"
-    })
-
     sets.kite = {
         legs="Carmine cuisses +1"
     }
@@ -108,7 +77,6 @@ function get_sets()
     sets.ja["Chainspell"] = {body="Vitiation tabard +3"}
 
     sets.weapons = {}
-    sets.weapons["Empty"] = {}
     sets.weapons["Sword"] = {main = "Crocea Mors", sub="Genmei shield"}
     sets.weapons["Magic Accuracy"] = {main = "Crocea Mors", sub="Ammurapi shield"}
     sets.weapons["Staff"] = {main = "Grioavolr", sub="Enki strap"}
@@ -132,7 +100,7 @@ function get_sets()
         feet="Vitiation boots +3"
     }
 
-    sets.engaged["Low Acc"] = set_combine( sets.engaged, {
+    sets.engaged["Multi-Attack"] = set_combine( sets.engaged, {
 
     })
 
@@ -151,39 +119,23 @@ function get_sets()
     }
 
     sets.engaged.dw = {}
-    sets.engaged.dw["Low Acc"] = set_combine(sets.engaged["Low Acc"], {
+    sets.engaged.dw["Multi-Attack"] = set_combine(sets.engaged["Multi-Attack"], {
         waist="Reiki yotai"
     })
 
-    sets.engaged.dw["High Acc"] = set_combine(sets.engaged.dw["Low Acc"], {
+    sets.engaged.dw["High Acc"] = set_combine(sets.engaged.dw["Multi-Attack"], {
         legs={ name="Carmine Cuisses +1", augments={'Accuracy+20','Attack+12','"Dual Wield"+6'}}
     })
 
-    sets.engaged.dw["Low Acc"].enspell = set_combine(sets.engaged.dw["Low Acc"], sets.engaged.enspell)
+    sets.engaged.dw["Multi-Attack"].enspell = set_combine(sets.engaged.dw["Multi-Attack"], sets.engaged.enspell)
     sets.engaged.dw["High Acc"].enspell = set_combine(sets.engaged.dw["High Acc"], sets.engaged.enspell)
     
     sets.engaged.sw = {}
-    sets.engaged.sw["Low Acc"] = sets.engaged["Low Acc"]
+    sets.engaged.sw["Multi-Attack"] = sets.engaged["Multi-Attack"]
     sets.engaged.sw["High Acc"] = sets.engaged["High Acc"]
 
-    sets.engaged.sw["Low Acc"].enspell = set_combine(sets.engaged.sw["Low Acc"], sets.engaged.enspell)
+    sets.engaged.sw["Multi-Attack"].enspell = set_combine(sets.engaged.sw["Multi-Attack"], sets.engaged.enspell)
     sets.engaged.sw["High Acc"].enspell = set_combine(sets.engaged.sw["High Acc"], sets.engaged.enspell)
-
-    sets.engaged.sw["Damage Taken"] = {
-        ammo="Staunch tathlum +1",
-        head="Aya. Zucchetto +2",
-        neck="Loricate Torque +1",
-        ear1="Genmei Earring",
-        ear2="Odnowa Earring +1",
-        body="Ayanmo Corazza +2",
-        hands="Aya. Manopolas +2",
-        ring1="Ayanmo Ring",
-        ring2="Defending Ring",
-        back=Cape.Int,
-        waist="Slipor sash",
-        legs="Aya. Cosciales +2",
-        feet="Aya. Gambieras +2"
-    }
 
     sets.fc = {   
         head="Atrophy chapeau +3",
@@ -234,13 +186,6 @@ function get_sets()
         feet="Lethargy houseaux +1"
     })
 
-    sets.midcast.enhancing["Duration"].Self = set_combine(sets.midcast.enhancing["Duration"], {
-        feet="Telchine pigaches"
-    })
-
-    sets.midcast.enhancing["Potency"] = sets.midcast.enhancing
-    sets.midcast.enhancing["Potency"].Self = sets.midcast.enhancing
-
     sets.midcast.enhancing.spikes = set_combine(sets.midcast.enhancing, {
         legs="Vitiation tights +3"
     })
@@ -254,17 +199,7 @@ function get_sets()
         legs="Lethargy fuseau +1"
     })
 
-    sets.midcast.enhancing.refresh.Self = set_combine(sets.midcast.enhancing["Duration"], {
-        body="Atrophy tabard +3",
-        legs="Lethargy fuseau +1"
-    })
-
-    sets.midcast.enhancing.regen = set_combine(sets.midcast.enhancing["Duration"], {
-    })
-
-    sets.midcast.enhancing.regen.Self = set_combine(sets.midcast.enhancing["Duration"], {
-
-    })
+    sets.midcast.enhancing.regen = sets.midcast.enhancing["Duration"]
 
     sets.midcast.enfeebling = {
         main="Gada",
@@ -292,7 +227,7 @@ function get_sets()
     sets.midcast.enfeebling.mnd["High Acc"] = set_combine(sets.midcast.enfeebling.mnd, {
     })
             
-    sets.midcast.enfeebling.mnd["Low Acc"] = set_combine(sets.midcast.enfeebling.mnd, {
+    sets.midcast.enfeebling.mnd["Potency"] = set_combine(sets.midcast.enfeebling.mnd, {
         ring2="Kishar Ring",
         body="Lethargy sayon +1"
     })
@@ -304,7 +239,7 @@ function get_sets()
     sets.midcast.enfeebling.int["High Acc"] = set_combine(sets.midcast.enfeebling.int, {
     })
             
-    sets.midcast.enfeebling.int["Low Acc"]= set_combine(sets.midcast.enfeebling.int, {
+    sets.midcast.enfeebling.int["Potency"]= set_combine(sets.midcast.enfeebling.int, {
         body="Lethargy Sayon +1",
         right_ring="Kishar Ring"
     })
@@ -314,20 +249,20 @@ function get_sets()
     merlinic_legs_mab = { name="Merlinic Shalwar", augments={'Mag. Acc.+20 "Mag.Atk.Bns."+20','Enmity-1','CHR+8','Mag. Acc.+15'}}
     merlinic_feet_mab = { name="Merlinic Crackows", augments={'Mag. Acc.+19 "Mag.Atk.Bns."+19','Magic burst dmg.+1%','INT+7','Mag. Acc.+15','"Mag.Atk.Bns."+14'}}
 
+    merlinic_feet_mb = { name="Merlinic Crackows", augments={'"Mag.Atk.Bns."+25','Magic burst dmg.+11%','Mag. Acc.+5'}}
     sets.midcast.elemental = {
-        ammo="Pemphredo tathlum",
-        head=merlinic_head_mab,
-        neck="Sanctity Necklace",
-        ear1="Barkarole earring",
+        ammo="Pemphredo Tathlum",
+        head="Ea hat +1",
+        neck="Mizu. Kubikazari",
+        ear1="Static Earring",
         ear2="Malignance earring",
-        body=merlinic_body_mab,
+        body="Ea houppelande",
         hands="Amalric gages +1",
-        left_ring="Mallquis ring",
-        right_ring="Shiva Ring +1",
-        back=Cape.Int,
-        waist="Eschan stone",
-        legs=merlinic_legs_mab,
-        feet=merlinic_feet_mab
+        ring1="Locus Ring",
+        ring2="Mujin Band",
+        waist="Eschan Stone",
+        legs="Ea slops +1",
+        feet=merlinic_feet_mb
     }
 
     sets.midcast.dark_magic = set_combine(sets.midcast.elemental, {
@@ -344,27 +279,6 @@ function get_sets()
     })
 
     sets.midcast.aspir = sets.midcast.drain
-
-    sets.midcast.elemental["Low Acc"] = set_combine(sets.midcast.elemental, {})
-    sets.midcast.elemental["High Acc"] = set_combine(sets.midcast.elemental, {})
-
-    merlinic_feet_mb = { name="Merlinic Crackows", augments={'"Mag.Atk.Bns."+25','Magic burst dmg.+11%','Mag. Acc.+5'}}
-    sets.midcast.elemental["Magic Burst"] = set_combine(sets.midcast.elemental, {
-        main="Grioavolr",
-        sub="Enki strap",
-        ammo="Pemphredo Tathlum",
-        head="Ea hat +1",
-        neck="Mizu. Kubikazari",
-        ear1="Static Earring",
-        ear2="Malignance earring",
-        body="Ea houppelande",
-        hands="Amalric gages +1",
-        ring1="Locus Ring",
-        ring2="Mujin Band",
-        waist="Eschan Stone",
-        legs="Ea slops +1",
-        feet=merlinic_feet_mb
-    })
 
     sets.midcast["Paralyze"] = sets.midcast.enfeebling.mnd["Low Acc"]
 
@@ -421,37 +335,21 @@ function get_sets()
     }
         
     sets.ws["Red Lotus Blade"] = sets.ws.magic
-
     sets.ws["Seraph Blade"] = sets.ws.magic
-
     sets.ws["Circle Blade"] = sets.ws.physical
-
     sets.ws["Vorpal Blade"] = sets.ws.physical
-
-    sets.ws["Savage Blade"] = set_combine( sets.ws.physical, {
-    })
-
-    sets.ws["Death Blossom"] = sets.ws["Savage Blade"]
-
+    sets.ws["Savage Blade"] = sets.ws.physical
+    sets.ws["Death Blossom"] = sets.ws.physical
     sets.ws["Sanguine Blade"] = set_combine(sets.ws.magic, {
         head="Pixie Hairpin +1",
         waist="Orpheus's sash"
     })
 
-    sets.ws["Chant du Cygne"] = set_combine(sets.ws.physical, {
-    })
-
-    sets.ws["Requiescat"] = set_combine(sets.ws.physical, {
-    })
-    
-    sets.ws["Evisceration"] = set_combine(sets.ws.physical, {
-    })
-
-    sets.ws["Aeolian Edge"] = set_combine(sets.ws.magic, {
-    })
-
-    sets.ws["Exenterator"] = set_combine(sets.ws.physical, {
-    })
+    sets.ws["Chant du Cygne"] = sets.ws.physical
+    sets.ws["Requiescat"] = sets.ws.physical    
+    sets.ws["Evisceration"] = sets.ws.physical
+    sets.ws["Aeolian Edge"] = sets.ws.magic
+    sets.ws["Exenterator"] = sets.ws.physical
 
     coroutine.schedule(lockstyle,4)
 
@@ -489,31 +387,15 @@ function midcast(spell)
         -- Enhancing Magic --
         elseif spell.skill == 'Enhancing Magic' then
             if string.find(spell.english, "Regen") then
-                if(spell.target.name == player.name) then
-                    equip(sets.midcast.enhancing.regen.Self)
-                else
-                    equip(sets.midcast.enhancing.regen)
-                end
-                
+                equip(sets.midcast.enhancing.regen)                
             elseif string.find(spell.english, "Refresh") then
-                if(spell.target.name == player.name) then
-                    equip(sets.midcast.enhancing.refresh.Self)
-                else
-                    equip(sets.midcast.enhancing.refresh)
-                end
+                equip(sets.midcast.enhancing.refresh)
             elseif string.find(spell.english, "Spikes") then
                 equip(sets.midcast.enhancing.spikes)
             elseif spell.english:startswith("Gain-") then
                 equip(sets.midcast.enhancing.gain)
             else
-                if(spell.target.name == player.name) then
-                    local enhancingMode = EnhancingMagicMode[EnhancingMagicModeIndex]
-                    equip(sets.midcast.enhancing[enhancingMode].Self)
-                else
-                    local enhancingMode = EnhancingMagicMode[EnhancingMagicModeIndex]
-                    equip(sets.midcast.enhancing[enhancingMode])
-                end
-                
+                equip(sets.midcast.enhancing)
             end
         -- Enfeebling Magic --         
         elseif spell.skill == 'Enfeebling Magic' then
@@ -534,13 +416,12 @@ function midcast(spell)
             
         -- Elemental Magic --      
         elseif spell.skill == 'Elemental Magic' then
-            local nuke_set = NukeSet[NukeSetIndex]
             if (spell.target.distance < 5) then
-                equip( set_combine(sets.midcast.elemental[nuke_set], {waist = "Orpheus's sash"}))
+                equip( set_combine(sets.midcast.elemental, {waist = "Orpheus's sash"}))
             elseif (world.day_element == spell.element or world.weather_element == spell.element) and spellType ~= "Helix" then
-                equip( set_combine(sets.midcast.elemental[nuke_set], {waist = "Hachirin-no-Obi"}))
+                equip( set_combine(sets.midcast.elemental, {waist = "Hachirin-no-Obi"}))
             else
-                equip(sets.midcast.elemental[nuke_set])
+                equip(sets.midcast.elemental)
             end
         elseif spell.skill == "Dark Magic" then
             if spell.name:startswith("Drain") then
@@ -576,60 +457,38 @@ end
 function SetGearToState(state)
     -- print(buffactive["Enstone"])
     if state == "Engaged" then
-        local engagedMode = EngagedMode[EngagedModeIndex]
-        if engagedMode == "Tank" then
-            equip(sets.engaged.sw["Damage Taken"])
-        else
-            local accuracyMode = PhysicalAccuracyMode[PhysicalAccuracyModeIndex]
-            local enspellWeatherMapping = {['Earth']={"Enstone", "Enstone II"},
-                                           ['Water']= {"Enwater", "Enwater II"},
-                                           ['Air']={"Enaero", "Enaero II"},
-                                           ['Fire']={"Enfire", "Enfire II"},
-                                           ['Ice']={"Enblizzard", "Enblizzard II"},
-                                           ['Lightning']={"Enthunder", "Enthunder II"},
-                                           ['Light']={"Enthunder", "Enthunder II"},
-                                           ['Dark']={"Enblizzard", "Enblizzard II"}}
-            if IsDualWield() then
-                if IsEnspellActive() then
-                    equip(sets.engaged.dw[accuracyMode].enspell)
-                else
-                    equip(sets.engaged.dw[accuracyMode])
-                end
-            else
-                if IsEnspellActive() then
-                    equip(sets.engaged.sw[accuracyMode].enspell)
-                else
-                    equip(sets.engaged.sw[accuracyMode])
-                end
-                
-            end
 
-            -- if EnspellActive and IsEnspellActive() then
-            --     local buffToCheckForObiForDay = enspellWeatherMapping[world.day_element] or {"", ""}
-            --     local buffToCheckForObiForWeather = enspellWeatherMapping[world.weather_element] or {"", ""}
-            --     if buffactive[buffToCheckForObiForDay[1]] or buffactive[buffToCheckForObiForDay[2]] or buffactive[buffToCheckForObiForWeather[1]] or buffactive[buffToCheckForObiForWeather[2]] then
-            --         equip({waist = "Hachirin-no-Obi"})
-            --     end
-            -- end
+        local accuracyMode = PhysicalAccuracyMode[PhysicalAccuracyModeIndex]
+        local enspellWeatherMapping = {['Earth']={"Enstone", "Enstone II"},
+                                        ['Water']= {"Enwater", "Enwater II"},
+                                        ['Air']={"Enaero", "Enaero II"},
+                                        ['Fire']={"Enfire", "Enfire II"},
+                                        ['Ice']={"Enblizzard", "Enblizzard II"},
+                                        ['Lightning']={"Enthunder", "Enthunder II"},
+                                        ['Light']={"Enthunder", "Enthunder II"},
+                                        ['Dark']={"Enblizzard", "Enblizzard II"}}
+        if IsDualWield() then
+            if IsEnspellActive() then
+                equip(sets.engaged.dw[accuracyMode].enspell)
+            else
+                equip(sets.engaged.dw[accuracyMode])
+            end
+        else
+            if IsEnspellActive() then
+                equip(sets.engaged.sw[accuracyMode].enspell)
+            else
+                equip(sets.engaged.sw[accuracyMode])
+            end
+            
         end
         
    else
-        local idleMode = IdleMode[IdleModeIndex]
-        equip(sets.idle[idleMode])
+        equip(sets.idle)
    end
 
    if Kiting then
     equip(sets.kite)
    end
-
-   local weaponSet = Weapon_Sets[WeaponSetsIndex]
-   
-   enable('main', 'sub')
-   equip(sets.weapons[weaponSet])
-   if weaponSet ~= "Empty" then
-       disable('main', 'sub')
-   end
-
 end
 
 function IsEnspellActive()
@@ -658,19 +517,7 @@ function IsDualWield()
 end
 
 function self_command(command)  
-    if command == "TankMode" then
-        EngagedModeIndex = 1
-        add_to_chat(122,  "Tank Mode: On")
-        SetGearToState(player.status)
-    elseif command == "OffensiveMode" then
-        EngagedModeIndex = 2
-        add_to_chat(122,  "Offensive Mode: On")
-        SetGearToState(player.status)
-    elseif command == "Cycle IdleMode" then
-        IdleModeIndex = IdleModeIndex % #IdleMode + 1
-        add_to_chat(122,  "Idle Mode: " .. IdleMode[IdleModeIndex])
-        SetGearToState(player.status)
-    elseif command == "Cycle PhysicalAccuracyMode" then
+    if command == "Cycle PhysicalAccuracyMode" then
         PhysicalAccuracyModeIndex = PhysicalAccuracyModeIndex % #PhysicalAccuracyMode + 1
         add_to_chat(122,  "Physical Accuracy Mode: " .. PhysicalAccuracyMode[PhysicalAccuracyModeIndex])
         SetGearToState(player.status)
@@ -678,22 +525,8 @@ function self_command(command)
         MagicAccuracyModeIndex = MagicAccuracyModeIndex % #MagicAccuracyMode + 1
         add_to_chat(122,  "Magic Accuracy Mode: " .. MagicAccuracyMode[MagicAccuracyModeIndex])
         SetGearToState(player.status)
-    elseif command == "Cycle EnhancingMode" then
-        EnhancingMagicModeIndex = EnhancingMagicModeIndex % #EnhancingMagicMode + 1
-        add_to_chat(122,  "Enhancing Magic Mode: " .. EnhancingMagicMode[EnhancingMagicModeIndex])
-        SetGearToState(player.status)
-    elseif command == "Cycle NukeSet" then
-        NukeSetIndex = NukeSetIndex % #NukeSet + 1
-        add_to_chat(122,  "Nuke Mode: " .. NukeSet[NukeSetIndex])
-        SetGearToState(player.status)
     elseif command == 'RefreshSet' then
-
-        local nuke_set = NukeSet[NukeSetIndex]
-        local idle_set = IdleMode[IdleModeIndex]
-
         SetGearToState(player.status)
-        add_to_chat(122, 'Nuke Set: ' .. nuke_set .. ' Idle Set: ' .. idle_set)
-
         lockstyle()
     elseif command == "Toggle Kiting" then
         Kiting = not Kiting
