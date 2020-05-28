@@ -29,7 +29,12 @@ IntEnfeebles = S{ "Blind", "Blind II"
                  , "Inundation"
                  , "Sleep", "Sleep II", "Sleepga"}
 
-Duration = S{"Bind", "Break", "Silence", "Sleep", "Sleep II", "Sleepga", "Inundation"}
+Duration = S{"Bind"
+            , "Break"
+            , "Silence"
+            , "Sleep", "Sleep II", "Sleepga"
+            , "Inundation"}
+
 Potency = S{"Paralyze", "Paralyze II"
             , "Slow", "Slow II"
             , "Addle", "Addle II"
@@ -37,8 +42,7 @@ Potency = S{"Paralyze", "Paralyze II"
             , "Frazzle", "Frazzle II", "Frazzle III"
             , "Blind", "Blind II"
             , "Gravity", "Gravity II"
-            , "Dia", "Dia II", "Dia III"
-            , "Bio", "Bio II", "Bio III"
+            
             }
 
 send_command("bind f9 gs c Cycle WeaponSet")
@@ -272,6 +276,14 @@ function get_sets()
     sets.midcast["Stun"] = sets.midcast.enfeebling.int["Magic Accuracy"]
     sets.midcast["Dispel"] = sets.midcast.enfeebling.int["Magic Accuracy"]
     sets.midcast["Dispelga"] = sets.midcast.enfeebling.int["Magic Accuracy"]
+
+    sets.midcast["Dia"] = sets.midcast.enfeebling.int["Duration"]
+    sets.midcast["Dia II"] = sets.midcast.enfeebling.int["Duration"]
+    sets.midcast["Dia III"] = sets.midcast.enfeebling.int["Duration"]
+
+    sets.midcast["Bio I"] = sets.midcast.enfeebling.int["Duration"]
+    sets.midcast["Bio II"] = sets.midcast.enfeebling.int["Duration"]
+    sets.midcast["Bio III"] = sets.midcast.enfeebling.int["Duration"]
 
     merlinic_head_mab = { name="Merlinic Hood", augments={'Mag. Acc.+22 "Mag.Atk.Bns."+22','"Occult Acumen"+4','Mag. Acc.+11','"Mag.Atk.Bns."+8'}}
     merlinic_body_mab = { name="Merlinic Jubbah", augments={'Mag. Acc.+16 "Mag.Atk.Bns."+16','Magic dmg. taken -2%','CHR+1','Mag. Acc.+14','"Mag.Atk.Bns."+9'}}
@@ -554,7 +566,8 @@ end
 function self_command(command)  
     if command == "Cycle PhysicalAccuracyMode" then
         PhysicalAccuracyModeIndex = PhysicalAccuracyModeIndex % #PhysicalAccuracyMode + 1
-        add_to_chat(122,  "Physical Accuracy Mode: " .. PhysicalAccuracyMode[PhysicalAccuracyModeIndex])
+        local physicalSet = PhysicalAccuracyMode[PhysicalAccuracyModeIndex]
+        add_to_chat(122,  "Physical Accuracy Mode: " .. physicalSet)
         SetGearToState(player.status)
     elseif command == "Cycle MagicMode" then
         MagicAccuracyModeIndex = MagicAccuracyModeIndex % #MagicAccuracyMode + 1
@@ -564,6 +577,18 @@ function self_command(command)
         SetGearToState(player.status)
     elseif command == 'RefreshSet' then
         SetGearToState(player.status)
+
+        PhysicalAccuracyModeIndex = PhysicalAccuracyModeIndex % #PhysicalAccuracyMode + 1
+        local physicalSet = PhysicalAccuracyMode[PhysicalAccuracyModeIndex]
+
+        WeaponSetsIndex = WeaponSetsIndex % #Weapon_Sets + 1
+        local weaponSet = Weapon_Sets[WeaponSetsIndex]
+
+        MagicAccuracyModeIndex = MagicAccuracyModeIndex % #MagicAccuracyMode + 1
+        local magicMode = MagicAccuracyMode[MagicAccuracyModeIndex]
+
+        add_to_chat(122, "Weapon Set:" .. weaponSet .. " | Enfeeble Mode: " .. magicMode .. " | Engaged Mode: " .. physicalSet)
+
         lockstyle()
     elseif command == "Toggle Kiting" then
         Kiting = not Kiting
@@ -571,10 +596,12 @@ function self_command(command)
         SetGearToState(player.status)
     elseif command == "Cycle WeaponSet" then
         WeaponSetsIndex = WeaponSetsIndex % #Weapon_Sets + 1
-        local set = Weapon_Sets[WeaponSetsIndex]
-        add_to_chat(122,  "Weapon Set: " .. set)
-        equip(sets.weapons[set])
+        local weaponSet = Weapon_Sets[WeaponSetsIndex]
+        add_to_chat(122,  "Weapon Set: " .. weaponSet)
+        equip(sets.weapons[weaponSet])
         SetGearToState(player.status)
     end
     
 end
+
+SetGearToState(player.status)
