@@ -244,7 +244,10 @@ function get_sets()
     })
 
     sets.midcast.enfeebling.mnd["Duration"] = set_combine(sets.midcast.enfeebling.mnd, {
-        ring2="Kishar ring"
+        ear2="Snotra Earring",
+        ring2="Kishar ring",
+        legs="Lethargy Fuseau +1", --22 MACC, 10% Duration set bonus--
+        feet="Lethargy Houseaux +1" --10% Duration set bonus--
     })
 
     sets.midcast.enfeebling.int = set_combine(sets.midcast.enfeebling, {
@@ -513,9 +516,7 @@ function SetGearToState(state)
             else
                 equip(sets.engaged.sw[accuracyMode])
             end
-            
         end
-        
    else
         equip(sets.idle)
    end
