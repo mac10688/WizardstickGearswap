@@ -1,12 +1,12 @@
 res = require('resources')
 
-Weapon_Sets = {"Sword", "Magic Accuracy", "Staff", "Dual Wield", "Odin", "Savage"}
+Weapon_Sets = {"Sword", "Magic Accuracy", "Dual Wield", "Odin", "Savage"}
 WeaponSetsIndex = 2
 
 PhysicalAccuracyMode = {"High Acc", "Multi-Attack"}
 PhysicalAccuracyModeIndex = 2
 
-MagicAccuracyMode = {"High Acc", "Potency"}
+MagicAccuracyMode = {"Magic Accuracy", "Potency/Duration"}
 MagicAccuracyModeIndex = 1
 
 Kiting = false
@@ -14,27 +14,44 @@ Kiting = false
 MndEnfeebles = S{"Paralyze", "Paralyze II"
                 , "Slow", "Slow II"
                 , "Addle", "Addle II"
-                , "Silence"
-                , "Blind", "Blind II"
                 , "Distract", "Distract II", "Distract III"
                 , "Frazzle", "Frazzle II", "Frazzle III"
             }
 
-IntEnfeebles = S{"Bind"}
+IntEnfeebles = S{ "Blind", "Blind II"
+                 , "Gravity", "Gravity II"
+                 , "Bind"
+                 , "Break"
+                 , "Dispel", "Dispelga"
+                 , "Dia", "Dia II", "Dia III"
+                 , "Bio", "Bio II", "Bio III"
+                 , "Silence"
+                 , "Inundation"
+                 , "Sleep", "Sleep II", "Sleepga"}
 
-MagicAccEnfeebles = S{"Gravity", "Gravity II", "Break", "Inundation", "Sleep", "Sleep II", "Dispel", "Dia", "Dia II", "Dia III"}
+Duration = S{"Bind", "Break", "Silence", "Sleep", "Sleep II", "Sleepga", "Inundation"}
+Potency = S{"Paralyze", "Paralyze II"
+            , "Slow", "Slow II"
+            , "Addle", "Addle II"
+            , "Distract", "Distract II", "Distract III"
+            , "Frazzle", "Frazzle II", "Frazzle III"
+            , "Blind", "Blind II"
+            , "Gravity", "Gravity II"
+            , "Dia", "Dia II", "Dia III"
+            , "Bio", "Bio II", "Bio III"
+            }
 
-send_command("bind ^f10 gs c Cycle PhysicalAccuracyMode")
-send_command("bind !f10 gs c Cycle WeaponSet")
-send_command("bind ^f11 gs c Cycle MagicMode")
+send_command("bind f9 gs c Cycle WeaponSet")
+send_command("bind f10 gs c Cycle MagicMode")
+send_command("bind f11 gs c Cycle PhysicalAccuracyMode")
 send_command("bind f12 gs c RefreshSet")
 send_command('bind ^k gs c Toggle Kiting')
 
 
 function file_unload()
-    send_command('unbind ^f10')
-    send_command('unbind !f10')
-    send_command('unbind ^f11')
+    send_command('unbind f9')
+    send_command('unbind f10')
+    send_command('unbind f11')
     send_command("unbind f12")
     send_command('unbind ^k')
 end
@@ -50,9 +67,6 @@ function get_sets()
     sets.idle = {}
 
     sets.idle = {
-        main="Mafic cudgel",
-        sub="Genmei shield",
-        ammo="Staunch tathlum +1",
         head="Vitiation chapeau +3",
         neck="Loricate torque +1",
         ear1="Etiolation earring",
@@ -79,10 +93,13 @@ function get_sets()
     sets.weapons = {}
     sets.weapons["Sword"] = {main = "Crocea Mors", sub="Genmei shield"}
     sets.weapons["Magic Accuracy"] = {main = "Crocea Mors", sub="Ammurapi shield"}
-    sets.weapons["Staff"] = {main = "Grioavolr", sub="Enki strap"}
     sets.weapons["Dual Wield"] = {main = "Crocea Mors", sub = "Daybreak"}
     sets.weapons["Odin"] = {main = "Aern Dagger", sub = "Qutrub Knife"}
     sets.weapons["Savage"] = {main = "Naegling", sub = "Tauret"}
+
+    sets.ranged_ammo = {}
+    sets.ranged_ammo["Magic Accuracy"] = {ranged="Ullr", ammo=empty}
+    sets.ranged_ammo["Potency/Duration"] = {ranged=empty, ammo="Regal Gem"}
         
     sets.engaged = {
         ammo="Ginsen",
@@ -151,7 +168,6 @@ function get_sets()
     sets.midcast = {}
     
     sets.midcast.cure = {
-        sub="Sors shield",
         head="Vanya hood",
         body="Vrikodara jupon",
         hands="Kaykaus cuffs",
@@ -163,8 +179,6 @@ function get_sets()
     }
 
     sets.midcast.enhancing = {
-        sub="Ammurapi Shield",
-        ammo="Pemphredo Tathlum",
         head="Befouled Crown",
         neck="Duelist's Torque +1",
         ear1="Andoaa earring",
@@ -202,9 +216,6 @@ function get_sets()
     sets.midcast.enhancing.regen = sets.midcast.enhancing["Duration"]
 
     sets.midcast.enfeebling = {
-        main="Gada",
-        sub="Ammurapi Shield",
-        ammo="Regal Gem",
         head="Vitiation chapeau +3",
         neck="Duelist's Torque +1",
         ear1="Regal earring",
@@ -215,34 +226,49 @@ function get_sets()
         ring2="Stikini ring +1",
         waist="Luminary Sash",
         back=Cape.Int,
-        legs="Chironic hose",
+        legs={ name="Chironic Hose", augments={'Mag. Acc.+30','"Cure" potency +7%','INT+12','"Mag.Atk.Bns."+8'}},
         feet="Vitiation Boots +3"
     }
 
     sets.midcast.enfeebling.mnd = set_combine(sets.midcast.enfeebling, {
-        ear1="Snotra Earring",
+        ear2="Snotra Earring",
         back=Cape.Mnd
     })
-
-    sets.midcast.enfeebling.mnd["High Acc"] = set_combine(sets.midcast.enfeebling.mnd, {
+    
+    sets.midcast.enfeebling.mnd["Magic Accuracy"] = set_combine(sets.midcast.enfeebling.mnd, {
+        head="Atrophy chapeau +3"
     })
-            
+
     sets.midcast.enfeebling.mnd["Potency"] = set_combine(sets.midcast.enfeebling.mnd, {
-        ring2="Kishar Ring",
         body="Lethargy sayon +1"
+    })
+
+    sets.midcast.enfeebling.mnd["Duration"] = set_combine(sets.midcast.enfeebling.mnd, {
+        ring2="Kishar ring"
     })
 
     sets.midcast.enfeebling.int = set_combine(sets.midcast.enfeebling, {
         back=Cape.Int
     })
-        
-    sets.midcast.enfeebling.int["High Acc"] = set_combine(sets.midcast.enfeebling.int, {
+
+    sets.midcast.enfeebling.int["Magic Accuracy"] = set_combine(sets.midcast.enfeebling.int, {
+        head="Atrophy chapeau +3"
     })
-            
-    sets.midcast.enfeebling.int["Potency"]= set_combine(sets.midcast.enfeebling.int, {
-        body="Lethargy Sayon +1",
-        right_ring="Kishar Ring"
+
+    sets.midcast.enfeebling.int["Potency"] = set_combine(sets.midcast.enfeebling.int, {
+        body="Lethargy sayon +1"        
     })
+
+    sets.midcast.enfeebling.int["Duration"] = set_combine(sets.midcast.enfeebling.int, {
+        ear2="Snotra Earring",
+        ring2="Kishar ring",
+        legs="Lethargy Fuseau +1", --22 MACC, 10% Duration set bonus--
+        feet="Lethargy Houseaux +1" --10% Duration set bonus--
+    })
+
+    sets.midcast["Stun"] = sets.midcast.enfeebling.int["Magic Accuracy"]
+    sets.midcast["Dispel"] = sets.midcast.enfeebling.int["Magic Accuracy"]
+    sets.midcast["Dispelga"] = sets.midcast.enfeebling.int["Magic Accuracy"]
 
     merlinic_head_mab = { name="Merlinic Hood", augments={'Mag. Acc.+22 "Mag.Atk.Bns."+22','"Occult Acumen"+4','Mag. Acc.+11','"Mag.Atk.Bns."+8'}}
     merlinic_body_mab = { name="Merlinic Jubbah", augments={'Mag. Acc.+16 "Mag.Atk.Bns."+16','Magic dmg. taken -2%','CHR+1','Mag. Acc.+14','"Mag.Atk.Bns."+9'}}
@@ -280,14 +306,12 @@ function get_sets()
 
     sets.midcast.aspir = sets.midcast.drain
 
-    sets.midcast["Paralyze"] = sets.midcast.enfeebling.mnd["Low Acc"]
-
     sets.fc['Impact'] = set_combine(sets.fc, {
         head=empty,
         body='Twilight cloak'
     })
 
-    sets.midcast['Impact'] = set_combine(sets.midcast.elemental["High Acc"], {
+    sets.midcast['Impact'] = set_combine(sets.midcast.elemental, {
         head=empty,
         body='Twilight cloak'
     })
@@ -296,7 +320,7 @@ function get_sets()
         main="Daybreak"
     })
 
-    sets.midcast['Dispelga'] = set_combine(sets.midcast.enfeebling.int["High Acc"], {
+    sets.midcast['Dispelga'] = set_combine(sets.midcast.enfeebling.int.macc, {
         main="Daybreak"
     })
 
@@ -401,11 +425,29 @@ function midcast(spell)
         elseif spell.skill == 'Enfeebling Magic' then
             local magicAccuracyMode = MagicAccuracyMode[MagicAccuracyModeIndex]
             if MndEnfeebles[spell.name] then
-                equip(sets.midcast.enfeebling.mnd[magicAccuracyMode])
+                if magicAccuracyMode == "Potency/Duration" then
+                    if Duration[spell.name] then
+                        equip(sets.midcast.enfeebling.mnd["Duration"])
+                    elseif Potency[spell.name] then
+                        equip(sets.midcast.enfeebling.mnd["Potency"])
+                    else
+                        equip(sets.midcast.enfeebling.mnd["Magic Accuracy"])
+                    end
+                else
+                    equip(sets.midcast.enfeebling.mnd[magicAccuracyMode])
+                end                
             elseif IntEnfeebles[spell.name] then
-                equip(sets.midcast.enfeebling.int[magicAccuracyMode])
-            elseif MagicAccEnfeebles[spell.name] then
-                equip(sets.midcast.enfeebling.int["High Acc"])
+                if magicAccuracyMode == "Potency/Duration" then
+                    if Duration[spell.name] then
+                        equip(sets.midcast.enfeebling.int["Duration"])
+                    elseif Potency[spell.name] then
+                        equip(sets.midcast.enfeebling.int["Potency"])
+                    else
+                        equip(sets.midcast.enfeebling.int["Magic Accuracy"])
+                    end
+                else
+                    equip(sets.midcast.enfeebling.int[magicAccuracyMode])
+                end
             else
                 equip(sets.midcast.enfeebling)
             end
@@ -459,14 +501,6 @@ function SetGearToState(state)
     if state == "Engaged" then
 
         local accuracyMode = PhysicalAccuracyMode[PhysicalAccuracyModeIndex]
-        local enspellWeatherMapping = {['Earth']={"Enstone", "Enstone II"},
-                                        ['Water']= {"Enwater", "Enwater II"},
-                                        ['Air']={"Enaero", "Enaero II"},
-                                        ['Fire']={"Enfire", "Enfire II"},
-                                        ['Ice']={"Enblizzard", "Enblizzard II"},
-                                        ['Lightning']={"Enthunder", "Enthunder II"},
-                                        ['Light']={"Enthunder", "Enthunder II"},
-                                        ['Dark']={"Enblizzard", "Enblizzard II"}}
         if IsDualWield() then
             if IsEnspellActive() then
                 equip(sets.engaged.dw[accuracyMode].enspell)
@@ -523,7 +557,9 @@ function self_command(command)
         SetGearToState(player.status)
     elseif command == "Cycle MagicMode" then
         MagicAccuracyModeIndex = MagicAccuracyModeIndex % #MagicAccuracyMode + 1
-        add_to_chat(122,  "Magic Accuracy Mode: " .. MagicAccuracyMode[MagicAccuracyModeIndex])
+        local magicMode = MagicAccuracyMode[MagicAccuracyModeIndex]
+        add_to_chat(122,  "Magic Accuracy Mode: " .. magicMode)
+        equip(sets.ranged_ammo[magicMode])
         SetGearToState(player.status)
     elseif command == 'RefreshSet' then
         SetGearToState(player.status)
@@ -534,7 +570,9 @@ function self_command(command)
         SetGearToState(player.status)
     elseif command == "Cycle WeaponSet" then
         WeaponSetsIndex = WeaponSetsIndex % #Weapon_Sets + 1
-        add_to_chat(122,  "Weapon Set: " .. Weapon_Sets[WeaponSetsIndex])
+        local set = Weapon_Sets[WeaponSetsIndex]
+        add_to_chat(122,  "Weapon Set: " .. set)
+        equip(sets.weapons[set])
         SetGearToState(player.status)
     end
     
