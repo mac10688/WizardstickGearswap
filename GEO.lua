@@ -111,8 +111,8 @@ function get_sets()
         head="Vanya hood",
         body="Vrikodara Jupon",
         hands="Geomancy mitaines +3",
-        ring1="Haoma Ring",
-        ring2="Sirona's Ring",
+        ring1="Stikini ring +1",
+        ring2="Stikini ring +1",
         legs="Gyve trousers",
         feet="Medium's sabots"
     })
@@ -171,17 +171,15 @@ function get_sets()
         back={ name="Nantosuelta's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}}
     }
 
-    --MB: 53
+    --MB: 43
     --MB2: 34
-    --Total MB: 84
+    --Total MB: 74
     sets.midcast.elemental["magic-burst"] = set_combine(sets.midcast.elemental["magic-atk-bonus"], {
         head="Ea hat +1", --MB: 7 MB2:7
         neck="Mizukage-no-Kubikazari", -- MB: 10
-        ear2="Static earring", --MB: 5
         body="Ea houppelande", --MB: 8 MB2:8
         hands="Amalric gages +1", --MB2: 6
         ring1="Mujin band", --MB2: 5
-        ring2="Locus ring", --MB: 5
         legs="Ea slops +1", --MB: 8 MB2:8
         feet=merlinic_feet_mb --MB: 11
     })

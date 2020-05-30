@@ -1,12 +1,13 @@
 TP_Set_Names = {"None", "Delay Cap" ,"Acc"}
 TP_Index = 1
 
-Idle_Set_Names = {'MDT','PDT'}
+Idle_Set_Names = {'MDT', 'PDT', 'Refresh'}
 Idle_Index = 1
 
 Kiting = false
 
-send_command('bind f9 gs c cycle TP set')
+send_command('bind f9 gs c equip refresh')
+send_command('bind ^f9 gs c cycle TP set')
 send_command('bind f10 gs c equip pdt')
 send_command('bind f11 gs c equip mdt')
 send_command('bind f12 gs c refresh set')
@@ -14,6 +15,7 @@ send_command('bind ^k gs c toggle kiting')
 
 function file_unload()
     send_command('unbind f9')
+    send_command('unbind ^f9')
     send_command('unbind f10')
     send_command('unbind f11')
     send_command('unbind f12')
@@ -22,10 +24,11 @@ end
 
 function help()
     add_to_chat(122, 'Keyboard Bindings:')
-    add_to_chat(122, 'F9: Cycle TP set')
+    add_to_chat(122, 'F9: Refresh set')
+    add_to_chat(122, 'Ctrl + F9: Cycle TP set')
     add_to_chat(122, 'F10: Turn on idle pdt')
     add_to_chat(122, 'F11: Turn on idle mdt')
-    add_to_chat(122, 'F12: Refresh gear and turn on job abilities')
+    add_to_chat(122, 'F12: Reset gear and turn on job abilities')
     add_to_chat(122, 'Ctrl + k: Toggle kiting')
 end
 
@@ -208,6 +211,15 @@ function get_sets()
         feet="Inyanga crackows +2"
     }
 
+    --Refresh +10
+    sets.idle['Refresh'] = set_combine(sets.idle['MDT'], {
+        ammo="Homiliary",
+        hands="Inyanga dastanas +2",
+        ring1="Stikini ring +1",
+        ring2="Stikini ring +1",
+        legs={ name="Chironic Hose", augments={'STR+9','CHR+4','"Refresh"+2','Mag. Acc.+14 "Mag.Atk.Bns."+14'}}
+    })
+
     sets.midcast = {}
 
     sets.midcast.status_removal = {
@@ -240,7 +252,7 @@ function get_sets()
         body="Theophany briault +3",
         hands="Theophany mitts +3",
         ring1="Persis ring",
-        ring2="Sirona's Ring",
+        ring2="Prolix ring",
         back={ name="Alaunus's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}},
         waist="Austerity belt +1",
         legs="Ebers pantaloons +1",
@@ -319,7 +331,7 @@ function get_sets()
         ammo="Hydrocera",
         head="Befouled crown",
         neck="Erra pendant",
-        ear1="Gwati earring",
+        ear1="Malignance earring",
         ear2="Regal earring",
         body="Theophany briault +3",
         hands="Inyanga dastanas +2",
@@ -488,7 +500,11 @@ function buff_change(buff,gain)
 end
 
 function self_command(command)
-    if command == 'cycle TP set' then
+    if command == 'equip refresh' then
+        Idle_Index = 3
+        send_command('@input /echo ----- Idle Set changed to '..Idle_Set_Names[Idle_Index]..' -----')
+        equip_set(player.status)
+    elseif command == 'cycle TP set' then
         TP_Index = TP_Index % #TP_Set_Names + 1
         send_command('@input /echo ----- TP Set changed to '..TP_Set_Names[TP_Index]..' -----')
         equip_set(player.status)

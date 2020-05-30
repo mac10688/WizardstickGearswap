@@ -188,13 +188,12 @@ function get_sets()
         body='Twilight cloak'
     })
 
-    --MB1 Total: 49
+    --MB1 Total: 44
     --MB2 Total: 33
-    --MB Total: 82
+    --MB Total: 77
     sets.midcast.elemental["Magic Burst"] = set_combine(sets.midcast.elemental["Magic Attack Bonus"], {
         head="Ea hat +1", --MB: 6 MB2:6
         neck="Sorcerer's stole +1", --MB: 7
-        ear2="Static earring", --MB: 5
         body="Ea houppelande", --MB: 8 MB2:8
         hands="Amalric gages +1", --MB2: 6
         legs="Ea slops +1", --MB: 8 MB2:8

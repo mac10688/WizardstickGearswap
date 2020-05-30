@@ -312,7 +312,8 @@ function get_sets()
         body="Chironic doublet",
         hands="Pedagogy bracers +3",
         back=cure_cape,
-        ring1="Sirona'a ring",
+        ring1="Stikini ring +1",
+        ring2="Stikini ring +1",
         legs="Chironic hose",
         feet="Kaykaus boots"
     })
