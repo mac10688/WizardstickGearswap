@@ -106,7 +106,6 @@ function get_sets()
     sets.ranged_ammo["Potency/Duration"] = {ranged=empty, ammo="Regal Gem"}
         
     sets.engaged = {
-        ammo="Ginsen",
         head="Ayanmo zucchetto +2",
         neck="Anu Torque",
         ear1="Dignitary's earring",
@@ -292,7 +291,6 @@ function get_sets()
 
     merlinic_feet_mb = { name="Merlinic Crackows", augments={'"Mag.Atk.Bns."+25','Magic burst dmg.+11%','Mag. Acc.+5'}}
     sets.midcast.elemental = {
-        ammo="Pemphredo Tathlum",
         head="Ea hat +1",
         neck="Mizu. Kubikazari",
         ear1="Regal earring",
@@ -342,7 +340,6 @@ function get_sets()
     sets.ws = {}
     
     sets.ws.magic = {
-        ammo="Pemphredo Tathlum",
         head="Vitiation Chapeau +3",
         neck="Fotia gorget",
         ear1="Ishvara Earring",
@@ -358,7 +355,6 @@ function get_sets()
     }
 
     sets.ws.physical = {
-        ammo="Ginsen",
         head="Vitiation Chapeau +3",
         neck="Fotia gorget",
         ear1="Ishvara Earring",
@@ -529,9 +525,15 @@ function SetGearToState(state)
                 equip(sets.engaged.sw[accuracyMode])
             end
         end
-   else
+    else
         equip(sets.idle)
-   end
+    end
+
+    local magicMode = MagicAccuracyMode[MagicAccuracyModeIndex]
+    equip(sets.ranged_ammo[magicMode])
+
+    local weaponSet = Weapon_Sets[WeaponSetsIndex]
+    equip(sets.weapons[weaponSet])
 
    if Kiting then
     equip(sets.kite)
@@ -603,5 +605,3 @@ function self_command(command)
     end
     
 end
-
-SetGearToState(player.status)
