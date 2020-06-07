@@ -254,6 +254,7 @@ function get_sets()
         head="Pixie Hairpin +1",
         neck="Erra pendant",
         hands="Archmage's gloves +3",
+        legs="Spaekona's tonban +3"
         feet="Merlinic crackows"
     })
 

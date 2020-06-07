@@ -117,7 +117,7 @@ function get_sets()
         back=Cape.Melee,
         waist="Grunfeld rope",
         legs="Carmine cuisses +1",
-        feet="Vitiation boots +3"
+        feet="Atrophy boots +3"
     }
 
     sets.engaged["Multi-Attack"] = set_combine( sets.engaged, {
@@ -128,7 +128,8 @@ function get_sets()
         neck="Sanctity Necklace",
         ear2="Telos earring",
         ring2={name="Chirich ring +1", bag="wardrobe3"},
-        feet="Aya. Gambieras +2"
+        legs="Atrophy tights +3",
+        feet="Atrophy boots +3"
     })
 
     sets.engaged.enspell ={
@@ -191,7 +192,7 @@ function get_sets()
         ring1="Stikini ring +1",
         ring2="Stikini ring +1",
         waist="Embla sash",
-        legs="Atrophy Tights +2",
+        legs="Atrophy Tights +3",
         feet="Leth. Houseaux +1",
         back=Cape.Mnd
     }

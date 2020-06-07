@@ -47,7 +47,7 @@ function get_sets()
         ear2="Telos earring",
         body="Malignance tabard",
         hands="Malignance gloves",
-        ring1="Moonbeam ring",
+        ring1="Hetairoi ring",
         ring2={name="Chirich ring +1", bag="wardrobe"},
         waist="Chaac belt",
         back={ name="Toutatis's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Attack+10','Haste+10','Damage taken-5%'}},

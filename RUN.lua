@@ -49,9 +49,6 @@ HybridModeIndex = 1
 WeaponSetMode = {"epeo", "lionheart"}
 WeaponSetIndex = 1
 
-GripSetMode = {"Utu", "Mensch"}
-GripSetIndex = 1
-
 Kiting = false
 
 --Bind f9 - f12 keys 
@@ -64,7 +61,6 @@ send_command('bind ^f11 gs c Cycle HybridMode')
 send_command('bind f12 gs c Refresh')
 send_command('bind ^k gs c toggle kiting')
 send_command('bind ^w gs c cycle weaponset')
-send_command('bind ^g gs c cycle gripset')
 
 function file_unload()
     --When the file unloads, unbind the commands
@@ -77,7 +73,6 @@ function file_unload()
     send_command('unbind f12')
     send_command('unbind ^k')
     send_command('unbind ^w')
-    send_command('unbind ^g')
 end
 
 function get_sets()
@@ -108,12 +103,8 @@ function get_sets()
     }
 
     sets.weaponset = {}
-    sets.weaponset["epeo"] = {main="Epeolatry", }
-    sets.weaponset["lionheart"] = {main="Lionheart", }
-
-    sets.gripset = {}
-    sets.gripset["Utu"] = {sub="Utu grip"}
-    sets.gripset["Mensch"] = {sub="Mensch strap +1"}
+    sets.weaponset["epeo"] = {main="Epeolatry"}
+    sets.weaponset["lionheart"] = {main="Lionheart"}
     --Be very precise about spelling the ability name or it won't be swapped to for job abilities
     sets.ja = {}
 
@@ -453,8 +444,6 @@ function SetGearToState(state)
     -- print(state)
     local weaponsetMode = WeaponSetMode[WeaponSetIndex]
     equip(sets.weaponset[weaponsetMode])
-    local gripSet = GripSetMode[GripSetIndex]
-    equip(sets.gripset[gripSet])
     if state == 'Engaged' then
         local mode = Modes[ModeIndex]
         -- print(mode)
@@ -538,12 +527,6 @@ function self_command(command)
         SetGearToState(player.status)
         local mode = WeaponSetMode[WeaponSetIndex]
         add_to_chat(122, 'Weapon Set: ' .. mode)
-    elseif command == 'cycle gripset' then
-        GripSetIndex = GripSetIndex % #GripSetMode + 1
-
-        SetGearToState(player.status)
-        local mode = GripSetMode[GripSetIndex]
-        add_to_chat(122, 'Grip Set: ' .. mode)
     elseif command == 'Refresh' then
         SetGearToState(player.status)
 

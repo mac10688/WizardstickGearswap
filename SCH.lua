@@ -11,7 +11,7 @@ RegenSetIndex = 1
 RegenSet = {"Potency", "Duration"}
 
 WeaponSetIndex = 1
-WeaponSet = {"Akademos", "Grioavolr", "Gada", "None"}
+WeaponSet = {"Akademos", "Xoanon", "Gada", "None"}
 
 Kiting = false
 
@@ -112,7 +112,7 @@ function get_sets()
     sets.WeaponSet = {}
     sets.WeaponSet["None"] = {}
     sets.WeaponSet["Akademos"] = {main="Akademos", sub="Khonsu"}
-    sets.WeaponSet["Grioavolr"] = {main="Grioavolr", sub="Khonsu"}
+    sets.WeaponSet["Xoanon"] = {main="Xoanon", sub="Khonsu"}
     sets.WeaponSet["Gada"] = {main="Gada", sub="Ammurapi shield"}
 
     
