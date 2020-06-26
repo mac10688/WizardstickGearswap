@@ -115,9 +115,9 @@ function get_sets()
         back=dt_cape
     }
 
-    sets.ja['Valiance'] = sets.ja['Vallation']
-    sets.ja['Pflug'] = {feet="Runeist's boots +3"}
-    sets.ja['Battuta'] = {head="Futhark bandeau +3"}
+    sets.ja['Valiance'] = set_combine(sets.enmity, sets.ja['Vallation']()
+    sets.ja['Pflug'] = set_combine(sets.enmity, {feet="Runeist's boots +3"})
+    sets.ja['Battuta'] = set_combine(sets.enmity, {head="Futhark bandeau +3"})
     sets.ja['Liement'] = set_combine(sets.enmity, {body="Futhark Coat +3"})
     
     sets.ja['Lunge'] = {
@@ -137,10 +137,10 @@ function get_sets()
     sets.ja['Swipe'] = sets.ja['Lunge']
     sets.ja['Gambit'] = {hands="Runeist's Mitons +2"}
     sets.ja['Rayke'] = {feet="Futhark Boots +1"}
-    sets.ja['Elemental Sforzo'] = {body="Futhark Coat 3"}
-    sets.ja['Swordplay'] = {hands="Futhark Mitons +3"}
+    sets.ja['Elemental Sforzo'] = set_combine(sets.enmity, {body="Futhark Coat 3"})
+    sets.ja['Swordplay'] = set_combine(sets.enmity, {hands="Futhark Mitons +3"})
     sets.ja['Embolden'] = {back="Evasionist's cape"}
-    sets.ja['Vivacious Pulse'] = {head="Erilaz galea +1"}
+    sets.ja['Vivacious Pulse'] = set_combine(sets.enmity, {head="Erilaz galea +1"})
     sets.ja['One For All'] = set_combine(sets.enmity, {})
 
     --war sub

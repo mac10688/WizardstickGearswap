@@ -107,10 +107,10 @@ function get_sets()
     })
 
     sets.midcast.cure = set_combine(sets.midcast.conserve_mp, {
-        sub="Sors shield",
-        head="Vanya hood",
-        body="Vrikodara Jupon",
-        hands="Geomancy mitaines +3",
+        sub="Sors shield", --3%
+        head="Vanya hood", --10%
+        body="Vrikodara Jupon", --13%
+        hands="Geomancy mitaines +3", --Mnd +43
         ring1="Stikini ring +1",
         ring2="Stikini ring +1",
         legs="Gyve trousers",

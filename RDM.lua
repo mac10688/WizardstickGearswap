@@ -102,7 +102,7 @@ function get_sets()
     sets.weapons["Savage"] = {main = "Naegling", sub = "Tauret"}
 
     sets.ranged_ammo = {}
-    sets.ranged_ammo["Magic Accuracy"] = {ranged="Ullr", ammo=empty}
+    sets.ranged_ammo["Magic Accuracy"] = {ranged="Ullr", ammo="Antlion arrow"}
     sets.ranged_ammo["Potency/Duration"] = {ranged=empty, ammo="Regal Gem"}
         
     sets.engaged = {
@@ -580,18 +580,12 @@ function self_command(command)
         SetGearToState(player.status)
     elseif command == 'RefreshSet' then
         SetGearToState(player.status)
-
-        PhysicalAccuracyModeIndex = PhysicalAccuracyModeIndex % #PhysicalAccuracyMode + 1
         local physicalSet = PhysicalAccuracyMode[PhysicalAccuracyModeIndex]
-
-        WeaponSetsIndex = WeaponSetsIndex % #Weapon_Sets + 1
         local weaponSet = Weapon_Sets[WeaponSetsIndex]
-
-        MagicAccuracyModeIndex = MagicAccuracyModeIndex % #MagicAccuracyMode + 1
         local magicMode = MagicAccuracyMode[MagicAccuracyModeIndex]
 
         add_to_chat(122, "Weapon Set:" .. weaponSet .. " | Enfeeble Mode: " .. magicMode .. " | Engaged Mode: " .. physicalSet)
-
+        SetGearToState(player.status)
         lockstyle()
     elseif command == "Toggle Kiting" then
         Kiting = not Kiting
