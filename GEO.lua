@@ -106,6 +106,7 @@ function get_sets()
         feet="Azimuth gaiters +1"
     })
 
+    --50% cure
     sets.midcast.cure = set_combine(sets.midcast.conserve_mp, {
         sub="Sors shield", --3%
         head="Vanya hood", --10%
@@ -113,8 +114,9 @@ function get_sets()
         hands="Geomancy mitaines +3", --Mnd +43
         ring1="Stikini ring +1",
         ring2="Stikini ring +1",
-        legs="Gyve trousers",
-        feet="Medium's sabots"
+        back="Solemnity cape", --7%
+        legs="Gyve trousers", --10%
+        feet="Medium's sabots" --7%
     })
 
     sets.midcast.dark_magic = set_combine(sets.midcast.conserve_mp, {
@@ -254,6 +256,9 @@ function get_sets()
     sets.kiting = {
         feet="Geomancy sandals +3"
     }
+
+    sets.fc["Dispelga"] = {main="Daybreak"}
+    sets.midcast["Dispelga"] = {main="Daybreak"}
 
     --To add more ws sets, just add sets.ws["<ws name>"]. Capitalization matters.
     sets.ws['Exudation'] = set_combine(sets.ws, {ear2="Odnowa earring +1"})
