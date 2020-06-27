@@ -104,7 +104,7 @@ function get_sets()
         hands="Turms mittens +1", --pdt: 2 haste: 5
         ring1="Defending ring", --dt: 10
         ring2="Moonbeam ring", --pdt: 3
-        back= dt_cape,--pdt: 5
+        back= dt_cape,--dt: 5
         waist="Flume belt +1", --haste: 6 acc: 11
         legs="Erilaz leg guards +1",  --pdt: 7 haste: 6
         feet="Turms leggings +1" --pdt: 5 haste: 4
