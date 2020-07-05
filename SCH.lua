@@ -135,7 +135,7 @@ function get_sets()
         hands="Jhakri cuffs +2",
         ring1="Chirich Ring +1",
         ring2="Chirich Ring +1",
-        waist="Eschan stone",
+        waist="Grunfeld rope",
         legs="Jhakri slops +2",
         feet="Jhakri pigaches +2",
         back={ name="Lugh's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','Haste+10','Mag. Evasion+15'}}
@@ -229,7 +229,7 @@ function get_sets()
         left_ring="Stikini Ring +1",
         right_ring="Shiva Ring +1",
         back=nuke_cape,
-        waist="Eschan stone",
+        waist="Sacro cord",
         legs="Pedagogy pants +3",
         feet="Pedagogy loafers +3"
     })
@@ -248,7 +248,7 @@ function get_sets()
         left_ring="Kishar Ring",
         right_ring="Prolix Ring",
         back=idle_cape,
-        waist="Eschan stone",
+        waist="Sacro cord",
         legs={ name="Lengo Pants", augments={'INT+5','Mag. Acc.+13'}},
         feet=merlinic_feet_mab
     }

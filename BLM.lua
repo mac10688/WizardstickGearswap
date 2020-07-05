@@ -101,7 +101,7 @@ function get_sets()
         hands="Archmage's gloves +3",
         ring1="Chirich Ring +1",
         ring2="Chirich Ring +1",
-        waist="Eschan stone",
+        waist="Grunfeld rope",
         legs="Archmage's tonban +3",
         feet="Archmage's sabots +3",
         back={ name="Taranus's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','Haste+10','Mag. Evasion+15'}},
@@ -170,7 +170,7 @@ function get_sets()
         legs="Archmage's tonban +3",
         feet="Archmage's sabots +3",
         neck="Sanctity Necklace",
-        waist="Eschan Stone",
+        waist="Sacro cord",
         left_ear="Barkarole earring",
         right_ear="Malignance earring",
         left_ring="Stikini Ring +1",
@@ -254,7 +254,7 @@ function get_sets()
         head="Pixie Hairpin +1",
         neck="Erra pendant",
         hands="Archmage's gloves +3",
-        legs="Spaekona's tonban +3"
+        legs="Spaekona's tonban +3",
         feet="Merlinic crackows"
     })
 

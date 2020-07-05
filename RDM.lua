@@ -111,7 +111,7 @@ function get_sets()
         ear1="Dignitary's earring",
         ear2="Sherida Earring",
         body="Malignance tabard",
-        hands="Maglignance gloves",
+        hands="Malignance gloves",
         ring1={name="Chirich ring +1", bag="wardrobe"},
         ring2="Hetairoi ring",
         back=Cape.Melee,
@@ -124,12 +124,12 @@ function get_sets()
 
     })
 
-    sets.engaged["High Acc"] = set_combine( sets.engaged["Low Acc"], {
+    sets.engaged["High Acc"] = set_combine( sets.engaged, {
         neck="Sanctity Necklace",
         ear2="Telos earring",
         ring2={name="Chirich ring +1", bag="wardrobe3"},
-        legs="Atrophy tights +3",
-        feet="Atrophy boots +3"
+        legs="Ayanmo cosciales +2",
+        feet="Ayanmo gambieras +2"
     })
 
     sets.engaged.enspell ={
@@ -300,7 +300,7 @@ function get_sets()
         hands="Amalric gages +1",
         ring1="Shiva ring +1",
         ring2="Mujin Band",
-        waist="Eschan Stone",
+        waist="Sacro cord",
         legs="Ea slops +1",
         feet=merlinic_feet_mb
     }

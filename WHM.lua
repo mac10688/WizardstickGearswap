@@ -165,7 +165,7 @@ function get_sets()
         legs="Aya. Cosciales +2",
         feet="Aya. Gambieras +2",
         neck="Sanctity Necklace",
-        waist="Eschan stone",
+        waist="Grunfeld rope",
         left_ear="Telos earring",
         right_ear="Dignitary's earring",
         ring1="Chirich Ring +1",

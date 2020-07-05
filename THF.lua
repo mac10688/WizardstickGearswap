@@ -34,7 +34,7 @@ function get_sets()
         left_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
         right_ear="Ishvara Earring",
         left_ring="Regal Ring",
-        right_ring="Petrov Ring",
+        right_ring="Gere Ring",
     }
     sets.ws['Evisceration'] = sets.ws
     sets.ws['Shark Bite'] = sets.ws

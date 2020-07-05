@@ -167,7 +167,7 @@ function get_sets()
         hands="Amalric gages +1",
         ring1="Shiva ring +1",
         ring2="Jhakri ring",
-        waist="Eschan stone",
+        waist="Sacro cord",
         legs=merlinic_legs_mab,
         feet=merlinic_feet_mab,
         back={ name="Nantosuelta's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}}
