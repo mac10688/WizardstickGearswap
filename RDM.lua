@@ -144,7 +144,7 @@ function get_sets()
         waist="Reiki yotai"
     })
 
-    sets.engaged.dw["High Acc"] = set_combine(sets.engaged.dw["Multi-Attack"], {
+    sets.engaged.dw["High Acc"] = set_combine(sets.engaged["High Acc"], {
         legs={ name="Carmine Cuisses +1", augments={'Accuracy+20','Attack+12','"Dual Wield"+6'}}
     })
 
