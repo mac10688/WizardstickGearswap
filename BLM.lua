@@ -198,7 +198,7 @@ function get_sets()
         hands="Amalric gages +1", --MB2: 6
         legs="Ea slops +1", --MB: 8 MB2:8
         feet="Spaekona's sabots +3", --MB: 10
-        left_ring="Mujin band", --MB2: 5
+        right_ring="Mujin band", --MB2: 5
         back=magic_atk_cape --MB 5
     })
 

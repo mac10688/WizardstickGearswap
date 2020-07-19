@@ -264,7 +264,7 @@ function get_sets()
         hands={ name="Amalric Gages +1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20'}}, --MB2: 6
         legs=merlinic_legs_mb, --MB: 10
         feet=merlinic_feet_mb, --MB: 11
-        left_ring="Mujin band" --MB2: 5
+        right_ring="Mujin band" --MB2: 5
     })
 
     -- Make sure you have a non weather obi in this set. Helix get bonus naturally no need Obi.	
