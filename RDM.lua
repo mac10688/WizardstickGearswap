@@ -95,7 +95,7 @@ function get_sets()
     sets.ja["Chainspell"] = {body="Vitiation tabard +3"}
 
     sets.weapons = {}
-    sets.weapons["Sword"] = {main = "Crocea Mors", sub="Genmei shield"}
+    sets.weapons["Sword"] = {main = "Crocea Mors", sub="Sacro bulwark"}
     sets.weapons["Magic Accuracy"] = {main = "Crocea Mors", sub="Ammurapi shield"}
     sets.weapons["Dual Wield"] = {main = "Crocea Mors", sub = "Daybreak"}
     sets.weapons["Odin"] = {main = "Aern Dagger", sub = "Qutrub Knife"}
@@ -300,7 +300,7 @@ function get_sets()
         body="Ea houppelande",
         hands="Amalric gages +1",
         ring1="Shiva ring +1",
-        ring2="Mujin Band",
+        ring2="Freke ring",
         waist="Sacro cord",
         legs="Ea slops +1",
         feet=merlinic_feet_mb

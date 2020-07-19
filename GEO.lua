@@ -166,7 +166,7 @@ function get_sets()
         body="Bagua tunic +3",
         hands="Amalric gages +1",
         ring1="Shiva ring +1",
-        ring2="Jhakri ring",
+        ring2="Freke ring",
         waist="Sacro cord",
         legs=merlinic_legs_mab,
         feet=merlinic_feet_mab,

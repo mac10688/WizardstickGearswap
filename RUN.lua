@@ -99,7 +99,7 @@ function get_sets()
         head="Futhark bandeau +3", --dt: 5 haste: 8
         neck="Futhark torque +1",--dt: 5
         ear1="Etiolation earring",
-        ear2="Odnowa earring +1", --mdt: 2
+        ear2="Tuisto earring", --mdt: 2
         body="Futhark coat +3", --dt: 7 haste: 4
         hands="Turms mittens +1", --pdt: 2 haste: 5
         ring1="Defending ring", --dt: 10
@@ -115,7 +115,7 @@ function get_sets()
         head="Runeist's bandeau +3", --mdb: 3 meva: 83 haste: 8
         neck="Futhark torque +1", --mdb: 8
         ear1="Hearty earring", --status: 5
-        ear2="Odnowa earring +1", --dt: 2 acc: 5~10
+        ear2="Tuisto earring", --dt: 2 acc: 5~10
         body="Runeist's coat +3", --mdb: 7 meva: 94 haste: 4 
         hands="Turms mittens +1", --mdb: 5 meva: 101 haste: 4
         ring1="Defending ring", --dt: 10

@@ -226,7 +226,7 @@ function get_sets()
         ear2="Malignance earring",
         body="Pedagogy gown +3",
         hands="Amalric gages +1",
-        left_ring="Stikini Ring +1",
+        left_ring="Freke ring",
         right_ring="Shiva Ring +1",
         back=nuke_cape,
         waist="Sacro cord",

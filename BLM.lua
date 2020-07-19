@@ -173,7 +173,7 @@ function get_sets()
         waist="Sacro cord",
         left_ear="Barkarole earring",
         right_ear="Malignance earring",
-        left_ring="Stikini Ring +1",
+        left_ring="Freke ring",
         right_ring="Shiva Ring +1",
         back=magic_atk_cape,
     }
@@ -210,7 +210,7 @@ function get_sets()
         ear1="Regal earring",
         body="Ea houppelande",
         hands="Amalric gages +1",
-        ring1="Stikini ring +1",
+        ring1="Freke ring",
         ring2="Shiva ring +1",
         back=magic_atk_cape,
         waist="Embla sash",
