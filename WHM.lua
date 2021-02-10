@@ -42,7 +42,6 @@ function get_sets()
         head="Vanya hood",
         ear2="Calamitous earring",
         hands="Fanatic gloves",
-        back="Fi follet cape +1",
         waist="Austerity belt +1",
         legs="Lengo pants",
         feet="Medium's sabots"
@@ -61,31 +60,28 @@ function get_sets()
     sets.ja['Devotion'] = {body="Piety Cap +1"}
 	
 	--- Fast Cast Sets ---
+    -- 61% fc
+    -- 12% for cures
 	sets.fc = {
-        main="Gada",
-        ammo="Incantor Stone",
-        head="Vanya hood",
-        neck="Cleric's torque",
-        ear2="Loquacious Earring",
-        body="Inyanga jubbah +2",
-        hands="Fanatic gloves",
-        ring1="Prolix Ring",
-        ring2="Kishar ring",
-        back={ name="Alaunus's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}},
-        waist="Embla Sash",
-        legs="Lengo pants",
-        feet="Kaykaus boots"
+        ammo="Incantor Stone", --2%
+        neck="Cleric's torque", --6%
+        ear2="Loquacious Earring", --2%
+        body="Inyanga jubbah +2", --14%
+        hands="Fanatic gloves", --7%
+        ring1="Prolix Ring", --2%
+        ring2="Kishar ring", --4%
+        back={ name="Alaunus's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}}, --10%
+        waist="Embla Sash", --5%
+        legs="Aya. Cosciales +2", --5%
     }
 	
     sets.fc.heal = set_combine(sets.fc, {legs="ebers pantaloons +1"})
     
     sets.fc.cure = set_combine(sets.fc, {
-        main="Queller rod",
-        neck="Aceso's choker +1",
-        sub="Sors shield",
+        -- sub="Sors shield",
         ammo="Incantor stone",
-        ear1="Nourishing earring +1",
         head="Piety cap +1",
+        ear1="Nourishing earring +1",
         feet="Hygieia Clogs +1"
     })
     
@@ -175,26 +171,29 @@ function get_sets()
     
     sets.idle = {}
 	
+    --30% physical
+    --36% dmg
+    --6% magic dmg
 	sets.idle['PDT'] = {
-        main="Mafic cudgel",
-        sub="Genmei shield",
-        ammo="Staunch tathlum +1",
-        head="Ayanmo zucchetto +2",
-        neck="Loricate Torque +1",
-        ear1="Etiolation earring",
+        main="Daybreak", --10% physical
+        sub="Genmei shield", --10% physical
+        ammo="Staunch tathlum +1", --3% dmg
+        head="Ayanmo zucchetto +2", --3% dmg
+        neck="Loricate Torque +1", --6% dmg
+        ear1="Etiolation earring", --3% magic dmg
         ear2="Hearty earring",
-        body="Shamash robe",
-        hands="Ayanmo manopolas +2",
-        ring1="Defending Ring",
-        ring2="Ayanmo ring",
+        body="Shamash robe", --10% physical
+        hands="Ayanmo manopolas +2", --3% dmg
+        ring1="Defending Ring", --10% dmg
+        ring2="Ayanmo ring", --3% dmg
         back={ name="Alaunus's Cape", augments={'MND+20','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Enmity-10','Occ. inc. resist. to stat. ailments+10'}},
-        waist="Slipor sash",
-        legs="Ayanmo cosciales +2",
-        feet="Ayanmo gambieras +2"
+        waist="Slipor sash", --3% magic dmg
+        legs="Ayanmo cosciales +2", --5% dmg
+        feet="Ayanmo gambieras +2" --3% dmg
     }
                 
     sets.idle['MDT'] = {
-        main="Mafic cudgel",
+        main="Daybreak",
         sub="Genmei shield",
         ammo="Staunch tathlum +1",
         head="Inyanga tiara +2",
@@ -236,21 +235,22 @@ function get_sets()
         neck="Debilis Medallion",
         hands="Fanatic gloves",
         ring1="Haoma's ring",
-        ring2="Haoma's ring",
+        ring2="Menelaus's Ring",
         legs="Theophany pantaloons +3",
         feet="Gendewitha Galoshes"
     })
 	
+    --Cure: 57%
+    --Cure II: 22
     sets.midcast.cure = {
-        main="Raetic Rod +1", --23%
-        sub="Genbu's Shield",
+        main="Raetic Rod +1", --Cure I: 23% Cure II: 10%
         ammo="Incantor Stone",
         head="Ebers cap +1", --16%
         neck="Cleric's torque", --5%
         ear1="Nourishing earring +1", --3%
-        ear2="Glorious earring",
-        body="Theophany briault +3",
-        hands="Theophany mitts +3",
+        ear2="Glorious earring", --Cure II: 2%
+        body="Theophany briault +3", --Cure II: 6%
+        hands="Theophany mitts +3", --Cure II: 4%
         ring1="Persis ring",
         ring2="Prolix ring",
         back={ name="Alaunus's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}},
@@ -260,6 +260,7 @@ function get_sets()
     }
 
     sets.midcast.raise = set_combine(sets.conserve_mp, sets.fc)
+
 
     sets.midcast.enhancing = {
         main="Beneficus",
@@ -557,7 +558,7 @@ end
 -- end
 
 function lockstyle()
-    if player.main_job == 'WHM' then send_command('@input /lockstyleset 14') end
+    if player.main_job == 'WHM' then send_command('@input /lockstyleset 1') end
 end
 
 function sub_job_change()

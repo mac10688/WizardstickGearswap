@@ -239,7 +239,7 @@ function get_sets()
         body = "Vrikodara jupon",
         hands = "Shrieker's cuffs",
         ring1 = "Haoma's ring",
-        ring2 = "Haoma's ring",
+        ring2 = "Menelaus's ring",
         back = "Solemnity cape",
         waist = "Embla sash",
         legs = "Gyve trousers",
@@ -473,9 +473,9 @@ function buff_change(buff,gain)
 end
 
 function lockstyle()
-    if player.main_job == 'BLM' then send_command('@input /lockstyleset 15') end
+    if player.main_job == 'BLM' then send_command('@input /lockstyleset 3') end
 end
 
 function sub_job_change()
-    coroutine.schedule(lockstyle,4)
+    coroutine.schedule(lockstyle,6)
 end

@@ -11,7 +11,7 @@ RegenSetIndex = 1
 RegenSet = {"Potency", "Duration"}
 
 WeaponSetIndex = 1
-WeaponSet = {"Akademos", "Xoanon", "Gada", "None"}
+WeaponSet = {"Akademos", "Xoanon", "Musa", "None"}
 
 Kiting = false
 
@@ -96,16 +96,7 @@ function get_sets()
     int_enfeeble_cape = nuke_cape
     mnd_enfeeble_cape = cure_cape
 
-    merlinic_head_mab = { name="Merlinic Hood", augments={'Mag. Acc.+22 "Mag.Atk.Bns."+22','"Occult Acumen"+4','Mag. Acc.+11','"Mag.Atk.Bns."+8'}}
-    merlinic_head_mb = { name="Merlinic Hood", augments={'Attack+14','Magic burst dmg.+8%','Mag. Acc.+11'}}
-
-    merlinic_body_mab = { name="Merlinic Jubbah", augments={'Mag. Acc.+16 "Mag.Atk.Bns."+16','Magic dmg. taken -2%','CHR+1','Mag. Acc.+14','"Mag.Atk.Bns."+9'}}
-    merlinic_body_mb = {}
-
-    merlinic_legs_mab = { name="Merlinic Shalwar", augments={'Mag. Acc.+20 "Mag.Atk.Bns."+20','Enmity-1','CHR+8','Mag. Acc.+15'}}
     merlinic_legs_mb = { name="Merlinic Shalwar", augments={'Mag. Acc.+22','Magic burst dmg.+10%','MND+2','"Mag.Atk.Bns."+13'}}
-
-    merlinic_feet_mab = { name="Merlinic Crackows", augments={'Mag. Acc.+19 "Mag.Atk.Bns."+19','Magic burst dmg.+1%','INT+7','Mag. Acc.+15','"Mag.Atk.Bns."+14'}}
     merlinic_feet_mb = { name="Merlinic Crackows", augments={'"Mag.Atk.Bns."+25','Magic burst dmg.+11%','Mag. Acc.+5'}}
 
 
@@ -113,7 +104,7 @@ function get_sets()
     sets.WeaponSet["None"] = {}
     sets.WeaponSet["Akademos"] = {main="Akademos", sub="Khonsu"}
     sets.WeaponSet["Xoanon"] = {main="Xoanon", sub="Khonsu"}
-    sets.WeaponSet["Gada"] = {main="Gada", sub="Ammurapi shield"}
+    sets.WeaponSet["Musa"] = {main="Musa", sub="Khonsu"}
 
     
     sets.precast = {}
@@ -220,14 +211,14 @@ function get_sets()
     sets.midcast.elemental = {}
     sets.midcast.elemental["Magic Attack Bonus"] = set_combine(sets.precast.fc, {
         ammo="Pemphredo tathlum",
-        head=merlinic_head_mab,
+        head="Pedagogy mortarboard +3",
         neck="Argute stole +1",
         ear1="Barkarole earring",
         ear2="Malignance earring",
         body="Pedagogy gown +3",
         hands="Amalric gages +1",
-        left_ring="Freke ring",
-        right_ring="Shiva Ring +1",
+        ring1="Freke ring",
+        ring1="Shiva Ring +1",
         back=nuke_cape,
         waist="Sacro cord",
         legs="Pedagogy pants +3",
@@ -236,21 +227,19 @@ function get_sets()
 
     --Tier 3 spells for mb without killing
     sets.midcast.elemental["Vagary"] = {
-        main="Gada",
-        sub="Sors shield",
         ammo="Incantor Stone",
-        head=merlinic_head_mab,
+        head="Pedagogy mortarboard +3",
         neck="Voltsurge Torque",
         ear1="Etiolation Earring",
         ear2="Loquac. Earring",
         body="Shango Robe",
         hands="Academic's bracers +3",
-        left_ring="Kishar Ring",
-        right_ring="Prolix Ring",
+        ring1="Kishar Ring",
+        ring2="Prolix Ring",
         back=idle_cape,
         waist="Sacro cord",
         legs={ name="Lengo Pants", augments={'INT+5','Mag. Acc.+13'}},
-        feet=merlinic_feet_mab
+        feet="Pedagogy loafers +3"
     }
 
     --MB: 10 Akademos
@@ -280,8 +269,6 @@ function get_sets()
     })
     
     sets.midcast.enfeebling = set_combine(sets.precast.fc, {
-        main="Gada",
-        sub="Ammurapi shield",
         ammo="Hydrocera",
         head="Academic's mortarboard +3",
         neck="Argute stole +1",
@@ -290,7 +277,7 @@ function get_sets()
         body="Academic's gown +3",
         hands="Academic's bracers +3",
         ring1="Stikini ring +1",
-        ring2="Kishar ring +1",
+        ring2="Stikini ring +1",
         back=nuke_cape,
         waist="Luminary sash",
         legs="Chironic hose",
@@ -306,8 +293,6 @@ function get_sets()
     })
 
     sets.midcast.cure = set_combine(sets.precast.fc, {
-        main="Raetic Rod +1",
-        sub="Ammurapi shield",
         head="Vanya hood",
         body="Chironic doublet",
         hands="Pedagogy bracers +3",
@@ -318,16 +303,17 @@ function get_sets()
         feet="Kaykaus boots"
     })
 
+    sets.midcast.statusRemoval = sets.precast.fc
+
     ------------
     -- Regen
     ------------
 
     sets.midcast.enhancement_duration = {
-        main="Gada",
-        sub="Ammurapi shield",
         head="Telchine cap",
         body="Telchine chasuble",
         hands="Telchine gloves",
+        waist="Embla sash",
         legs="Telchine braconi",
         feet="Telchine pigaches"
     }
@@ -347,8 +333,6 @@ function get_sets()
 
     sets.midcast.regen = {}
     sets.midcast.regen["Potency"] = set_combine(sets.midcast.enhancement_duration, {
-        main="Bolelabunga",
-        sub="Ammurapi shield",
         head="Arbatel bonnet +1"
     })
 
@@ -372,13 +356,11 @@ function get_sets()
         body="Pedagogy gown +3",
         hands="Pedagogy bracers +3",
         ring1="Haoma's ring",
-        ring2="Haoma's ring",
+        ring2="Menelaus's ring",
         feet="Gendewitha Galoshes"
     })
 
     sets.midcast.enhancing = set_combine(sets.midcast.enhancement_duration, {
-        main="Gada",
-        sub="Ammurapi shield",
         head="Arbatel bonnet +1",
         ear1="Andoaa earring",
         ear2="Mimir earring",
@@ -569,16 +551,21 @@ function midcast(spell)
                 equip(sets.midcast.storm)
             elseif spellType == "Refresh" then
                 equip(sets.midcast.refresh)
+            elseif spellType == "StatusRemoval" then
+                equip(sets.midcast.statusRemoval)
             elseif spell.name == "Aquaveil" then
                 equip(sets.midcast.aquaveil)
+            
             else
                 equip(sets.midcast.enhancing)   
-            end    
+            end
         -- Enfeebling Magic --         
         elseif spell.skill == 'Enfeebling Magic' and spell.type == 'BlackMagic' then -- to do: better rule for this.
-            equip(sets.midcast.IntEnfeebling)
+            equip(sets.midcast.int_enfeebling)
         elseif spell.skill == 'Enfeebling Magic' and spell.type == 'WhiteMagic' then -- to do: better rule for this.
-            equip(sets.midcast.MndEnfeebling)
+            equip(sets.midcast.mnd_enfeebling)
+        elseif spell.skill == 'Enfeebling Magic' then
+            equip(sets.midcast.enfeebling)
         elseif string.find(spell.english, 'Aspir') or string.find(spell.english, 'Drain') then
             equip(sets.midcast.drain_aspir)
         -- Elemental Magic --      
@@ -671,7 +658,7 @@ function buff_change(buff,gain)
 end
 
 function lockstyle()
-    if player.main_job == 'SCH' then send_command('@input /lockstyleset 13') end
+    if player.main_job == 'SCH' then send_command('@input /lockstyleset 5') end
 end
 
 function sub_job_change()

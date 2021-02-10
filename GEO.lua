@@ -28,13 +28,7 @@ end
 help()
 
 function get_sets()
-
-    merlinic_head_mab = { name="Merlinic Hood", augments={'Mag. Acc.+22 "Mag.Atk.Bns."+22','"Occult Acumen"+4','Mag. Acc.+11','"Mag.Atk.Bns."+8'}}
-    merlinic_legs_mab = { name="Merlinic Shalwar", augments={'Mag. Acc.+20 "Mag.Atk.Bns."+20','Enmity-1','CHR+8','Mag. Acc.+15'}}
-    merlinic_feet_mab = { name="Merlinic Crackows", augments={'Mag. Acc.+19 "Mag.Atk.Bns."+19','Magic burst dmg.+1%','INT+7','Mag. Acc.+15','"Mag.Atk.Bns."+14'}}
     
-    merlinic_feet_mb = { name="Merlinic Crackows", augments={'"Mag.Atk.Bns."+25','Magic burst dmg.+11%','Mag. Acc.+5'}}
-
     sets.ja = {}
     sets.ja['Bolster'] = {body="Bagua tunic +3"}
     sets.ja['Life cycle'] = {body="Geomancy tunic +3", back="Nantosuelta's cape"}
@@ -45,7 +39,7 @@ function get_sets()
     sets.ja['Concentric Pulse'] = { head="Bagua galero +3" }
 
     sets.fc = {
-        head=merlinic_head_mab,
+        head="Merlinic hood",
         neck="Voltsurge torque",
         ear2="Loquacious Earring",
         ear1="Etiolation earring",
@@ -59,7 +53,6 @@ function get_sets()
     }
 
     sets.fc.cure = set_combine(sets.fc, {
-        sub="Sors shield"
     })
 
     sets.fc.elemental_magic = set_combine(sets.fc, {
@@ -108,7 +101,6 @@ function get_sets()
 
     --50% cure
     sets.midcast.cure = set_combine(sets.midcast.conserve_mp, {
-        sub="Sors shield", --3%
         head="Vanya hood", --10%
         body="Vrikodara Jupon", --13%
         hands="Geomancy mitaines +3", --Mnd +43
@@ -141,7 +133,7 @@ function get_sets()
 
     sets.midcast.elemental["magic-accuracy"] = {
         sub="Ammurapi shield",
-        head=merlinic_head_mab,
+        head="Bagua galero +3",
         neck="Erra pendant",
         ear1="Malignance earring",
         ear2="Regal earring",
@@ -168,8 +160,8 @@ function get_sets()
         ring1="Shiva ring +1",
         ring2="Freke ring",
         waist="Sacro cord",
-        legs=merlinic_legs_mab,
-        feet=merlinic_feet_mab,
+        legs="Bagua pants +3",
+        feet="Bagua sandals +3",
         back={ name="Nantosuelta's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}}
     }
 
@@ -261,9 +253,9 @@ function get_sets()
     sets.midcast["Dispelga"] = {main="Daybreak"}
 
     --To add more ws sets, just add sets.ws["<ws name>"]. Capitalization matters.
-    sets.ws['Exudation'] = set_combine(sets.ws, {ear2="Odnowa earring +1"})
-    sets.ws['Black Halo'] = set_combine(sets.ws, {ear2="Odnowa earring +1"})
-    sets.ws['Flash Nova'] = set_combine(sets.ws, {ear2="Odnowa earring +1"})
+    sets.ws['Exudation'] = set_combine(sets.ws, {})
+    sets.ws['Black Halo'] = set_combine(sets.ws, {})
+    sets.ws['Flash Nova'] = set_combine(sets.ws, {})
 
     sets.kiting = {
         feet="Geomancy sandals +3"
@@ -395,7 +387,7 @@ function self_command(command)
 end
 
 function lockstyle()
-    if player.main_job == 'GEO' then send_command('@input /lockstyleset 17') end
+    if player.main_job == 'GEO' then send_command('@input /lockstyleset 2') end
 end
 
 function sub_job_change()

@@ -270,8 +270,7 @@ function get_sets()
 
     --Regen effect duration: +21
     sets.midcast.enhancing["Regen"] = set_combine(sets.midcast.enhancing, {
-        head="Runeist's bandeau +3",
-        neck="Sacro Gorget"
+        head="Runeist's bandeau +3"
     })
     sets.midcast.enhancing["Regen II"] = sets.midcast.enhancing["Regen"]
     sets.midcast.enhancing["Regen III"] = sets.midcast.enhancing["Regen"]
@@ -281,8 +280,11 @@ function get_sets()
     sets.midcast.enhancing["Phalanx"] = set_combine(sets.midcast.enhancing, {
         head="Futhark bandeau +3",
         body={ name="Herculean Vest", augments={'STR+2','AGI+2','Phalanx +4','Mag. Acc.+10 "Mag.Atk.Bns."+10'}},
+        hands="Taeon gloves",        
         ring1="Stikini ring +1",
         ring2="Stikini ring +1",
+        legs="Taeon tights",
+        feet="Taeon boots"
     })
 
     -- Weaponskill sets
@@ -389,7 +391,7 @@ function get_sets()
 
     sets.engaged.pure_offense = {}
     sets.engaged.pure_offense["multi-hit"] = {
-        ammo="Ginsen",
+        ammo="Yamarang",
         head="Dampening tam",
         neck="Anu torque",
         ear1="Telos earring",
@@ -642,7 +644,7 @@ end
 -----------------------------------------------------------------------------------
 
 function lockstyle()
-    if player.main_job == 'RUN' then send_command('@input /lockstyleset 18') end
+    if player.main_job == 'RUN' then send_command('@input /lockstyleset 5') end
 end
 
 function sub_job_change()

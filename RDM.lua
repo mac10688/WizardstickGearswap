@@ -97,7 +97,7 @@ function get_sets()
     sets.weapons = {}
     sets.weapons["Sword"] = {main = "Crocea Mors", sub="Sacro bulwark"}
     sets.weapons["Magic Accuracy"] = {main = "Crocea Mors", sub="Ammurapi shield"}
-    sets.weapons["Dual Wield"] = {main = "Crocea Mors", sub = "Daybreak"}
+    sets.weapons["Dual Wield"] = {main = "Crocea Mors", sub = "Tauret"}
     sets.weapons["Odin"] = {main = "Aern Dagger", sub = "Qutrub Knife"}
     sets.weapons["Savage"] = {main = "Naegling", sub = "Tauret"}
 
@@ -177,7 +177,7 @@ function get_sets()
         body="Vrikodara jupon",
         hands="Kaykaus cuffs",
         ring1="Haoma's ring",
-        ring2="Persis ring",
+        ring2="Menelaus's ring",
         back=Cape.Mnd,
         legs="Chironic hose",
         feet="Kaykaus boots"
@@ -201,6 +201,7 @@ function get_sets()
     sets.midcast.enhancing["Duration"] = set_combine(sets.midcast.enhancing, {
         head="Telchine Cap",
         hands="Atrophy gloves +3",
+        waist="Embla sash",
         legs="Telchine Braconi",
         feet="Lethargy houseaux +1"
     })
@@ -286,12 +287,6 @@ function get_sets()
     sets.midcast["Bio II"] = sets.midcast.enfeebling.int["Duration"]
     sets.midcast["Bio III"] = sets.midcast.enfeebling.int["Duration"]
 
-    merlinic_head_mab = { name="Merlinic Hood", augments={'Mag. Acc.+22 "Mag.Atk.Bns."+22','"Occult Acumen"+4','Mag. Acc.+11','"Mag.Atk.Bns."+8'}}
-    merlinic_body_mab = { name="Merlinic Jubbah", augments={'Mag. Acc.+16 "Mag.Atk.Bns."+16','Magic dmg. taken -2%','CHR+1','Mag. Acc.+14','"Mag.Atk.Bns."+9'}}
-    merlinic_legs_mab = { name="Merlinic Shalwar", augments={'Mag. Acc.+20 "Mag.Atk.Bns."+20','Enmity-1','CHR+8','Mag. Acc.+15'}}
-    merlinic_feet_mab = { name="Merlinic Crackows", augments={'Mag. Acc.+19 "Mag.Atk.Bns."+19','Magic burst dmg.+1%','INT+7','Mag. Acc.+15','"Mag.Atk.Bns."+14'}}
-
-    merlinic_feet_mb = { name="Merlinic Crackows", augments={'"Mag.Atk.Bns."+25','Magic burst dmg.+11%','Mag. Acc.+5'}}
     sets.midcast.elemental = {
         head="Ea hat +1",
         neck="Mizu. Kubikazari",
@@ -303,7 +298,7 @@ function get_sets()
         ring2="Freke ring",
         waist="Sacro cord",
         legs="Ea slops +1",
-        feet=merlinic_feet_mb
+        feet="Merlinic Crackows"
     }
 
     sets.midcast.dark_magic = set_combine(sets.midcast.elemental, {
@@ -553,7 +548,7 @@ function IsEnspellActive()
 end
 
 function lockstyle()
-    if player.main_job == 'RDM' then send_command('@input /lockstyleset 22') end
+    if player.main_job == 'RDM' then send_command('@input /lockstyleset 3') end
 end
 
 function sub_job_change()
