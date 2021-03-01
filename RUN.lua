@@ -40,7 +40,7 @@ ModeIndex = 1
 OffenseModes = { "multi-hit", "accuracy"}
 OffenseModeIndex = 1
 
-TankModes = {"pdt", "mdt", "resist-status"}
+TankModes = {"pdt", "mdt", "resist-status", "kb"}
 TankModeIndex = 1
 
 HybridModes = {"pdt", "mdt", "th"}
@@ -103,7 +103,7 @@ function get_sets()
         body="Futhark coat +3", --dt: 7 haste: 4
         hands="Turms mittens +1", --pdt: 2 haste: 5
         ring1="Defending ring", --dt: 10
-        ring2="Moonbeam ring", --pdt: 3
+        ring2="Vocane ring +1", --pdt: 3
         back= dt_cape,--dt: 5
         waist="Flume belt +1", --haste: 6 acc: 11
         legs="Erilaz leg guards +1",  --pdt: 7 haste: 6
@@ -112,14 +112,14 @@ function get_sets()
 
     sets.tank["mdt"] = {
         ammo="Staunch tathlum +1", --dt: 2 status: 10
-        head="Runeist's bandeau +3", --mdb: 3 meva: 83 haste: 8
-        neck="Futhark torque +1", --mdb: 8
-        ear1="Hearty earring", --status: 5
+        head="Futhark bandeau +3", --mdb: 4 meva: 73 haste: 8
+        neck="Inquisitor bead necklace", --mdb: 8
+        ear1="Etiolation earring",
         ear2="Tuisto earring", --dt: 2 acc: 5~10
         body="Runeist's coat +3", --mdb: 7 meva: 94 haste: 4 
-        hands="Turms mittens +1", --mdb: 5 meva: 101 haste: 4
+        hands="Futhark mitons +3", --mdb: 5 meva: 101 haste: 4
         ring1="Defending ring", --dt: 10
-        ring2="Vengeful ring", --meva: 9
+        ring2="Vocane ring +1", --meva: 9
         back=dt_cape, --meva: 20
         waist="Flume belt +1",
         legs="Runeist's trousers +3", --mdb: 6 meva: 99 pdt: 5 haste: 6 status: 10
@@ -129,6 +129,12 @@ function get_sets()
     sets.tank["resist-status"] = set_combine( sets.tank["mdt"], {
         back=status_ailment_cape,
         hands="Erilaz gauntlets +1"
+    })
+
+    sets.tank["kb"] = set_combine( sets.tank["mdt"], {
+        back="Repulse mantle",
+        ring2="Vocane ring +1",
+        legs="Dashing subligar"
     })
 
     --75 enmmity
@@ -149,7 +155,7 @@ function get_sets()
 
     sets.weaponset = {}
     sets.weaponset["epeo"] = {main="Epeolatry"}
-    sets.weaponset["lionheart"] = {main="Lionheart"}
+    sets.weaponset["lionheart"] = {main="Epeolatry", sub="Irenic strap +1"}
     --Be very precise about spelling the ability name or it won't be swapped to for job abilities
     sets.ja = {}
 
@@ -180,7 +186,7 @@ function get_sets()
         feet="Qaaxo Leggings"})
 
     sets.ja['Swipe'] = sets.ja['Lunge']
-    sets.ja['Gambit'] = set_combine(sets.enmity, {hands="Runeist's Mitons +2"})
+    sets.ja['Gambit'] = set_combine(sets.enmity, {hands="Runeist's Mitons +3"})
     sets.ja['Rayke'] = set_combine(sets.enmity, {feet="Futhark Boots +1"})
     sets.ja['Elemental Sforzo'] = set_combine(sets.enmity, {body="Futhark Coat 3"})
     sets.ja['Swordplay'] = set_combine(sets.enmity, {hands="Futhark Mitons +3"})
@@ -259,7 +265,7 @@ function get_sets()
         head="Erilaz galea +1", --Enhancing magic effect duration +15%
         ear1="Andoaa earring",
         ear2="Mimir earring",
-        hands="Runeist's mitons +2", --Enhancing magic skill +15
+        hands="Runeist's mitons +3", --Enhancing magic skill +19
         waist="Audumbla sash",
         legs="Futhark trousers +3" --Enhancing magic duration +20%
     })

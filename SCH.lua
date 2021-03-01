@@ -11,7 +11,7 @@ RegenSetIndex = 1
 RegenSet = {"Potency", "Duration"}
 
 WeaponSetIndex = 1
-WeaponSet = {"Akademos", "Xoanon", "Musa", "None"}
+WeaponSet = {"Akademos", "Musa", "Daybreak", "None"}
 
 Kiting = false
 
@@ -44,7 +44,14 @@ function self_command(command)
         WeaponSetIndex = WeaponSetIndex % #WeaponSet + 1
         local weapon_set = WeaponSet[WeaponSetIndex]
 
-        equip_set(player.status)
+        if weapon_set ~= 'None' then
+            enable('main', 'sub')
+            equip(sets.WeaponSet[weapon_set])
+            disable('main', 'sub')
+        else
+            enable('main', 'sub')
+            equip(sets.WeaponSet[weapon_set])
+        end
         add_to_chat(122, 'Weapon Set: ' .. weapon_set)
     elseif command == 'CycleIdleSet' then
         IdleSetIndex = IdleSetIndex % #IdleSet + 1
@@ -73,6 +80,22 @@ function self_command(command)
         equip_set(player.status)
         add_to_chat(122, 'Nuke Set: ' .. nuke_set .. ' || Idle Set: ' .. idle_set .. ' || Regen Set: ' .. regen_set .. ' || Weapon Set: ' .. weapon_set)
         lockstyle()
+    elseif string.find(command, 'WeaponSet') then
+        local weaponIndex = tonumber(string.match(command, '%d+'))
+        WeaponSetIndex = weaponIndex
+        local weapon_set = WeaponSet[WeaponSetIndex]
+
+        if weapon_set ~= 'None' then
+            enable('main', 'sub')
+            equip(sets.WeaponSet[weapon_set])
+            disable('main', 'sub')
+        else
+            enable('main', 'sub')
+            equip(sets.WeaponSet[weapon_set])
+        end
+
+        equip_set(player.status)
+        add_to_chat(122, 'Weapon Set: ' .. weapon_set)
     elseif command == 'toggle kiting' then
         Kiting = not Kiting
         if Kiting then
@@ -99,14 +122,14 @@ function get_sets()
     merlinic_legs_mb = { name="Merlinic Shalwar", augments={'Mag. Acc.+22','Magic burst dmg.+10%','MND+2','"Mag.Atk.Bns."+13'}}
     merlinic_feet_mb = { name="Merlinic Crackows", augments={'"Mag.Atk.Bns."+25','Magic burst dmg.+11%','Mag. Acc.+5'}}
 
+    chironic_refresh_legs = { name="Chironic Hose", augments={'STR+9','CHR+4','"Refresh"+2','Mag. Acc.+14 "Mag.Atk.Bns."+14'}}
 
     sets.WeaponSet = {}
-    sets.WeaponSet["None"] = {}
+    sets.WeaponSet["None"] = {main="Malignance Pole", sub="Khonsu"}
     sets.WeaponSet["Akademos"] = {main="Akademos", sub="Khonsu"}
-    sets.WeaponSet["Xoanon"] = {main="Xoanon", sub="Khonsu"}
     sets.WeaponSet["Musa"] = {main="Musa", sub="Khonsu"}
+    sets.WeaponSet["Daybreak"] = {main="Daybreak", sub="Ammurapi Shield"}
 
-    
     sets.precast = {}
 
     sets.ja = {}
@@ -122,7 +145,7 @@ function get_sets()
         neck="Sanctity necklace",
         ear1="Telos earring",
         ear2="Dignitary's earring",
-        body="Jhakri robe +2",
+        body="Pedagogy gown +3",
         hands="Jhakri cuffs +2",
         ring1="Chirich Ring +1",
         ring2="Chirich Ring +1",
@@ -160,6 +183,7 @@ function get_sets()
 
     --67% fc
     sets.precast.fc = {
+        main="Musa",
         ammo="Incantor stone", --fast cast 2%
         head="Academic's mortarboard +3", --fast cast 8%
         neck="Voltsurge torque", --fast cast 4%
@@ -191,9 +215,6 @@ function get_sets()
         back="Pahtli cape" -- cure spellcasting time -8%
     })
 
-  
-
-
     ------------------------------------------------------------------------------------------------
     ---------------------------------------- Midcast Sets ------------------------------------------
     ------------------------------------------------------------------------------------------------
@@ -210,6 +231,7 @@ function get_sets()
 
     sets.midcast.elemental = {}
     sets.midcast.elemental["Magic Attack Bonus"] = set_combine(sets.precast.fc, {
+        main="Akademos",
         ammo="Pemphredo tathlum",
         head="Pedagogy mortarboard +3",
         neck="Argute stole +1",
@@ -218,7 +240,7 @@ function get_sets()
         body="Pedagogy gown +3",
         hands="Amalric gages +1",
         ring1="Freke ring",
-        ring1="Shiva Ring +1",
+        ring2="Shiva Ring +1",
         back=nuke_cape,
         waist="Sacro cord",
         legs="Pedagogy pants +3",
@@ -247,28 +269,31 @@ function get_sets()
     --MB2: 12
     --Total MB: 60
     sets.midcast.elemental["Magic Burst"] = set_combine(sets.midcast.elemental["Magic Attack Bonus"], {
+        main="Akademos",
         head="Pedagogy Mortarboard +3", --MB2: 4
         neck="Argute stole +1", --MB: 7
         body="Merlinic Jubbah", --MB: 10
         hands={ name="Amalric Gages +1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20'}}, --MB2: 6
         legs=merlinic_legs_mb, --MB: 10
         feet=merlinic_feet_mb, --MB: 11
-        right_ring="Mujin band" --MB2: 5
+        ring2="Mujin band" --MB2: 5
     })
 
     -- Make sure you have a non weather obi in this set. Helix get bonus naturally no need Obi.	
     sets.midcast.helix = set_combine(sets.midcast.elemental["Magic Burst"], {
-        -- Amalric Nails +1 are beating Arbatel Loafers +1 for Helix atm, YMMV
-        feet={ name="Amalric Nails +1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
-        waist="Refoccilation Stone",
+        ring1="Mallquis ring"
     })
 
     -- Make sure you have a non weather obi in this set. Helix get bonus naturally no need Obi.	
     sets.midcast.dark_helix = set_combine(sets.midcast.helix, {
-		head="Pixie Hairpin +1"
+		head="Pixie Hairpin +1",
+        ring1="Archon ring"
     })
+
+    sets.midcast["Kaustra"] = sets.midcast.dark_helix
     
     sets.midcast.enfeebling = set_combine(sets.precast.fc, {
+        main="Musa",
         ammo="Hydrocera",
         head="Academic's mortarboard +3",
         neck="Argute stole +1",
@@ -293,13 +318,14 @@ function get_sets()
     })
 
     sets.midcast.cure = set_combine(sets.precast.fc, {
+        main="Musa",
         head="Vanya hood",
         body="Chironic doublet",
         hands="Pedagogy bracers +3",
         back=cure_cape,
         ring1="Stikini ring +1",
         ring2="Stikini ring +1",
-        legs="Chironic hose",
+        legs="Academic's pants +3",
         feet="Kaykaus boots"
     })
 
@@ -310,6 +336,7 @@ function get_sets()
     ------------
 
     sets.midcast.enhancement_duration = {
+        main="Musa",
         head="Telchine cap",
         body="Telchine chasuble",
         hands="Telchine gloves",
@@ -328,6 +355,7 @@ function get_sets()
 
     sets.midcast['Impact'] = set_combine(sets.midcast.elemental["Magic Attack Bonus"], {
         head=empty,
+        ring2="Archon ring",
         body='Twilight cloak'
     })
 
@@ -342,13 +370,14 @@ function get_sets()
         head="Pixie Hairpin +1",
         neck="Erra pendant",
         ring1="Excelsis ring",
+        ring2="Archon ring",
         waist="Fucho-no-obi",
         legs="Pedagogy pants +3",
         feet="Merlinic crackows"
     })
 
     sets.midcast.healing = set_combine(sets.precast.fc, {
-
+        legs="Academic's pants +3"
     })
 
     sets.midcast["Cursna"] = set_combine(sets.midcast.healing, {
@@ -406,7 +435,7 @@ function get_sets()
         body="Pedagogy gown +3",
         hands="Jhakri cuffs +2",
         ring1="Stikini ring +1",
-        ring2="Persis ring",
+        ring2="Archon ring",
         backl=cure_cape,
         waist="Luminary sash",
         legs="Pedagogy pants +3",
@@ -428,6 +457,7 @@ function get_sets()
     }
 
     sets.idle = {
+        main="Malignance Pole",
         ammo="Staunch tathlum +1",
         head="Befouled crown",
         neck="Loricate torque +1",
@@ -443,10 +473,16 @@ function get_sets()
         feet="Academic's loafers +3"
     }
 
-    sets.idle["Refresh"] = sets.idle
+    sets.idle["Refresh"] = set_combine(sets.idle, {
+        ammo="Homiliary",
+        ring1="Stikini ring +1",
+        ring2="Stikini ring +1",
+        body="Shamash robe",
+        legs=chironic_refresh_legs
+    })
 
     sets.idle["PDT"] = set_combine(sets.idle, {
-        right_ring="Gelatinous ring"
+        right_ring="Vengeful ring"
     })
 
     sets.idle["MDT"] = set_combine(sets.idle, {
@@ -457,7 +493,7 @@ function get_sets()
         ring2="Shneddick ring"
     }
 
-    coroutine.schedule(lockstyle,2)
+    coroutine.schedule(lockstyle,8)
 
 end
 
@@ -531,6 +567,7 @@ end
 ---- .::Midcast Functions::. ---->
 function midcast(spell)
     -- print_set(spell)
+
     local spellType = spell_maps[spell.name]
     if spell.action_type == 'Magic' then   
         -- Healing Magic --
@@ -574,9 +611,16 @@ function midcast(spell)
                 equip(sets.midcast.dark_helix)
             elseif spellType == 'Helix' then
                 equip(sets.midcast.helix)
+                local distance = windower.ffxi.get_mob_by_target('t').distance:sqrt()
+                if distance < 5 then
+                    equip( set_combine(sets.midcast.elemental[nuke_set], {waist = "Orpheus's sash"}))
+                end
             else
                 local nuke_set = NukeSet[NukeTypeIndex]
-                if (world.day_element == spell.element or world.weather_element == spell.element) and spellType ~= "Helix" then
+                local distance = windower.ffxi.get_mob_by_target('t').distance:sqrt()
+                if distance < 5 then
+                    equip( set_combine(sets.midcast.elemental[nuke_set], {waist = "Orpheus's sash"}))
+                elseif (world.day_element == spell.element or world.weather_element == spell.element) and spellType ~= "Helix" then
                     equip( set_combine(sets.midcast.elemental[nuke_set], {waist = "Hachirin-no-Obi"}))
                 else
                     equip(sets.midcast.elemental[nuke_set])
@@ -658,9 +702,9 @@ function buff_change(buff,gain)
 end
 
 function lockstyle()
-    if player.main_job == 'SCH' then send_command('@input /lockstyleset 5') end
+    if player.main_job == 'SCH' then send_command('@input /lockstyleset 4') end
 end
 
 function sub_job_change()
-    coroutine.schedule(lockstyle,4)
+    coroutine.schedule(lockstyle,6)
 end

@@ -115,14 +115,15 @@ function get_sets()
         neck="Erra pendant",
         body="Geomancy tunic +3",
         ring1="Evanescence ring",
-        ring2="Jhakri ring",
+        ring2="Archon ring",
         waist="Fucho-no-obi",
         legs="Azimuth tights +1"
     })
     
     sets.midcast.drain = set_combine(sets.midcast.dark_magic, {
         head="Pixie Hairpin +1",
-        ring2="Excelsis ring",
+        ring1="Archon ring",
+        ring2="Excelsis ring",        
         waist="Fucho-no-obi",
         feet="Merlinic crackows"
     })
@@ -202,6 +203,7 @@ function get_sets()
 
     sets.midcast['Impact'] = set_combine(sets.midcast.elemental["magic-atk-bonus"], {
         head=empty,
+        ring1="Archon ring",
         body='Twilight cloak'
     })
 

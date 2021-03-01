@@ -367,6 +367,7 @@ function get_sets()
 
     sets.midcast['Impact'] = set_combine(sets.midcast.enfeebling, {
         head=empty,
+        ring2="Archon ring",
         body='Twilight cloak'
     })
 
@@ -562,5 +563,5 @@ function lockstyle()
 end
 
 function sub_job_change()
-    coroutine.schedule(lockstyle,4)
+    coroutine.schedule(lockstyle,6)
 end

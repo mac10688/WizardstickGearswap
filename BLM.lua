@@ -169,7 +169,7 @@ function get_sets()
         hands="Archmage's gloves +3",
         legs="Archmage's tonban +3",
         feet="Archmage's sabots +3",
-        neck="Sanctity Necklace",
+        neck="Sorcerer's stole +1",
         waist="Sacro cord",
         left_ear="Barkarole earring",
         right_ear="Malignance earring",
@@ -185,6 +185,7 @@ function get_sets()
 
     sets.midcast['Impact'] = set_combine(sets.midcast.elemental["Magic Attack Bonus"], {
         head=empty,
+        ring2="Archon ring",
         body='Twilight cloak'
     })
 
@@ -300,7 +301,7 @@ function get_sets()
         body="Archmage's coat +3",
         hands="Jhakri cuffs +2",
         ring1="Shiva ring +1",
-        ring2="Persis ring",
+        ring2="Archon ring",
         back=magic_atk_cape,
         waist="Fotia belt",
         legs="Archmage's tonban +3",
@@ -345,7 +346,7 @@ function get_sets()
         ring2="Shneddick ring"
     }
 
-    coroutine.schedule(lockstyle,2)
+    coroutine.schedule(lockstyle,8)
 
 end
 
@@ -418,8 +419,11 @@ function midcast(spell)
             else
                 local nuke_set = NukeSet[NukeTypeIndex]
                 equip(sets.midcast.elemental[nuke_set])
-                
-                if world.day_element == spell.element or world.weather_element == spell.element then
+
+                local distance = windower.ffxi.get_mob_by_target('t').distance:sqrt()
+                if distance < 5 then
+                    equip( set_combine(sets.midcast.elemental[nuke_set], {waist = "Orpheus's sash"}))                                
+                elseif world.day_element == spell.element or world.weather_element == spell.element then
                     equip({waist = "Hachirin-no-Obi"})
                 end
 
@@ -477,5 +481,5 @@ function lockstyle()
 end
 
 function sub_job_change()
-    coroutine.schedule(lockstyle,6)
+    coroutine.schedule(lockstyle,8)
 end

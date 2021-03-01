@@ -45,14 +45,14 @@ function get_sets()
         neck="Anu torque",
         ear1="Sherida earring",
         ear2="Telos earring",
-        body="Malignance tabard",
+        body={ name="Herculean Vest", augments={'Accuracy+1','INT+1','"Treasure Hunter"+2','Accuracy+10 Attack+10'}},
         hands="Malignance gloves",
         ring1="Hetairoi ring",
-        ring2={name="Chirich ring +1", bag="wardrobe"},
+        ring2="Epona's ring",
         waist="Chaac belt",
         back={ name="Toutatis's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Attack+10','Haste+10','Damage taken-5%'}},
-        legs="Samnuha tights",
-        feet="Meghanada jambeaux +2"
+        legs={ name="Herculean Trousers", augments={'Attack+19','"Dual Wield"+1','"Treasure Hunter"+2'}},
+        feet="Malignance boots"
     }
     sets.melee['acc'] = sets.melee
     sets.melee['tp'] = sets.melee

@@ -82,7 +82,7 @@ function get_sets()
         back=Cape.Int,
         waist="Slipor sash",
         legs="Ayanmo cosciales +2",
-        feet="Ayanmo gambieras +2"
+        feet="Malignance boots"
     }
 
     sets.kite = {
@@ -99,7 +99,7 @@ function get_sets()
     sets.weapons["Magic Accuracy"] = {main = "Crocea Mors", sub="Ammurapi shield"}
     sets.weapons["Dual Wield"] = {main = "Crocea Mors", sub = "Tauret"}
     sets.weapons["Odin"] = {main = "Aern Dagger", sub = "Qutrub Knife"}
-    sets.weapons["Savage"] = {main = "Naegling", sub = "Tauret"}
+    sets.weapons["Savage"] = {main = "Naegling", sub = "Thibron"}
 
     sets.ranged_ammo = {}
     sets.ranged_ammo["Magic Accuracy"] = {ranged="Ullr", ammo="Antlion arrow"}
@@ -117,7 +117,7 @@ function get_sets()
         back=Cape.Melee,
         waist="Grunfeld rope",
         legs="Carmine cuisses +1",
-        feet="Atrophy boots +3"
+        feet="Malignance boots"
     }
 
     sets.engaged["Multi-Attack"] = set_combine( sets.engaged, {
@@ -197,12 +197,24 @@ function get_sets()
         feet="Leth. Houseaux +1",
         back=Cape.Mnd
     }
-    
+
     sets.midcast.enhancing["Duration"] = set_combine(sets.midcast.enhancing, {
-        head="Telchine Cap",
+        head="Telchine cap",
+        neck="Duelist's Torque +1",
+        body="Vitation tabard +3",
         hands="Atrophy gloves +3",
         waist="Embla sash",
-        legs="Telchine Braconi",
+        legs="Telchine braconi",
+        feet="Lethargy houseaux +1"
+    })
+
+    sets.midcast.enhancing["Duration"].Composure = set_combine(sets.midcast.enhancing, {
+        head="Lethargy Chappel +1",
+        neck="Duelist's Torque +1",
+        hands="Lethargy gantherots +1",
+        body="Lethargy sayon +1",
+        waist="Embla sash",
+        legs="Lethargy fuseau +1",
         feet="Lethargy houseaux +1"
     })
 
@@ -261,7 +273,8 @@ function get_sets()
     })
 
     sets.midcast.enfeebling.int["Magic Accuracy"] = set_combine(sets.midcast.enfeebling.int, {
-        head="Atrophy chapeau +3"
+        head="Atrophy chapeau +3",
+        hands="Malignance gloves"
     })
 
     sets.midcast.enfeebling.int["Potency"] = set_combine(sets.midcast.enfeebling.int, {
@@ -305,6 +318,7 @@ function get_sets()
         head="Pixie hairpin +1",
         neck="Erra pendant",
         ring1="Evanescence ring",
+        ring2="Archon ring",
         waist="Fucho-no-obi",
     })
     
@@ -323,7 +337,8 @@ function get_sets()
 
     sets.midcast['Impact'] = set_combine(sets.midcast.elemental, {
         head=empty,
-        body='Twilight cloak'
+        body='Twilight cloak',
+        ring2="Archon ring"
     })
 
     sets.fc['Dispelga'] = set_combine(sets.fc, {
@@ -370,10 +385,15 @@ function get_sets()
     sets.ws["Seraph Blade"] = sets.ws.magic
     sets.ws["Circle Blade"] = sets.ws.physical
     sets.ws["Vorpal Blade"] = sets.ws.physical
-    sets.ws["Savage Blade"] = sets.ws.physical
+    sets.ws["Savage Blade"] = set_combine(sets.ws.physical, {
+        ear2="Regal earring",
+        ring1="Rufescent ring",
+        ring2="Shukuyu ring"
+    })
     sets.ws["Death Blossom"] = sets.ws.physical
     sets.ws["Sanguine Blade"] = set_combine(sets.ws.magic, {
         head="Pixie Hairpin +1",
+        ring1="Archon ring",
         waist="Orpheus's sash"
     })
 
@@ -383,7 +403,7 @@ function get_sets()
     sets.ws["Aeolian Edge"] = sets.ws.magic
     sets.ws["Exenterator"] = sets.ws.physical
 
-    coroutine.schedule(lockstyle,4)
+    coroutine.schedule(lockstyle,8)
 
 end
 
@@ -403,6 +423,15 @@ function precast(spell)
         end
     end
 end
+
+-- enhancing_map = {
+--     ['Barfire']='Potency',['Barstone']='',['Barsleep']='', ['Barwater']='',
+--     ['Temper']='Potency',['Temper II']='Temper',
+--     ['Regen']='Duration',['Regen II']='Duration',
+--     ['Haste']='Duration',['Haste II']='Duration'
+--     ['Refresh']='Duration',['Refresh II']='Duration',['Refresh III']='Duration',
+--     ['Firestorm']='Duration',['Hailstorm']='Duration',['Windstorm']='Duration',['Sandstorm']='Duration',['Thunderstorm']='Duration',['Rainstorm']='Duration',['Aurorastorm']='Duration',['Voidstorm']='Duration',
+-- }
 
 function midcast(spell)
     -- print_set(spell)
@@ -426,7 +455,39 @@ function midcast(spell)
                 equip(sets.midcast.enhancing.spikes)
             elseif spell.english:startswith("Gain-") then
                 equip(sets.midcast.enhancing.gain)
-            else
+            elseif spell.english:startswith("Haste") then
+                if spell.target.type ~= "SELF" and buffactive["Composure"] then
+                    equip(sets.midcast.enhancing["Duration"].Composure)
+                else
+                    equip(sets.midcast.enhancing["Duration"])
+                end
+            elseif spell.english:startswith("Flurry") then
+                if spell.target.type ~= "SELF" and buffactive["Composure"] then
+                    equip(sets.midcast.enhancing["Duration"].Composure)
+                else
+                    equip(sets.midcast.enhancing["Duration"])
+                end
+            elseif spell.english:startswith("Refresh") then
+                if spell.target.type ~= "SELF" and buffactive["Composure"] then
+                    equip(sets.midcast.enhancing["Duration"].Composure)
+                else
+                    equip(sets.midcast.enhancing["Duration"])
+                end
+            elseif string.find(spell.english, "storm") then
+                    equip(sets.midcast.enhancing["Duration"])
+            elseif spell.english == "Sneak" then
+                if spell.target.type ~= "SELF" and buffactive["Composure"] then
+                    equip(sets.midcast.enhancing["Duration"].Composure)
+                else
+                    equip(sets.midcast.enhancing["Duration"])
+                end
+            elseif spell.english == "Invisible" then
+                if spell.target.type ~= "SELF" and buffactive["Composure"] then
+                    equip(sets.midcast.enhancing["Duration"].Composure)
+                else
+                    equip(sets.midcast.enhancing["Duration"])
+                end
+            else                
                 equip(sets.midcast.enhancing)
             end
         -- Enfeebling Magic --         
@@ -548,11 +609,11 @@ function IsEnspellActive()
 end
 
 function lockstyle()
-    if player.main_job == 'RDM' then send_command('@input /lockstyleset 3') end
+    if player.main_job == 'RDM' then send_command('@input /lockstyleset 6') end
 end
 
 function sub_job_change()
-    coroutine.schedule(lockstyle,4)
+    coroutine.schedule(lockstyle,6)
 end
 
 function IsDualWield()
