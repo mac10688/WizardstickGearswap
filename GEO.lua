@@ -47,7 +47,7 @@ function get_sets()
         ring1="Prolix ring",
         ring2="Kishar ring",
         back={ name="Nantosuelta's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}},
-        belt="Embla sash",
+        waist="Embla sash",
         legs="Geomancy pants +3",
         feet="Merlinic crackows"
     }
@@ -81,11 +81,9 @@ function get_sets()
         main="Idris", 
         range="Dunna",
         neck="Bagua charm +2",
-        head="Azimuth hood +1",
         body="Bagua tunic +3",
         hands="Geomancy mitaines +3",
-        back="Lifestream cape",
-        feet="Medium's sabots"
+        back={ name="Nantosuelta's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}},
     })
 
     sets.midcast.geomancy.indi = set_combine(sets.midcast.geomancy, {
@@ -183,7 +181,7 @@ function get_sets()
         sub="Ammurapi shield",
         ammo="Dunna",
         head="Befouled crown",
-        neck="Imbodla necklace",
+        neck="Incanter's torque",
         ear1="Regal earring",
         ear2="Malignance earring",
         body="Geomancy tunic +3",
@@ -210,6 +208,7 @@ function get_sets()
     sets.midcast.enhancing = set_combine(sets.midcast.conserve_mp, {
         sub="Ammurapi shield",
         head="Befouled crown",
+        neck="Incanter's torque",
         ear1="Andoaa earring",
         ear2="Mimir earring",
         ring1="Stikini ring +1",

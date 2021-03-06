@@ -237,6 +237,7 @@ function get_sets()
 
     sets.midcast.cure = set_combine(sets.midcast.fast_recast, {
         head = "Vanya hood",
+        neck="Incanter's torque",
         body = "Vrikodara jupon",
         hands = "Shrieker's cuffs",
         ring1 = "Haoma's ring",
@@ -265,6 +266,7 @@ function get_sets()
 
     sets.midcast.enhancing_magic = set_combine(sets.midcast.conserve_mp, {
         head="Telchine cap",
+        neck="Incanter's torque",
         ear1="Andoaa earring",
         ear2="Mimir earring",
         body="Telchine chasuble",

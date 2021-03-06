@@ -268,6 +268,7 @@ function get_sets()
         head="Telchine cap",
         ear1="Andoaa earring",
         ear2="Mimir earring",
+        neck="Incanter's torque",
         body="Telchine chasuble",
         hands="Inyanga dastanas +2",
         ring1="Stikini ring +1",

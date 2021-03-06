@@ -171,6 +171,7 @@ function get_sets()
     sets.buff['Klimaform'] = {feet="Arbatel Loafers +1"}	
     -- Ebulience set empy now as we get better damage out of a good Merlinic head
     sets.buff['Ebullience'] = {} -- I left it there still if it becomes needed so the SCH.lua file won't need modification should you want to use this set
+    sets.buff['Light Arts'] = {legs="Academic's pants +3"}
 
 
     -- When spell school is aligned with grimoire, swap relevent pieces -- Can also use Arbatel +1 set here if you value 1% quickcast procs per piece. (2+ pieces)  
@@ -325,7 +326,7 @@ function get_sets()
         back=cure_cape,
         ring1="Stikini ring +1",
         ring2="Stikini ring +1",
-        legs="Academic's pants +3",
+        legs="Chironic hose",
         feet="Kaykaus boots"
     })
 
@@ -377,7 +378,6 @@ function get_sets()
     })
 
     sets.midcast.healing = set_combine(sets.precast.fc, {
-        legs="Academic's pants +3"
     })
 
     sets.midcast["Cursna"] = set_combine(sets.midcast.healing, {
@@ -391,6 +391,7 @@ function get_sets()
 
     sets.midcast.enhancing = set_combine(sets.midcast.enhancement_duration, {
         head="Arbatel bonnet +1",
+        neck="Incanter's torque",
         ear1="Andoaa earring",
         ear2="Mimir earring",
         body="Pedagogy gown +3",
@@ -659,6 +660,9 @@ function midcast(spell)
         end
         if buffactive['Alacrity'] and spell.type == 'BlackMagic' then
             equip(sets.buff['Alacrity'])
+        end
+        if buffactive['Light Arts'] and spell.type == 'WhiteMagic' then
+            equip(sets.buff['Light Arts'])
         end
 
     end
