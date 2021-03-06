@@ -263,6 +263,7 @@ function get_sets()
     --Enhancing magic duration: 35%
     sets.midcast.enhancing = set_combine(sets.midcast.SIRD, {
         head="Erilaz galea +1", --Enhancing magic effect duration +15%
+        neck="Incanter's torque",
         ear1="Andoaa earring",
         ear2="Mimir earring",
         hands="Runeist's mitons +3", --Enhancing magic skill +19
