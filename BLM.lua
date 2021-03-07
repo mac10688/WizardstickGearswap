@@ -127,6 +127,7 @@ function get_sets()
     sets.precast.fc = {
         head="Merlinic hood", --fast cast 8%
         body="Merlinic jubbah", --fast cast 8%
+        hands="Agwu's gages", --fast cast 6%
         legs="Lengo pants",
         feet="Merlinic crackows", --fast cast 5%
         waist="Embla sash", --fast cast 5%

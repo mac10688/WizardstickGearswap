@@ -44,6 +44,7 @@ function get_sets()
         ear2="Loquacious Earring",
         ear1="Etiolation earring",
         body="Shango robe",
+        hands="Agwu's gages",
         ring1="Prolix ring",
         ring2="Kishar ring",
         back={ name="Nantosuelta's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}},
