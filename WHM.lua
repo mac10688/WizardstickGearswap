@@ -237,7 +237,7 @@ function get_sets()
         ring1="Haoma's ring",
         ring2="Menelaus's Ring",
         legs="Theophany pantaloons +3",
-        feet="Gendewitha Galoshes"
+        feet="Gendewitha Galoshes +1"
     })
 	
     --Cure: 57%

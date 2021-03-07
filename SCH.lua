@@ -112,15 +112,15 @@ function get_sets()
     ------------------------------------------------------------------------------------------------
     ---------------------------------------- Precast Sets ------------------------------------------
     ------------------------------------------------------------------------------------------------
-    idle_cape = { name="Lugh's Cape", augments={'MND+20','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','"Fast Cast"+10','Occ. inc. resist. to stat. ailments+10'}}
-    nuke_cape = { name="Lugh's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10','Spell interruption rate down-10%'}}
-    cure_cape = { name="Lugh's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','"Cure" potency +10%','Spell interruption rate down-10%'}}
-    fc_cape = idle_cape
-    int_enfeeble_cape = nuke_cape
-    mnd_enfeeble_cape = cure_cape
+    local idle_cape = { name="Lugh's Cape", augments={'MND+20','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','"Fast Cast"+10','Occ. inc. resist. to stat. ailments+10'}}
+    local nuke_cape = { name="Lugh's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10','Spell interruption rate down-10%'}}
+    local cure_cape = { name="Lugh's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','"Cure" potency +10%','Spell interruption rate down-10%'}}
+    local fc_cape = idle_cape
+    local int_enfeeble_cape = nuke_cape
+    local mnd_enfeeble_cape = cure_cape
 
-    merlinic_legs_mb = { name="Merlinic Shalwar", augments={'Mag. Acc.+22','Magic burst dmg.+10%','MND+2','"Mag.Atk.Bns."+13'}}
-    merlinic_feet_mb = { name="Merlinic Crackows", augments={'"Mag.Atk.Bns."+25','Magic burst dmg.+11%','Mag. Acc.+5'}}
+    local merlinic_legs_mb = { name="Merlinic Shalwar", augments={'Mag. Acc.+22','Magic burst dmg.+10%','MND+2','"Mag.Atk.Bns."+13'}}
+    local merlinic_feet_mb = { name="Merlinic Crackows", augments={'"Mag.Atk.Bns."+25','Magic burst dmg.+11%','Mag. Acc.+5'}}
 
     chironic_refresh_legs = { name="Chironic Hose", augments={'STR+9','CHR+4','"Refresh"+2','Mag. Acc.+14 "Mag.Atk.Bns."+14'}}
 
@@ -181,7 +181,7 @@ function get_sets()
 		head="Pedagogy Mortarboard +3",
 		feet="Academic's loafers +3",
     }
-
+    
     --67% fc
     sets.precast.fc = {
         main="Musa",
@@ -196,7 +196,7 @@ function get_sets()
         ring2="Prolix Ring", --fast cast 2%
         back=fc_cape, --fast cast 10%
         waist="Embla sash", --fast cast 5%
-        legs="Lengo pants", --fast cast 5%
+        legs=merlinic_fc, --fast cast 6%
         feet="Pedagogy loafers +3" --fast cast 8%
     }
 
@@ -386,7 +386,7 @@ function get_sets()
         hands="Pedagogy bracers +3",
         ring1="Haoma's ring",
         ring2="Menelaus's ring",
-        feet="Gendewitha Galoshes"
+        feet="Gendewitha Galoshes +1"
     })
 
     sets.midcast.enhancing = set_combine(sets.midcast.enhancement_duration, {
