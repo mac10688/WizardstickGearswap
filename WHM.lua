@@ -143,7 +143,7 @@ function get_sets()
         body="Ayanmo Corazza +2",
         hands="Aya. Manopolas +2",
         legs="Aya. Cosciales +2",
-        feet="Aya. Gambieras +2",
+        feet="Piety duckbills +3",
         neck="Sanctity Necklace",
         waist="Grunfeld Rope",
         left_ear="Telos earring",

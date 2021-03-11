@@ -394,7 +394,7 @@ end
 
 ---- .::Midcast Functions::. ---->
 function midcast(spell)
-    -- print_set(spell)
+    print_set(spell.target)
     if sets.midcast[spell.english] then
         equip(sets.midcast[spell.english])
     elseif spell.action_type == 'Magic' then
@@ -423,7 +423,7 @@ function midcast(spell)
                 local nuke_set = NukeSet[NukeTypeIndex]
                 equip(sets.midcast.elemental[nuke_set])
 
-                local distance = windower.ffxi.get_mob_by_target('t').distance:sqrt()
+                local distance = windower.ffxi.get_mob_by_index(spell.target.index).distance:sqrt()
                 if distance < 5 then
                     equip( set_combine(sets.midcast.elemental[nuke_set], {waist = "Orpheus's sash"}))                                
                 elseif world.day_element == spell.element or world.weather_element == spell.element then

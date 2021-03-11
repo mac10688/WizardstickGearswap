@@ -393,5 +393,5 @@ function lockstyle()
 end
 
 function sub_job_change()
-    coroutine.schedule(lockstyle,4)
+    coroutine.schedule(lockstyle,9)
 end
