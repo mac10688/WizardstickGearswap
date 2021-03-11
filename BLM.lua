@@ -394,7 +394,7 @@ end
 
 ---- .::Midcast Functions::. ---->
 function midcast(spell)
-    print_set(spell.target)
+    -- print_set(spell.target)
     if sets.midcast[spell.english] then
         equip(sets.midcast[spell.english])
     elseif spell.action_type == 'Magic' then
