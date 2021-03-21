@@ -117,7 +117,7 @@ function get_sets()
     sets.precast.ja = {}
     sets.precast.ja['Manafont'] = { body = "Archmage's coat +3"}
     sets.precast.ja['Elemental Seal'] = {}
-    sets.precast.ja['Mana Wall'] = {}
+    sets.precast.ja['Mana Wall'] = { feet = "Wicce sabots +1" }
     sets.precast.ja['Enmity Douse'] = {}
     sets.precast.ja['Manawell'] = {}
     sets.precast.ja['Subtle Sorcery'] = {}
@@ -455,6 +455,10 @@ function equip_set(status)
     local weapon_set_mode = WeaponSet[WeaponSetIndex]
     if weapon_set_mode ~= "Any" then
         equip(sets.WeaponSet[weapon_set_mode])
+    end
+
+    if buffactive['Mana Wall'] then
+        equip(sets.precast.ja['Mana Wall'])
     end
 
     if Kiting then

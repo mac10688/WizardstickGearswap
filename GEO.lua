@@ -245,7 +245,20 @@ function get_sets()
         feet="Bagua sandals +3"
     })
 
-    sets.engaged = {ring2="Chirich ring +1"}
+    sets.engaged = {
+        head="Bagua galero +3",
+        neck="Sanctity necklace",
+        ear1="Telos earring",
+        ear2="Dignitary's earring",
+        body="Bagua tunic +3",
+        hands="Bagua mitaines +3",
+        ring1="Chirich ring +1",
+        ring2="Chirich ring +1",
+        back={ name="Nantosuelta's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Haste+10','Damage taken-5%'}},
+        waist="Grunfeld rope",
+        legs="Bagua pants +3",
+        feet="Bagua sandals +3"
+    }
 
     sets.kiting = {
         feet="Geomancy sandals +3"
@@ -263,7 +276,7 @@ function get_sets()
         feet="Geomancy sandals +3"
     }
 
-    coroutine.schedule(lockstyle,2)
+    coroutine.schedule(lockstyle,9)
 
 end
 

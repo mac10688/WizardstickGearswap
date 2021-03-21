@@ -154,7 +154,7 @@ function get_sets()
     })
 
     sets.weaponset = {}
-    sets.weaponset["epeo"] = {main="Epeolatry"}
+    sets.weaponset["epeo"] = {main="Epeolatry", sub="Utu grip"}
     sets.weaponset["lionheart"] = {main="Epeolatry", sub="Irenic strap +1"}
     --Be very precise about spelling the ability name or it won't be swapped to for job abilities
     sets.ja = {}

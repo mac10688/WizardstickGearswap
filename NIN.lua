@@ -30,7 +30,7 @@ function get_sets()
         right_ear="Tuisto Earring",
         left_ring="Vocane Ring +1",
         right_ring="Defending Ring",
-        back={ name="Toutatis's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Attack+10','Haste+10','Damage taken-5%'}},
+        back="Repulse mantle"
     }
 
     sets.idle['pdt'] = {}
@@ -83,9 +83,6 @@ function get_sets()
     sets.melee['hybrid'] = sets.melee
     
     sets.ja = {} --No gear should be defined here. This set will enver be used. Only used to prevent nil references.
-    
-    --Follow this pattern to define all job abilities you have gear for
-    sets.ja['Fold'] = { }
 
     sets.kiting = {}
 

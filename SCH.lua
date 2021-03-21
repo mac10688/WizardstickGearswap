@@ -10,7 +10,7 @@ EngagedSet = {"None", "Accuracy"}
 RegenSetIndex = 1
 RegenSet = {"Potency", "Duration"}
 
-WeaponSetIndex = 1
+WeaponSetIndex = 4
 WeaponSet = {"Akademos", "Musa", "Daybreak", "None"}
 
 Kiting = false
@@ -233,6 +233,7 @@ function get_sets()
     sets.midcast.elemental = {}
     sets.midcast.elemental["Magic Attack Bonus"] = set_combine(sets.precast.fc, {
         main="Akademos",
+        sub="Khonsu",
         ammo="Pemphredo tathlum",
         head="Pedagogy mortarboard +3",
         neck="Argute stole +1",
@@ -271,11 +272,12 @@ function get_sets()
     --Total MB: 60
     sets.midcast.elemental["Magic Burst"] = set_combine(sets.midcast.elemental["Magic Attack Bonus"], {
         main="Akademos",
+        sub="Khonsu",
         head="Pedagogy Mortarboard +3", --MB2: 4
         neck="Argute stole +1", --MB: 7
-        body="Merlinic Jubbah", --MB: 10
+        body="Agwu's robe", --MB: 10
         hands={ name="Amalric Gages +1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20'}}, --MB2: 6
-        legs=merlinic_legs_mb, --MB: 10
+        legs="Agwu's slops", --MB: 10
         feet=merlinic_feet_mb, --MB: 11
         ring2="Mujin band" --MB2: 5
     })
