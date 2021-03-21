@@ -278,6 +278,7 @@ function get_sets()
         body="Agwu's robe", --MB: 10
         hands={ name="Amalric Gages +1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20'}}, --MB2: 6
         legs="Agwu's slops", --MB: 10
+        -- feet="Arbatel loafers +1",
         feet=merlinic_feet_mb, --MB: 11
         ring2="Mujin band" --MB2: 5
     })

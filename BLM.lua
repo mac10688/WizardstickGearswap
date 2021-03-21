@@ -131,8 +131,8 @@ function get_sets()
         legs="Lengo pants",
         feet="Merlinic crackows", --fast cast 5%
         waist="Embla sash", --fast cast 5%
-        left_ear="Malignance earring", --fast cast 4%
-        right_ear="Loquacious Earring", --fast cast 2%
+        ear1="Malignance earring", --fast cast 4%
+        ear2="Loquacious Earring", --fast cast 2%
         ring2="Prolix Ring", --fast cast 2%
         ring1="Kishar ring" --fast cast 4%
     }
@@ -140,10 +140,11 @@ function get_sets()
     
 
     sets.precast.fc.elemental = set_combine(sets.precast.fc, {
-        head="Spaekona's petasos +3",
+        head="Wicce petasos +1",
+        ear2="Barkarole earring",
+        body="Wicce Coat +1",
+        ring1="Mallquis Ring",
         legs="Mallquis trews +2",
-        left_ring="Mallquis Ring",
-        left_ear="Barkarole earring",
         feet="Spaekona's sabots +3"
     })
 
