@@ -64,10 +64,6 @@ function get_sets()
         head="Umuthi hat"
     })
 
-    -- Weaponskill sets
-    -- Default set for any weaponskill that isn't any more specifically defined
-    sets.ws = {ear2="Moonshade Earring"}
-
     sets.midcast = {}
 
     sets.midcast.conserve_mp = {
@@ -267,10 +263,37 @@ function get_sets()
     sets.fc["Dispelga"] = {main="Daybreak"}
     sets.midcast["Dispelga"] = {main="Daybreak"}
 
-    --To add more ws sets, just add sets.ws["<ws name>"]. Capitalization matters.
-    sets.ws['Exudation'] = set_combine(sets.ws, {})
+    -- Weaponskill sets
+    -- Default set for any weaponskill that isn't any more specifically defined
+    sets.ws = {
+        head="Jhakri Coronal +2",
+        body="Bagua Tunic +3",
+        hands="Jhakri Cuffs +2",
+        legs="Jhakri Slops +2",
+        feet="Jhakri Pigaches +2",
+        neck="Fotia Gorget",
+        waist="Grunfeld Rope",
+        ear1="Moonshade earring",
+        ear2="Regal Earring",
+        ring1="Rufescent Ring",
+        ring2="Shukuyu Ring",
+        back={ name="Nantosuelta's Cape", augments={'MND+20','Accuracy+20 Attack+20','MND+10','Weapon skill damage +10%','Damage taken-5%'}}
+    }
+
+    sets.ws['Shining Strike'] = set_combine(sets.ws, {})
+    sets.ws['Seraph Strike'] = set_combine(sets.ws, {})
+    sets.ws['Brainshaker'] = set_combine(sets.ws, {})
+    sets.ws['Starlight'] = set_combine(sets.ws, {})
+    sets.ws['Moonlight'] = set_combine(sets.ws, {})
+    sets.ws['Skullbreaker'] = set_combine(sets.ws, {})
+    sets.ws['True Strike'] = set_combine(sets.ws, {})
+    sets.ws['Judgment'] = set_combine(sets.ws, {})
+    sets.ws['Hexa Strike'] = set_combine(sets.ws, {waist="Fotia belt"})
     sets.ws['Black Halo'] = set_combine(sets.ws, {})
     sets.ws['Flash Nova'] = set_combine(sets.ws, {})
+    sets.ws['Realmrazer'] = set_combine(sets.ws, {waist="Fotia belt"})
+    sets.ws['Exudation'] = set_combine(sets.ws, {})
+
 
     sets.kiting = {
         feet="Geomancy sandals +3"

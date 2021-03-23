@@ -57,9 +57,13 @@ function get_sets()
 	
     sets.ja['Afflatus Solace'] = sets.afflatus_solace
     sets.ja['Benediction'] = {body="Piety Briault +3"}
-    sets.ja['Devotion'] = {body="Piety Cap +1"}
+    sets.ja['Devotion'] = {body="Piety Cap +3"}
 	
-	--- Fast Cast Sets ---
+    local fastcast_cape = { name="Alaunus's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}}
+    local attack_cape = { name="Alaunus's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','Haste+10','Mag. Evasion+15'}}
+    local physical_mnd_ws_cape = { name="Alaunus's Cape", augments={'MND+20','Accuracy+20 Attack+20','MND+10','Weapon skill damage +10%','Damage taken-5%'}}
+	
+    --- Fast Cast Sets ---
     -- 61% fc
     -- 12% for cures
 	sets.fc = {
@@ -70,7 +74,7 @@ function get_sets()
         hands="Fanatic gloves", --7%
         ring1="Prolix Ring", --2%
         ring2="Kishar ring", --4%
-        back={ name="Alaunus's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}}, --10%
+        back=fastcast_cape, --10%
         waist="Embla Sash", --5%
         legs="Aya. Cosciales +2", --5%
     }
@@ -80,7 +84,7 @@ function get_sets()
     sets.fc.cure = set_combine(sets.fc, {
         -- sub="Sors shield",
         ammo="Incantor stone",
-        head="Piety cap +1",
+        head="Piety cap +3",
         ear1="Nourishing earring +1",
         feet="Hygieia Clogs +1"
     })
@@ -97,42 +101,42 @@ function get_sets()
         feet="Aya. Gambieras +2",
         neck="Fotia Gorget",
         waist="Fotia Belt",
-        left_ear="Cessance Earring",
-        right_ear="Brutal Earring",
-        ring1="Chirich Ring +1",
-        ring2="Chirich Ring +1",
-        back={ name="Alaunus's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','Haste+10','Mag. Evasion+15'}},
-    }
-	
-    sets.ws["Hexa Strike"] = {
-        ammo="Staunch Tathlum +1",
-        head="Aya. Zucchetto +2",
-        body="Ayanmo Corazza +2",
-        hands="Aya. Manopolas +2",
-        legs="Aya. Cosciales +2",
-        feet="Aya. Gambieras +2",
-        neck="Fotia Gorget",
-        waist="Fotia Belt",
         ear1="Cessance Earring",
         ear2="Brutal Earring",
         ring1="Chirich Ring +1",
         ring2="Chirich Ring +1",
-        back={ name="Alaunus's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','Haste+10','Mag. Evasion+15'}},
+        back=attack_cape,
     }
 
-    sets.ws["Mystic Boon"] = {
-        ammo="Hydrocera",
-        head="Inyanga tiara +2",
-        neck="Cleric's torque",
-        ear1="Regal earring",
-        ear2="Ishvara earring",
+    local physical_mnd_ws = {
+        head="Piety cap +3",
         body="Piety briault +3",
-        hands="Theophany mitts +3",
-        back={ name="Alaunus's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}},
-        waist="Fotia belt",
-        legs="Piety pantaloons +2",
-        feet="Piety duckbills +3"
+        hands="Aya. Manopolas +2",
+        legs="Piety pantaloons +3",
+        feet="Piety duckbills +3",
+        neck="Fotia Gorget",
+        waist="Grunfeld rope",
+        ear1="Regal earring",
+        ear2="Moonshade earring",
+        ring1="Rufescent ring",
+        ring2="Shukuyu ring",
+        back=physical_mnd_ws_cape,
     }
+	
+    sets.ws["Shining Strike"] = physical_mnd_ws
+    sets.ws["Seraph Strike"] = physical_mnd_ws
+    sets.ws["Brainshaker"] = physical_mnd_ws
+    sets.ws["Starlight"] = {neck="Combatant's torque"}
+    sets.ws["Moonlight"] = {neck="Combatant's torque"}
+    sets.ws["Skullbreaker"] = physical_mnd_ws
+    sets.ws["True Strike"] = physical_mnd_ws
+    sets.ws["Judgment"] = physical_mnd_ws
+    sets.ws["Hexa Strike"] = set_combine(physical_mnd_ws, {waist="Fotia belt"})
+    sets.ws["Black Halo"] = physical_mnd_ws
+    sets.ws["Flash Nova"] = physical_mnd_ws
+    sets.ws["Realmrazer"] = set_combine(physical_mnd_ws, {waist="Fotia belt"})
+    sets.ws["Dagan"] = physical_mnd_ws
+    sets.ws["Mystic Boon"] = physical_mnd_ws
 	  
 	
     sets.tp = {}
@@ -146,8 +150,8 @@ function get_sets()
         feet="Piety duckbills +3",
         neck="Sanctity Necklace",
         waist="Grunfeld Rope",
-        left_ear="Telos earring",
-        right_ear="Dignitary's earring",
+        ear1="Telos earring",
+        ear2="Dignitary's earring",
         left_ring="Petrov Ring",
         right_ring="Chirich ring +1",
         back={ name="Alaunus's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10','Mag. Evasion+15'}}
@@ -162,8 +166,8 @@ function get_sets()
         feet="Aya. Gambieras +2",
         neck="Sanctity Necklace",
         waist="Grunfeld rope",
-        left_ear="Telos earring",
-        right_ear="Dignitary's earring",
+        ear1="Telos earring",
+        ear2="Dignitary's earring",
         ring1="Chirich Ring +1",
         ring2="Chirich Ring +1",
         back={ name="Alaunus's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10','Mag. Evasion+15'}}
