@@ -122,9 +122,13 @@ function get_sets()
         ring2="Shukuyu ring",
         back=physical_mnd_ws_cape,
     }
+
+    local magical_mnd_ws = {
+
+    }
 	
-    sets.ws["Shining Strike"] = physical_mnd_ws
-    sets.ws["Seraph Strike"] = physical_mnd_ws
+    sets.ws["Shining Strike"] = magical_mnd_ws
+    sets.ws["Seraph Strike"] = magical_mnd_ws
     sets.ws["Brainshaker"] = physical_mnd_ws
     sets.ws["Starlight"] = {neck="Combatant's torque"}
     sets.ws["Moonlight"] = {neck="Combatant's torque"}
@@ -133,7 +137,7 @@ function get_sets()
     sets.ws["Judgment"] = physical_mnd_ws
     sets.ws["Hexa Strike"] = set_combine(physical_mnd_ws, {waist="Fotia belt"})
     sets.ws["Black Halo"] = physical_mnd_ws
-    sets.ws["Flash Nova"] = physical_mnd_ws
+    sets.ws["Flash Nova"] = magical_mnd_ws
     sets.ws["Realmrazer"] = set_combine(physical_mnd_ws, {waist="Fotia belt"})
     sets.ws["Dagan"] = physical_mnd_ws
     sets.ws["Mystic Boon"] = physical_mnd_ws

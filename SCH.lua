@@ -115,6 +115,9 @@ function get_sets()
     local idle_cape = { name="Lugh's Cape", augments={'MND+20','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','"Fast Cast"+10','Occ. inc. resist. to stat. ailments+10'}}
     local nuke_cape = { name="Lugh's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10','Spell interruption rate down-10%'}}
     local cure_cape = { name="Lugh's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','"Cure" potency +10%','Spell interruption rate down-10%'}}
+    local mnd_magic_ws = { name="Lugh's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','Weapon skill damage +10%','Damage taken-5%'}}
+    local int_magic_ws = { name="Lugh's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','Weapon skill damage +10%','Damage taken-5%'}}
+
     local fc_cape = idle_cape
     local int_enfeeble_cape = nuke_cape
     local mnd_enfeeble_cape = cure_cape
@@ -122,7 +125,7 @@ function get_sets()
     local merlinic_legs_mb = { name="Merlinic Shalwar", augments={'Mag. Acc.+22','Magic burst dmg.+10%','MND+2','"Mag.Atk.Bns."+13'}}
     local merlinic_feet_mb = { name="Merlinic Crackows", augments={'"Mag.Atk.Bns."+25','Magic burst dmg.+11%','Mag. Acc.+5'}}
 
-    chironic_refresh_legs = { name="Chironic Hose", augments={'STR+9','CHR+4','"Refresh"+2','Mag. Acc.+14 "Mag.Atk.Bns."+14'}}
+    local chironic_refresh_legs = { name="Chironic Hose", augments={'STR+9','CHR+4','"Refresh"+2','Mag. Acc.+14 "Mag.Atk.Bns."+14'}}
 
     sets.WeaponSet = {}
     sets.WeaponSet["None"] = {main="Malignance Pole", sub="Khonsu"}
@@ -416,36 +419,92 @@ function get_sets()
 
     sets.ws = {}
 
-    --80% MND
-    sets.ws["Shattersoul"] = {
+    local physical_int_ws = {
         head="Pedagogy mortarboard +3",
-        neck="Argute stole +1",
+        neck="Fotia neck",
         ear1="Regal earring",
         ear2="Barkarole earring",
         body="Jhakri robe +2",
         hands="Jhakri cuffs +2",
         ring1="Shiva ring +1",
         ring2="Persis ring",
-        backl=nuke_cape,
+        backl=int_magic_ws,
+        waist="Fotia belt",
         legs="Mallquis trews +2",
         feet="Academic's loafers +3"
     }
-    -- 73~85% INT
-    sets.ws["Omniscience"] = {
+
+    local magical_int_ws = {
         head="Pedagogy mortarboard +3",
         neck="Argute stole +1",
         ear1="Regal earring",
-        ear2="Ishvara earring",
+        ear2="Malignance earring",
         body="Pedagogy gown +3",
         hands="Jhakri cuffs +2",
-        ring1="Stikini ring +1",
-        ring2="Archon ring",
-        backl=cure_cape,
-        waist="Luminary sash",
+        ring1="Shiva ring +1",
+        ring2="Freke ring",
+        back=int_magic_ws,
+        waist="Orpheus's sash",
         legs="Pedagogy pants +3",
         feet="Pedagogy loafers +3"
     }
 
+    local magical_mnd_ws = {
+        head="Pedagogy mortarboard +3",
+        neck="Argute stole +1",
+        ear1="Regal earring",
+        ear2="Malignance earring",
+        body="Pedagogy gown +3",
+        hands="Jhakri cuffs +2",
+        ring1="Stikini ring +1",
+        ring2="Freke ring",
+        back=mnd_magic_ws,
+        waist="Orpheus's sash",
+        legs="Pedagogy pants +3",
+        feet="Pedagogy loafers +3"
+    }
+
+    local dark_magic_affinity = {head="Pixie hairpin +1", ring1="Archon ring"}
+    local dark_magic_int_ws = set_combine(magical_int_ws, dark_magic_affinity)
+    local dark_magic_mnd_ws = set_combine(magical_mnd_ws, dark_magic_affinity)
+
+    -- STR 40% | Physical
+    sets.ws["Heavy Swing"] = physical_int_ws
+    
+    -- STR 40% INT 40% | Magical
+    sets.ws["Rock Crusher"] = magical_int_ws
+    
+    -- STR 40% INT 40% | Magical
+    sets.ws["Earth Crusher"] = magical_int_ws
+    
+    -- STR 40% MND 40% | Magical
+    sets.ws["Starburst"] = dark_magic_int_ws
+    
+    -- STR 40% MND 40% | Magical
+    sets.ws["Sunburst"] = dark_magic_int_ws
+    
+    -- STR 100% | Physical
+    sets.ws["Shell Crusher"] = physical_int_ws
+    
+    -- STR 50% | Physical
+    sets.ws["Full Swing"] = physical_int_ws
+    
+    -- INT 50% MND 50% | Physical
+    sets.ws["Spirit Taker"] = physical_int_ws
+    
+    -- STR 30% MND 50% | Physical
+    sets.ws["Retribution"] = physical_int_ws
+
+    -- STR 30% INT 30% | Magical
+    sets.ws["Cataclysm"] = dark_magic_int_ws
+    
+    -- INT 85% | Physical
+    sets.ws["Shattersoul"] = physical_int_ws
+
+    -- MND 80% | Magical
+    sets.ws["Omniscience"] = dark_magic_mnd_ws
+
+    -- MAX MP
     sets.ws["Myrkr"] = {
         head="Pixie Hairpin +1",
         ear1="Etiolation earring",

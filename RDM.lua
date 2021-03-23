@@ -361,7 +361,7 @@ function get_sets()
         ring1="Jhakri Ring",
         ring2="Shiva ring +1",
         back=Cape.Int,
-        waist="Fotia belt",
+        waist="Orpheus's sash"
         legs="Jhakri Slops +2",
         feet="Vitiation Boots +3"
     }
@@ -393,8 +393,7 @@ function get_sets()
     sets.ws["Death Blossom"] = sets.ws.physical
     sets.ws["Sanguine Blade"] = set_combine(sets.ws.magic, {
         head="Pixie Hairpin +1",
-        ring1="Archon ring",
-        waist="Orpheus's sash"
+        ring1="Archon ring"
     })
 
     sets.ws["Chant du Cygne"] = sets.ws.physical

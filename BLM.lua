@@ -85,7 +85,7 @@ function get_sets()
 
     local magic_atk_cape = { name="Taranus's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Magic Damage +10','"Mag.Atk.Bns."+10','Spell interruption rate down-10%'}}
     local idle_cape = { name="Taranus's Cape", augments={'VIT+20','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Phys. dmg. taken-10%'}}
-
+    local magic_int_ws = { name="Taranus's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','Weapon skill damage +10%','Damage taken-5%'}}
 
     sets.WeaponSet = {}
     sets.WeaponSet["Lathi"] = {main="Lathi", sub="Khonsu"}
@@ -280,7 +280,78 @@ function get_sets()
         feet="Telchine pigaches"
     })
 
+    local physical_int_ws = {
+        head="Archmage's petasos +3",
+        neck="Sorcerer's stole +1",
+        ear1="Regal earring",
+        ear2="Ishvara earring",
+        body="Archmage's coat +3",
+        hands="Jhakri cuffs +2",
+        ring1="Shiva ring +1",
+        ring2="Freke ring",
+        back=magic_int_ws,
+        waist="Fotia belt",
+        legs="Archmage's tonban +3",
+        feet="Archmage's sabots +3"
+    }
+
+    local magical_int_ws = {
+        head="Archmage's petasos +3",
+        neck="Sorcerer's stole +1",
+        ear1="Regal earring",
+        ear2="Ishvara earring",
+        body="Archmage's coat +3",
+        hands="Jhakri cuffs +2",
+        ring1="Shiva ring +1",
+        ring2="Freke ring",
+        back=magic_int_ws,
+        waist="Orpheus's sash",
+        legs="Archmage's tonban +3",
+        feet="Archmage's sabots +3"
+    }
+
+    local dark_magic_affinity = {head="Pixie hairpin +1", ring1="Archon ring"}
+    local dark_magic_int_ws = set_combine(magical_int_ws, dark_magic_affinity)
+
     sets.ws = {}
+
+    -- STR 40% | Physical
+    sets.ws["Heavy Swing"] = physical_int_ws
+    
+    -- STR 40% INT 40% | Magical
+    sets.ws["Rock Crusher"] = magical_int_ws
+    
+    -- STR 40% INT 40% | Magical
+    sets.ws["Earth Crusher"] = magical_int_ws
+    
+    -- STR 40% MND 40% | Magical
+    sets.ws["Starburst"] = dark_magic_int_ws
+    
+    -- STR 40% MND 40% | Magical
+    sets.ws["Sunburst"] = dark_magic_int_ws
+    
+    -- STR 100% | Physical
+    sets.ws["Shell Crusher"] = physical_int_ws
+    
+    -- STR 50% | Physical
+    sets.ws["Full Swing"] = physical_int_ws
+    
+    -- INT 50% MND 50% | Physical
+    sets.ws["Spirit Taker"] = physical_int_ws
+    
+    -- STR 30% MND 50% | Physical
+    sets.ws["Retribution"] = physical_int_ws
+    
+    -- INT 85% | Physical
+    sets.ws["Shattersoul"] = physical_int_ws
+
+    -- STR 30% INT 30% | Magical
+    sets.ws["Cataclysm"] = dark_magic_int_ws
+
+    -- INT 80%  | Magical
+    sets.ws["Vidohunir"] = dark_magic_int_ws
+
+    -- MAX MP
     sets.ws["Myrkr"] = {
         ammo="Hydrocera",
         head="Pixie Hairpin +1",
@@ -294,37 +365,6 @@ function get_sets()
         waist="Luminary sash",
         legs="Spaekona's tonban +2",
         feet="Spaekona's sabots +3"
-    }
-
-    -- 80% INT
-    sets.ws["Vidohunir"] = {
-        head="Archmage's petasos +3",
-        neck="Sorcerer's stole +1",
-        ear1="Regal earring",
-        ear2="Ishvara earring",
-        body="Archmage's coat +3",
-        hands="Jhakri cuffs +2",
-        ring1="Shiva ring +1",
-        ring2="Archon ring",
-        back=magic_atk_cape,
-        waist="Fotia belt",
-        legs="Archmage's tonban +3",
-        feet="Archmage's sabots +3"
-    }
-    -- 73~85% INT
-    sets.ws["Shattersoul"] = {
-        head="Ea hat +1",
-        neck="Sorcerer's stole +1",
-        ear1="Regal earring",
-        ear2="Ishvara ing",
-        body="Shamash robe",
-        hands="Jhakri cuffs +2",
-        ring1="Shiva ring +1",
-        ring2="Persis ring",
-        back=magic_atk_cape,
-        waist="Fotia belt",
-        legs="Jhakri slops +2",
-        feet="Jhakri pigaches +2"
     }
 
     sets.idle = {}
