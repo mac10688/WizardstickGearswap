@@ -287,7 +287,7 @@ function get_sets()
     sets.midcast.enhancing["Phalanx"] = set_combine(sets.midcast.enhancing, {
         head="Futhark bandeau +3",
         body={ name="Herculean Vest", augments={'STR+2','AGI+2','Phalanx +4','Mag. Acc.+10 "Mag.Atk.Bns."+10'}},
-        hands="Taeon gloves",        
+        hands="Taeon gloves",
         ring1="Stikini ring +1",
         ring2="Stikini ring +1",
         legs="Taeon tights",

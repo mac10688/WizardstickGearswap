@@ -233,6 +233,13 @@ function get_sets()
 
     sets.midcast.enhancing.regen = sets.midcast.enhancing["Duration"]
 
+    sets.midcast["Phalanx"] = set_combine(sets.midcast.enhancing,
+    {
+        hands="Taeon gloves",
+        legs="Taeon tights",
+        feet="Taeon boots"
+    })
+
     sets.midcast.enfeebling = {
         head="Vitiation chapeau +3",
         neck="Duelist's Torque +1",
@@ -361,7 +368,7 @@ function get_sets()
         ring1="Jhakri Ring",
         ring2="Shiva ring +1",
         back=Cape.Int,
-        waist="Orpheus's sash"
+        waist="Orpheus's sash",
         legs="Jhakri Slops +2",
         feet="Vitiation Boots +3"
     }
