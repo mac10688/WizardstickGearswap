@@ -390,7 +390,7 @@ function get_sets()
 end
 
 function precast(spell)
-    print_set(spell)
+    -- print_set(spell)
     if sets.fc[spell.english] then
         equip(sets.fc[spell.english])
     elseif (sets.ja[spell.english]) then
