@@ -69,6 +69,7 @@ function get_sets()
 	sets.fc = {
         ammo="Incantor Stone", --2%
         neck="Cleric's torque", --6%
+        ear1="Malignance earring",
         ear2="Loquacious Earring", --2%
         body="Inyanga jubbah +2", --14%
         hands="Fanatic gloves", --7%
@@ -79,7 +80,7 @@ function get_sets()
         legs="Aya. Cosciales +2", --5%
     }
 	
-    sets.fc.heal = set_combine(sets.fc, {legs="ebers pantaloons +1"})
+    sets.fc.heal = set_combine(sets.fc, {main="Yagrush", legs="ebers pantaloons +1"})
     
     sets.fc.cure = set_combine(sets.fc, {
         -- sub="Sors shield",
@@ -389,12 +390,12 @@ function get_sets()
 end
 
 function precast(spell)
-    -- print_set(spell)
+    print_set(spell)
     if sets.fc[spell.english] then
         equip(sets.fc[spell.english])
     elseif (sets.ja[spell.english]) then
         equip(sets.ja[spell.english])
-    elseif spell.skill == 'Healing Magic' then
+    elseif spell.skill == 'Healing Magic' or spell.name == "Erase" then
         if spell.name:contains("Cure") or spell.name:contains("Curaga") or spell.name:contains("Cura") then
             equip(sets.fc.cure)
         else

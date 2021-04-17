@@ -264,7 +264,7 @@ function get_sets()
         ring1="Kishar Ring",
         ring2="Prolix Ring",
         back=idle_cape,
-        waist="Sacro cord",
+        waist="Embla sash",
         legs={ name="Lengo Pants", augments={'INT+5','Mag. Acc.+13'}},
         feet="Pedagogy loafers +3"
     }

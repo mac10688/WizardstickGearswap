@@ -5,7 +5,7 @@ IdleSetIndex = 1
 IdleSet = {"Refresh", "PDT", "MDT"}
 
 WeaponSetIndex = 1
-WeaponSet = {"Lathi", "Grioavolr", "Any"}
+WeaponSet = {"Laevateinn", "Any"}
 
 EngagedSetIndex = 1
 EngagedSet = {"None", "Accuracy"}
@@ -88,8 +88,7 @@ function get_sets()
     local magic_int_ws = { name="Taranus's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','Weapon skill damage +10%','Damage taken-5%'}}
 
     sets.WeaponSet = {}
-    sets.WeaponSet["Lathi"] = {main="Lathi", sub="Khonsu"}
-    sets.WeaponSet["Grioavolr"] = {main="Grioavolr", sub="Khonsu"}
+    sets.WeaponSet["Laevateinn"] = {main="Laevateinn", sub="Khonsu"}
 
     sets.engaged = {}
     sets.engaged["Accuracy"] = {
@@ -173,8 +172,8 @@ function get_sets()
         feet="Archmage's sabots +3",
         neck="Sorcerer's stole +1",
         waist="Sacro cord",
-        left_ear="Barkarole earring",
-        right_ear="Malignance earring",
+        ear1="Malignance earring",
+        ear2="Barkarole earring",        
         left_ring="Freke ring",
         right_ring="Shiva Ring +1",
         back=magic_atk_cape,
@@ -189,6 +188,11 @@ function get_sets()
         head=empty,
         ring2="Archon ring",
         body='Twilight cloak'
+    })
+
+    sets.midcast['Comet'] = set_combine(sets.midcast.elemental["Magic Attack Bonus"], {
+        head="Pixie hairpin +1",
+        ring2="Archon ring",
     })
 
     --MB1 Total: 44
