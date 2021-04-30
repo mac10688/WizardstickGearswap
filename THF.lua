@@ -18,7 +18,8 @@ end
 function get_sets()
 
     sets.idle = {
-        ammo="Yamarang",
+        -- ammo="Yamarang",
+        ranged="Jinx discus",
         head={ name="Dampening Tam", augments={'DEX+9','Accuracy+13','Mag. Acc.+14','Quadruple Attack +2'}},
         body="Malignance Tabard",
         hands="Malignance Gloves",

@@ -2,12 +2,12 @@ NukeTypeIndex = 1
 NukeSet = {"Magic Attack Bonus","Magic Burst"}
 
 IdleSetIndex = 1
-IdleSet = {"Refresh", "PDT", "MDT"}
+IdleSet = {"Refresh", "DT", "Death"}
 
 WeaponSetIndex = 1
 WeaponSet = {"Laevateinn", "Any"}
 
-EngagedSetIndex = 1
+EngagedSetIndex = 2
 EngagedSet = {"None", "Accuracy"}
 
 Kiting = false
@@ -86,6 +86,7 @@ function get_sets()
     local magic_atk_cape = { name="Taranus's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Magic Damage +10','"Mag.Atk.Bns."+10','Spell interruption rate down-10%'}}
     local idle_cape = { name="Taranus's Cape", augments={'VIT+20','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Phys. dmg. taken-10%'}}
     local magic_int_ws = { name="Taranus's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','Weapon skill damage +10%','Damage taken-5%'}}
+    local death_cape = { name="Taranus's Cape", augments={'MP+60','Mag. Acc+20 /Mag. Dmg.+20','MP+20','"Mag.Atk.Bns."+10','Spell interruption rate down-10%'}}
 
     sets.WeaponSet = {}
     sets.WeaponSet["Laevateinn"] = {main="Laevateinn", sub="Khonsu"}
@@ -189,6 +190,15 @@ function get_sets()
         ring2="Archon ring",
         body='Twilight cloak'
     })
+
+    local deathSet = set_combine(sets.midcast.elemental["Magic Attack Bonus"], {
+        head="Pixie hairpin +1",
+        ring2="Archon ring",
+        back=death_cape
+    })
+
+    sets.precast['Death'] = deathSet
+    sets.midcast['Death'] = deathSet
 
     sets.midcast['Comet'] = set_combine(sets.midcast.elemental["Magic Attack Bonus"], {
         head="Pixie hairpin +1",
@@ -303,7 +313,7 @@ function get_sets()
         head="Archmage's petasos +3",
         neck="Sorcerer's stole +1",
         ear1="Regal earring",
-        ear2="Ishvara earring",
+        ear2="Malignance earring",
         body="Archmage's coat +3",
         hands="Jhakri cuffs +2",
         ring1="Shiva ring +1",
@@ -350,7 +360,15 @@ function get_sets()
     sets.ws["Shattersoul"] = physical_int_ws
 
     -- STR 30% INT 30% | Magical
-    sets.ws["Cataclysm"] = dark_magic_int_ws
+    sets.ws["Cataclysm"] = set_combine(dark_magic_int_ws, {
+        -- legs="Jhakri slops +2",
+        -- feet="Jhakri pigaches +2"
+        -- hands="Archmage's gloves +3"
+        -- head="Archmage's petasos +3",
+        -- ring1="Shiva ring +1"
+        -- neck="Fotia gorget"
+        -- belt="Fotia belt"
+    })
 
     -- INT 80%  | Magical
     sets.ws["Vidohunir"] = dark_magic_int_ws
@@ -366,29 +384,41 @@ function get_sets()
         hands="Spaekona's gloves +3",
         ring1="Mephitas's ring +1",
         ring2="Mephitas's ring",
+        back=death_cape,
         waist="Luminary sash",
         legs="Spaekona's tonban +2",
         feet="Spaekona's sabots +3"
     }
 
     sets.idle = {}
-    sets.idle["Refresh"] = {
+    
+
+    sets.idle["DT"] = {
         ammo="Staunch tathlum +1",
         head="Befouled crown",
         neck="Loricate torque +1",
         ear1="Etiolation earring",
         ear2="Hearty earring",
         body="Shamash robe",
-        hands="Shrieker's cuffs",
-        left_ring="Defending ring",
-        right_ring="Vengeful ring",
+        hands="Agwu's gages",
+        ring1="Vengeful ring",
+        ring2="Defending ring",
         back=idle_cape,
         waist="Slipor sash",
-        legs="Assiduity pants +1",
+        legs="Agwu's slops",
         feet="Archmage's sabots +3"
     }
-    sets.idle["PDT"] = sets.idle["Refresh"]
-    sets.idle["MDT"] = sets.idle["Refresh"]
+
+    sets.idle["Refresh"] = set_combine(sets.idle["DT"], {
+        ammo="Staunch tathlum +1",
+        head="Befouled crown",
+        body="Shamash robe",
+        ring1="Stikini ring +1",
+        ring2="Stikini ring +1",
+        legs="Assiduity pants +1"
+    })
+
+    sets.idle["Death"] = deathSet
 
     sets.kiting = {
         ring2="Shneddick ring"

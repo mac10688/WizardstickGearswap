@@ -185,14 +185,14 @@ function get_sets()
 		feet="Academic's loafers +3",
     }
     
-    --67% fc
+    --81% fc
     sets.precast.fc = {
-        main="Musa",
+        main="Musa", --fast cast 10%
         ammo="Incantor stone", --fast cast 2%
         head="Academic's mortarboard +3", --fast cast 8%
         neck="Voltsurge torque", --fast cast 4%
         ear1="Etiolation earring", --fast cast 2%
-        ear2="Loquacious Earring", --fast cast 1%
+        ear2="Malignance earring", --fast cast 4%
         body="Shango robe", --fast cast 8%
         hands="Academic's bracers +3", --fast cast 8%
         ring1="Kishar ring", --fast cast 4%
@@ -215,9 +215,7 @@ function get_sets()
 
     sets.precast.fc.enhancing = set_combine(sets.precast.fc, {})
     
-    sets.precast.fc.cure = set_combine(sets.precast.fc, {
-        back="Pahtli cape" -- cure spellcasting time -8%
-    })
+    sets.precast.fc.cure = set_combine(sets.precast.fc, {})
 
     ------------------------------------------------------------------------------------------------
     ---------------------------------------- Midcast Sets ------------------------------------------

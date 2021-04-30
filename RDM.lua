@@ -406,7 +406,10 @@ function get_sets()
     })
 
     sets.ws["Chant du Cygne"] = sets.ws.physical
-    sets.ws["Requiescat"] = sets.ws.physical    
+    sets.ws["Requiescat"] = set_combine(sets.ws.physical, {
+        ear2="Regal earring",
+        ring1="Rufescent ring",
+    })
     sets.ws["Evisceration"] = sets.ws.physical
     sets.ws["Aeolian Edge"] = sets.ws.magic
     sets.ws["Exenterator"] = sets.ws.physical
