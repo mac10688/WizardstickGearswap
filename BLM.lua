@@ -185,12 +185,6 @@ function get_sets()
         body='Twilight cloak'
     })
 
-    sets.midcast['Impact'] = set_combine(sets.midcast.elemental["Magic Attack Bonus"], {
-        head=empty,
-        ring2="Archon ring",
-        body='Twilight cloak'
-    })
-
     local deathSet = set_combine(sets.midcast.elemental["Magic Attack Bonus"], {
         head="Pixie hairpin +1",
         ring2="Archon ring",
@@ -222,17 +216,19 @@ function get_sets()
     sets.midcast.elemental.AncientMagic = { head = "Archmage's petasos +3"}
 
     sets.midcast.elemental.debuff = {
-        head="Ea hat +1",
-        neck="Sorcerer's stole +1",
-        ear1="Regal earring",
-        body="Ea houppelande",
-        hands="Amalric gages +1",
-        ring1="Freke ring",
-        ring2="Shiva ring +1",
-        back=magic_atk_cape,
-        waist="Embla sash",
-        legs="Archmage's tonban +3",
-        feet="Jhakri pigaches +2"
+        ammo="Pemphredo tathlum",
+        head="Spae. Petasos +3",
+        body="Spaekona's Coat +3",
+        hands="Spae. Gloves +3",
+        legs="Arch. Tonban +3",
+        feet="Spae. Sabots +3",
+        neck="Src. Stole +1",
+        waist="Sacro cord",
+        left_ear="Regal Earring",
+        right_ear="Malignance earring",
+        left_ring="Freke Ring",
+        right_ring="Shiva Ring +1",
+        back=magic_int_ws
     }
 
     sets.midcast.enfeebling = set_combine(sets.midcast.fast_recast, {
@@ -245,10 +241,16 @@ function get_sets()
         hands= "Spaekona's gloves +3",
         left_ring="Stikini Ring +1",
         right_ring="Kishar Ring",
-        back=magic_atk_cape,
+        back=magic_int_ws,
         waist="Luminary Sash",
-        legs="Archmage's tonban +3",
+        legs="Spaekona's tonban +3",
         feet="Spaekona's sabots +3"
+    })
+
+    sets.midcast['Impact'] = set_combine(sets.midcast.enfeebling, {
+        head=empty,
+        ring2="Archon ring",
+        body='Twilight cloak'
     })
 
     sets.midcast.cure = set_combine(sets.midcast.fast_recast, {

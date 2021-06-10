@@ -49,14 +49,14 @@ function get_sets()
     
     -- Buff sets: Gear that needs to be worn to actively enhance a current player buff.
     sets.divine_caress = {hands="Ebers mitts +1"}
-    sets.afflatus_solace = {body="Ebers Bliaud +1"}
+    sets.afflatus_solace = {body="Ebers Bliaut +1"}
 
 	--- Sets for Enhanced Job Abilities ---
 	
 	sets.ja = {}
 	
     sets.ja['Afflatus Solace'] = sets.afflatus_solace
-    sets.ja['Benediction'] = {body="Piety Briault +3"}
+    sets.ja['Benediction'] = {body="Piety Bliaut +3"}
     sets.ja['Devotion'] = {body="Piety Cap +3"}
 	
     local fastcast_cape = { name="Alaunus's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}}
@@ -111,7 +111,7 @@ function get_sets()
 
     local physical_mnd_ws = {
         head="Piety cap +3",
-        body="Piety briault +3",
+        body="Piety bliaut +3",
         hands="Aya. Manopolas +2",
         legs="Piety pantaloons +3",
         feet="Piety duckbills +3",
@@ -258,7 +258,7 @@ function get_sets()
         neck="Cleric's torque", --5%
         ear1="Nourishing earring +1", --3%
         ear2="Glorious earring", --Cure II: 2%
-        body="Theophany briault +3", --Cure II: 6%
+        body="Theophany bliaut +3", --Cure II: 6%
         hands="Theophany mitts +3", --Cure II: 4%
         ring1="Persis ring",
         ring2="Prolix ring",
@@ -331,7 +331,7 @@ function get_sets()
         main="Bolelabunga",
         sub="Ammurapi shield",
         head="Inyanga tiara +2",
-        body="Piety Briault +3",
+        body="Piety bliaut +3",
         hands="Ebers mitts +1",
         legs="Theophany pantaloons +3",
         feet="Theophany duckbills +3"
@@ -344,7 +344,7 @@ function get_sets()
         neck="Erra pendant",
         ear1="Malignance earring",
         ear2="Regal earring",
-        body="Theophany briault +3",
+        body="Theophany bliaut +3",
         hands="Inyanga dastanas +2",
         ring1="Stikini ring +1",
         ring2="Kishar ring",
@@ -360,7 +360,7 @@ function get_sets()
         neck="Erra pendant",
         ear1="Malignance earring",
         ear2="Regal earring",
-        body="Theophany briault +3",
+        body="Theophany bliaut +3",
         hands="Inyanga dastanas +2",
         ring1="Stikini ring +1",
         ring2="Stikini ring +1",

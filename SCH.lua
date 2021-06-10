@@ -264,7 +264,7 @@ function get_sets()
         back=idle_cape,
         waist="Embla sash",
         legs={ name="Lengo Pants", augments={'INT+5','Mag. Acc.+13'}},
-        feet="Pedagogy loafers +3"
+        feet="Academic's loafers +3"
     }
 
     --MB: 10 Akademos
@@ -399,7 +399,7 @@ function get_sets()
         ear1="Andoaa earring",
         ear2="Mimir earring",
         body="Pedagogy gown +3",
-        hands="Chironic gloves",
+        hands="Telchine gloves",
         waist="Embla sash",
         ring1="Stikini ring +1",
         ring2="Stikini ring +1"
@@ -410,7 +410,7 @@ function get_sets()
     })
 
     sets.midcast.refresh = set_combine(sets.midcast.enhancement_duration,{
-		head="Amalric Coif +1",
+		-- head="Amalric Coif +1",
     })
 
     sets.midcast.aquaveil = sets.midcast.refresh
