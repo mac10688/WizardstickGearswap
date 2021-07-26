@@ -250,8 +250,10 @@ function get_sets()
         feet="Pedagogy loafers +3"
     })
 
-    --Tier 3 spells for mb without killing
+    --Tier 4 spells for mb without killing
     sets.midcast.elemental["Vagary"] = {
+        main="Malignance pole",
+        sub="Khonsu",
         ammo="Incantor Stone",
         head="Pedagogy mortarboard +3",
         neck="Voltsurge Torque",
@@ -306,7 +308,7 @@ function get_sets()
         ear2="Regal earring",
         body="Academic's gown +3",
         hands="Academic's bracers +3",
-        ring1="Stikini ring +1",
+        ring1="Kishar ring",
         ring2="Stikini ring +1",
         back=nuke_cape,
         waist="Luminary sash",
@@ -362,6 +364,16 @@ function get_sets()
         head=empty,
         ring2="Archon ring",
         body='Twilight cloak'
+    })
+
+    sets.precast['Dispelga'] = set_combine(sets.precast.fc, {
+        main="Daybreak",
+        sub="Ammurapi shield"
+    })
+
+    sets.midcast['Dispelga'] = set_combine(sets.midcast.int_enfeebling, {
+        main="Daybreak",
+        sub="Ammurapi shield"
     })
 
     sets.midcast.regen = {}

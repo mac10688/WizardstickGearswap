@@ -1,9 +1,9 @@
 res = require('resources')
 
-Weapon_Sets = {"Sword", "Magic Accuracy", "Dual Wield", "Odin", "Savage"}
+Weapon_Sets = {"Sword", "Magic Accuracy", "Dual Wield", "Odin", "Savage", "Club", "Club2"}
 WeaponSetsIndex = 2
 
-PhysicalAccuracyMode = {"High Acc", "Multi-Attack"}
+PhysicalAccuracyMode = {"High Acc", "Multi-Attack", "PDT"}
 PhysicalAccuracyModeIndex = 2
 
 MagicAccuracyMode = {"Magic Accuracy", "Potency/Duration"}
@@ -71,7 +71,7 @@ function get_sets()
     sets.idle = {}
 
     sets.idle = {
-        head="Vitiation chapeau +3",
+        head="Malignance chapeau",
         neck="Loricate torque +1",
         ear1="Etiolation earring",
         ear2="Hearty earring",
@@ -100,13 +100,15 @@ function get_sets()
     sets.weapons["Dual Wield"] = {main = "Crocea Mors", sub = "Tauret"}
     sets.weapons["Odin"] = {main = "Aern Dagger", sub = "Qutrub Knife"}
     sets.weapons["Savage"] = {main = "Naegling", sub = "Thibron"}
+    sets.weapons["Club"] = {main="Maxentius", sub="Thibron"}
+    sets.weapons["Club2"] = {main="Maxentius", sub="Sacro bulwark"}
 
     sets.ranged_ammo = {}
     sets.ranged_ammo["Magic Accuracy"] = {ranged="Ullr", ammo="Antlion arrow"}
     sets.ranged_ammo["Potency/Duration"] = {ranged=empty, ammo="Regal Gem"}
         
     sets.engaged = {
-        head="Ayanmo zucchetto +2",
+        head="Malignance chapeau",
         neck="Anu Torque",
         ear1="Dignitary's earring",
         ear2="Sherida Earring",
@@ -130,6 +132,11 @@ function get_sets()
         ring2={name="Chirich ring +1", bag="wardrobe3"},
         legs="Ayanmo cosciales +2",
         feet="Ayanmo gambieras +2"
+    })
+
+    sets.engaged["PDT"] = set_combine(sets.engaged, {
+        neck="Loricate torque +1",
+        ring2="Defending ring"
     })
 
     sets.engaged.enspell ={
@@ -165,7 +172,7 @@ function get_sets()
         ear2="Malignance earring",
         body="Vitiation tabard +3",
         hands="Leyline gloves",
-        ring1="Kishar Ring",
+        ring2="Kishar Ring",
         waist="Embla Sash",
         legs="Aya. Cosciales +2"
     }
@@ -652,7 +659,7 @@ function self_command(command)
         local weaponSet = Weapon_Sets[WeaponSetsIndex]
         local magicMode = MagicAccuracyMode[MagicAccuracyModeIndex]
 
-        add_to_chat(122, "Weapon Set:" .. weaponSet .. " | Enfeeble Mode: " .. magicMode .. " | Engaged Mode: " .. physicalSet)
+        add_to_chat(122, "Weapon Set: " .. weaponSet .. " | Enfeeble Mode: " .. magicMode .. " | Engaged Mode: " .. physicalSet)
         SetGearToState(player.status)
         lockstyle()
     elseif command == "Toggle Kiting" then

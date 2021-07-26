@@ -20,7 +20,7 @@ function get_sets()
     sets.idle = {
         -- ammo="Yamarang",
         ranged="Jinx discus",
-        head={ name="Dampening Tam", augments={'DEX+9','Accuracy+13','Mag. Acc.+14','Quadruple Attack +2'}},
+        head="Malignance chapeau",
         body="Malignance Tabard",
         hands="Malignance Gloves",
         legs={ name="Samnuha Tights", augments={'STR+10','DEX+10','"Dbl.Atk."+3','"Triple Atk."+3'}},
@@ -65,7 +65,7 @@ function get_sets()
     )
     
     sets.melee = {
-        head="Dampening tam",
+        head="Malignance chapeau",
         neck="Anu torque",
         ear1="Sherida earring",
         ear2="Telos earring",
