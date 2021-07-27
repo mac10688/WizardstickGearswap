@@ -1,7 +1,12 @@
 ExtraSongs = false
 
 function get_sets()
- 
+
+    local debuff_cape = { name="Intarabus's Cape", augments={'CHR+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Damage taken-5%'}}
+    local tp_cape = { name="Intarabus's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10','Damage taken-5%'}}
+    local mordant_rime_cape = { name="Intarabus's Cape", augments={'CHR+20','Accuracy+20 Attack+20','CHR+10','Weapon skill damage +10%','Damage taken-5%'}}
+    local fast_cast_cape = { name="Intarabus's Cape", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','"Fast Cast"+10','Damage taken-5%'}}
+
     sets.engaged = {}
     sets.engaged.tp = {
         ranged="Gjallarhorn",
@@ -13,7 +18,7 @@ function get_sets()
         hands="Ayanmo manopolas +2",
         ring1="Hetairoi ring",
         ring2="Chirich ring +1",
-        back="Solemnity cape",
+        back=tp_cape,
         waist="Reiki yotai",
         legs="Ayanmo cosciales +2",
         feet="Hippomenes socks +1"
@@ -43,7 +48,7 @@ function get_sets()
         hands="Ayanmo manopolas +2",
         ring1="Hetairoi ring",
         ring2="Chirich ring +1",
-        back="Solemnity cape",
+        back=tp_cape,
         waist="Reiki yotai",
         legs="Ayanmo cosciales +2",
         feet="Hippomenes socks +1"
@@ -59,7 +64,7 @@ function get_sets()
         hands="Leyline gloves",
         ring1="Kishar ring",
         ring2="Defending ring",
-        back="Solemnity cape",
+        back=fast_cast_cape,
         waist="Embla sash",
         legs="Gendewitha spats +1",
         feet="Bihu slippers +1"
@@ -78,7 +83,7 @@ function get_sets()
         hands="Fili manchettes +1",
         ring1="Moonbeam ring",
         ring2="Defending ring",
-        back="Solemnity cape",
+        back=fast_cast_cape,
         waist="Flume belt +1",
         legs="Inyanga shalwar +2",
         feet="Brioso slippers +1"
@@ -93,15 +98,30 @@ function get_sets()
     sets.midcast.song.carol = {}
     sets.midcast.song.minne = {}
     sets.midcast.song.mambo = {}
-    sets.midcast.song.debuff = {}
+
+    sets.midcast.song.debuff = {
+        ranged="Gjallarhorn",
+        head="Brioso roundlet +1",
+        neck="Moonbow Whistle +1",
+        ear1="Regal earring",
+        ear2="Dignitary earring",
+        body="Brioso justaucorps +1",
+        hands="Inyanga Dastanas +2",
+        ring1="Stikini ring +1",
+        ring2="Stikini ring +1",
+        back=debuff_cape,
+        waist="Luminary sash",
+        legs="Brioso cannions +1",
+        feet="Brioso slippers +1"
+    }
 
     sets.midcast.song.Lullaby = {}
-    sets.midcast.song.Lullaby.Acc = {}
-    sets.midcast.song.Lullaby.Duration = {}
+    sets.midcast.song.Lullaby.Acc = sets.midcast.song.debuff
+    sets.midcast.song.Lullaby.Duration = set_combine(sets.midcast.song.debuff, {ranged="Marsyas"})
 
     sets.midcast.song.HordeLullaby = {}
-    sets.midcast.song.HordeLullaby.Acc = {}
-    sets.midcast.song.HordeLullaby.Duration = {}
+    sets.midcast.song.HordeLullaby.Acc = set_combine(sets.midcast.song.debuff, {ranged="Daurdabla"})
+    sets.midcast.song.HordeLullaby.Duration = set_combine(sets.midcast.song.debuff, {ranged="Daurdabla"})
     
     sets.midcast.cure = {}
     sets.midcast.curaga = {}
@@ -112,7 +132,7 @@ function get_sets()
     sets.midcast.StoneSkin = {}
     sets.midcast.Aquaveil = {}
 
-    sets.ExtraSongs = {ranged="Duardabla"}
+    sets.ExtraSongs = {ranged="Daurdabla"}
 
     songs_map = {
 
@@ -231,8 +251,8 @@ function get_sets()
         ["Foe Lullaby"] = CalculateLullaby(),
         ["Foe Lullaby II"] = CalculateLullaby(),
     
-        ["Horde Lullaby"] = CalculateHordeLullaby(),
-        ["Horde Lullaby II"] = CalculateHordeLullaby(),
+        ["Horde Lullaby"] = { precast = sets.precast.song, midcast = sets.midcast.song.HordeLullaby.Duration },
+        ["Horde Lullaby II"] = { precast = sets.precast.song, midcast = sets.midcast.song.HordeLullaby.Duration },
     
         ["Magic Finale"] = { precast = sets.precast.song, midcast = sets.midcast.song.debuff },
         
@@ -290,7 +310,7 @@ end
 
 function self_command(m)
     if m == "ExtraSongs" then
-       equip_yellow()
+        ExtraSongs = not ExtraSongs
    end
 end
 
@@ -304,13 +324,12 @@ end
 
 -- send_command('wait 1;gs equip fashion;wait 1;input /lockstyle on;wait 1;gs equip idle')
 
-
-
-
 function CalculateLullaby()
-    return { precast = sets.precast.song, midcast = sets.midcast.song.debuff }
+
+    return { precast = sets.precast.song, midcast = sets.midcast.song.Lullaby.Acc }
 end
 
 function CalculateHordeLullaby()
-    return { precast = sets.precast.song, midcast = sets.midcast.song.debuff }
+    print("Setting hord lullaby set")
+    return { precast = sets.precast.song, midcast = sets.midcast.song.HordeLullaby.Duration }
 end
