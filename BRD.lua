@@ -1,5 +1,8 @@
 ExtraSongs = false
 
+LullabySetIndex = 1
+LullabySet = {"Accuracy", "Duration"}
+
 function get_sets()
 
     local debuff_cape = { name="Intarabus's Cape", augments={'CHR+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Damage taken-5%'}}
@@ -11,9 +14,9 @@ function get_sets()
     sets.engaged.tp = {
         ranged="Gjallarhorn",
         head="Ayanmo zucchetto +2",
-        neck="Loricate torque +1",
-        ear1="Etiolation earring",
-        ear2="Tuisto earring",
+        neck="Sanctity necklace",
+        ear1="Telos earring",
+        ear2="Dignitary's earring",
         body="Ayanmo corazza +2",
         hands="Ayanmo manopolas +2",
         ring1="Hetairoi ring",
@@ -21,7 +24,7 @@ function get_sets()
         back=tp_cape,
         waist="Reiki yotai",
         legs="Ayanmo cosciales +2",
-        feet="Hippomenes socks +1"
+        feet="Ayanmo gambieras +2"
     }
 
     sets.engaged.tp.nin = {}
@@ -29,7 +32,9 @@ function get_sets()
     sets.engaged.tp.shield = {}
     sets.engaged.tp.dt = {}
 
-    sets.ws = {}
+    sets.ws = {
+
+    }
     sets.ws['Mordant Rime'] = {}
     sets.ws['Rudras Storm'] = {}
     sets.ws['Evisceration'] = {}
@@ -90,14 +95,14 @@ function get_sets()
     }
 
     sets.midcast.song.HonorMarch = set_combine(sets.midcast.song.buff, {ranged="Marsyas"})
-    sets.midcast.song.ballad = {}
-    sets.midcast.song.scherzo = {}
-    sets.midcast.song.paeon = {}
-    sets.midcast.song.etude = {}
-    sets.midcast.song.threnody = {}
-    sets.midcast.song.carol = {}
-    sets.midcast.song.minne = {}
-    sets.midcast.song.mambo = {}
+    sets.midcast.song.ballad = set_combine(sets.midcast.song.buff, {legs="Fili rhingrave +1"})
+    sets.midcast.song.scherzo = set_combine(sets.midcast.song.buff, {feet="Fili cothurnes +1"})
+    sets.midcast.song.paeon = set_combine(sets.midcast.song.buff, {head="Brioso roundlet +1"})
+    sets.midcast.song.etude = set_combine(sets.midcast.song.buff, {})
+    sets.midcast.song.threnody = set_combine(sets.midcast.song.buff, {})
+    sets.midcast.song.carol = set_combine(sets.midcast.song.buff, {})
+    sets.midcast.song.minne = set_combine(sets.midcast.song.buff, {})
+    sets.midcast.song.mambo = set_combine(sets.midcast.song.buff, {})
 
     sets.midcast.song.debuff = {
         ranged="Gjallarhorn",
@@ -116,11 +121,11 @@ function get_sets()
     }
 
     sets.midcast.song.Lullaby = {}
-    sets.midcast.song.Lullaby.Acc = sets.midcast.song.debuff
+    sets.midcast.song.Lullaby.Accuracy = sets.midcast.song.debuff
     sets.midcast.song.Lullaby.Duration = set_combine(sets.midcast.song.debuff, {ranged="Marsyas"})
 
     sets.midcast.song.HordeLullaby = {}
-    sets.midcast.song.HordeLullaby.Acc = set_combine(sets.midcast.song.debuff, {ranged="Daurdabla"})
+    sets.midcast.song.HordeLullaby.Accuracy = set_combine(sets.midcast.song.debuff, {ranged="Daurdabla"})
     sets.midcast.song.HordeLullaby.Duration = set_combine(sets.midcast.song.debuff, {ranged="Daurdabla"})
     
     sets.midcast.cure = {}
@@ -134,142 +139,14 @@ function get_sets()
 
     sets.ExtraSongs = {ranged="Daurdabla"}
 
-    songs_map = {
-
-        ["Army's Paeon"] = { precast = sets.precast.song, midcast = sets.midcast.song.buff },
-        ["Army's Paeon II"] = { precast = sets.precast.song, midcast = sets.midcast.song.buff },
-        ["Army's Paeon III"] = { precast = sets.precast.song, midcast = sets.midcast.song.buff },
-        ["Army's Paeon IV"] = { precast = sets.precast.song, midcast = sets.midcast.song.buff },
-        ["Army's Paeon V"] = { precast = sets.precast.song, midcast = sets.midcast.song.buff },
-        ["Army's Paeon VI"] = { precast = sets.precast.song, midcast = sets.midcast.song.buff },
-    
-        ["Knight's Minne"] = { precast = sets.precast.song, midcast = sets.midcast.song.minne },
-        ["Knight's Minne II"] = { precast = sets.precast.song, midcast = sets.midcast.song.minne },
-        ["Knight's Minne III"] = { precast = sets.precast.song, midcast = sets.midcast.song.minne },
-        ["Knight's Minne IV"] = { precast = sets.precast.song, midcast = sets.midcast.song.minne },
-        ["Knight's Minne V"] = { precast = sets.precast.song, midcast = sets.midcast.song.minne },
-    
-        ["Valor Minuet"] = { precast = sets.precast.song, midcast = sets.midcast.song.buff },
-        ["Valor Minuet II"] = { precast = sets.precast.song, midcast = sets.midcast.song.buff },
-        ["Valor Minuet III"] = { precast = sets.precast.song, midcast = sets.midcast.song.buff },
-        ["Valor Minuet IV"] = { precast = sets.precast.song, midcast = sets.midcast.song.buff },
-        ["Valor Minuet V"] = { precast = sets.precast.song, midcast = sets.midcast.song.buff },
-    
-        ["Sword Madrigal"] = { precast = sets.precast.song, midcast = sets.midcast.song.buff },
-        ["Blade Madrigal"] = { precast = sets.precast.song, midcast = sets.midcast.song.buff },
-        
-        ["Sheepfoe Mambo"] = { precast = sets.precast.song, midcast = sets.midcast.song.mambo },
-        ["Dragonfoe Mambo"] = { precast = sets.precast.song, midcast = sets.midcast.song.mambo },
-    
-        ["Mage's Ballad"] = { precast = sets.precast.song, midcast = sets.midcast.song.ballad },
-        ["Mage's Ballad II"] = { precast = sets.precast.song, midcast = sets.midcast.song.ballad },
-        ["Mage's Ballad III"] = { precast = sets.precast.song, midcast = sets.midcast.song.ballad },
-    
-        ["Advancing March"] = { precast = sets.precast.song, midcast = sets.midcast.song.buff },
-        ["Victory March"] = { precast = sets.precast.song, midcast = sets.midcast.song.buff },
-        ["Honor March"] = { precast = sets.precast.song.HonorMarch, midcast = sets.midcast.song.HonorMarch },
-    
-        ["Enchanting Etude"] = { precast = sets.precast.song, midcast = sets.midcast.song.etude },
-        ["Spirited Etude"] = { precast = sets.precast.song, midcast = sets.midcast.song.etude },
-        ["Learned Etude"] = { precast = sets.precast.song, midcast = sets.midcast.song.etude },
-        ["Quick Etude"] = { precast = sets.precast.song, midcast = sets.midcast.song.etude },
-        ["Vivacious Etude"] = { precast = sets.precast.song, midcast = sets.midcast.song.etude },
-        ["Dextrous Etude"] = { precast = sets.precast.song, midcast = sets.midcast.song.etude },
-        ["Fowl Aubade"] = { precast = sets.precast.song, midcast = sets.midcast.song.etude },
-        ["Sinewy Etude"] = { precast = sets.precast.song, midcast = sets.midcast.song.etude },
-        ["Bewitching Etude"] = { precast = sets.precast.song, midcast = sets.midcast.song.etude },
-        ["Vital Etude"] = { precast = sets.precast.song, midcast = sets.midcast.song.etude },
-        ["Uncanny Etude"] = { precast = sets.precast.song, midcast = sets.midcast.song.etude },
-        ["Herculean Etude"] = { precast = sets.precast.song, midcast = sets.midcast.song.etude },
-        ["Logical Etude"] = { precast = sets.precast.song, midcast = sets.midcast.song.etude },
-        ["Sage Etude"] = { precast = sets.precast.song, midcast = sets.midcast.song.etude },
-        ["Swift Etude"] = { precast = sets.precast.song, midcast = sets.midcast.song.etude },
-    
-        ["Hunter's Prelude"] = { precast = sets.precast.song, midcast = sets.midcast.song.buff },
-        ["Archer's Prelude"] = { precast = sets.precast.song, midcast = sets.midcast.song.buff },
-    
-        ["Light Carol"] = { precast = sets.precast.song, midcast = sets.midcast.song.carol },
-        ["Earth Carol"] = { precast = sets.precast.song, midcast = sets.midcast.song.carol },
-        ["Water Carol"] = { precast = sets.precast.song, midcast = sets.midcast.song.carol },
-        ["Wind Carol"] = { precast = sets.precast.song, midcast = sets.midcast.song.carol },
-        ["Fire Carol"] = { precast = sets.precast.song, midcast = sets.midcast.song.carol },
-        ["Ice Carol"] = { precast = sets.precast.song, midcast = sets.midcast.song.carol },
-        ["Lightning Carol"] = { precast = sets.precast.song, midcast = sets.midcast.song.carol },
-        ["Dark Carol"] = { precast = sets.precast.song, midcast = sets.midcast.song.carol },
-        ["Earth Carol II"] = { precast = sets.precast.song, midcast = sets.midcast.song.carol },
-        ["Water Carol II"] = { precast = sets.precast.song, midcast = sets.midcast.song.carol },
-        ["Wind Carol II"] = { precast = sets.precast.song, midcast = sets.midcast.song.carol },
-        ["Fire Carol II"] = { precast = sets.precast.song, midcast = sets.midcast.song.carol },
-        ["Ice Carol II"] = { precast = sets.precast.song, midcast = sets.midcast.song.carol },
-        ["Lightning Carol II"] = { precast = sets.precast.song, midcast = sets.midcast.song.carol },
-        ["Light Carol II"] = { precast = sets.precast.song, midcast = sets.midcast.song.carol },
-        ["Dark Carol II"] = { precast = sets.precast.song, midcast = sets.midcast.song.carol },
-    
-        ["Herb Pastoral"] = { precast = sets.precast.song, midcast = sets.midcast.song.buff },
-        ["Goblin Gavotte"] = { precast = sets.precast.song, midcast = sets.midcast.song.buff },
-        ["Gold Capriccio"] = { precast = sets.precast.song, midcast = sets.midcast.song.buff },
-        ["Shining Fantasia"] = { precast = sets.precast.song, midcast = sets.midcast.song.buff },
-        ["Scop's Operetta"] = { precast = sets.precast.song, midcast = sets.midcast.song.buff },
-        ["Puppet's Operetta"] = { precast = sets.precast.song, midcast = sets.midcast.song.buff },
-        ["Warding Round"] = { precast = sets.precast.song, midcast = sets.midcast.song.buff },
-    
-        ["Raptor Mazurka"] = { precast = sets.precast.song, midcast = sets.midcast.song.buff },
-        ["Chocobo Mazurka"] = { precast = sets.precast.song, midcast = sets.midcast.song.buff },
-    
-        ["Sentinel's Scherzo"] = { precast = sets.precast.song, midcast = sets.midcast.song.scherzo },
-        ["Goddess' Hymnus"] = { precast = sets.precast.song, midcast = sets.midcast.song.buff },
-    
-        ["Adventurer's Dirge"] = { precast = sets.precast.song, midcast = sets.midcast.song.buff },
-        ["Foe Sirvente"] = { precast = sets.precast.song, midcast = sets.midcast.song.buff },
-        
-        ["Foe Requiem"] = { precast = sets.precast.song, midcast = sets.midcast.song.debuff },
-        ["Foe Requiem II"] = { precast = sets.precast.song, midcast = sets.midcast.song.debuff },
-        ["Foe Requiem III"] = { precast = sets.precast.song, midcast = sets.midcast.song.debuff },
-        ["Foe Requiem IV"] = { precast = sets.precast.song, midcast = sets.midcast.song.debuff },
-        ["Foe Requiem V"] = { precast = sets.precast.song, midcast = sets.midcast.song.debuff },
-        ["Foe Requiem VI"] = { precast = sets.precast.song, midcast = sets.midcast.song.debuff },
-        ["Foe Requiem VII"] = { precast = sets.precast.song, midcast = sets.midcast.song.debuff },
-    
-        ["Light Threnody"] = { precast = sets.precast.song, midcast = sets.midcast.song.threnody },
-        ["Dark Threnody"] = { precast = sets.precast.song, midcast = sets.midcast.song.threnody },
-        ["Earth Threnody"] = { precast = sets.precast.song, midcast = sets.midcast.song.threnody },
-        ["Water Threnody"] = { precast = sets.precast.song, midcast = sets.midcast.song.threnody },
-        ["Wind Threnody"] = { precast = sets.precast.song, midcast = sets.midcast.song.threnody },
-        ["Fire Threnody"] = { precast = sets.precast.song, midcast = sets.midcast.song.threnody },
-        ["Ice Threnody"] = { precast = sets.precast.song, midcast = sets.midcast.song.threnody },
-        ["Lightning Threnody"] = { precast = sets.precast.song, midcast = sets.midcast.song.threnody },
-    
-        ["Light Threnody II"] = { precast = sets.precast.song, midcast = sets.midcast.song.threnody },
-        ["Dark Threnody II"] = { precast = sets.precast.song, midcast = sets.midcast.song.threnody },
-        ["Earth Threnody II"] = { precast = sets.precast.song, midcast = sets.midcast.song.threnody },
-        ["Water Threnody II"] = { precast = sets.precast.song, midcast = sets.midcast.song.threnody },
-        ["Wind Threnody II"] = { precast = sets.precast.song, midcast = sets.midcast.song.threnody },
-        ["Fire Threnody II"] = { precast = sets.precast.song, midcast = sets.midcast.song.threnody },
-        ["Ice Threnody II"] = { precast = sets.precast.song, midcast = sets.midcast.song.threnody },
-        ["Lightning Threnody II"] = { precast = sets.precast.song, midcast = sets.midcast.song.threnody },
-        
-        ["Foe Lullaby"] = CalculateLullaby(),
-        ["Foe Lullaby II"] = CalculateLullaby(),
-    
-        ["Horde Lullaby"] = { precast = sets.precast.song, midcast = sets.midcast.song.HordeLullaby.Duration },
-        ["Horde Lullaby II"] = { precast = sets.precast.song, midcast = sets.midcast.song.HordeLullaby.Duration },
-    
-        ["Magic Finale"] = { precast = sets.precast.song, midcast = sets.midcast.song.debuff },
-        
-        ["Battlefield Elegy"] = { precast = sets.precast.song, midcast = sets.midcast.song.debuff },
-        ["Carnage Elegy"] = { precast = sets.precast.song, midcast = sets.midcast.song.debuff },
-        
-        ["Maiden's Virelai"] = { precast = sets.precast.song, midcast = sets.midcast.song.debuff },
-    
-        ["Pining Nocturne"] = { precast = sets.precast.song, midcast = sets.midcast.song.debuff },
-    }
-
 end
 
 function precast(spell)
     if spell.action_type == 'Magic' then
-        if spell.type == 'BardSong' then
-            equip(songs_map[spell.name].precast)
+        if spell.name == 'Honor March' then
+            equip(sets.precast.song.HonorMarch)
+        elseif spell.type == 'BardSong' then
+            equip(sets.precast.song)
         else
             equip(sets.precast)
         end
@@ -283,6 +160,8 @@ function precast(spell)
 end
 
 function midcast(spell)
+
+
     if spell.skill == 'Healing Magic' then
         equip_heal()
     elseif spell.skill == 'Enfeebling Magic' then
@@ -290,7 +169,36 @@ function midcast(spell)
     elseif spell.skill == 'Enhancing Magic' then
         equip_enhancing(spell)
     elseif spell.type == 'BardSong' then
-        equip(songs_map[spell.name].midcast)
+        print(spell.targets)
+        if spell.name == "Honor March" then
+            equip(sets.midcast.song.HonorMarch)
+        elseif spell.name:contains("Carol") then
+            equip(sets.midcast.song.carol)
+        elseif spell.name:contains("Threnody") then
+            equip(sets.midcast.song.threnody)
+        elseif spell.name:contains("Ballad") then
+            equip(sets.midcast.song.ballad)
+        elseif spell.name:contains("Scherzo") then
+            equip(sets.midcast.song.scherzo)
+        elseif spell.name:contains("Paeon") then
+            equip(sets.midcast.song.paeon)
+        elseif spell.name:contains("Etude") then
+            equip(sets.midcast.song.etude)
+        elseif spell.name:contains("Minne") then
+            equip(sets.midcast.song.minne)
+        elseif spell.name:contains("Mambo") then
+            equip(sets.midcast.song.mambo)
+        elseif spell.name:contains("Horde") then
+            local lullabySet = LullabySet[LullabySetIndex]
+            equip(sets.midcast.song.HordeLullaby[lullabySet])
+        elseif spell.name:contains("Foe") then
+            local lullabySet = LullabySet[LullabySetIndex]
+            equip(sets.midcast.song.Lullaby[lullabySet])
+        elseif not spell.targets.Enemy  then
+            equip(sets.midcast.song.buff)
+        else
+            equip(sets.midcast.song.debuff)
+        end
         if ExtraSongs then
             equip(sets.ExtraSongs)
         end
