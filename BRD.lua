@@ -3,6 +3,16 @@ ExtraSongs = false
 LullabySetIndex = 1
 LullabySet = {"Accuracy", "Duration"}
 
+send_command('bind f9 gs c LullabyMode')
+send_command('bind f12 gs c RefreshSet')
+send_command('bind f11 gs c ExtraSongs')
+
+function file_unload()
+    send_command('unbind f9')
+    send_command('unbind f11')
+    send_command('unbind f12')
+end
+
 function get_sets()
 
     local debuff_cape = { name="Intarabus's Cape", augments={'CHR+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Damage taken-5%'}}
@@ -33,28 +43,32 @@ function get_sets()
     sets.engaged.tp.dt = {}
 
     sets.ws = {
-
+        neck="Fotia gorget",
+        neck="Fotia belt",
+        back=mordant_rime_cape
     }
-    sets.ws['Mordant Rime'] = {}
-    sets.ws['Rudras Storm'] = {}
-    sets.ws['Evisceration'] = {}
-    sets.ws['Extenterator'] = {}
-    sets.ws['Aeolian Edge'] = {}
+
+    sets.ws['Mordant Rime'] = set_combine(sets.ws, {})
+    sets.ws['Rudras Storm'] = set_combine(sets.ws, {})
+    sets.ws['Evisceration'] = set_combine(sets.ws, {})
+    sets.ws['Extenterator'] = set_combine(sets.ws, {})
+    sets.ws['Aeolian Edge'] = set_combine(sets.ws, {})
     
-    sets.ws['Savage Blade'] = {}
-    sets.ws['Circle Blade'] = {}
+    sets.ws['Savage Blade'] = set_combine(sets.ws, {})
+    sets.ws['Circle Blade'] = set_combine(sets.ws, {})
 
     sets.idle = {
+        ranged="Gjallarhorn",
         head="Ayanmo zucchetto +2",
         neck="Loricate torque +1",
         ear1="Etiolation earring",
         ear2="Tuisto earring",
         body="Ayanmo corazza +2",
         hands="Ayanmo manopolas +2",
-        ring1="Hetairoi ring",
-        ring2="Chirich ring +1",
+        ring1="Moonbeam ring",
+        ring2="Defending ring",
         back=tp_cape,
-        waist="Reiki yotai",
+        waist="Flume belt +1",
         legs="Ayanmo cosciales +2",
         feet="Hippomenes socks +1"
     }
@@ -137,7 +151,9 @@ function get_sets()
     sets.midcast.StoneSkin = {}
     sets.midcast.Aquaveil = {}
 
-    sets.ExtraSongs = {ranged="Daurdabla"}
+    sets.ExtraSongs = set_combine(sets.precast.song, {ranged="Daurdabla"})
+
+    coroutine.schedule(lockstyle,8)
 
 end
 
@@ -169,7 +185,6 @@ function midcast(spell)
     elseif spell.skill == 'Enhancing Magic' then
         equip_enhancing(spell)
     elseif spell.type == 'BardSong' then
-        print(spell.targets)
         if spell.name == "Honor March" then
             equip(sets.midcast.song.HonorMarch)
         elseif spell.name:contains("Carol") then
@@ -194,7 +209,7 @@ function midcast(spell)
         elseif spell.name:contains("Foe") then
             local lullabySet = LullabySet[LullabySetIndex]
             equip(sets.midcast.song.Lullaby[lullabySet])
-        elseif not spell.targets.Enemy  then
+        elseif spell.targets.Self  then
             equip(sets.midcast.song.buff)
         else
             equip(sets.midcast.song.debuff)
@@ -219,6 +234,23 @@ end
 function self_command(m)
     if m == "ExtraSongs" then
         ExtraSongs = not ExtraSongs
+        if ExtraSongs then
+            add_to_chat(122, 'EXTRA SONGS ON')
+        else
+            add_to_chat(122, 'EXTRA SONGS OFF')
+        end
+    elseif m == "LullabyMode" then
+        LullabySetIndex = LullabySetIndex % #LullabySet + 1
+
+        local lullabySet = LullabySet[LullabySetIndex]
+        add_to_chat(122, 'Lullaby Set: ' .. lullabySet)
+    elseif m == 'RefreshSet' then
+
+        local lullabySet = LullabySet[LullabySetIndex]
+
+        equip_set(player.status)
+        add_to_chat(122, 'Lullaby Set: ' .. lullabySet)
+        lockstyle()
    end
 end
 
@@ -230,14 +262,10 @@ function equip_set(status)
     end
 end
 
--- send_command('wait 1;gs equip fashion;wait 1;input /lockstyle on;wait 1;gs equip idle')
-
-function CalculateLullaby()
-
-    return { precast = sets.precast.song, midcast = sets.midcast.song.Lullaby.Acc }
+function lockstyle()
+    if player.main_job == 'BRD' then send_command('@input /lockstyleset 8') end
 end
 
-function CalculateHordeLullaby()
-    print("Setting hord lullaby set")
-    return { precast = sets.precast.song, midcast = sets.midcast.song.HordeLullaby.Duration }
+function sub_job_change()
+    coroutine.schedule(lockstyle,6)
 end
