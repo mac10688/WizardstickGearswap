@@ -42,14 +42,19 @@ function get_sets()
     sets.engaged.tp.shield = {}
     sets.engaged.tp.dt = {}
 
+    sets.ja = {}
+    sets.ja["Troubadour"] = {body="Bihu justaucorps +1"}
+    sets.ja["Soul Voice"] = {legs="Bihu cannions +1"}
+    sets.ja["Nightingale"] = {feet="Bihu slippers +1"}
+
     sets.ws = {
         neck="Fotia gorget",
-        neck="Fotia belt",
+        waist="Fotia belt",
         back=mordant_rime_cape
     }
 
     sets.ws['Mordant Rime'] = set_combine(sets.ws, {})
-    sets.ws['Rudras Storm'] = set_combine(sets.ws, {})
+    sets.ws["Rudra's Storm"] = set_combine(sets.ws, {})
     sets.ws['Evisceration'] = set_combine(sets.ws, {})
     sets.ws['Extenterator'] = set_combine(sets.ws, {})
     sets.ws['Aeolian Edge'] = set_combine(sets.ws, {})
@@ -67,10 +72,10 @@ function get_sets()
         hands="Ayanmo manopolas +2",
         ring1="Moonbeam ring",
         ring2="Defending ring",
-        back=tp_cape,
+        back="Mecistopins mantle",
         waist="Flume belt +1",
         legs="Ayanmo cosciales +2",
-        feet="Hippomenes socks +1"
+        feet="Fili cothurnes +1"
     }
 
     sets.precast = {}
@@ -105,13 +110,13 @@ function get_sets()
         back=fast_cast_cape,
         waist="Flume belt +1",
         legs="Inyanga shalwar +2",
-        feet="Brioso slippers +1"
+        feet="Brioso slippers +2"
     }
 
     sets.midcast.song.HonorMarch = set_combine(sets.midcast.song.buff, {ranged="Marsyas"})
     sets.midcast.song.ballad = set_combine(sets.midcast.song.buff, {legs="Fili rhingrave +1"})
     sets.midcast.song.scherzo = set_combine(sets.midcast.song.buff, {feet="Fili cothurnes +1"})
-    sets.midcast.song.paeon = set_combine(sets.midcast.song.buff, {head="Brioso roundlet +1"})
+    sets.midcast.song.paeon = set_combine(sets.midcast.song.buff, {head="Brioso roundlet +2"})
     sets.midcast.song.etude = set_combine(sets.midcast.song.buff, {})
     sets.midcast.song.threnody = set_combine(sets.midcast.song.buff, {})
     sets.midcast.song.carol = set_combine(sets.midcast.song.buff, {})
@@ -120,18 +125,18 @@ function get_sets()
 
     sets.midcast.song.debuff = {
         ranged="Gjallarhorn",
-        head="Brioso roundlet +1",
+        head="Brioso roundlet +2",
         neck="Moonbow Whistle +1",
         ear1="Regal earring",
         ear2="Dignitary earring",
-        body="Brioso justaucorps +1",
+        body="Brioso justaucorps +2",
         hands="Inyanga Dastanas +2",
         ring1="Stikini ring +1",
         ring2="Stikini ring +1",
         back=debuff_cape,
         waist="Luminary sash",
-        legs="Brioso cannions +1",
-        feet="Brioso slippers +1"
+        legs="Brioso cannions +2",
+        feet="Brioso slippers +2"
     }
 
     sets.midcast.song.Lullaby = {}
@@ -158,6 +163,7 @@ function get_sets()
 end
 
 function precast(spell)
+    -- print_set(spell)
     if spell.action_type == 'Magic' then
         if spell.name == 'Honor March' then
             equip(sets.precast.song.HonorMarch)
@@ -166,22 +172,24 @@ function precast(spell)
         else
             equip(sets.precast)
         end
-    elseif spell.action_type == 'WeaponSkill' then
+    elseif spell.type == 'WeaponSkill' then
         if sets.ws[spell.name] then
             equip(sets.ws[spell.name])
         else
             equip(sets.ws)
         end
+    elseif spell.type == "JobAbility" then
+        if sets.ja[spell.name] then
+            equip(sets.ja[spell.name])
+        end
     end
 end
 
 function midcast(spell)
-
-
     if spell.skill == 'Healing Magic' then
-        equip_heal()
+        equip(sets.midcast.cure)
     elseif spell.skill == 'Enfeebling Magic' then
-        equip_enfeebling()
+        equip(sets.midcast.enhancing)
     elseif spell.skill == 'Enhancing Magic' then
         equip_enhancing(spell)
     elseif spell.type == 'BardSong' then
@@ -214,7 +222,7 @@ function midcast(spell)
         else
             equip(sets.midcast.song.debuff)
         end
-        if ExtraSongs then
+        if ExtraSongs and spell.name ~= "Honor March" then
             equip(sets.ExtraSongs)
         end
     end
