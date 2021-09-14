@@ -117,6 +117,7 @@ function get_sets()
     local cure_cape = { name="Lugh's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','"Cure" potency +10%','Spell interruption rate down-10%'}}
     local mnd_magic_ws = { name="Lugh's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','Weapon skill damage +10%','Damage taken-5%'}}
     local int_magic_ws = { name="Lugh's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','Weapon skill damage +10%','Damage taken-5%'}}
+    local ws_boots = { name="Merlinic Crackows", augments={'Attack+25','Crit.hit rate+3','Weapon skill damage +10%','Mag. Acc.+16 "Mag.Atk.Bns."+16'}}
 
     local fc_cape = idle_cape
     local int_enfeeble_cape = nuke_cape
@@ -144,17 +145,17 @@ function get_sets()
 
     sets.engaged = {}
     sets.engaged["Accuracy"] = {
-        head="Jhakri coronal +2",
+        head="Nyame helm",
         neck="Sanctity necklace",
         ear1="Telos earring",
         ear2="Dignitary's earring",
         body="Pedagogy gown +3",
-        hands="Jhakri cuffs +2",
+        hands="Nyame gauntlets",
         ring1="Chirich Ring +1",
         ring2="Chirich Ring +1",
         waist="Grunfeld rope",
-        legs="Jhakri slops +2",
-        feet="Jhakri pigaches +2",
+        legs="Nyame flanchard",
+        feet="Nyame sollerets",
         back={ name="Lugh's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','Haste+10','Mag. Evasion+15'}}
     }
 
@@ -434,14 +435,14 @@ function get_sets()
         neck="Fotia neck",
         ear1="Regal earring",
         ear2="Barkarole earring",
-        body="Jhakri robe +2",
+        body="Nyame mail",
         hands="Jhakri cuffs +2",
         ring1="Shiva ring +1",
         ring2="Persis ring",
         backl=int_magic_ws,
         waist="Fotia belt",
         legs="Mallquis trews +2",
-        feet="Academic's loafers +3"
+        feet=ws_boots
     }
 
     local magical_int_ws = {
@@ -456,7 +457,7 @@ function get_sets()
         back=int_magic_ws,
         waist="Orpheus's sash",
         legs="Pedagogy pants +3",
-        feet="Pedagogy loafers +3"
+        feet=ws_boots
     }
 
     local magical_mnd_ws = {
@@ -471,7 +472,7 @@ function get_sets()
         back=mnd_magic_ws,
         waist="Orpheus's sash",
         legs="Pedagogy pants +3",
-        feet="Pedagogy loafers +3"
+        feet=ws_boots
     }
 
     local dark_magic_affinity = {head="Pixie hairpin +1", ring1="Archon ring"}

@@ -87,13 +87,14 @@ function get_sets()
     local idle_cape = { name="Taranus's Cape", augments={'VIT+20','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Phys. dmg. taken-10%'}}
     local magic_int_ws = { name="Taranus's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','Weapon skill damage +10%','Damage taken-5%'}}
     local death_cape = { name="Taranus's Cape", augments={'MP+60','Mag. Acc+20 /Mag. Dmg.+20','MP+20','"Mag.Atk.Bns."+10','Spell interruption rate down-10%'}}
+    local ws_boots = { name="Merlinic Crackows", augments={'Attack+25','Crit.hit rate+3','Weapon skill damage +10%','Mag. Acc.+16 "Mag.Atk.Bns."+16'}}
 
     sets.WeaponSet = {}
     sets.WeaponSet["Laevateinn"] = {main="Laevateinn", sub="Khonsu"}
 
     sets.engaged = {}
     sets.engaged["Accuracy"] = {
-        head="Jhakri coronal +2",
+        head="Nyame helm",
         neck="Sanctity necklace",
         ear1="Telos earring",
         ear2="Dignitary's earring",
@@ -151,7 +152,7 @@ function get_sets()
     sets.precast.fc.enhancing = set_combine(sets.precast.fc, {})
 
     sets.precast.fc.cure =set_combine(sets.precast.fc, {
-        back="Pahtli cape" -- cure spellcasting time -8%
+        -- back="Pahtli cape" -- cure spellcasting time -8%
     })
 
 
@@ -308,7 +309,7 @@ function get_sets()
         back=magic_int_ws,
         waist="Fotia belt",
         legs="Archmage's tonban +3",
-        feet="Archmage's sabots +3"
+        feet=ws_boots
     }
 
     local magical_int_ws = {
@@ -323,7 +324,7 @@ function get_sets()
         back=magic_int_ws,
         waist="Orpheus's sash",
         legs="Archmage's tonban +3",
-        feet="Archmage's sabots +3"
+        feet=ws_boots
     }
 
     local dark_magic_affinity = {head="Pixie hairpin +1", ring1="Archon ring"}
@@ -388,7 +389,7 @@ function get_sets()
         ring2="Mephitas's ring",
         back=death_cape,
         waist="Luminary sash",
-        legs="Spaekona's tonban +2",
+        legs="Spaekona's tonban +3",
         feet="Spaekona's sabots +3"
     }
 

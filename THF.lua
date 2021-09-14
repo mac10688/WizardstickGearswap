@@ -29,7 +29,7 @@ function get_sets()
         waist="Flume Belt +1",
         left_ear="Hearty Earring",
         right_ear="Tuisto Earring",
-        left_ring="Vocane Ring +1",
+        left_ring="Moonbeam ring",
         right_ring="Defending Ring",
         back={ name="Toutatis's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Attack+10','Haste+10','Damage taken-5%'}},
     }

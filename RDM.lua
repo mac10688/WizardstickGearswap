@@ -67,6 +67,7 @@ function get_sets()
     Cape.Mnd = { name="Sucellos's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','"Cure" potency +10%','Mag. Evasion+15'}}
     Cape.Melee = { name="Sucellos's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Dbl.Atk."+10','Damage taken-5%'}}
     Cape.Ws = { name="Sucellos's Cape", augments={'STR+20','Accuracy+20 Attack+20','Attack+10','Weapon skill damage +10%','Damage taken-5%'}}
+    local ws_boots = { name="Merlinic Crackows", augments={'Attack+25','Crit.hit rate+3','Weapon skill damage +10%','Mag. Acc.+16 "Mag.Atk.Bns."+16'}}
 
     sets.idle = {}
 
@@ -81,7 +82,7 @@ function get_sets()
         ring2="Defending ring",
         back=Cape.Int,
         waist="Slipor sash",
-        legs="Ayanmo cosciales +2",
+        legs="Nyame flanchard",
         feet="Malignance boots"
     }
 
@@ -130,8 +131,8 @@ function get_sets()
         neck="Sanctity Necklace",
         ear2="Telos earring",
         ring2={name="Chirich ring +1", bag="wardrobe3"},
-        legs="Ayanmo cosciales +2",
-        feet="Ayanmo gambieras +2"
+        legs="Nyame flanchard",
+        feet="Nyame sollerets"
     })
 
     sets.engaged["PDT"] = set_combine(sets.engaged, {
@@ -140,7 +141,7 @@ function get_sets()
     })
 
     sets.engaged.enspell ={
-        hands="Aya. Manopolas +2",
+        -- hands="Ayanmo Manopolas +2",
         legs="Vitiation Tights +3",
         -- back={ name="Ghostfyre Cape", augments={'Enfb.mag. skill +10','Enha.mag. skill +4','Mag. Acc.+9','Enh. Mag. eff. dur. +20'}},
         waist="Orpheus's sash"
@@ -166,15 +167,18 @@ function get_sets()
     sets.engaged.sw["Multi-Attack"].enspell = set_combine(sets.engaged.sw["Multi-Attack"], sets.engaged.enspell)
     sets.engaged.sw["High Acc"].enspell = set_combine(sets.engaged.sw["High Acc"], sets.engaged.enspell)
 
+    --rdm inherit 38
+    --45
+    --83 total
     sets.fc = {   
-        head="Atrophy chapeau +3",
-        ear1="Etiolation earring",
-        ear2="Malignance earring",
-        body="Vitiation tabard +3",
-        hands="Leyline gloves",
-        ring2="Kishar Ring",
-        waist="Embla Sash",
-        legs="Aya. Cosciales +2"
+        head="Atrophy chapeau +3", --16
+        ear1="Etiolation earring", --1
+        ear2="Malignance earring", --4
+        body="Vitiation tabard +3", --15
+        hands="Leyline gloves", --8
+        ring2="Kishar Ring", --4
+        waist="Embla Sash", --5
+        feet="Carmine greaves +1" --8
     }
 
     sets.midcast = {}
@@ -372,14 +376,14 @@ function get_sets()
         neck="Fotia gorget",
         ear1="Ishvara Earring",
         ear2="Malignance earring",
-        body="Jhakri Robe +2",
+        body="Nyame mail",
         hands="Jhakri Cuffs +2",
-        ring1="Jhakri Ring",
+        ring1="Freke ring",
         ring2="Shiva ring +1",
         back=Cape.Int,
         waist="Orpheus's sash",
-        legs="Jhakri Slops +2",
-        feet="Vitiation Boots +3"
+        legs="Nyame flanchard",
+        feet=ws_boots
     }
 
     sets.ws.physical = {
@@ -389,12 +393,12 @@ function get_sets()
         ear2="Sherida Earring",
         body="Vitiation tabard +3",
         hands="Atrophy gloves +3",
-        ring1="Jhakri Ring",
+        ring1="Rufescent ring",
         ring2="Ilabrat ring",
         back=Cape.Ws,
         waist="Fotia belt",
-        legs="Jhakri Slops +2",
-        feet="Jhakri Pigaches +2"
+        legs="Nyame flanchard",
+        feet=ws_boots
     }
         
     sets.ws["Red Lotus Blade"] = sets.ws.magic

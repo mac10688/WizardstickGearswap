@@ -77,7 +77,7 @@ function get_sets()
         ring2="Kishar ring", --4%
         back=fastcast_cape, --10%
         waist="Embla Sash", --5%
-        legs="Aya. Cosciales +2", --5%
+        -- legs="Aya. Cosciales +2", --5%
     }
 	
     sets.fc.heal = set_combine(sets.fc, {main="Yagrush", legs="ebers pantaloons +1"})
@@ -95,25 +95,25 @@ function get_sets()
     })
 	
 	sets.ws = {
-        head="Aya. Zucchetto +2",
-        body="Ayanmo Corazza +2",
-        hands="Aya. Manopolas +2",
-        legs="Aya. Cosciales +2",
-        feet="Aya. Gambieras +2",
+        head="Nyame helm",
+        body="Nyame helm",
+        hands="Nyame gauntlets",
+        legs="Nyame flanchard",
+        feet="Nyame sollerets",
         neck="Fotia Gorget",
         waist="Fotia Belt",
-        ear1="Cessance Earring",
-        ear2="Brutal Earring",
+        ear1="Moonshade earring",
+        ear2="Telos earring",
         ring1="Chirich Ring +1",
         ring2="Chirich Ring +1",
-        back=attack_cape,
+        back=attack_cape
     }
 
     local physical_mnd_ws = {
         head="Piety cap +3",
-        body="Piety bliaut +3",
-        hands="Aya. Manopolas +2",
-        legs="Piety pantaloons +3",
+        body="Nyame helm",
+        hands="Nyame gauntlets",
+        legs="Nyame flanchard",
         feet="Piety duckbills +3",
         neck="Fotia Gorget",
         waist="Grunfeld rope",
@@ -148,10 +148,10 @@ function get_sets()
     
     sets.tp['Delay Cap'] = {
         ammo="Staunch Tathlum +1",
-        head="Aya. Zucchetto +2",
-        body="Ayanmo Corazza +2",
-        hands="Aya. Manopolas +2",
-        legs="Aya. Cosciales +2",
+        head="Nyame helm",
+        body="Nyame mail",
+        hands="Nyame gauntlets",
+        legs="Nyame flanchard",
         feet="Piety duckbills +3",
         neck="Sanctity Necklace",
         waist="Grunfeld Rope",
@@ -164,11 +164,11 @@ function get_sets()
 
 	sets.tp['Acc'] = {
         ammo="Staunch Tathlum +1",
-        head="Aya. Zucchetto +2",
-        body="Ayanmo Corazza +2",
-        hands="Aya. Manopolas +2",
-        legs="Aya. Cosciales +2",
-        feet="Aya. Gambieras +2",
+        head="Nyame helm",
+        body="Nyame mail",
+        hands="Nyame gauntlets",
+        legs="Nyame flanchard",
+        feet="Nyame sollerets",
         neck="Sanctity Necklace",
         waist="Grunfeld rope",
         ear1="Telos earring",
@@ -181,42 +181,42 @@ function get_sets()
     sets.idle = {}
 	
     --30% physical
-    --36% dmg
+    --51% dmg
     --6% magic dmg
 	sets.idle['PDT'] = {
         main="Daybreak", --10% physical
         sub="Genmei shield", --10% physical
         ammo="Staunch tathlum +1", --3% dmg
-        head="Ayanmo zucchetto +2", --3% dmg
+        head="Nyame helm", --7% dmg
         neck="Loricate Torque +1", --6% dmg
         ear1="Etiolation earring", --3% magic dmg
-        ear2="Hearty earring",
+        ear2="Tuisto earring",
         body="Shamash robe", --10% physical
-        hands="Ayanmo manopolas +2", --3% dmg
+        hands="Nyame guantlets", --7% dmg
         ring1="Defending Ring", --10% dmg
         ring2="Ayanmo ring", --3% dmg
         back={ name="Alaunus's Cape", augments={'MND+20','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Enmity-10','Occ. inc. resist. to stat. ailments+10'}},
         waist="Slipor sash", --3% magic dmg
-        legs="Ayanmo cosciales +2", --5% dmg
-        feet="Ayanmo gambieras +2" --3% dmg
+        legs="Nyame flanchard", --8% dmg
+        feet="Nyame sollerets" --7% dmg
     }
                 
     sets.idle['MDT'] = {
         main="Daybreak",
         sub="Genmei shield",
         ammo="Staunch tathlum +1",
-        head="Inyanga tiara +2",
+        head="Nyame helm",
         neck="Loricate Torque +1",
         ear1="Etiolation earring",
         ear2="Hearty earring",
         body="Shamash robe",
-        hands="Shrieker's cuffs",
+        hands="Nyame gauntlets",
         ring1="Defending Ring",
         ring2="Inyanga ring",
         back={ name="Alaunus's Cape", augments={'MND+20','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Enmity-10','Occ. inc. resist. to stat. ailments+10'}},
         waist="Slipor sash",
-        legs="Inyanga Shalwar +2",
-        feet="Inyanga crackows +2"
+        legs="Nyame flanchard",
+        feet="Nyame sollerets"
     }
 
     --Refresh +10

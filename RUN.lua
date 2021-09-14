@@ -213,7 +213,7 @@ function get_sets()
         body="Vrikodara jupon", --fc 5%
         hands="Leyline gloves", --fc 8%
         ring1="Kishar ring",
-        legs="Ayanmo cosciales +2", --fc 6%
+        -- legs="Ayanmo cosciales +2", --fc 6%
         back=fast_cast_cape,
         feet="Carmine greaves +1"
     }
@@ -443,7 +443,7 @@ function get_sets()
         back=atk_cape,
         waist="Ioskeha belt +1",
         legs="Carmine cuisses +1",
-        feet="Ayanmo gambieras +2"
+        feet="Nyame sollerets"
     }
 
     sets.engaged.hybrid["mdt"] = sets.engaged.hybrid["pdt"]

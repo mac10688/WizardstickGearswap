@@ -28,7 +28,8 @@ end
 help()
 
 function get_sets()
-    
+    local ws_boots = { name="Merlinic Crackows", augments={'Attack+25','Crit.hit rate+3','Weapon skill damage +10%','Mag. Acc.+16 "Mag.Atk.Bns."+16'}}
+
     sets.ja = {}
     sets.ja['Bolster'] = {body="Bagua tunic +3"}
     sets.ja['Life cycle'] = {body="Geomancy tunic +3", back="Nantosuelta's cape"}
@@ -266,11 +267,11 @@ function get_sets()
     -- Weaponskill sets
     -- Default set for any weaponskill that isn't any more specifically defined
     sets.ws = {
-        head="Jhakri Coronal +2",
+        head="Nyame helm",
         body="Bagua Tunic +3",
         hands="Jhakri Cuffs +2",
-        legs="Jhakri Slops +2",
-        feet="Jhakri Pigaches +2",
+        legs="Nyame flanchard",
+        feet=ws_boots,
         neck="Fotia Gorget",
         waist="Grunfeld Rope",
         ear1="Moonshade earring",
