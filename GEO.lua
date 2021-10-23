@@ -69,7 +69,6 @@ function get_sets()
 
     sets.midcast.conserve_mp = {
         head="Vanya hood",
-        hands="Shrieker's cuffs",
         waist="Austerity belt +1",
         legs="Geomancy pants +3",
         feet="Medium's sabots"
@@ -100,8 +99,8 @@ function get_sets()
         head="Vanya hood", --10%
         body="Vrikodara Jupon", --13%
         hands="Geomancy mitaines +3", --Mnd +43
-        ring1="Stikini ring +1",
-        ring2="Stikini ring +1",
+        ring1={name="Stikini Ring +1", bag="wardrobe3"},
+        ring2={name="Stikini Ring +1", bag="wardrobe4"},
         back="Solemnity cape", --7%
         legs="Gyve trousers", --10%
         feet="Medium's sabots" --7%
@@ -136,8 +135,8 @@ function get_sets()
         ear2="Regal earring",
         body="Geomancy tunic +3",
         hands="Geomancy mitaines +3",
-        ring1="Stikini ring +1",
-        ring2="Stikini ring +1",
+        ring1={name="Stikini Ring +1", bag="wardrobe3"},
+        ring2={name="Stikini Ring +1", bag="wardrobe4"},
         waist="Luminary sash",
         legs="Geomancy pants +3",
         feet="Geomancy sandals +3",
@@ -184,8 +183,8 @@ function get_sets()
         ear2="Malignance earring",
         body="Geomancy tunic +3",
         hands="Geomancy mitaines +3",
-        ring1="Stikini ring +1",
-        ring2="Stikini ring +1",
+        ring1={name="Stikini Ring +1", bag="wardrobe3"},
+        ring2={name="Stikini Ring +1", bag="wardrobe4"},
         back={ name="Nantosuelta's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}},
         waist="Luminary sash",
         legs="Geomancy pants +3",
@@ -209,8 +208,8 @@ function get_sets()
         neck="Incanter's torque",
         ear1="Andoaa earring",
         ear2="Mimir earring",
-        ring1="Stikini ring +1",
-        ring2="Stikini ring +1",
+        ring1={name="Stikini Ring +1", bag="wardrobe3"},
+        ring2={name="Stikini Ring +1", bag="wardrobe4"},
         waist="Embla sash"
     })
 
@@ -223,7 +222,7 @@ function get_sets()
         ear1="Etiolation earring",
         ear2="Hearty earring",
         body="Shamash robe",
-        hands="Shrieker's cuffs",
+        hands="Agwu's gages",
         ring1="Defending Ring",
         ring2="Vengeful ring",
         back={ name="Nantosuelta's Cape", augments={'MND+20','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Pet: "Regen"+10','Pet: "Regen"+5'}},
@@ -243,18 +242,18 @@ function get_sets()
     })
 
     sets.engaged = {
-        head="Bagua galero +3",
+        head="Nyame Helm",
         neck="Sanctity necklace",
         ear1="Telos earring",
         ear2="Dignitary's earring",
-        body="Bagua tunic +3",
-        hands="Bagua mitaines +3",
+        body="Nyame Mail",
+        hands="Gazu bracelet +1",
         ring1="Chirich ring +1",
         ring2="Chirich ring +1",
-        back={ name="Nantosuelta's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Haste+10','Damage taken-5%'}},
+        back={ name="Nantosuelta's Cape", augments={'DEX+20','Accuracy+20 Attack+20','"Dbl.Atk."+10','Damage taken-5%'}},
         waist="Grunfeld rope",
-        legs="Bagua pants +3",
-        feet="Bagua sandals +3"
+        legs="Nyame Flanchard",
+        feet="Nyame Sollerets"
     }
 
     sets.kiting = {

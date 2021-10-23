@@ -119,7 +119,7 @@ function get_sets()
         ring2="Hetairoi ring",
         back=Cape.Melee,
         waist="Grunfeld rope",
-        legs="Carmine cuisses +1",
+        legs="Malignance tights",
         feet="Malignance boots"
     }
 
@@ -131,7 +131,6 @@ function get_sets()
         neck="Sanctity Necklace",
         ear2="Telos earring",
         ring2={name="Chirich ring +1", bag="wardrobe3"},
-        legs="Nyame flanchard",
         feet="Nyame sollerets"
     })
 
@@ -142,7 +141,7 @@ function get_sets()
 
     sets.engaged.enspell ={
         -- hands="Ayanmo Manopolas +2",
-        legs="Vitiation Tights +3",
+        -- legs="Vitiation Tights +3",
         -- back={ name="Ghostfyre Cape", augments={'Enfb.mag. skill +10','Enha.mag. skill +4','Mag. Acc.+9','Enh. Mag. eff. dur. +20'}},
         waist="Orpheus's sash"
     }
@@ -154,7 +153,7 @@ function get_sets()
 
     sets.engaged.dw["High Acc"] = set_combine(sets.engaged["High Acc"], {
         waist="Reiki yotai",
-        legs={ name="Carmine Cuisses +1", augments={'Accuracy+20','Attack+12','"Dual Wield"+6'}}
+        -- legs={ name="Carmine Cuisses +1", augments={'Accuracy+20','Attack+12','"Dual Wield"+6'}}
     })
 
     sets.engaged.dw["Multi-Attack"].enspell = set_combine(sets.engaged.dw["Multi-Attack"], sets.engaged.enspell)
@@ -201,8 +200,8 @@ function get_sets()
         ear2="Mimir earring",
         body="Vitiation Tabard +3",
         hands="Vitiation gloves +1",
-        ring1="Stikini ring +1",
-        ring2="Stikini ring +1",
+        ring1={name="Stikini Ring +1", bag="wardrobe3"},
+        ring2={name="Stikini Ring +1", bag="wardrobe4"},
         waist="Embla sash",
         legs="Atrophy Tights +3",
         feet="Leth. Houseaux +1",
@@ -239,8 +238,8 @@ function get_sets()
 
     sets.midcast.enhancing.refresh = set_combine(sets.midcast.enhancing["Duration"], {
         body="Atrophy tabard +3",
-        ring1="Stikini ring +1",
-        ring2="Stikini ring +1",
+        ring1={name="Stikini Ring +1", bag="wardrobe3"},
+        ring2={name="Stikini Ring +1", bag="wardrobe4"},
         legs="Lethargy fuseau +1"
     })
 
@@ -260,8 +259,8 @@ function get_sets()
         ear2="Malignance earring",
         body="Atrophy Tabard +3",
         hands="Lethargy gantherots +1",
-        ring1="Stikini ring +1",
-        ring2="Stikini ring +1",
+        ring1={name="Stikini Ring +1", bag="wardrobe3"},
+        ring2={name="Stikini Ring +1", bag="wardrobe4"},
         waist="Luminary Sash",
         back=Cape.Int,
         legs={ name="Chironic Hose", augments={'Mag. Acc.+30','"Cure" potency +7%','INT+12','"Mag.Atk.Bns."+8'}},

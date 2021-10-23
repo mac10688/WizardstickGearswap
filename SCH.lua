@@ -4,31 +4,21 @@ NukeSet = {"Magic Attack Bonus","Magic Burst", "Vagary"}
 IdleSetIndex = 1
 IdleSet = {"Refresh", "PDT", "MDT"}
 
-EngagedSetIndex = 1
-EngagedSet = {"None", "Accuracy"}
-
-RegenSetIndex = 1
-RegenSet = {"Potency", "Duration"}
-
-WeaponSetIndex = 4
-WeaponSet = {"Akademos", "Musa", "Daybreak", "None"}
+WeaponSetIndex = 3
+WeaponSet = {"Tupsimati", "Musa", "None"}
 
 Kiting = false
 
 send_command('bind f9 gs c CycleNukeSet')
-send_command('bind ^f9 gs c CycleWeaponSet')
-send_command('bind f10 gs c CycleRegenSet')
+send_command('bind f10 gs c CycleWeaponSet')
 send_command('bind f11 gs c CycleIdleSet')
-send_command('bind ^f11 gs c CycleEngagedSet')
 send_command('bind f12 gs c RefreshSet')
 send_command('bind ^k gs c toggle kiting')
 
 function file_unload()
     send_command('unbind f9')
-    send_command('unbind ^f9')
     send_command('unbind f10')
     send_command('unbind f11')
-    send_command('unbind ^f11')
     send_command('unbind f12')
     send_command('unbind ^k')
 end
@@ -59,26 +49,14 @@ function self_command(command)
         local idle_set = IdleSet[IdleSetIndex]
         add_to_chat(122, 'Idle Set: ' .. idle_set)
         equip_set(player.status)
-    elseif command == 'CycleEngagedSet' then
-        EngagedSetIndex = EngagedSetIndex % #EngagedSet + 1
-
-        local engaged_set = EngagedSet[EngagedSetIndex]
-        add_to_chat(122, 'Engaged Set: ' .. engaged_set)
-        equip_set(player.status)
-    elseif command == 'CycleRegenSet' then
-        RegenSetIndex = RegenSetIndex % #RegenSet + 1
-
-        local regen_set = RegenSet[RegenSetIndex]
-        add_to_chat(122, 'Regen Set: ' .. regen_set)
     elseif command == 'RefreshSet' then
 
         local nuke_set = NukeSet[NukeTypeIndex]
         local idle_set = IdleSet[IdleSetIndex]
-        local regen_set = RegenSet[RegenSetIndex]
         local weapon_set = WeaponSet[WeaponSetIndex]
 
         equip_set(player.status)
-        add_to_chat(122, 'Nuke Set: ' .. nuke_set .. ' || Idle Set: ' .. idle_set .. ' || Regen Set: ' .. regen_set .. ' || Weapon Set: ' .. weapon_set)
+        add_to_chat(122, 'Nuke Set: ' .. nuke_set .. ' || Idle Set: ' .. idle_set .. ' || Weapon Set: ' .. weapon_set)
         lockstyle()
     elseif string.find(command, 'WeaponSet') then
         local weaponIndex = tonumber(string.match(command, '%d+'))
@@ -130,9 +108,8 @@ function get_sets()
 
     sets.WeaponSet = {}
     sets.WeaponSet["None"] = {main="Malignance Pole", sub="Khonsu"}
-    sets.WeaponSet["Akademos"] = {main="Akademos", sub="Khonsu"}
+    sets.WeaponSet["Tupsimati"] = {main="Tupsimati", sub="Khonsu"}
     sets.WeaponSet["Musa"] = {main="Musa", sub="Khonsu"}
-    sets.WeaponSet["Daybreak"] = {main="Daybreak", sub="Ammurapi Shield"}
 
     sets.precast = {}
 
@@ -143,20 +120,19 @@ function get_sets()
     -- sets.precast.ja['Altruism'] = {}
     sets.ja['Focalization'] = {head="Pedagogy mortarboard +3"}
 
-    sets.engaged = {}
-    sets.engaged["Accuracy"] = {
+    sets.engaged = {
         head="Nyame helm",
         neck="Sanctity necklace",
         ear1="Telos earring",
         ear2="Dignitary's earring",
         body="Pedagogy gown +3",
-        hands="Nyame gauntlets",
+        hands="Gazu bracelet +1",
         ring1="Chirich Ring +1",
         ring2="Chirich Ring +1",
         waist="Grunfeld rope",
         legs="Nyame flanchard",
         feet="Nyame sollerets",
-        back={ name="Lugh's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','Haste+10','Mag. Evasion+15'}}
+        back={ name="Lugh's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Dbl.Atk."+10','Mag. Evasion+15'}}
     }
 
     ------------
@@ -234,7 +210,7 @@ function get_sets()
 
     sets.midcast.elemental = {}
     sets.midcast.elemental["Magic Attack Bonus"] = set_combine(sets.precast.fc, {
-        main="Akademos",
+        main="Tupsimati",
         sub="Khonsu",
         ammo="Pemphredo tathlum",
         head="Pedagogy mortarboard +3",
@@ -270,12 +246,11 @@ function get_sets()
         feet="Academic's loafers +3"
     }
 
-    --MB: 10 Akademos
     --MB1: 48
     --MB2: 12
     --Total MB: 60
     sets.midcast.elemental["Magic Burst"] = set_combine(sets.midcast.elemental["Magic Attack Bonus"], {
-        main="Akademos",
+        main="Tupsimati",
         sub="Khonsu",
         head="Pedagogy Mortarboard +3", --MB2: 4
         neck="Argute stole +1", --MB: 7
@@ -310,7 +285,7 @@ function get_sets()
         body="Academic's gown +3",
         hands="Academic's bracers +3",
         ring1="Kishar ring",
-        ring2="Stikini ring +1",
+        ring2={name="Stikini Ring +1", bag="wardrobe4"},
         back=nuke_cape,
         waist="Luminary sash",
         legs="Chironic hose",
@@ -328,11 +303,11 @@ function get_sets()
     sets.midcast.cure = set_combine(sets.precast.fc, {
         main="Musa",
         head="Vanya hood",
-        body="Chironic doublet",
+        body="Vrikodara jupon",
         hands="Pedagogy bracers +3",
         back=cure_cape,
-        ring1="Stikini ring +1",
-        ring2="Stikini ring +1",
+        ring1={name="Stikini Ring +1", bag="wardrobe3"},
+        ring2={name="Stikini Ring +1", bag="wardrobe4"},
         legs="Chironic hose",
         feet="Kaykaus boots"
     })
@@ -377,12 +352,9 @@ function get_sets()
         sub="Ammurapi shield"
     })
 
-    sets.midcast.regen = {}
-    sets.midcast.regen["Potency"] = set_combine(sets.midcast.enhancement_duration, {
+    sets.midcast.regen = set_combine(sets.midcast.enhancement_duration, {
         head="Arbatel bonnet +1"
     })
-
-    sets.midcast.regen["Duration"] = sets.midcast.enhancement_duration
 
     sets.midcast.drain_aspir = set_combine(sets.precast.fc, {
         head="Pixie Hairpin +1",
@@ -414,8 +386,8 @@ function get_sets()
         body="Pedagogy gown +3",
         hands="Telchine gloves",
         waist="Embla sash",
-        ring1="Stikini ring +1",
-        ring2="Stikini ring +1"
+        ring1={name="Stikini Ring +1", bag="wardrobe3"},
+        ring2={name="Stikini Ring +1", bag="wardrobe4"}
     })
 
     sets.midcast.storm = set_combine(sets.midcast.enhancement_duration,{
@@ -432,14 +404,14 @@ function get_sets()
 
     local physical_int_ws = {
         head="Pedagogy mortarboard +3",
-        neck="Fotia neck",
+        neck="Fotia gorget",
         ear1="Regal earring",
         ear2="Barkarole earring",
         body="Nyame mail",
         hands="Jhakri cuffs +2",
         ring1="Shiva ring +1",
         ring2="Persis ring",
-        backl=int_magic_ws,
+        back=int_magic_ws,
         waist="Fotia belt",
         legs="Mallquis trews +2",
         feet=ws_boots
@@ -467,7 +439,7 @@ function get_sets()
         ear2="Malignance earring",
         body="Pedagogy gown +3",
         hands="Jhakri cuffs +2",
-        ring1="Stikini ring +1",
+        ring1={name="Stikini Ring +1", bag="wardrobe3"},
         ring2="Freke ring",
         back=mnd_magic_ws,
         waist="Orpheus's sash",
@@ -538,7 +510,7 @@ function get_sets()
         ear1="Etiolation earring",
         ear2="Hearty earring",
         body="Shamash robe",
-        hands="Shrieker's cuffs",
+        hands="Agwu's gages",
         left_ring="Defending ring",
         right_ring="Vengeful ring",
         back=idle_cape,
@@ -549,8 +521,8 @@ function get_sets()
 
     sets.idle["Refresh"] = set_combine(sets.idle, {
         ammo="Homiliary",
-        ring1="Stikini ring +1",
-        ring2="Stikini ring +1",
+        ring1={name="Stikini Ring +1", bag="wardrobe3"},
+        ring2={name="Stikini Ring +1", bag="wardrobe4"},
         body="Shamash robe",
         legs=chironic_refresh_legs
     })
@@ -656,8 +628,7 @@ function midcast(spell)
         -- Enhancing Magic --
         elseif spell.skill == 'Enhancing Magic' then
             if spellType == "Regen" then
-                local regenMode = RegenSet[RegenSetIndex]
-                equip(sets.midcast.regen[regenMode])
+                equip(sets.midcast.regen)
             elseif spellType == "Storm" then
                 equip(sets.midcast.storm)
             elseif spellType == "Refresh" then
@@ -742,9 +713,8 @@ function midcast(spell)
 end
 
 function equip_set(status)
-    if status == "Engaged" and EngagedSet[EngagedSetIndex] ~= "None" then
-        local engagedSet = EngagedSet[EngagedSetIndex]
-        equip(sets.engaged[engagedSet])
+    if status == "Engaged" then
+        equip(sets.engaged)
     else
         local idleSet = IdleSet[IdleSetIndex]
     -- print(idleSet)

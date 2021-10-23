@@ -288,8 +288,8 @@ function get_sets()
         head="Futhark bandeau +3",
         body={ name="Herculean Vest", augments={'STR+2','AGI+2','Phalanx +4','Mag. Acc.+10 "Mag.Atk.Bns."+10'}},
         hands="Taeon gloves",
-        ring1="Stikini ring +1",
-        ring2="Stikini ring +1",
+        ring1={name="Stikini Ring +1", bag="wardrobe3"},
+        ring2={name="Stikini Ring +1", bag="wardrobe4"},
         legs="Taeon tights",
         feet="Taeon boots"
     })

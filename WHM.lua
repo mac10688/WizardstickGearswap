@@ -40,7 +40,6 @@ function get_sets()
 
     sets.conserve_mp = {
         head="Vanya hood",
-        ear2="Calamitous earring",
         hands="Fanatic gloves",
         waist="Austerity belt +1",
         legs="Lengo pants",
@@ -144,29 +143,29 @@ function get_sets()
     sets.ws["Mystic Boon"] = physical_mnd_ws
 	  
 	
-    sets.tp = {}
+    sets.engaged = {}
     
-    sets.tp['Delay Cap'] = {
+    sets.engaged['Delay Cap'] = {
         ammo="Staunch Tathlum +1",
         head="Nyame helm",
         body="Nyame mail",
-        hands="Nyame gauntlets",
+        hands="Gazu bracelet +1",
         legs="Nyame flanchard",
         feet="Piety duckbills +3",
         neck="Sanctity Necklace",
         waist="Grunfeld Rope",
         ear1="Telos earring",
         ear2="Dignitary's earring",
-        left_ring="Petrov Ring",
-        right_ring="Chirich ring +1",
+        ring1="Petrov Ring",
+        ring2="Chirich ring +1",
         back={ name="Alaunus's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10','Mag. Evasion+15'}}
     }
 
-	sets.tp['Acc'] = {
+	sets.engaged['Acc'] = {
         ammo="Staunch Tathlum +1",
         head="Nyame helm",
         body="Nyame mail",
-        hands="Nyame gauntlets",
+        hands="Gazu bracelet +1",
         legs="Nyame flanchard",
         feet="Nyame sollerets",
         neck="Sanctity Necklace",
@@ -190,7 +189,7 @@ function get_sets()
         head="Nyame helm", --7% dmg
         neck="Loricate Torque +1", --6% dmg
         ear1="Etiolation earring", --3% magic dmg
-        ear2="Tuisto earring",
+        ear2="Genmei earring",
         body="Shamash robe", --10% physical
         hands="Nyame guantlets", --7% dmg
         ring1="Defending Ring", --10% dmg
@@ -223,8 +222,8 @@ function get_sets()
     sets.idle['Refresh'] = set_combine(sets.idle['MDT'], {
         ammo="Homiliary",
         hands="Inyanga dastanas +2",
-        ring1="Stikini ring +1",
-        ring2="Stikini ring +1",
+        ring1={name="Stikini Ring +1", bag="wardrobe3"},
+        ring2={name="Stikini Ring +1", bag="wardrobe4"},
         legs={ name="Chironic Hose", augments={'STR+9','CHR+4','"Refresh"+2','Mag. Acc.+14 "Mag.Atk.Bns."+14'}}
     })
 
@@ -280,8 +279,8 @@ function get_sets()
         neck="Incanter's torque",
         body="Telchine chasuble",
         hands="Inyanga dastanas +2",
-        ring1="Stikini ring +1",
-        ring2="Stikini ring +1",
+        ring1={name="Stikini Ring +1", bag="wardrobe3"},
+        ring2={name="Stikini Ring +1", bag="wardrobe4"},
         back={ name="Alaunus's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}},
         waist="Embla sash",
         legs="Piety Pantaloons +3",
@@ -346,7 +345,7 @@ function get_sets()
         ear2="Regal earring",
         body="Theophany bliaut +3",
         hands="Inyanga dastanas +2",
-        ring1="Stikini ring +1",
+        ring1={name="Stikini Ring +1", bag="wardrobe3"},
         ring2="Kishar ring",
         back={ name="Alaunus's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}},
         waist="Luminary sash",
@@ -362,8 +361,8 @@ function get_sets()
         ear2="Regal earring",
         body="Theophany bliaut +3",
         hands="Inyanga dastanas +2",
-        ring1="Stikini ring +1",
-        ring2="Stikini ring +1",
+        ring1={name="Stikini Ring +1", bag="wardrobe3"},
+        ring2={name="Stikini Ring +1", bag="wardrobe4"},
         back={ name="Alaunus's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}},
         waist="Luminary sash",
         legs="Theophany pantaloons +3",
@@ -486,7 +485,7 @@ function equip_set(status)
         if tp_set_mode == 'None' then
             equip(sets.idle[Idle_Set_Names[Idle_Index]])
         else
-            equip(sets.tp[TP_Set_Names[TP_Index]])
+            equip(sets.engaged[TP_Set_Names[TP_Index]])
         end
     else
         equip(sets.idle[Idle_Set_Names[Idle_Index]])

@@ -7,15 +7,14 @@ IdleSet = {"Refresh", "DT", "Death"}
 WeaponSetIndex = 1
 WeaponSet = {"Laevateinn", "Any"}
 
-EngagedSetIndex = 2
-EngagedSet = {"None", "Accuracy"}
+EatTp = false
 
 Kiting = false
 
 send_command('bind f9 gs c CycleNukeSet')
 send_command('bind ^f9 gs c CycleWeaponSet')
 send_command('bind f10 gs c CycleIdleSet')
-send_command('bind f11 gs c CycleEngagedSet')
+send_command('bind f11 gs c EatTp')
 send_command('bind f12 gs c RefreshSet')
 send_command('bind ^k gs c toggle kiting')
 
@@ -56,12 +55,6 @@ function self_command(command)
         local idle_set = IdleSet[IdleSetIndex]
         add_to_chat(122, 'Idle Set: ' .. idle_set)
         equip_set(player.status)
-    elseif command == 'CycleEngagedSet' then
-        EngagedSetIndex = EngagedSetIndex % #EngagedSet + 1
-
-        local engaged_set = EngagedSet[EngagedSetIndex]
-        add_to_chat(122, 'Engaged Set: ' .. engaged_set)
-        equip_set(player.status)
     elseif command == 'RefreshSet' then
 
         local nuke_set = NukeSet[NukeTypeIndex]
@@ -78,6 +71,14 @@ function self_command(command)
             send_command('@input /echo ----- Kiting Set Off -----')
         end
         equip_set(player.status)
+    elseif command == 'EatTp' then
+        EatTp = not EatTp
+        if EatTp then
+            send_command('@input /echo ----- Eat Tp On -----')
+        else
+            send_command('@input /echo ----- Eat Tp Off -----')
+        end
+        equip_set(player.status)
     end
 end
 
@@ -92,20 +93,19 @@ function get_sets()
     sets.WeaponSet = {}
     sets.WeaponSet["Laevateinn"] = {main="Laevateinn", sub="Khonsu"}
 
-    sets.engaged = {}
-    sets.engaged["Accuracy"] = {
+    sets.engaged = {
         head="Nyame helm",
         neck="Sanctity necklace",
         ear1="Telos earring",
         ear2="Dignitary's earring",
         body="Archmage's coat +3",
-        hands="Archmage's gloves +3",
+        hands="Gazu bracelet +1",
         ring1="Chirich Ring +1",
         ring2="Chirich Ring +1",
         waist="Grunfeld rope",
         legs="Archmage's tonban +3",
         feet="Archmage's sabots +3",
-        back={ name="Taranus's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','Haste+10','Mag. Evasion+15'}},
+        back={ name="Taranus's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Dbl.Atk."+10','Mag. Evasion+15'}},
     }
 
     ------------------------------------------------------------------------------------------------
@@ -127,7 +127,7 @@ function get_sets()
     --44% fc
     sets.precast.fc = {
         head="Merlinic hood", --fast cast 8%
-        body="Merlinic jubbah", --fast cast 8%
+        body="Agwu's robe", --fast cast 8%
         hands="Agwu's gages", --fast cast 6%
         legs="Lengo pants",
         feet="Merlinic crackows", --fast cast 5%
@@ -240,8 +240,8 @@ function get_sets()
         right_ear="Malignance earring",
         body = "Spaekona's coat +3",
         hands= "Spaekona's gloves +3",
-        left_ring="Stikini Ring +1",
-        right_ring="Kishar Ring",
+        ring1={name="Stikini Ring +1", bag="wardrobe3"},
+        ring2="Kishar Ring",
         back=magic_int_ws,
         waist="Luminary Sash",
         legs="Spaekona's tonban +3",
@@ -258,7 +258,7 @@ function get_sets()
         head = "Vanya hood",
         neck="Incanter's torque",
         body = "Vrikodara jupon",
-        hands = "Shrieker's cuffs",
+        hands = "Telchine gloves",
         ring1 = "Haoma's ring",
         ring2 = "Menelaus's ring",
         back = "Solemnity cape",
@@ -290,8 +290,8 @@ function get_sets()
         ear2="Mimir earring",
         body="Telchine chasuble",
         hands="Telchine gloves",
-        ring1="Stikini ring +1",
-        ring2="Stikini ring +1",
+        ring1={name="Stikini Ring +1", bag="wardrobe3"},
+        ring2={name="Stikini Ring +1", bag="wardrobe4"},
         waist="Embla sash",
         legs="Telchine braconi",
         feet="Telchine pigaches"
@@ -416,8 +416,8 @@ function get_sets()
         ammo="Staunch tathlum +1",
         head="Befouled crown",
         body="Shamash robe",
-        ring1="Stikini ring +1",
-        ring2="Stikini ring +1",
+        ring1={name="Stikini Ring +1", bag="wardrobe3"},
+        ring2={name="Stikini Ring +1", bag="wardrobe4"},
         legs="Assiduity pants +1"
     })
 
@@ -521,9 +521,8 @@ function midcast(spell)
 end
 
 function equip_set(status)
-    if status == "Engaged" and EngagedSet[EngagedSetIndex] ~= "None" then
-        local engagedSet = EngagedSet[EngagedSetIndex]
-        equip(sets.engaged[engagedSet])
+    if status == "Engaged" then
+        equip(sets.engaged)
     else
         local idleSet = IdleSet[IdleSetIndex]
     -- print(idleSet)
@@ -541,6 +540,10 @@ function equip_set(status)
 
     if Kiting then
         equip(sets.kiting)
+    end
+
+    if EatTp then
+        equip({neck='Chrysopoeia torque'})
     end
 end
 

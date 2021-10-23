@@ -28,7 +28,7 @@ function get_sets()
         neck={ name="Loricate Torque +1", augments={'Path: A'}},
         waist="Flume Belt +1",
         left_ear="Hearty Earring",
-        right_ear="Tuisto Earring",
+        right_ear="Genmei earring",
         left_ring="Moonbeam ring",
         right_ring="Defending Ring",
         back={ name="Toutatis's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Attack+10','Haste+10','Damage taken-5%'}},
@@ -39,9 +39,12 @@ function get_sets()
     sets.idle['regen'] = {}
 
     sets.ws = {
-        head={ name="Herculean Helm", augments={'DEX+1','CHR+3','Weapon skill damage +5%','Accuracy+17 Attack+17','Mag. Acc.+20 "Mag.Atk.Bns."+20'}},
-        body={ name="Herculean Vest", augments={'Accuracy+28','Weapon skill damage +4%','DEX+10','Attack+3'}},
-        hands={ name="Herculean Gloves", augments={'AGI+1','STR+12','Weapon skill damage +8%','Accuracy+11 Attack+11'}},
+        -- head={ name="Herculean Helm", augments={'DEX+1','CHR+3','Weapon skill damage +5%','Accuracy+17 Attack+17','Mag. Acc.+20 "Mag.Atk.Bns."+20'}},
+        -- body={ name="Herculean Vest", augments={'Accuracy+28','Weapon skill damage +4%','DEX+10','Attack+3'}},
+        -- hands={ name="Herculean Gloves", augments={'AGI+1','STR+12','Weapon skill damage +8%','Accuracy+11 Attack+11'}},
+        head="Nyame helm",
+        body="Nyame mail",
+        hands="Nyame gauntlets",
         legs={ name="Lustr. Subligar +1", augments={'Accuracy+20','DEX+8','Crit. hit rate+3%'}},
         feet={ name="Lustra. Leggings +1", augments={'HP+65','STR+15','DEX+15'}},
         neck="Fotia Gorget",
@@ -57,10 +60,12 @@ function get_sets()
     sets.ws['Shark Bite'] = sets.ws
     sets.ws['Dancing Edge'] = sets.ws
     sets.ws['Aeolian Edge'] = set_combine(sets.ws, {
-        legs = 
-            { name="Herculean Trousers", 
-               augments={'Potency of "Cure" effect received+4%','STR+1','Weapon skill damage +8%','Accuracy+13 Attack+13','Mag. Acc.+14 "Mag.Atk.Bns."+14'}
-            }
+        -- legs = 
+        --     { name="Herculean Trousers", 
+        --        augments={'Potency of "Cure" effect received+4%','STR+1','Weapon skill damage +8%','Accuracy+13 Attack+13','Mag. Acc.+14 "Mag.Atk.Bns."+14'}
+        --     }
+            legs="Nyame flanchard",
+            feet="Nyame sollerets"
         }
     )
     
@@ -84,9 +89,6 @@ function get_sets()
     sets.melee['hybrid'] = sets.melee
     
     sets.ja = {} --No gear should be defined here. This set will enver be used. Only used to prevent nil references.
-    
-    --Follow this pattern to define all job abilities you have gear for
-    sets.ja['Fold'] = { }
 
     sets.kiting = {}
 
