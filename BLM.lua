@@ -172,7 +172,7 @@ function get_sets()
         hands="Archmage's gloves +3",
         legs="Archmage's tonban +3",
         feet="Archmage's sabots +3",
-        neck="Sorcerer's stole +1",
+        neck="Sorcerer's stole +2",
         waist="Sacro cord",
         ear1="Malignance earring",
         ear2="Barkarole earring",        
@@ -205,7 +205,7 @@ function get_sets()
     --MB Total: 77
     sets.midcast.elemental["Magic Burst"] = set_combine(sets.midcast.elemental["Magic Attack Bonus"], {
         head="Ea hat +1", --MB: 6 MB2:6
-        neck="Sorcerer's stole +1", --MB: 7
+        neck="Sorcerer's stole +2", --MB: 7
         body="Ea houppelande", --MB: 8 MB2:8
         hands="Amalric gages +1", --MB2: 6
         legs="Ea slops +1", --MB: 8 MB2:8
@@ -235,7 +235,7 @@ function get_sets()
     sets.midcast.enfeebling = set_combine(sets.midcast.fast_recast, {
         ammo="Pemphredo tathlum",
         head = "Spaekona's petasos +3",
-        neck = "Sorcerer's stole +1",
+        neck = "Sorcerer's stole +2",
         left_ear = "Regal earring",
         right_ear="Malignance earring",
         body = "Spaekona's coat +3",
@@ -299,7 +299,7 @@ function get_sets()
 
     local physical_int_ws = {
         head="Archmage's petasos +3",
-        neck="Sorcerer's stole +1",
+        neck="Sorcerer's stole +2",
         ear1="Regal earring",
         ear2="Ishvara earring",
         body="Archmage's coat +3",
@@ -314,7 +314,7 @@ function get_sets()
 
     local magical_int_ws = {
         head="Archmage's petasos +3",
-        neck="Sorcerer's stole +1",
+        neck="Sorcerer's stole +2",
         ear1="Regal earring",
         ear2="Malignance earring",
         body="Archmage's coat +3",

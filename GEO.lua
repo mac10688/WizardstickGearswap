@@ -267,7 +267,7 @@ function get_sets()
     -- Default set for any weaponskill that isn't any more specifically defined
     sets.ws = {
         head="Nyame helm",
-        body="Bagua Tunic +3",
+        body="Nyame mail",
         hands="Jhakri Cuffs +2",
         legs="Nyame flanchard",
         feet=ws_boots,

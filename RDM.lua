@@ -258,7 +258,7 @@ function get_sets()
         ear1="Regal earring",
         ear2="Malignance earring",
         body="Atrophy Tabard +3",
-        hands="Lethargy gantherots +1",
+        hands="Kaykaus cuffs +1",
         ring1={name="Stikini Ring +1", bag="wardrobe3"},
         ring2={name="Stikini Ring +1", bag="wardrobe4"},
         waist="Luminary Sash",

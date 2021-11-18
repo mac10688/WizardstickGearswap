@@ -22,6 +22,9 @@ function get_sets()
     local debuff_cape = { name="Intarabus's Cape", augments={'CHR+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Damage taken-5%'}}
     local tp_cape = { name="Intarabus's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10','Damage taken-5%'}}
     
+    local atk_linos = { name="Linos", augments={'Accuracy+15','"Dbl.Atk."+3','Quadruple Attack +3'}}
+    local ws_linos = { name="Linos", augments={'Attack+18','Weapon skill damage +3%','STR+6 DEX+6'}}
+    
     local mordant_rime_cape = { name="Intarabus's Cape", augments={'CHR+20','Accuracy+20 Attack+20','CHR+10','Weapon skill damage +10%','Damage taken-5%'}}
     local savage_blade_cape = { name="Intarabus's Cape", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%','Magic dmg. taken-10%'}}
     local rudra_storm_cape = { name="Intarabus's Cape", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Weapon skill damage +10%','Damage taken-5%'}}
@@ -30,7 +33,7 @@ function get_sets()
 
     sets.engaged = {}
     sets.engaged.tp = {
-        ranged="Gjallarhorn",
+        ranged=atk_linos,
         head="Bihu roundlet +3",
         neck="Bard's charm +2",
         ear1="Telos earring",
@@ -56,6 +59,7 @@ function get_sets()
     sets.ja["Nightingale"] = {feet="Bihu slippers +3"}
 
     sets.ws = {
+        ranged=ws_linos,
         neck="Fotia gorget",
         ear1="Moonshade earring",
         ear2="Ishvara earring",
@@ -91,7 +95,10 @@ function get_sets()
     sets.ws['Extenterator'] = set_combine(sets.ws, {})
     sets.ws['Aeolian Edge'] = set_combine(sets.ws, {})
     
-    sets.ws['Savage Blade'] = set_combine(sets.ws, {back=savage_blade_cape})
+    sets.ws['Savage Blade'] = set_combine(sets.ws, {
+        ring1="Rufescent ring",
+        back=savage_blade_cape
+    })
     sets.ws['Circle Blade'] = set_combine(sets.ws, {})
 
     sets.idle = {
@@ -113,7 +120,7 @@ function get_sets()
     sets.precast = {
         neck="Voltsurge torque",
         ear1="Etiolation earring",
-        ear2="Loquacious earring",   
+        ear2="Loquacious earring",
         body="Inyanga jubbah +2",
         hands="Leyline gloves",
         ring1="Kishar ring",

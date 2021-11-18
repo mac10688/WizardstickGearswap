@@ -283,7 +283,7 @@ function get_sets()
         ear1="Dignitary's earring",
         ear2="Regal earring",
         body="Academic's gown +3",
-        hands="Academic's bracers +3",
+        hands="Kaykaus cuffs +1",
         ring1="Kishar ring",
         ring2={name="Stikini Ring +1", bag="wardrobe4"},
         back=nuke_cape,
