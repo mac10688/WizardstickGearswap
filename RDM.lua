@@ -195,11 +195,11 @@ function get_sets()
 
     sets.midcast.enhancing = {
         head="Befouled Crown",
-        neck="Duelist's Torque +1",
+        neck="Duelist's torque +2",
         ear1="Andoaa earring",
         ear2="Mimir earring",
         body="Vitiation Tabard +3",
-        hands="Vitiation gloves +1",
+        hands="Vitiation gloves +3",
         ring1={name="Stikini Ring +1", bag="wardrobe3"},
         ring2={name="Stikini Ring +1", bag="wardrobe4"},
         waist="Embla sash",
@@ -210,8 +210,8 @@ function get_sets()
 
     sets.midcast.enhancing["Duration"] = set_combine(sets.midcast.enhancing, {
         head="Telchine cap",
-        neck="Duelist's Torque +1",
-        body="Vitation tabard +3",
+        neck="Duelist's torque +2",
+        body="Vitiation tabard +3",
         hands="Atrophy gloves +3",
         waist="Embla sash",
         legs="Telchine braconi",
@@ -220,7 +220,7 @@ function get_sets()
 
     sets.midcast.enhancing["Duration"].Composure = set_combine(sets.midcast.enhancing, {
         head="Lethargy Chappel +1",
-        neck="Duelist's Torque +1",
+        neck="Duelist's torque +2",
         hands="Lethargy gantherots +1",
         body="Lethargy sayon +1",
         waist="Embla sash",
@@ -254,7 +254,7 @@ function get_sets()
 
     sets.midcast.enfeebling = {
         head="Vitiation chapeau +3",
-        neck="Duelist's Torque +1",
+        neck="Duelist's torque +2",
         ear1="Regal earring",
         ear2="Malignance earring",
         body="Atrophy Tabard +3",
@@ -390,14 +390,14 @@ function get_sets()
         neck="Fotia gorget",
         ear1="Ishvara Earring",
         ear2="Sherida Earring",
-        body="Vitiation tabard +3",
+        body="Nyame mail",
         hands="Atrophy gloves +3",
         ring1="Rufescent ring",
         ring2="Ilabrat ring",
         back=Cape.Ws,
         waist="Fotia belt",
         legs="Nyame flanchard",
-        feet=ws_boots
+        feet="Nyame sollerets"
     }
         
     sets.ws["Red Lotus Blade"] = sets.ws.magic
@@ -423,6 +423,7 @@ function get_sets()
     sets.ws["Evisceration"] = sets.ws.physical
     sets.ws["Aeolian Edge"] = sets.ws.magic
     sets.ws["Exenterator"] = sets.ws.physical
+    sets.ws["Black Halo"] = sets.ws.physical
 
     coroutine.schedule(lockstyle,8)
 

@@ -45,15 +45,15 @@ function get_sets()
         head="Nyame helm",
         body="Nyame mail",
         hands="Nyame gauntlets",
-        legs={ name="Lustr. Subligar +1", augments={'Accuracy+20','DEX+8','Crit. hit rate+3%'}},
-        feet={ name="Lustra. Leggings +1", augments={'HP+65','STR+15','DEX+15'}},
+        legs="Nyame flanchard",
+        feet="Nyame sollerets",
         neck="Fotia Gorget",
         waist="Fotia Belt",
         back={ name="Toutatis's Cape", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Weapon skill damage +10%','Damage taken-5%'}},
         left_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
         right_ear="Ishvara Earring",
         left_ring="Regal Ring",
-        right_ring="Gere Ring",
+        right_ring="Ilabrat ring",
     }
 
     sets.ws['Evisceration'] = sets.ws

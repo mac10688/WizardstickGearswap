@@ -5,7 +5,9 @@ IdleSetIndex = 1
 IdleSet = {"Refresh", "DT", "Death"}
 
 WeaponSetIndex = 1
-WeaponSet = {"Laevateinn", "Any"}
+WeaponSet = {"Laevateinn", "Laevateinn II", "Any"}
+
+ObiOn = true
 
 EatTp = false
 
@@ -15,6 +17,7 @@ send_command('bind f9 gs c CycleNukeSet')
 send_command('bind ^f9 gs c CycleWeaponSet')
 send_command('bind f10 gs c CycleIdleSet')
 send_command('bind f11 gs c EatTp')
+send_command('bind ^f11 gs c ToggleObi')
 send_command('bind f12 gs c RefreshSet')
 send_command('bind ^k gs c toggle kiting')
 
@@ -23,6 +26,7 @@ function file_unload()
     send_command('unbind ^f9')
     send_command('unbind f10')
     send_command('unbind f11')
+    send_command('unbind ^f11')
     send_command('unbind f12')
     send_command('unbind ^k')
 
@@ -79,19 +83,28 @@ function self_command(command)
             send_command('@input /echo ----- Eat Tp Off -----')
         end
         equip_set(player.status)
+    elseif command == 'ToggleObi' then
+        ObiOn = not ObiOn
+        if ObiOn then
+            send_command('@input /echo ----- Obi On -----')
+        else
+            send_command('@input /echo ----- Obi Off -----')
+        end
+        equip_set(player.status)
     end
 end
 
 function get_sets()
 
-    local magic_atk_cape = { name="Taranus's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Magic Damage +10','"Mag.Atk.Bns."+10','Spell interruption rate down-10%'}}
+    local magic_atk_cape = { name="Taranus's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10','Spell interruption rate down-10%'}}
     local idle_cape = { name="Taranus's Cape", augments={'VIT+20','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Phys. dmg. taken-10%'}}
     local magic_int_ws = { name="Taranus's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','Weapon skill damage +10%','Damage taken-5%'}}
     local death_cape = { name="Taranus's Cape", augments={'MP+60','Mag. Acc+20 /Mag. Dmg.+20','MP+20','"Mag.Atk.Bns."+10','Spell interruption rate down-10%'}}
     local ws_boots = { name="Merlinic Crackows", augments={'Attack+25','Crit.hit rate+3','Weapon skill damage +10%','Mag. Acc.+16 "Mag.Atk.Bns."+16'}}
 
     sets.WeaponSet = {}
-    sets.WeaponSet["Laevateinn"] = {main="Laevateinn", sub="Khonsu"}
+    sets.WeaponSet["Laevateinn"] = {main="Laevateinn", sub="Enki strap"}
+    sets.WeaponSet["Laevateinn II"] = {main="Laevateinn", sub="Khonsu"}
 
     sets.engaged = {
         head="Nyame helm",
@@ -173,11 +186,11 @@ function get_sets()
         legs="Archmage's tonban +3",
         feet="Archmage's sabots +3",
         neck="Sorcerer's stole +2",
-        waist="Sacro cord",
+        waist="Acuity belt +1",
         ear1="Malignance earring",
-        ear2="Barkarole earring",        
-        left_ring="Freke ring",
-        right_ring="Shiva Ring +1",
+        ear2="Regal earring",        
+        left_ring="Metamorph ring +1",
+        right_ring="Freke ring",        
         back=magic_atk_cape,
     }
 
@@ -223,7 +236,7 @@ function get_sets()
         hands="Spae. Gloves +3",
         legs="Arch. Tonban +3",
         feet="Spae. Sabots +3",
-        neck="Src. Stole +1",
+        neck="Src. Stole +2",
         waist="Sacro cord",
         left_ear="Regal Earring",
         right_ear="Malignance earring",
@@ -386,7 +399,7 @@ function get_sets()
         body="Spaekona's coat +3",
         hands="Spaekona's gloves +3",
         ring1="Mephitas's ring +1",
-        ring2="Mephitas's ring",
+        ring2="Metamorph ring +1",
         back=death_cape,
         waist="Luminary sash",
         legs="Spaekona's tonban +3",
@@ -502,9 +515,9 @@ function midcast(spell)
                 equip(sets.midcast.elemental[nuke_set])
 
                 local distance = windower.ffxi.get_mob_by_index(spell.target.index).distance:sqrt()
-                if distance < 5 then
+                if distance < 5 and ObiOn then
                     equip( set_combine(sets.midcast.elemental[nuke_set], {waist = "Orpheus's sash"}))                                
-                elseif world.day_element == spell.element or world.weather_element == spell.element then
+                elseif (world.day_element == spell.element or world.weather_element == spell.element) and ObiOn then
                     equip({waist = "Hachirin-no-Obi"})
                 end
 
@@ -512,7 +525,7 @@ function midcast(spell)
                     equip(sets.midcast.elemental.AncientMagic)
                 end
 
-                if player.mp < 1000 then
+                if player.mp < 700 then
                     equip({body="Spaekona's Coat +3"})
                 end
             end

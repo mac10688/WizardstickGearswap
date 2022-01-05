@@ -63,11 +63,11 @@ function get_sets()
     local physical_mnd_ws_cape = { name="Alaunus's Cape", augments={'MND+20','Accuracy+20 Attack+20','MND+10','Weapon skill damage +10%','Damage taken-5%'}}
 	
     --- Fast Cast Sets ---
-    -- 61% fc
+    -- 65% fc
     -- 12% for cures
 	sets.fc = {
         ammo="Incantor Stone", --2%
-        neck="Cleric's torque", --6%
+        neck="Cleric's torque +2", --10%
         ear1="Malignance earring",
         ear2="Loquacious Earring", --2%
         body="Inyanga jubbah +2", --14%
@@ -105,7 +105,7 @@ function get_sets()
         ear2="Telos earring",
         ring1="Chirich Ring +1",
         ring2="Chirich Ring +1",
-        back=attack_cape
+        back=physical_mnd_ws_cape
     }
 
     local physical_mnd_ws = {
@@ -191,7 +191,7 @@ function get_sets()
         ear1="Etiolation earring", --3% magic dmg
         ear2="Genmei earring",
         body="Shamash robe", --10% physical
-        hands="Nyame guantlets", --7% dmg
+        hands="Nyame gauntlets", --7% dmg
         ring1="Defending Ring", --10% dmg
         ring2="Ayanmo ring", --3% dmg
         back={ name="Alaunus's Cape", augments={'MND+20','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Enmity-10','Occ. inc. resist. to stat. ailments+10'}},
@@ -232,8 +232,8 @@ function get_sets()
     sets.midcast.status_removal = {
         main="Yagrush",
         head="Vanya hood",
-        neck="Cleric's torque",
-        body="Ebers bliaud +1",
+        neck="Cleric's torque +2",
+        body="Ebers bliaut +1",
         back={ name="Alaunus's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}},
         waist="Austerity belt +1",
         legs="ebers pantaloons +1"
@@ -254,7 +254,7 @@ function get_sets()
         main="Raetic Rod +1", --Cure I: 23% Cure II: 10%
         ammo="Incantor Stone",
         head="Ebers cap +1", --16%
-        neck="Cleric's torque", --5%
+        neck="Cleric's torque +2", --5%
         ear1="Nourishing earring +1", --3%
         ear2="Glorious earring", --Cure II: 2%
         body="Theophany bliaut +3", --Cure II: 6%
@@ -268,7 +268,6 @@ function get_sets()
     }
 
     sets.midcast.raise = set_combine(sets.conserve_mp, sets.fc)
-
 
     sets.midcast.enhancing = {
         main="Beneficus",
@@ -298,8 +297,7 @@ function get_sets()
     sets.midcast.bar_element = set_combine( sets.midcast.enhancing, {
         main="Beneficus",
         head="Ebers cap +1",
-        body="Ebers Bliaud +1",
-        -- hands="Ebers mitts +1",
+        body="Ebers bliaut +1",
         legs="Piety Pantaloons +3",
         feet="Ebers duckbills +1"
     })

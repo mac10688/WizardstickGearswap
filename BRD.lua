@@ -3,15 +3,21 @@ ExtraSongs = false
 LullabySetIndex = 1
 LullabySet = {"Accuracy", "Duration"}
 
+WeaponSetIndex = 3
+WeaponSet = {"Savage", "Savage II", "Mordent", "Mage", "Mage II", "Mage III"}
+
 Kiting = false
 
-send_command('bind f9 gs c LullabyMode')
-send_command('bind f12 gs c RefreshSet')
+
+send_command('bind f9 gs c CycleWeaponSet')
+send_command('bind f10 gs c LullabyMode')
 send_command('bind f11 gs c ExtraSongs')
+send_command('bind f12 gs c RefreshSet')
 send_command('bind ^k gs c toggle kiting')
 
 function file_unload()
     send_command('unbind f9')
+    send_command('unbind f10')
     send_command('unbind f11')
     send_command('unbind f12')
     send_command('unbind ^k')
@@ -30,6 +36,13 @@ function get_sets()
     local rudra_storm_cape = { name="Intarabus's Cape", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Weapon skill damage +10%','Damage taken-5%'}}
 
     local fast_cast_cape = { name="Intarabus's Cape", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','"Fast Cast"+10','Damage taken-5%'}}
+
+    sets.WeaponSet = {}
+    sets.WeaponSet["Savage"] = {main="Naegling", sub="Centovente"}
+    sets.WeaponSet["Savage II"] = {main="Naegling", sub="Genmei shield"}
+    sets.WeaponSet["Mordent"] = {main="Carnwenhan", sub="Centovente"}
+    sets.WeaponSet["Mage"] = {main="Carnwenhan", sub="Ammurapi shield"}
+    sets.WeaponSet["Mage II"] = {main="Carnwenhan", sub="Genmei shield"}
 
     sets.engaged = {}
     sets.engaged.tp = {
@@ -60,40 +73,47 @@ function get_sets()
 
     sets.ws = {
         ranged=ws_linos,
+        head="Nyame helm",
         neck="Fotia gorget",
         ear1="Moonshade earring",
         ear2="Ishvara earring",
         body="Bihu Justaucorps +3",
+        hands="Nyame gauntlets",
         waist="Fotia belt",
+        feet="Nyame sollerets",
+        legs="Nyame flanchard",
         back=mordant_rime_cape
     }
 
     sets.ws['Mordant Rime'] = set_combine(sets.ws, {
-        head="Bihu roundlet +3",
+        neck="Bard's charm +2",
         ear1="Regal earring",
         ear2="Ishvara earring",
         body="Bihu justaucorps +3",
-        hands="Bihu cuffs +3",
         back=mordant_rime_cape,
-        legs="Bihu cannions +3",
-        feet="Bihu slippers +3"
+        -- legs="Bihu cannions +3"
     })
 
     sets.ws["Rudra's Storm"] = set_combine(sets.ws, {
+        neck="Bard's charm +2",
         ring1="ILabrat ring",
-        legs="Lustratio subligar +1",
         back=rudra_storm_cape,
-        feet="Lustratio leggings +1"
+        -- legs="Lustratio subligar +1",
+        -- feet="Lustratio leggings +1"
     })
 
     sets.ws['Evisceration'] = set_combine(sets.ws, {
+        neck="Bard's charm +2",
         ring1="Hetairoi ring",
         legs="Lustratio subligar +1",
         feet="Lustratio leggings +1"
     })
 
     sets.ws['Extenterator'] = set_combine(sets.ws, {})
-    sets.ws['Aeolian Edge'] = set_combine(sets.ws, {})
+    sets.ws['Aeolian Edge'] = set_combine(sets.ws, {
+        ring1="Metamorph ring +1",
+        ring2="Shiva ring +1"
+    })
     
     sets.ws['Savage Blade'] = set_combine(sets.ws, {
         ring1="Rufescent ring",
@@ -120,7 +140,7 @@ function get_sets()
     sets.precast = {
         neck="Voltsurge torque",
         ear1="Etiolation earring",
-        ear2="Loquacious earring",
+        ear2="Enchanter's earring +1",
         body="Inyanga jubbah +2",
         hands="Leyline gloves",
         ring1="Kishar ring",
@@ -135,7 +155,7 @@ function get_sets()
         head="Fili calot +1",
         neck="Voltsurge torque",
         ear1="Etiolation earring",
-        ear2="Loquacious earring",
+        ear2="Enchanter's earring +1",
         body="Inyanga jubbah +2",
         hands="Leyline gloves",
         ring1="Kishar ring",
@@ -151,6 +171,7 @@ function get_sets()
     sets.midcast = {}
     sets.midcast.song = {}
     sets.midcast.song.buff = {
+        ranged="Gjallarhorn",
         head="Fili calot +1",
         neck="Moonbow whistle +1",
         ear1="Etiolation earring",
@@ -165,24 +186,12 @@ function get_sets()
         feet="Brioso slippers +3"
     }
 
-    sets.midcast.song.march = set_combine(sets.midcast.song.buff, {hands="Fili manchettes +1"})
-    sets.midcast.song.HonorMarch = set_combine(sets.midcast.song.march, {ranged="Marsyas"})
-    sets.midcast.song.ballad = set_combine(sets.midcast.song.buff, {legs="Fili rhingrave +1"})
-    sets.midcast.song.scherzo = set_combine(sets.midcast.song.buff, {feet="Fili cothurnes +1"})
-    sets.midcast.song.paeon = set_combine(sets.midcast.song.buff, {head="Brioso roundlet +3"})
-    
-    sets.midcast.song.etude = set_combine(sets.midcast.song.buff, {})
-    sets.midcast.song.threnody = set_combine(sets.midcast.song.buff, {})
-    sets.midcast.song.carol = set_combine(sets.midcast.song.buff, {})
-    sets.midcast.song.minne = set_combine(sets.midcast.song.buff, {})
-    sets.midcast.song.mambo = set_combine(sets.midcast.song.buff, {})
-
     sets.midcast.song.debuff = {
         ranged="Gjallarhorn",
         head="Brioso roundlet +3",
         neck="Moonbow Whistle +1",
         ear1="Regal earring",
-        ear2="Dignitary's earring",
+        ear2="Enchanter's earring +1",
         body="Brioso justaucorps +3",
         hands="Inyanga Dastanas +2",
         ring1={name="Stikini Ring +1", bag="wardrobe3"},
@@ -193,6 +202,20 @@ function get_sets()
         feet="Brioso slippers +3"
     }
 
+    sets.midcast.song.march = set_combine(sets.midcast.song.buff, {hands="Fili manchettes +1"})
+    sets.midcast.song.HonorMarch = set_combine(sets.midcast.song.march, {ranged="Marsyas"})
+    sets.midcast.song.ballad = set_combine(sets.midcast.song.buff, {legs="Fili rhingrave +1"})
+    sets.midcast.song.scherzo = set_combine(sets.midcast.song.buff, {feet="Fili cothurnes +1"})
+    sets.midcast.song.paeon = set_combine(sets.midcast.song.buff, {head="Brioso roundlet +3"})
+    
+    sets.midcast.song.etude = set_combine(sets.midcast.song.buff, {head="Mousai turban +1"})
+    sets.midcast.song.threnody = set_combine(sets.midcast.song.debuff, {body="Mousai manteel +1"})
+    sets.midcast.song.carol = set_combine(sets.midcast.song.buff, {hands="Mousai gages +1"})
+    sets.midcast.song.minne = set_combine(sets.midcast.song.buff, {legs="Mousai seraweels +1"})
+    sets.midcast.song.mambo = set_combine(sets.midcast.song.buff, {feet="Mousai crackows +1"})
+
+
+
     sets.midcast.song.Lullaby = {}
     sets.midcast.song.Lullaby.Accuracy = set_combine(sets.midcast.song.debuff, {hands="Brioso cuffs +3"})
     sets.midcast.song.Lullaby.Duration = set_combine(sets.midcast.song.debuff, {ranged="Marsyas", hands="Brioso cuffs +3"})
@@ -201,7 +224,16 @@ function get_sets()
     sets.midcast.song.HordeLullaby.Accuracy = set_combine(sets.midcast.song.debuff, {ranged="Daurdabla", hands="Brioso cuffs +3"})
     sets.midcast.song.HordeLullaby.Duration = set_combine(sets.midcast.song.debuff, {ranged="Daurdabla", hands="Brioso cuffs +3"})
     
-    sets.midcast.cure = {}
+    sets.midcast.cure = {
+        head="Vanya hood",
+        body="Vrikodara jupon",
+        hands="Telchine gloves",
+        ring1="Haoma's ring",
+        ring2="Menelaus's ring",
+        waist="Embla sash",
+        legs="Chironic hose",
+        feet="Kaykaus boots"
+    }
     sets.midcast.curaga = {}
     sets.midcast.cursna = {}
 
@@ -255,15 +287,17 @@ function midcast(spell)
                 equip(sets.midcast.song.HordeLullaby[lullabySet])
             elseif spell.name:contains("Foe") then
                 local lullabySet = LullabySet[LullabySetIndex]
-                equip(sets.midcast.song.Lullaby[lullabySet])      
+                equip(sets.midcast.song.Lullaby[lullabySet])
+            elseif spell.name:contains("Threnody") then
+                equip(sets.midcast.song.threnody)
+            else
+                equip(sets.midcast.song.debuff)    
             end
         else
             if spell.name == "Honor March" then
                 equip(sets.midcast.song.HonorMarch)
             elseif spell.name:contains("Carol") then
                 equip(sets.midcast.song.carol)
-            elseif spell.name:contains("Threnody") then
-                equip(sets.midcast.song.threnody)
             elseif spell.name:contains("Ballad") then
                 equip(sets.midcast.song.ballad)
             elseif spell.name:contains("Scherzo") then
@@ -317,6 +351,13 @@ function self_command(m)
         equip_set(player.status)
         add_to_chat(122, 'Lullaby Set: ' .. lullabySet)
         lockstyle()
+    elseif m == "CycleWeaponSet" then
+        WeaponSetIndex = WeaponSetIndex % #WeaponSet + 1
+        local weapon_set = WeaponSet[WeaponSetIndex]
+
+        equip(sets.WeaponSet[weapon_set])
+
+        add_to_chat(122, 'Weapon Set: ' .. weapon_set)
     elseif m == 'toggle kiting' then
         Kiting = not Kiting
         if Kiting then
@@ -329,6 +370,8 @@ function self_command(m)
 end
 
 function equip_set(status)
+    local weapon_set = WeaponSet[WeaponSetIndex]
+    equip(sets.WeaponSet[weapon_set])
     if status == "Engaged" then
         equip(sets.engaged.tp)
     else

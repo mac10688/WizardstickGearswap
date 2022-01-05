@@ -92,7 +92,7 @@ function get_sets()
     ------------------------------------------------------------------------------------------------
     local idle_cape = { name="Lugh's Cape", augments={'MND+20','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','"Fast Cast"+10','Occ. inc. resist. to stat. ailments+10'}}
     local nuke_cape = { name="Lugh's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10','Spell interruption rate down-10%'}}
-    local cure_cape = { name="Lugh's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','"Cure" potency +10%','Spell interruption rate down-10%'}}
+    local cure_cape = { name="Lugh's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','"Fast Cast"+10','Spell interruption rate down-10%'}}
     local mnd_magic_ws = { name="Lugh's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','Weapon skill damage +10%','Damage taken-5%'}}
     local int_magic_ws = { name="Lugh's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','Weapon skill damage +10%','Damage taken-5%'}}
     local ws_boots = { name="Merlinic Crackows", augments={'Attack+25','Crit.hit rate+3','Weapon skill damage +10%','Mag. Acc.+16 "Mag.Atk.Bns."+16'}}
@@ -162,7 +162,7 @@ function get_sets()
 		feet="Academic's loafers +3",
     }
     
-    --81% fc
+    --88% fc
     sets.precast.fc = {
         main="Musa", --fast cast 10%
         ammo="Incantor stone", --fast cast 2%
@@ -170,13 +170,13 @@ function get_sets()
         neck="Voltsurge torque", --fast cast 4%
         ear1="Etiolation earring", --fast cast 2%
         ear2="Malignance earring", --fast cast 4%
-        body="Shango robe", --fast cast 8%
+        body="Pinga tunic +1", --fast cast 15%
         hands="Academic's bracers +3", --fast cast 8%
         ring1="Kishar ring", --fast cast 4%
         ring2="Prolix Ring", --fast cast 2%
         back=fc_cape, --fast cast 10%
         waist="Embla sash", --fast cast 5%
-        legs=merlinic_fc, --fast cast 6%
+        legs="Agwu's slops", --fast cast 6%
         feet="Pedagogy loafers +3" --fast cast 8%
     }
 
@@ -211,11 +211,11 @@ function get_sets()
     sets.midcast.elemental = {}
     sets.midcast.elemental["Magic Attack Bonus"] = set_combine(sets.precast.fc, {
         main="Tupsimati",
-        sub="Khonsu",
+        sub="Enki strap",
         ammo="Pemphredo tathlum",
         head="Pedagogy mortarboard +3",
-        neck="Argute stole +1",
-        ear1="Barkarole earring",
+        neck="Argute stole +2",
+        ear1="Regal earring",
         ear2="Malignance earring",
         body="Pedagogy gown +3",
         hands="Amalric gages +1",
@@ -251,12 +251,12 @@ function get_sets()
     --Total MB: 60
     sets.midcast.elemental["Magic Burst"] = set_combine(sets.midcast.elemental["Magic Attack Bonus"], {
         main="Tupsimati",
-        sub="Khonsu",
+        sub="Enki strap",
         head="Pedagogy Mortarboard +3", --MB2: 4
-        neck="Argute stole +1", --MB: 7
+        neck="Argute stole +2", --MB: 7
         body="Agwu's robe", --MB: 10
         hands={ name="Amalric Gages +1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20'}}, --MB2: 6
-        legs="Agwu's slops", --MB: 10
+        legs="Agwu's slops", --MB: 9
         -- feet="Arbatel loafers +1",
         feet=merlinic_feet_mb, --MB: 11
         ring2="Mujin band" --MB2: 5
@@ -264,6 +264,8 @@ function get_sets()
 
     -- Make sure you have a non weather obi in this set. Helix get bonus naturally no need Obi.	
     sets.midcast.helix = set_combine(sets.midcast.elemental["Magic Burst"], {
+        ammo="Ghastly tathlum +1",
+        waist="Acuity belt +1",
         ring1="Mallquis ring"
     })
 
@@ -279,7 +281,7 @@ function get_sets()
         main="Musa",
         ammo="Hydrocera",
         head="Academic's mortarboard +3",
-        neck="Argute stole +1",
+        neck="Argute stole +2",
         ear1="Dignitary's earring",
         ear2="Regal earring",
         body="Academic's gown +3",
@@ -300,16 +302,19 @@ function get_sets()
         back = mnd_enfeeble_cape
     })
 
+    -- Cure: 43% in gear + 25% weapon
+    -- FC: 
     sets.midcast.cure = set_combine(sets.precast.fc, {
-        main="Musa",
-        head="Vanya hood",
-        body="Vrikodara jupon",
-        hands="Pedagogy bracers +3",
-        back=cure_cape,
+        main="Musa", -- 25% cure | 10% fc
+        -- head="Vanya hood", -- 10% cure | haste: 6%
+        body="Pinga tunic +1", -- 15% cure | 15% fc
+        hands="Pedagogy bracers +3", -- 3% cure II | 3% haste
+        back=cure_cape, -- 10% fc
         ring1={name="Stikini Ring +1", bag="wardrobe3"},
         ring2={name="Stikini Ring +1", bag="wardrobe4"},
-        legs="Chironic hose",
-        feet="Kaykaus boots"
+        legs="Academic's pants +3", -- 8% cure | 
+        -- legs="Pinga pants +1",
+        feet="Pedagogy loafers +3"
     })
 
     sets.midcast.statusRemoval = sets.precast.fc
@@ -413,16 +418,16 @@ function get_sets()
         ring2="Persis ring",
         back=int_magic_ws,
         waist="Fotia belt",
-        legs="Mallquis trews +2",
+        legs="Nyame flanchard",
         feet=ws_boots
     }
 
     local magical_int_ws = {
         head="Pedagogy mortarboard +3",
-        neck="Argute stole +1",
+        neck="Argute stole +2",
         ear1="Regal earring",
         ear2="Malignance earring",
-        body="Pedagogy gown +3",
+        body="Nyame mail",
         hands="Jhakri cuffs +2",
         ring1="Shiva ring +1",
         ring2="Freke ring",
@@ -433,17 +438,17 @@ function get_sets()
     }
 
     local magical_mnd_ws = {
-        head="Pedagogy mortarboard +3",
-        neck="Argute stole +1",
+        head="Nyame helm",
+        neck="Argute stole +2",
         ear1="Regal earring",
         ear2="Malignance earring",
-        body="Pedagogy gown +3",
+        body="Nyame mail",
         hands="Jhakri cuffs +2",
         ring1={name="Stikini Ring +1", bag="wardrobe3"},
         ring2="Freke ring",
         back=mnd_magic_ws,
         waist="Orpheus's sash",
-        legs="Pedagogy pants +3",
+        legs="Nyame flanchard",
         feet=ws_boots
     }
 
