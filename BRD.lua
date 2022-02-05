@@ -98,6 +98,7 @@ function get_sets()
         neck="Bard's charm +2",
         ring1="ILabrat ring",
         back=rudra_storm_cape,
+        waist="Kentarch belt +1"
         -- legs="Lustratio subligar +1",
         -- feet="Lustratio leggings +1"
     })
@@ -116,7 +117,11 @@ function get_sets()
     })
     
     sets.ws['Savage Blade'] = set_combine(sets.ws, {
+        neck="Bard's charm +2",
+        ear2="Regal earring",
         ring1="Rufescent ring",
+        ring2="Metamorph ring +1",
+        waist="Sailfi belt +1",
         back=savage_blade_cape
     })
     sets.ws['Circle Blade'] = set_combine(sets.ws, {})

@@ -153,25 +153,25 @@ function get_sets()
         ear2="Regal earring",
         body="Bagua tunic +3",
         hands="Amalric gages +1",
-        ring1="Shiva ring +1",
+        ring1="Metamorph ring +1",
         ring2="Freke ring",
-        waist="Sacro cord",
+        waist="Acuity belt +1",
         legs="Bagua pants +3",
         feet="Bagua sandals +3",
         back={ name="Nantosuelta's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}}
     }
 
-    --MB: 43
-    --MB2: 34
-    --Total MB: 74
+    --MB: 44
+    --MB2: 35
+    --Total MB: 75
     sets.midcast.elemental["magic-burst"] = set_combine(sets.midcast.elemental["magic-atk-bonus"], {
         head="Ea hat +1", --MB: 7 MB2:7
         neck="Mizukage-no-Kubikazari", -- MB: 10
-        body="Ea houppelande", --MB: 8 MB2:8
+        body="Ea houppelande +1", --MB: 9 MB2:9
         hands="Amalric gages +1", --MB2: 6
-        ring1="Mujin band", --MB2: 5
+        -- ring1="Mujin band", --MB2: 5
         legs="Ea slops +1", --MB: 8 MB2:8
-        feet=merlinic_feet_mb --MB: 11
+        feet="Agwu's pigaches" --MB: 6
     })
 
     sets.midcast.enfeeble = {
@@ -345,12 +345,12 @@ function midcast(spell)
     elseif spell.skill == "Enfeebling Magic" then
         equip(sets.midcast.enfeeble)
     elseif spell.skill == "Elemental Magic" then
-        local nuke_set = Nuke_Sets[Nuke_Set_Index]
-        if world.day_element == spell.element or world.weather_element == spell.element then
-            equip( set_combine(sets.midcast.elemental[nuke_set], {waist = "Hachirin-no-Obi"}))
-        else
+        -- local nuke_set = Nuke_Sets[Nuke_Set_Index]
+        -- if world.day_element == spell.element or world.weather_element == spell.element then
+            -- equip( set_combine(sets.midcast.elemental[nuke_set], {waist = "Hachirin-no-Obi"}))
+        -- else
             equip(sets.midcast.elemental[nuke_set])
-        end
+        -- end
     elseif spell.skill == "Dark Magic" then
         if spell.name:startswith("Drain") then
             equip(sets.midcast.drain)

@@ -63,14 +63,14 @@ function get_sets()
     local physical_mnd_ws_cape = { name="Alaunus's Cape", augments={'MND+20','Accuracy+20 Attack+20','MND+10','Weapon skill damage +10%','Damage taken-5%'}}
 	
     --- Fast Cast Sets ---
-    -- 65% fc
+    -- 66% fc
     -- 12% for cures
 	sets.fc = {
         ammo="Incantor Stone", --2%
         neck="Cleric's torque +2", --10%
         ear1="Malignance earring",
         ear2="Loquacious Earring", --2%
-        body="Inyanga jubbah +2", --14%
+        body="Pinga tunic +1", --15%
         hands="Fanatic gloves", --7%
         ring1="Prolix Ring", --2%
         ring2="Kishar ring", --4%
@@ -248,14 +248,14 @@ function get_sets()
         feet="Gendewitha Galoshes +1"
     })
 	
-    --Cure: 57%
+    --Cure: 49~50%
     --Cure II: 22
     sets.midcast.cure = {
         main="Raetic Rod +1", --Cure I: 23% Cure II: 10%
         ammo="Incantor Stone",
-        head="Ebers cap +1", --16%
-        neck="Cleric's torque +2", --5%
-        ear1="Nourishing earring +1", --3%
+        head="Piety cap +3",
+        neck="Cleric's torque +2", --10%
+        ear1="Nourishing earring +1", --3% + 3~4%
         ear2="Glorious earring", --Cure II: 2%
         body="Theophany bliaut +3", --Cure II: 6%
         hands="Theophany mitts +3", --Cure II: 4%

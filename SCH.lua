@@ -9,14 +9,19 @@ WeaponSet = {"Tupsimati", "Musa", "None"}
 
 Kiting = false
 
+EatTp = false
+
+
 send_command('bind f9 gs c CycleNukeSet')
-send_command('bind f10 gs c CycleWeaponSet')
-send_command('bind f11 gs c CycleIdleSet')
+send_command('bind ^f9 gs c CycleWeaponSet')
+send_command('bind f10 gs c CycleIdleSet')
+send_command('bind f11 gs c EatTp')
 send_command('bind f12 gs c RefreshSet')
 send_command('bind ^k gs c toggle kiting')
 
 function file_unload()
     send_command('unbind f9')
+    send_command('unbind ^f9')
     send_command('unbind f10')
     send_command('unbind f11')
     send_command('unbind f12')
@@ -82,6 +87,14 @@ function self_command(command)
             send_command('@input /echo ----- Kiting Set Off -----')
         end
         equip_set(player.status)
+    elseif command == 'EatTp' then
+        EatTp = not EatTp
+        if EatTp then
+            send_command('@input /echo ----- Eat Tp On -----')
+        else
+            send_command('@input /echo ----- Eat Tp Off -----')
+        end
+        equip_set(player.status)
     end
 end
 
@@ -108,7 +121,7 @@ function get_sets()
 
     sets.WeaponSet = {}
     sets.WeaponSet["None"] = {main="Malignance Pole", sub="Khonsu"}
-    sets.WeaponSet["Tupsimati"] = {main="Tupsimati", sub="Khonsu"}
+    sets.WeaponSet["Tupsimati"] = {main="Tupsimati", sub="Enki strap"}
     sets.WeaponSet["Musa"] = {main="Musa", sub="Khonsu"}
 
     sets.precast = {}
@@ -148,7 +161,7 @@ function get_sets()
     sets.buff['Parsimony'] = {legs="Arbatel Pants +1"}
     sets.buff['Celerity'] = {feet="Pedagogy Loafers +3"}
     sets.buff['Alacrity'] = {feet="Pedagogy Loafers +3"}
-    sets.buff['Klimaform'] = {feet="Arbatel Loafers +1"}	
+    -- sets.buff['Klimaform'] = {feet="Arbatel Loafers +1"}
     -- Ebulience set empy now as we get better damage out of a good Merlinic head
     sets.buff['Ebullience'] = {} -- I left it there still if it becomes needed so the SCH.lua file won't need modification should you want to use this set
     sets.buff['Light Arts'] = {legs="Academic's pants +3"}
@@ -220,7 +233,7 @@ function get_sets()
         body="Pedagogy gown +3",
         hands="Amalric gages +1",
         ring1="Freke ring",
-        ring2="Shiva Ring +1",
+        ring2="Metamorph ring +1",
         back=nuke_cape,
         waist="Sacro cord",
         legs="Pedagogy pants +3",
@@ -265,8 +278,7 @@ function get_sets()
     -- Make sure you have a non weather obi in this set. Helix get bonus naturally no need Obi.	
     sets.midcast.helix = set_combine(sets.midcast.elemental["Magic Burst"], {
         ammo="Ghastly tathlum +1",
-        waist="Acuity belt +1",
-        ring1="Mallquis ring"
+        waist="Acuity belt +1"
     })
 
     -- Make sure you have a non weather obi in this set. Helix get bonus naturally no need Obi.	
@@ -414,7 +426,7 @@ function get_sets()
         ear2="Barkarole earring",
         body="Nyame mail",
         hands="Jhakri cuffs +2",
-        ring1="Shiva ring +1",
+        ring1="Metamorph ring +1",
         ring2="Persis ring",
         back=int_magic_ws,
         waist="Fotia belt",
@@ -429,7 +441,7 @@ function get_sets()
         ear2="Malignance earring",
         body="Nyame mail",
         hands="Jhakri cuffs +2",
-        ring1="Shiva ring +1",
+        ring1="Metamorph ring +1",
         ring2="Freke ring",
         back=int_magic_ws,
         waist="Orpheus's sash",
@@ -693,9 +705,9 @@ function midcast(spell)
             if buffactive['Immanence'] then
                 equip(sets.buff['Immanence'])
             end
-            if buffactive['Klimaform'] and spell.element == world.weather_element then
-                equip(sets.buff['Klimaform'])
-            end
+            -- if buffactive['Klimaform'] and spell.element == world.weather_element then
+            --     equip(sets.buff['Klimaform'])
+            -- end
         end
     
         if buffactive['Penury'] and spell.type == 'WhiteMagic' then
@@ -725,14 +737,16 @@ function equip_set(status)
     -- print(idleSet)
         equip(sets.idle[idleSet])
     end
-    
-    
+        
     local weapon_set = WeaponSet[WeaponSetIndex]
     equip(sets.WeaponSet[weapon_set])
 
-
     if Kiting then
         equip(set_combine(set_to_equip, sets.kiting))
+    end
+
+    if EatTp then
+        equip({neck='Chrysopoeia torque'})
     end
 end
 

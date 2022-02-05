@@ -7,7 +7,7 @@ PhysicalAccuracyMode = {"High Acc", "Multi-Attack", "PDT"}
 PhysicalAccuracyModeIndex = 2
 
 MagicAccuracyMode = {"Magic Accuracy", "Potency/Duration"}
-MagicAccuracyModeIndex = 1
+MagicAccuracyModeIndex = 2
 
 Kiting = false
 
@@ -66,7 +66,10 @@ function get_sets()
     Cape.Int = { name="Sucellos's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10','Mag. Evasion+15'}}
     Cape.Mnd = { name="Sucellos's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','"Cure" potency +10%','Mag. Evasion+15'}}
     Cape.Melee = { name="Sucellos's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Dbl.Atk."+10','Damage taken-5%'}}
-    Cape.Ws = { name="Sucellos's Cape", augments={'STR+20','Accuracy+20 Attack+20','Attack+10','Weapon skill damage +10%','Damage taken-5%'}}
+    Cape.Str_WS = { name="Sucellos's Cape", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%','Damage taken-5%'}}
+    Cape.Dex_WS = { name="Sucellos's Cape", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Weapon skill damage +10%','Damage taken-5%'}}
+    Cape.Mnd_WS = { name="Sucellos's Cape", augments={'MND+20','Accuracy+20 Attack+20','MND+10','Weapon skill damage +10%','Damage taken-5%'}}
+    
     local ws_boots = { name="Merlinic Crackows", augments={'Attack+25','Crit.hit rate+3','Weapon skill damage +10%','Mag. Acc.+16 "Mag.Atk.Bns."+16'}}
 
     sets.idle = {}
@@ -324,9 +327,9 @@ function get_sets()
         neck="Mizu. Kubikazari",
         ear1="Regal earring",
         ear2="Malignance earring",
-        body="Ea houppelande",
+        body="Ea houppelande +1",
         hands="Amalric gages +1",
-        ring1="Shiva ring +1",
+        ring1="Metamorph ring +1",
         ring2="Freke ring",
         waist="Sacro cord",
         legs="Ea slops +1",
@@ -391,35 +394,62 @@ function get_sets()
         ear1="Ishvara Earring",
         ear2="Sherida Earring",
         body="Nyame mail",
-        hands="Atrophy gloves +3",
+        hands="Nyame gauntlets",
         ring1="Rufescent ring",
         ring2="Ilabrat ring",
-        back=Cape.Ws,
+        back=Cape.Mnd_WS,
         waist="Fotia belt",
         legs="Nyame flanchard",
         feet="Nyame sollerets"
     }
         
     sets.ws["Red Lotus Blade"] = sets.ws.magic
-    sets.ws["Seraph Blade"] = sets.ws.magic
-    sets.ws["Circle Blade"] = sets.ws.physical
-    sets.ws["Vorpal Blade"] = sets.ws.physical
+    sets.ws["Seraph Blade"] = set_combine(sets.ws.magic,{
+        ring2="Shukuyu ring",
+        back=Cape.Mnd_WS
+    })
+    
+    sets.ws["Circle Blade"] = set_combine(sets.ws.physical, {
+        ring2="Shukuyu ring",
+        back=Cape.Str_WS
+    })
+
+    sets.ws["Vorpal Blade"] = set_combine(sets.ws.physical, {
+        ring2="Shukuyu ring",
+        back=Cape.Str_WS
+    })
+
     sets.ws["Savage Blade"] = set_combine(sets.ws.physical, {
         ear2="Regal earring",
         ring1="Rufescent ring",
-        ring2="Shukuyu ring"
-    })
-    sets.ws["Death Blossom"] = sets.ws.physical
-    sets.ws["Sanguine Blade"] = set_combine(sets.ws.magic, {
-        head="Pixie Hairpin +1",
-        ring1="Archon ring"
+        ring2="Shukuyu ring",
+        waist="Sailfi belt +1",
+        back=Cape.Str_WS
     })
 
-    sets.ws["Chant du Cygne"] = sets.ws.physical
+    sets.ws["Death Blossom"] = set_combine(sets.ws.physical, {
+        ring2="Shukuyu ring"
+    })
+
+    sets.ws["Sanguine Blade"] = set_combine(sets.ws.magic, {
+        hands="Nyame gauntlets",
+        ear1="Regal earring",
+        neck="Duelist's torque +2",
+        head="Pixie Hairpin +1",
+        ring1="Archon ring",
+        ring2="Freke ring",
+        back=Cape.Mnd_WS
+    })
+
+    sets.ws["Chant du Cygne"] = set_combine(sets.ws.physical, {
+        back=Cape.Dex_WS
+    })
+    
     sets.ws["Requiescat"] = set_combine(sets.ws.physical, {
         ear2="Regal earring",
-        ring1="Rufescent ring",
+        ring1="Rufescent ring"
     })
+
     sets.ws["Evisceration"] = sets.ws.physical
     sets.ws["Aeolian Edge"] = sets.ws.magic
     sets.ws["Exenterator"] = sets.ws.physical

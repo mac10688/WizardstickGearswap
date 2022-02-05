@@ -5,7 +5,7 @@ IdleSetIndex = 1
 IdleSet = {"Refresh", "DT", "Death"}
 
 WeaponSetIndex = 1
-WeaponSet = {"Laevateinn", "Laevateinn II", "Any"}
+WeaponSet = {"Laevateinn", "Laevateinn II", "Marin Staff", "Any"}
 
 ObiOn = true
 
@@ -104,6 +104,7 @@ function get_sets()
 
     sets.WeaponSet = {}
     sets.WeaponSet["Laevateinn"] = {main="Laevateinn", sub="Enki strap"}
+    sets.WeaponSet["Marin Staff"] = {main="Marin Staff +1", sub="Enki strap"}
     sets.WeaponSet["Laevateinn II"] = {main="Laevateinn", sub="Khonsu"}
 
     sets.engaged = {
@@ -213,21 +214,23 @@ function get_sets()
         ring2="Archon ring",
     })
 
-    --MB1 Total: 44
-    --MB2 Total: 33
-    --MB Total: 77
+    --MB1 Total: 45
+    --MB2 Total: 34
+    --MB Total: 78
     sets.midcast.elemental["Magic Burst"] = set_combine(sets.midcast.elemental["Magic Attack Bonus"], {
         head="Ea hat +1", --MB: 6 MB2:6
         neck="Sorcerer's stole +2", --MB: 7
-        body="Ea houppelande", --MB: 8 MB2:8
-        hands="Amalric gages +1", --MB2: 6
+        body="Ea houppelande +1", --MB: 9 MB2:9
+        hands="Ea cuffs +1", --MB2: 6
         legs="Ea slops +1", --MB: 8 MB2:8
-        feet="Spaekona's sabots +3", --MB: 10
-        right_ring="Mujin band", --MB2: 5
+        feet="Archmage's sabots +3", --MB: 10
+        right_ring="Freke ring", --MB2: 5
         back=magic_atk_cape --MB 5
     })
 
-    sets.midcast.elemental.AncientMagic = { head = "Archmage's petasos +3"}
+    sets.midcast.elemental.AncientMagic = set_combine(sets.midcast.elemental["Magic Attack Bonus"], {
+         head = "Archmage's petasos +3"
+    })
 
     sets.midcast.elemental.debuff = {
         ammo="Pemphredo tathlum",
@@ -241,7 +244,7 @@ function get_sets()
         left_ear="Regal Earring",
         right_ear="Malignance earring",
         left_ring="Freke Ring",
-        right_ring="Shiva Ring +1",
+        right_ring="Metamorph ring +1",
         back=magic_int_ws
     }
 
@@ -317,7 +320,7 @@ function get_sets()
         ear2="Ishvara earring",
         body="Archmage's coat +3",
         hands="Jhakri cuffs +2",
-        ring1="Shiva ring +1",
+        ring1="Metamorph ring +1",
         ring2="Freke ring",
         back=magic_int_ws,
         waist="Fotia belt",
@@ -332,7 +335,7 @@ function get_sets()
         ear2="Malignance earring",
         body="Archmage's coat +3",
         hands="Jhakri cuffs +2",
-        ring1="Shiva ring +1",
+        ring1="Metamorph ring +1",
         ring2="Freke ring",
         back=magic_int_ws,
         waist="Orpheus's sash",
@@ -381,7 +384,7 @@ function get_sets()
         -- feet="Jhakri pigaches +2"
         -- hands="Archmage's gloves +3"
         -- head="Archmage's petasos +3",
-        -- ring1="Shiva ring +1"
+        -- ring1="Metamorph ring +1"
         -- neck="Fotia gorget"
         -- belt="Fotia belt"
     })
