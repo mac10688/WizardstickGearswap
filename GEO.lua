@@ -99,8 +99,8 @@ function get_sets()
         head="Vanya hood", --10%
         body="Vrikodara Jupon", --13%
         hands="Geomancy mitaines +3", --Mnd +43
-        ring1={name="Stikini Ring +1", bag="wardrobe3"},
-        ring2={name="Stikini Ring +1", bag="wardrobe4"},
+        ring1={name="Stikini Ring +1", bag="wardrobe5"},
+        ring2={name="Stikini Ring +1", bag="wardrobe6"},
         back="Solemnity cape", --7%
         legs="Gyve trousers", --10%
         feet="Medium's sabots" --7%
@@ -135,8 +135,8 @@ function get_sets()
         ear2="Regal earring",
         body="Geomancy tunic +3",
         hands="Geomancy mitaines +3",
-        ring1={name="Stikini Ring +1", bag="wardrobe3"},
-        ring2={name="Stikini Ring +1", bag="wardrobe4"},
+        ring1={name="Stikini Ring +1", bag="wardrobe5"},
+        ring2={name="Stikini Ring +1", bag="wardrobe6"},
         waist="Luminary sash",
         legs="Geomancy pants +3",
         feet="Geomancy sandals +3",
@@ -183,8 +183,8 @@ function get_sets()
         ear2="Malignance earring",
         body="Geomancy tunic +3",
         hands="Geomancy mitaines +3",
-        ring1={name="Stikini Ring +1", bag="wardrobe3"},
-        ring2={name="Stikini Ring +1", bag="wardrobe4"},
+        ring1={name="Stikini Ring +1", bag="wardrobe5"},
+        ring2={name="Stikini Ring +1", bag="wardrobe6"},
         back={ name="Nantosuelta's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}},
         waist="Luminary sash",
         legs="Geomancy pants +3",
@@ -208,8 +208,8 @@ function get_sets()
         neck="Incanter's torque",
         ear1="Andoaa earring",
         ear2="Mimir earring",
-        ring1={name="Stikini Ring +1", bag="wardrobe3"},
-        ring2={name="Stikini Ring +1", bag="wardrobe4"},
+        ring1={name="Stikini Ring +1", bag="wardrobe5"},
+        ring2={name="Stikini Ring +1", bag="wardrobe6"},
         waist="Embla sash"
     })
 

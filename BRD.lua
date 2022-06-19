@@ -3,6 +3,9 @@ ExtraSongs = false
 LullabySetIndex = 1
 LullabySet = {"Accuracy", "Duration"}
 
+EngageModeIndex = 1
+EngageModeSet = {"Hybrid", "TP"}
+
 WeaponSetIndex = 3
 WeaponSet = {"Savage", "Savage II", "Mordent", "Mage", "Mage II", "Mage III"}
 
@@ -13,10 +16,12 @@ send_command('bind f9 gs c CycleWeaponSet')
 send_command('bind f10 gs c LullabyMode')
 send_command('bind f11 gs c ExtraSongs')
 send_command('bind f12 gs c RefreshSet')
+send_command('bind ^f9 gs c CycleEngageMode')
 send_command('bind ^k gs c toggle kiting')
 
 function file_unload()
     send_command('unbind f9')
+    send_command('unbind ^f9')
     send_command('unbind f10')
     send_command('unbind f11')
     send_command('unbind f12')
@@ -45,7 +50,7 @@ function get_sets()
     sets.WeaponSet["Mage II"] = {main="Carnwenhan", sub="Genmei shield"}
 
     sets.engaged = {}
-    sets.engaged.tp = {
+    sets.engaged["TP"] = {
         ranged=atk_linos,
         head="Bihu roundlet +3",
         neck="Bard's charm +2",
@@ -61,10 +66,11 @@ function get_sets()
         feet="Bihu slippers +3"
     }
 
-    sets.engaged.tp.nin = {}
-    sets.engaged.tp.dnc = {}
-    sets.engaged.tp.shield = {}
-    sets.engaged.tp.dt = {}
+    sets.engaged["Hybrid"] = set_combine(sets.engaged["TP"], {
+        hands="Nyame gauntlets",
+        ring1={name="Moonlight ring", bag="wardrobe5"},
+        ring2={name="Moonlight ring", bag="wardrobe6"}
+    })
 
     sets.ja = {}
     sets.ja["Troubadour"] = {body="Bihu justaucorps +3"}
@@ -134,7 +140,7 @@ function get_sets()
         ear2="Hearty earring",
         body="Inyanga jubbah +2",
         hands="Bihu cuffs +3",
-        ring1="Moonbeam ring",
+        ring1="Moonlight ring",
         ring2="Defending ring",
         back=tp_cape,
         waist="Flume belt +1",
@@ -152,7 +158,7 @@ function get_sets()
         ring2="Prolix ring",
         back=fast_cast_cape,
         waist="Embla sash",
-        legs="Gendewitha spats +1",
+        legs="Lengo pants",
         feet="Bihu slippers +3"
     }
 
@@ -182,8 +188,8 @@ function get_sets()
         ear1="Etiolation earring",
         ear2="Genmei earring",
         body="Fili hongreline +1",
-        hands="Fili manchettes +1",
-        ring1="Moonbeam ring",
+        hands="Bewegt cuffs",
+        ring1="Moonlight ring",
         ring2="Defending ring",
         back=fast_cast_cape,
         waist="Flume belt +1",
@@ -199,8 +205,8 @@ function get_sets()
         ear2="Enchanter's earring +1",
         body="Brioso justaucorps +3",
         hands="Inyanga Dastanas +2",
-        ring1={name="Stikini Ring +1", bag="wardrobe3"},
-        ring2={name="Stikini Ring +1", bag="wardrobe4"},
+        ring1={name="Stikini Ring +1", bag="wardrobe5"},
+        ring2={name="Stikini Ring +1", bag="wardrobe6"},
         back=debuff_cape,
         waist="Luminary sash",
         legs="Brioso cannions +3",
@@ -209,7 +215,7 @@ function get_sets()
 
     sets.midcast.song.march = set_combine(sets.midcast.song.buff, {hands="Fili manchettes +1"})
     sets.midcast.song.HonorMarch = set_combine(sets.midcast.song.march, {ranged="Marsyas"})
-    sets.midcast.song.ballad = set_combine(sets.midcast.song.buff, {legs="Fili rhingrave +1"})
+    sets.midcast.song.ballad = sets.midcast.song.buff --set_combine(sets.midcast.song.buff, {legs="Fili rhingrave +1"})
     sets.midcast.song.scherzo = set_combine(sets.midcast.song.buff, {feet="Fili cothurnes +1"})
     sets.midcast.song.paeon = set_combine(sets.midcast.song.buff, {head="Brioso roundlet +3"})
     
@@ -247,7 +253,11 @@ function get_sets()
     sets.midcast.StoneSkin = {}
     sets.midcast.Aquaveil = {}
 
-    sets.ExtraSongs = set_combine(sets.precast.song, {ranged="Daurdabla"})
+    sets.ExtraSongs = set_combine(sets.precast.song, {
+        ranged="Daurdabla",
+        hands="Bewegt cuffs",
+        legs="Fili rhingrave +1"
+    })
 
     sets.kiting = {
         feet='Fili cothurnes +1'
@@ -363,6 +373,13 @@ function self_command(m)
         equip(sets.WeaponSet[weapon_set])
 
         add_to_chat(122, 'Weapon Set: ' .. weapon_set)
+    elseif m == "CycleEngageMode" then
+        EngageModeIndex = EngageModeIndex % #EngageModeSet + 1
+        local engage_set = EngageModeSet[EngageModeIndex]
+
+        equip_set(player.status)
+
+        add_to_chat(122, 'Engage Set: ' .. engage_set)
     elseif m == 'toggle kiting' then
         Kiting = not Kiting
         if Kiting then
@@ -378,7 +395,8 @@ function equip_set(status)
     local weapon_set = WeaponSet[WeaponSetIndex]
     equip(sets.WeaponSet[weapon_set])
     if status == "Engaged" then
-        equip(sets.engaged.tp)
+        local engageSet = EngageModeSet[EngageModeIndex]
+        equip(sets.engaged[engageSet])
     else
         equip(sets.idle)
         if Kiting then

@@ -25,7 +25,7 @@ end
 function get_sets()
     sets.mode = {}
     sets.mode["player_melee"] = {head="Rao kabuto", neck="Shulmanu collar", ear1="Mache earring", ear2="Mache earring",range="Animator P",
-                                body="Tali'ah manteel +1", hands="Tali'ah gages +2", ring1="Petrov ring", ring2="Epona's ring",
+                                body="Tali'ah manteel +1", hands="Tali'ah gages +2", ring1="Petrov ring", ring2="Rajas ring",
                                 back="Visucius's mantle", belt="Klouskap sash", legs="Tali'ah seraweels +2", feet="Tali'ah crackows +1"}
 
     sets.mode["hybrid_dd"] = {head="Tali'ah turban +2", neck="Shulmanu collar", ear1="Mache earring", ear2="Mache earring",range="Animator P",

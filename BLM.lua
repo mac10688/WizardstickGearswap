@@ -1,5 +1,5 @@
 NukeTypeIndex = 1
-NukeSet = {"Magic Attack Bonus","Magic Burst"}
+NukeSet = {"Magic Attack Bonus","Magic Burst","Occult Acumen"}
 
 IdleSetIndex = 1
 IdleSet = {"Refresh", "DT", "Death"}
@@ -107,18 +107,33 @@ function get_sets()
     sets.WeaponSet["Marin Staff"] = {main="Marin Staff +1", sub="Enki strap"}
     sets.WeaponSet["Laevateinn II"] = {main="Laevateinn", sub="Khonsu"}
 
+    -- sets.engaged = {
+    --     head="Nyame helm",
+    --     neck="Sanctity necklace",
+    --     ear1="Telos earring",
+    --     ear2="Dignitary's earring",
+    --     body="Archmage's coat +3",
+    --     hands="Gazu bracelet +1",
+    --     ring1="Chirich Ring +1",
+    --     ring2="Chirich Ring +1",
+    --     waist="Grunfeld rope",
+    --     legs="Archmage's tonban +3",
+    --     feet="Archmage's sabots +3",
+    --     back={ name="Taranus's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Dbl.Atk."+10','Mag. Evasion+15'}},
+    -- }
+
     sets.engaged = {
         head="Nyame helm",
         neck="Sanctity necklace",
         ear1="Telos earring",
         ear2="Dignitary's earring",
-        body="Archmage's coat +3",
+        body="Nyame mail",
         hands="Gazu bracelet +1",
-        ring1="Chirich Ring +1",
-        ring2="Chirich Ring +1",
+        ring1={name="Chirich Ring +1", bag="wardrobe5"},
+        ring2={name="Chirich Ring +1", bag="wardrobe6"},
         waist="Grunfeld rope",
-        legs="Archmage's tonban +3",
-        feet="Archmage's sabots +3",
+        legs="Nyame flanchard",
+        feet="Nyame sollerets",
         back={ name="Taranus's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Dbl.Atk."+10','Mag. Evasion+15'}},
     }
 
@@ -195,6 +210,21 @@ function get_sets()
         back=magic_atk_cape,
     }
 
+    sets.midcast.elemental["Occult Acumen"] = set_combine(sets.midcast.elemental["Magic Attack Bonus"], {
+        ammo="Seraphic ampulla",
+        head="Mallquis chapeau +2",
+        neck="Combatant's torque",
+        ear1="Dedition earring",
+        ear2="Crepuscular earring",
+        hands={ name="Merlinic Dastanas", augments={'"Mag.Atk.Bns."+23','"Occult Acumen"+10','Mag. Acc.+3'}},
+        ring1={name="Chirich Ring +1", bag="wardrobe5"},
+        ring2={name="Chirich Ring +1", bag="wardrobe6"},
+        back={name="Taranus's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Store TP"+10','Spell interruption rate down-10%'}},
+        waist="Oneiros rope",
+        legs="Perdition slops",
+        feet={ name="Merlinic Crackows", augments={'"Occult Acumen"+11','Mag. Acc.+15'}}
+    })
+
     sets.precast['Impact'] = set_combine(sets.precast.fc, {
         head=empty,
         body='Twilight cloak'
@@ -256,7 +286,7 @@ function get_sets()
         right_ear="Malignance earring",
         body = "Spaekona's coat +3",
         hands= "Spaekona's gloves +3",
-        ring1={name="Stikini Ring +1", bag="wardrobe3"},
+        ring1={name="Stikini Ring +1", bag="wardrobe5"},
         ring2="Kishar Ring",
         back=magic_int_ws,
         waist="Luminary Sash",
@@ -306,8 +336,8 @@ function get_sets()
         ear2="Mimir earring",
         body="Telchine chasuble",
         hands="Telchine gloves",
-        ring1={name="Stikini Ring +1", bag="wardrobe3"},
-        ring2={name="Stikini Ring +1", bag="wardrobe4"},
+        ring1={name="Stikini Ring +1", bag="wardrobe5"},
+        ring2={name="Stikini Ring +1", bag="wardrobe6"},
         waist="Embla sash",
         legs="Telchine braconi",
         feet="Telchine pigaches"
@@ -432,8 +462,8 @@ function get_sets()
         ammo="Staunch tathlum +1",
         head="Befouled crown",
         body="Shamash robe",
-        ring1={name="Stikini Ring +1", bag="wardrobe3"},
-        ring2={name="Stikini Ring +1", bag="wardrobe4"},
+        ring1={name="Stikini Ring +1", bag="wardrobe5"},
+        ring2={name="Stikini Ring +1", bag="wardrobe6"},
         legs="Assiduity pants +1"
     })
 

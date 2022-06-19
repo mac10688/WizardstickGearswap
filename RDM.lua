@@ -203,8 +203,8 @@ function get_sets()
         ear2="Mimir earring",
         body="Vitiation Tabard +3",
         hands="Vitiation gloves +3",
-        ring1={name="Stikini Ring +1", bag="wardrobe3"},
-        ring2={name="Stikini Ring +1", bag="wardrobe4"},
+        ring1={name="Stikini Ring +1", bag="wardrobe5"},
+        ring2={name="Stikini Ring +1", bag="wardrobe6"},
         waist="Embla sash",
         legs="Atrophy Tights +3",
         feet="Leth. Houseaux +1",
@@ -217,6 +217,7 @@ function get_sets()
         body="Vitiation tabard +3",
         hands="Atrophy gloves +3",
         waist="Embla sash",
+        back="Ghostfyre cape",
         legs="Telchine braconi",
         feet="Lethargy houseaux +1"
     })
@@ -224,9 +225,10 @@ function get_sets()
     sets.midcast.enhancing["Duration"].Composure = set_combine(sets.midcast.enhancing, {
         head="Lethargy Chappel +1",
         neck="Duelist's torque +2",
-        hands="Lethargy gantherots +1",
+        hands="Atrophy gloves +3",
         body="Lethargy sayon +1",
         waist="Embla sash",
+        back="Ghostfyre cape",
         legs="Lethargy fuseau +1",
         feet="Lethargy houseaux +1"
     })
@@ -241,19 +243,21 @@ function get_sets()
 
     sets.midcast.enhancing.refresh = set_combine(sets.midcast.enhancing["Duration"], {
         body="Atrophy tabard +3",
-        ring1={name="Stikini Ring +1", bag="wardrobe3"},
-        ring2={name="Stikini Ring +1", bag="wardrobe4"},
         legs="Lethargy fuseau +1"
     })
 
     sets.midcast.enhancing.regen = sets.midcast.enhancing["Duration"]
 
-    sets.midcast["Phalanx"] = set_combine(sets.midcast.enhancing,
+    sets.midcast.phal = set_combine(sets.midcast.enhancing,
     {
         hands="Taeon gloves",
         legs="Taeon tights",
         feet="Taeon boots"
     })
+    sets.midcast.phal.Self = sets.midcast.phal
+
+    sets.midcast.phal.Others = sets.midcast.enhancing['Duration']
+    sets.midcast.phal.Others.Composure = sets.midcast.enhancing['Duration'].Composure
 
     sets.midcast.enfeebling = {
         head="Vitiation chapeau +3",
@@ -262,8 +266,8 @@ function get_sets()
         ear2="Malignance earring",
         body="Atrophy Tabard +3",
         hands="Kaykaus cuffs +1",
-        ring1={name="Stikini Ring +1", bag="wardrobe3"},
-        ring2={name="Stikini Ring +1", bag="wardrobe4"},
+        ring1={name="Stikini Ring +1", bag="wardrobe5"},
+        ring2={name="Stikini Ring +1", bag="wardrobe6"},
         waist="Luminary Sash",
         back=Cape.Int,
         legs={ name="Chironic Hose", augments={'Mag. Acc.+30','"Cure" potency +7%','INT+12','"Mag.Atk.Bns."+8'}},
@@ -538,6 +542,14 @@ function midcast(spell)
                     equip(sets.midcast.enhancing["Duration"].Composure)
                 else
                     equip(sets.midcast.enhancing["Duration"])
+                end
+            elseif spell.english:startswith("Phalanx") then
+                if spell.target.type ~= "SELF" and buffactive["Composure"] then
+                    equip(sets.midcast.phal.Others.Composure)
+                elseif spell.target.type ~= "SELF" and not buffactive["Composure"] then
+                    equip(sets.midcast.phal.Others)
+                else
+                    equip(sets.midcast.phal.Self)
                 end
             else                
                 equip(sets.midcast.enhancing)

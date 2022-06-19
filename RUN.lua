@@ -96,17 +96,17 @@ function get_sets()
     --Accuracy: 11
     sets.tank["pdt"] = {
         ammo="Staunch tathlum +1", --dt: 2
-        head="Futhark bandeau +3", --dt: 5 haste: 8
-        neck="Futhark torque +1",--dt: 5
-        ear1="Etiolation earring",
+        head="Nyame helm", --dt: 5 haste: 8
+        neck="Futhark torque +2",--dt: 5
+        ear1="Odnowa earring +1",
         ear2="Tuisto earring", --mdt: 2
-        body="Futhark coat +3", --dt: 7 haste: 4
+        body="Nyame mail", --dt: 7 haste: 4
         hands="Turms mittens +1", --pdt: 2 haste: 5
-        ring1="Defending ring", --dt: 10
-        ring2="Vocane ring +1", --pdt: 3
+        ring1={name="Moonlight ring", bag="wardrobe5"},
+        ring2={name="Moonlight ring", bag="wardrobe6"},
         back= dt_cape,--dt: 5
         waist="Flume belt +1", --haste: 6 acc: 11
-        legs="Erilaz leg guards +1",  --pdt: 7 haste: 6
+        legs="Nyame flanchard",  --pdt: 7 haste: 6
         feet="Turms leggings +1" --pdt: 5 haste: 4
     }
 
@@ -139,9 +139,9 @@ function get_sets()
 
     --75 enmmity
     sets.enmity = set_combine( sets.tank["pdt"], {
-        ammo="Aqreaqa bomblet", -- 2 enmity
+        ammo="Aqreqaq bomblet", -- 2 enmity
         head="Halitus helm", -- 8 enmity
-        neck="Futhark torque +1", --7 enmity
+        neck="Futhark torque +2", --7 enmity
         ear1="Cryptic earring", --4 enmity
         body="Emet Harness +1", --10 enmity
         -- ear2="Friomisi earring",
@@ -173,24 +173,26 @@ function get_sets()
     
     sets.ja['Lunge'] = set_combine(sets.enmity, {
         ammo="Yamarang",
-        head="Thaumas Hat",
-        neck="Eddy Necklace",
+        head="Agwu's cap",
+        neck="Sanctity necklace",
         -- ear1="Novio Earring",
         -- ear2="Friomisi Earring",
-        body="Vanir Cotehardie",
-        ring1="Acumen Ring",
-        ring2="Omega Ring",
+        body="Agwu's robe",
+        hands="Agwu's gages",
+        ring1="Metamorph ring +1",
+        ring2="Shiva ring +1",
         back="Evasionist's Cape",
-        waist="Yamabuki-no-obi",
-        legs="Iuitl Tights +1",
-        feet="Qaaxo Leggings"})
+        waist="Orpheus's sash",
+        legs="Agwu's slops",
+        feet="Agwu's pigaches"
+    })
 
     sets.ja['Swipe'] = sets.ja['Lunge']
     sets.ja['Gambit'] = set_combine(sets.enmity, {hands="Runeist's Mitons +3"})
     sets.ja['Rayke'] = set_combine(sets.enmity, {feet="Futhark Boots +1"})
-    sets.ja['Elemental Sforzo'] = set_combine(sets.enmity, {body="Futhark Coat 3"})
+    sets.ja['Elemental Sforzo'] = set_combine(sets.enmity, {body="Futhark Coat +3"})
     sets.ja['Swordplay'] = set_combine(sets.enmity, {hands="Futhark Mitons +3"})
-    sets.ja['Embolden'] = {back="Evasionist's cape"}
+    sets.embolden = {back="Evasionist's cape"}
     sets.ja['Vivacious Pulse'] = set_combine(sets.enmity, {head="Erilaz galea +1"})
     sets.ja['One for All'] = set_combine(sets.enmity, {})
 
@@ -205,12 +207,12 @@ function get_sets()
     sets.ja['Souleater'] = sets.enmity
     sets.ja['Last Resort'] = sets.enmity
 
-    --Fast cast: 25%
+    --Fast cast: 28%
     sets.fc = {
         head="Runeist's bandeau +3", --fc 12%
         neck="Voltsurge torque", --fc 4%
         ear1="Etiolation earring",
-        body="Vrikodara jupon", --fc 5%
+        body="Agwu's robe", --fc 8%
         hands="Leyline gloves", --fc 8%
         ring1="Kishar ring",
         -- legs="Ayanmo cosciales +2", --fc 6%
@@ -233,29 +235,33 @@ function get_sets()
         back=dt_cape,
         waist="Audumbla sash",
         legs="Erilaz leg guards +1",
-        feet="Eriliaz greaves +1"
+        feet="Ahosi leggings"
     })
 
     sets.midcast.SIRD = set_combine(sets.tank["pdt"], {
         ammo="Staunch tathlum +1",
-        ring2="Evanescence ring",
+        neck="Moonlight necklace",
+        ear1="Magnetic earring",
+        ring1={name="Moonlight ring", bag="wardrobe5"},
+        ring2={name="Moonlight ring", bag="wardrobe6"},
+        hands="Rawhide gloves",
         back=fast_cast_cape,
         waist="Audumbla sash",
-        legs="Carmine cuisses +1"
+        legs="Carmine cuisses +1",
+        feet="Taeon boots"
     })
 
     sets.midcast.SIRD.enmity = set_combine(sets.midcast.SIRD, {
         head="Halitus helm",
-        body="Emet harness +1",
-        hands="Kurys gloves",
-        feet="Erilaz greaves +1"
+        body="Emet harness +1"
     })
 
     --blu sub
-    sets.midcast["Sheep Song"] = sets.midcast.SIRD.enmity
-    sets.midcast["Blank Gaze"] = sets.midcast.SIRD.enmity
-    sets.midcast["Jettatura"] = sets.midcast.SIRD.enmity
-    sets.midcast["Soporific"] = sets.midcast.SIRD.enmity
+    sets.midcast["Sheep Song"] = sets.midcast.SIRD
+    sets.midcast["Blank Gaze"] = sets.midcast.SIRD
+    sets.midcast["Jettatura"] = sets.midcast.SIRD
+    sets.midcast["Soporific"] = sets.midcast.SIRD
+    sets.midcast["Cursed Sphere"] = sets.midcast.SIRD
 
     --drk sub
     sets.midcast["Stun"] = sets.midcast.enmity
@@ -288,8 +294,8 @@ function get_sets()
         head="Futhark bandeau +3",
         body={ name="Herculean Vest", augments={'STR+2','AGI+2','Phalanx +4','Mag. Acc.+10 "Mag.Atk.Bns."+10'}},
         hands="Taeon gloves",
-        ring1={name="Stikini Ring +1", bag="wardrobe3"},
-        ring2={name="Stikini Ring +1", bag="wardrobe4"},
+        ring1={name="Stikini Ring +1", bag="wardrobe5"},
+        ring2={name="Stikini Ring +1", bag="wardrobe6"},
         legs="Taeon tights",
         feet="Taeon boots"
     })
@@ -297,17 +303,18 @@ function get_sets()
     -- Weaponskill sets
     sets.ws = { 
         ammo="Knobkierrie",
-        head=herc_head_ws,
+        head="Nyame helm",
         neck="Fotia gorget",
         ear1="Moonshade earring",
         ear2="Ishvara earring",
-        body=herc_body_ws,
-        hands=herc_hand_ws,
+        body="Nyame mail",
+        hands="Nyame gauntlets",
         ring1="Petrov ring",
         ring2="Regal ring",
-        waist="Fotia belt",
-        legs=herc_legs_ws,
-        feet="Meghanada jambeaux +2"
+        back=atk_cape,
+        waist="Fotia belt",        
+        legs="Nyame flanchard",
+        feet="Nyame sollerets"
     }
     
     --Stat Modifier: 73~85% Str
@@ -318,18 +325,18 @@ function get_sets()
     --Accuracy:
     sets.ws['Resolution'] = { 
         ammo="Knobkierrie",
-        head= herc_head_ws,
+        head="Nyame helm",
         neck="Fotia gorget",
         ear1="Moonshade earring",
         ear2="Ishvara earring",
-        body="Futhark coat +3",
-        hands=herc_hand_ws,
+        body="Nyame mail",
+        hands="Nyame gauntlets",
         ring1="Niqmaddu ring",
         ring2="Regal ring",
         back=atk_cape,
         waist="Fotia belt",
-        legs=herc_legs_ws,
-        feet="Meghanada jambeaux +2"
+        legs="Nyame flanchard",
+        feet="Nyame sollerets"
     }
     
     --Stat Modifier: 80% Dex
@@ -339,12 +346,12 @@ function get_sets()
     --Accuracy:
     sets.ws['Dimidiation'] = {
         ammo="Knobkierrie",
-        head= herc_head_ws,
+        head="Nyame helm",
         neck="Fotia gorget",
         ear1="Moonshade earring",
         ear2="Sherida earring",
-        body="Futhark coat +3",
-        hands=herc_hand_ws,
+        body="Nyame mail",
+        hands="Nyame gauntlets",
         ring1="Niqmaddu ring",
         ring2="Ilabrat ring",
         back=dimi_cape,
@@ -358,41 +365,14 @@ function get_sets()
     --PDT:
     --MDT:
     --Accuracy:
-    sets.ws['Herculean Slash'] = { 
-        ammo="Mantoptera eye",
-        head=herc_head_ws,
-        neck="Fotia gorget",
-        ear1="Moonshade earring",
-        ear2="Ishvara earring",
-        body="Futhark coat +3",
-        hands=herc_hand_ws,
-        ring1="Petrov ring",
-        ring2="Regal ring",
-        waist="Fotia belt",
-        legs=herc_legs_ws,
-        feet="Erilaz greaves +1"
-    }
+    sets.ws['Herculean Slash'] = sets.ws
 
     --Stat Modifier: 30% Str, 30% Mnd
     --DT: 
     --PDT:
     --MDT:
     --Accuracy:
-    sets.ws['Shockwave'] = { 
-        ammo="Knobkierrie",
-        head=herc_head_ws,
-        neck="Fotia gorget",
-        ear1="Sherida earring",
-        ear2="Ishvara earring",
-        body="Futhark coat +3",
-        hands=herc_hand_ws,
-        ring1="Niqmaddu ring",
-        ring2="Regal ring",
-        back=dimi_cape,
-        waist="Fotia belt",
-        legs=herc_legs_ws,
-        feet="Meghanada jambeaux +2"
-    }
+    sets.ws['Shockwave'] = sets.ws
 
     sets.engaged = {}
 
@@ -401,48 +381,48 @@ function get_sets()
         ammo="Yamarang",
         head="Dampening tam",
         neck="Anu torque",
+        body="Nyame mail",
+        hands="Nyame gauntlets",
         ear1="Telos earring",
         ear2="Sherida earring",
-        body="Adhemar jacket +1",
-        hands="Adhemar wristbands +1",
         ring1="Niqmaddu ring",
         ring2="Epona's ring",
         back=atk_cape,
         waist="Ioskeha belt +1",
         legs="Samnuha tights",
-        feet="Meghanada jambeaux +2"
+        feet="Nyame sollerets"
     }
 
     sets.engaged.pure_offense["accuracy"] = {
         ammo="Yamarang",
         head="Runeist's bandeau +3",
-        neck="Ej necklace",
+        neck="Sanctity necklace",
         ear1="Telos earring",
         ear2="Dignitary's earring",
-        body="Runeist's coat +3",
-        hands="Adhemar wristbands +1",
+        body="Nyame mail",
+        hands="Nyame gauntlets",
         ring1="Chirich ring +1",
         ring2="Regal ring",
         back=atk_cape,
         waist="Ioskeha belt +1",
-        legs="Carmine cuisses +1",
-        feet="Runeist's boots +3"
+        legs="Nyame flanchard",
+        feet="Nyame sollerets"
     }
 
     sets.engaged.hybrid = {}
     sets.engaged.hybrid["pdt"] = {
         ammo="Yamarang",
-        head="Futhark bandeau +3",
-        neck="Futhark torque +1",
+        head="Nyame helm",
+        neck="Futhark torque +2",
         ear1="Telos Earring",
         ear2="Sherida earring",
-        body="Futhark coat +3",
-        hands="Adhemar wristbands +1",
+        body="Nyame mail",
+        hands="Nyame gauntlets",
         ring1="Niqmaddu ring",
-        ring2="Moonbeam ring",
+        ring2={name="Moonlight ring", bag="wardrobe6"},
         back=atk_cape,
         waist="Ioskeha belt +1",
-        legs="Carmine cuisses +1",
+        legs="Nyame flanchard",
         feet="Nyame sollerets"
     }
 
@@ -491,12 +471,9 @@ function SetGearToState(state)
         equip(sets.kiting)
     end
 
-    
-
 end
 
 -----------------------------------------------------------------------------------
-
 --This function is used to read commands sent to gearswap from the ffix chat window
 --i.e. //gs c CycleEngagedMode
 function self_command(command)
@@ -571,6 +548,8 @@ function self_command(command)
         lockstyle()
     elseif command == 'help' then
         help()
+    elseif command == "phal" then
+        equip(sets.midcast.enhancing["Phalanx"])
     end
 end
 
@@ -643,7 +622,14 @@ end
 -----------------------------------------------------------------------------------
 
 function buff_change(buff,gain)
-    if windower.wc_match(buff, "terror|petrification|stun|sleep") then
+    if windower.wc_match(buff, "terror|petrification|stun|sleep") and gain then
+        SetGearToState(player.status)
+    end
+    if buff == 'Embolden' and gain then
+        equip(sets.embolden)
+        disable('back')
+    elseif buff == 'Embolden' and not gain then
+        enable('back')
         SetGearToState(player.status)
     end
 end

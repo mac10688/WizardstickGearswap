@@ -72,8 +72,8 @@ function get_sets()
         ear2="Loquacious Earring", --2%
         body="Pinga tunic +1", --15%
         hands="Fanatic gloves", --7%
-        ring1="Prolix Ring", --2%
-        ring2="Kishar ring", --4%
+        ring1="Kishar ring", --4%
+        ring2="Prolix Ring", --2%
         back=fastcast_cape, --10%
         waist="Embla Sash", --5%
         -- legs="Aya. Cosciales +2", --5%
@@ -222,8 +222,8 @@ function get_sets()
     sets.idle['Refresh'] = set_combine(sets.idle['MDT'], {
         ammo="Homiliary",
         hands="Inyanga dastanas +2",
-        ring1={name="Stikini Ring +1", bag="wardrobe3"},
-        ring2={name="Stikini Ring +1", bag="wardrobe4"},
+        ring1={name="Stikini Ring +1", bag="wardrobe5"},
+        ring2={name="Stikini Ring +1", bag="wardrobe6"},
         legs={ name="Chironic Hose", augments={'STR+9','CHR+4','"Refresh"+2','Mag. Acc.+14 "Mag.Atk.Bns."+14'}}
     })
 
@@ -278,8 +278,8 @@ function get_sets()
         neck="Incanter's torque",
         body="Telchine chasuble",
         hands="Inyanga dastanas +2",
-        ring1={name="Stikini Ring +1", bag="wardrobe3"},
-        ring2={name="Stikini Ring +1", bag="wardrobe4"},
+        ring1={name="Stikini Ring +1", bag="wardrobe5"},
+        ring2={name="Stikini Ring +1", bag="wardrobe6"},
         back={ name="Alaunus's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}},
         waist="Embla sash",
         legs="Piety Pantaloons +3",
@@ -343,7 +343,7 @@ function get_sets()
         ear2="Regal earring",
         body="Theophany bliaut +3",
         hands="Kaykaus cuffs +1",
-        ring1={name="Stikini Ring +1", bag="wardrobe3"},
+        ring1={name="Stikini Ring +1", bag="wardrobe5"},
         ring2="Kishar ring",
         back={ name="Alaunus's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}},
         waist="Luminary sash",
@@ -359,8 +359,8 @@ function get_sets()
         ear2="Regal earring",
         body="Theophany bliaut +3",
         hands="Inyanga dastanas +2",
-        ring1={name="Stikini Ring +1", bag="wardrobe3"},
-        ring2={name="Stikini Ring +1", bag="wardrobe4"},
+        ring1={name="Stikini Ring +1", bag="wardrobe5"},
+        ring2={name="Stikini Ring +1", bag="wardrobe6"},
         back={ name="Alaunus's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}},
         waist="Luminary sash",
         legs="Theophany pantaloons +3",
