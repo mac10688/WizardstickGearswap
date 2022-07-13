@@ -46,7 +46,7 @@ TankModeIndex = 1
 HybridModes = {"pdt", "mdt", "th"}
 HybridModeIndex = 1
 
-WeaponSetMode = {"epeo", "lionheart"}
+WeaponSetMode = {"epeo", "lionheart", "Lycurgos"}
 WeaponSetIndex = 1
 
 Kiting = false
@@ -102,7 +102,7 @@ function get_sets()
         ear2="Tuisto earring", --mdt: 2
         body="Nyame mail", --dt: 7 haste: 4
         hands="Turms mittens +1", --pdt: 2 haste: 5
-        ring1={name="Moonlight ring", bag="wardrobe5"},
+        ring1="Defending ring",
         ring2={name="Moonlight ring", bag="wardrobe6"},
         back= dt_cape,--dt: 5
         waist="Flume belt +1", --haste: 6 acc: 11
@@ -112,17 +112,17 @@ function get_sets()
 
     sets.tank["mdt"] = {
         ammo="Staunch tathlum +1", --dt: 2 status: 10
-        head="Futhark bandeau +3", --mdb: 4 meva: 73 haste: 8
-        neck="Inquisitor bead necklace", --mdb: 8
+        head="Nyame helm", --mdb: 4 meva: 73 haste: 8
+        neck="Warder's charm +1", --mdb: 8
         ear1="Etiolation earring",
         ear2="Tuisto earring", --dt: 2 acc: 5~10
         body="Runeist's coat +3", --mdb: 7 meva: 94 haste: 4 
-        hands="Futhark mitons +3", --mdb: 5 meva: 101 haste: 4
+        hands="Nyame gauntlets", --mdb: 5 meva: 101 haste: 4
         ring1="Defending ring", --dt: 10
-        ring2="Vocane ring +1", --meva: 9
+        ring2={name="Moonlight ring", bag="wardrobe6"}, --meva: 9
         back=dt_cape, --meva: 20
-        waist="Flume belt +1",
-        legs="Runeist's trousers +3", --mdb: 6 meva: 99 pdt: 5 haste: 6 status: 10
+        waist="Engraved belt",
+        legs="Nyame flanchard", --mdb: 6 meva: 99 pdt: 5 haste: 6 status: 10
         feet="Turms leggings +1" --mdb: 5 meva: 107 pdt: 5 rele: 25 haste: 4
     }
 
@@ -137,11 +137,11 @@ function get_sets()
         legs="Dashing subligar"
     })
 
-    --75 enmmity
+    --79 enmmity
     sets.enmity = set_combine( sets.tank["pdt"], {
         ammo="Aqreqaq bomblet", -- 2 enmity
         head="Halitus helm", -- 8 enmity
-        neck="Futhark torque +2", --7 enmity
+        neck="Futhark torque +2", --10 enmity
         ear1="Cryptic earring", --4 enmity
         body="Emet Harness +1", --10 enmity
         -- ear2="Friomisi earring",
@@ -150,12 +150,13 @@ function get_sets()
         ring2="Vengeful ring", --3 enmity
         back=dt_cape, -- 10 enmity
         legs="Erilaz leg guards +1", --11 enmity
-        feet="Erilaz greaves +1" --6 enmity
+        feet="Ahosi leggings" --7 enmity
     })
 
     sets.weaponset = {}
     sets.weaponset["epeo"] = {main="Epeolatry", sub="Utu grip"}
-    sets.weaponset["lionheart"] = {main="Epeolatry", sub="Irenic strap +1"}
+    sets.weaponset["lionheart"] = {main="Lionheart", sub="Utu grip"}
+    sets.weaponset["Lycurgos"] = {main="Lycurgos", sub="Utu grip"}
     --Be very precise about spelling the ability name or it won't be swapped to for job abilities
     sets.ja = {}
 
@@ -232,6 +233,7 @@ function get_sets()
         body="Emet harness +1",
         ear1="Cryptic earring",
         hands="Kurys gloves",
+        ring1="Eihwaz ring",
         back=dt_cape,
         waist="Audumbla sash",
         legs="Erilaz leg guards +1",
@@ -253,15 +255,18 @@ function get_sets()
 
     sets.midcast.SIRD.enmity = set_combine(sets.midcast.SIRD, {
         head="Halitus helm",
-        body="Emet harness +1"
+        body="Emet harness +1",
+        ring1="Eihwaz ring"
     })
 
     --blu sub
-    sets.midcast["Sheep Song"] = sets.midcast.SIRD
-    sets.midcast["Blank Gaze"] = sets.midcast.SIRD
-    sets.midcast["Jettatura"] = sets.midcast.SIRD
-    sets.midcast["Soporific"] = sets.midcast.SIRD
-    sets.midcast["Cursed Sphere"] = sets.midcast.SIRD
+    sets.midcast["Sheep Song"] = sets.midcast.SIRD.enmity
+    sets.midcast["Blank Gaze"] = sets.midcast.enmity
+    sets.midcast["Jettatura"] = sets.midcast.SIRD.enmity
+    sets.midcast["Soporific"] = sets.midcast.SIRD.enmity
+    sets.midcast["Cursed Sphere"] = sets.midcast.SIRD.enmity
+    sets.midcast["Geist Wall"] = sets.midcast.SIRD.enmity
+    sets.midcast["Healing Breeze"] = sets.midcast.SIRD
 
     --drk sub
     sets.midcast["Stun"] = sets.midcast.enmity

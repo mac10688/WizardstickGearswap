@@ -52,22 +52,21 @@ function get_sets()
     sets.engaged = {}
     sets.engaged["TP"] = {
         ranged=atk_linos,
-        head="Bihu roundlet +3",
+        head="Bunzi's hat",
         neck="Bard's charm +2",
         ear1="Telos earring",
         ear2="Dignitary's earring",
-        body="Bihu justaucorps +3",
-        hands="Gazu Bracelet +1",
+        body="Ayanmo corazza +2",
+        hands="Bunzi's gloves",
         ring1="Hetairoi ring",
         ring2="Chirich ring +1",
         back=tp_cape,
         waist="Reiki yotai",
-        legs="Bihu cannions +3",
-        feet="Bihu slippers +3"
+        legs="Nyame flanchard",
+        feet="Nyame sollerets"
     }
 
     sets.engaged["Hybrid"] = set_combine(sets.engaged["TP"], {
-        hands="Nyame gauntlets",
         ring1={name="Moonlight ring", bag="wardrobe5"},
         ring2={name="Moonlight ring", bag="wardrobe6"}
     })
@@ -134,21 +133,22 @@ function get_sets()
 
     sets.idle = {
         ranged="Gjallarhorn",
-        head="Bihu roundlet +3",
+        head="Bunzi's hat",
         neck="Bard's charm +2",
         ear1="Etiolation earring",
         ear2="Hearty earring",
-        body="Inyanga jubbah +2",
-        hands="Bihu cuffs +3",
+        body="Bunzi's robe",
+        hands="Bunzi's gloves",
         ring1="Moonlight ring",
         ring2="Defending ring",
         back=tp_cape,
         waist="Flume belt +1",
-        legs="Brioso cannions +3",
-        feet="Bihu slippers +3"
+        legs="Nyame flanchard",
+        feet="Nyame sollerets"
     }
 
     sets.precast = {
+        head="Bunzi's hat",
         neck="Voltsurge torque",
         ear1="Etiolation earring",
         ear2="Enchanter's earring +1",

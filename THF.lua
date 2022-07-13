@@ -69,19 +69,36 @@ function get_sets()
         }
     )
     
+    -- sets.melee = {
+    --     head="Malignance chapeau",
+    --     neck="Anu torque",
+    --     ear1="Sherida earring",
+    --     ear2="Telos earring",
+    --     body={ name="Herculean Vest", augments={'Accuracy+1','INT+1','"Treasure Hunter"+2','Accuracy+10 Attack+10'}},
+    --     hands="Malignance gloves",
+    --     ring1="Hetairoi ring",
+    --     ring2="Epona's ring",
+    --     waist="Chaac belt",
+    --     back={ name="Toutatis's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Attack+10','Haste+10','Damage taken-5%'}},
+    --     legs={ name="Herculean Trousers", augments={'Attack+19','"Dual Wield"+1','"Treasure Hunter"+2'}},
+    --     feet="Malignance boots"
+    -- }
+
     sets.melee = {
+        -- ammo="Yamarang",
+        ranged="Jinx discus",
         head="Malignance chapeau",
-        neck="Anu torque",
-        ear1="Sherida earring",
-        ear2="Telos earring",
-        body={ name="Herculean Vest", augments={'Accuracy+1','INT+1','"Treasure Hunter"+2','Accuracy+10 Attack+10'}},
-        hands="Malignance gloves",
-        ring1="Hetairoi ring",
-        ring2="Epona's ring",
-        waist="Chaac belt",
+        body="Malignance Tabard",
+        hands="Malignance Gloves",
+        legs="Malignance Tights",
+        feet="Malignance Boots",
+        neck={ name="Loricate Torque +1", augments={'Path: A'}},
+        waist="Flume Belt +1",
+        left_ear="Hearty Earring",
+        right_ear="Genmei earring",
+        left_ring="Moonbeam ring",
+        right_ring="Defending Ring",
         back={ name="Toutatis's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Attack+10','Haste+10','Damage taken-5%'}},
-        legs={ name="Herculean Trousers", augments={'Attack+19','"Dual Wield"+1','"Treasure Hunter"+2'}},
-        feet="Malignance boots"
     }
 
     sets.melee['acc'] = sets.melee

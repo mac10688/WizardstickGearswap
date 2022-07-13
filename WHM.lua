@@ -67,6 +67,7 @@ function get_sets()
     -- 12% for cures
 	sets.fc = {
         ammo="Incantor Stone", --2%
+        head="Bunzi's hat", --10%
         neck="Cleric's torque +2", --10%
         ear1="Malignance earring",
         ear2="Loquacious Earring", --2%
@@ -76,7 +77,7 @@ function get_sets()
         ring2="Prolix Ring", --2%
         back=fastcast_cape, --10%
         waist="Embla Sash", --5%
-        -- legs="Aya. Cosciales +2", --5%
+        legs="Lengo pants", --5%
     }
 	
     sets.fc.heal = set_combine(sets.fc, {main="Yagrush", legs="ebers pantaloons +1"})
@@ -147,11 +148,11 @@ function get_sets()
     
     sets.engaged['Delay Cap'] = {
         ammo="Staunch Tathlum +1",
-        head="Nyame helm",
-        body="Nyame mail",
-        hands="Gazu bracelet +1",
+        head="Bunzi's hat",
+        body="Ayanmo corazza +2",
+        hands="Bunzi's gloves",
         legs="Nyame flanchard",
-        feet="Piety duckbills +3",
+        feet="Nyame sollerets",
         neck="Sanctity Necklace",
         waist="Grunfeld Rope",
         ear1="Telos earring",
@@ -161,21 +162,11 @@ function get_sets()
         back={ name="Alaunus's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10','Mag. Evasion+15'}}
     }
 
-	sets.engaged['Acc'] = {
-        ammo="Staunch Tathlum +1",
-        head="Nyame helm",
-        body="Nyame mail",
+	sets.engaged['Acc'] = set_combine( sets.engaged['Delay Cap'], {
         hands="Gazu bracelet +1",
-        legs="Nyame flanchard",
-        feet="Nyame sollerets",
-        neck="Sanctity Necklace",
-        waist="Grunfeld rope",
-        ear1="Telos earring",
-        ear2="Dignitary's earring",
         ring1="Chirich Ring +1",
-        ring2="Chirich Ring +1",
-        back={ name="Alaunus's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10','Mag. Evasion+15'}}
-    }
+        ring2="Chirich Ring +1"
+    })
     
     sets.idle = {}
 	
@@ -191,12 +182,12 @@ function get_sets()
         ear1="Etiolation earring", --3% magic dmg
         ear2="Genmei earring",
         body="Shamash robe", --10% physical
-        hands="Nyame gauntlets", --7% dmg
+        hands="Bunzi's gloves", --7% dmg
         ring1="Defending Ring", --10% dmg
         ring2="Ayanmo ring", --3% dmg
         back={ name="Alaunus's Cape", augments={'MND+20','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Enmity-10','Occ. inc. resist. to stat. ailments+10'}},
         waist="Slipor sash", --3% magic dmg
-        legs="Nyame flanchard", --8% dmg
+        legs="Bunzi's pants", --8% dmg
         feet="Nyame sollerets" --7% dmg
     }
                 
@@ -209,19 +200,18 @@ function get_sets()
         ear1="Etiolation earring",
         ear2="Hearty earring",
         body="Shamash robe",
-        hands="Nyame gauntlets",
+        hands="Bunzi's gloves",
         ring1="Defending Ring",
         ring2="Inyanga ring",
         back={ name="Alaunus's Cape", augments={'MND+20','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Enmity-10','Occ. inc. resist. to stat. ailments+10'}},
         waist="Slipor sash",
-        legs="Nyame flanchard",
+        legs="Bunzi's pants",
         feet="Nyame sollerets"
     }
 
     --Refresh +10
     sets.idle['Refresh'] = set_combine(sets.idle['MDT'], {
         ammo="Homiliary",
-        hands="Inyanga dastanas +2",
         ring1={name="Stikini Ring +1", bag="wardrobe5"},
         ring2={name="Stikini Ring +1", bag="wardrobe6"},
         legs={ name="Chironic Hose", augments={'STR+9','CHR+4','"Refresh"+2','Mag. Acc.+14 "Mag.Atk.Bns."+14'}}
@@ -270,7 +260,7 @@ function get_sets()
     sets.midcast.raise = set_combine(sets.conserve_mp, sets.fc)
 
     sets.midcast.enhancing = {
-        main="Beneficus",
+        main="Gada",
         sub="Ammurapi shield",
         head="Telchine cap",
         ear1="Andoaa earring",
@@ -287,6 +277,7 @@ function get_sets()
     }
 
     sets.midcast.enhancing.duration = set_combine(sets.midcast.enhancing, {
+        main="Gada",
         sub="Ammurapi shield",
         head="Telchine cap",
         body="Telchine chasuble",
@@ -350,21 +341,41 @@ function get_sets()
         legs="Chironic hose",
         feet="Theophany duckbills +3"
     }
-
-    sets.midcast.divine = {
+    
+    sets.midcast.banish = {
         main="Gada",
+        sub="Ammurapi shield",
         ammo="Hydrocera",
+        head="Ipoca beret",
         neck="Erra pendant",
         ear1="Malignance earring",
         ear2="Regal earring",
         body="Theophany bliaut +3",
-        hands="Inyanga dastanas +2",
+        hands="Fanatic gloves",
         ring1={name="Stikini Ring +1", bag="wardrobe5"},
         ring2={name="Stikini Ring +1", bag="wardrobe6"},
         back={ name="Alaunus's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}},
-        waist="Luminary sash",
+        waist="Orpheus's sash",
         legs="Theophany pantaloons +3",
         feet="Medium's Sabots"
+    }
+
+    sets.midcast.holy = {
+        main="Gada",
+        sub="Ammurapi shield",
+        ammo="Hydrocera",
+        head="Bunzi's hat",
+        neck="Erra pendant",
+        ear1="Malignance earring",
+        ear2="Regal earring",
+        body="Bunzi's robe",
+        hands="Bunzi's gloves",
+        ring1={name="Stikini Ring +1", bag="wardrobe5"},
+        ring2={name="Stikini Ring +1", bag="wardrobe6"},
+        back={ name="Alaunus's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}},
+        waist="Orpheus's sash",
+        legs="Bunzi's pants",
+        feet="Bunzi's sabots"
     }
 
     sets.fc['Impact'] = set_combine(sets.fc, {
@@ -471,10 +482,11 @@ function midcast(spell)
         else
             equip(sets.midcast.enhancing)
         end
-    elseif spell.skill == "Divine Magic" then
-        equip(sets.midcast.divine)
+    elseif spell.english:contains('Banish') then
+        equip(sets.midcast.banish)
+    elseif spell.english:contains('Holy') then
+        equip(sets.midcast.holy)
     end
-    -- print_set(set_to_equip)
 end
 
 function equip_set(status)

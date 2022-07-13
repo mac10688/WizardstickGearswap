@@ -4,8 +4,8 @@ NukeSet = {"Magic Attack Bonus","Magic Burst", "Vagary","Occult Acumen"}
 IdleSetIndex = 1
 IdleSet = {"Refresh", "PDT", "MDT"}
 
-WeaponSetIndex = 3
-WeaponSet = {"Tupsimati", "Musa", "None"}
+WeaponSetIndex = 1
+WeaponSet = {"None", "Tupsimati", "Musa", "Bunzi" }
 
 Kiting = false
 
@@ -123,6 +123,7 @@ function get_sets()
     sets.WeaponSet["None"] = {main="Malignance Pole", sub="Khonsu"}
     sets.WeaponSet["Tupsimati"] = {main="Tupsimati", sub="Enki strap"}
     sets.WeaponSet["Musa"] = {main="Musa", sub="Khonsu"}
+    sets.WeaponSet["Bunzi"] = {main="Bunzi's rod", sub="Culminus"}
 
     sets.precast = {}
 
@@ -263,9 +264,9 @@ function get_sets()
     --MB2: 12
     --Total MB: 60
     sets.midcast.elemental["Magic Burst"] = set_combine(sets.midcast.elemental["Magic Attack Bonus"], {
-        main="Tupsimati",
-        sub="Enki strap",
-        head="Pedagogy Mortarboard +3", --MB2: 4
+        main="Bunzi's rod",
+        sub="Culminus",
+        head="Agwu's cap", --MB2: 4
         neck="Argute stole +2", --MB: 7
         body="Agwu's robe", --MB: 10
         hands="Agwu's gages", --MB2: 5

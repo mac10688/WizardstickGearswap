@@ -1,6 +1,6 @@
 res = require('resources')
 
-Weapon_Sets = {"Sword", "Magic Accuracy", "Dual Wield", "Odin", "Savage", "Club", "Club2"}
+Weapon_Sets = {"Sword", "Magic Accuracy", "Dual Wield", "Odin", "Savage", "Club", "Club2", "AE"}
 WeaponSetsIndex = 2
 
 PhysicalAccuracyMode = {"High Acc", "Multi-Attack", "PDT"}
@@ -101,11 +101,12 @@ function get_sets()
     sets.weapons = {}
     sets.weapons["Sword"] = {main = "Crocea Mors", sub="Sacro bulwark"}
     sets.weapons["Magic Accuracy"] = {main = "Crocea Mors", sub="Ammurapi shield"}
-    sets.weapons["Dual Wield"] = {main = "Crocea Mors", sub = "Tauret"}
+    sets.weapons["Dual Wield"] = {main = "Crocea Mors", sub = "Gleti's knife"}
     sets.weapons["Odin"] = {main = "Aern Dagger", sub = "Qutrub Knife"}
     sets.weapons["Savage"] = {main = "Naegling", sub = "Thibron"}
     sets.weapons["Club"] = {main="Maxentius", sub="Thibron"}
     sets.weapons["Club2"] = {main="Maxentius", sub="Sacro bulwark"}
+    sets.weapons["AE"] = {main="Tauret", sub="Malevolence"}
 
     sets.ranged_ammo = {}
     sets.ranged_ammo["Magic Accuracy"] = {ranged="Ullr", ammo="Antlion arrow"}
@@ -212,6 +213,7 @@ function get_sets()
     }
 
     sets.midcast.enhancing["Duration"] = set_combine(sets.midcast.enhancing, {
+        main="Colada",
         head="Telchine cap",
         neck="Duelist's torque +2",
         body="Vitiation tabard +3",
@@ -223,6 +225,7 @@ function get_sets()
     })
 
     sets.midcast.enhancing["Duration"].Composure = set_combine(sets.midcast.enhancing, {
+        main="Colada",
         head="Lethargy Chappel +1",
         neck="Duelist's torque +2",
         hands="Atrophy gloves +3",
@@ -406,7 +409,9 @@ function get_sets()
         legs="Nyame flanchard",
         feet="Nyame sollerets"
     }
-        
+    
+    sets.ws["Aeolian Edge"] = sets.ws.magic
+
     sets.ws["Red Lotus Blade"] = sets.ws.magic
     sets.ws["Seraph Blade"] = set_combine(sets.ws.magic,{
         ring2="Shukuyu ring",
