@@ -101,7 +101,7 @@ function get_sets()
     sets.weapons = {}
     sets.weapons["Sword"] = {main = "Crocea Mors", sub="Sacro bulwark"}
     sets.weapons["Magic Accuracy"] = {main = "Crocea Mors", sub="Ammurapi shield"}
-    sets.weapons["Dual Wield"] = {main = "Crocea Mors", sub = "Gleti's knife"}
+    sets.weapons["Dual Wield"] = {main = "Crocea Mors", sub = "Demersal degen +1"}
     sets.weapons["Odin"] = {main = "Aern Dagger", sub = "Qutrub Knife"}
     sets.weapons["Savage"] = {main = "Naegling", sub = "Thibron"}
     sets.weapons["Club"] = {main="Maxentius", sub="Thibron"}
@@ -119,7 +119,7 @@ function get_sets()
         ear2="Sherida Earring",
         body="Malignance tabard",
         hands="Malignance gloves",
-        ring1={name="Chirich ring +1", bag="wardrobe"},
+        ring1={name="Chirich ring +1", bag="wardrobe5"},
         ring2="Hetairoi ring",
         back=Cape.Melee,
         waist="Grunfeld rope",
@@ -134,7 +134,7 @@ function get_sets()
     sets.engaged["High Acc"] = set_combine( sets.engaged, {
         neck="Sanctity Necklace",
         ear2="Telos earring",
-        ring2={name="Chirich ring +1", bag="wardrobe3"},
+        ring2={name="Chirich ring +1", bag="wardrobe5"},
         feet="Nyame sollerets"
     })
 
@@ -484,15 +484,6 @@ function precast(spell)
         end
     end
 end
-
--- enhancing_map = {
---     ['Barfire']='Potency',['Barstone']='',['Barsleep']='', ['Barwater']='',
---     ['Temper']='Potency',['Temper II']='Temper',
---     ['Regen']='Duration',['Regen II']='Duration',
---     ['Haste']='Duration',['Haste II']='Duration'
---     ['Refresh']='Duration',['Refresh II']='Duration',['Refresh III']='Duration',
---     ['Firestorm']='Duration',['Hailstorm']='Duration',['Windstorm']='Duration',['Sandstorm']='Duration',['Thunderstorm']='Duration',['Rainstorm']='Duration',['Aurorastorm']='Duration',['Voidstorm']='Duration',
--- }
 
 function midcast(spell)
     -- print_set(spell)

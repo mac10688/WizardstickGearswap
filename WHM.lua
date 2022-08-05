@@ -1,13 +1,17 @@
-TP_Set_Names = {"None", "Delay Cap" ,"Acc"}
+TP_Set_Names = {"Delay Cap" ,"Acc"}
 TP_Index = 1
 
 Idle_Set_Names = {'MDT', 'PDT', 'Refresh'}
 Idle_Index = 1
 
+WeaponSet = {"None", "Dual Wield"}
+WeaponSetIndex = 1
+
 Kiting = false
 
 send_command('bind f9 gs c equip refresh')
 send_command('bind ^f9 gs c cycle TP set')
+send_command('bind @f9 gs c CycleWeaponSet')
 send_command('bind f10 gs c equip pdt')
 send_command('bind f11 gs c equip mdt')
 send_command('bind f12 gs c refresh set')
@@ -16,6 +20,7 @@ send_command('bind ^k gs c toggle kiting')
 function file_unload()
     send_command('unbind f9')
     send_command('unbind ^f9')
+    send_command('unbind @f9')
     send_command('unbind f10')
     send_command('unbind f11')
     send_command('unbind f12')
@@ -45,6 +50,10 @@ function get_sets()
         legs="Lengo pants",
         feet="Medium's sabots"
     }
+
+    sets.WeaponSet = {}
+    sets.WeaponSet["None"] = {main="Daybreak", sub="Genmei shield"}
+    sets.WeaponSet["Dual Wield"] = {main="Maxentius", sub="Tishtrya"}
     
     -- Buff sets: Gear that needs to be worn to actively enhance a current player buff.
     sets.divine_caress = {hands="Ebers mitts +1"}
@@ -147,7 +156,7 @@ function get_sets()
     sets.engaged = {}
     
     sets.engaged['Delay Cap'] = {
-        ammo="Staunch Tathlum +1",
+        ammo="Crepuscular pebble",
         head="Bunzi's hat",
         body="Ayanmo corazza +2",
         hands="Bunzi's gloves",
@@ -270,7 +279,7 @@ function get_sets()
         hands="Inyanga dastanas +2",
         ring1={name="Stikini Ring +1", bag="wardrobe5"},
         ring2={name="Stikini Ring +1", bag="wardrobe6"},
-        back={ name="Alaunus's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}},
+        back="Fi follet cape +1",
         waist="Embla sash",
         legs="Piety Pantaloons +3",
         feet="Theophany duckbills +3"
@@ -292,6 +301,25 @@ function get_sets()
         legs="Piety Pantaloons +3",
         feet="Ebers duckbills +1"
     })
+
+    sets.midcast.bar_status = set_combine(sets.midcast.enhancing.duration, {
+        neck="Sroda necklace"
+    })
+
+    sets.midcast['Barfira'] = sets.midcast.bar_element
+    sets.midcast['Barblizzara'] = sets.midcast.bar_element
+    sets.midcast['Baraera'] = sets.midcast.bar_element
+    sets.midcast['Barstonra'] = sets.midcast.bar_element
+    sets.midcast['Barthundra'] = sets.midcast.bar_element
+    
+    sets.midcast['Barsleepra'] = sets.midcast.bar_status
+    sets.midcast['Barpoisonra'] = sets.midcast.bar_status
+    sets.midcast['Barparalyzra'] = sets.midcast.bar_status
+    sets.midcast['Barblindra'] = sets.midcast.bar_status
+    sets.midcast['Barsilencera'] = sets.midcast.bar_status
+    sets.midcast['Barpetra'] = sets.midcast.bar_status
+    sets.midcast['Barvira'] = sets.midcast.bar_status
+    sets.midcast['Baramnesra'] = sets.midcast.bar_status
     
     sets.midcast['Auspice'] = set_combine( sets.midcast.enhancing.duration, {
         feet="Ebers duckbills +1"
@@ -301,21 +329,13 @@ function get_sets()
 
     sets.midcast['Haste'] = sets.midcast.enhancing.duration
 
-    sets.midcast.protect = set_combine(sets.conserve_mp, {
-        sub="Ammurapi shield",
-        ring1="Sheltered Ring",
-        feet="Piety duckbills +3",
-        feet="Theophany duckbills +3"
+    sets.midcast.protect = set_combine(sets.midcast.enhancing.duration, {
     })
 
-    sets.midcast.shell = set_combine(sets.conserve_mp, {
-        sub="Ammurapi shield",
-        ring1="Sheltered Ring",
-        legs="Piety Pantaloons +3",
-        feet="Theophany duckbills +3"
+    sets.midcast.shell = set_combine(sets.midcast.enhancing.duration, {
     })
 
-    sets.midcast.regen = set_combine(sets.conserve_mp, {
+    sets.midcast.regen = set_combine(sets.midcast.enhancing.duration, {
         main="Bolelabunga",
         sub="Ammurapi shield",
         head="Inyanga tiara +2",
@@ -341,7 +361,7 @@ function get_sets()
         legs="Chironic hose",
         feet="Theophany duckbills +3"
     }
-    
+
     sets.midcast.banish = {
         main="Gada",
         sub="Ammurapi shield",
@@ -466,13 +486,6 @@ function midcast(spell)
             equip(sets.midcast.stoneskin)
         elseif spell.english:contains('Regen') then
             equip(sets.midcast.regen)
-        elseif spell.english:contains('Bar') then
-            if buffactive['Afflatus Solace'] then
-                local bar_as = set_combine(sets.midcast.bar_element, sets.afflatus_solace)
-                equip(bar_as)
-            else
-                equip(sets.midcast.bar_element)
-            end
         elseif spell.english:contains('Protect') then
             equip(sets.midcast.protect)
         elseif spell.english:contains('Shell') then
@@ -492,11 +505,7 @@ end
 function equip_set(status)
     local set_to_equip = nil
     if status=='Engaged' then
-        if tp_set_mode == 'None' then
-            equip(sets.idle[Idle_Set_Names[Idle_Index]])
-        else
-            equip(sets.engaged[TP_Set_Names[TP_Index]])
-        end
+        equip(sets.engaged[TP_Set_Names[TP_Index]])
     else
         equip(sets.idle[Idle_Set_Names[Idle_Index]])
     end
@@ -545,6 +554,19 @@ function self_command(command)
             send_command('@input /echo ----- Kiting Set Off -----')
         end
         equip_set(player.status)
+    elseif command == "CycleWeaponSet" then
+        WeaponSetIndex = WeaponSetIndex % #WeaponSet + 1
+        local weapon_set = WeaponSet[WeaponSetIndex]
+
+        if weapon_set ~= 'None' then
+            enable('main', 'sub')
+            equip(sets.WeaponSet[weapon_set])
+            disable('main', 'sub')
+        else
+            enable('main', 'sub')
+            equip(sets.WeaponSet[weapon_set])
+        end
+        add_to_chat(122, 'Weapon Set: ' .. weapon_set)
     elseif command == 'refresh set' then
         local needsArts = 
             player.sub_job:lower() == 'sch' and

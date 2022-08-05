@@ -84,6 +84,7 @@ function get_sets()
         ear2="Ishvara earring",
         body="Bihu Justaucorps +3",
         hands="Nyame gauntlets",
+        ring2="Epaminondas's ring",
         waist="Fotia belt",
         feet="Nyame sollerets",
         legs="Nyame flanchard",
@@ -117,15 +118,14 @@ function get_sets()
 
     sets.ws['Extenterator'] = set_combine(sets.ws, {})
     sets.ws['Aeolian Edge'] = set_combine(sets.ws, {
-        ring1="Metamorph ring +1",
-        ring2="Shiva ring +1"
+        ring1="Metamorph ring +1"
     })
     
     sets.ws['Savage Blade'] = set_combine(sets.ws, {
         neck="Bard's charm +2",
         ear2="Regal earring",
         ring1="Rufescent ring",
-        ring2="Metamorph ring +1",
+        ring2="Epaminondas's ring",
         waist="Sailfi belt +1",
         back=savage_blade_cape
     })

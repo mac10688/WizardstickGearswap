@@ -1,4 +1,4 @@
-OffensiveSpecModes = {"acc", "tp", "hybrid"}
+OffensiveSpecModes = {"Treasure Hunter", "tp", "hybrid"}
 OffensiveSpecModeIndex = 1
 
 Kiting = false
@@ -69,20 +69,7 @@ function get_sets()
         }
     )
     
-    -- sets.melee = {
-    --     head="Malignance chapeau",
-    --     neck="Anu torque",
-    --     ear1="Sherida earring",
-    --     ear2="Telos earring",
-    --     body={ name="Herculean Vest", augments={'Accuracy+1','INT+1','"Treasure Hunter"+2','Accuracy+10 Attack+10'}},
-    --     hands="Malignance gloves",
-    --     ring1="Hetairoi ring",
-    --     ring2="Epona's ring",
-    --     waist="Chaac belt",
-    --     back={ name="Toutatis's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Attack+10','Haste+10','Damage taken-5%'}},
-    --     legs={ name="Herculean Trousers", augments={'Attack+19','"Dual Wield"+1','"Treasure Hunter"+2'}},
-    --     feet="Malignance boots"
-    -- }
+    -- sets.melee = 
 
     sets.melee = {
         -- ammo="Yamarang",
@@ -101,7 +88,20 @@ function get_sets()
         back={ name="Toutatis's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Attack+10','Haste+10','Damage taken-5%'}},
     }
 
-    sets.melee['acc'] = sets.melee
+    sets.melee['Treasure Hunter'] = {
+            head="Malignance chapeau",
+            neck="Anu torque",
+            ear1="Sherida earring",
+            ear2="Telos earring",
+            body={ name="Herculean Vest", augments={'Accuracy+1','INT+1','"Treasure Hunter"+2','Accuracy+10 Attack+10'}},
+            hands="Malignance gloves",
+            ring1="Hetairoi ring",
+            ring2="Epona's ring",
+            waist="Chaac belt",
+            back={ name="Toutatis's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Attack+10','Haste+10','Damage taken-5%'}},
+            legs={ name="Herculean Trousers", augments={'Attack+19','"Dual Wield"+1','"Treasure Hunter"+2'}},
+            feet="Malignance boots"
+        }
     sets.melee['tp'] = sets.melee
     sets.melee['hybrid'] = sets.melee
     

@@ -382,10 +382,14 @@ function get_sets()
     sets.ws["Heavy Swing"] = physical_int_ws
     
     -- STR 40% INT 40% | Magical
-    sets.ws["Rock Crusher"] = magical_int_ws
+    sets.ws["Rock Crusher"] = set_combine(magical_int_ws, {
+        neck="Quanpur necklace"
+    })
     
     -- STR 40% INT 40% | Magical
-    sets.ws["Earth Crusher"] = magical_int_ws
+    sets.ws["Earth Crusher"] = set_combine(magical_int_ws, {
+        neck="Quanpur necklace"
+    })
     
     -- STR 40% MND 40% | Magical
     sets.ws["Starburst"] = dark_magic_int_ws

@@ -265,7 +265,7 @@ function get_sets()
     --Total MB: 60
     sets.midcast.elemental["Magic Burst"] = set_combine(sets.midcast.elemental["Magic Attack Bonus"], {
         main="Bunzi's rod",
-        sub="Culminus",
+        sub="Ammurapi shield",
         head="Agwu's cap", --MB2: 4
         neck="Argute stole +2", --MB: 7
         body="Agwu's robe", --MB: 10
@@ -293,6 +293,7 @@ function get_sets()
 
     -- Make sure you have a non weather obi in this set. Helix get bonus naturally no need Obi.	
     sets.midcast.helix = set_combine(sets.midcast.elemental["Magic Burst"], {
+        sub="Culminus",
         ammo="Ghastly tathlum +1",
         waist="Acuity belt +1"
     })
@@ -412,7 +413,6 @@ function get_sets()
     })
 
     sets.midcast.enhancing = set_combine(sets.midcast.enhancement_duration, {
-        head="Arbatel bonnet +1",
         neck="Incanter's torque",
         ear1="Andoaa earring",
         ear2="Mimir earring",
