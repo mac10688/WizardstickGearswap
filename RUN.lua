@@ -122,13 +122,13 @@ function get_sets()
         ring2={name="Moonlight ring", bag="wardrobe6"}, --meva: 9
         back=dt_cape, --meva: 20
         waist="Engraved belt",
-        legs="Nyame flanchard", --mdb: 6 meva: 99 pdt: 5 haste: 6 status: 10
+        legs="Erilaz leg guards +2", --mdb: 6 meva: 99 pdt: 5 haste: 6 status: 10
         feet="Turms leggings +1" --mdb: 5 meva: 107 pdt: 5 rele: 25 haste: 4
     }
 
     sets.tank["resist-status"] = set_combine( sets.tank["mdt"], {
         back=status_ailment_cape,
-        hands="Erilaz gauntlets +1"
+        hands="Erilaz gauntlets +2"
     })
 
     sets.tank["kb"] = set_combine( sets.tank["mdt"], {
@@ -149,7 +149,7 @@ function get_sets()
         hands="Kurys gloves", -- 9 enmity
         ring2="Vengeful ring", --3 enmity
         back=dt_cape, -- 10 enmity
-        legs="Erilaz leg guards +1", --11 enmity
+        legs="Erilaz leg guards +2", --11 enmity
         feet="Ahosi leggings" --7 enmity
     })
 
@@ -194,7 +194,7 @@ function get_sets()
     sets.ja['Elemental Sforzo'] = set_combine(sets.enmity, {body="Futhark Coat +3"})
     sets.ja['Swordplay'] = set_combine(sets.enmity, {hands="Futhark Mitons +3"})
     sets.embolden = {back="Evasionist's cape"}
-    sets.ja['Vivacious Pulse'] = set_combine(sets.enmity, {head="Erilaz galea +1"})
+    sets.ja['Vivacious Pulse'] = set_combine(sets.enmity, {head="Erilaz galea +2"})
     sets.ja['One for All'] = set_combine(sets.enmity, {})
 
     --war sub
@@ -236,8 +236,8 @@ function get_sets()
         ring1="Eihwaz ring",
         back=dt_cape,
         waist="Audumbla sash",
-        legs="Erilaz leg guards +1",
-        feet="Ahosi leggings"
+        legs="Erilaz leg guards +2",
+        feet="Erilaz greaves +2"
     })
 
     sets.midcast.SIRD = set_combine(sets.tank["pdt"], {
@@ -273,7 +273,7 @@ function get_sets()
 
     --Enhancing magic duration: 35%
     sets.midcast.enhancing = set_combine(sets.midcast.SIRD, {
-        head="Erilaz galea +1", --Enhancing magic effect duration +15%
+        head="Erilaz galea +2", --Enhancing magic effect duration +15%
         neck="Incanter's torque",
         ear1="Andoaa earring",
         ear2="Mimir earring",

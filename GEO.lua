@@ -1,17 +1,22 @@
-Nuke_Sets = {"magic-atk-bonus", "magic-accuracy" ,"magic-burst"}
+Nuke_Sets = {"magic-atk-bonus", "magic-accuracy" ,"magic-burst", "Occult Acumen"}
 Nuke_Set_Index = 3
+
+WeaponSetIndex = 1
+WeaponSet = {"None", "Idris", "Marin" }
 
 Luopan_Idle_On = true
 
 Kiting = false
 
 send_command('bind f9 gs c cycle nuke_sets')
+send_command('bind ^f9 gs c CycleWeaponSet')
 send_command('bind f10 gs c toggle loupon_idle_On')
 send_command('bind f12 gs c refresh gear')
 send_command('bind ^k gs c toggle kiting')
 
 function file_unload()
     send_command('unbind f9')
+    send_command('unbind ^f9')
     send_command('unbind f10')
     send_command('unbind f12')
     send_command('unbind ^k')
@@ -34,10 +39,15 @@ function get_sets()
     sets.ja['Bolster'] = {body="Bagua tunic +3"}
     sets.ja['Life cycle'] = {body="Geomancy tunic +3", back="Nantosuelta's cape"}
     sets.ja['Full Circle'] = {
-        head="Azimuth hood +1",
+        head="Azimuth hood +2",
         hands="Bagua mitaines +3"
     }
     sets.ja['Concentric Pulse'] = { head="Bagua galero +3" }
+
+    sets.WeaponSet = {}
+    sets.WeaponSet["None"] = {main="Idris", sub="Genmei shield"}
+    sets.WeaponSet["Idris"] = {main="Idris", sub="Genmei shield"}
+    sets.WeaponSet["Marin"] = {main="Marin staff +1", sub="Enki strap"}
 
     sets.fc = {
         head="Merlinic hood",
@@ -86,12 +96,12 @@ function get_sets()
     sets.midcast.geomancy.indi = set_combine(sets.midcast.geomancy, {
         main="Idris",
         range="Dunna",
-        head="Azimuth hood +1",
+        head="Azimuth hood +2",
         body="Bagua tunic +3",
         hands="Geomancy mitaines +3",
         back="Lifestream cape",
         legs="Bagua pants +3",
-        feet="Azimuth gaiters +1"
+        feet="Azimuth gaiters +2"
     })
 
     --50% cure
@@ -161,6 +171,21 @@ function get_sets()
         back={ name="Nantosuelta's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}}
     }
 
+    sets.midcast.elemental["Occult Acumen"] = set_combine(sets.midcast.elemental["Magic Attack Bonus"], {
+        ammo="Seraphic ampulla",
+        head="Mallquis chapeau +2",
+        neck="Combatant's torque",
+        ear1="Dedition earring",
+        ear2="Crepuscular earring",
+        hands={ name="Merlinic Dastanas", augments={'"Mag.Atk.Bns."+23','"Occult Acumen"+10','Mag. Acc.+3'}},
+        ring1={name="Chirich Ring +1", bag="wardrobe5"},
+        ring2={name="Chirich Ring +1", bag="wardrobe6"},
+        back={name="Taranus's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Store TP"+10','Spell interruption rate down-10%'}},
+        waist="Oneiros rope",
+        legs="Perdition slops",
+        feet={ name="Merlinic Crackows", augments={'"Occult Acumen"+11','Mag. Acc.+15'}}
+    })
+
     --MB: 44
     --MB2: 35
     --Total MB: 75
@@ -222,19 +247,19 @@ function get_sets()
         ear1="Etiolation earring",
         ear2="Hearty earring",
         body="Shamash robe",
-        hands="Agwu's gages",
+        hands="Azimuth gloves +2",
         ring1="Defending Ring",
         ring2="Vengeful ring",
         back={ name="Nantosuelta's Cape", augments={'MND+20','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Pet: "Regen"+10','Pet: "Regen"+5'}},
         waist="Slipor sash",
         legs="Geomancy pants +3",
-        feet="Azimuth gaiters +1"
+        feet="Azimuth gaiters +2"
     }
 
     sets.idle.luopan = set_combine(sets.idle, {
         main="Idris",
         range="Dunna",
-        head="Azimuth hood +1",
+        head="Azimuth hood +2",
         neck="Bagua charm +2",
         hands="Geomancy mitaines +3",
         back={ name="Nantosuelta's Cape", augments={'MND+20','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Pet: "Regen"+10','Pet: "Regen"+5'}},
@@ -280,6 +305,11 @@ function get_sets()
         back={ name="Nantosuelta's Cape", augments={'MND+20','Accuracy+20 Attack+20','MND+10','Weapon skill damage +10%','Damage taken-5%'}}
     }
 
+    sets.ws.magic = set_combine(sets.ws, {
+        ring2="Metamorph ring +1",
+        waist="Orpheus's sash"
+    })
+
     sets.ws['Shining Strike'] = set_combine(sets.ws, {})
     sets.ws['Seraph Strike'] = set_combine(sets.ws, {})
     sets.ws['Brainshaker'] = set_combine(sets.ws, {})
@@ -293,6 +323,8 @@ function get_sets()
     sets.ws['Flash Nova'] = set_combine(sets.ws, {})
     sets.ws['Realmrazer'] = set_combine(sets.ws, {waist="Fotia belt"})
     sets.ws['Exudation'] = set_combine(sets.ws, {})
+
+    sets.ws['Earth Crusher'] = set_combine(sets.ws.magic, {neck="Quanpor Necklace"})
 
 
     sets.kiting = {
@@ -345,7 +377,7 @@ function midcast(spell)
     elseif spell.skill == "Enfeebling Magic" then
         equip(sets.midcast.enfeeble)
     elseif spell.skill == "Elemental Magic" then
-        -- local nuke_set = Nuke_Sets[Nuke_Set_Index]
+         local nuke_set = Nuke_Sets[Nuke_Set_Index]
         -- if world.day_element == spell.element or world.weather_element == spell.element then
             -- equip( set_combine(sets.midcast.elemental[nuke_set], {waist = "Hachirin-no-Obi"}))
         -- else
@@ -365,6 +397,8 @@ end
 
 function equip_set(status)
     if status == 'Engaged' then
+        -- local weapon_set = WeaponSet[WeaponSetIndex]
+        -- equip(sets.WeaponSet[weapon_set])
         equip(sets.engaged)
     elseif pet.isvalid and Luopan_Idle_On then
         equip(sets.idle.luopan)
@@ -418,6 +452,20 @@ function self_command(command)
             send_command('@input /echo ----- Loupon Idle Set Off -----')
         end
         equip_set(player.status)
+    elseif command == "CycleWeaponSet" then
+        WeaponSetIndex = WeaponSetIndex % #WeaponSet + 1
+        local weapon_set = WeaponSet[WeaponSetIndex]
+        equip(sets.WeaponSet[weapon_set])
+
+        if weapon_set ~= 'None' then
+            enable('main', 'sub')
+            equip(sets.WeaponSet[weapon_set])
+            disable('main', 'sub')
+        else
+            enable('main', 'sub')
+            equip(sets.WeaponSet[weapon_set])
+        end
+        add_to_chat(122, 'Weapon Set: ' .. weapon_set)
     elseif command == "refresh gear" then
         lockstyle()
         equip_set(player.status)

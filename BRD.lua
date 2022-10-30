@@ -4,10 +4,10 @@ LullabySetIndex = 1
 LullabySet = {"Accuracy", "Duration"}
 
 EngageModeIndex = 1
-EngageModeSet = {"Hybrid", "TP"}
+EngageModeSet = {"Hybrid", "TP", "Accuracy"}
 
 WeaponSetIndex = 3
-WeaponSet = {"Savage", "Savage II", "Mordent", "Mage", "Mage II", "Mage III"}
+WeaponSet = {"Savage", "Savage II", "Savage Accuracy", "Mordent", "Mage", "Mage II", "Mage III"}
 
 Kiting = false
 
@@ -45,6 +45,8 @@ function get_sets()
     sets.WeaponSet = {}
     sets.WeaponSet["Savage"] = {main="Naegling", sub="Centovente"}
     sets.WeaponSet["Savage II"] = {main="Naegling", sub="Genmei shield"}
+    sets.WeaponSet["Savage Accuracy"] = {main="Naegling", sub="Gleti's knife"}
+    
     sets.WeaponSet["Mordent"] = {main="Carnwenhan", sub="Centovente"}
     sets.WeaponSet["Mage"] = {main="Carnwenhan", sub="Ammurapi shield"}
     sets.WeaponSet["Mage II"] = {main="Carnwenhan", sub="Genmei shield"}
@@ -69,6 +71,10 @@ function get_sets()
     sets.engaged["Hybrid"] = set_combine(sets.engaged["TP"], {
         ring1={name="Moonlight ring", bag="wardrobe5"},
         ring2={name="Moonlight ring", bag="wardrobe6"}
+    })
+
+    sets.engaged["Accuracy"] = set_combine(sets.engaged["TP"], {
+        hands="Gazu bracelet +1"
     })
 
     sets.ja = {}
@@ -136,7 +142,7 @@ function get_sets()
         head="Bunzi's hat",
         neck="Bard's charm +2",
         ear1="Etiolation earring",
-        ear2="Hearty earring",
+        ear2="Fili earring +1",
         body="Bunzi's robe",
         hands="Bunzi's gloves",
         ring1="Moonlight ring",
@@ -163,7 +169,7 @@ function get_sets()
     }
 
     sets.precast.song = {
-        head="Fili calot +1",
+        head="Fili calot +2",
         neck="Voltsurge torque",
         ear1="Etiolation earring",
         ear2="Enchanter's earring +1",
@@ -183,11 +189,11 @@ function get_sets()
     sets.midcast.song = {}
     sets.midcast.song.buff = {
         ranged="Gjallarhorn",
-        head="Fili calot +1",
+        head="Fili calot +2",
         neck="Moonbow whistle +1",
         ear1="Etiolation earring",
         ear2="Genmei earring",
-        body="Fili hongreline +1",
+        body="Fili hongreline +2",
         hands="Bewegt cuffs",
         ring1="Moonlight ring",
         ring2="Defending ring",
@@ -202,21 +208,21 @@ function get_sets()
         head="Brioso roundlet +3",
         neck="Moonbow Whistle +1",
         ear1="Regal earring",
-        ear2="Enchanter's earring +1",
+        ear2="Fili earring +1",
         body="Brioso justaucorps +3",
-        hands="Inyanga Dastanas +2",
+        hands="Fili manchettes +2",
         ring1={name="Stikini Ring +1", bag="wardrobe5"},
         ring2={name="Stikini Ring +1", bag="wardrobe6"},
         back=debuff_cape,
-        waist="Luminary sash",
+        waist="Obstinate sash",
         legs="Brioso cannions +3",
         feet="Brioso slippers +3"
     }
 
-    sets.midcast.song.march = set_combine(sets.midcast.song.buff, {hands="Fili manchettes +1"})
+    sets.midcast.song.march = set_combine(sets.midcast.song.buff, {hands="Fili manchettes +2"})
     sets.midcast.song.HonorMarch = set_combine(sets.midcast.song.march, {ranged="Marsyas"})
     sets.midcast.song.ballad = sets.midcast.song.buff --set_combine(sets.midcast.song.buff, {legs="Fili rhingrave +1"})
-    sets.midcast.song.scherzo = set_combine(sets.midcast.song.buff, {feet="Fili cothurnes +1"})
+    sets.midcast.song.scherzo = set_combine(sets.midcast.song.buff, {feet="Fili cothurnes +2"})
     sets.midcast.song.paeon = set_combine(sets.midcast.song.buff, {head="Brioso roundlet +3"})
     
     sets.midcast.song.etude = set_combine(sets.midcast.song.buff, {head="Mousai turban +1"})
@@ -256,11 +262,11 @@ function get_sets()
     sets.ExtraSongs = set_combine(sets.precast.song, {
         ranged="Daurdabla",
         hands="Bewegt cuffs",
-        legs="Fili rhingrave +1"
+        legs="Fili rhingrave +2"
     })
 
     sets.kiting = {
-        feet='Fili cothurnes +1'
+        feet='Fili cothurnes +2'
     }
 
     coroutine.schedule(lockstyle,8)

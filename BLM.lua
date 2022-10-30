@@ -1,5 +1,5 @@
 NukeTypeIndex = 1
-NukeSet = {"Magic Attack Bonus","Magic Burst","Occult Acumen"}
+NukeSet = {"Magic Attack Bonus","Magic Burst","Occult Acumen","Magic Crititcal Hit"}
 
 IdleSetIndex = 1
 IdleSet = {"Refresh", "DT", "Death"}
@@ -147,7 +147,7 @@ function get_sets()
     sets.precast.ja = {}
     sets.precast.ja['Manafont'] = { body = "Archmage's coat +3"}
     sets.precast.ja['Elemental Seal'] = {}
-    sets.precast.ja['Mana Wall'] = { feet = "Wicce sabots +1" }
+    sets.precast.ja['Mana Wall'] = { feet = "Wicce sabots +2" }
     sets.precast.ja['Enmity Douse'] = {}
     sets.precast.ja['Manawell'] = {}
     sets.precast.ja['Subtle Sorcery'] = {}
@@ -170,9 +170,9 @@ function get_sets()
     
 
     sets.precast.fc.elemental = set_combine(sets.precast.fc, {
-        head="Wicce petasos +1",
+        head="Wicce petasos +2",
         ear2="Barkarole earring",
-        body="Wicce Coat +1",
+        body="Wicce coat +2",
         ring1="Mallquis Ring",
         legs="Mallquis trews +2",
         feet="Spaekona's sabots +3"
@@ -197,7 +197,7 @@ function get_sets()
     sets.midcast.elemental["Magic Attack Bonus"] = {
         ammo="Pemphredo tathlum",
         head="Archmage's petasos +3",
-        body="Archmage's coat +3",
+        body="Wicce coat +2",
         hands="Archmage's gloves +3",
         legs="Archmage's tonban +3",
         feet="Archmage's sabots +3",
@@ -209,6 +209,11 @@ function get_sets()
         right_ring="Freke ring",        
         back=magic_atk_cape,
     }
+    
+    sets.midcast.elemental["Magic Crititcal Hit"] = set_combine(sets.midcast.elemental["Magic Attack Bonus"], {
+        ammo="Sroda tathlum",
+        hands="Wicce gloves +2"
+    })
 
     sets.midcast.elemental["Occult Acumen"] = set_combine(sets.midcast.elemental["Magic Attack Bonus"], {
         ammo="Seraphic ampulla",
@@ -453,7 +458,7 @@ function get_sets()
         ear1="Etiolation earring",
         ear2="Hearty earring",
         body="Shamash robe",
-        hands="Agwu's gages",
+        hands="Wicce gloves +2",
         ring1="Vengeful ring",
         ring2="Defending ring",
         back=idle_cape,

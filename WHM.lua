@@ -56,8 +56,8 @@ function get_sets()
     sets.WeaponSet["Dual Wield"] = {main="Maxentius", sub="Tishtrya"}
     
     -- Buff sets: Gear that needs to be worn to actively enhance a current player buff.
-    sets.divine_caress = {hands="Ebers mitts +1"}
-    sets.afflatus_solace = {body="Ebers Bliaut +1"}
+    sets.divine_caress = {hands="Ebers mitts +2"}
+    sets.afflatus_solace = {body="Ebers Bliaut +2"}
 
 	--- Sets for Enhanced Job Abilities ---
 	
@@ -89,7 +89,7 @@ function get_sets()
         legs="Lengo pants", --5%
     }
 	
-    sets.fc.heal = set_combine(sets.fc, {main="Yagrush", legs="ebers pantaloons +1"})
+    sets.fc.heal = set_combine(sets.fc, {main="Yagrush", legs="Ebers pantaloons +2"})
     
     sets.fc.cure = set_combine(sets.fc, {
         -- sub="Sors shield",
@@ -232,10 +232,10 @@ function get_sets()
         main="Yagrush",
         head="Vanya hood",
         neck="Cleric's torque +2",
-        body="Ebers bliaut +1",
+        body="Ebers bliaut +2",
         back={ name="Alaunus's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}},
         waist="Austerity belt +1",
-        legs="ebers pantaloons +1"
+        legs="Ebers pantaloons +2"
     }
 
     sets.midcast.cursna = set_combine( sets.midcast.status_removal, {
@@ -262,7 +262,7 @@ function get_sets()
         ring2="Prolix ring",
         back={ name="Alaunus's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}},
         waist="Austerity belt +1",
-        legs="Ebers pantaloons +1",
+        legs="Ebers pantaloons +2",
         feet="Kaykaus boots" -- 10%
     }
 
@@ -297,9 +297,9 @@ function get_sets()
     sets.midcast.bar_element = set_combine( sets.midcast.enhancing, {
         main="Beneficus",
         head="Ebers cap +1",
-        body="Ebers bliaut +1",
+        body="Ebers bliaut +2",
         legs="Piety Pantaloons +3",
-        feet="Ebers duckbills +1"
+        feet="Ebers duckbills +2"
     })
 
     sets.midcast.bar_status = set_combine(sets.midcast.enhancing.duration, {
@@ -322,7 +322,7 @@ function get_sets()
     sets.midcast['Baramnesra'] = sets.midcast.bar_status
     
     sets.midcast['Auspice'] = set_combine( sets.midcast.enhancing.duration, {
-        feet="Ebers duckbills +1"
+        feet="Ebers duckbills +2"
     })
 
     sets.midcast['Aurorastorm'] = sets.midcast.enhancing.duration
@@ -340,7 +340,7 @@ function get_sets()
         sub="Ammurapi shield",
         head="Inyanga tiara +2",
         body="Piety bliaut +3",
-        hands="Ebers mitts +1",
+        hands="Ebers mitts +2",
         legs="Theophany pantaloons +3",
         feet="Theophany duckbills +3"
     })
@@ -357,7 +357,7 @@ function get_sets()
         ring1={name="Stikini Ring +1", bag="wardrobe5"},
         ring2="Kishar ring",
         back={ name="Alaunus's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}},
-        waist="Luminary sash",
+        waist="Obstinate sash",
         legs="Chironic hose",
         feet="Theophany duckbills +3"
     }

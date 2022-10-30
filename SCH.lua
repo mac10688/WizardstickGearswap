@@ -156,13 +156,13 @@ function get_sets()
     -- Fill up following with your avaible pieces.
     sets.buff = {}
     sets.buff['Rapture'] = {head="Arbatel bonnet +1"}
-    sets.buff['Perpetuance'] = {hands="Arbatel Bracers +1"}
-    sets.buff['Immanence'] = {hands="Arbatel Bracers +1"}
+    sets.buff['Perpetuance'] = {hands="Arbatel Bracers +2"}
+    sets.buff['Immanence'] = {hands="Arbatel Bracers +2"}
     sets.buff['Penury'] = {legs="Arbatel Pants +1"}
     sets.buff['Parsimony'] = {legs="Arbatel Pants +1"}
     sets.buff['Celerity'] = {feet="Pedagogy Loafers +3"}
     sets.buff['Alacrity'] = {feet="Pedagogy Loafers +3"}
-    -- sets.buff['Klimaform'] = {feet="Arbatel Loafers +1"}
+    sets.buff['Klimaform'] = {feet="Arbatel loafers +2"}
     -- Ebulience set empy now as we get better damage out of a good Merlinic head
     sets.buff['Ebullience'] = {} -- I left it there still if it becomes needed so the SCH.lua file won't need modification should you want to use this set
     sets.buff['Light Arts'] = {legs="Academic's pants +3"}
@@ -271,8 +271,8 @@ function get_sets()
         body="Agwu's robe", --MB: 10
         hands="Agwu's gages", --MB2: 5
         legs="Agwu's slops", --MB: 9
-        -- feet="Arbatel loafers +1",
-        feet="Agwu's pigaches", --MB: 6
+        feet="Arbatel loafers +2",
+        -- feet="Agwu's pigaches", --MB: 6
         ring2="Mujin band" --MB2: 5
     })
 
@@ -318,7 +318,7 @@ function get_sets()
         ring1="Kishar ring",
         ring2={name="Stikini Ring +1", bag="wardrobe6"},
         back=nuke_cape,
-        waist="Luminary sash",
+        waist="Obstinate sash",
         legs="Chironic hose",
         feet="Academic's loafers +3"
     })
@@ -387,7 +387,7 @@ function get_sets()
     })
 
     sets.midcast.regen = set_combine(sets.midcast.enhancement_duration, {
-        head="Arbatel bonnet +1"
+        head="Arbatel bonnet +2"
     })
 
     sets.midcast.drain_aspir = set_combine(sets.precast.fc, {

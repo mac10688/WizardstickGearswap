@@ -95,7 +95,7 @@ function get_sets()
 
     sets.ja = {}
     sets.ja["Convert"] = {}
-    sets.ja["Saboteur"] = {hands="Lethargy gantherots +1"}
+    sets.ja["Saboteur"] = {hands="Lethargy gantherots +2"}
     sets.ja["Chainspell"] = {body="Vitiation tabard +3"}
 
     sets.weapons = {}
@@ -200,8 +200,7 @@ function get_sets()
     sets.midcast.enhancing = {
         head="Befouled Crown",
         neck="Duelist's torque +2",
-        ear1="Andoaa earring",
-        ear2="Mimir earring",
+        ear1="Mimir earring",
         body="Vitiation Tabard +3",
         hands="Vitiation gloves +3",
         ring1={name="Stikini Ring +1", bag="wardrobe5"},
@@ -215,25 +214,27 @@ function get_sets()
     sets.midcast.enhancing["Duration"] = set_combine(sets.midcast.enhancing, {
         main="Colada",
         head="Telchine cap",
+        ear2="Lethargy earring +1",
         neck="Duelist's torque +2",
         body="Vitiation tabard +3",
         hands="Atrophy gloves +3",
         waist="Embla sash",
         back="Ghostfyre cape",
         legs="Telchine braconi",
-        feet="Lethargy houseaux +1"
+        feet="Lethargy houseaux +2"
     })
 
     sets.midcast.enhancing["Duration"].Composure = set_combine(sets.midcast.enhancing, {
         main="Colada",
-        head="Lethargy Chappel +1",
+        head="Lethargy Chappel +2",
         neck="Duelist's torque +2",
+        ear2="Lethargy earring +1",
         hands="Atrophy gloves +3",
-        body="Lethargy sayon +1",
+        body="Lethargy sayon +2",
         waist="Embla sash",
         back="Ghostfyre cape",
-        legs="Lethargy fuseau +1",
-        feet="Lethargy houseaux +1"
+        legs="Lethargy fuseau +2",
+        feet="Lethargy houseaux +2"
     })
 
     sets.midcast.enhancing.spikes = set_combine(sets.midcast.enhancing, {
@@ -246,7 +247,7 @@ function get_sets()
 
     sets.midcast.enhancing.refresh = set_combine(sets.midcast.enhancing["Duration"], {
         body="Atrophy tabard +3",
-        legs="Lethargy fuseau +1"
+        legs="Lethargy fuseau +2"
     })
 
     sets.midcast.enhancing.regen = sets.midcast.enhancing["Duration"]
@@ -267,11 +268,11 @@ function get_sets()
         neck="Duelist's torque +2",
         ear1="Regal earring",
         ear2="Malignance earring",
-        body="Atrophy Tabard +3",
-        hands="Kaykaus cuffs +1",
+        body="Lethargy sayon +2",
+        hands="Lethargy gantherots +2",
         ring1={name="Stikini Ring +1", bag="wardrobe5"},
         ring2={name="Stikini Ring +1", bag="wardrobe6"},
-        waist="Luminary Sash",
+        waist="Obstinate Sash",
         back=Cape.Int,
         legs={ name="Chironic Hose", augments={'Mag. Acc.+30','"Cure" potency +7%','INT+12','"Mag.Atk.Bns."+8'}},
         feet="Vitiation Boots +3"
@@ -287,14 +288,12 @@ function get_sets()
     })
 
     sets.midcast.enfeebling.mnd["Potency"] = set_combine(sets.midcast.enfeebling.mnd, {
-        body="Lethargy sayon +1"
+        body="Lethargy sayon +2"
     })
 
     sets.midcast.enfeebling.mnd["Duration"] = set_combine(sets.midcast.enfeebling.mnd, {
         ear2="Snotra Earring",
-        ring2="Kishar ring",
-        legs="Lethargy Fuseau +1", --22 MACC, 10% Duration set bonus--
-        feet="Lethargy Houseaux +1" --10% Duration set bonus--
+        ring2="Kishar ring"
     })
 
     sets.midcast.enfeebling.int = set_combine(sets.midcast.enfeebling, {
@@ -307,14 +306,12 @@ function get_sets()
     })
 
     sets.midcast.enfeebling.int["Potency"] = set_combine(sets.midcast.enfeebling.int, {
-        body="Lethargy sayon +1"        
+        body="Lethargy sayon +2"        
     })
 
     sets.midcast.enfeebling.int["Duration"] = set_combine(sets.midcast.enfeebling.int, {
         ear2="Snotra Earring",
-        ring2="Kishar ring",
-        legs="Lethargy Fuseau +1", --22 MACC, 10% Duration set bonus--
-        feet="Lethargy Houseaux +1" --10% Duration set bonus--
+        ring2="Kishar ring"
     })
 
     sets.midcast["Stun"] = sets.midcast.enfeebling.int["Magic Accuracy"]
