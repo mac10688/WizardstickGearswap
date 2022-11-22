@@ -155,7 +155,7 @@ function get_sets()
     -- Gear that needs to be worn to **actively** enhance a current player buff.
     -- Fill up following with your avaible pieces.
     sets.buff = {}
-    sets.buff['Rapture'] = {head="Arbatel bonnet +1"}
+    sets.buff['Rapture'] = {head="Arbatel bonnet +3"}
     sets.buff['Perpetuance'] = {hands="Arbatel Bracers +2"}
     sets.buff['Immanence'] = {hands="Arbatel Bracers +2"}
     sets.buff['Penury'] = {legs="Arbatel Pants +1"}
@@ -387,7 +387,7 @@ function get_sets()
     })
 
     sets.midcast.regen = set_combine(sets.midcast.enhancement_duration, {
-        head="Arbatel bonnet +2"
+        head="Arbatel bonnet +3"
     })
 
     sets.midcast.drain_aspir = set_combine(sets.precast.fc, {
