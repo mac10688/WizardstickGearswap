@@ -158,13 +158,13 @@ function get_sets()
     sets.buff['Rapture'] = {head="Arbatel bonnet +3"}
     sets.buff['Perpetuance'] = {hands="Arbatel Bracers +2"}
     sets.buff['Immanence'] = {hands="Arbatel Bracers +2"}
-    sets.buff['Penury'] = {legs="Arbatel Pants +1"}
-    sets.buff['Parsimony'] = {legs="Arbatel Pants +1"}
+    sets.buff['Penury'] = {legs="Arbatel Pants +3"}
+    sets.buff['Parsimony'] = {legs="Arbatel Pants +3"}
     sets.buff['Celerity'] = {feet="Pedagogy Loafers +3"}
     sets.buff['Alacrity'] = {feet="Pedagogy Loafers +3"}
     sets.buff['Klimaform'] = {feet="Arbatel loafers +2"}
     -- Ebulience set empy now as we get better damage out of a good Merlinic head
-    sets.buff['Ebullience'] = {} -- I left it there still if it becomes needed so the SCH.lua file won't need modification should you want to use this set
+    sets.buff['Ebullience'] = {head="Arbatel bonnet +3"} -- I left it there still if it becomes needed so the SCH.lua file won't need modification should you want to use this set
     sets.buff['Light Arts'] = {legs="Academic's pants +3"}
 
 
