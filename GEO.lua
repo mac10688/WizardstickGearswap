@@ -218,13 +218,13 @@ function get_sets()
 
     sets.fc['Impact'] = set_combine(sets.fc, {
         head=empty,
-        body='Twilight cloak'
+        body='Crepuscular cloak'
     })
 
     sets.midcast['Impact'] = set_combine(sets.midcast.elemental["magic-atk-bonus"], {
         head=empty,
         ring1="Archon ring",
-        body='Twilight cloak'
+        body='Crepuscular cloak'
     })
 
     sets.midcast.enhancing = set_combine(sets.midcast.conserve_mp, {

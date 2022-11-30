@@ -2,7 +2,7 @@ NukeTypeIndex = 2
 NukeSet = {"Magic Attack Bonus","Magic Burst", "Vagary","Occult Acumen"}
 
 IdleSetIndex = 1
-IdleSet = {"Refresh", "PDT", "MDT"}
+IdleSet = {"Refresh", "DT"}
 
 WeaponSetIndex = 1
 WeaponSet = {"None", "Tupsimati", "Musa", "Bunzi" }
@@ -156,8 +156,8 @@ function get_sets()
     -- Fill up following with your avaible pieces.
     sets.buff = {}
     sets.buff['Rapture'] = {head="Arbatel bonnet +3"}
-    sets.buff['Perpetuance'] = {hands="Arbatel Bracers +2"}
-    sets.buff['Immanence'] = {hands="Arbatel Bracers +2"}
+    sets.buff['Perpetuance'] = {hands="Arbatel Bracers +3"}
+    sets.buff['Immanence'] = {hands="Arbatel Bracers +3"}
     sets.buff['Penury'] = {legs="Arbatel Pants +3"}
     sets.buff['Parsimony'] = {legs="Arbatel Pants +3"}
     sets.buff['Celerity'] = {feet="Pedagogy Loafers +3"}
@@ -367,13 +367,13 @@ function get_sets()
 
     sets.precast['Impact'] = set_combine(sets.precast.fc, {
         head=empty,
-        body='Twilight cloak'
+        body='Crepuscular cloak'
     })
 
     sets.midcast['Impact'] = set_combine(sets.midcast.elemental["Magic Attack Bonus"], {
         head=empty,
         ring2="Archon ring",
-        body='Twilight cloak'
+        body='Crepuscular cloak'
     })
 
     sets.precast['Dispelga'] = set_combine(sets.precast.fc, {
@@ -549,23 +549,23 @@ function get_sets()
         back=idle_cape,
         waist="Slipor sash",
         legs="Assiduity pants +1",
-        feet="Academic's loafers +3"
+        feet="Arbatel loafers +2"
     }
 
     sets.idle["Refresh"] = set_combine(sets.idle, {
         ammo="Homiliary",
+        head="Befouled crown",
         ring1={name="Stikini Ring +1", bag="wardrobe5"},
         ring2={name="Stikini Ring +1", bag="wardrobe6"},
         body="Shamash robe",
         legs=chironic_refresh_legs
     })
 
-    sets.idle["PDT"] = set_combine(sets.idle, {
-        right_ring="Vengeful ring"
-    })
-
-    sets.idle["MDT"] = set_combine(sets.idle, {
-        right_ring="Vengeful ring"
+    sets.idle["DT"] = set_combine(sets.idle, {
+        head="Arbatel bonnet +3",
+        body="Arbatel gown +2",
+        right_ring="Vengeful ring",
+        legs="Arbatel pants +3"
     })
 
     sets.kiting = {

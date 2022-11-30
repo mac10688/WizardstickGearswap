@@ -232,7 +232,7 @@ function get_sets()
 
     sets.precast['Impact'] = set_combine(sets.precast.fc, {
         head=empty,
-        body='Twilight cloak'
+        body='Crepuscular cloak'
     })
 
     local deathSet = set_combine(sets.midcast.elemental["Magic Attack Bonus"], {
@@ -302,7 +302,7 @@ function get_sets()
     sets.midcast['Impact'] = set_combine(sets.midcast.enfeebling, {
         head=empty,
         ring2="Archon ring",
-        body='Twilight cloak'
+        body='Crepuscular cloak'
     })
 
     sets.midcast.cure = set_combine(sets.midcast.fast_recast, {

@@ -358,12 +358,12 @@ function get_sets()
 
     sets.fc['Impact'] = set_combine(sets.fc, {
         head=empty,
-        body='Twilight cloak'
+        body='Crepuscular cloak'
     })
 
     sets.midcast['Impact'] = set_combine(sets.midcast.elemental, {
         head=empty,
-        body='Twilight cloak',
+        body='Crepuscular cloak',
         ring2="Archon ring"
     })
 
