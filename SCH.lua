@@ -319,7 +319,7 @@ function get_sets()
         ring2={name="Stikini Ring +1", bag="wardrobe6"},
         back=nuke_cape,
         waist="Obstinate sash",
-        legs="Chironic hose",
+        legs="Arbatel pants +3",
         feet="Academic's loafers +3"
     })
 
@@ -370,7 +370,7 @@ function get_sets()
         body='Crepuscular cloak'
     })
 
-    sets.midcast['Impact'] = set_combine(sets.midcast.elemental["Magic Attack Bonus"], {
+    sets.midcast['Impact'] = set_combine(sets.midcast.int_enfeebling, {
         head=empty,
         ring2="Archon ring",
         body='Crepuscular cloak'
@@ -721,9 +721,9 @@ function midcast(spell)
             if buffactive['Immanence'] then
                 equip(sets.buff['Immanence'])
             end
-            -- if buffactive['Klimaform'] and spell.element == world.weather_element then
-            --     equip(sets.buff['Klimaform'])
-            -- end
+            if buffactive['Klimaform'] and spell.element == world.weather_element then
+                equip(sets.buff['Klimaform'])
+            end
         end
     
         if buffactive['Penury'] and spell.type == 'WhiteMagic' then
