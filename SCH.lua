@@ -162,7 +162,7 @@ function get_sets()
     sets.buff['Parsimony'] = {legs="Arbatel Pants +3"}
     sets.buff['Celerity'] = {feet="Pedagogy Loafers +3"}
     sets.buff['Alacrity'] = {feet="Pedagogy Loafers +3"}
-    sets.buff['Klimaform'] = {feet="Arbatel loafers +2"}
+    sets.buff['Klimaform'] = {feet="Arbatel loafers +3"}
     -- Ebulience set empy now as we get better damage out of a good Merlinic head
     sets.buff['Ebullience'] = {head="Arbatel bonnet +3"} -- I left it there still if it becomes needed so the SCH.lua file won't need modification should you want to use this set
     sets.buff['Light Arts'] = {legs="Academic's pants +3"}
@@ -271,7 +271,7 @@ function get_sets()
         body="Agwu's robe", --MB: 10
         hands="Agwu's gages", --MB2: 5
         legs="Agwu's slops", --MB: 9
-        feet="Arbatel loafers +2",
+        feet="Arbatel loafers +3",
         -- feet="Agwu's pigaches", --MB: 6
         ring2="Mujin band" --MB2: 5
     })
@@ -549,7 +549,7 @@ function get_sets()
         back=idle_cape,
         waist="Slipor sash",
         legs="Assiduity pants +1",
-        feet="Arbatel loafers +2"
+        feet="Arbatel loafers +3"
     }
 
     sets.idle["Refresh"] = set_combine(sets.idle, {
