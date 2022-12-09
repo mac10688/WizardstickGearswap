@@ -263,6 +263,9 @@ function get_sets()
         back=magic_atk_cape --MB 5
     })
 
+    --Increase the ja affect by 60 seconds!
+    sets.midcast.elemental.jaspell = { legs="Archmage's tonban +3" }
+
     sets.midcast.elemental.AncientMagic = set_combine(sets.midcast.elemental["Magic Attack Bonus"], {
          head = "Archmage's petasos +3"
     })
@@ -488,6 +491,7 @@ end
 
 ElementalDebuffs = S{"Burn", "Frost", "Choke", "Rasp", "Shock", "Drown"}
 AncientMagic = S{"Flare", "Flare II", "Freeze", "Freeze II", "Tornado", "Tornado II", "Quake", "Quake II", "Burst", "Burst II", "Flood", "Flood II"}
+ElementalJaSpells = S{"Firaja", "Blizzaja", "Aeroja", "Stoneja", "Thundaja", "Waterja"}
 
 ---- .::Precast Functions::. ---->
 function precast(spell)
@@ -565,6 +569,10 @@ function midcast(spell)
 
                 if AncientMagic[spell.egnlish] then
                     equip(sets.midcast.elemental.AncientMagic)
+                end
+
+                if ElementalJaSpells[spell.english] then
+                    equip(sets.midcast.elemental.jaspell)
                 end
 
                 if player.mp < 700 then

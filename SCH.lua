@@ -227,18 +227,18 @@ function get_sets()
         main="Tupsimati",
         sub="Enki strap",
         ammo="Pemphredo tathlum",
-        head="Pedagogy mortarboard +3",
+        head="Arbatel bonnet +3",
         neck="Argute stole +2",
         ear1="Regal earring",
         ear2="Malignance earring",
-        body="Pedagogy gown +3",
-        hands="Amalric gages +1",
+        body="Arbatel gown +3",
+        hands="Arbatel bracers +3",
         ring1="Freke ring",
         ring2="Metamorph ring +1",
         back=nuke_cape,
         waist="Sacro cord",
-        legs="Pedagogy pants +3",
-        feet="Pedagogy loafers +3"
+        legs="Arbatel pants +3",
+        feet="Arbatel loafers +3"
     })
 
     --Tier 4 spells for mb without killing
@@ -397,7 +397,7 @@ function get_sets()
         ring2="Archon ring",
         waist="Fucho-no-obi",
         legs="Pedagogy pants +3",
-        feet="Merlinic crackows"
+        feet="Agwu's pigaches"
     })
 
     sets.midcast.healing = set_combine(sets.precast.fc, {
@@ -542,7 +542,7 @@ function get_sets()
         neck="Loricate torque +1",
         ear1="Etiolation earring",
         ear2="Hearty earring",
-        body="Shamash robe",
+        body="Arbatel gown +3",
         hands="Agwu's gages",
         left_ring="Defending ring",
         right_ring="Vengeful ring",
@@ -557,13 +557,13 @@ function get_sets()
         head="Befouled crown",
         ring1={name="Stikini Ring +1", bag="wardrobe5"},
         ring2={name="Stikini Ring +1", bag="wardrobe6"},
-        body="Shamash robe",
+        body="Arbatel gown +3",
         legs=chironic_refresh_legs
     })
 
     sets.idle["DT"] = set_combine(sets.idle, {
         head="Arbatel bonnet +3",
-        body="Arbatel gown +2",
+        body="Arbatel gown +3",
         right_ring="Vengeful ring",
         legs="Arbatel pants +3"
     })
