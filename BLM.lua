@@ -107,21 +107,6 @@ function get_sets()
     sets.WeaponSet["Marin Staff"] = {main="Marin Staff +1", sub="Enki strap"}
     sets.WeaponSet["Laevateinn II"] = {main="Laevateinn", sub="Khonsu"}
 
-    -- sets.engaged = {
-    --     head="Nyame helm",
-    --     neck="Sanctity necklace",
-    --     ear1="Telos earring",
-    --     ear2="Dignitary's earring",
-    --     body="Archmage's coat +3",
-    --     hands="Gazu bracelet +1",
-    --     ring1="Chirich Ring +1",
-    --     ring2="Chirich Ring +1",
-    --     waist="Grunfeld rope",
-    --     legs="Archmage's tonban +3",
-    --     feet="Archmage's sabots +3",
-    --     back={ name="Taranus's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Dbl.Atk."+10','Mag. Evasion+15'}},
-    -- }
-
     sets.engaged = {
         head="Nyame helm",
         neck="Sanctity necklace",
@@ -147,13 +132,13 @@ function get_sets()
     sets.precast.ja = {}
     sets.precast.ja['Manafont'] = { body = "Archmage's coat +3"}
     sets.precast.ja['Elemental Seal'] = {}
-    sets.precast.ja['Mana Wall'] = { feet = "Wicce sabots +2" }
+    sets.precast.ja['Mana Wall'] = { feet = "Wicce sabots +3" }
     sets.precast.ja['Enmity Douse'] = {}
     sets.precast.ja['Manawell'] = {}
     sets.precast.ja['Subtle Sorcery'] = {}
     sets.precast.ja['Cascade'] = {}
 
-    --44% fc
+    --52% fc
     sets.precast.fc = {
         head="Merlinic hood", --fast cast 8%
         body="Agwu's robe", --fast cast 8%
@@ -163,14 +148,12 @@ function get_sets()
         waist="Embla sash", --fast cast 5%
         ear1="Malignance earring", --fast cast 4%
         ear2="Loquacious Earring", --fast cast 2%
-        ring2="Prolix Ring", --fast cast 2%
+        ring2="Medada's Ring", --fast cast 10%
         ring1="Kishar ring" --fast cast 4%
-    }
-
-    
+    }    
 
     sets.precast.fc.elemental = set_combine(sets.precast.fc, {
-        head="Wicce petasos +2",
+        head="Wicce petasos +3",
         ear2="Barkarole earring",
         body="Wicce coat +2",
         ring1="Mallquis Ring",
@@ -204,15 +187,15 @@ function get_sets()
         neck="Sorcerer's stole +2",
         waist="Acuity belt +1",
         ear1="Malignance earring",
-        ear2="Regal earring",        
-        left_ring="Metamorph ring +1",
-        right_ring="Freke ring",        
+        ear2="Regal earring",
+        left_ring="Medada's ring",
+        right_ring="Metamorph ring +1",
         back=magic_atk_cape,
     }
     
     sets.midcast.elemental["Magic Crititcal Hit"] = set_combine(sets.midcast.elemental["Magic Attack Bonus"], {
         ammo="Sroda tathlum",
-        hands="Wicce gloves +2"
+        hands="Wicce gloves +3"
     })
 
     sets.midcast.elemental["Occult Acumen"] = set_combine(sets.midcast.elemental["Magic Attack Bonus"], {
@@ -255,8 +238,8 @@ function get_sets()
     sets.midcast.elemental["Magic Burst"] = set_combine(sets.midcast.elemental["Magic Attack Bonus"], {
         head="Ea hat +1", --MB: 6 MB2:6
         neck="Sorcerer's stole +2", --MB: 7
-        body="Ea houppelande +1", --MB: 9 MB2:9
-        hands="Ea cuffs +1", --MB2: 6
+        body="Wicce coat +3", --MB: 9 MB2:9
+        hands="Archmage's gloves +3", --MB2: 6
         legs="Ea slops +1", --MB: 8 MB2:8
         feet="Archmage's sabots +3", --MB: 10
         right_ring="Freke ring", --MB2: 5
@@ -264,7 +247,7 @@ function get_sets()
     })
 
     --Increase the ja affect by 60 seconds!
-    sets.midcast.elemental.jaspell = { legs="Archmage's tonban +3" }
+    sets.midcast.elemental.jaspell = { legs="Wicce chausses +3" }
 
     sets.midcast.elemental.AncientMagic = set_combine(sets.midcast.elemental["Magic Attack Bonus"], {
          head = "Archmage's petasos +3"
@@ -276,12 +259,12 @@ function get_sets()
         body="Spaekona's Coat +3",
         hands="Spae. Gloves +3",
         legs="Arch. Tonban +3",
-        feet="Spae. Sabots +3",
+        feet="Wicce Sabots +3",
         neck="Src. Stole +2",
         waist="Sacro cord",
         left_ear="Regal Earring",
         right_ear="Malignance earring",
-        left_ring="Freke Ring",
+        left_ring="Medada's ring",
         right_ring="Metamorph ring +1",
         back=magic_int_ws
     }
@@ -294,7 +277,7 @@ function get_sets()
         right_ear="Malignance earring",
         body = "Spaekona's coat +3",
         hands= "Spaekona's gloves +3",
-        ring1={name="Stikini Ring +1", bag="wardrobe5"},
+        ring1="Medada's ring",
         ring2="Kishar Ring",
         back=magic_int_ws,
         waist="Luminary Sash",
@@ -358,8 +341,8 @@ function get_sets()
         ear2="Ishvara earring",
         body="Archmage's coat +3",
         hands="Jhakri cuffs +2",
-        ring1="Metamorph ring +1",
-        ring2="Freke ring",
+        ring1="Medada's ring",
+        ring2="Metamorph ring +1",  
         back=magic_int_ws,
         waist="Fotia belt",
         legs="Archmage's tonban +3",
@@ -373,15 +356,15 @@ function get_sets()
         ear2="Malignance earring",
         body="Archmage's coat +3",
         hands="Jhakri cuffs +2",
-        ring1="Metamorph ring +1",
-        ring2="Freke ring",
+        ring1="Medada's ring",
+        ring2="Metamorph ring +1",        
         back=magic_int_ws,
         waist="Orpheus's sash",
         legs="Archmage's tonban +3",
         feet=ws_boots
     }
 
-    local dark_magic_affinity = {head="Pixie hairpin +1", ring1="Archon ring"}
+    local dark_magic_affinity = {head="Pixie hairpin +1", ring2="Archon ring"}
     local dark_magic_int_ws = set_combine(magical_int_ws, dark_magic_affinity)
 
     sets.ws = {}
@@ -461,7 +444,7 @@ function get_sets()
         ear1="Etiolation earring",
         ear2="Hearty earring",
         body="Shamash robe",
-        hands="Wicce gloves +2",
+        hands="Wicce gloves +3",
         ring1="Vengeful ring",
         ring2="Defending ring",
         back=idle_cape,
@@ -482,7 +465,8 @@ function get_sets()
     sets.idle["Death"] = deathSet
 
     sets.kiting = {
-        ring2="Shneddick ring"
+        ring2="Shneddick ring +1",
+        feet="Hippomenes socks +1"
     }
 
     coroutine.schedule(lockstyle,8)
@@ -628,7 +612,7 @@ function buff_change(buff,gain)
 end
 
 function lockstyle()
-    if player.main_job == 'BLM' then send_command('@input /lockstyleset 3') end
+    if player.main_job == 'BLM' then send_command('@input /lockstyleset 1') end
 end
 
 function sub_job_change()

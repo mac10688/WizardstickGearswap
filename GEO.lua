@@ -56,7 +56,7 @@ function get_sets()
         ear1="Etiolation earring",
         body="Shango robe",
         hands="Agwu's gages",
-        ring1="Prolix ring",
+        ring1="Medada's ring",
         ring2="Kishar ring",
         back={ name="Nantosuelta's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}},
         waist="Embla sash",
@@ -90,6 +90,7 @@ function get_sets()
         neck="Bagua charm +2",
         body="Bagua tunic +3",
         hands="Geomancy mitaines +3",
+        ring1="Medada's ring",
         back={ name="Nantosuelta's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}},
     })
 
@@ -122,7 +123,7 @@ function get_sets()
         ring1="Evanescence ring",
         ring2="Archon ring",
         waist="Fucho-no-obi",
-        legs="Azimuth tights +1"
+        legs="Azimuth tights +2"
     })
     
     sets.midcast.drain = set_combine(sets.midcast.dark_magic, {
@@ -145,7 +146,7 @@ function get_sets()
         ear2="Regal earring",
         body="Geomancy tunic +3",
         hands="Geomancy mitaines +3",
-        ring1={name="Stikini Ring +1", bag="wardrobe5"},
+        ring1="Medada's ring",
         ring2={name="Stikini Ring +1", bag="wardrobe6"},
         waist="Luminary sash",
         legs="Geomancy pants +3",
@@ -163,8 +164,8 @@ function get_sets()
         ear2="Regal earring",
         body="Bagua tunic +3",
         hands="Amalric gages +1",
-        ring1="Metamorph ring +1",
-        ring2="Freke ring",
+        ring1="Medada's ring",
+        ring2="Metamorph ring +1",        
         waist="Acuity belt +1",
         legs="Bagua pants +3",
         feet="Bagua sandals +3",
@@ -208,7 +209,7 @@ function get_sets()
         ear2="Malignance earring",
         body="Geomancy tunic +3",
         hands="Geomancy mitaines +3",
-        ring1={name="Stikini Ring +1", bag="wardrobe5"},
+        ring1="Medada's ring",
         ring2={name="Stikini Ring +1", bag="wardrobe6"},
         back={ name="Nantosuelta's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}},
         waist="Luminary sash",
@@ -223,7 +224,7 @@ function get_sets()
 
     sets.midcast['Impact'] = set_combine(sets.midcast.elemental["magic-atk-bonus"], {
         head=empty,
-        ring1="Archon ring",
+        ring2="Archon ring",
         body='Crepuscular cloak'
     })
 
@@ -272,7 +273,7 @@ function get_sets()
         ear1="Telos earring",
         ear2="Dignitary's earring",
         body="Nyame Mail",
-        hands="Gazu bracelet +1",
+        hands="Gazu bracelets +1",
         ring1="Chirich ring +1",
         ring2="Chirich ring +1",
         back={ name="Nantosuelta's Cape", augments={'DEX+20','Accuracy+20 Attack+20','"Dbl.Atk."+10','Damage taken-5%'}},
@@ -306,6 +307,7 @@ function get_sets()
     }
 
     sets.ws.magic = set_combine(sets.ws, {
+        ring1="Medada's ring",
         ring2="Metamorph ring +1",
         waist="Orpheus's sash"
     })
@@ -324,7 +326,7 @@ function get_sets()
     sets.ws['Realmrazer'] = set_combine(sets.ws, {waist="Fotia belt"})
     sets.ws['Exudation'] = set_combine(sets.ws, {})
 
-    sets.ws['Earth Crusher'] = set_combine(sets.ws.magic, {neck="Quanpor Necklace"})
+    sets.ws['Earth Crusher'] = set_combine(sets.ws.magic, {neck="Quanpur Necklace"})
 
 
     sets.kiting = {
@@ -473,7 +475,7 @@ function self_command(command)
 end
 
 function lockstyle()
-    if player.main_job == 'GEO' then send_command('@input /lockstyleset 2') end
+    if player.main_job == 'GEO' then send_command('@input /lockstyleset 3') end
 end
 
 function sub_job_change()

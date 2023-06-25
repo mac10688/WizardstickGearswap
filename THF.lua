@@ -82,7 +82,7 @@ function get_sets()
         neck={ name="Loricate Torque +1", augments={'Path: A'}},
         waist="Flume Belt +1",
         left_ear="Hearty Earring",
-        right_ear="Genmei earring",
+        right_ear="Skulker's earring",
         left_ring="Moonbeam ring",
         right_ring="Defending Ring",
         back={ name="Toutatis's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Attack+10','Haste+10','Damage taken-5%'}},

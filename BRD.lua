@@ -9,6 +9,9 @@ EngageModeSet = {"Hybrid", "TP", "Accuracy"}
 WeaponSetIndex = 3
 WeaponSet = {"Savage", "Savage II", "Savage Accuracy", "Mordent", "Mage", "Mage II", "Mage III"}
 
+UseDummySongs = true
+DummySongs = { "Herb Pastoral", "Shining Fantasia" }
+
 Kiting = false
 
 
@@ -337,6 +340,10 @@ function midcast(spell)
             if ExtraSongs and spell.name ~= "Honor March" then
                 equip(sets.ExtraSongs)
             end
+
+            if UseDummySongs and (DummySongs[1] == spell.name or DummySongs[2] == spell.name) then
+                equip(sets.ExtraSongs)
+            end
         end
     end
 end
@@ -412,7 +419,7 @@ function equip_set(status)
 end
 
 function lockstyle()
-    if player.main_job == 'BRD' then send_command('@input /lockstyleset 8') end
+    if player.main_job == 'BRD' then send_command('@input /lockstyleset 2') end
 end
 
 function sub_job_change()

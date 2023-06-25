@@ -75,11 +75,11 @@ function get_sets()
     sets.idle = {}
 
     sets.idle = {
-        head="Malignance chapeau",
+        head="Lethargy chappel +3",
         neck="Loricate torque +1",
         ear1="Etiolation earring",
         ear2="Hearty earring",
-        body="Shamash robe",
+        body="Lethargy sayon +3",
         hands="Malignance gloves",
         ring1="Ayanmo ring",
         ring2="Defending ring",
@@ -95,8 +95,11 @@ function get_sets()
 
     sets.ja = {}
     sets.ja["Convert"] = {}
-    sets.ja["Saboteur"] = {hands="Lethargy gantherots +2"}
+    
     sets.ja["Chainspell"] = {body="Vitiation tabard +3"}
+
+    sets.buff = {}
+    sets.buff["Saboteur"] = {hands="Lethargy gantherots +3"}
 
     sets.weapons = {}
     sets.weapons["Sword"] = {main = "Crocea Mors", sub="Sacro bulwark"}
@@ -157,7 +160,6 @@ function get_sets()
 
     sets.engaged.dw["High Acc"] = set_combine(sets.engaged["High Acc"], {
         waist="Reiki yotai",
-        -- legs={ name="Carmine Cuisses +1", augments={'Accuracy+20','Attack+12','"Dual Wield"+6'}}
     })
 
     sets.engaged.dw["Multi-Attack"].enspell = set_combine(sets.engaged.dw["Multi-Attack"], sets.engaged.enspell)
@@ -179,6 +181,7 @@ function get_sets()
         ear2="Malignance earring", --4
         body="Vitiation tabard +3", --15
         hands="Leyline gloves", --8
+        ring1="Medada's ring",
         ring2="Kishar Ring", --4
         waist="Embla Sash", --5
         feet="Carmine greaves +1" --8
@@ -207,7 +210,7 @@ function get_sets()
         ring2={name="Stikini Ring +1", bag="wardrobe6"},
         waist="Embla sash",
         legs="Atrophy Tights +3",
-        feet="Leth. Houseaux +1",
+        feet="Lethargy Houseaux +3",
         back=Cape.Mnd
     }
 
@@ -221,20 +224,20 @@ function get_sets()
         waist="Embla sash",
         back="Ghostfyre cape",
         legs="Telchine braconi",
-        feet="Lethargy houseaux +2"
+        feet="Lethargy houseaux +3"
     })
 
     sets.midcast.enhancing["Duration"].Composure = set_combine(sets.midcast.enhancing, {
         main="Colada",
-        head="Lethargy Chappel +2",
+        head="Lethargy Chappel +3",
         neck="Duelist's torque +2",
         ear2="Lethargy earring +1",
         hands="Atrophy gloves +3",
-        body="Lethargy sayon +2",
+        body="Lethargy sayon +3",
         waist="Embla sash",
         back="Ghostfyre cape",
-        legs="Lethargy fuseau +2",
-        feet="Lethargy houseaux +2"
+        legs="Lethargy fuseau +3",
+        feet="Lethargy houseaux +3"
     })
 
     sets.midcast.enhancing.spikes = set_combine(sets.midcast.enhancing, {
@@ -245,10 +248,10 @@ function get_sets()
         hands="Vitiation Gloves +3"
     })
 
-    sets.midcast.enhancing.refresh = set_combine(sets.midcast.enhancing["Duration"], {
+    sets.midcast.enhancing.refresh = {
         body="Atrophy tabard +3",
-        legs="Lethargy fuseau +2"
-    })
+        legs="Lethargy fuseau +3"
+    }
 
     sets.midcast.enhancing.regen = sets.midcast.enhancing["Duration"]
 
@@ -268,8 +271,8 @@ function get_sets()
         neck="Duelist's torque +2",
         ear1="Regal earring",
         ear2="Malignance earring",
-        body="Lethargy sayon +2",
-        hands="Lethargy gantherots +2",
+        body="Lethargy sayon +3",
+        hands="Lethargy gantherots +3",
         ring1={name="Stikini Ring +1", bag="wardrobe5"},
         ring2={name="Stikini Ring +1", bag="wardrobe6"},
         waist="Obstinate Sash",
@@ -288,7 +291,7 @@ function get_sets()
     })
 
     sets.midcast.enfeebling.mnd["Potency"] = set_combine(sets.midcast.enfeebling.mnd, {
-        body="Lethargy sayon +2"
+        body="Lethargy sayon +3"
     })
 
     sets.midcast.enfeebling.mnd["Duration"] = set_combine(sets.midcast.enfeebling.mnd, {
@@ -297,6 +300,7 @@ function get_sets()
     })
 
     sets.midcast.enfeebling.int = set_combine(sets.midcast.enfeebling, {
+        ring1="Medada's ring",
         back=Cape.Int
     })
 
@@ -306,7 +310,7 @@ function get_sets()
     })
 
     sets.midcast.enfeebling.int["Potency"] = set_combine(sets.midcast.enfeebling.int, {
-        body="Lethargy sayon +2"        
+        body="Lethargy sayon +3"        
     })
 
     sets.midcast.enfeebling.int["Duration"] = set_combine(sets.midcast.enfeebling.int, {
@@ -333,8 +337,8 @@ function get_sets()
         ear2="Malignance earring",
         body="Ea houppelande +1",
         hands="Amalric gages +1",
-        ring1="Metamorph ring +1",
-        ring2="Freke ring",
+        ring1="Medada's ring",
+        ring2="Metamorph ring +1",        
         waist="Sacro cord",
         legs="Ea slops +1",
         feet="Merlinic Crackows"
@@ -384,7 +388,7 @@ function get_sets()
         ear2="Malignance earring",
         body="Nyame mail",
         hands="Jhakri Cuffs +2",
-        ring1="Freke ring",
+        ring1="Medada's ring",
         ring2="Shiva ring +1",
         back=Cape.Int,
         waist="Orpheus's sash",
@@ -404,8 +408,10 @@ function get_sets()
         back=Cape.Mnd_WS,
         waist="Fotia belt",
         legs="Nyame flanchard",
-        feet="Nyame sollerets"
+        feet="Lethargy houseaux +3"
     }
+
+    sets.ws["Empyreal Arrow"] = sets.ws.physical
     
     sets.ws["Aeolian Edge"] = sets.ws.magic
 
@@ -497,9 +503,7 @@ function midcast(spell)
         -- Enhancing Magic --
         elseif spell.skill == 'Enhancing Magic' then
             if string.find(spell.english, "Regen") then
-                equip(sets.midcast.enhancing.regen)                
-            elseif string.find(spell.english, "Refresh") then
-                equip(sets.midcast.enhancing.refresh)
+                equip(sets.midcast.enhancing.regen)
             elseif string.find(spell.english, "Spikes") then
                 equip(sets.midcast.enhancing.spikes)
             elseif spell.english:startswith("Gain-") then
@@ -522,6 +526,7 @@ function midcast(spell)
                 else
                     equip(sets.midcast.enhancing["Duration"])
                 end
+                equip(sets.midcast.enhancing.refresh)
             elseif string.find(spell.english, "storm") then
                     equip(sets.midcast.enhancing["Duration"])
             elseif spell.english == "Sneak" then
@@ -579,7 +584,7 @@ function midcast(spell)
             end
 
             if buffactive["Saboteur"] then
-                equip(sets.ja["Saboteur"])
+                equip(sets.buff["Saboteur"])
             end
             
         -- Elemental Magic --      
@@ -599,6 +604,9 @@ function midcast(spell)
             else
                 equip(sets.midcast.dark_magic)
             end
+        end
+        if buffactive['Saboteur'] then
+            equip(sets.buff['Saboteur'])
         end
     end
 end
@@ -666,7 +674,7 @@ function IsEnspellActive()
 end
 
 function lockstyle()
-    if player.main_job == 'RDM' then send_command('@input /lockstyleset 6') end
+    if player.main_job == 'RDM' then send_command('@input /lockstyleset 4') end
 end
 
 function sub_job_change()

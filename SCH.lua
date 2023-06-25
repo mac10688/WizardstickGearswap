@@ -1,7 +1,7 @@
 NukeTypeIndex = 2
 NukeSet = {"Magic Attack Bonus","Magic Burst", "Vagary","Occult Acumen"}
 
-IdleSetIndex = 1
+IdleSetIndex = 2
 IdleSet = {"Refresh", "DT"}
 
 WeaponSetIndex = 1
@@ -140,7 +140,7 @@ function get_sets()
         ear1="Telos earring",
         ear2="Dignitary's earring",
         body="Pedagogy gown +3",
-        hands="Gazu bracelet +1",
+        hands="Gazu bracelets +1",
         ring1="Chirich Ring +1",
         ring2="Chirich Ring +1",
         waist="Grunfeld rope",
@@ -186,8 +186,8 @@ function get_sets()
         ear2="Malignance earring", --fast cast 4%
         body="Pinga tunic +1", --fast cast 15%
         hands="Academic's bracers +3", --fast cast 8%
-        ring1="Kishar ring", --fast cast 4%
-        ring2="Prolix Ring", --fast cast 2%
+        ring1="Medada's ring", --fast cast 10%
+        ring2="Kishar ring", --fast cast 4%        
         back=fc_cape, --fast cast 10%
         waist="Embla sash", --fast cast 5%
         legs="Agwu's slops", --fast cast 6%
@@ -200,8 +200,8 @@ function get_sets()
 
     sets.precast.fc.elemental = set_combine(sets.precast.fc, {
         legs="Mallquis trews +2",
-        left_ring="Mallquis Ring",
-        left_ear="Barkarole earring"
+        ring2="Mallquis Ring",
+        ear1="Barkarole earring"
     })
 
     sets.precast.fc.enhancing = set_combine(sets.precast.fc, {})
@@ -233,7 +233,7 @@ function get_sets()
         ear2="Malignance earring",
         body="Arbatel gown +3",
         hands="Arbatel bracers +3",
-        ring1="Freke ring",
+        ring1="Medada's ring",
         ring2="Metamorph ring +1",
         back=nuke_cape,
         waist="Sacro cord",
@@ -252,8 +252,8 @@ function get_sets()
         ear2="Loquac. Earring",
         body="Shango Robe",
         hands="Academic's bracers +3",
-        ring1="Kishar Ring",
-        ring2="Prolix Ring",
+        ring1="Medada's ring",
+        ring2="Kishar Ring",        
         back=idle_cape,
         waist="Embla sash",
         legs={ name="Lengo Pants", augments={'INT+5','Mag. Acc.+13'}},
@@ -457,8 +457,8 @@ function get_sets()
         ear2="Malignance earring",
         body="Nyame mail",
         hands="Jhakri cuffs +2",
-        ring1="Metamorph ring +1",
-        ring2="Freke ring",
+        ring1="Medada's ring",
+        ring2="Metamorph ring +1",
         back=int_magic_ws,
         waist="Orpheus's sash",
         legs="Pedagogy pants +3",
@@ -472,7 +472,7 @@ function get_sets()
         ear2="Malignance earring",
         body="Nyame mail",
         hands="Jhakri cuffs +2",
-        ring1={name="Stikini Ring +1", bag="wardrobe5"},
+        ring1="Medada's ring",
         ring2="Freke ring",
         back=mnd_magic_ws,
         waist="Orpheus's sash",
@@ -537,15 +537,15 @@ function get_sets()
 
     sets.idle = {
         main="Malignance Pole",
-        ammo="Staunch tathlum +1",
-        head="Befouled crown",
+        ammo="Homiliary",
+        head="Arbatel bonnet +3",
         neck="Loricate torque +1",
         ear1="Etiolation earring",
         ear2="Hearty earring",
         body="Arbatel gown +3",
         hands="Agwu's gages",
-        left_ring="Defending ring",
-        right_ring="Vengeful ring",
+        ring1={name="Stikini Ring +1", bag="wardrobe5"},
+        ring2={name="Stikini Ring +1", bag="wardrobe6"},
         back=idle_cape,
         waist="Slipor sash",
         legs="Assiduity pants +1",
@@ -564,12 +564,13 @@ function get_sets()
     sets.idle["DT"] = set_combine(sets.idle, {
         head="Arbatel bonnet +3",
         body="Arbatel gown +3",
-        right_ring="Vengeful ring",
+        -- right_ring="Vengeful ring",
         legs="Arbatel pants +3"
     })
 
     sets.kiting = {
-        ring2="Shneddick ring"
+        ring2="Shneddick ring +1",
+        feet="Hippomenes socks +1"
     }
 
     coroutine.schedule(lockstyle,8)
@@ -600,7 +601,7 @@ spell_maps = {
 
 ---- .::Precast Functions::. ---->
 function precast(spell)
-    -- print_set(spell)
+    print_set(spell)
     local spellType = spell_maps[spell.name]
     if sets.precast[spell.name] then
         equip(sets.precast[spell.name])
@@ -784,7 +785,7 @@ function buff_change(buff,gain)
 end
 
 function lockstyle()
-    if player.main_job == 'SCH' then send_command('@input /lockstyleset 4') end
+    if player.main_job == 'SCH' then send_command('@input /lockstyleset 6') end
 end
 
 function sub_job_change()

@@ -123,7 +123,7 @@ function get_sets()
         back=dt_cape, --meva: 20
         waist="Engraved belt",
         legs="Erilaz leg guards +2", --mdb: 6 meva: 99 pdt: 5 haste: 6 status: 10
-        feet="Turms leggings +1" --mdb: 5 meva: 107 pdt: 5 rele: 25 haste: 4
+        feet="Erilaz greaves +2" --mdb: 5 meva: 107 pdt: 5 rele: 25 haste: 4
     }
 
     sets.tank["resist-status"] = set_combine( sets.tank["mdt"], {
@@ -298,7 +298,7 @@ function get_sets()
     sets.midcast.enhancing["Phalanx"] = set_combine(sets.midcast.enhancing, {
         head="Futhark bandeau +3",
         body={ name="Herculean Vest", augments={'STR+2','AGI+2','Phalanx +4','Mag. Acc.+10 "Mag.Atk.Bns."+10'}},
-        hands="Taeon gloves",
+        hands="Herculean gloves",
         ring1={name="Stikini Ring +1", bag="wardrobe5"},
         ring2={name="Stikini Ring +1", bag="wardrobe6"},
         legs="Taeon tights",

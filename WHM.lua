@@ -72,7 +72,7 @@ function get_sets()
     local physical_mnd_ws_cape = { name="Alaunus's Cape", augments={'MND+20','Accuracy+20 Attack+20','MND+10','Weapon skill damage +10%','Damage taken-5%'}}
 	
     --- Fast Cast Sets ---
-    -- 66% fc
+    -- 74% fc
     -- 12% for cures
 	sets.fc = {
         ammo="Incantor Stone", --2%
@@ -82,8 +82,8 @@ function get_sets()
         ear2="Loquacious Earring", --2%
         body="Pinga tunic +1", --15%
         hands="Fanatic gloves", --7%
-        ring1="Kishar ring", --4%
-        ring2="Prolix Ring", --2%
+        ring1="Medada's Ring", --10%
+        ring2="Kishar ring", --4%        
         back=fastcast_cape, --10%
         waist="Embla Sash", --5%
         legs="Lengo pants", --5%
@@ -172,7 +172,7 @@ function get_sets()
     }
 
 	sets.engaged['Acc'] = set_combine( sets.engaged['Delay Cap'], {
-        hands="Gazu bracelet +1",
+        hands="Gazu bracelets +1",
         ring1="Chirich Ring +1",
         ring2="Chirich Ring +1"
     })
@@ -188,8 +188,8 @@ function get_sets()
         ammo="Staunch tathlum +1", --3% dmg
         head="Nyame helm", --7% dmg
         neck="Loricate Torque +1", --6% dmg
-        ear1="Etiolation earring", --3% magic dmg
-        ear2="Genmei earring",
+        ear1="Genmei earring", --3% magic dmg
+        ear2="Ebers earring +1",
         body="Shamash robe", --10% physical
         hands="Bunzi's gloves", --7% dmg
         ring1="Defending Ring", --10% dmg
@@ -206,8 +206,8 @@ function get_sets()
         ammo="Staunch tathlum +1",
         head="Nyame helm",
         neck="Loricate Torque +1",
-        ear1="Etiolation earring",
-        ear2="Hearty earring",
+        ear1="Genmei earring", --3% magic dmg
+        ear2="Ebers earring +1",
         body="Shamash robe",
         hands="Bunzi's gloves",
         ring1="Defending Ring",
@@ -410,7 +410,8 @@ function get_sets()
     })
 
     sets.kiting = {
-        ring2='Shneddick ring'
+        ring2="Shneddick ring +1",
+        feet="Hippomenes socks +1"
     }
 
     coroutine.schedule(lockstyle,2)
@@ -600,7 +601,7 @@ end
 -- end
 
 function lockstyle()
-    if player.main_job == 'WHM' then send_command('@input /lockstyleset 1') end
+    if player.main_job == 'WHM' then send_command('@input /lockstyleset 7') end
 end
 
 function sub_job_change()
