@@ -39,7 +39,7 @@ function get_sets()
     sets.ja['Bolster'] = {body="Bagua tunic +3"}
     sets.ja['Life cycle'] = {body="Geomancy tunic +3", back="Nantosuelta's cape"}
     sets.ja['Full Circle'] = {
-        head="Azimuth hood +2",
+        head="Azimuth hood +3",
         hands="Bagua mitaines +3"
     }
     sets.ja['Concentric Pulse'] = { head="Bagua galero +3" }
@@ -97,7 +97,7 @@ function get_sets()
     sets.midcast.geomancy.indi = set_combine(sets.midcast.geomancy, {
         main="Idris",
         range="Dunna",
-        head="Azimuth hood +2",
+        head="Azimuth hood +3",
         body="Bagua tunic +3",
         hands="Geomancy mitaines +3",
         back="Lifestream cape",
@@ -260,7 +260,7 @@ function get_sets()
     sets.idle.luopan = set_combine(sets.idle, {
         main="Idris",
         range="Dunna",
-        head="Azimuth hood +2",
+        head="Azimuth hood +3",
         neck="Bagua charm +2",
         hands="Geomancy mitaines +3",
         back={ name="Nantosuelta's Cape", augments={'MND+20','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Pet: "Regen"+10','Pet: "Regen"+5'}},

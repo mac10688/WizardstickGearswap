@@ -123,12 +123,12 @@ function get_sets()
         back=dt_cape, --meva: 20
         waist="Engraved belt",
         legs="Erilaz leg guards +2", --mdb: 6 meva: 99 pdt: 5 haste: 6 status: 10
-        feet="Erilaz greaves +2" --mdb: 5 meva: 107 pdt: 5 rele: 25 haste: 4
+        feet="Erilaz greaves +3" --mdb: 5 meva: 107 pdt: 5 rele: 25 haste: 4
     }
 
     sets.tank["resist-status"] = set_combine( sets.tank["mdt"], {
         back=status_ailment_cape,
-        hands="Erilaz gauntlets +2"
+        hands="Erilaz gauntlets +3"
     })
 
     sets.tank["kb"] = set_combine( sets.tank["mdt"], {
@@ -237,7 +237,7 @@ function get_sets()
         back=dt_cape,
         waist="Audumbla sash",
         legs="Erilaz leg guards +2",
-        feet="Erilaz greaves +2"
+        feet="Erilaz greaves +3"
     })
 
     sets.midcast.SIRD = set_combine(sets.tank["pdt"], {

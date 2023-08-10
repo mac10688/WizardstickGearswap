@@ -3,7 +3,7 @@ res = require('resources')
 Weapon_Sets = {"Sword", "Magic Accuracy", "Dual Wield", "Odin", "Savage", "Club", "Club2", "AE"}
 WeaponSetsIndex = 2
 
-PhysicalAccuracyMode = {"High Acc", "Multi-Attack", "PDT"}
+PhysicalAccuracyMode = {"High Acc", "Multi-Attack", "PDT" }
 PhysicalAccuracyModeIndex = 2
 
 MagicAccuracyMode = {"Magic Accuracy", "Potency/Duration"}
@@ -162,15 +162,22 @@ function get_sets()
         waist="Reiki yotai",
     })
 
+    sets.engaged.dw["PDT"] = set_combine(sets.engaged["PDT"], {
+        waist="Reiki yotai",
+    })
+
     sets.engaged.dw["Multi-Attack"].enspell = set_combine(sets.engaged.dw["Multi-Attack"], sets.engaged.enspell)
     sets.engaged.dw["High Acc"].enspell = set_combine(sets.engaged.dw["High Acc"], sets.engaged.enspell)
+    sets.engaged.dw["PDT"].enspell = set_combine(sets.engaged.dw["PDT"], sets.engaged.enspell)
     
     sets.engaged.sw = {}
     sets.engaged.sw["Multi-Attack"] = sets.engaged["Multi-Attack"]
     sets.engaged.sw["High Acc"] = sets.engaged["High Acc"]
+    sets.engaged.sw["PDT"] = sets.engaged["PDT"]
 
     sets.engaged.sw["Multi-Attack"].enspell = set_combine(sets.engaged.sw["Multi-Attack"], sets.engaged.enspell)
     sets.engaged.sw["High Acc"].enspell = set_combine(sets.engaged.sw["High Acc"], sets.engaged.enspell)
+    sets.engaged.sw["PDT"].enspell = set_combine(sets.engaged.sw["PDT"], sets.engaged.enspell)
 
     --rdm inherit 38
     --45
@@ -265,6 +272,21 @@ function get_sets()
 
     sets.midcast.phal.Others = sets.midcast.enhancing['Duration']
     sets.midcast.phal.Others.Composure = sets.midcast.enhancing['Duration'].Composure
+
+    sets.midcast.absorb = {
+        head="Atrophy Chapeau +3",
+        body="Lethargy Sayon +3",
+        hands="Leth. Ganth. +3",
+        legs="Leth. Fuseau +3",
+        feet="Leth. Houseaux +3",
+        neck="Erra Pendant",
+        waist={ name="Acuity Belt +1", augments={'Path: A',}},
+        left_ear="Regal Earring",
+        right_ear="Leth. Earring +1",
+        left_ring="Stikini Ring +1",
+        right_ring="Medada's Ring",
+        back={ name="Sucellos's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Damage taken-5%',}},
+    }
 
     sets.midcast.enfeebling = {
         head="Vitiation chapeau +3",
@@ -601,12 +623,11 @@ function midcast(spell)
                 equip(sets.midcast.drain)
             elseif spell.name:startswith("Aspir") then
                 equip(sets.midcast.aspir)
+            elseif spell.name:startswith("Absorb-") then
+                equip(sets.midcast.absorb)
             else
                 equip(sets.midcast.dark_magic)
             end
-        end
-        if buffactive['Saboteur'] then
-            equip(sets.buff['Saboteur'])
         end
     end
 end

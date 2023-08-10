@@ -56,8 +56,8 @@ function get_sets()
     sets.WeaponSet["Dual Wield"] = {main="Maxentius", sub="Tishtrya"}
     
     -- Buff sets: Gear that needs to be worn to actively enhance a current player buff.
-    sets.divine_caress = {hands="Ebers mitts +2"}
-    sets.afflatus_solace = {body="Ebers Bliaut +2"}
+    sets.divine_caress = {hands="Ebers mitts +3"}
+    sets.afflatus_solace = {body="Ebers Bliaut +3"}
 
 	--- Sets for Enhanced Job Abilities ---
 	
@@ -76,7 +76,7 @@ function get_sets()
     -- 12% for cures
 	sets.fc = {
         ammo="Incantor Stone", --2%
-        head="Bunzi's hat", --10%
+        head="Ebers cap +3", --13%
         neck="Cleric's torque +2", --10%
         ear1="Malignance earring",
         ear2="Loquacious Earring", --2%
@@ -89,7 +89,7 @@ function get_sets()
         legs="Lengo pants", --5%
     }
 	
-    sets.fc.heal = set_combine(sets.fc, {main="Yagrush", legs="Ebers pantaloons +2"})
+    sets.fc.heal = set_combine(sets.fc, {main="Yagrush", legs="Ebers pantaloons +3"})
     
     sets.fc.cure = set_combine(sets.fc, {
         -- sub="Sors shield",
@@ -197,7 +197,7 @@ function get_sets()
         back={ name="Alaunus's Cape", augments={'MND+20','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Enmity-10','Occ. inc. resist. to stat. ailments+10'}},
         waist="Slipor sash", --3% magic dmg
         legs="Bunzi's pants", --8% dmg
-        feet="Nyame sollerets" --7% dmg
+        feet="Ebers duckbills +3" --7% dmg
     }
                 
     sets.idle['MDT'] = {
@@ -232,10 +232,10 @@ function get_sets()
         main="Yagrush",
         head="Vanya hood",
         neck="Cleric's torque +2",
-        body="Ebers bliaut +2",
+        body="Ebers Bliaut +3",
         back={ name="Alaunus's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}},
         waist="Austerity belt +1",
-        legs="Ebers pantaloons +2"
+        legs="Ebers pantaloons +3"
     }
 
     sets.midcast.cursna = set_combine( sets.midcast.status_removal, {
@@ -247,23 +247,23 @@ function get_sets()
         feet="Gendewitha Galoshes +1"
     })
 	
-    --Cure: 49~50%
+    --Cure: 55%
     --Cure II: 22
     sets.midcast.cure = {
         main="Raetic Rod +1", --Cure I: 23% Cure II: 10%
         ammo="Incantor Stone",
-        head="Piety cap +3",
+        head="Ebers cap +3", --22%
         neck="Cleric's torque +2", --10%
-        ear1="Nourishing earring +1", --3% + 3~4%
-        ear2="Glorious earring", --Cure II: 2%
+        ear1="Glorious earring", --Cure II: 2%
+        ear2="Ebers earring +1",      
         body="Theophany bliaut +3", --Cure II: 6%
         hands="Theophany mitts +3", --Cure II: 4%
         ring1="Persis ring",
         ring2="Prolix ring",
         back={ name="Alaunus's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}},
         waist="Austerity belt +1",
-        legs="Ebers pantaloons +2",
-        feet="Kaykaus boots" -- 10%
+        legs="Ebers pantaloons +3",
+        feet="Ebers duckbills +3"
     }
 
     sets.midcast.raise = set_combine(sets.conserve_mp, sets.fc)
@@ -297,9 +297,9 @@ function get_sets()
     sets.midcast.bar_element = set_combine( sets.midcast.enhancing, {
         main="Beneficus",
         head="Ebers cap +1",
-        body="Ebers bliaut +2",
+        body="Ebers Bliaut +3",
         legs="Piety Pantaloons +3",
-        feet="Ebers duckbills +2"
+        feet="Ebers duckbills +3"
     })
 
     sets.midcast.bar_status = set_combine(sets.midcast.enhancing.duration, {
@@ -322,7 +322,7 @@ function get_sets()
     sets.midcast['Baramnesra'] = sets.midcast.bar_status
     
     sets.midcast['Auspice'] = set_combine( sets.midcast.enhancing.duration, {
-        feet="Ebers duckbills +2"
+        feet="Ebers duckbills +3"
     })
 
     sets.midcast['Aurorastorm'] = sets.midcast.enhancing.duration
@@ -340,7 +340,7 @@ function get_sets()
         sub="Ammurapi shield",
         head="Inyanga tiara +2",
         body="Piety bliaut +3",
-        hands="Ebers mitts +2",
+        hands="Ebers mitts +3",
         legs="Theophany pantaloons +3",
         feet="Theophany duckbills +3"
     })

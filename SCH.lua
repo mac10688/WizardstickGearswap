@@ -214,6 +214,24 @@ function get_sets()
 
     sets.midcast = {}
 
+    sets.midcast.absorb = {
+        main="Tupsimati",
+        sub="Khonsu",
+        ammo="Pemphredo Tathlum",
+        head="Acad. Mortar. +3",
+        body="Acad. Gown +3",
+        hands="Acad. Bracers +3",
+        legs="Arbatel Pants +3",
+        feet="Acad. Loafers +3",
+        neck="Erra Pendant",
+        waist={ name="Acuity Belt +1", augments={'Path: A',}},
+        left_ear="Regal Earring",
+        right_ear="Malignance Earring",
+        left_ring="Stikini Ring +1",
+        right_ring="Medada's Ring",
+        back={ name="Lugh's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Magic dmg. taken-10%',}},
+    }
+
     sets.midcast.conserve_mp = {
         ammo="Pemphredo tathlum",
         head="Vanya hood",
@@ -315,8 +333,8 @@ function get_sets()
         ear2="Regal earring",
         body="Academic's gown +3",
         hands="Kaykaus cuffs +1",
-        ring1="Kishar ring",
-        ring2={name="Stikini Ring +1", bag="wardrobe6"},
+        ring1={name="Stikini Ring +1", bag="wardrobe6"},
+        ring2="Kishar ring",
         back=nuke_cape,
         waist="Obstinate sash",
         legs="Arbatel pants +3",
@@ -601,7 +619,7 @@ spell_maps = {
 
 ---- .::Precast Functions::. ---->
 function precast(spell)
-    print_set(spell)
+    -- print_set(spell)
     local spellType = spell_maps[spell.name]
     if sets.precast[spell.name] then
         equip(sets.precast[spell.name])
@@ -684,6 +702,8 @@ function midcast(spell)
             equip(sets.midcast.enfeebling)
         elseif string.find(spell.english, 'Aspir') or string.find(spell.english, 'Drain') then
             equip(sets.midcast.drain_aspir)
+        elseif spell.name:startswith('Absorb-') then
+            equip(sets.midcast.absorb)
         -- Elemental Magic --      
         elseif spell.skill == 'Elemental Magic' then
             if spellType == 'DarkHelix' then

@@ -77,7 +77,7 @@ function get_sets()
     })
 
     sets.engaged["Accuracy"] = set_combine(sets.engaged["TP"], {
-        hands="Gazu bracelet +1"
+        hands="Gazu bracelets +1"
     })
 
     sets.ja = {}
@@ -172,7 +172,7 @@ function get_sets()
     }
 
     sets.precast.song = {
-        head="Fili calot +2",
+        head="Fili calot +3",
         neck="Voltsurge torque",
         ear1="Etiolation earring",
         ear2="Enchanter's earring +1",
@@ -196,7 +196,7 @@ function get_sets()
         neck="Moonbow whistle +1",
         ear1="Etiolation earring",
         ear2="Genmei earring",
-        body="Fili hongreline +2",
+        body="Fili hongreline +3",
         hands="Bewegt cuffs",
         ring1="Moonlight ring",
         ring2="Defending ring",
@@ -213,7 +213,7 @@ function get_sets()
         ear1="Regal earring",
         ear2="Fili earring +1",
         body="Brioso justaucorps +3",
-        hands="Fili manchettes +2",
+        hands="Fili Manchettes +3",
         ring1={name="Stikini Ring +1", bag="wardrobe5"},
         ring2={name="Stikini Ring +1", bag="wardrobe6"},
         back=debuff_cape,
@@ -222,10 +222,10 @@ function get_sets()
         feet="Brioso slippers +3"
     }
 
-    sets.midcast.song.march = set_combine(sets.midcast.song.buff, {hands="Fili manchettes +2"})
+    sets.midcast.song.march = set_combine(sets.midcast.song.buff, {hands="Fili Manchettes +3"})
     sets.midcast.song.HonorMarch = set_combine(sets.midcast.song.march, {ranged="Marsyas"})
     sets.midcast.song.ballad = sets.midcast.song.buff --set_combine(sets.midcast.song.buff, {legs="Fili rhingrave +1"})
-    sets.midcast.song.scherzo = set_combine(sets.midcast.song.buff, {feet="Fili cothurnes +2"})
+    sets.midcast.song.scherzo = set_combine(sets.midcast.song.buff, {feet="Fili cothurnes +3"})
     sets.midcast.song.paeon = set_combine(sets.midcast.song.buff, {head="Brioso roundlet +3"})
     
     sets.midcast.song.etude = set_combine(sets.midcast.song.buff, {head="Mousai turban +1"})
@@ -234,7 +234,8 @@ function get_sets()
     sets.midcast.song.minne = set_combine(sets.midcast.song.buff, {legs="Mousai seraweels +1"})
     sets.midcast.song.mambo = set_combine(sets.midcast.song.buff, {feet="Mousai crackows +1"})
 
-
+    sets.midcast.song.madrigal = set_combine(sets.midcast.song.buff, {head="Fili calot +3"})
+    sets.midcast.song.minuet = set_combine(sets.midcast.song.buff, {head="Fili hongreline +3"})
 
     sets.midcast.song.Lullaby = {}
     sets.midcast.song.Lullaby.Accuracy = set_combine(sets.midcast.song.debuff, {hands="Brioso cuffs +3"})
@@ -269,7 +270,7 @@ function get_sets()
     })
 
     sets.kiting = {
-        feet='Fili cothurnes +2'
+        feet='Fili cothurnes +3'
     }
 
     coroutine.schedule(lockstyle,8)
@@ -334,6 +335,10 @@ function midcast(spell)
                 equip(sets.midcast.song.minne)
             elseif spell.name:contains("Mambo") then
                 equip(sets.midcast.song.mambo)
+            elseif spell.name:contains("Madrigal") then
+                equip(sets.midcast.song.madrigal)
+            elseif spell.name:contains("Minuet") then
+                equip(sets.midcast.song.minuet)
             else
                 equip(sets.midcast.song.buff)
             end

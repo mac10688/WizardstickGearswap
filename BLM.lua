@@ -5,7 +5,7 @@ IdleSetIndex = 1
 IdleSet = {"Refresh", "DT", "Death"}
 
 WeaponSetIndex = 1
-WeaponSet = {"Laevateinn", "Laevateinn II", "Marin Staff", "Any"}
+WeaponSet = {"Laevateinn", "Laevateinn II", "Marin Staff", "Kaumodaki", "Any"}
 
 ObiOn = true
 
@@ -106,6 +106,7 @@ function get_sets()
     sets.WeaponSet["Laevateinn"] = {main="Laevateinn", sub="Enki strap"}
     sets.WeaponSet["Marin Staff"] = {main="Marin Staff +1", sub="Enki strap"}
     sets.WeaponSet["Laevateinn II"] = {main="Laevateinn", sub="Khonsu"}
+    sets.WeaponSet["Kaumodaki"] = {main="Kaumodaki", sub="Khonsu"}
 
     sets.engaged = {
         head="Nyame helm",
@@ -148,8 +149,8 @@ function get_sets()
         waist="Embla sash", --fast cast 5%
         ear1="Malignance earring", --fast cast 4%
         ear2="Loquacious Earring", --fast cast 2%
-        ring2="Medada's Ring", --fast cast 10%
-        ring1="Kishar ring" --fast cast 4%
+        ring1="Medada's Ring", --fast cast 10%
+        ring2="Kishar ring" --fast cast 4%
     }    
 
     sets.precast.fc.elemental = set_combine(sets.precast.fc, {
@@ -180,7 +181,7 @@ function get_sets()
     sets.midcast.elemental["Magic Attack Bonus"] = {
         ammo="Pemphredo tathlum",
         head="Archmage's petasos +3",
-        body="Wicce coat +2",
+        body="Wicce coat +3",
         hands="Archmage's gloves +3",
         legs="Archmage's tonban +3",
         feet="Archmage's sabots +3",
@@ -232,17 +233,17 @@ function get_sets()
         ring2="Archon ring",
     })
 
-    --MB1 Total: 45
-    --MB2 Total: 34
-    --MB Total: 78
+    --MB1 Total: 49
+    --MB2 Total: 20
+    --MB Total: 69
     sets.midcast.elemental["Magic Burst"] = set_combine(sets.midcast.elemental["Magic Attack Bonus"], {
-        head="Ea hat +1", --MB: 6 MB2:6
-        neck="Sorcerer's stole +2", --MB: 7
-        body="Wicce coat +3", --MB: 9 MB2:9
-        hands="Archmage's gloves +3", --MB2: 6
-        legs="Ea slops +1", --MB: 8 MB2:8
-        feet="Archmage's sabots +3", --MB: 10
-        right_ring="Freke ring", --MB2: 5
+        head="Ea hat +1", --MB: 7 MB2: 7
+        neck="Sorcerer's stole +2", --MB: 10
+        body="Wicce coat +3", --MB2: 5
+        hands="Agwu's gages", --MB: 8 MB2: 5
+        legs="Ea slops +1", --MB: 8 MB2: 8
+        feet="Agwu's pigaches", --MB: 6
+        right_ring="Freke ring",
         back=magic_atk_cape --MB 5
     })
 
