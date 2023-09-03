@@ -114,7 +114,7 @@ function get_sets()
         ear1="Telos earring",
         ear2="Dignitary's earring",
         body="Nyame mail",
-        hands="Gazu bracelet +1",
+        hands="Gazu bracelets +1",
         ring1={name="Chirich Ring +1", bag="wardrobe5"},
         ring2={name="Chirich Ring +1", bag="wardrobe6"},
         waist="Grunfeld rope",
@@ -156,7 +156,7 @@ function get_sets()
     sets.precast.fc.elemental = set_combine(sets.precast.fc, {
         head="Wicce petasos +3",
         ear2="Barkarole earring",
-        body="Wicce coat +2",
+        body="Wicce coat +3",
         ring1="Mallquis Ring",
         legs="Mallquis trews +2",
         feet="Spaekona's sabots +3"

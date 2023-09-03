@@ -102,7 +102,7 @@ function get_sets()
         hands="Geomancy mitaines +3",
         back="Lifestream cape",
         legs="Bagua pants +3",
-        feet="Azimuth gaiters +2"
+        feet="Azimuth gaiters +3"
     })
 
     --50% cure
@@ -123,7 +123,7 @@ function get_sets()
         ring1="Evanescence ring",
         ring2="Archon ring",
         waist="Fucho-no-obi",
-        legs="Azimuth tights +2"
+        legs="Azimuth tights +3"
     })
     
     sets.midcast.drain = set_combine(sets.midcast.dark_magic, {
@@ -248,13 +248,13 @@ function get_sets()
         ear1="Etiolation earring",
         ear2="Hearty earring",
         body="Shamash robe",
-        hands="Azimuth gloves +2",
+        hands="Azimuth gloves +3",
         ring1="Defending Ring",
         ring2="Vengeful ring",
         back={ name="Nantosuelta's Cape", augments={'MND+20','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Pet: "Regen"+10','Pet: "Regen"+5'}},
         waist="Slipor sash",
         legs="Geomancy pants +3",
-        feet="Azimuth gaiters +2"
+        feet="Azimuth gaiters +3"
     }
 
     sets.idle.luopan = set_combine(sets.idle, {

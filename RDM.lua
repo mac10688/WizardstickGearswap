@@ -479,10 +479,20 @@ function get_sets()
         back=Cape.Dex_WS
     })
     
-    sets.ws["Requiescat"] = set_combine(sets.ws.physical, {
-        ear2="Regal earring",
-        ring1="Rufescent ring"
-    })
+    sets.ws["Requiescat"] = {
+        head="Leth. Chapeau +3",
+        body="Lethargy Sayon +3",
+        hands="Leth. Ganth. +3",
+        legs="Leth. Fuseau +3",
+        feet="Leth. Houseaux +3",
+        neck="Sanctity Necklace",
+        waist="Kentarch Belt +1",
+        left_ear="Leth. Earring +1",
+        right_ear="Crep. Earring",
+        left_ring="Rufescent Ring",
+        right_ring="Chirich Ring +1",
+        back={ name="Sucellos's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Dbl.Atk."+10','Damage taken-5%',}},
+    }
 
     sets.ws["Evisceration"] = sets.ws.physical
     sets.ws["Aeolian Edge"] = sets.ws.magic

@@ -116,13 +116,13 @@ function get_sets()
         neck="Warder's charm +1", --mdb: 8
         ear1="Etiolation earring",
         ear2="Tuisto earring", --dt: 2 acc: 5~10
-        body="Runeist's coat +3", --mdb: 7 meva: 94 haste: 4 
+        body="Runeist coat +3", --mdb: 7 meva: 94 haste: 4 
         hands="Nyame gauntlets", --mdb: 5 meva: 101 haste: 4
         ring1="Defending ring", --dt: 10
         ring2={name="Moonlight ring", bag="wardrobe6"}, --meva: 9
         back=dt_cape, --meva: 20
         waist="Engraved belt",
-        legs="Erilaz leg guards +2", --mdb: 6 meva: 99 pdt: 5 haste: 6 status: 10
+        legs="Erilaz leg guards +3", --mdb: 6 meva: 99 pdt: 5 haste: 6 status: 10
         feet="Erilaz greaves +3" --mdb: 5 meva: 107 pdt: 5 rele: 25 haste: 4
     }
 
@@ -137,7 +137,7 @@ function get_sets()
         legs="Dashing subligar"
     })
 
-    --79 enmmity
+    --81 enmmity
     sets.enmity = set_combine( sets.tank["pdt"], {
         ammo="Aqreqaq bomblet", -- 2 enmity
         head="Halitus helm", -- 8 enmity
@@ -149,7 +149,7 @@ function get_sets()
         hands="Kurys gloves", -- 9 enmity
         ring2="Vengeful ring", --3 enmity
         back=dt_cape, -- 10 enmity
-        legs="Erilaz leg guards +2", --11 enmity
+        legs="Erilaz leg guards +3", --13 enmity
         feet="Ahosi leggings" --7 enmity
     })
 
@@ -162,13 +162,13 @@ function get_sets()
 
     --Run job abilities
     sets.ja['Vallation'] = set_combine(sets.enmity, {
-        body="Runeist's coat +3",
+        body="Runeist coat +3",
         legs="Futhark trousers +3",
         back=dt_cape
     })
 
     sets.ja['Valiance'] = set_combine(sets.enmity, sets.ja['Vallation'])
-    sets.ja['Pflug'] = set_combine(sets.enmity, {feet="Runeist's boots +3"})
+    sets.ja['Pflug'] = set_combine(sets.enmity, {feet="Runeist bottes +3"})
     sets.ja['Battuta'] = set_combine(sets.enmity, {head="Futhark bandeau +3"})
     sets.ja['Liement'] = set_combine(sets.enmity, {body="Futhark Coat +3"})
     
@@ -189,12 +189,12 @@ function get_sets()
     })
 
     sets.ja['Swipe'] = sets.ja['Lunge']
-    sets.ja['Gambit'] = set_combine(sets.enmity, {hands="Runeist's Mitons +3"})
+    sets.ja['Gambit'] = set_combine(sets.enmity, {hands="Runeist Mitons +3"})
     sets.ja['Rayke'] = set_combine(sets.enmity, {feet="Futhark Boots +1"})
     sets.ja['Elemental Sforzo'] = set_combine(sets.enmity, {body="Futhark Coat +3"})
     sets.ja['Swordplay'] = set_combine(sets.enmity, {hands="Futhark Mitons +3"})
     sets.embolden = {back="Evasionist's cape"}
-    sets.ja['Vivacious Pulse'] = set_combine(sets.enmity, {head="Erilaz galea +2"})
+    sets.ja['Vivacious Pulse'] = set_combine(sets.enmity, {head="Erilaz galea +3"})
     sets.ja['One for All'] = set_combine(sets.enmity, {})
 
     --war sub
@@ -210,10 +210,10 @@ function get_sets()
 
     --Fast cast: 28%
     sets.fc = {
-        head="Runeist's bandeau +3", --fc 12%
+        head="Runeist bandeau +3", --fc 12%
         neck="Voltsurge torque", --fc 4%
         ear1="Etiolation earring",
-        body="Agwu's robe", --fc 8%
+        body="Erilaz surcoat +3", --fc 13%
         hands="Leyline gloves", --fc 8%
         ring1="Kishar ring",
         -- legs="Ayanmo cosciales +2", --fc 6%
@@ -236,12 +236,13 @@ function get_sets()
         ring1="Eihwaz ring",
         back=dt_cape,
         waist="Audumbla sash",
-        legs="Erilaz leg guards +2",
+        legs="Erilaz leg guards +3",
         feet="Erilaz greaves +3"
     })
 
     sets.midcast.SIRD = set_combine(sets.tank["pdt"], {
         ammo="Staunch tathlum +1",
+        head="Erilaz galea +3",
         neck="Moonlight necklace",
         ear1="Magnetic earring",
         ring1={name="Moonlight ring", bag="wardrobe5"},
@@ -271,13 +272,13 @@ function get_sets()
     --drk sub
     sets.midcast["Stun"] = sets.midcast.enmity
 
-    --Enhancing magic duration: 35%
+    --Enhancing magic duration: 45%
     sets.midcast.enhancing = set_combine(sets.midcast.SIRD, {
-        head="Erilaz galea +2", --Enhancing magic effect duration +15%
+        head="Erilaz galea +3", --Enhancing magic effect duration +25%
         neck="Incanter's torque",
         ear1="Andoaa earring",
         ear2="Mimir earring",
-        hands="Runeist's mitons +3", --Enhancing magic skill +19
+        hands="Runeist mitons +3", --Enhancing magic skill +19
         waist="Audumbla sash",
         legs="Futhark trousers +3" --Enhancing magic duration +20%
     })
@@ -288,7 +289,7 @@ function get_sets()
 
     --Regen effect duration: +21
     sets.midcast.enhancing["Regen"] = set_combine(sets.midcast.enhancing, {
-        head="Runeist's bandeau +3"
+        head="Runeist bandeau +3"
     })
     sets.midcast.enhancing["Regen II"] = sets.midcast.enhancing["Regen"]
     sets.midcast.enhancing["Regen III"] = sets.midcast.enhancing["Regen"]
@@ -400,7 +401,7 @@ function get_sets()
 
     sets.engaged.pure_offense["accuracy"] = {
         ammo="Yamarang",
-        head="Runeist's bandeau +3",
+        head="Runeist bandeau +3",
         neck="Sanctity necklace",
         ear1="Telos earring",
         ear2="Dignitary's earring",

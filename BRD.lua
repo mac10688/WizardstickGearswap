@@ -186,11 +186,14 @@ function get_sets()
         feet="Bihu slippers +3"
     }
 
-    sets.precast.song.HonorMarch = set_combine(sets.precast.song, {ranged="Marsyas"})
+    sets.precast.song.buff = set_combine(sets.precast.song, { main="Carnwenhan"})
+
+    sets.precast.song.HonorMarch = set_combine(sets.precast.song.buff, {ranged="Marsyas"})
 
     sets.midcast = {}
     sets.midcast.song = {}
     sets.midcast.song.buff = {
+        main="Carnwenhan",
         ranged="Gjallarhorn",
         head="Fili calot +2",
         neck="Moonbow whistle +1",
@@ -283,7 +286,11 @@ function precast(spell)
         if spell.name == 'Honor March' then
             equip(sets.precast.song.HonorMarch)
         elseif spell.type == 'BardSong' then
-            equip(sets.precast.song)
+            if spell.targets.Enemy then
+                equip(sets.precast.song.buff)
+            else
+                equip(sets.precast.song)
+            end            
         else
             equip(sets.precast)
         end

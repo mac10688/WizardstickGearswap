@@ -296,7 +296,7 @@ function get_sets()
 
     sets.midcast.bar_element = set_combine( sets.midcast.enhancing, {
         main="Beneficus",
-        head="Ebers cap +1",
+        head="Ebers cap +3",
         body="Ebers Bliaut +3",
         legs="Piety Pantaloons +3",
         feet="Ebers duckbills +3"
