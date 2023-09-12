@@ -195,7 +195,7 @@ function get_sets()
     sets.midcast.song.buff = {
         main="Carnwenhan",
         ranged="Gjallarhorn",
-        head="Fili calot +2",
+        head="Fili calot +3",
         neck="Moonbow whistle +1",
         ear1="Etiolation earring",
         ear2="Genmei earring",
@@ -269,7 +269,7 @@ function get_sets()
     sets.ExtraSongs = set_combine(sets.precast.song, {
         ranged="Daurdabla",
         hands="Bewegt cuffs",
-        legs="Fili rhingrave +2"
+        legs="Fili rhingrave +3"
     })
 
     sets.kiting = {

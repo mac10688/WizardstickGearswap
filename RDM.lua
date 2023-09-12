@@ -480,7 +480,7 @@ function get_sets()
     })
     
     sets.ws["Requiescat"] = {
-        head="Leth. Chapeau +3",
+        head="Leth. Chappel +3",
         body="Lethargy Sayon +3",
         hands="Leth. Ganth. +3",
         legs="Leth. Fuseau +3",
