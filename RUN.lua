@@ -115,7 +115,7 @@ function get_sets()
         head="Nyame helm", --mdb: 4 meva: 73 haste: 8
         neck="Warder's charm +1", --mdb: 8
         ear1="Etiolation earring",
-        ear2="Tuisto earring", --dt: 2 acc: 5~10
+        ear2="Sanare earring", --dt: 2 acc: 5~10
         body="Runeist coat +3", --mdb: 7 meva: 94 haste: 4 
         hands="Nyame gauntlets", --mdb: 5 meva: 101 haste: 4
         ring1="Defending ring", --dt: 10
@@ -150,7 +150,7 @@ function get_sets()
         ring2="Vengeful ring", --3 enmity
         back=dt_cape, -- 10 enmity
         legs="Erilaz leg guards +3", --13 enmity
-        feet="Ahosi leggings" --7 enmity
+        feet="Erilaz greaves +3" --8 enmity
     })
 
     sets.weaponset = {}
@@ -240,18 +240,18 @@ function get_sets()
         feet="Erilaz greaves +3"
     })
 
+    --110%
     sets.midcast.SIRD = set_combine(sets.tank["pdt"], {
-        ammo="Staunch tathlum +1",
-        head="Erilaz galea +3",
-        neck="Moonlight necklace",
-        ear1="Magnetic earring",
+        ammo="Staunch tathlum +1", --11%
+        head="Erilaz galea +3", --20%
+        neck="Moonlight necklace", --15%
+        ear1="Magnetic earring", --8%
         ring1={name="Moonlight ring", bag="wardrobe5"},
         ring2={name="Moonlight ring", bag="wardrobe6"},
-        hands="Rawhide gloves",
-        back=fast_cast_cape,
-        waist="Audumbla sash",
-        legs="Carmine cuisses +1",
-        feet="Taeon boots"
+        hands="Regal Gauntlets", --15%
+        back=fast_cast_cape, --10%
+        waist="Audumbla sash", --10%
+        legs="Carmine cuisses +1", --20%
     })
 
     sets.midcast.SIRD.enmity = set_combine(sets.midcast.SIRD, {
@@ -278,7 +278,6 @@ function get_sets()
         neck="Incanter's torque",
         ear1="Andoaa earring",
         ear2="Mimir earring",
-        hands="Runeist mitons +3", --Enhancing magic skill +19
         waist="Audumbla sash",
         legs="Futhark trousers +3" --Enhancing magic duration +20%
     })

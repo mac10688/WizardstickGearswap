@@ -12,6 +12,8 @@ WeaponSet = {"Savage", "Savage II", "Savage Accuracy", "Mordent", "Mage", "Mage 
 UseDummySongs = true
 DummySongs = { "Herb Pastoral", "Shining Fantasia" }
 
+UseEnmitySongs = false
+
 Kiting = false
 
 
@@ -20,12 +22,14 @@ send_command('bind f10 gs c LullabyMode')
 send_command('bind f11 gs c ExtraSongs')
 send_command('bind f12 gs c RefreshSet')
 send_command('bind ^f9 gs c CycleEngageMode')
+send_command('bind ^f10 gs c toggle EnmitySongs')
 send_command('bind ^k gs c toggle kiting')
 
 function file_unload()
     send_command('unbind f9')
     send_command('unbind ^f9')
     send_command('unbind f10')
+    send_command('unbind ^f10')
     send_command('unbind f11')
     send_command('unbind f12')
     send_command('unbind ^k')
@@ -190,6 +194,24 @@ function get_sets()
 
     sets.precast.song.HonorMarch = set_combine(sets.precast.song.buff, {ranged="Marsyas"})
 
+    sets.enmity = {
+        main="Mafic Cudgel",
+        sub="Genmei Shield",
+        range={ name="Linos", augments={'DEF+15','Phys. dmg. taken -5%','VIT+8'}},
+        head="Halitus Helm",
+        body="Emet Harness +1",
+        hands="Fili Manchettes +3",
+        legs="Zoar Subligar +1",
+        feet="Nyame Sollerets",
+        neck="Unmoving Collar +1",
+        waist="Flume Belt +1",
+        left_ear="Trux Earring",
+        right_ear="Genmei Earring",
+        left_ring="Eihwaz Ring",
+        right_ring="Supershear Ring",
+        back={ name="Intarabus's Cape", augments={'VIT+20','Eva.+20 /Mag. Eva.+20','VIT+10','Enmity+10','Phys. dmg. taken-10%',}},
+    }
+
     sets.midcast = {}
     sets.midcast.song = {}
     sets.midcast.song.buff = {
@@ -320,6 +342,8 @@ function midcast(spell)
             elseif spell.name:contains("Foe") then
                 local lullabySet = LullabySet[LullabySetIndex]
                 equip(sets.midcast.song.Lullaby[lullabySet])
+            elseif UseEnmitySongs then
+                equip(sets.enmity)
             elseif spell.name:contains("Threnody") then
                 equip(sets.midcast.song.threnody)
             else
@@ -405,6 +429,13 @@ function self_command(m)
         equip_set(player.status)
 
         add_to_chat(122, 'Engage Set: ' .. engage_set)
+    elseif m == "toggle EnmitySongs" then
+        UseEnmitySongs = not UseEnmitySongs
+        if UseEnmitySongs then
+            send_command('@input /echo ----- UseEnmitySongs Set On -----')
+        else
+            send_command('@input /echo ----- UseEnmitySongs Set Off -----')
+        end
     elseif m == 'toggle kiting' then
         Kiting = not Kiting
         if Kiting then

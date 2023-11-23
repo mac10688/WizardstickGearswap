@@ -118,8 +118,8 @@ function get_sets()
     sets.engaged = {
         head="Malignance chapeau",
         neck="Anu Torque",
-        ear1="Dignitary's earring",
-        ear2="Sherida Earring",
+        ear1="Sherida Earring",
+        ear2="Dignitary's earring",        
         body="Malignance tabard",
         hands="Malignance gloves",
         ring1={name="Chirich ring +1", bag="wardrobe5"},
@@ -180,12 +180,12 @@ function get_sets()
     sets.engaged.sw["PDT"].enspell = set_combine(sets.engaged.sw["PDT"], sets.engaged.enspell)
 
     --rdm inherit 38
-    --45
+    --50
     --83 total
     sets.fc = {   
         head="Atrophy chapeau +3", --16
         ear1="Etiolation earring", --1
-        ear2="Malignance earring", --4
+        ear2="Lethargy earring +2", --9
         body="Vitiation tabard +3", --15
         hands="Leyline gloves", --8
         ring1="Medada's ring",
@@ -211,6 +211,7 @@ function get_sets()
         head="Befouled Crown",
         neck="Duelist's torque +2",
         ear1="Mimir earring",
+        ear2="Lethargy earring +2",
         body="Vitiation Tabard +3",
         hands="Vitiation gloves +3",
         ring1={name="Stikini Ring +1", bag="wardrobe5"},
@@ -224,7 +225,7 @@ function get_sets()
     sets.midcast.enhancing["Duration"] = set_combine(sets.midcast.enhancing, {
         main="Colada",
         head="Telchine cap",
-        ear2="Lethargy earring +1",
+        ear2="Lethargy earring +2",
         neck="Duelist's torque +2",
         body="Vitiation tabard +3",
         hands="Atrophy gloves +3",
@@ -238,7 +239,7 @@ function get_sets()
         main="Colada",
         head="Lethargy Chappel +3",
         neck="Duelist's torque +2",
-        ear2="Lethargy earring +1",
+        ear2="Lethargy earring +2",
         hands="Atrophy gloves +3",
         body="Lethargy sayon +3",
         waist="Embla sash",
@@ -282,7 +283,7 @@ function get_sets()
         neck="Erra Pendant",
         waist={ name="Acuity Belt +1", augments={'Path: A',}},
         left_ear="Regal Earring",
-        right_ear="Leth. Earring +1",
+        right_ear="Lethargy Earring +2",
         left_ring="Stikini Ring +1",
         right_ring="Medada's Ring",
         back={ name="Sucellos's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Damage taken-5%',}},
@@ -421,8 +422,8 @@ function get_sets()
     sets.ws.physical = {
         head="Vitiation Chapeau +3",
         neck="Fotia gorget",
-        ear1="Ishvara Earring",
-        ear2="Sherida Earring",
+        ear1="Sherida Earring",
+        ear2="Lethargy earring +2",        
         body="Nyame mail",
         hands="Nyame gauntlets",
         ring1="Rufescent ring",
@@ -454,7 +455,7 @@ function get_sets()
     })
 
     sets.ws["Savage Blade"] = set_combine(sets.ws.physical, {
-        ear2="Regal earring",
+        ear1="Regal earring",
         ring1="Rufescent ring",
         ring2="Shukuyu ring",
         waist="Sailfi belt +1",
@@ -487,8 +488,8 @@ function get_sets()
         feet="Leth. Houseaux +3",
         neck="Sanctity Necklace",
         waist="Kentarch Belt +1",
-        left_ear="Leth. Earring +1",
-        right_ear="Crep. Earring",
+        left_ear="Crep. Earring",
+        right_ear="Lethargy Earring +2",
         left_ring="Rufescent Ring",
         right_ring="Chirich Ring +1",
         back={ name="Sucellos's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Dbl.Atk."+10','Damage taken-5%',}},
