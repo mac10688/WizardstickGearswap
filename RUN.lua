@@ -89,41 +89,42 @@ function get_sets()
     local herc_legs_ws = { name="Herculean Trousers", augments={'Potency of "Cure" effect received+4%','STR+1','Weapon skill damage +8%','Accuracy+13 Attack+13','Mag. Acc.+14 "Mag.Atk.Bns."+14'}}
 
     sets.tank = {}
-    --DT: 28
-    --PDT: 65
-    --MDT: 31
-    --Haste: 25
-    --Accuracy: 11
+    --DT: 52
     sets.tank["pdt"] = {
-        ammo="Staunch tathlum +1", --dt: 2
-        head="Nyame helm", --dt: 5 haste: 8
-        neck="Futhark torque +2",--dt: 5
-        ear1="Odnowa earring +1",
-        ear2="Tuisto earring", --mdt: 2
-        body="Nyame mail", --dt: 7 haste: 4
-        hands="Turms mittens +1", --pdt: 2 haste: 5
-        ring1="Defending ring",
-        ring2={name="Moonlight ring", bag="wardrobe6"},
+        ammo="Staunch tathlum +1", --dt: 3
+        head="Nyame helm", --dt: 7
+        neck="Futhark torque +2",--dt: 7
+        ear1="Odnowa earring +1",--dt: 3
+        ear2="Tuisto earring",
+        body="Nyame mail", --dt: 9
+        hands="Turms mittens +1",
+        ring1="Shadow ring", --dt: 10
+        ring2={name="Moonlight ring", bag="wardrobe6"}, --dt: 5
         back= dt_cape,--dt: 5
-        waist="Flume belt +1", --haste: 6 acc: 11
-        legs="Nyame flanchard",  --pdt: 7 haste: 6
-        feet="Turms leggings +1" --pdt: 5 haste: 4
+        waist="Flume belt +1",
+        legs="Erilaz leg guards +3",  --dt: 13
+        feet="Turms leggings +1"
     }
 
+    --dt: 53
+    --mdb: 61
+    --meva: 690
+    --resist elements: 65-75
+    --resist status: 19
     sets.tank["mdt"] = {
-        ammo="Staunch tathlum +1", --dt: 2 status: 10
-        head="Nyame helm", --mdb: 4 meva: 73 haste: 8
-        neck="Warder's charm +1", --mdb: 8
-        ear1="Etiolation earring",
-        ear2="Sanare earring", --dt: 2 acc: 5~10
-        body="Runeist coat +3", --mdb: 7 meva: 94 haste: 4 
-        hands="Nyame gauntlets", --mdb: 5 meva: 101 haste: 4
-        ring1="Defending ring", --dt: 10
-        ring2={name="Moonlight ring", bag="wardrobe6"}, --meva: 9
-        back=dt_cape, --meva: 20
-        waist="Engraved belt",
-        legs="Erilaz leg guards +3", --mdb: 6 meva: 99 pdt: 5 haste: 6 status: 10
-        feet="Erilaz greaves +3" --mdb: 5 meva: 107 pdt: 5 rele: 25 haste: 4
+        ammo="Staunch tathlum +1", --dt:3 status: 11
+        head="Erilaz galea +3", --mdb:9 meva:119
+        neck="Warder's charm +1", --resist:20
+        ear1="Sanare earring", --mdb:4 meva:9
+        ear2="Erilaz earring +1", --dt:5 meva:11   
+        body="Erilaz surcoat +3", --mdb:10 meva:130 
+        hands="Erilaz gauntlets +3", --dt:11 mdb:7 meva:87 status:8
+        ring1="Shadow ring",
+        ring2={name="Moonlight ring", bag="wardrobe6"}, --dt:5
+        back=dt_cape, --meva: 20 dt:5
+        waist="Engraved belt", --resist:20
+        legs="Erilaz leg guards +3", --dt:13 mdb: 10 meva:157
+        feet="Erilaz greaves +3" --dt:11 mdb:9 meva:157 resist:35
     }
 
     sets.tank["resist-status"] = set_combine( sets.tank["mdt"], {
@@ -190,7 +191,7 @@ function get_sets()
 
     sets.ja['Swipe'] = sets.ja['Lunge']
     sets.ja['Gambit'] = set_combine(sets.enmity, {hands="Runeist Mitons +3"})
-    sets.ja['Rayke'] = set_combine(sets.enmity, {feet="Futhark Boots +1"})
+    sets.ja['Rayke'] = set_combine(sets.enmity, {feet="Futhark Boots +3"})
     sets.ja['Elemental Sforzo'] = set_combine(sets.enmity, {body="Futhark Coat +3"})
     sets.ja['Swordplay'] = set_combine(sets.enmity, {hands="Futhark Mitons +3"})
     sets.embolden = {back="Evasionist's cape"}
@@ -255,19 +256,19 @@ function get_sets()
     })
 
     sets.midcast.SIRD.enmity = set_combine(sets.midcast.SIRD, {
-        head="Halitus helm",
+        -- head="Halitus helm",
         body="Emet harness +1",
         ring1="Eihwaz ring"
     })
 
     --blu sub
     sets.midcast["Sheep Song"] = sets.midcast.SIRD.enmity
-    sets.midcast["Blank Gaze"] = sets.midcast.enmity
+    sets.midcast["Blank Gaze"] = sets.midcast.SIRD.enmity
     sets.midcast["Jettatura"] = sets.midcast.SIRD.enmity
     sets.midcast["Soporific"] = sets.midcast.SIRD.enmity
     sets.midcast["Cursed Sphere"] = sets.midcast.SIRD.enmity
     sets.midcast["Geist Wall"] = sets.midcast.SIRD.enmity
-    sets.midcast["Healing Breeze"] = sets.midcast.SIRD
+    sets.midcast["Healing Breeze"] = sets.midcast.SIRD.enmity
 
     --drk sub
     sets.midcast["Stun"] = sets.midcast.enmity

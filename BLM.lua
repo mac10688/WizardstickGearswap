@@ -5,7 +5,7 @@ IdleSetIndex = 1
 IdleSet = {"Refresh", "DT", "Death"}
 
 WeaponSetIndex = 1
-WeaponSet = {"Laevateinn", "Laevateinn II", "Marin Staff", "Kaumodaki", "Any"}
+WeaponSet = {"Laevateinn", "Laevateinn II", "Marin Staff", "Kaumodaki", "Scythe", "Any"}
 
 ObiOn = true
 
@@ -107,6 +107,7 @@ function get_sets()
     sets.WeaponSet["Marin Staff"] = {main="Marin Staff +1", sub="Enki strap"}
     sets.WeaponSet["Laevateinn II"] = {main="Laevateinn", sub="Khonsu"}
     sets.WeaponSet["Kaumodaki"] = {main="Kaumodaki", sub="Khonsu"}
+    sets.WeaponSet["Scythe"] = {main="Drepanum", sub="Khonsu"}
 
     sets.engaged = {
         head="Nyame helm",
@@ -451,7 +452,7 @@ function get_sets()
         back=idle_cape,
         waist="Slipor sash",
         legs="Agwu's slops",
-        feet="Archmage's sabots +3"
+        feet="Wicce sabots +3"
     }
 
     sets.idle["Refresh"] = set_combine(sets.idle["DT"], {

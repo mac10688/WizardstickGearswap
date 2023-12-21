@@ -41,8 +41,6 @@ help()
 
 function get_sets()
 
-    sets = {}
-
     sets.conserve_mp = {
         head="Vanya hood",
         hands="Fanatic gloves",

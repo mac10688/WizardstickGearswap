@@ -190,5 +190,12 @@ end
 
 print_player_status()
 
+function lockstyle()
+    if player.main_job == 'SCH' then send_command('@input /lockstyleset 6') end
+end
+
+function sub_job_change()
+    coroutine.schedule(lockstyle,6)
+end
 
 -----------------------------------------------------------------------------------

@@ -187,14 +187,14 @@ function get_sets()
         feet={ name="Merlinic Crackows", augments={'"Occult Acumen"+11','Mag. Acc.+15'}}
     })
 
-    --MB: 44
+    --MB: 38
     --MB2: 35
-    --Total MB: 75
+    --Total MB: 73
     sets.midcast.elemental["magic-burst"] = set_combine(sets.midcast.elemental["magic-atk-bonus"], {
         head="Ea hat +1", --MB: 7 MB2:7
         neck="Mizukage-no-Kubikazari", -- MB: 10
         body="Ea houppelande +1", --MB: 9 MB2:9
-        hands="Amalric gages +1", --MB2: 6
+        hands="Agwu's gages", --MB2: 5
         -- ring1="Mujin band", --MB2: 5
         legs="Ea slops +1", --MB: 8 MB2:8
         feet="Agwu's pigaches" --MB: 6
@@ -333,6 +333,23 @@ function get_sets()
         feet="Geomancy sandals +3"
     }
 
+    sets.midcast.absorb = {
+        sub="Ammurapi Shield",
+        range={ name="Dunna", augments={'MP+20','Mag. Acc.+10','"Fast Cast"+3',}},
+        head="Azimuth Hood +3",
+        body="Geomancy Tunic +3",
+        hands="Geo. Mitaines +3",
+        legs="Azimuth Tights +3",
+        feet="Azimuth Gaiters +3",
+        neck="Erra Pendant",
+        waist={ name="Acuity Belt +1", augments={'Path: A',}},
+        left_ear="Regal Earring",
+        right_ear="Malignance Earring",
+        ring1="Medada's ring",
+        ring2="Archon Ring",        
+        back={ name="Nantosuelta's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}},
+    }
+
     coroutine.schedule(lockstyle,9)
 
 end
@@ -390,6 +407,8 @@ function midcast(spell)
             equip(sets.midcast.drain)
         elseif spell.name:startswith("Aspir") then
             equip(sets.midcast.aspir)
+        elseif spell.name:startswith("Absorb-") then
+            equip(sets.midcast.absorb)
         else
             equip(sets.midcast.dark_magic)
         end

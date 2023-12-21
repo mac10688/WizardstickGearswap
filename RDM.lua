@@ -1,6 +1,6 @@
 res = require('resources')
 
-Weapon_Sets = {"Sword", "Magic Accuracy", "Dual Wield", "Odin", "Savage", "Club", "Club2", "AE"}
+Weapon_Sets = {"Sword", "Magic Accuracy", "Dual Wield", "Odin", "Savage", "Club", "Club2", "AE", "Burst"}
 WeaponSetsIndex = 2
 
 PhysicalAccuracyMode = {"High Acc", "Multi-Attack", "PDT" }
@@ -42,7 +42,6 @@ Potency = S{"Paralyze", "Paralyze II"
             , "Frazzle", "Frazzle II", "Frazzle III"
             , "Blind", "Blind II"
             , "Gravity", "Gravity II"
-            
             }
 
 send_command("bind f9 gs c Cycle WeaponSet")
@@ -110,6 +109,7 @@ function get_sets()
     sets.weapons["Club"] = {main="Maxentius", sub="Thibron"}
     sets.weapons["Club2"] = {main="Maxentius", sub="Sacro bulwark"}
     sets.weapons["AE"] = {main="Tauret", sub="Malevolence"}
+    sets.weapons["Burst"] = {main="Bunzi's rod", sub="Ammurapi shield"}
 
     sets.ranged_ammo = {}
     sets.ranged_ammo["Magic Accuracy"] = {ranged="Ullr", ammo="Antlion arrow"}
@@ -129,6 +129,21 @@ function get_sets()
         legs="Malignance tights",
         feet="Malignance boots"
     }
+
+    -- sets.engaged = {
+    --     head="Lethargy chappel +3",
+    --     neck="Anu Torque",
+    --     ear1="Sherida Earring",
+    --     ear2="Dignitary's earring",        
+    --     body="Lethargy sayon +3",
+    --     hands="Lethargy gantherots +3",
+    --     ring1={name="Chirich ring +1", bag="wardrobe5"},
+    --     ring2="Hetairoi ring",
+    --     back=Cape.Melee,
+    --     waist="Grunfeld rope",
+    --     legs="Lethargy fuseau +3",
+    --     feet="Lethargy houseaux +3"
+    -- }
 
     sets.engaged["Multi-Attack"] = set_combine( sets.engaged, {
 
@@ -355,16 +370,16 @@ function get_sets()
 
     sets.midcast.elemental = {
         head="Ea hat +1",
-        neck="Mizu. Kubikazari",
+        neck="Duelist's torque +2",
         ear1="Regal earring",
         ear2="Malignance earring",
         body="Ea houppelande +1",
         hands="Amalric gages +1",
         ring1="Medada's ring",
         ring2="Metamorph ring +1",        
-        waist="Sacro cord",
+        waist="Acuity belt +1",
         legs="Ea slops +1",
-        feet="Merlinic Crackows"
+        feet="Bunzi's sabots"
     }
 
     sets.midcast.dark_magic = set_combine(sets.midcast.elemental, {
