@@ -157,7 +157,6 @@ function get_sets()
     sets.precast.fc.elemental = set_combine(sets.precast.fc, {
         head="Wicce petasos +3",
         ear2="Barkarole earring",
-        body="Wicce coat +3",
         ring1="Mallquis Ring",
         legs="Mallquis trews +2",
         feet="Spaekona's sabots +3"
@@ -278,7 +277,7 @@ function get_sets()
         left_ear = "Regal earring",
         right_ear="Malignance earring",
         body = "Spaekona's coat +3",
-        hands= "Spaekona's gloves +3",
+        hands= "Regal cuffs",
         ring1="Medada's ring",
         ring2="Kishar Ring",
         back=magic_int_ws,

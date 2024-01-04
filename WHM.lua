@@ -351,7 +351,7 @@ function get_sets()
         ear1="Malignance earring",
         ear2="Regal earring",
         body="Theophany bliaut +3",
-        hands="Kaykaus cuffs +1",
+        hands="Regal cuffs",
         ring1={name="Stikini Ring +1", bag="wardrobe5"},
         ring2="Kishar ring",
         back={ name="Alaunus's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}},

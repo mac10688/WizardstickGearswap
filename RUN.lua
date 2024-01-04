@@ -262,13 +262,13 @@ function get_sets()
     })
 
     --blu sub
-    sets.midcast["Sheep Song"] = sets.midcast.SIRD.enmity
-    sets.midcast["Blank Gaze"] = sets.midcast.SIRD.enmity
-    sets.midcast["Jettatura"] = sets.midcast.SIRD.enmity
-    sets.midcast["Soporific"] = sets.midcast.SIRD.enmity
-    sets.midcast["Cursed Sphere"] = sets.midcast.SIRD.enmity
-    sets.midcast["Geist Wall"] = sets.midcast.SIRD.enmity
-    sets.midcast["Healing Breeze"] = sets.midcast.SIRD.enmity
+    sets.midcast["Sheep Song"] = sets.midcast.SIRD
+    sets.midcast["Blank Gaze"] = sets.midcast.SIRD
+    sets.midcast["Jettatura"] = sets.midcast.SIRD
+    sets.midcast["Soporific"] = sets.midcast.SIRD
+    sets.midcast["Cursed Sphere"] = sets.midcast.SIRD
+    sets.midcast["Geist Wall"] = sets.midcast.SIRD
+    sets.midcast["Healing Breeze"] = sets.midcast.SIRD
 
     --drk sub
     sets.midcast["Stun"] = sets.midcast.enmity

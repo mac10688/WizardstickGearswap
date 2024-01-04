@@ -208,7 +208,7 @@ function get_sets()
         ear1="Regal earring",
         ear2="Malignance earring",
         body="Geomancy tunic +3",
-        hands="Geomancy mitaines +3",
+        hands="Regal cuffs",
         ring1="Medada's ring",
         ring2={name="Stikini Ring +1", bag="wardrobe6"},
         back={ name="Nantosuelta's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}},

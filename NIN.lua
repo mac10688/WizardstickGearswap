@@ -1,6 +1,9 @@
 OffensiveSpecModes = {"acc", "tp", "hybrid"}
 OffensiveSpecModeIndex = 1
 
+WeaponSetIndex = 1
+WeaponSet = {"Naegling", "Tupsimati", "Musa", "Bunzi" }
+
 Kiting = false
 
 send_command('bind f9 gs c Cycle OffensiveSpecMode')
@@ -191,7 +194,7 @@ end
 print_player_status()
 
 function lockstyle()
-    if player.main_job == 'SCH' then send_command('@input /lockstyleset 6') end
+    if player.main_job == 'NIN' then send_command('@input /lockstyleset 9') end
 end
 
 function sub_job_change()

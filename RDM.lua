@@ -119,7 +119,7 @@ function get_sets()
         head="Malignance chapeau",
         neck="Anu Torque",
         ear1="Sherida Earring",
-        ear2="Dignitary's earring",        
+        ear2="Dignitary's earring",
         body="Malignance tabard",
         hands="Malignance gloves",
         ring1={name="Chirich ring +1", bag="wardrobe5"},
@@ -334,6 +334,7 @@ function get_sets()
 
     sets.midcast.enfeebling.mnd["Duration"] = set_combine(sets.midcast.enfeebling.mnd, {
         ear2="Snotra Earring",
+        hands="Regal cuffs",
         ring2="Kishar ring"
     })
 
@@ -353,6 +354,7 @@ function get_sets()
 
     sets.midcast.enfeebling.int["Duration"] = set_combine(sets.midcast.enfeebling.int, {
         ear2="Snotra Earring",
+        hands="Regal cuffs",
         ring2="Kishar ring"
     })
 
