@@ -157,7 +157,25 @@ function get_sets()
     sets.buff = {}
     sets.buff['Rapture'] = {head="Arbatel bonnet +3"}
     sets.buff['Perpetuance'] = {hands="Arbatel Bracers +3"}
-    sets.buff['Immanence'] = {hands="Arbatel Bracers +3"}
+    -- sets.buff['Immanence'] = {hands="Arbatel Bracers +3"}
+    sets.buff['Immanence'] = {
+        main="Malignance Pole",
+        sub="Khonsu",
+        ammo="Staunch Tathlum +1",
+        head="Peda. M.Board +3",
+        body="Pinga Tunic +1",
+        hands={ name="Chironic Gloves", augments={'Mag. Acc.+15 "Mag.Atk.Bns."+15','Spell interruption rate down -11%','INT+8','"Mag.Atk.Bns."+5'}},
+        legs="Lengo Pants",
+        feet={ name="Kaykaus Boots", augments={'MP+60','Spell interruption rate down +10%','"Cure" spellcasting time -5%'}},
+        neck="Loricate Torque +1",
+        waist="Plat. Mog. Belt",
+        left_ear="Magnetic Earring",
+        right_ear="Sanare earring",
+        left_ring="Defending ring",
+        right_ring="Freke Ring",
+        back={ name="Lugh's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','"Fast Cast"+10','Spell interruption rate down-10%',}}
+    }
+
     sets.buff['Penury'] = {legs="Arbatel Pants +3"}
     sets.buff['Parsimony'] = {legs="Arbatel Pants +3"}
     sets.buff['Celerity'] = {feet="Pedagogy Loafers +3"}
@@ -276,6 +294,24 @@ function get_sets()
         waist="Embla sash",
         legs={ name="Lengo Pants", augments={'INT+5','Mag. Acc.+13'}},
         feet="Academic's loafers +3"
+    }
+
+    sets.midcast.immanence = {
+        main="Malignance Pole",
+        sub="Khonsu",
+        ammo="Staunch Tathlum +1",
+        head="Peda. M.Board +3",
+        body="Pinga Tunic +1",
+        hands={ name="Chironic Gloves", augments={'Mag. Acc.+15 "Mag.Atk.Bns."+15','Spell interruption rate down -11%','INT+8','"Mag.Atk.Bns."+5'}},
+        legs="Lengo Pants",
+        feet={ name="Kaykaus Boots", augments={'MP+60','Spell interruption rate down +10%','"Cure" spellcasting time -5%'}},
+        neck="Loricate Torque +1",
+        waist="Plat. Mog. Belt",
+        left_ear="Magnetic Earring",
+        right_ear="Sanare earring",
+        left_ring="Defending ring",
+        right_ring="Freke Ring",
+        back={ name="Lugh's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','"Fast Cast"+10','Spell interruption rate down-10%',}}
     }
 
     --MB1: 48
@@ -441,6 +477,10 @@ function get_sets()
         ring2={name="Stikini Ring +1", bag="wardrobe6"}
     })
 
+    sets.midcast["Aquaveil"] = set_combine(sets.midcast.enhancement_duration, { 
+        hands="Regal cuffs"
+    })
+
     sets.midcast.storm = set_combine(sets.midcast.enhancement_duration,{
 		feet="Pedagogy loafers +3",
     })
@@ -591,6 +631,12 @@ function get_sets()
         feet="Hippomenes socks +1"
     }
 
+    sets.HolyWater = {
+        neck="Nicander's necklace",
+        ring1={name="Blenmot's ring +1", bag="warddrobe5"},
+        ring2={name="Blenmot's ring +1", bag="warddrobe6"} 
+    }
+
     coroutine.schedule(lockstyle,8)
 
 end
@@ -658,6 +704,10 @@ function precast(spell)
             equip(sets.ws[spell.english])
         else
             equip(sets.ws)
+        end
+    elseif spell.type == "Item" then
+        if spell.name == "Holy Water" or spell.name == "Hallowed Water" then
+            equip(sets.HolyWater)
         end
     end
 end
@@ -739,11 +789,12 @@ function midcast(spell)
             if buffactive['Ebullience'] and spell.english ~= 'Impact' then
                 equip(sets.buff['Ebullience'])
             end
-            if buffactive['Immanence'] then
-                equip(sets.buff['Immanence'])
-            end
+
             if buffactive['Klimaform'] and spell.element == world.weather_element then
                 equip(sets.buff['Klimaform'])
+            end
+            if buffactive['Immanence'] then
+                equip(sets.buff['Immanence'])
             end
         end
     

@@ -298,6 +298,12 @@ function get_sets()
         feet='Fili cothurnes +3'
     }
 
+    sets.HolyWater = {
+        neck="Nicander's necklace",
+        ring1={name="Blenmot's ring +1", bag="warddrobe5"},
+        ring2={name="Blenmot's ring +1", bag="warddrobe6"} 
+    }
+
     coroutine.schedule(lockstyle,8)
 
 end
@@ -325,6 +331,10 @@ function precast(spell)
     elseif spell.type == "JobAbility" then
         if sets.ja[spell.name] then
             equip(sets.ja[spell.name])
+        end
+    elseif spell.type == "Item" then
+        if spell.name == "Holy Water" or spell.name == "Hallowed Water" then
+            equip(sets.HolyWater)
         end
     end
 end

@@ -335,6 +335,10 @@ function get_sets()
         feet="Telchine pigaches"
     })
 
+    sets.midcast["Aquaveil"] = set_combine(sets.midcast.enhancing_magic, { 
+        hands="Regal cuffs"
+    })
+
     local physical_int_ws = {
         head="Archmage's petasos +3",
         neck="Sorcerer's stole +2",
@@ -470,6 +474,12 @@ function get_sets()
         feet="Hippomenes socks +1"
     }
 
+    sets.HolyWater = {
+        neck="Nicander's necklace",
+        ring1={name="Blenmot's ring +1", bag="warddrobe5"},
+        ring2={name="Blenmot's ring +1", bag="warddrobe6"} 
+    }
+
     coroutine.schedule(lockstyle,8)
 
 end
@@ -511,7 +521,11 @@ function precast(spell)
         else
             equip(sets.ws)
         end
-    end    
+    elseif spell.type == "Item" then
+        if spell.name == "Holy Water" or spell.name == "Hallowed Water" then
+            equip(sets.HolyWater)
+        end
+    end
 end
 
 ---- .::Midcast Functions::. ---->

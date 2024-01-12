@@ -191,12 +191,14 @@ function get_sets()
     --MB2: 35
     --Total MB: 73
     sets.midcast.elemental["magic-burst"] = set_combine(sets.midcast.elemental["magic-atk-bonus"], {
+        main="Bunzi's rod",
+        ammo="Ghastly tathlum +1",
         head="Ea hat +1", --MB: 7 MB2:7
-        neck="Mizukage-no-Kubikazari", -- MB: 10
-        body="Ea houppelande +1", --MB: 9 MB2:9
+        neck="Sibyl scarf", -- MB: 10
+        body="Azimuth coat +3", --MB: 9 MB2:9
         hands="Agwu's gages", --MB2: 5
         -- ring1="Mujin band", --MB2: 5
-        legs="Ea slops +1", --MB: 8 MB2:8
+        legs="Azimuth tights +3", --MB: 8 MB2:8
         feet="Agwu's pigaches" --MB: 6
     })
 
@@ -237,6 +239,10 @@ function get_sets()
         ring1={name="Stikini Ring +1", bag="wardrobe5"},
         ring2={name="Stikini Ring +1", bag="wardrobe6"},
         waist="Embla sash"
+    })
+
+    sets.midcast["Aquaveil"] = set_combine(sets.midcast.enhancing, { 
+        hands="Regal cuffs"
     })
 
     sets.idle = {
@@ -350,6 +356,12 @@ function get_sets()
         back={ name="Nantosuelta's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}},
     }
 
+    sets.HolyWater = {
+        neck="Nicander's necklace",
+        ring1={name="Blenmot's ring +1", bag="warddrobe5"},
+        ring2={name="Blenmot's ring +1", bag="warddrobe6"} 
+    }
+
     coroutine.schedule(lockstyle,9)
 
 end
@@ -373,6 +385,10 @@ function precast(spell)
             equip(sets.ws[spell.name])
         else
             equip(sets.ws)
+        end
+    elseif spell.type == "Item" then
+        if spell.name == "Holy Water" or spell.name == "Hallowed Water" then
+            equip(sets.HolyWater)
         end
     end
 end

@@ -77,14 +77,17 @@ function get_sets()
         head="Ebers cap +3", --13%
         neck="Cleric's torque +2", --10%
         ear1="Malignance earring",
-        ear2="Loquacious Earring", --2%
+        -- ear2="Loquacious Earring", --2%
+        ear2="Ebers earring +1",
         body="Pinga tunic +1", --15%
         hands="Fanatic gloves", --7%
         ring1="Medada's Ring", --10%
-        ring2="Kishar ring", --4%        
+        ring2="Defending ring",
+        -- ring2="Kishar ring", --4%        
         back=fastcast_cape, --10%
         waist="Embla Sash", --5%
-        legs="Lengo pants", --5%
+        -- legs="Lengo pants", --5%
+        legs="Ebers pantaloons +3",
     }
 	
     sets.fc.heal = set_combine(sets.fc, {main="Yagrush", legs="Ebers pantaloons +3"})
@@ -92,9 +95,9 @@ function get_sets()
     sets.fc.cure = set_combine(sets.fc, {
         -- sub="Sors shield",
         ammo="Incantor stone",
-        head="Piety cap +3",
+        head="Ebers cap +3",
         ear1="Nourishing earring +1",
-        feet="Hygieia Clogs +1"
+        feet="Ebers duckbills +3"
     })
     
     sets.fc.stoneskin = set_combine(sets.fc, {
@@ -156,14 +159,14 @@ function get_sets()
     sets.engaged['Delay Cap'] = {
         ammo="Crepuscular pebble",
         head="Bunzi's hat",
-        body="Ayanmo corazza +2",
+        body="Bunzi's robe",
         hands="Bunzi's gloves",
         legs="Nyame flanchard",
         feet="Nyame sollerets",
         neck="Sanctity Necklace",
         waist="Grunfeld Rope",
         ear1="Telos earring",
-        ear2="Dignitary's earring",
+        ear2="Ebers earring +1",
         ring1="Petrov Ring",
         ring2="Chirich ring +1",
         back={ name="Alaunus's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10','Mag. Evasion+15'}}
@@ -190,8 +193,8 @@ function get_sets()
         ear2="Ebers earring +1",
         body="Shamash robe", --10% physical
         hands="Bunzi's gloves", --7% dmg
-        ring1="Defending Ring", --10% dmg
-        ring2="Ayanmo ring", --3% dmg
+        ring1="Ayanmo ring", --3% dmg
+        ring2="Defending Ring", --10% dmg
         back={ name="Alaunus's Cape", augments={'MND+20','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Enmity-10','Occ. inc. resist. to stat. ailments+10'}},
         waist="Slipor sash", --3% magic dmg
         legs="Bunzi's pants", --8% dmg
@@ -208,8 +211,8 @@ function get_sets()
         ear2="Ebers earring +1",
         body="Shamash robe",
         hands="Bunzi's gloves",
-        ring1="Defending Ring",
-        ring2="Inyanga ring",
+        ring1="Inyanga ring",
+        ring2="Defending Ring",
         back={ name="Alaunus's Cape", augments={'MND+20','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Enmity-10','Occ. inc. resist. to stat. ailments+10'}},
         waist="Slipor sash",
         legs="Bunzi's pants",
@@ -256,8 +259,8 @@ function get_sets()
         ear2="Ebers earring +1",      
         body="Theophany bliaut +3", --Cure II: 6%
         hands="Theophany mitts +3", --Cure II: 4%
-        ring1="Persis ring",
-        ring2="Prolix ring",
+        ring1="Medada's ring",
+        ring2="Persis ring",        
         back={ name="Alaunus's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}},
         waist="Austerity belt +1",
         legs="Ebers pantaloons +3",
@@ -326,6 +329,10 @@ function get_sets()
     sets.midcast['Aurorastorm'] = sets.midcast.enhancing.duration
 
     sets.midcast['Haste'] = sets.midcast.enhancing.duration
+
+    sets.midcast["Aquaveil"] = set_combine(sets.midcast.enhancing.duration, { 
+        hands="Regal cuffs"
+    })
 
     sets.midcast.protect = set_combine(sets.midcast.enhancing.duration, {
     })
@@ -412,6 +419,12 @@ function get_sets()
         feet="Hippomenes socks +1"
     }
 
+    sets.HolyWater = {
+        neck="Nicander's necklace",
+        ring1={name="Blenmot's ring +1", bag="warddrobe5"},
+        ring2={name="Blenmot's ring +1", bag="warddrobe6"} 
+    }
+
     coroutine.schedule(lockstyle,2)
 
 end
@@ -438,11 +451,15 @@ function precast(spell)
         else
             equip(sets.ws)
         end
+    elseif spell.type == "Item" then
+        if spell.name == "Holy Water" or spell.name == "Hallowed Water" then
+            equip(sets.HolyWater)
+        end
     end
 end
 
 function midcast(spell)
-    -- print_set(spell)
+    print_set(spell)
     -- equip(sets.idle[Idle_Set_Names[Idle_Index]])
 	if sets.midcast[spell.english] then
         equip(sets.midcast[spell.english])
@@ -494,11 +511,13 @@ function midcast(spell)
         else
             equip(sets.midcast.enhancing)
         end
-    elseif spell.english:contains('Banish') then
-        equip(sets.midcast.banish)
-    elseif spell.english:contains('Holy') then
-        equip(sets.midcast.holy)
-    end
+    elseif spell.skill == "Divine Magic" then
+        if spell.english:contains('Banish') then
+            equip(sets.midcast.banish)
+        elseif spell.english:contains('Holy') then
+            equip(sets.midcast.holy)
+        end
+    end    
 end
 
 function equip_set(status)

@@ -263,6 +263,10 @@ function get_sets()
         feet="Lethargy houseaux +3"
     })
 
+    sets.midcast["Aquaveil"] = set_combine(sets.midcast.enhancing["Duration"].Composure, { 
+        hands="Regal cuffs"
+    })
+
     sets.midcast.enhancing.spikes = set_combine(sets.midcast.enhancing, {
         legs="Vitiation tights +3"
     })
@@ -517,12 +521,18 @@ function get_sets()
     sets.ws["Exenterator"] = sets.ws.physical
     sets.ws["Black Halo"] = sets.ws.physical
 
+    sets.HolyWater = {
+        neck="Nicander's necklace",
+        ring1={name="Blenmot's ring +1", bag="warddrobe5"},
+        ring2={name="Blenmot's ring +1", bag="warddrobe6"} 
+    }
+
     coroutine.schedule(lockstyle,8)
 
 end
 
 function precast(spell)
-    -- print_set(spell)
+    print_set(spell)
     if sets.fc[spell.name] then
         equip(sets.fc[spell.name])
     elseif spell.action_type == "Magic" then
@@ -534,6 +544,10 @@ function precast(spell)
     elseif spell.type == "JobAbility" then
         if sets.ja[spell.name] then
             equip(sets.ja[spell.name])
+        end
+    elseif spell.type == "Item" then
+        if spell.name == "Holy Water" or spell.name == "Hallowed Water" then
+            equip(sets.HolyWater)
         end
     end
 end
