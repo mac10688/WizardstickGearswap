@@ -65,9 +65,10 @@ function get_sets()
     sets.ja['Benediction'] = {body="Piety Bliaut +3"}
     sets.ja['Devotion'] = {body="Piety Cap +3"}
 	
-    local fastcast_cape = { name="Alaunus's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}}
-    local attack_cape = { name="Alaunus's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','Haste+10','Mag. Evasion+15'}}
+    local fastcast_cape = { name="Alaunus's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Magic dmg. taken-10%'}}
+    local attack_cape = { name="Alaunus's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10','Mag. Evasion+15'}}
     local physical_mnd_ws_cape = { name="Alaunus's Cape", augments={'MND+20','Accuracy+20 Attack+20','MND+10','Weapon skill damage +10%','Damage taken-5%'}}
+    local dt_cape = { name="Alaunus's Cape", augments={'MND+20','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Enmity-10','Occ. inc. resist. to stat. ailments+10'}}
 	
     --- Fast Cast Sets ---
     -- 74% fc
@@ -169,7 +170,7 @@ function get_sets()
         ear2="Ebers earring +1",
         ring1="Petrov Ring",
         ring2="Chirich ring +1",
-        back={ name="Alaunus's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10','Mag. Evasion+15'}}
+        back=attack_cape
     }
 
 	sets.engaged['Acc'] = set_combine( sets.engaged['Delay Cap'], {
@@ -195,7 +196,7 @@ function get_sets()
         hands="Bunzi's gloves", --7% dmg
         ring1="Ayanmo ring", --3% dmg
         ring2="Defending Ring", --10% dmg
-        back={ name="Alaunus's Cape", augments={'MND+20','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Enmity-10','Occ. inc. resist. to stat. ailments+10'}},
+        back=dt_cape,
         waist="Slipor sash", --3% magic dmg
         legs="Bunzi's pants", --8% dmg
         feet="Ebers duckbills +3" --7% dmg
@@ -213,7 +214,7 @@ function get_sets()
         hands="Bunzi's gloves",
         ring1="Inyanga ring",
         ring2="Defending Ring",
-        back={ name="Alaunus's Cape", augments={'MND+20','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Enmity-10','Occ. inc. resist. to stat. ailments+10'}},
+        back=dt_cape,
         waist="Slipor sash",
         legs="Bunzi's pants",
         feet="Nyame sollerets"
@@ -234,7 +235,7 @@ function get_sets()
         head="Vanya hood",
         neck="Cleric's torque +2",
         body="Ebers Bliaut +3",
-        back={ name="Alaunus's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}},
+        back=fastcast_cape,
         waist="Austerity belt +1",
         legs="Ebers pantaloons +3"
     }
@@ -251,20 +252,21 @@ function get_sets()
     --Cure: 55%
     --Cure II: 22
     sets.midcast.cure = {
-        main="Raetic Rod +1", --Cure I: 23% Cure II: 10%
-        ammo="Incantor Stone",
-        head="Ebers cap +3", --22%
-        neck="Cleric's torque +2", --10%
-        ear1="Glorious earring", --Cure II: 2%
-        ear2="Ebers earring +1",      
-        body="Theophany bliaut +3", --Cure II: 6%
-        hands="Theophany mitts +3", --Cure II: 4%
-        ring1="Medada's ring",
-        ring2="Persis ring",        
-        back={ name="Alaunus's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}},
-        waist="Austerity belt +1",
-        legs="Ebers pantaloons +3",
-        feet="Ebers duckbills +3"
+        main="Raetic Rod +1",
+        sub="Genmei Shield",
+        ammo="Staunch Tathlum +1", --11%
+        head="Ebers Cap +3", --12%
+        body="Ebers Bliaut +3",
+        hands={ name="Chironic Gloves", augments={'Mag. Acc.+15 "Mag.Atk.Bns."+15','Spell interruption rate down -11%','INT+8','"Mag.Atk.Bns."+5',}}, --31%
+        legs="Ebers Pant. +3",
+        feet="Theo. Duckbills +3", --29%
+        neck="Loricate torque +1",
+        waist="Plat. Mog. Belt",
+        left_ear="Nourish. Earring +1", --Could be 5% but not necessary
+        right_ear="Ebers Earring +1",
+        ring1="Freke Ring", --10%
+        ring2="Defending Ring",        
+        back=fastcast_cape
     }
 
     sets.midcast.raise = set_combine(sets.conserve_mp, sets.fc)
@@ -361,7 +363,7 @@ function get_sets()
         hands="Regal cuffs",
         ring1={name="Stikini Ring +1", bag="wardrobe5"},
         ring2="Kishar ring",
-        back={ name="Alaunus's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}},
+        back=fastcast_cape,
         waist="Obstinate sash",
         legs="Chironic hose",
         feet="Theophany duckbills +3"
@@ -379,7 +381,7 @@ function get_sets()
         hands="Fanatic gloves",
         ring1={name="Stikini Ring +1", bag="wardrobe5"},
         ring2={name="Stikini Ring +1", bag="wardrobe6"},
-        back={ name="Alaunus's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}},
+        back=fastcast_cape,
         waist="Orpheus's sash",
         legs="Theophany pantaloons +3",
         feet="Medium's Sabots"
@@ -397,7 +399,7 @@ function get_sets()
         hands="Bunzi's gloves",
         ring1={name="Stikini Ring +1", bag="wardrobe5"},
         ring2={name="Stikini Ring +1", bag="wardrobe6"},
-        back={ name="Alaunus's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}},
+        back=fastcast_cape,
         waist="Orpheus's sash",
         legs="Bunzi's pants",
         feet="Bunzi's sabots"
@@ -459,7 +461,7 @@ function precast(spell)
 end
 
 function midcast(spell)
-    print_set(spell)
+    -- print_set(spell)
     -- equip(sets.idle[Idle_Set_Names[Idle_Index]])
 	if sets.midcast[spell.english] then
         equip(sets.midcast[spell.english])

@@ -33,7 +33,11 @@ end
 help()
 
 function get_sets()
-    local ws_boots = { name="Merlinic Crackows", augments={'Attack+25','Crit.hit rate+3','Weapon skill damage +10%','Mag. Acc.+16 "Mag.Atk.Bns."+16'}}
+    local fc_Cape = { name="Nantosuelta's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}}
+    local tp_Cape = { name="Nantosuelta's Cape", augments={'DEX+20','Accuracy+20 Attack+20','"Dbl.Atk."+10','Damage taken-5%'}}
+    local mab_Cape = { name="Nantosuelta's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10','Spell interruption rate down-10%'}}
+    local pet_Cape = { name="Nantosuelta's Cape", augments={'MND+20','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Pet: "Regen"+10','Pet: "Regen"+5'}}
+    local ws_Cape = { name="Nantosuelta's Cape", augments={'MND+20','Accuracy+20 Attack+20','MND+10','Weapon skill damage +10%','Damage taken-5%'}}
 
     sets.ja = {}
     sets.ja['Bolster'] = {body="Bagua tunic +3"}
@@ -58,7 +62,7 @@ function get_sets()
         hands="Agwu's gages",
         ring1="Medada's ring",
         ring2="Kishar ring",
-        back={ name="Nantosuelta's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}},
+        back=fc_Cape,
         waist="Embla sash",
         legs="Geomancy pants +3",
         feet="Merlinic crackows"
@@ -91,7 +95,7 @@ function get_sets()
         body="Bagua tunic +3",
         hands="Geomancy mitaines +3",
         ring1="Medada's ring",
-        back={ name="Nantosuelta's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}},
+        back=fc_Cape,
     })
 
     sets.midcast.geomancy.indi = set_combine(sets.midcast.geomancy, {
@@ -151,7 +155,7 @@ function get_sets()
         waist="Luminary sash",
         legs="Geomancy pants +3",
         feet="Geomancy sandals +3",
-        back={ name="Nantosuelta's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}}
+        back=mab_Cape
     }
 
     sets.midcast["Stun"] = sets.midcast.elemental["magic-accuracy"]
@@ -169,7 +173,7 @@ function get_sets()
         waist="Acuity belt +1",
         legs="Bagua pants +3",
         feet="Bagua sandals +3",
-        back={ name="Nantosuelta's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}}
+        back=mab_Cape
     }
 
     sets.midcast.elemental["Occult Acumen"] = set_combine(sets.midcast.elemental["Magic Attack Bonus"], {
@@ -181,7 +185,6 @@ function get_sets()
         hands={ name="Merlinic Dastanas", augments={'"Mag.Atk.Bns."+23','"Occult Acumen"+10','Mag. Acc.+3'}},
         ring1={name="Chirich Ring +1", bag="wardrobe5"},
         ring2={name="Chirich Ring +1", bag="wardrobe6"},
-        back={name="Taranus's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Store TP"+10','Spell interruption rate down-10%'}},
         waist="Oneiros rope",
         legs="Perdition slops",
         feet={ name="Merlinic Crackows", augments={'"Occult Acumen"+11','Mag. Acc.+15'}}
@@ -213,7 +216,7 @@ function get_sets()
         hands="Regal cuffs",
         ring1="Medada's ring",
         ring2={name="Stikini Ring +1", bag="wardrobe6"},
-        back={ name="Nantosuelta's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}},
+        back=fc_Cape,
         waist="Luminary sash",
         legs="Geomancy pants +3",
         feet="Bagua sandals +3"
@@ -257,7 +260,7 @@ function get_sets()
         hands="Azimuth gloves +3",
         ring1="Defending Ring",
         ring2="Vengeful ring",
-        back={ name="Nantosuelta's Cape", augments={'MND+20','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Pet: "Regen"+10','Pet: "Regen"+5'}},
+        back=pet_Cape,
         waist="Slipor sash",
         legs="Geomancy pants +3",
         feet="Azimuth gaiters +3"
@@ -269,7 +272,7 @@ function get_sets()
         head="Azimuth hood +3",
         neck="Bagua charm +2",
         hands="Geomancy mitaines +3",
-        back={ name="Nantosuelta's Cape", augments={'MND+20','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Pet: "Regen"+10','Pet: "Regen"+5'}},
+        back=pet_Cape,
         feet="Bagua sandals +3"
     })
 
@@ -282,7 +285,7 @@ function get_sets()
         hands="Gazu bracelets +1",
         ring1="Chirich ring +1",
         ring2="Chirich ring +1",
-        back={ name="Nantosuelta's Cape", augments={'DEX+20','Accuracy+20 Attack+20','"Dbl.Atk."+10','Damage taken-5%'}},
+        back=tp_Cape,
         waist="Grunfeld rope",
         legs="Nyame Flanchard",
         feet="Nyame Sollerets"
@@ -300,16 +303,16 @@ function get_sets()
     sets.ws = {
         head="Nyame helm",
         body="Nyame mail",
-        hands="Jhakri Cuffs +2",
+        hands="Nyame gauntlets",
         legs="Nyame flanchard",
-        feet=ws_boots,
+        feet="Nyame sollerets",
         neck="Fotia Gorget",
         waist="Grunfeld Rope",
         ear1="Moonshade earring",
         ear2="Regal Earring",
         ring1="Rufescent Ring",
         ring2="Shukuyu Ring",
-        back={ name="Nantosuelta's Cape", augments={'MND+20','Accuracy+20 Attack+20','MND+10','Weapon skill damage +10%','Damage taken-5%'}}
+        back=ws_Cape
     }
 
     sets.ws.magic = set_combine(sets.ws, {
@@ -325,7 +328,7 @@ function get_sets()
     sets.ws['Moonlight'] = set_combine(sets.ws, {})
     sets.ws['Skullbreaker'] = set_combine(sets.ws, {})
     sets.ws['True Strike'] = set_combine(sets.ws, {})
-    sets.ws['Judgment'] = set_combine(sets.ws, {})
+    sets.ws['Judgment'] = set_combine(sets.ws, {waist="Fotia belt"})
     sets.ws['Hexa Strike'] = set_combine(sets.ws, {waist="Fotia belt"})
     sets.ws['Black Halo'] = set_combine(sets.ws, {})
     sets.ws['Flash Nova'] = set_combine(sets.ws, {})
@@ -353,7 +356,7 @@ function get_sets()
         right_ear="Malignance Earring",
         ring1="Medada's ring",
         ring2="Archon Ring",        
-        back={ name="Nantosuelta's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}},
+        back=fc_Cape
     }
 
     sets.HolyWater = {

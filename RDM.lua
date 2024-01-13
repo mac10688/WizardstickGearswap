@@ -375,6 +375,9 @@ function get_sets()
     sets.midcast["Bio III"] = sets.midcast.enfeebling.int["Duration"]
 
     sets.midcast.elemental = {
+        main="Bunzi's rod",
+        sub="Ammurapi shield",
+        ammo="Ghastly tathlum +1",
         head="Ea hat +1",
         neck="Duelist's torque +2",
         ear1="Regal earring",
@@ -384,7 +387,7 @@ function get_sets()
         ring1="Medada's ring",
         ring2="Metamorph ring +1",        
         waist="Acuity belt +1",
-        legs="Ea slops +1",
+        legs="Lethargy fuseau +3",
         feet="Bunzi's sabots"
     }
 
