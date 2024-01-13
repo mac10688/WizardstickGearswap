@@ -68,7 +68,7 @@ function get_sets()
     local fastcast_cape = { name="Alaunus's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Magic dmg. taken-10%'}}
     local attack_cape = { name="Alaunus's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10','Mag. Evasion+15'}}
     local physical_mnd_ws_cape = { name="Alaunus's Cape", augments={'MND+20','Accuracy+20 Attack+20','MND+10','Weapon skill damage +10%','Damage taken-5%'}}
-    local dt_cape = { name="Alaunus's Cape", augments={'MND+20','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Enmity-10','Occ. inc. resist. to stat. ailments+10'}}
+    local dt_cape = { name="Alaunus's Cape", augments={'MND+20','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Enmity-10','Def+50'}}
 	
     --- Fast Cast Sets ---
     -- 74% fc
@@ -86,7 +86,7 @@ function get_sets()
         ring2="Defending ring",
         -- ring2="Kishar ring", --4%        
         back=fastcast_cape, --10%
-        waist="Embla Sash", --5%
+        -- waist="Embla Sash", --5%
         -- legs="Lengo pants", --5%
         legs="Ebers pantaloons +3",
     }
@@ -192,12 +192,12 @@ function get_sets()
         neck="Loricate Torque +1", --6% dmg
         ear1="Genmei earring", --3% magic dmg
         ear2="Ebers earring +1",
-        body="Shamash robe", --10% physical
+        body="Ebers bliaut +3",
         hands="Bunzi's gloves", --7% dmg
         ring1="Ayanmo ring", --3% dmg
-        ring2="Defending Ring", --10% dmg
+        ring2="Shadow ring", --10% dmg
         back=dt_cape,
-        waist="Slipor sash", --3% magic dmg
+        waist="Platinum moogle belt", --3% magic dmg
         legs="Bunzi's pants", --8% dmg
         feet="Ebers duckbills +3" --7% dmg
     }
@@ -210,12 +210,12 @@ function get_sets()
         neck="Loricate Torque +1",
         ear1="Genmei earring", --3% magic dmg
         ear2="Ebers earring +1",
-        body="Shamash robe",
+        body="Ebers bliaut +3",
         hands="Bunzi's gloves",
         ring1="Inyanga ring",
-        ring2="Defending Ring",
+        ring2="Shadow ring",
         back=dt_cape,
-        waist="Slipor sash",
+        waist="Platinum moogle belt", --3% magic dmg
         legs="Bunzi's pants",
         feet="Nyame sollerets"
     }
@@ -355,7 +355,7 @@ function get_sets()
     sets.midcast.enfeebling = {
         main="Gada",
         ammo="Hydrocera",
-        head="Befouled crown",
+        head="Ebers cap +3",
         neck="Erra pendant",
         ear1="Malignance earring",
         ear2="Regal earring",
@@ -365,7 +365,7 @@ function get_sets()
         ring2="Kishar ring",
         back=fastcast_cape,
         waist="Obstinate sash",
-        legs="Chironic hose",
+        legs="Ebers pantaloons +3",
         feet="Theophany duckbills +3"
     }
 

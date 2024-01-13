@@ -62,9 +62,10 @@ end
 function get_sets()
 
     Cape = {}
+    Cape.Fc = { name="Sucellos's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Damage taken-5%'}}
     Cape.Int = { name="Sucellos's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10','Mag. Evasion+15'}}
     Cape.Mnd = { name="Sucellos's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','"Cure" potency +10%','Mag. Evasion+15'}}
-    Cape.Melee = { name="Sucellos's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Dbl.Atk."+10','Damage taken-5%'}}
+    Cape.Melee = { name="Sucellos's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10','Damage taken-5%'}}
     Cape.Str_WS = { name="Sucellos's Cape", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%','Damage taken-5%'}}
     Cape.Dex_WS = { name="Sucellos's Cape", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Weapon skill damage +10%','Damage taken-5%'}}
     Cape.Mnd_WS = { name="Sucellos's Cape", augments={'MND+20','Accuracy+20 Attack+20','MND+10','Weapon skill damage +10%','Damage taken-5%'}}
@@ -103,7 +104,7 @@ function get_sets()
     sets.weapons = {}
     sets.weapons["Sword"] = {main = "Crocea Mors", sub="Sacro bulwark"}
     sets.weapons["Magic Accuracy"] = {main = "Crocea Mors", sub="Ammurapi shield"}
-    sets.weapons["Dual Wield"] = {main = "Crocea Mors", sub = "Demersal degen +1"}
+    sets.weapons["Dual Wield"] = {main = "Crocea Mors", sub = "Daybreak"}
     sets.weapons["Odin"] = {main = "Aern Dagger", sub = "Qutrub Knife"}
     sets.weapons["Savage"] = {main = "Naegling", sub = "Thibron"}
     sets.weapons["Club"] = {main="Maxentius", sub="Thibron"}
@@ -119,7 +120,7 @@ function get_sets()
         head="Malignance chapeau",
         neck="Anu Torque",
         ear1="Sherida Earring",
-        ear2="Dignitary's earring",
+        ear2="Lethargy earring +2",
         body="Malignance tabard",
         hands="Malignance gloves",
         ring1={name="Chirich ring +1", bag="wardrobe5"},
@@ -151,9 +152,7 @@ function get_sets()
 
     sets.engaged["High Acc"] = set_combine( sets.engaged, {
         neck="Sanctity Necklace",
-        ear2="Telos earring",
-        ring2={name="Chirich ring +1", bag="wardrobe5"},
-        feet="Nyame sollerets"
+        ring2={name="Chirich ring +1", bag="wardrobe6"},
     })
 
     sets.engaged["PDT"] = set_combine(sets.engaged, {
@@ -202,23 +201,26 @@ function get_sets()
         ear1="Etiolation earring", --1
         ear2="Lethargy earring +2", --9
         body="Vitiation tabard +3", --15
-        hands="Leyline gloves", --8
-        ring1="Medada's ring",
-        ring2="Kishar Ring", --4
-        waist="Embla Sash", --5
-        feet="Carmine greaves +1" --8
+        hands="Lethargy gantherots +3", --8
+        ring1="Medada's ring", --10%
+        ring2="Defending ring", --4
+        back=Cape.Fc,
+        waist="Platinum moogle belt", --5
+        legs="Malignance tights",
+        feet="Lethargy houseaux +3"
     }
 
     sets.midcast = {}
     
     sets.midcast.cure = {
-        head="Vanya hood",
-        body="Vrikodara jupon",
-        hands="Kaykaus cuffs",
-        ring1="Haoma's ring",
+        head="Lethargy chappel +3",
+        neck="Loricate torque +1",
+        body="Bunzi's robe",
+        hands="Lethargy gantherots +3",
+        ring1="Defending ring",
         ring2="Menelaus's ring",
         back=Cape.Mnd,
-        legs="Chironic hose",
+        legs="Atrophy tights +3",
         feet="Kaykaus boots"
     }
 
@@ -234,7 +236,7 @@ function get_sets()
         waist="Embla sash",
         legs="Atrophy Tights +3",
         feet="Lethargy Houseaux +3",
-        back=Cape.Mnd
+        back="Ghostfyre cape"
     }
 
     sets.midcast.enhancing["Duration"] = set_combine(sets.midcast.enhancing, {
@@ -265,6 +267,10 @@ function get_sets()
 
     sets.midcast["Aquaveil"] = set_combine(sets.midcast.enhancing["Duration"].Composure, { 
         hands="Regal cuffs"
+    })
+
+    sets.midcast["Temper II"] = set_combine(sets.midcast.enhancing, {
+        neck="Incanter's torque"
     })
 
     sets.midcast.enhancing.spikes = set_combine(sets.midcast.enhancing, {
@@ -433,14 +439,14 @@ function get_sets()
         neck="Fotia gorget",
         ear1="Ishvara Earring",
         ear2="Malignance earring",
-        body="Nyame mail",
-        hands="Jhakri Cuffs +2",
+        body="Lethargy sayon +3",
+        hands="Lethargy gantherots +3",
         ring1="Medada's ring",
         ring2="Shiva ring +1",
         back=Cape.Int,
         waist="Orpheus's sash",
-        legs="Nyame flanchard",
-        feet=ws_boots
+        legs="Lethargy fuseau +3",
+        feet="Lethargy houseaux +3"
     }
 
     sets.ws.physical = {
@@ -491,12 +497,11 @@ function get_sets()
     })
 
     sets.ws["Sanguine Blade"] = set_combine(sets.ws.magic, {
-        hands="Nyame gauntlets",
         ear1="Regal earring",
         neck="Duelist's torque +2",
         head="Pixie Hairpin +1",
-        ring1="Archon ring",
-        ring2="Freke ring",
+        ring1="Medada's ring",
+        ring2="Archon ring",
         back=Cape.Mnd_WS
     })
 
@@ -535,7 +540,7 @@ function get_sets()
 end
 
 function precast(spell)
-    print_set(spell)
+    -- print_set(spell)
     if sets.fc[spell.name] then
         equip(sets.fc[spell.name])
     elseif spell.action_type == "Magic" then
