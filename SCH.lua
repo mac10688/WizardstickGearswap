@@ -103,7 +103,7 @@ function get_sets()
     ------------------------------------------------------------------------------------------------
     ---------------------------------------- Precast Sets ------------------------------------------
     ------------------------------------------------------------------------------------------------
-    local idle_cape = { name="Lugh's Cape", augments={'MND+20','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','"Fast Cast"+10','Occ. inc. resist. to stat. ailments+10'}}
+    local idle_cape = { name="Lugh's Cape", augments={'MND+20','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','"Fast Cast"+10','Def+50'}}
     local nuke_cape = { name="Lugh's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10','Spell interruption rate down-10%'}}
     local cure_cape = { name="Lugh's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','"Fast Cast"+10','Spell interruption rate down-10%'}}
     local mnd_magic_ws = { name="Lugh's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','Weapon skill damage +10%','Damage taken-5%'}}
@@ -169,10 +169,10 @@ function get_sets()
         feet={ name="Kaykaus Boots", augments={'MP+60','Spell interruption rate down +10%','"Cure" spellcasting time -5%'}},
         neck="Loricate Torque +1",
         waist="Plat. Mog. Belt",
-        left_ear="Magnetic Earring",
-        right_ear="Sanare earring",
-        left_ring="Defending ring",
-        right_ring="Freke Ring",
+        ear1="Magnetic Earring",
+        ear2="Sanare earring",
+        ring1="Freke Ring",
+        ring2="Defending ring",        
         back={ name="Lugh's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','"Fast Cast"+10','Spell interruption rate down-10%',}}
     }
 
@@ -194,20 +194,23 @@ function get_sets()
 		feet="Academic's loafers +3",
     }
     
-    --88% fc
+    --10% from arts
+    --20% from sub rdm
+    --52% from gear
+    --82% total
+    --54 dt
     sets.precast.fc = {
-        main="Musa", --fast cast 10%
-        ammo="Incantor stone", --fast cast 2%
-        head="Academic's mortarboard +3", --fast cast 8%
-        neck="Voltsurge torque", --fast cast 4%
-        ear1="Etiolation earring", --fast cast 2%
+        ammo="Staunch tathlum +1",
+        head="Arbatel bonnet +3",
+        neck="Loricate torque +1",
+        ear1="Etiolation earring", --fast cast 1%
         ear2="Malignance earring", --fast cast 4%
         body="Pinga tunic +1", --fast cast 15%
         hands="Academic's bracers +3", --fast cast 8%
         ring1="Medada's ring", --fast cast 10%
-        ring2="Kishar ring", --fast cast 4%        
+        ring2="Defending ring",
         back=fc_cape, --fast cast 10%
-        waist="Embla sash", --fast cast 5%
+        waist="Platinum moogle belt",
         legs="Agwu's slops", --fast cast 6%
         feet="Pedagogy loafers +3" --fast cast 8%
     }
@@ -243,10 +246,10 @@ function get_sets()
         feet="Acad. Loafers +3",
         neck="Erra Pendant",
         waist={ name="Acuity Belt +1", augments={'Path: A',}},
-        left_ear="Regal Earring",
-        right_ear="Malignance Earring",
-        left_ring="Stikini Ring +1",
-        right_ring="Medada's Ring",
+        ear1="Regal Earring",
+        ear2="Malignance Earring",
+        ring1="Medada's Ring",
+        ring2="Stikini Ring +1",        
         back={ name="Lugh's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Magic dmg. taken-10%',}},
     }
 
@@ -294,24 +297,6 @@ function get_sets()
         waist="Embla sash",
         legs={ name="Lengo Pants", augments={'INT+5','Mag. Acc.+13'}},
         feet="Academic's loafers +3"
-    }
-
-    sets.midcast.immanence = {
-        main="Malignance Pole",
-        sub="Khonsu",
-        ammo="Staunch Tathlum +1",
-        head="Peda. M.Board +3",
-        body="Pinga Tunic +1",
-        hands={ name="Chironic Gloves", augments={'Mag. Acc.+15 "Mag.Atk.Bns."+15','Spell interruption rate down -11%','INT+8','"Mag.Atk.Bns."+5'}},
-        legs="Lengo Pants",
-        feet={ name="Kaykaus Boots", augments={'MP+60','Spell interruption rate down +10%','"Cure" spellcasting time -5%'}},
-        neck="Loricate Torque +1",
-        waist="Plat. Mog. Belt",
-        left_ear="Magnetic Earring",
-        right_ear="Sanare earring",
-        left_ring="Defending ring",
-        right_ring="Freke Ring",
-        back={ name="Lugh's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','"Fast Cast"+10','Spell interruption rate down-10%',}}
     }
 
     --MB1: 48
@@ -394,7 +379,7 @@ function get_sets()
         hands="Pedagogy bracers +3", -- 3% cure II | 3% haste
         back=cure_cape, -- 10% fc
         ring1={name="Stikini Ring +1", bag="wardrobe5"},
-        ring2={name="Stikini Ring +1", bag="wardrobe6"},
+        ring2="Defending ring",
         legs="Academic's pants +3", -- 8% cure | 
         -- legs="Pinga pants +1",
         feet="Pedagogy loafers +3"
@@ -408,7 +393,12 @@ function get_sets()
 
     sets.midcast.enhancement_duration = {
         main="Musa",
+        ammo="Staunch tathlum +3",
         head="Telchine cap",
+        neck="Loricate torque +1",
+        ear2="Magnetic earring",
+        ring1="Freke ring",
+        ring2="Defending ring",
         body="Telchine chasuble",
         hands="Telchine gloves",
         waist="Embla sash",
@@ -416,6 +406,7 @@ function get_sets()
         feet="Telchine pigaches"
     }
 
+    sets.midcast["Embrava"]=sets.midcast.enhancement_duration
     sets.midcast["Sneak"] = sets.midcast.enhancement_duration
     sets.midcast["Invisible"] = sets.midcast.enhancement_duration
 

@@ -70,8 +70,6 @@ function get_sets()
     Cape.Dex_WS = { name="Sucellos's Cape", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Weapon skill damage +10%','Damage taken-5%'}}
     Cape.Mnd_WS = { name="Sucellos's Cape", augments={'MND+20','Accuracy+20 Attack+20','MND+10','Weapon skill damage +10%','Damage taken-5%'}}
     
-    local ws_boots = { name="Merlinic Crackows", augments={'Attack+25','Crit.hit rate+3','Weapon skill damage +10%','Mag. Acc.+16 "Mag.Atk.Bns."+16'}}
-
     sets.idle = {}
 
     sets.idle = {
@@ -117,6 +115,7 @@ function get_sets()
     sets.ranged_ammo["Potency/Duration"] = {ranged=empty, ammo="Regal Gem"}
         
     sets.engaged = {
+        ammo="Coiste bodhar",
         head="Malignance chapeau",
         neck="Anu Torque",
         ear1="Sherida Earring",
@@ -151,7 +150,6 @@ function get_sets()
     })
 
     sets.engaged["High Acc"] = set_combine( sets.engaged, {
-        neck="Sanctity Necklace",
         ring2={name="Chirich ring +1", bag="wardrobe6"},
     })
 
@@ -226,7 +224,7 @@ function get_sets()
 
     sets.midcast.enhancing = {
         head="Befouled Crown",
-        neck="Duelist's torque +2",
+        neck="Incanter's torque",
         ear1="Mimir earring",
         ear2="Lethargy earring +2",
         body="Vitiation Tabard +3",
@@ -315,13 +313,15 @@ function get_sets()
     }
 
     sets.midcast.enfeebling = {
-        head="Vitiation chapeau +3",
+        main="Contemplator +1",
+        sub="Enki strap",
+        head="Lethargy chapeau +3",
         neck="Duelist's torque +2",
-        ear1="Regal earring",
-        ear2="Malignance earring",
+        ear1="Malignance earring",
+        ear2="Lethargy earring +2",
         body="Lethargy sayon +3",
         hands="Lethargy gantherots +3",
-        ring1={name="Stikini Ring +1", bag="wardrobe5"},
+        ring1="Medada's ring",
         ring2={name="Stikini Ring +1", bag="wardrobe6"},
         waist="Obstinate Sash",
         back=Cape.Int,
@@ -330,7 +330,7 @@ function get_sets()
     }
 
     sets.midcast.enfeebling.mnd = set_combine(sets.midcast.enfeebling, {
-        ear2="Snotra Earring",
+        ear1="Snotra Earring",
         back=Cape.Mnd
     })
     
@@ -343,7 +343,7 @@ function get_sets()
     })
 
     sets.midcast.enfeebling.mnd["Duration"] = set_combine(sets.midcast.enfeebling.mnd, {
-        ear2="Snotra Earring",
+        ear1="Snotra Earring",
         hands="Regal cuffs",
         ring2="Kishar ring"
     })
@@ -354,8 +354,7 @@ function get_sets()
     })
 
     sets.midcast.enfeebling.int["Magic Accuracy"] = set_combine(sets.midcast.enfeebling.int, {
-        head="Atrophy chapeau +3",
-        hands="Malignance gloves"
+
     })
 
     sets.midcast.enfeebling.int["Potency"] = set_combine(sets.midcast.enfeebling.int, {
@@ -389,12 +388,13 @@ function get_sets()
         ear1="Regal earring",
         ear2="Malignance earring",
         body="Ea houppelande +1",
-        hands="Amalric gages +1",
+        hands="Bunzi's gloves",
         ring1="Medada's ring",
-        ring2="Metamorph ring +1",        
+        ring2="Metamorph ring +1",
+        back=Cape.Int,
         waist="Acuity belt +1",
         legs="Lethargy fuseau +3",
-        feet="Bunzi's sabots"
+        feet="Lethargy houseaux +3"
     }
 
     sets.midcast.dark_magic = set_combine(sets.midcast.elemental, {
@@ -435,22 +435,23 @@ function get_sets()
     sets.ws = {}
     
     sets.ws.magic = {
-        head="Vitiation Chapeau +3",
+        ammol="Sroda tathlum",
+        head="Lethargy chappel +3",
         neck="Fotia gorget",
-        ear1="Ishvara Earring",
+        ear1="Moonshade earring",
         ear2="Malignance earring",
-        body="Lethargy sayon +3",
-        hands="Lethargy gantherots +3",
+        body="Nyame mail",
+        hands="Jhakri cuffs +2",
         ring1="Medada's ring",
-        ring2="Shiva ring +1",
+        ring2="Freke ring",
         back=Cape.Int,
         waist="Orpheus's sash",
-        legs="Lethargy fuseau +3",
+        legs="Nyame flanchard",
         feet="Lethargy houseaux +3"
     }
 
     sets.ws.physical = {
-        head="Vitiation Chapeau +3",
+        head="Nyame helm",
         neck="Fotia gorget",
         ear1="Sherida Earring",
         ear2="Lethargy earring +2",        
@@ -468,7 +469,22 @@ function get_sets()
     
     sets.ws["Aeolian Edge"] = sets.ws.magic
 
-    sets.ws["Red Lotus Blade"] = sets.ws.magic
+    sets.ws["Red Lotus Blade"] = {
+        ammo="Sroda Tathlum",
+        head="Leth. Chappel +3",
+        body={ name="Nyame Mail", augments={'Path: B',}},
+        hands="Jhakri Cuffs +2",
+        legs={ name="Nyame Flanchard", augments={'Path: B',}},
+        feet="Leth. Houseaux +3",
+        neck="Sibyl Scarf",
+        waist="Orpheus's Sash",
+        left_ear="Regal Earring",
+        right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
+        left_ring="Medada's Ring",
+        right_ring="Epaminondas's Ring",
+        back={ name="Sucellos's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10','Mag. Evasion+15',}},
+    }
+
     sets.ws["Seraph Blade"] = set_combine(sets.ws.magic,{
         ring2="Shukuyu ring",
         back=Cape.Mnd_WS
