@@ -4,6 +4,9 @@ TP_Index = 1
 Idle_Set_Names = {'MDT', 'PDT', 'Refresh'}
 Idle_Index = 1
 
+Cure_Set = {"SIRD", "Pure"}
+CureIndex = 1
+
 WeaponSet = {"None", "Dual Wield"}
 WeaponSetIndex = 1
 
@@ -13,6 +16,7 @@ send_command('bind f9 gs c equip refresh')
 send_command('bind ^f9 gs c cycle TP set')
 send_command('bind @f9 gs c CycleWeaponSet')
 send_command('bind f10 gs c equip pdt')
+send_command('bind ^f10 gs c cycle Cure')
 send_command('bind f11 gs c equip mdt')
 send_command('bind f12 gs c refresh set')
 send_command('bind ^k gs c toggle kiting')
@@ -146,9 +150,9 @@ function get_sets()
     sets.ws["Moonlight"] = {neck="Combatant's torque"}
     sets.ws["Skullbreaker"] = physical_mnd_ws
     sets.ws["True Strike"] = physical_mnd_ws
-    sets.ws["Judgment"] = physical_mnd_ws
+    sets.ws["Judgment"] = sets.ws
     sets.ws["Hexa Strike"] = set_combine(physical_mnd_ws, {waist="Fotia belt"})
-    sets.ws["Black Halo"] = physical_mnd_ws
+    sets.ws["Black Halo"] = sets.ws
     sets.ws["Flash Nova"] = magical_mnd_ws
     sets.ws["Realmrazer"] = set_combine(physical_mnd_ws, {waist="Fotia belt"})
     sets.ws["Dagan"] = physical_mnd_ws
@@ -275,6 +279,24 @@ function get_sets()
         ring1="Freke Ring", --10%
         ring2="Defending Ring",        
         back=fastcast_cape
+    }
+
+    sets.midcast.cure["SIRD"] = sets.midcast.cure
+    sets.midcast.cure["Pure"] = {
+        main="Raetic Rod +1",
+        ammo="Incantor Stone",
+        head="Ebers cap +3",
+        neck="Cleric's torque +2",
+        ear1="Glorious earring",
+        ear2="Ebers earring +1",
+        body="Theophany bliaut +3",
+        hands="Theophany mitts +3",
+        ring1="Medada's ring",
+        ring2="Persis ring",
+        back=fastcast_cape,
+        waist="Austerity belt +1",
+        legs="Ebers pantaloons +3",
+        feet="Ebers duckbills +3"
     }
 
     sets.midcast.raise = set_combine(sets.conserve_mp, sets.fc)
@@ -475,17 +497,19 @@ function midcast(spell)
         equip(sets.midcast[spell.english])
     elseif spell.skill == 'Healing Magic' or spell.name == "Erase" then
         if spell.name:contains("Cure") then
+            local cureset = Cure_Set[CureIndex]
             if buffactive['Afflatus Solace'] then
-                local solace_cure_set = set_combine(sets.midcast.cure, sets.afflatus_solace)
+                local solace_cure_set = set_combine(sets.midcast.cure[cureset], sets.afflatus_solace)
                 equip(solace_cure_set)
             else
-                equip(sets.midcast.cure)
+                equip(sets.midcast.cure[cureset])
             end
             if (world.day_element == spell.element or world.weather_element == spell.element) and spellType ~= "Helix" then
-                equip( equip(sets.midcast.cure), {waist = "Hachirin-no-Obi"})
+                equip( equip(sets.midcast.cure[cureset]), {waist = "Hachirin-no-Obi"})
             end
         elseif spell.name:contains("Curaga") or spell.name:contains("Cura") then
-            equip(sets.midcast.cure)
+            local cureset = Cure_Set[CureIndex]
+            equip(sets.midcast.cure[cureset])
         elseif spell.name:contains("Raise") or spell.name == "Arise" then
             equip(sets.midcast.raise)
         elseif spell.name == "Cursna" then
@@ -582,6 +606,9 @@ function self_command(command)
             send_command('@input /echo ----- Kiting Set Off -----')
         end
         equip_set(player.status)
+    elseif command == 'cycle Cure' then
+        CureIndex = CureIndex % #Cure_Set + 1
+        send_command('@input /echo ----- Cure Set changed to '..Cure_Set[CureIndex]..' -----')
     elseif command == "CycleWeaponSet" then
         WeaponSetIndex = WeaponSetIndex % #WeaponSet + 1
         local weapon_set = WeaponSet[WeaponSetIndex]

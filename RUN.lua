@@ -12,16 +12,32 @@ function get_sets()
     mote_include_version = 2
 
 	-- Load and initialize the include file.
-	include('Mote-Include.lua')
+	include('Wiz-Include.lua')
 end
 
 
 -- Setup vars that are user-independent.
 function job_setup()
-    state.OffenseMode:options('Normal', 'DD', 'Acc', 'PDT', 'MDT')
+    state.OffenseMode:options('MultiHit', 'Acc')
     state.WeaponskillMode:options('Normal', 'Acc')
     state.PhysicalDefenseMode:options('PDT')
+    state.MagicalDefenseMode:options('MDT', 'ResistStatus', 'Knockback')
     state.IdleMode:options('Regen', 'Refresh')
+
+    state.CombatWeapon = M{['description']='Combat Weapon', 'Epeolatry', 'Lionheart', 'Lycurgos'}
+    state.CombatWeapon.Epeolatry = M{['description']='Epeolatry Set', 'Utu', 'Khonsu', 'Mensch', 'Irenic'}
+    state.CombatWeapon.Lionheart = M{['description']='Lionheart Set', 'Utu', 'Khonsu', 'Mensch', 'Irenic'}
+    state.CombatWeapon.Lycurgos = M{['description']='Lycurgos Set', 'Utu', 'Khonsu', 'Mensch', 'Irenic'}
+
+    send_command('bind ~f1 gs c set CombatWeapon Epeolatry')
+    send_command('bind ~f2 gs c set CombatWeapon Lionheart')
+    send_command('bind ~f3 gs c set CombatWeapon Lycurgos')
+end
+
+function job_file_unload()
+    send_command('unbind ~f1')
+    send_command('unbind ~f2')
+    send_command('unbind ~f3')
 end
 
 function init_gear_sets()
@@ -36,7 +52,76 @@ function init_gear_sets()
     local herc_body_ws = { name="Herculean Vest", augments={'Accuracy+28','Weapon skill damage +4%','DEX+10','Attack+3'}}
     local herc_legs_ws = { name="Herculean Trousers", augments={'Potency of "Cure" effect received+4%','STR+1','Weapon skill damage +8%','Accuracy+13 Attack+13','Mag. Acc.+14 "Mag.Atk.Bns."+14'}}
 
-    sets.enmity = set_combine( sets.tank["pdt"], {
+    sets.CombatWeapon = {}
+
+    sets.CombatWeapon.Epeolatry = {}
+    sets.CombatWeapon.Epeolatry.Utu = {main="Epeolatry", sub="Utu grip"}
+    sets.CombatWeapon.Epeolatry.Khonsu = {main="Epeolatry", sub="Khonsu"}
+    sets.CombatWeapon.Epeolatry.Mensch = {main="Epeolatry", sub="Mensch strap +1"}
+    sets.CombatWeapon.Epeolatry.Irenic = {main="Epeolatry", sub="Irenic strap +1"}
+
+    sets.CombatWeapon.Lionheart = {}
+    sets.CombatWeapon.Lionheart.Utu = {main="Lionheart", sub="Utu grip"}
+    sets.CombatWeapon.Lionheart.Khonsu = {main="Lionheart", sub="Khonsu"}
+    sets.CombatWeapon.Lionheart.Mensch = {main="Lionheart", sub="Mensch strap +1"}
+    sets.CombatWeapon.Lionheart.Irenic = {main="Lionheart", sub="Irenic strap +1"}
+
+    sets.CombatWeapon.Lycurgos = {}
+    sets.CombatWeapon.Lycurgos.Utu = {main="Lycurgos", sub="Utu grip"}
+    sets.CombatWeapon.Lycurgos.Khonsu = {main="Lycurgos", sub="Khonsu"}
+    sets.CombatWeapon.Lycurgos.Mensch = {main="Lycurgos", sub="Mensch strap +1"}
+    sets.CombatWeapon.Lycurgos.Irenic = {main="Lycurgos", sub="Irenic strap +1"}
+
+    --DT: 52
+    sets.defense.PDT = {
+        ammo="Staunch tathlum +1", --dt: 3
+        head="Nyame helm", --dt: 7
+        neck="Futhark torque +2",--dt: 7
+        ear1="Odnowa earring +1",--dt: 3
+        ear2="Tuisto earring",
+        body="Nyame mail", --dt: 9
+        hands="Turms mittens +1",
+        ring1="Shadow ring", --dt: 10
+        ring2={name="Moonlight ring", bag="wardrobe6"}, --dt: 5
+        back= dt_cape,--dt: 5
+        waist="Flume belt +1",
+        legs="Erilaz leg guards +3",  --dt: 13
+        feet="Turms leggings +1"
+    }
+
+    --dt: 53
+    --mdb: 61
+    --meva: 690
+    --resist elements: 65-75
+    --resist status: 19
+    sets.defense.MDT = {
+        ammo="Staunch tathlum +1", --dt:3 status: 11
+        head="Erilaz galea +3", --mdb:9 meva:119
+        neck="Warder's charm +1", --resist:20
+        ear1="Sanare earring", --mdb:4 meva:9
+        ear2="Erilaz earring +1", --dt:5 meva:11   
+        body="Erilaz surcoat +3", --mdb:10 meva:130 
+        hands="Erilaz gauntlets +3", --dt:11 mdb:7 meva:87 status:8
+        ring1="Shadow ring",
+        ring2={name="Moonlight ring", bag="wardrobe6"}, --dt:5
+        back=dt_cape, --meva: 20 dt:5
+        waist="Engraved belt", --resist:20
+        legs="Erilaz leg guards +3", --dt:13 mdb: 10 meva:157
+        feet="Erilaz greaves +3" --dt:11 mdb:9 meva:157 resist:35
+    }
+
+    sets.defense.ResistStatus = set_combine(sets.defense.MDT, {
+        back=status_ailment_cape,
+        hands="Erilaz gauntlets +3"
+    })
+
+    sets.defense.KnockBack = set_combine(sets.defense.MDT, {
+        back="Repulse mantle",
+        ring2="Vocane ring +1",
+        legs="Dashing subligar"
+    })
+
+    sets.enmity = set_combine(sets.defense.PDT, {
         ammo="Aqreqaq bomblet", -- 2 enmity
         head="Halitus helm", -- 8 enmity
         neck="Futhark torque +2", --10 enmity
@@ -112,7 +197,7 @@ function init_gear_sets()
     }
     sets.precast.FC['Enhancing Magic'] = set_combine(sets.precast.FC, {legs="Futhark Trousers +3"})
 
-    local enmity_midcast = set_combine(sets.tank["pdt"], {
+    local enmity_midcast = set_combine(sets.defense.PDT, {
         ammo="Staunch tathlum +1",
         head="Halitus helm",
         body="Emet harness +1",
@@ -126,7 +211,7 @@ function init_gear_sets()
     })
 
     --SIRD
-    local SIRD = set_combine(sets.tank["pdt"], {
+    local SIRD = set_combine(sets.defense.PDT, {
         ammo="Staunch tathlum +1", --11%
         head="Erilaz galea +3", --20%
         neck="Moonlight necklace", --15%
@@ -158,7 +243,7 @@ function init_gear_sets()
     sets.midcast["Stun"] = enmity_midcast
 
     --Enhancing magic duration: 45%
-    sets.midcast.enhancing = set_combine(SIRD, {
+    sets.midcast['Enhancing Magic'] = set_combine(SIRD, {
         head="Erilaz galea +3", --Enhancing magic effect duration +25%
         neck="Incanter's torque",
         ear1="Andoaa earring",
@@ -169,7 +254,21 @@ function init_gear_sets()
 
     sets.midcast["Cocoon"] = SIRD
     sets.midcast["Flash"] = enmity_midcast
-    sets.midcast.enhancing["Foil"] = enmity_midcast
+    sets.midcast["Foil"] = enmity_midcast
+
+    sets.midcast['Phalanx'] = set_combine(sets.midcast['Enhancing Magic'], {
+        head="Futhark bandeau +3",
+        body={ name="Herculean Vest", augments={'STR+2','AGI+2','Phalanx +4','Mag. Acc.+10 "Mag.Atk.Bns."+10'}},
+        hands="Herculean gloves",
+        ring1={name="Stikini Ring +1", bag="wardrobe5"},
+        ring2={name="Stikini Ring +1", bag="wardrobe6"},
+        legs="Taeon tights",
+        feet="Taeon boots"
+    })
+    
+    sets.midcast['Regen'] = set_combine(sets.midcast['Enhancing Magic'], {
+        head="Runeist bandeau +3"
+    })
 
 	-- Weaponskill sets
     sets.precast.WS = { 
@@ -220,16 +319,6 @@ function init_gear_sets()
     }
     sets.precast.WS['Herculean Slash'] = sets.WS
 
-	--------------------------------------
-	-- Midcast sets
-	--------------------------------------
-	
-    sets.midcast.FastRecast = {}
-    sets.midcast['Enhancing Magic'] = {neck="Colossus's torque", ear1="Andoaa Earring", hands="Runeist mitons +1", waist="Olympus Sash", legs="Futhark Trousers +1"}
-    sets.midcast['Phalanx'] = set_combine(sets.midcast['Enhancing Magic'], {head="Futhark Bandeau +1"})
-    sets.midcast['Regen'] = {head="Runeist Bandeau +1", legs="Futhark Trousers +1"}
-    sets.midcast['Stoneskin'] = {waist="Siegel Sash"}
-    sets.midcast.Cure = {neck="Colossus's Torque", hands="Buremte Gloves", ring1="Ephedra Ring", feet="Futhark Boots +1"}
 
 	--------------------------------------
 	-- Idle/resting/defense/etc sets
@@ -275,26 +364,38 @@ function init_gear_sets()
         feet="Nyame sollerets"
     }
 
-    sets.engaged.DD = sets.engaged
-    sets.engaged.Acc = sets.engaged
-    sets.engaged.PDT = sets.engaged
-    sets.engaged.MDT = {
-        ammo="Staunch tathlum +1", --dt:3 status: 11
-        head="Erilaz galea +3", --mdb:9 meva:119
-        neck="Warder's charm +1", --resist:20
-        ear1="Sanare earring", --mdb:4 meva:9
-        ear2="Erilaz earring +1", --dt:5 meva:11   
-        body="Erilaz surcoat +3", --mdb:10 meva:130 
-        hands="Erilaz gauntlets +3", --dt:11 mdb:7 meva:87 status:8
-        ring1="Shadow ring",
-        ring2={name="Moonlight ring", bag="wardrobe6"}, --dt:5
-        back=dt_cape, --meva: 20 dt:5
-        waist="Engraved belt", --resist:20
-        legs="Erilaz leg guards +3", --dt:13 mdb: 10 meva:157
-        feet="Erilaz greaves +3" --dt:11 mdb:9 meva:157 resist:35
+    sets.engaged.MultiHit = {
+        ammo="Yamarang",
+        head="Dampening tam",
+        neck="Anu torque",
+        body="Nyame mail",
+        hands="Nyame gauntlets",
+        ear1="Telos earring",
+        ear2="Sherida earring",
+        ring1="Niqmaddu ring",
+        ring2="Epona's ring",
+        back=atk_cape,
+        waist="Ioskeha belt +1",
+        legs="Samnuha tights",
+        feet="Nyame sollerets"
     }
 
-    sets.precast.Item = {}
+    sets.engaged.Acc = {
+        ammo="Yamarang",
+        head="Runeist bandeau +3",
+        neck="Sanctity necklace",
+        ear1="Telos earring",
+        ear2="Dignitary's earring",
+        body="Nyame mail",
+        hands="Nyame gauntlets",
+        ring1="Chirich ring +1",
+        ring2="Regal ring",
+        back=atk_cape,
+        waist="Ioskeha belt +1",
+        legs="Nyame flanchard",
+        feet="Nyame sollerets"
+    }
+
     sets.precast.Item['Holy Water'] = {
         neck="Nicander's necklace",
         ring1={name="Blenmot's ring +1", bag="wardrobe5"},
@@ -305,6 +406,7 @@ function init_gear_sets()
         ring1={name="Blenmot's ring +1", bag="wardrobe5"},
         ring2={name="Blenmot's ring +1", bag="wardrobe6"} 
     }
+    coroutine.schedule(lockstyle,8)
 end
 
 ------------------------------------------------------------------
@@ -325,4 +427,28 @@ end
 
 function job_aftercast(spell)
 
+end
+
+function job_state_change(descrip, newVal, oldVal)
+    if descrip == 'Combat Weapon' then
+        if newVal == oldVal then
+            state.CombatWeapon[state.CombatWeapon.value]:cycle()
+        end
+        equipWeapon()
+    elseif descrip == 'Combat Mode' then
+        equipWeapon()
+    end
+end
+
+function equipWeapon()
+    local combatWeaponSpecify = state.CombatWeapon[state.CombatWeapon.value].value
+    equip(sets.CombatWeapon[state.CombatWeapon.value][combatWeaponSpecify])
+end
+
+function lockstyle()
+    if player.main_job == 'RUN' then send_command('@input /lockstyleset 5') end
+end
+
+function sub_job_change()
+    coroutine.schedule(lockstyle,8)
 end

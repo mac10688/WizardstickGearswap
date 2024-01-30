@@ -7,7 +7,7 @@ function get_sets()
     mote_include_version = 2
 
     -- Load and initialize the include file.
-    include('Mote-Include.lua')
+    include('Wiz-Include.lua')
 end
 
 -- Setup vars that are user-independent.  state.Buff vars initialized here will automatically be tracked.
@@ -218,7 +218,6 @@ function init_gear_sets()
         feet="Nyame Sollerets"
     }
 
-    sets.precast.Item = {}
     sets.precast.Item['Holy Water'] = {
         neck="Nicander's necklace",
         ring1={name="Blenmot's ring +1", bag="wardrobe5"},
@@ -230,6 +229,7 @@ function init_gear_sets()
         ring2={name="Blenmot's ring +1", bag="wardrobe6"} 
     }
 
+    coroutine.schedule(lockstyle,8)
 end
 
 -------------------------------------------------------------------------------------------------------------------
@@ -300,4 +300,12 @@ function job_update(cmdParams, eventArgs)
     if player.indi then
         classes.CustomIdleGroups:append('Indi')
     end
+end
+
+function lockstyle()
+    if player.main_job == 'GEO' then send_command('@input /lockstyleset 3') end
+end
+
+function job_sub_job_change()
+    coroutine.schedule(lockstyle,8)
 end

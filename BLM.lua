@@ -7,7 +7,7 @@ function get_sets()
     mote_include_version = 2
     
     -- Load and initialize the include file.
-    include('Mote-Include.lua')
+    include('Wiz-Include.lua')
 end
 
 
@@ -429,7 +429,6 @@ function init_gear_sets()
         back={ name="Taranus's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Dbl.Atk."+10','Mag. Evasion+15'}},
     }
 
-    sets.precast.Item = {}
     sets.precast.Item['Holy Water'] = {
         neck="Nicander's necklace",
         ring1={name="Blenmot's ring +1", bag="wardrobe5"},
@@ -440,6 +439,7 @@ function init_gear_sets()
         ring1={name="Blenmot's ring +1", bag="wardrobe5"},
         ring2={name="Blenmot's ring +1", bag="wardrobe6"} 
     }
+    coroutine.schedule(lockstyle,8)
 end
 
 -------------------------------------------------------------------------------------------------------------------
@@ -526,4 +526,12 @@ function job_get_spell_map(spell, default_spell_map)
         end
         --]]
     end
+end
+
+function lockstyle()
+    if player.main_job == 'BLM' then send_command('@input /lockstyleset 1') end
+end
+
+function job_sub_job_change(newSubjob, oldSubjob)
+    coroutine.schedule(lockstyle,8)
 end

@@ -30,7 +30,7 @@ function get_sets()
     mote_include_version = 2
 
     -- Load and initialize the include file.
-    include('Mote-Include.lua')
+    include('Wiz-Include.lua')
 end
 
 -- Setup vars that are user-independent.  state.Buff vars initialized here will automatically be tracked.
@@ -375,7 +375,6 @@ function init_gear_sets()
     sets.buff.FullSublimation = {head="Academic's mortarboard +3", body="Pedagogy gown +3", waist="Embla sash"}
     sets.buff.PDTSublimation = {head="Academic's mortarboard +3", body="Pedagogy gown +3", waist="Embla sash"}
 
-    sets.precast.Item = {}
     sets.precast.Item['Holy Water'] = {
         neck="Nicander's necklace",
         ring1={name="Blenmot's ring +1", bag="wardrobe5"},
@@ -388,6 +387,7 @@ function init_gear_sets()
     }
 
     --sets.buff['Sandstorm'] = {feet="Desert Boots"}
+    coroutine.schedule(lockstyle,8)
 end
 
 -------------------------------------------------------------------------------------------------------------------
@@ -518,4 +518,12 @@ function apply_grimoire_bonuses(spell, action, spellMap)
     if state.Buff.Parsimony then equip(sets.buff['Parsimony']) end
     if state.Buff.Celerity then equip(sets.buff['Celerity']) end
     if state.Buff.Alacrity then equip(sets.buff['Alacrity']) end
+end
+
+function lockstyle()
+    if player.main_job == 'SCH' then send_command('@input /lockstyleset 6') end
+end
+
+function sub_job_change()
+    coroutine.schedule(lockstyle,8)
 end

@@ -7,7 +7,7 @@ function get_sets()
     mote_include_version = 2
     
     -- Load and initialize the include file.
-    include('Mote-Include.lua')
+    include('Wiz-Include.lua')
 end
 
 -- Setup vars that are user-independent.  state.Buff vars initialized here will automatically be tracked.
@@ -115,9 +115,9 @@ function init_gear_sets()
     sets.precast.WS["Moonlight"] = {neck="Combatant's torque"}
     sets.precast.WS["Skullbreaker"] = physical_mnd_ws
     sets.precast.WS["True Strike"] = physical_mnd_ws
-    sets.precast.WS["Judgment"] = physical_mnd_ws
+    sets.precast.WS["Judgment"] = sets.precast.WS
     sets.precast.WS["Hexa Strike"] = set_combine(physical_mnd_ws, {waist="Fotia belt"})
-    sets.precast.WS["Black Halo"] = physical_mnd_ws
+    sets.precast.WS["Black Halo"] = sets.precast.WS
     sets.precast.WS["Flash Nova"] = magical_mnd_ws
     sets.precast.WS["Realmrazer"] = set_combine(physical_mnd_ws, {waist="Fotia belt"})
     sets.precast.WS["Dagan"] = physical_mnd_ws
@@ -433,7 +433,6 @@ function init_gear_sets()
     -- Buff sets: Gear that needs to be worn to actively enhance a current player buff.
     sets.buff['Divine Caress'] = {hands="Ebers mitts +3"}
 
-    sets.precast.Item = {}
     sets.precast.Item['Holy Water'] = {
         neck="Nicander's necklace",
         ring1={name="Blenmot's ring +1", bag="wardrobe5"},
@@ -444,6 +443,7 @@ function init_gear_sets()
         ring1={name="Blenmot's ring +1", bag="wardrobe5"},
         ring2={name="Blenmot's ring +1", bag="wardrobe6"} 
     }
+    coroutine.schedule(lockstyle,8)
 end
 
 -------------------------------------------------------------------------------------------------------------------
@@ -519,4 +519,12 @@ function job_update(cmdParams, eventArgs)
             end
         end
     end
+end
+
+function lockstyle()
+    if player.main_job == 'WHM' then send_command('@input /lockstyleset 7') end
+end
+
+function sub_job_change()
+    coroutine.schedule(lockstyle,8)
 end

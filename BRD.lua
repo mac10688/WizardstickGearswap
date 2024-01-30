@@ -7,7 +7,7 @@ function get_sets()
     mote_include_version = 2
     
     -- Load and initialize the include file.
-    include('Mote-Include.lua')
+    include('Wiz-Include.lua')
 end
 
 
@@ -16,16 +16,28 @@ function job_setup()
     state.ExtraSongsMode = M(false, 'Use daurdabla for extra songs')
     state.EnmitySongs = M(false, 'Use enmity set for songs')
     state.OffenseMode:options('TP', 'Hybrid', 'Accuracy')
+    state.CombatMode:options('SwordShield', 'DualWield')
     state.CastingMode:options('Normal', 'Resistant')
     state.IdleMode:options('Normal')
-    state.WeaponSet = M{['description']='Weapon Set',"Savage", "Savage II", "Savage Accuracy", "Mordent", "Mage", "Mage II", "Mage III"}
+
+    state.CombatWeapon = M{['description']='Combat Weapon', 'Naegling', 'Carnwenhan'}
+    state.CombatWeapon.DualWield = {}
+    state.CombatWeapon.DualWield.Naegling = M{['description']='Naegling Set', 'TP', 'Acc'}
+    state.CombatWeapon.DualWield.Carnwenhan = M{['description']='Carnwenhan Set', 'TP', 'Acc'}
+
+    state.CombatWeapon.SwordShield = {}
+    state.CombatWeapon.SwordShield.Naegling = M{['description']='Naegling Set', 'Genmei', 'Ammurapi'}
+    state.CombatWeapon.SwordShield.Carnwenhan = M{['description']='Carnwenhan Set', 'Genmei', 'Ammurapi'}
+
+    send_command('bind ~f1 gs c set CombatWeapon Naegling')
+    send_command('bind ~f2 gs c set CombatWeapon Carnwenhan')
+
     
     -- Adjust this if using the Terpander (new +song instrument)
     info.ExtraSongInstrument = 'Daurdabla'
 
     -- Additional local binds
     send_command('bind ^` gs c toggle ExtraSongsMode')
-    send_command('bind !` input /ma "Chocobo Mazurka" <me>')
     send_command('bind !f11 gs c cycle WeaponSet')
 end
 
@@ -38,6 +50,8 @@ function file_unload()
     send_command('unbind ^`')
     send_command('unbind !`')
     send_command('unbind !f11')
+    send_command('unbind ~f1')
+    send_command('unbind ~f2')
 end
 
 
@@ -60,14 +74,35 @@ function init_gear_sets()
     --------------------------------------
     -- Start defining the sets
     --------------------------------------
-    sets.WeaponSet = {}
-    sets.WeaponSet["Savage"] = {main="Naegling", sub="Centovente"}
-    sets.WeaponSet["Savage II"] = {main="Naegling", sub="Genmei shield"}
-    sets.WeaponSet["Savage Accuracy"] = {main="Naegling", sub="Gleti's knife"}
-    
-    sets.WeaponSet["Mordent"] = {main="Carnwenhan", sub="Centovente"}
-    sets.WeaponSet["Mage"] = {main="Carnwenhan", sub="Ammurapi shield"}
-    sets.WeaponSet["Mage II"] = {main="Carnwenhan", sub="Genmei shield"}
+
+    -- state.CombatWeapon = M{['description']='Combat Weapon', 'Naegling', 'Carnwenhan'}
+    -- state.CombatWeapon.DualWield = {}
+    -- state.CombatWeapon.DualWield.Naegling = M{['description']='Naegling Set', 'TP', 'Acc'}
+    -- state.CombatWeapon.DualWield.Carnwenhan = M{['description']='Carnwenhan Set', 'TP', 'Acc'}
+
+    -- state.CombatWeapon.SwordShield = {}
+    -- state.CombatWeapon.SwordShield.Naegling = M{['description']='Naegling Set', 'Genmei', 'Ammurapi'}
+    -- state.CombatWeapon.SwordShield.Carnwenhan = M{['description']='Carnwenhan Set', 'Genmei', 'Ammurapi'}
+
+    sets.CombatWeapon = {}
+    sets.CombatWeapon.DualWield = {}
+    sets.CombatWeapon.DualWield.Naegling = {}
+    sets.CombatWeapon.DualWield.Naegling.TP = {main="Naegling", sub="Centovente"}
+    sets.CombatWeapon.DualWield.Naegling.Acc = {main="Naegling", sub="Gleti's knife"}
+
+    sets.CombatWeapon.DualWield.Carnwenhan = {}
+    sets.CombatWeapon.DualWield.Carnwenhan.TP = {main="Carnwenhan", sub="Centovente"}
+    sets.CombatWeapon.DualWield.Carnwenhan.Acc = {main="Carnwenhan", sub="Gleti's knife"}
+
+    sets.CombatWeapon.SwordShield = {}
+    sets.CombatWeapon.SwordShield.Naegling = {}
+    sets.CombatWeapon.SwordShield.Naegling.Genmei = {main="Naegling", sub="Genmei"}
+    sets.CombatWeapon.SwordShield.Naegling.Ammurapi = {main="Naegling", sub="Ammurapi"}
+
+    sets.CombatWeapon.SwordShield.Carnwenhan = {}
+    sets.CombatWeapon.SwordShield.Carnwenhan.Genmei = {main="Carnwenhan", sub="Genmei"}
+    sets.CombatWeapon.SwordShield.Carnwenhan.Ammurapi = {main="Carnwenhan", sub="Ammurapi"}
+
     -- Precast Sets
 
     -- Fast cast sets for spells
@@ -392,7 +427,6 @@ function init_gear_sets()
         back={ name="Intarabus's Cape", augments={'VIT+20','Eva.+20 /Mag. Eva.+20','VIT+10','Enmity+10','Phys. dmg. taken-10%',}},
     }
 
-    sets.precast.Item = {}
     sets.precast.Item['Holy Water'] = {
         neck="Nicander's necklace",
         ring1={name="Blenmot's ring +1", bag="wardrobe5"},
@@ -403,6 +437,7 @@ function init_gear_sets()
         ring1={name="Blenmot's ring +1", bag="wardrobe5"},
         ring2={name="Blenmot's ring +1", bag="wardrobe6"} 
     }
+    coroutine.schedule(lockstyle,8)
 end
 
 
@@ -450,17 +485,31 @@ end
 -------------------------------------------------------------------------------------------------------------------
 
 -- Handle notifications of general user state change.
-function job_state_change(stateField, newValue, oldValue)
-    if stateField == "Combat Weapon" then
-        equip(sets.WeaponSet[newValue])
+function job_state_change(descrip, newValue, oldValue)
+    if descrip == 'Combat Weapon' then
+        if newVal == oldVal then
+            state.CombatWeapon[state.CombatMode.value][state.CombatWeapon.value]:cycle()
+        end
+        equipWeapon()
+    elseif descrip == 'Combat Mode' then
+        equipWeapon()
     end
 end
 
-function job_handle_equipping_gear(playerStatus, eventArgs)
-    equip(sets.WeaponSet[state.WeaponSet.value])
+function equipWeapon()
+    local combatWeaponSpecify = state.CombatWeapon[state.CombatMode.value][state.CombatWeapon.value].value
+    local weaponSet = sets.CombatWeapon[state.CombatMode.value][state.CombatWeapon.value][combatWeaponSpecify]
+    equip(weaponSet)
 end
 
+function job_handle_equipping_gear(playerStatus, eventArgs)
+
+end
 
 function lockstyle()
     if player.main_job == 'BRD' then send_command('@input /lockstyleset 2') end
+end
+
+function job_sub_job_change()
+    coroutine.schedule(lockstyle,8)
 end
