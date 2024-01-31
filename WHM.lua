@@ -271,10 +271,23 @@ function init_gear_sets()
         feet="Medium's Sabots"
     }
 
-    sets.midcast['Dark Magic'] = {main="Bolelabunga", sub="Genbu's Shield",
-        head="Nahtirah Hat",neck="Aesir Torque",ear1="Psystorm Earring",ear2="Lifestorm Earring",
-        body="Vanir Cotehardie",hands="Yaoyotl Gloves",ring1="Strendu Ring",ring2="Sangoma Ring",
-        back="Refraction Cape",waist="Demonry Sash",legs="Bokwus Slops",feet="Piety Duckbills +1"}
+    sets.midcast['Dark Magic'] = {
+        main="Daybreak",
+        sub="Genmei Shield",
+        ammo="Staunch Tathlum +1",
+        head="Pixie Hairpin +1",
+        body="Ebers Bliaut +3",
+        hands="Regal Cuffs",
+        legs="Ebers Pant. +3",
+        feet="Ebers Duckbills +3",
+        neck="Incanter's Torque",
+        waist="Austerity Belt +1",
+        left_ear="Regal Earring",
+        right_ear="Malignance Earring",
+        left_ring="Medada's Ring",
+        right_ring="Archon Ring",
+        back=fastcast_cape
+    }
 
     sets.midcast.enfeebling = {
         main="Gada",
