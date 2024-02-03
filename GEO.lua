@@ -385,6 +385,7 @@ end
 
 function job_aftercast(spell, action, spellMap, eventArgs)
     -- print_set(spell)
+    --Wait for the pet to come or go before taking off gear that is based off luopan ja. Not sure if needed for Geocolure but just to be safe.
     if spellMap == "Geocolure" or (spell.type == 'JobAbility' and data.petJA:contains(spell.english)) then
         eventArgs.handled = true
     end
