@@ -530,6 +530,11 @@ function job_post_midcast(spell, action, spellMap, eventArgs)
             equip(sets.midcast.magic_burst)
         end
 
+        local obi_or_orpheus = obi_or_orpheus(spell)
+        if obi_or_orpheus then
+            equip({waist=obi_or_orpheus})
+        end
+
         if state.UseWeakNukes.value then
             if state.WeakStratMode.value == 'DuringImmanence' and state.Buff.Immanence then
                 equip(sets.WeakNuke)

@@ -75,15 +75,6 @@ function init_gear_sets()
     -- Start defining the sets
     --------------------------------------
 
-    -- state.CombatWeapon = M{['description']='Combat Weapon', 'Naegling', 'Carnwenhan'}
-    -- state.CombatWeapon.DualWield = {}
-    -- state.CombatWeapon.DualWield.Naegling = M{['description']='Naegling Set', 'TP', 'Acc'}
-    -- state.CombatWeapon.DualWield.Carnwenhan = M{['description']='Carnwenhan Set', 'TP', 'Acc'}
-
-    -- state.CombatWeapon.SwordShield = {}
-    -- state.CombatWeapon.SwordShield.Naegling = M{['description']='Naegling Set', 'Genmei', 'Ammurapi'}
-    -- state.CombatWeapon.SwordShield.Carnwenhan = M{['description']='Carnwenhan Set', 'Genmei', 'Ammurapi'}
-
     sets.CombatWeapon = {}
     sets.CombatWeapon.DualWield = {}
     sets.CombatWeapon.DualWield.Naegling = {}
@@ -96,12 +87,12 @@ function init_gear_sets()
 
     sets.CombatWeapon.SwordShield = {}
     sets.CombatWeapon.SwordShield.Naegling = {}
-    sets.CombatWeapon.SwordShield.Naegling.Genmei = {main="Naegling", sub="Genmei"}
-    sets.CombatWeapon.SwordShield.Naegling.Ammurapi = {main="Naegling", sub="Ammurapi"}
+    sets.CombatWeapon.SwordShield.Naegling.Genmei = {main="Naegling", sub="Genmei shield"}
+    sets.CombatWeapon.SwordShield.Naegling.Ammurapi = {main="Naegling", sub="Ammurapi shield"}
 
     sets.CombatWeapon.SwordShield.Carnwenhan = {}
-    sets.CombatWeapon.SwordShield.Carnwenhan.Genmei = {main="Carnwenhan", sub="Genmei"}
-    sets.CombatWeapon.SwordShield.Carnwenhan.Ammurapi = {main="Carnwenhan", sub="Ammurapi"}
+    sets.CombatWeapon.SwordShield.Carnwenhan.Genmei = {main="Carnwenhan", sub="Genmei shield"}
+    sets.CombatWeapon.SwordShield.Carnwenhan.Ammurapi = {main="Carnwenhan", sub="Ammurapi shield"}
 
     -- Precast Sets
 
@@ -459,6 +450,9 @@ function job_midcast(spell, action, spellMap, eventArgs)
             local generalClass = get_song_class(spell)
             if generalClass and sets.midcast.BardSong[generalClass] then
                 equip(sets.midcast.BardSong[generalClass])
+                if generalClass == 'DaurdablaDummy' then
+                    eventArgs.handled = true
+                end
             end
         end
     end
@@ -498,6 +492,9 @@ end
 
 function equipWeapon()
     local combatWeaponSpecify = state.CombatWeapon[state.CombatMode.value][state.CombatWeapon.value].value
+    -- print(state.CombatMode.value)
+    -- print(state.CombatWeapon.value)
+    -- print(combatWeaponSpecify)
     local weaponSet = sets.CombatWeapon[state.CombatMode.value][state.CombatWeapon.value][combatWeaponSpecify]
     equip(weaponSet)
 end

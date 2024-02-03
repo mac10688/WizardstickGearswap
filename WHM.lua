@@ -15,6 +15,8 @@ function job_setup()
     state.OffenseMode:options('None', 'Normal')
     state.CastingMode:options('Normal', 'Resistant')
     state.IdleMode:options('Normal', 'PDT', 'MDT', 'Refresh')
+    state.CureMode:options('Pure', 'SIRD')
+
     state.Buff['Afflatus Solace'] = buffactive['Afflatus Solace'] or false
     state.Buff['Afflatus Misery'] = buffactive['Afflatus Misery'] or false
 end
@@ -104,12 +106,9 @@ function init_gear_sets()
         back=physical_mnd_ws_cape,
     }
 
-    local magical_mnd_ws = {
-
-    }
 	
-    sets.precast.WS["Shining Strike"] = magical_mnd_ws
-    sets.precast.WS["Seraph Strike"] = magical_mnd_ws
+    sets.precast.WS["Shining Strike"] = sets.precast.WS
+    sets.precast.WS["Seraph Strike"] = sets.precast.WS
     sets.precast.WS["Brainshaker"] = physical_mnd_ws
     sets.precast.WS["Starlight"] = {neck="Combatant's torque"}
     sets.precast.WS["Moonlight"] = {neck="Combatant's torque"}
@@ -118,7 +117,7 @@ function init_gear_sets()
     sets.precast.WS["Judgment"] = sets.precast.WS
     sets.precast.WS["Hexa Strike"] = set_combine(physical_mnd_ws, {waist="Fotia belt"})
     sets.precast.WS["Black Halo"] = sets.precast.WS
-    sets.precast.WS["Flash Nova"] = magical_mnd_ws
+    sets.precast.WS["Flash Nova"] = sets.precast.WS
     sets.precast.WS["Realmrazer"] = set_combine(physical_mnd_ws, {waist="Fotia belt"})
     sets.precast.WS["Dagan"] = physical_mnd_ws
     sets.precast.WS["Mystic Boon"] = physical_mnd_ws
@@ -148,9 +147,30 @@ function init_gear_sets()
         back=fastcast_cape
     }
 
-    sets.midcast.CureSolace = set_combine(sets.midcast.Cure, {body="Ebers Bliaut +3"})
+    sets.midcast.Cure.SIRD = sets.midcast.Cure
 
-    sets.midcast.Curaga = sets.midcast.Cure
+    sets.midcast.Cure.Pure = {
+        main="Raetic Rod +1",
+        ammo="Incantor Stone",
+        head="Ebers cap +3",
+        neck="Cleric's torque +2",
+        ear1="Glorious earring",
+        ear2="Ebers earring +1",
+        body="Theophany bliaut +3",
+        hands="Theophany mitts +3",
+        ring1="Medada's ring",
+        ring2="Persis ring",
+        back=fastcast_cape,
+        waist="Austerity belt +1",
+        legs="Ebers pantaloons +3",
+        feet="Ebers duckbills +3"
+    }
+
+    sets.midcast.Cure.Pure.Solace = set_combine(sets.midcast.Cure.Pure, {body="Ebers Bliaut +3"})
+    sets.midcast.Cure.SIRD.Solace = set_combine(sets.midcast.Cure.SIRD, {body="Ebers Bliaut +3"})
+
+    sets.midcast.Curaga.Pure = sets.midcast.Cure.Pure
+    sets.midcast.Curaga.SIRD = sets.midcast.Cure.SIRD
 
     sets.midcast.StatusRemoval = {
         main="Yagrush",
@@ -197,21 +217,6 @@ function init_gear_sets()
         feet="Theophany duckbills +3"
     }
 
-    sets.midcast.Stoneskin = {
-        head="Nahtirah Hat",neck="Orison Locket",ear2="Loquacious Earring",
-        body="Vanir Cotehardie",hands="Dynasty Mitts",
-        back="Swith Cape +1",waist="Siegel Sash",legs="Gendewitha Spats",feet="Gendewitha Galoshes"}
-
-    sets.midcast.Auspice = {hands="Dynasty Mitts",feet="Orison Duckbills +2"}
-
-    sets.midcast.BarElement = set_combine(sets.midcast['Enhancing Magic'], {
-        main="Beneficus",
-        head="Ebers cap +3",
-        body="Ebers Bliaut +3",
-        legs="Piety Pantaloons +3",
-        feet="Ebers duckbills +3"
-    })
-
     local midcast_duration = set_combine(sets.midcast["Enhancing Magic"], {
         main="Gada",
         sub="Ammurapi shield",
@@ -220,6 +225,20 @@ function init_gear_sets()
         hands="Telchine gloves",
         legs="Telchine braconi",
     })
+
+    sets.midcast.Stoneskin = midcast_duration
+
+    sets.midcast.Auspice = set_combine(midcast_duration, {
+        feet="Ebers duckbills +3"
+    })
+
+    sets.midcast.BarElement = set_combine(sets.midcast['Enhancing Magic'], {
+        main="Beneficus",
+        head="Ebers cap +3",
+        body="Ebers Bliaut +3",
+        legs="Piety Pantaloons +3",
+        feet="Ebers duckbills +3"
+    })    
 
     sets.midcast.BarStatus = set_combine(midcast_duration, {
         neck="Sroda necklace"
@@ -445,6 +464,7 @@ function init_gear_sets()
 
     -- Buff sets: Gear that needs to be worn to actively enhance a current player buff.
     sets.buff['Divine Caress'] = {hands="Ebers mitts +3"}
+    sets.buff['Afflatus Solace'] = {body="Ebers Bliaut +3"}
 
     sets.precast.Item['Holy Water'] = {
         neck="Nicander's necklace",
@@ -472,7 +492,17 @@ end
 
 function job_post_midcast(spell, action, spellMap, eventArgs)
     -- Apply Divine Caress boosting items as highest priority over other gear, if applicable.
-    if spellMap == 'StatusRemoval' and buffactive['Divine Caress'] then
+    -- sets.midcast.Cure.Pure.Solace = set_combine(sets.midcast.Cure.Pure, {body="Ebers Bliaut +3"})
+    -- sets.midcast.Cure.SIRD.Solace = set_combine(sets.midcast.Cure.SIRD, {body="Ebers Bliaut +3"})
+
+    -- sets.midcast.Curaga.Pure = sets.midcast.Cure.Pure
+    -- sets.midcast.Curaga.SIRD = sets.midcast.Cure.SIRD
+    if spellMap == 'Cure' or spellMap == "Curaga" then
+        equip(sets.midcast[spellMap][state.CureMode.Value])
+        if spellMap == 'Cure' and state.Buff['Afflatus Solace'] then
+            equip(sets.buff['Afflatus Solace'])
+        end
+    elseif spellMap == 'StatusRemoval' and buffactive['Divine Caress'] then
         equip(sets.buff['Divine Caress'])
     end
 end
@@ -483,13 +513,7 @@ end
 
 -- Handle notifications of general user state change.
 function job_state_change(stateField, newValue, oldValue)
-    if stateField == 'Offense Mode' then
-        if newValue == 'Normal' then
-            disable('main','sub','range')
-        else
-            enable('main','sub','range')
-        end
-    end
+
 end
 
 
@@ -498,13 +522,9 @@ end
 -------------------------------------------------------------------------------------------------------------------
 
 -- Custom spell mapping.
-function job_get_spell_map(spell, default_spell_map)
+function job_get_spell_map(spell, spell_map)
     if spell.action_type == 'Magic' then
-        if (default_spell_map == 'Cure' or default_spell_map == 'Curaga') and player.status == 'Engaged' then
-            return "CureMelee"
-        elseif default_spell_map == 'Cure' and state.Buff['Afflatus Solace'] then
-            return "CureSolace"
-        elseif spell.skill == "Enfeebling Magic" then
+        if spell.skill == "Enfeebling Magic" then
             if spell.type == "WhiteMagic" then
                 return "MndEnfeebles"
             else

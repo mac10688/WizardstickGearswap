@@ -16,11 +16,24 @@ function job_setup()
     state.CastingMode:options('Normal', 'Resistant')
     state.IdleMode:options('Normal', 'PDT')
 
-    gear.default.weaponskill_waist = "Windbuffet Belt"
+    state.MagicBurst = M(false, 'Magic Burst')
+    data.petJA = S{"Full Circle","Radial Arcana","Mending Helation","Concentric Pulse"}
+    send_command('bind !` gs c toggle MagicBurst')
+end
+
+-- Called when this job file is unloaded (eg: job change)
+function user_unload()
+    send_command('unbind !`')
 end
 
 -- Define sets and vars used by this job file.
 function init_gear_sets()
+
+    local fc_Cape = { name="Nantosuelta's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Spell interruption rate down-10%'}}
+    local tp_Cape = { name="Nantosuelta's Cape", augments={'DEX+20','Accuracy+20 Attack+20','"Dbl.Atk."+10','Damage taken-5%'}}
+    local mab_Cape = { name="Nantosuelta's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10','Spell interruption rate down-10%'}}
+    local pet_Cape = { name="Nantosuelta's Cape", augments={'MND+20','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Pet: "Regen"+10','Pet: "Regen"+5'}}
+    local ws_Cape = { name="Nantosuelta's Cape", augments={'MND+20','Accuracy+20 Attack+20','MND+10','Weapon skill damage +10%','Damage taken-5%'}}
 
     --------------------------------------
     -- Precast sets
@@ -28,12 +41,13 @@ function init_gear_sets()
 
     -- Precast sets to enhance JAs
     sets.precast.JA.Bolster = {body="Bagua tunic +3"}
-    sets.precast.JA['Life cycle'] = {body="Geomancy tunic +3", back="Nantosuelta's cape"}
+    sets.precast.JA['Life cycle'] = {body="Geomancy tunic +3", back=pet_Cape}
     sets.precast.JA['Full Circle'] = {
         head="Azimuth hood +3",
         hands="Bagua mitaines +3"
     }
     sets.precast.JA['Concentric Pulse'] = { head="Bagua galero +3" }
+    sets.precast.JA['Radial Arcana'] = { feet="Bagua sandals +3" }
 
     -- Fast cast sets for spells
 
@@ -60,6 +74,12 @@ function init_gear_sets()
         head="Umuthi hat"
     })
 
+    sets.precast['Impact'] = set_combine(sets.precast.FC, {
+        head=empty,
+        body='Crepuscular cloak'
+    })
+
+    sets.precast["Dispelga"] = {main="Daybreak"}
     
     -- Weaponskill sets
     -- Default set for any weaponskill that isn't any more specifically defined
@@ -114,7 +134,41 @@ function init_gear_sets()
         feet="Medium's sabots"
     }
 
-    sets.midcast.Geomancy = set_combine(conserve_mp_set, {
+    sets.midcast['Elemental Magic'] = {
+        sub="Ammurapi shield",
+        head="Bagua galero +3",
+        neck="Sanctity necklace",
+        ear1="Malignance earring",
+        ear2="Regal earring",
+        body="Bagua tunic +3",
+        hands="Amalric gages +1",
+        ring1="Medada's ring",
+        ring2="Metamorph ring +1",        
+        waist="Acuity belt +1",
+        legs="Bagua pants +3",
+        feet="Bagua sandals +3",
+        back=mab_Cape
+    }
+
+    sets.magic_burst = set_combine(sets.midcast['Elemental Magic'], {
+        main="Bunzi's rod",
+        ammo="Ghastly tathlum +1",
+        head="Ea hat +1", --MB: 7 MB2:7
+        neck="Sibyl scarf", -- MB: 10
+        body="Azimuth coat +3", --MB: 9 MB2:9
+        hands="Agwu's gages", --MB2: 5
+        -- ring1="Mujin band", --MB2: 5
+        legs="Azimuth tights +3", --MB: 8 MB2:8
+        feet="Agwu's pigaches" --MB: 6
+    })
+
+    sets.midcast['Impact'] = set_combine(sets.midcast['Elemental Magic'], {
+        head=empty,
+        ring2="Archon ring",
+        body='Crepuscular cloak'
+    })
+
+    sets.midcast.Geocolure = set_combine(conserve_mp_set, {
         main="Idris", 
         range="Dunna",
         neck="Bagua charm +2",
@@ -124,7 +178,7 @@ function init_gear_sets()
         back=fc_Cape,
     })
 
-    sets.midcast.Geomancy.Indi = set_combine(sets.midcast.Geomancy, {
+    sets.midcast.Indicolure = set_combine(sets.midcast.Geocolure, {
         main="Idris",
         range="Dunna",
         head="Azimuth hood +3",
@@ -148,6 +202,90 @@ function init_gear_sets()
     
     sets.midcast.Curaga = sets.midcast.Cure
 
+    sets.midcast['Dark Magic'] = set_combine(conserve_mp_set, {
+        neck="Erra pendant",
+        body="Geomancy tunic +3",
+        ring1="Evanescence ring",
+        ring2="Archon ring",
+        waist="Fucho-no-obi",
+        legs="Azimuth tights +3"
+    })
+
+    sets.midcast.Drain = set_combine(sets.midcast['Dark Magic'], {
+        head="Pixie Hairpin +1",
+        ring1="Archon ring",
+        ring2="Excelsis ring",
+        waist="Fucho-no-obi",
+        feet="Merlinic crackows"
+    })
+
+    sets.midcast.Aspir = sets.midcast.Drain
+
+    sets.midcast['Enfeebling Magic'] = {
+        sub="Ammurapi shield",
+        ammo="Dunna",
+        head="Befouled crown",
+        neck="Incanter's torque",
+        ear1="Regal earring",
+        ear2="Malignance earring",
+        body="Geomancy tunic +3",
+        hands="Regal cuffs",
+        ring1="Medada's ring",
+        ring2={name="Stikini Ring +1", bag="wardrobe6"},
+        back=fc_Cape,
+        waist="Luminary sash",
+        legs="Geomancy pants +3",
+        feet="Bagua sandals +3"
+    }
+
+    sets.midcast["Dispelga"] = set_combine(sets.midcast['Enfeebling Magic'], {main="Daybreak"})
+
+    sets.midcast['Enhancing Magic'] = set_combine(conserve_mp_set, {
+        sub="Ammurapi shield",
+        head="Befouled crown",
+        neck="Incanter's torque",
+        ear1="Andoaa earring",
+        ear2="Mimir earring",
+        ring1={name="Stikini Ring +1", bag="wardrobe5"},
+        ring2={name="Stikini Ring +1", bag="wardrobe6"},
+        waist="Embla sash"
+    })
+
+    sets.midcast["Aquaveil"] = set_combine(sets.midcast['Enhancing Magic'], { 
+        hands="Regal cuffs"
+    })
+
+    sets.midcast.Absorb = {
+        sub="Ammurapi Shield",
+        range="Dunna",
+        head="Azimuth Hood +3",
+        body="Geomancy Tunic +3",
+        hands="Geo. Mitaines +3",
+        legs="Azimuth Tights +3",
+        feet="Azimuth Gaiters +3",
+        neck="Erra Pendant",
+        waist="Acuity Belt +1",
+        left_ear="Regal Earring",
+        right_ear="Malignance Earring",
+        ring1="Medada's ring",
+        ring2="Archon Ring",        
+        back=fc_Cape
+    }
+
+    sets.midcast.Stun = {
+        sub="Ammurapi shield",
+        head="Bagua galero +3",
+        neck="Erra pendant",
+        ear1="Malignance earring",
+        ear2="Regal earring",
+        body="Geomancy tunic +3",
+        hands="Geomancy mitaines +3",
+        ring1="Medada's ring",
+        ring2={name="Stikini Ring +1", bag="wardrobe6"},
+        waist="Luminary sash",
+        legs="Geomancy pants +3",
+        feet="Geomancy sandals +3",
+    }
     --------------------------------------
     -- Idle/resting/defense/etc sets
     --------------------------------------
@@ -159,11 +297,11 @@ function init_gear_sets()
         main="Idris",
         sub="Genmei shield",
         range="Dunna",
-        head="Befouled crown",
+        head="Agwu's cap",
         neck="Loricate torque +1",
         ear1="Etiolation earring",
         ear2="Hearty earring",
-        body="Shamash robe",
+        body="Bagua tunic +3",
         hands="Azimuth gloves +3",
         ring1="Defending Ring",
         ring2="Vengeful ring",
@@ -177,21 +315,16 @@ function init_gear_sets()
     sets.idle.Pet = set_combine(sets.idle, {
         main="Idris",
         range="Dunna",
-        head="Azimuth hood +3",
+        -- head="Azimuth hood +3",
         neck="Bagua charm +2",
         hands="Geomancy mitaines +3",
         back=pet_Cape,
-        feet="Bagua sandals +3"
+        -- feet="Bagua sandals +3"
     })
-
-    -- .Indi sets are for when an Indi-spell is active.
-    sets.idle.Indi = set_combine(sets.idle, {legs="Bagua Pants +3"})
-    sets.idle.Pet.Indi = set_combine(sets.idle.Pet, {legs="Bagua Pants +3"})
 
     sets.Kiting = {
         feet="Geomancy sandals +3"
     }
-
 
     --------------------------------------
     -- Engaged sets
@@ -236,15 +369,24 @@ end
 -- Job-specific hooks for standard casting events.
 -------------------------------------------------------------------------------------------------------------------
 
-function job_aftercast(spell, action, spellMap, eventArgs)
-    if not spell.interrupted then
-        if spell.english:startswith('Indi') then
-            if not classes.CustomIdleGroups:contains('Indi') then
-                classes.CustomIdleGroups:append('Indi')
-            end
+-- Run after the default midcast() is done.
+-- eventArgs is the same one used in job_midcast, in case information needs to be persisted.
+function job_post_midcast(spell, action, spellMap, eventArgs)
+    if spell.skill == 'Elemental Magic' then
+        if state.MagicBurst.value and spell.english ~= 'Impact' then
+            equip(sets.magic_burst)
         end
-    elseif not player.indi then
-        classes.CustomIdleGroups:clear()
+        local obi_or_orpheus = obi_or_orpheus(spell)
+        if obi_or_orpheus then
+            equip({waist=obi_or_orpheus})
+        end
+    end
+end
+
+function job_aftercast(spell, action, spellMap, eventArgs)
+    -- print_set(spell)
+    if spellMap == "Geocolure" or (spell.type == 'JobAbility' and data.petJA:contains(spell.english)) then
+        eventArgs.handled = true
     end
 end
 
@@ -257,23 +399,11 @@ end
 -- buff == buff gained or lost
 -- gain == true if the buff was gained, false if it was lost.
 function job_buff_change(buff, gain)
-    if player.indi and not classes.CustomIdleGroups:contains('Indi')then
-        classes.CustomIdleGroups:append('Indi')
-        handle_equipping_gear(player.status)
-    elseif classes.CustomIdleGroups:contains('Indi') and not player.indi then
-        classes.CustomIdleGroups:clear()
-        handle_equipping_gear(player.status)
-    end
+
 end
 
 function job_state_change(stateField, newValue, oldValue)
-    if stateField == 'Offense Mode' then
-        if newValue == 'Normal' then
-            disable('main','sub','range')
-        else
-            enable('main','sub','range')
-        end
-    end
+
 end
 
 -------------------------------------------------------------------------------------------------------------------
@@ -281,25 +411,16 @@ end
 -------------------------------------------------------------------------------------------------------------------
 
 function job_get_spell_map(spell, default_spell_map)
-    if spell.action_type == 'Magic' then
-        if spell.skill == 'Geomancy' then
-            if spell.english:startswith('Indi') then
-                return 'Indi'
-            end
-        end
-    end
+
 end
 
 function customize_idle_set(idleSet)
-
+    return idleSet
 end
 
 -- Called by the 'update' self-command.
 function job_update(cmdParams, eventArgs)
-    classes.CustomIdleGroups:clear()
-    if player.indi then
-        classes.CustomIdleGroups:append('Indi')
-    end
+
 end
 
 function lockstyle()

@@ -14,14 +14,31 @@ end
 -- Setup vars that are user-independent.  state.Buff vars initialized here will automatically be tracked.
 function job_setup()
     state.OffenseMode:options('None', 'Normal')
-    state.CastingMode:options('Normal', 'Magic Burst', 'Occult Acumen')
+    state.CastingMode:options('Normal', 'Occult Acumen')
     state.IdleMode:options('Normal', 'PDT')
     
     state.MagicBurst = M(false, 'Magic Burst')
+
+    state.CombatWeapon = M{['description']='Combat Weapon', 'Laevateinn', 'Kaumodaki', 'Marin', 'Khatvanga', 'Drepanum', 'Bunzi', 'Opashoro'}
+    state.CombatWeapon.Laevateinn = M{['description']='Laevateinn Set', 'Khonsu', 'Enki'}
+    state.CombatWeapon.Kaumodaki = M{['description']='Kaumodaki Set', 'Khonsu', 'Enki'}
+    state.CombatWeapon.Marin = M{['description']='Marin staff +1 Set', 'Khonsu', 'Enki'}
+    state.CombatWeapon.Khatvanga = M{['description']='Khatvanga Set', 'Khonsu', 'Enki'}
+    state.CombatWeapon.Drepanum = M{['description']='Drepanum Set', 'Khonsu', 'Enki'}
+    state.CombatWeapon.Bunzi = M{['description']='Bunzi rod Set', 'Ammurapi', 'Genmei'}
+    state.CombatWeapon.Opashoro = M{['description']='Drepanum Set', 'Khonsu', 'Enki'}
+
+    send_command('bind ~f1 gs c set CombatWeapon Laevateinn')
+    send_command('bind ~f2 gs c set CombatWeapon Kaumodaki')
+    send_command('bind ~f3 gs c set CombatWeapon Marin')
+    send_command('bind ~f4 gs c set CombatWeapon Khatvanga')
+    send_command('bind ~f5 gs c set CombatWeapon Drepanum')
+    send_command('bind ~f6 gs c set CombatWeapon Bunzi')
+    send_command('bind ~f7 gs c set CombatWeapon Opashoro')
     
     -- Additional local binds
-    send_command('bind ^` input /ma Stun <t>')
     send_command('bind !` gs c toggle MagicBurst')
+
 end
 
 -------------------------------------------------------------------------------------------------------------------
@@ -30,13 +47,49 @@ end
 
 -- Called when this job file is unloaded (eg: job change)
 function user_unload()
-    send_command('unbind ^`')
     send_command('unbind !`')
+    send_command('unbind ~f1')
+    send_command('unbind ~f2')
+    send_command('unbind ~f3')
+    send_command('unbind ~f4')
+    send_command('unbind ~f5')
+    send_command('unbind ~f6')
+    send_command('unbind ~f7')
 end
 
 
 -- Define sets and vars used by this job file.
 function init_gear_sets()
+
+    sets.CombatWeapon = {}
+
+    sets.CombatWeapon.Laevateinn = {}
+    sets.CombatWeapon.Laevateinn.Khonsu = {main="Laevateinn", sub="Khonsu"}
+    sets.CombatWeapon.Laevateinn.Enki = {main="Laevateinn", sub="Enki strap"}
+
+    sets.CombatWeapon.Kaumodaki = {}
+    sets.CombatWeapon.Kaumodaki.Khonsu = {main="Kaumodaki", sub="Khonsu"}
+    sets.CombatWeapon.Kaumodaki.Enki = {main="Kaumodaki", sub="Enki strap"}
+
+    sets.CombatWeapon.Marin = {}
+    sets.CombatWeapon.Marin.Khonsu = {main="Marin staff +1", sub="Khonsu"}
+    sets.CombatWeapon.Marin.Enki = {main="Marin staff +1", sub="Enki strap"}
+
+    sets.CombatWeapon.Khatvanga = {}
+    sets.CombatWeapon.Khatvanga.Khonsu = {main="Khatvanga", sub="Khonsu"}
+    sets.CombatWeapon.Khatvanga.Enki = {main="Khatvanga", sub="Enki strap"}
+
+    sets.CombatWeapon.Drepanum = {}
+    sets.CombatWeapon.Drepanum.Khonsu = {main="Drepanum", sub="Khonsu"}
+    sets.CombatWeapon.Drepanum.Enki = {main="Drepanum", sub="Enki strap"}
+
+    sets.CombatWeapon.Bunzi = {}
+    sets.CombatWeapon.Bunzi.Ammurapi = {main="Bunzi's rod", sub="Ammurapi shield"}
+    sets.CombatWeapon.Bunzi.Genmei = {main="Bunzi's rod", sub="Genmei shield"}
+
+    sets.CombatWeapon.Opashoro = {}
+    sets.CombatWeapon.Opashoro.Khonsu = {main="Opashoro", sub="Khonsu"}
+    sets.CombatWeapon.Opashoro.Enki = {main="Opashoro", sub="Enki strap"}
     --------------------------------------
     -- Start defining the sets
     --------------------------------------
@@ -478,8 +531,6 @@ function job_aftercast(spell, action, spellMap, eventArgs)
             enable('feet')
             equip(sets.buff['Mana Wall'])
             disable('feet')
-        elseif spell.skill == 'Elemental Magic' then
-            state.MagicBurst:reset()
         end
     end
 end
@@ -500,14 +551,20 @@ function job_buff_change(buff, gain)
 end
 
 -- Handle notifications of general user state change.
-function job_state_change(stateField, newValue, oldValue)
-    if stateField == 'Offense Mode' then
-        if newValue == 'Normal' then
-            disable('main','sub','range')
-        else
-            enable('main','sub','range')
+function job_state_change(descrip, newVal, oldVal)
+    if descrip == 'Combat Weapon' then
+        if newVal == oldVal then
+            state.CombatWeapon[state.CombatWeapon.value]:cycle()
         end
+        equipWeapon()
+    elseif descrip == 'Combat Mode' then
+        equipWeapon()
     end
+end
+
+function equipWeapon()
+    local combatWeaponSpecify = state.CombatWeapon[state.CombatWeapon.value].value
+    equip(sets.CombatWeapon[state.CombatWeapon.value][combatWeaponSpecify])
 end
 
 
@@ -517,15 +574,7 @@ end
 
 -- Custom spell mapping.
 function job_get_spell_map(spell, default_spell_map)
-    if spell.skill == 'Elemental Magic' and default_spell_map ~= 'ElementalEnfeeble' then
-        --[[ No real need to differentiate with current gear.
-        if lowTierNukes:contains(spell.english) then
-            return 'LowTierNuke'
-        else
-            return 'HighTierNuke'
-        end
-        --]]
-    end
+
 end
 
 function lockstyle()
