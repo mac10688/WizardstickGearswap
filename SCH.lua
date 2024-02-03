@@ -524,11 +524,14 @@ end
 -- Run after the general midcast() is done.
 function job_post_midcast(spell, action, spellMap, eventArgs)
     if spell.action_type == 'Magic' then
-        apply_grimoire_bonuses(spell, action, spellMap, eventArgs)
-
-        if state.MagicBurst.value then
-            equip(sets.midcast.magic_burst)
+        if state.MagicBurst.value and spell.skill == 'Elemental Magic' and spellMap ~= 'ElementalEnfeeble' and spell.english ~= 'Impact' then
+            if spellMap ~= 'Helix' then
+                equip(sets.midcast.magic_burst)
+            elseif spellMap == 'Helix' then
+                equip(sets.midcast['Elemental Magic'].Helix)
+            end
         end
+        apply_grimoire_bonuses(spell, action, spellMap, eventArgs)        
 
         local obi_or_orpheus = obi_or_orpheus(spell)
         if obi_or_orpheus then
@@ -590,7 +593,7 @@ function customize_idle_set(idleSet)
         end
     end
 
-    print(state.EatTp.value)
+    -- print(state.EatTp.value)
     if state.EatTp.value then
         idleSet = set_combine(idleSet, {neck='Chrysopoeia torque'})
     end

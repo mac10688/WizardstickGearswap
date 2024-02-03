@@ -519,7 +519,7 @@ function job_midcast(spell, action, spellMap, eventArgs)
 end
 
 function job_post_midcast(spell, action, spellMap, eventArgs)
-    if spell.skill == 'Elemental Magic' and state.MagicBurst.value then
+    if spell.skill == 'Elemental Magic' and state.MagicBurst.value and spell.english ~= 'Impact' then
         equip(sets.magic_burst)
     end
 end
