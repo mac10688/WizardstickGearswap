@@ -19,6 +19,7 @@ function job_setup()
     state.CombatMode:options('SwordShield', 'DualWield')
     state.CastingMode:options('Normal', 'Resistant')
     state.IdleMode:options('Normal')
+    state.CombatWeapon:set('Carnwenhan')
 
     state.Naegling = {}
     state.Naegling.DualWield = M{['description']='Naegling Set', 'TP', 'Acc'}
@@ -28,8 +29,6 @@ function job_setup()
     state.Carnwenhan.DualWield = M{['description']='Carnwenhan Set', 'TP', 'Acc'}
     state.Carnwenhan.SwordShield = M{['description']='Carnwenhan Set', 'Genmei', 'Ammurapi'}    
 
-    send_command('bind ~f1 gs c set CombatWeapon Naegling')
-    send_command('bind ~f2 gs c set CombatWeapon Carnwenhan')
 
     
     -- Adjust this if using the Terpander (new +song instrument)
@@ -37,7 +36,8 @@ function job_setup()
 
     -- Additional local binds
     send_command('bind ^` gs c toggle ExtraSongsMode')
-    send_command('bind !f11 gs c cycle WeaponSet')
+    send_command('bind ~f1 gs c set CombatWeapon Naegling')
+    send_command('bind ~f2 gs c set CombatWeapon Carnwenhan')
 end
 
 -------------------------------------------------------------------------------------------------------------------
@@ -47,8 +47,6 @@ end
 -- Called when this job file is unloaded (eg: job change)
 function file_unload()
     send_command('unbind ^`')
-    send_command('unbind !`')
-    send_command('unbind !f11')
     send_command('unbind ~f1')
     send_command('unbind ~f2')
 end

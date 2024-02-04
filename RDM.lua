@@ -22,6 +22,7 @@ function job_setup()
     state.MagicBurst = M(true, 'Magic Burst')
     state.SleepMode = M{['description']='Sleep Mode', 'Normal', 'MaxDuration'}
     state.EnspellMode = M(true, 'Enspell Melee Mode')
+    state.CombatWeapon:set('Naegling')
 
     -- state.CombatWeapon = M{['description']='Combat Weapon', 'Naegling', 'Crocea', 'Club', 'Dagger', 'Zerodmg'}
     state.Naegling = {}
@@ -50,6 +51,7 @@ function job_setup()
     send_command('bind ~f4 gs c set CombatWeapon Dagger')
     send_command('bind ~f5 gs c set CombatWeapon Zerodmg')
     send_command('bind @e gs c toggle EnspellMode')
+    send_command('bind ^` gs c toggle MagicBurst')
 
     --DW SW
     --Low-Haste, Mid-Haste, Cap-Haste

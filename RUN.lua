@@ -23,6 +23,7 @@ function job_setup()
     state.PhysicalDefenseMode:options('PDT')
     state.MagicalDefenseMode:options('MDT', 'ResistStatus', 'Knockback')
     state.IdleMode:options('Regen', 'Refresh')
+    state.CombatWeapon:set('Epeolatry')
 
     state.Epeolatry = M{['description']='Epeolatry Set', 'Utu', 'Khonsu', 'Mensch', 'Irenic'}
     state.Lionheart = M{['description']='Lionheart Set', 'Utu', 'Khonsu', 'Mensch', 'Irenic'}
@@ -163,6 +164,7 @@ function init_gear_sets()
     sets.precast.JA['Elemental Sforzo'] = set_combine(sets.enmity, {body="Futhark Coat +3"})
     sets.precast.JA['Swordplay'] = set_combine(sets.enmity, {hands="Futhark Mitons +3"})
     sets.precast.JA['Embolden'] = {}
+    sets.buff.Embolden = {back="Evasionist's cape"}
     sets.precast.JA['Vivacious Pulse'] = set_combine(sets.enmity, {head="Erilaz galea +3"})
     sets.precast.JA['One For All'] = set_combine(sets.enmity, {})
 
@@ -416,6 +418,15 @@ function job_post_midcast(spell, action, spellMap, eventArgs)
     -- end
 end
 
+function job_buff_change(buff, gain)
+    if buff == 'Embolden' and gain then
+        enable('back')
+        equip(sets.buff.Embolden)
+        disable('back')
+    elseif buff == 'Embolden' and not gain then
+        enable('back')
+    end
+end
 
 function job_aftercast(spell)
 

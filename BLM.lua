@@ -19,6 +19,7 @@ function job_setup()
     
     state.MagicBurst = M(false, 'Magic Burst')
     state.EatTp = M(false, 'Eat TP')
+    state.CombatWeapon:set('Laevateinn')
 
     
     state.Laevateinn = M{['description']='Laevateinn Set', 'Khonsu', 'Enki'}
@@ -29,6 +30,9 @@ function job_setup()
     state.Bunzi = M{['description']='Bunzi rod Set', 'Ammurapi', 'Genmei'}
     state.Opashoro = M{['description']='Drepanum Set', 'Khonsu', 'Enki'}
 
+    -- Additional local binds
+    send_command('bind ^` gs c toggle MagicBurst')
+    send_command('bind !` gs c toggle EatTp')
     send_command('bind ~f1 gs c set CombatWeapon Laevateinn')
     send_command('bind ~f2 gs c set CombatWeapon Kaumodaki')
     send_command('bind ~f3 gs c set CombatWeapon Marin')
@@ -36,10 +40,6 @@ function job_setup()
     send_command('bind ~f5 gs c set CombatWeapon Drepanum')
     send_command('bind ~f6 gs c set CombatWeapon Bunzi')
     send_command('bind ~f7 gs c set CombatWeapon Opashoro')
-    
-    -- Additional local binds
-    send_command('bind @` gs c toggle EatTp')
-
 end
 
 -------------------------------------------------------------------------------------------------------------------
@@ -48,7 +48,8 @@ end
 
 -- Called when this job file is unloaded (eg: job change)
 function user_unload()
-    send_command('unbind @`')
+    send_command('unbind ^`')
+    send_command('unbind !`')
     send_command('unbind ~f1')
     send_command('unbind ~f2')
     send_command('unbind ~f3')

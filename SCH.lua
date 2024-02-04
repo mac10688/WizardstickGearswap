@@ -27,13 +27,16 @@ function user_setup()
     state.WeakStratMode = M{['description']="Weak Nuke Mode", 'None', 'DuringImmanence', 'FullTime'}
     state.EatTp = M(false, 'Eat TP')
 
+    send_command('bind ^` gs c toggle MagicBurst')
+    send_command('bind !` gs c toggle EatTp')
     send_command('bind ~f7 gs c cycle WeakStratMode')
-    send_command('bind @` gs c toggle EatTp')
+    
 end
 
 function user_unload()
-    send_command('unbind ~f7')
-    send_command('unbind @`')
+    send_command('unbind ^`')
+    send_command('unbind !`')
+    send_command('unbind ~f7')    
 end
 
 
@@ -383,7 +386,7 @@ function init_gear_sets()
         feet={ name="Merlinic Crackows", augments={'"Occult Acumen"+11','Mag. Acc.+15'}}
     })
 
-    sets.WeakImmanence = {
+    sets.WeakNuke = {
         main="Malignance pole",
         sub="Khonsu",
         ammo="Incantor Stone",
@@ -533,12 +536,10 @@ function job_post_midcast(spell, action, spellMap, eventArgs)
             equip({waist=obi_or_orpheus})
         end
 
-        if state.UseWeakNukes.value then
-            if state.WeakStratMode.value == 'DuringImmanence' and state.Buff.Immanence then
-                equip(sets.WeakNuke)
-            elseif state.WeakStratMode.value == 'FullTime' then
-                equip(sets.WeakNuke)
-            end
+        if spell.skill == 'Elemental Magic' and state.WeakStratMode.value == 'DuringImmanence' and state.Buff.Immanence then
+            equip(sets.WeakNuke)
+        elseif spell.skill == 'Elemental Magic' and state.WeakStratMode.value == 'FullTime' then
+            equip(sets.WeakNuke)
         end
 
     end
