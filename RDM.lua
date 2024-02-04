@@ -13,9 +13,8 @@ end
 
 -- Setup vars that are user-independent.  state.Buff vars initialized here will automatically be tracked.
 function job_setup()
-    state.OffenseMode:options('Normal', 'HighAcc')
+    state.OffenseMode:options('Normal', 'LowHaste', 'MidHaste', 'MaxHaste', 'HighAcc')
     state.CombatMode:options('SwordShield', 'DualWield')
-    state.HasteMode:options('LowHaste', 'MidHaste', 'MaxHaste')
     state.HybridMode:options('Normal', 'DT')
     state.CastingMode:options('Normal', 'Resistant')
     state.IdleMode:options('Normal', 'PDT', 'MDT')
@@ -24,22 +23,26 @@ function job_setup()
     state.SleepMode = M{['description']='Sleep Mode', 'Normal', 'MaxDuration'}
     state.EnspellMode = M(true, 'Enspell Melee Mode')
 
-    state.HasteMode = M{['description']='Haste Mode', 'LowHaste', 'MidHaste', 'HighHaste'}
+    -- state.CombatWeapon = M{['description']='Combat Weapon', 'Naegling', 'Crocea', 'Club', 'Dagger', 'Zerodmg'}
+    state.Naegling = {}
+    state.Naegling.SwordShield = M{['description']='Naegling Set', 'Sacro', 'Genmei'}
+    state.Naegling.DualWield = M{['description']='Naegling Set', 'TP', 'Acc'}
 
-    state.CombatWeapon = M{['description']='Combat Weapon', 'Naegling', 'Crocea', 'Club', 'Dagger', 'Zerodmg'}
-    state.CombatWeapon.DualWield = {}
-    state.CombatWeapon.DualWield.Naegling = M{['description']='Naegling Set', 'TP', 'Acc'}
-    state.CombatWeapon.DualWield.Crocea = M{['description']='Crocea Set', 'Daybreak', 'Demersal', 'TP'}
-    state.CombatWeapon.DualWield.Club = M{['description']='Club Set', 'Daybreak', 'Gleti', 'TP'}
-    state.CombatWeapon.DualWield.Dagger = M{['description']='Dagger Set', 'Malevolence', 'Gleti'}
-    state.CombatWeapon.DualWield.Zerodmg = M{['description']="Zero Set", 'Normal'}
+    state.Crocea = {}
+    state.Crocea.SwordShield = M{['description']='Crocea Set', 'Sacro', 'Genmei'}
+    state.Crocea.DualWield = M{['description']='Crocea Set', 'Daybreak', 'Demersal', 'TP'}
 
-    state.CombatWeapon.SwordShield = {}
-    state.CombatWeapon.SwordShield.Naegling = M{['description']='Naegling Set', 'Sacro', 'Genmei'}
-    state.CombatWeapon.SwordShield.Crocea = M{['description']='Crocea Set', 'Sacro', 'Genmei'}
-    state.CombatWeapon.SwordShield.Club = M{['description']='Club Set', 'Sacro', 'Genmei'}
-    state.CombatWeapon.SwordShield.Dagger = M{['description']='Dagger Set', 'Sacro', 'Genmei'}
-    state.CombatWeapon.SwordShield.Zerodmg = M{['description']='Dagger Set', 'Sacro', 'Genmei'}
+    state.Club = {}
+    state.Club.SwordShield = M{['description']='Club Set', 'Sacro', 'Genmei'}
+    state.Club.DualWield = M{['description']='Club Set', 'Daybreak', 'Gleti', 'TP'}
+    
+    state.Dagger = {}
+    state.Dagger.SwordShield = M{['description']='Dagger Set', 'Sacro', 'Genmei'}
+    state.Dagger.DualWield = M{['description']='Dagger Set', 'Malevolence', 'Gleti'}
+
+    state.Zerodmg = {}
+    state.Zerodmg.SwordShield = M{['description']='Dagger Set', 'Sacro', 'Genmei'}
+    state.Zerodmg.DualWield = M{['description']="Zero Set", 'Normal'}
 
     send_command('bind ~f1 gs c set CombatWeapon Naegling')
     send_command('bind ~f2 gs c set CombatWeapon Crocea')
@@ -47,7 +50,6 @@ function job_setup()
     send_command('bind ~f4 gs c set CombatWeapon Dagger')
     send_command('bind ~f5 gs c set CombatWeapon Zerodmg')
     send_command('bind @e gs c toggle EnspellMode')
-    send_command('bind ~` gs c toggle MagicBurst')
 
     --DW SW
     --Low-Haste, Mid-Haste, Cap-Haste
@@ -74,7 +76,6 @@ function job_file_unload()
     send_command('unbind ~f4')
     send_command('unbind ~f5')
     send_command('unbind @e')
-    send_command('unbind ~`')
 end
 
 -------------------------------------------------------------------------------------------------------------------
@@ -97,51 +98,48 @@ function init_gear_sets()
     Cape.Dex_WS = { name="Sucellos's Cape", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Weapon skill damage +10%','Damage taken-5%'}}
     Cape.Mnd_WS = { name="Sucellos's Cape", augments={'MND+20','Accuracy+20 Attack+20','MND+10','Weapon skill damage +10%','Damage taken-5%'}}
 
-    sets.CombatWeapon = {}
-    sets.CombatWeapon.DualWield = {}
 
-    sets.CombatWeapon.DualWield.Naegling = {}
-    sets.CombatWeapon.DualWield.Naegling.TP = {main="Naegling", sub="Thibron"}
-    sets.CombatWeapon.DualWield.Naegling.Acc = {main="Naegling", sub="Gleti's knife"}
+    sets.Naegling = {main="Naegling"}
+    sets.Naegling.DualWield = {main="Naegling", sub="Thibron"}
+    sets.Naegling.DualWield.TP = {main="Naegling", sub="Thibron"}
+    sets.Naegling.DualWield.Acc = {main="Naegling", sub="Gleti's knife"}
+    sets.Naegling.SwordShield = {main="Naegling", sub="Sacro bulwark"}
+    sets.Naegling.SwordShield.Sacro = {main="Naegling", sub="Sacro bulwark"}
+    sets.Naegling.SwordShield.Genmei = {main="Naegling", sub="Genmei shield"}
 
-    sets.CombatWeapon.DualWield.Crocea = {}
-    sets.CombatWeapon.DualWield.Crocea.Daybreak = {main="Crocea mors", sub="Daybreak"}
-    sets.CombatWeapon.DualWield.Crocea.Demersal = {main="Crocea mors", sub="Demersal degen +1"}
-    sets.CombatWeapon.DualWield.Crocea.TP = {main="Crocea mors", sub="Thibron"}
+    sets.Crocea = {main="Crocea mors"}
+    sets.Crocea.DualWield = {main="Crocea mors", sub="Daybreak"}
+    sets.Crocea.DualWield.Daybreak = {main="Crocea mors", sub="Daybreak"}
+    sets.Crocea.DualWield.Demersal = {main="Crocea mors", sub="Demersal degen +1"}
+    sets.Crocea.DualWield.TP = {main="Crocea mors", sub="Thibron"}
+    sets.Crocea.SwordShield = {main="Crocea mors", sub="Sacro bulwark"}
+    sets.Crocea.SwordShield.Sacro = {main="Crocea mors", sub="Sacro bulwark"}
+    sets.Crocea.SwordShield.Genmei = {main="Crocea mors", sub="Genmei shield"}
 
-    sets.CombatWeapon.DualWield.Club = {}
-    sets.CombatWeapon.DualWield.Club.Daybreak = {main="Maxentius", sub="Daybreak"}
-    sets.CombatWeapon.DualWield.Club.Gleti = {main="Maxentius", sub="Gleti's knife"}
-    sets.CombatWeapon.DualWield.Club.TP = {main="Maxentius", sub="Thibron"}
+    sets.Club = {main="Maxentius"}
+    sets.Club.DualWield = {main="Maxentius", sub="Daybreak"}
+    sets.Club.DualWield.Daybreak = {main="Maxentius", sub="Daybreak"}
+    sets.Club.DualWield.Gleti = {main="Maxentius", sub="Gleti's knife"}
+    sets.Club.DualWield.TP = {main="Maxentius", sub="Thibron"}
+    sets.Club.SwordShield = {main="Maxentius", sub="Sacro bulwark"}
+    sets.Club.SwordShield.Sacro = {main="Maxentius", sub="Sacro bulwark"}
+    sets.Club.SwordShield.Genmei = {main="Maxentius", sub="Genmei shield"}
 
-    sets.CombatWeapon.DualWield.Dagger = {}
-    sets.CombatWeapon.DualWield.Dagger.Malevolence = {main='Tauret', sub='Malevolence'}
-    sets.CombatWeapon.DualWield.Dagger.Gleti = {main='Tauret', sub="Gleti's knife"}
+    sets.Dagger = {main='Tauret'}
+    sets.Dagger.DualWield = {main='Tauret', sub='Malevolence'}
+    sets.Dagger.DualWield.Malevolence = {main='Tauret', sub='Malevolence'}
+    sets.Dagger.DualWield.Gleti = {main='Tauret', sub="Gleti's knife"}
+    sets.Dagger.SwordShield = {main="Gleti's knife", sub="Sacro bulwark"}
+    sets.Dagger.SwordShield.Sacro = {main="Gleti's knife", sub="Sacro bulwark"}
+    sets.Dagger.SwordShield.Genmei = {main="Gleti's knife", sub="Genmei shield"}
 
-    sets.CombatWeapon.DualWield.Zerodmg = {}
-    sets.CombatWeapon.DualWield.Zerodmg.Normal = {main="Aern Dagger", sub="Qutrub knife"}
-
-    sets.CombatWeapon.SwordShield = {}
-    sets.CombatWeapon.SwordShield.Naegling = {}
-    sets.CombatWeapon.SwordShield.Naegling.Sacro = {main="Naegling", sub="Sacro bulwark"}
-    sets.CombatWeapon.SwordShield.Naegling.Genmei = {main="Naegling", sub="Genmei shield"}
-
-    sets.CombatWeapon.SwordShield.Crocea = {}
-    sets.CombatWeapon.SwordShield.Crocea.Sacro = {main="Crocea mors", sub="Sacro bulwark"}
-    sets.CombatWeapon.SwordShield.Crocea.Genmei = {main="Crocea mors", sub="Genmei shield"}
-
-    sets.CombatWeapon.SwordShield.Club = {}
-    sets.CombatWeapon.SwordShield.Club.Sacro = {main="Maxentius", sub="Sacro bulwark"}
-    sets.CombatWeapon.SwordShield.Club.Genmei = {main="Maxentius", sub="Genmei shield"}
-
-    sets.CombatWeapon.SwordShield.Dagger = {}
-    sets.CombatWeapon.SwordShield.Dagger.Sacro = {main="Gleti's knife", sub="Sacro bulwark"}
-    sets.CombatWeapon.SwordShield.Dagger.Genmei = {main="Gleti's knife", sub="Genmei shield"}
-
-    sets.CombatWeapon.SwordShield.Zerodmg = {}
-    sets.CombatWeapon.SwordShield.Zerodmg.Sacro = {main="Aern Dagger", sub="Sacro bulwark"}
-    sets.CombatWeapon.SwordShield.Zerodmg.Genmei = {main="Aern Dagger", sub="Genmei shield"}
-
+    sets.Zerodmg = {main="Aern Dagger"}
+    sets.Zerodmg.DualWield = {main="Aern Dagger", sub="Qutrub knife"}
+    sets.Zerodmg.DualWield.Normal = {main="Aern Dagger", sub="Qutrub knife"}
+    sets.Zerodmg.SwordShield = {main="Aern Dagger", sub="Sacro bulwark"}
+    sets.Zerodmg.SwordShield.Sacro = {main="Aern Dagger", sub="Sacro bulwark"}
+    sets.Zerodmg.SwordShield.Genmei = {main="Aern Dagger", sub="Genmei shield"}
+    
     -- Precast Sets
     
     -- Precast sets to enhance JAs
@@ -594,18 +592,12 @@ function init_gear_sets()
     sets.engaged.SwordShield.LowHaste = set_combine(sets.engaged.SwordShield, {back=Cape.Tp, ring2="Hetairoi ring"})
     sets.engaged.SwordShield.MidHaste = set_combine(sets.engaged.SwordShield.LowHaste, {})
     sets.engaged.SwordShield.HighHaste = set_combine(sets.engaged.SwordShield.MidHaste, {})
-    sets.engaged.SwordShield.HighAcc.LowHaste = set_combine(sets.engaged.SwordShield.HighAcc, {})
-    sets.engaged.SwordShield.HighAcc.MidHaste = set_combine(sets.engaged.SwordShield.HighAcc.MidHaste, {})
-    sets.engaged.SwordShield.HighAcc.HighHaste = set_combine(sets.engaged.SwordShield.HighAcc.HighHaste, {})
 
     sets.engaged.DualWield = set_combine(sets.engaged, {waist="Reiki yotai", ear2="Eabani earring"})
     sets.engaged.DualWield.HighAcc = set_combine(sets.engaged.DualWield, {ear2 = "Lethargy earring +2"})
     sets.engaged.DualWield.LowHaste = set_combine(sets.engaged.DualWield, {})
     sets.engaged.DualWield.MidHaste = set_combine(sets.engaged.DualWield, {})
     sets.engaged.DualWield.HighHaste = set_combine(sets.engaged.DualWield, {})
-    sets.engaged.DualWield.HighAcc.LowHaste = set_combine(sets.engaged.DualWield.HighAcc, {})
-    sets.engaged.DualWield.HighAcc.MidHaste = set_combine(sets.engaged.DualWield.HighAcc.LowHaste, {})
-    sets.engaged.DualWield.HighAcc.HighHaste = set_combine(sets.engaged.DualWield.HighAcc.MidHaste, {})
 
     sets.engaged.Hybrid = {
         head="Malignance Chapeau",
@@ -750,6 +742,10 @@ end
 
 -- Modify the default idle set after it was constructed.
 function customize_idle_set(idleSet)
+    return idleSet
+end
+
+function job_state_change(descrip, newVal, oldVal)
 
 end
 
@@ -777,22 +773,6 @@ end
 
 function sub_job_change()
     coroutine.schedule(lockstyle,8)
-end
-
-function job_state_change(descrip, newVal, oldVal)
-    if descrip == 'Combat Weapon' then
-        if newVal == oldVal then
-            state.CombatWeapon[state.CombatMode.value][state.CombatWeapon.value]:cycle()
-        end
-        equipWeapon()
-    elseif descrip == 'Combat Mode' then
-        equipWeapon()
-    end
-end
-
-function equipWeapon()
-    local combatWeaponSpecify = state.CombatWeapon[state.CombatMode.value][state.CombatWeapon.value].value
-    equip(sets.CombatWeapon[state.CombatMode.value][state.CombatWeapon.value][combatWeaponSpecify])
 end
 
 function job_handle_equipping_gear(playerStatus, eventArgs)

@@ -14,11 +14,18 @@ end
 function job_setup()
     state.OffenseMode:options('None', 'Normal')
     state.CastingMode:options('Normal', 'Resistant')
-    state.IdleMode:options('Normal', 'PDT', 'MDT', 'Refresh')
-    state.CureMode:options('Pure', 'SIRD')
+    state.IdleMode:options('Normal', 'Refresh')
+    state.CureMode = M{['description']='Cure Set', 'Pure', 'SIRD'}
 
     state.Buff['Afflatus Solace'] = buffactive['Afflatus Solace'] or false
     state.Buff['Afflatus Misery'] = buffactive['Afflatus Misery'] or false
+
+    send_command('bind !` gs c cycle CureMode')
+end
+
+-- Called when this job file is unloaded (eg: job change)
+function user_unload()
+    send_command('unbind !`')
 end
 
 -------------------------------------------------------------------------------------------------------------------
@@ -126,9 +133,6 @@ function init_gear_sets()
     -- Midcast Sets
     
     -- Cure sets
-
-    
-
     sets.midcast.Cure = {
         main="Raetic Rod +1",
         sub="Genmei Shield",
@@ -169,6 +173,7 @@ function init_gear_sets()
     sets.midcast.Cure.Pure.Solace = set_combine(sets.midcast.Cure.Pure, {body="Ebers Bliaut +3"})
     sets.midcast.Cure.SIRD.Solace = set_combine(sets.midcast.Cure.SIRD, {body="Ebers Bliaut +3"})
 
+    sets.midcast.Curaga = sets.midcast.Cure
     sets.midcast.Curaga.Pure = sets.midcast.Cure.Pure
     sets.midcast.Curaga.SIRD = sets.midcast.Cure.SIRD
 

@@ -18,15 +18,16 @@ function job_setup()
     state.IdleMode:options('Normal', 'PDT')
     
     state.MagicBurst = M(false, 'Magic Burst')
+    state.EatTp = M(false, 'Eat TP')
 
-    state.CombatWeapon = M{['description']='Combat Weapon', 'Laevateinn', 'Kaumodaki', 'Marin', 'Khatvanga', 'Drepanum', 'Bunzi', 'Opashoro'}
-    state.CombatWeapon.Laevateinn = M{['description']='Laevateinn Set', 'Khonsu', 'Enki'}
-    state.CombatWeapon.Kaumodaki = M{['description']='Kaumodaki Set', 'Khonsu', 'Enki'}
-    state.CombatWeapon.Marin = M{['description']='Marin staff +1 Set', 'Khonsu', 'Enki'}
-    state.CombatWeapon.Khatvanga = M{['description']='Khatvanga Set', 'Khonsu', 'Enki'}
-    state.CombatWeapon.Drepanum = M{['description']='Drepanum Set', 'Khonsu', 'Enki'}
-    state.CombatWeapon.Bunzi = M{['description']='Bunzi rod Set', 'Ammurapi', 'Genmei'}
-    state.CombatWeapon.Opashoro = M{['description']='Drepanum Set', 'Khonsu', 'Enki'}
+    
+    state.Laevateinn = M{['description']='Laevateinn Set', 'Khonsu', 'Enki'}
+    state.Kaumodaki = M{['description']='Kaumodaki Set', 'Khonsu', 'Enki'}
+    state.Marin = M{['description']='Marin staff +1 Set', 'Khonsu', 'Enki'}
+    state.Khatvanga = M{['description']='Khatvanga Set', 'Khonsu', 'Enki'}
+    state.Drepanum = M{['description']='Drepanum Set', 'Khonsu', 'Enki'}
+    state.Bunzi = M{['description']='Bunzi rod Set', 'Ammurapi', 'Genmei'}
+    state.Opashoro = M{['description']='Drepanum Set', 'Khonsu', 'Enki'}
 
     send_command('bind ~f1 gs c set CombatWeapon Laevateinn')
     send_command('bind ~f2 gs c set CombatWeapon Kaumodaki')
@@ -37,7 +38,7 @@ function job_setup()
     send_command('bind ~f7 gs c set CombatWeapon Opashoro')
     
     -- Additional local binds
-    send_command('bind !` gs c toggle MagicBurst')
+    send_command('bind @` gs c toggle EatTp')
 
 end
 
@@ -47,7 +48,7 @@ end
 
 -- Called when this job file is unloaded (eg: job change)
 function user_unload()
-    send_command('unbind !`')
+    send_command('unbind @`')
     send_command('unbind ~f1')
     send_command('unbind ~f2')
     send_command('unbind ~f3')
@@ -61,35 +62,33 @@ end
 -- Define sets and vars used by this job file.
 function init_gear_sets()
 
-    sets.CombatWeapon = {}
+    sets.Laevateinn = {}
+    sets.Laevateinn.Khonsu = {main="Laevateinn", sub="Khonsu"}
+    sets.Laevateinn.Enki = {main="Laevateinn", sub="Enki strap"}
 
-    sets.CombatWeapon.Laevateinn = {}
-    sets.CombatWeapon.Laevateinn.Khonsu = {main="Laevateinn", sub="Khonsu"}
-    sets.CombatWeapon.Laevateinn.Enki = {main="Laevateinn", sub="Enki strap"}
+    sets.Kaumodaki = {}
+    sets.Kaumodaki.Khonsu = {main="Kaumodaki", sub="Khonsu"}
+    sets.Kaumodaki.Enki = {main="Kaumodaki", sub="Enki strap"}
 
-    sets.CombatWeapon.Kaumodaki = {}
-    sets.CombatWeapon.Kaumodaki.Khonsu = {main="Kaumodaki", sub="Khonsu"}
-    sets.CombatWeapon.Kaumodaki.Enki = {main="Kaumodaki", sub="Enki strap"}
+    sets.Marin = {}
+    sets.Marin.Khonsu = {main="Marin staff +1", sub="Khonsu"}
+    sets.Marin.Enki = {main="Marin staff +1", sub="Enki strap"}
 
-    sets.CombatWeapon.Marin = {}
-    sets.CombatWeapon.Marin.Khonsu = {main="Marin staff +1", sub="Khonsu"}
-    sets.CombatWeapon.Marin.Enki = {main="Marin staff +1", sub="Enki strap"}
+    sets.Khatvanga = {}
+    sets.Khatvanga.Khonsu = {main="Khatvanga", sub="Khonsu"}
+    sets.Khatvanga.Enki = {main="Khatvanga", sub="Enki strap"}
 
-    sets.CombatWeapon.Khatvanga = {}
-    sets.CombatWeapon.Khatvanga.Khonsu = {main="Khatvanga", sub="Khonsu"}
-    sets.CombatWeapon.Khatvanga.Enki = {main="Khatvanga", sub="Enki strap"}
+    sets.Drepanum = {}
+    sets.Drepanum.Khonsu = {main="Drepanum", sub="Khonsu"}
+    sets.Drepanum.Enki = {main="Drepanum", sub="Enki strap"}
 
-    sets.CombatWeapon.Drepanum = {}
-    sets.CombatWeapon.Drepanum.Khonsu = {main="Drepanum", sub="Khonsu"}
-    sets.CombatWeapon.Drepanum.Enki = {main="Drepanum", sub="Enki strap"}
+    sets.Bunzi = {}
+    sets.Bunzi.Ammurapi = {main="Bunzi's rod", sub="Ammurapi shield"}
+    sets.Bunzi.Genmei = {main="Bunzi's rod", sub="Genmei shield"}
 
-    sets.CombatWeapon.Bunzi = {}
-    sets.CombatWeapon.Bunzi.Ammurapi = {main="Bunzi's rod", sub="Ammurapi shield"}
-    sets.CombatWeapon.Bunzi.Genmei = {main="Bunzi's rod", sub="Genmei shield"}
-
-    sets.CombatWeapon.Opashoro = {}
-    sets.CombatWeapon.Opashoro.Khonsu = {main="Opashoro", sub="Khonsu"}
-    sets.CombatWeapon.Opashoro.Enki = {main="Opashoro", sub="Enki strap"}
+    sets.Opashoro = {}
+    sets.Opashoro.Khonsu = {main="Opashoro", sub="Khonsu"}
+    sets.Opashoro.Enki = {main="Opashoro", sub="Enki strap"}
     --------------------------------------
     -- Start defining the sets
     --------------------------------------
@@ -550,23 +549,18 @@ function job_buff_change(buff, gain)
     end
 end
 
+function customize_idle_set(idleSet)
+    if state.EatTp.value then
+        idleSet = set_combine(idleSet, {neck='Chrysopoeia torque'})
+    end
+
+    return idleSet
+end
+
 -- Handle notifications of general user state change.
 function job_state_change(descrip, newVal, oldVal)
-    if descrip == 'Combat Weapon' then
-        if newVal == oldVal then
-            state.CombatWeapon[state.CombatWeapon.value]:cycle()
-        end
-        equipWeapon()
-    elseif descrip == 'Combat Mode' then
-        equipWeapon()
-    end
-end
 
-function equipWeapon()
-    local combatWeaponSpecify = state.CombatWeapon[state.CombatWeapon.value].value
-    equip(sets.CombatWeapon[state.CombatWeapon.value][combatWeaponSpecify])
 end
-
 
 -------------------------------------------------------------------------------------------------------------------
 -- User code that supplements standard library decisions.

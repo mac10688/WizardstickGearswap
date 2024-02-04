@@ -24,21 +24,16 @@ function user_setup()
 
     state.MagicBurst = M(true, 'Magic Burst')
 
-    state.UseWeakNukes = M(false, 'Use Weak Nukes')
-    state.WeakStratMode = M{['description']="Weak Nuke Mode", 'DuringImmanence', 'FullTime'}
+    state.WeakStratMode = M{['description']="Weak Nuke Mode", 'None', 'DuringImmanence', 'FullTime'}
     state.EatTp = M(false, 'Eat TP')
 
-    send_command('bind ~` gs c toggle MagicBurst')
-    send_command('bind ~f9 gs c toggle UseWeakNukes')
-    send_command('bind ~f10 gs c cycle WeakStratMode')
-    send_command('bind ~f11 gs c toggle EatTp')
+    send_command('bind ~f7 gs c cycle WeakStratMode')
+    send_command('bind @` gs c toggle EatTp')
 end
 
 function user_unload()
-    send_command('unbind ~`')
-    send_command('unbind ~f9')
-    send_command('unbind ~f10')
-    send_command('unbind ~f11')
+    send_command('unbind ~f7')
+    send_command('unbind @`')
 end
 
 

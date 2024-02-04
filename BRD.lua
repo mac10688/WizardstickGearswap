@@ -20,14 +20,13 @@ function job_setup()
     state.CastingMode:options('Normal', 'Resistant')
     state.IdleMode:options('Normal')
 
-    state.CombatWeapon = M{['description']='Combat Weapon', 'Naegling', 'Carnwenhan'}
-    state.CombatWeapon.DualWield = {}
-    state.CombatWeapon.DualWield.Naegling = M{['description']='Naegling Set', 'TP', 'Acc'}
-    state.CombatWeapon.DualWield.Carnwenhan = M{['description']='Carnwenhan Set', 'TP', 'Acc'}
+    state.Naegling = {}
+    state.Naegling.DualWield = M{['description']='Naegling Set', 'TP', 'Acc'}
+    state.Naegling.SwordShield = M{['description']='Naegling Set', 'Genmei', 'Ammurapi'}
 
-    state.CombatWeapon.SwordShield = {}
-    state.CombatWeapon.SwordShield.Naegling = M{['description']='Naegling Set', 'Genmei', 'Ammurapi'}
-    state.CombatWeapon.SwordShield.Carnwenhan = M{['description']='Carnwenhan Set', 'Genmei', 'Ammurapi'}
+    state.Carnwenhan = {}
+    state.Carnwenhan.DualWield = M{['description']='Carnwenhan Set', 'TP', 'Acc'}
+    state.Carnwenhan.SwordShield = M{['description']='Carnwenhan Set', 'Genmei', 'Ammurapi'}    
 
     send_command('bind ~f1 gs c set CombatWeapon Naegling')
     send_command('bind ~f2 gs c set CombatWeapon Carnwenhan')
@@ -75,24 +74,21 @@ function init_gear_sets()
     -- Start defining the sets
     --------------------------------------
 
-    sets.CombatWeapon = {}
-    sets.CombatWeapon.DualWield = {}
-    sets.CombatWeapon.DualWield.Naegling = {}
-    sets.CombatWeapon.DualWield.Naegling.TP = {main="Naegling", sub="Centovente"}
-    sets.CombatWeapon.DualWield.Naegling.Acc = {main="Naegling", sub="Gleti's knife"}
+    sets.Naegling = {}
+    sets.Naegling.DualWield = {}
+    sets.Naegling.DualWield.TP = {main="Naegling", sub="Centovente"}
+    sets.Naegling.DualWield.Acc = {main="Naegling", sub="Gleti's knife"}
+    sets.Naegling.SwordShield = {}
+    sets.Naegling.SwordShield.Genmei = {main="Naegling", sub="Genmei shield"}
+    sets.Naegling.SwordShield.Ammurapi = {main="Naegling", sub="Ammurapi shield"}
 
-    sets.CombatWeapon.DualWield.Carnwenhan = {}
-    sets.CombatWeapon.DualWield.Carnwenhan.TP = {main="Carnwenhan", sub="Centovente"}
-    sets.CombatWeapon.DualWield.Carnwenhan.Acc = {main="Carnwenhan", sub="Gleti's knife"}
-
-    sets.CombatWeapon.SwordShield = {}
-    sets.CombatWeapon.SwordShield.Naegling = {}
-    sets.CombatWeapon.SwordShield.Naegling.Genmei = {main="Naegling", sub="Genmei shield"}
-    sets.CombatWeapon.SwordShield.Naegling.Ammurapi = {main="Naegling", sub="Ammurapi shield"}
-
-    sets.CombatWeapon.SwordShield.Carnwenhan = {}
-    sets.CombatWeapon.SwordShield.Carnwenhan.Genmei = {main="Carnwenhan", sub="Genmei shield"}
-    sets.CombatWeapon.SwordShield.Carnwenhan.Ammurapi = {main="Carnwenhan", sub="Ammurapi shield"}
+    sets.Carnwenhan = {}
+    sets.Carnwenhan.DualWield = {}
+    sets.Carnwenhan.DualWield.TP = {main="Carnwenhan", sub="Centovente"}
+    sets.Carnwenhan.DualWield.Acc = {main="Carnwenhan", sub="Gleti's knife"}
+    sets.Carnwenhan.SwordShield = {}
+    sets.Carnwenhan.SwordShield.Genmei = {main="Carnwenhan", sub="Genmei shield"}
+    sets.Carnwenhan.SwordShield.Ammurapi = {main="Carnwenhan", sub="Ammurapi shield"}
 
     -- Precast Sets
 
@@ -479,24 +475,8 @@ end
 -------------------------------------------------------------------------------------------------------------------
 
 -- Handle notifications of general user state change.
-function job_state_change(descrip, newValue, oldValue)
-    if descrip == 'Combat Weapon' then
-        if newVal == oldVal then
-            state.CombatWeapon[state.CombatMode.value][state.CombatWeapon.value]:cycle()
-        end
-        equipWeapon()
-    elseif descrip == 'Combat Mode' then
-        equipWeapon()
-    end
-end
+function job_state_change(descrip, newVal, oldVal)
 
-function equipWeapon()
-    local combatWeaponSpecify = state.CombatWeapon[state.CombatMode.value][state.CombatWeapon.value].value
-    -- print(state.CombatMode.value)
-    -- print(state.CombatWeapon.value)
-    -- print(combatWeaponSpecify)
-    local weaponSet = sets.CombatWeapon[state.CombatMode.value][state.CombatWeapon.value][combatWeaponSpecify]
-    equip(weaponSet)
 end
 
 function job_handle_equipping_gear(playerStatus, eventArgs)

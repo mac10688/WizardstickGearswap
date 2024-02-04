@@ -18,12 +18,12 @@ function job_setup()
 
     state.MagicBurst = M(false, 'Magic Burst')
     data.petJA = S{"Full Circle","Radial Arcana","Mending Helation","Concentric Pulse"}
-    send_command('bind !` gs c toggle MagicBurst')
+    send_command('bind ~` gs c toggle MagicBurst')
 end
 
 -- Called when this job file is unloaded (eg: job change)
 function user_unload()
-    send_command('unbind !`')
+    send_command('unbind ~`')
 end
 
 -- Define sets and vars used by this job file.

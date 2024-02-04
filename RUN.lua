@@ -24,10 +24,9 @@ function job_setup()
     state.MagicalDefenseMode:options('MDT', 'ResistStatus', 'Knockback')
     state.IdleMode:options('Regen', 'Refresh')
 
-    state.CombatWeapon = M{['description']='Combat Weapon', 'Epeolatry', 'Lionheart', 'Lycurgos'}
-    state.CombatWeapon.Epeolatry = M{['description']='Epeolatry Set', 'Utu', 'Khonsu', 'Mensch', 'Irenic'}
-    state.CombatWeapon.Lionheart = M{['description']='Lionheart Set', 'Utu', 'Khonsu', 'Mensch', 'Irenic'}
-    state.CombatWeapon.Lycurgos = M{['description']='Lycurgos Set', 'Utu', 'Khonsu', 'Mensch', 'Irenic'}
+    state.Epeolatry = M{['description']='Epeolatry Set', 'Utu', 'Khonsu', 'Mensch', 'Irenic'}
+    state.Lionheart = M{['description']='Lionheart Set', 'Utu', 'Khonsu', 'Mensch', 'Irenic'}
+    state.Lycurgos = M{['description']='Lycurgos Set', 'Utu', 'Khonsu', 'Mensch', 'Irenic'}
 
     send_command('bind ~f1 gs c set CombatWeapon Epeolatry')
     send_command('bind ~f2 gs c set CombatWeapon Lionheart')
@@ -47,25 +46,23 @@ function init_gear_sets()
     local atk_cape = { name="Ogma's cape", augments={'STR+20','Accuracy+20 Attack+20','Accuracy+10','"Dbl.Atk."+10','Damage taken-5%'}}
     local dimi_cape = { name="Ogma's cape", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Weapon skill damage +10%','Damage taken-5%'}}
 
-    sets.CombatWeapon = {}
+    sets.Epeolatry = {main="Epeolatry", sub="Utu grip"}
+    sets.Epeolatry.Utu = {main="Epeolatry", sub="Utu grip"}
+    sets.Epeolatry.Khonsu = {main="Epeolatry", sub="Khonsu"}
+    sets.Epeolatry.Mensch = {main="Epeolatry", sub="Mensch strap +1"}
+    sets.Epeolatry.Irenic = {main="Epeolatry", sub="Irenic strap +1"}
 
-    sets.CombatWeapon.Epeolatry = {}
-    sets.CombatWeapon.Epeolatry.Utu = {main="Epeolatry", sub="Utu grip"}
-    sets.CombatWeapon.Epeolatry.Khonsu = {main="Epeolatry", sub="Khonsu"}
-    sets.CombatWeapon.Epeolatry.Mensch = {main="Epeolatry", sub="Mensch strap +1"}
-    sets.CombatWeapon.Epeolatry.Irenic = {main="Epeolatry", sub="Irenic strap +1"}
+    sets.Lionheart = {main="Lionheart", sub="Utu grip"}
+    sets.Lionheart.Utu = {main="Lionheart", sub="Utu grip"}
+    sets.Lionheart.Khonsu = {main="Lionheart", sub="Khonsu"}
+    sets.Lionheart.Mensch = {main="Lionheart", sub="Mensch strap +1"}
+    sets.Lionheart.Irenic = {main="Lionheart", sub="Irenic strap +1"}
 
-    sets.CombatWeapon.Lionheart = {}
-    sets.CombatWeapon.Lionheart.Utu = {main="Lionheart", sub="Utu grip"}
-    sets.CombatWeapon.Lionheart.Khonsu = {main="Lionheart", sub="Khonsu"}
-    sets.CombatWeapon.Lionheart.Mensch = {main="Lionheart", sub="Mensch strap +1"}
-    sets.CombatWeapon.Lionheart.Irenic = {main="Lionheart", sub="Irenic strap +1"}
-
-    sets.CombatWeapon.Lycurgos = {}
-    sets.CombatWeapon.Lycurgos.Utu = {main="Lycurgos", sub="Utu grip"}
-    sets.CombatWeapon.Lycurgos.Khonsu = {main="Lycurgos", sub="Khonsu"}
-    sets.CombatWeapon.Lycurgos.Mensch = {main="Lycurgos", sub="Mensch strap +1"}
-    sets.CombatWeapon.Lycurgos.Irenic = {main="Lycurgos", sub="Irenic strap +1"}
+    sets.Lycurgos = {main="Lycurgos", sub="Utu grip"}
+    sets.Lycurgos.Utu = {main="Lycurgos", sub="Utu grip"}
+    sets.Lycurgos.Khonsu = {main="Lycurgos", sub="Khonsu"}
+    sets.Lycurgos.Mensch = {main="Lycurgos", sub="Mensch strap +1"}
+    sets.Lycurgos.Irenic = {main="Lycurgos", sub="Irenic strap +1"}
 
     --DT: 52
     sets.defense.PDT = {
@@ -425,19 +422,7 @@ function job_aftercast(spell)
 end
 
 function job_state_change(descrip, newVal, oldVal)
-    if descrip == 'Combat Weapon' then
-        if newVal == oldVal then
-            state.CombatWeapon[state.CombatWeapon.value]:cycle()
-        end
-        equipWeapon()
-    elseif descrip == 'Combat Mode' then
-        equipWeapon()
-    end
-end
 
-function equipWeapon()
-    local combatWeaponSpecify = state.CombatWeapon[state.CombatWeapon.value].value
-    equip(sets.CombatWeapon[state.CombatWeapon.value][combatWeaponSpecify])
 end
 
 function lockstyle()
