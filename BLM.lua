@@ -579,3 +579,7 @@ end
 function job_sub_job_change(newSubjob, oldSubjob)
     coroutine.schedule(lockstyle,8)
 end
+
+function display_current_job_state(eventArgs)
+
+end

@@ -17,27 +17,27 @@ end
 
 function equipWeaponSet()
     if state.CombatWeapon and sets[state.CombatWeapon.value] then
-        print(state.CombatWeapon.value)
         local weaponSet = sets[state.CombatWeapon.value]
         local currentWeaponState = state[state.CombatWeapon.value]
 
         if state.CombatMode and weaponSet[state.CombatMode.value] and currentWeaponState[state.CombatMode.value] then
-            print(state.CombatMode.value)
             weaponSet = weaponSet[state.CombatMode.value]
             currentWeaponState = currentWeaponState[state.CombatMode.value]
         end
 
         if currentWeaponState and weaponSet[currentWeaponState.value] then
-            print(currentWeaponState.value)
             weaponSet = weaponSet[currentWeaponState.value]
         end
-
+        enable('main', 'sub', 'ranged')
         equip(weaponSet)
+
+        if state.WeaponLock.value then
+            disable('main', 'sub', 'ranged')
+        end        
     end
 end
 
 function user_handle_equipping_gear(status, eventArgs)
-    print('Should handle')
     equipWeaponSet()
 end
 
@@ -56,4 +56,10 @@ end
 -- Global intercept on buff change.
 function user_buff_change(buff, gain, eventArgs)
 
+end
+
+function user_update(cmdParams, eventArgs)
+    if lockstyle then
+        lockstyle()
+    end
 end

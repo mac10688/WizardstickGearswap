@@ -443,3 +443,7 @@ end
 function sub_job_change()
     coroutine.schedule(lockstyle,8)
 end
+
+function display_current_job_state(eventArgs)
+
+end

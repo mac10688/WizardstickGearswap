@@ -20,12 +20,12 @@ function job_setup()
     state.Buff['Afflatus Solace'] = buffactive['Afflatus Solace'] or false
     state.Buff['Afflatus Misery'] = buffactive['Afflatus Misery'] or false
 
-    send_command('bind !` gs c cycle CureMode')
+    send_command('bind ^` gs c cycle CureMode')
 end
 
 -- Called when this job file is unloaded (eg: job change)
 function user_unload()
-    send_command('unbind !`')
+    send_command('unbind ^`')
 end
 
 -------------------------------------------------------------------------------------------------------------------
@@ -165,7 +165,7 @@ function init_gear_sets()
         ring1="Medada's ring",
         ring2="Persis ring",
         back=fastcast_cape,
-        waist="Austerity belt +1",
+        waist="Plat. Mog. Belt",
         legs="Ebers pantaloons +3",
         feet="Ebers duckbills +3"
     }
@@ -182,11 +182,11 @@ function init_gear_sets()
         sub="Genmei Shield",
         ammo="Staunch Tathlum +1", --11%
         head="Ebers Cap +3", --12%
+        neck="Loricate torque +1",
         body="Ebers Bliaut +3",
         hands={ name="Chironic Gloves", augments={'Mag. Acc.+15 "Mag.Atk.Bns."+15','Spell interruption rate down -11%','INT+8','"Mag.Atk.Bns."+5',}}, --31%
         legs="Ebers Pant. +3",
-        feet="Theo. Duckbills +3", --29%
-        neck="Loricate torque +1",
+        feet="Theo. Duckbills +3", --29%        
         waist="Plat. Mog. Belt",
         left_ear="Sanare earring",
         right_ear="Ebers Earring +1",
@@ -194,6 +194,10 @@ function init_gear_sets()
         ring2="Defending Ring",        
         back=fastcast_cape
     }
+
+    sets.midcast.Erase = set_combine(sets.midcast.StatusRemoval, {
+        neck="Cleric's torque +2"
+    })
 
     sets.midcast.Cursna = set_combine(sets.midcast.StatusRemoval, {
         neck="Debilis Medallion",
@@ -259,12 +263,17 @@ function init_gear_sets()
         feet="Theophany duckbills +3"
     })
 
+    sets.midcast.Protect = midcast_duration
+    sets.midcast.Protectra = midcast_duration
+    sets.midcast.Shell = midcast_duration
+    sets.midcast.Shellra = midcast_duration
+
     sets.midcast['Holy'] = {
         main="Gada",
         sub="Ammurapi shield",
         ammo="Hydrocera",
         head="Bunzi's hat",
-        neck="Erra pendant",
+        neck="Incanter's torque",
         ear1="Malignance earring",
         ear2="Regal earring",
         body="Bunzi's robe",
@@ -277,15 +286,15 @@ function init_gear_sets()
         feet="Bunzi's sabots"
     }
 
-    sets.midcast['Banish'] = {
+    sets.midcast.Banish = {
         main="Gada",
         sub="Ammurapi shield",
         ammo="Hydrocera",
         head="Ipoca beret",
-        neck="Erra pendant",
+        neck="Incanter's torque",
         ear1="Malignance earring",
         ear2="Regal earring",
-        body="Theophany bliaut +3",
+        body="Ebers bliaut +3",
         hands="Fanatic gloves",
         ring1={name="Stikini Ring +1", bag="wardrobe5"},
         ring2={name="Stikini Ring +1", bag="wardrobe6"},
@@ -294,6 +303,8 @@ function init_gear_sets()
         legs="Theophany pantaloons +3",
         feet="Medium's Sabots"
     }
+
+    sets.midcast.Banishga = sets.midcast.Banish
 
     sets.midcast['Dark Magic'] = {
         main="Daybreak",
@@ -438,7 +449,7 @@ function init_gear_sets()
         feet="Nyame sollerets"
     }
 
-    sets.kiting = {
+    sets.Kiting = {
         ring2="Shneddick ring +1",
         feet="Hippomenes socks +1"
     }
@@ -565,4 +576,8 @@ end
 
 function sub_job_change()
     coroutine.schedule(lockstyle,8)
+end
+
+function display_current_job_state(eventArgs)
+
 end

@@ -582,16 +582,16 @@ function init_gear_sets()
         body="Malignance tabard",
         hands="Malignance gloves",
         ring1={name="Chirich ring +1", bag="wardrobe5"},
-        ring2="Hetairoi ring",
+        ring2={name="Chirich ring +1", bag="wardrobe6"},
         back=Cape.Dw,
         waist="Grunfeld rope",
         legs="Malignance tights",
         feet="Malignance boots"
     }
 --   sets.engaged[state.CombatMode][state.CombatForm][state.CombatWeapon][state.OffenseMode][state.HybridMode][classes.CustomMeleeGroups (any number)]
-    sets.engaged.SwordShield = set_combine(sets.engaged, {feet="Atrophy boots +3"})
+    sets.engaged.SwordShield = set_combine(sets.engaged, {feet="Atrophy boots +3", back=Cape.Tp})
     sets.engaged.SwordShield.HighAcc = set_combine(sets.engaged.SwordShield, {neck="Combatant's torque", ear1="Dignitary earring"})
-    sets.engaged.SwordShield.LowHaste = set_combine(sets.engaged.SwordShield, {back=Cape.Tp, ring2="Hetairoi ring"})
+    sets.engaged.SwordShield.LowHaste = set_combine(sets.engaged.SwordShield, {ring2="Hetairoi ring"})
     sets.engaged.SwordShield.MidHaste = set_combine(sets.engaged.SwordShield.LowHaste, {})
     sets.engaged.SwordShield.HighHaste = set_combine(sets.engaged.SwordShield.MidHaste, {})
 
