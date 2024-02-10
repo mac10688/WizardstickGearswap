@@ -28,6 +28,7 @@ function equipWeaponSet()
         if currentWeaponState and weaponSet[currentWeaponState.value] then
             weaponSet = weaponSet[currentWeaponState.value]
         end
+        -- print_set(weaponSet)
         enable('main', 'sub', 'ranged')
         equip(weaponSet)
 

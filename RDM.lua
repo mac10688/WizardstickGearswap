@@ -385,7 +385,7 @@ function init_gear_sets()
     })    
 
     sets.midcast.Storm = sets.midcast.EnhancingDuration
-    sets.midcast.GainSpell = set_combine(sets.midcast.EnhancingDuration, {
+    sets.midcast.BoostStat = set_combine(sets.midcast.EnhancingDuration, {
         hands="Vitiation Gloves +3"
     })
     

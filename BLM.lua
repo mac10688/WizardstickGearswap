@@ -317,7 +317,8 @@ function init_gear_sets()
     }
 
     sets.midcast['Dark Magic'] = {
-        sub="Ammurapi Shield",
+        main="Laevateinn",
+        sub="Khonsu",
         ammo="Pemphredo Tathlum",
         head="Wicce petasos +3",
         body="Wicce coat +3",
@@ -332,6 +333,8 @@ function init_gear_sets()
         ring2={name="Stikini Ring +1", bag="wardrobe6"},
         back=magic_atk_cape,
     }
+
+    sets.midcast.Absorb = sets.midcast['Dark Magic']
 
     sets.midcast.Drain = set_combine(sets.midcast['Dark Magic'], {
         head="Pixie Hairpin +1",
@@ -450,7 +453,7 @@ function init_gear_sets()
         legs="Assiduity pants +1"
     })
 
-    sets.kiting = {
+    sets.Kiting = {
         ring2="Shneddick ring +1",
         feet="Hippomenes socks +1"
     }

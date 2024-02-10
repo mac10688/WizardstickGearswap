@@ -52,6 +52,8 @@ function init_gear_sets()
     local mnd_magic_ws = { name="Lugh's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','Weapon skill damage +10%','Damage taken-5%'}}
     local int_magic_ws = { name="Lugh's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','Weapon skill damage +10%','Damage taken-5%'}}
     local ws_boots = { name="Merlinic Crackows", augments={'Attack+25','Crit.hit rate+3','Weapon skill damage +10%','Mag. Acc.+16 "Mag.Atk.Bns."+16'}}
+    local macc_cape =  {name="Lugh's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Magic dmg. taken-10%',}}
+    
 
     local fc_cape = idle_cape
     local int_enfeeble_cape = nuke_cape
@@ -158,7 +160,7 @@ function init_gear_sets()
         feet=ws_boots
     }
 
-    local dark_magic_affinity = {head="Pixie hairpin +1", ring1="Archon ring"}
+    local dark_magic_affinity = {head="Pixie hairpin +1", ring2="Archon ring"}
     local dark_magic_int_ws = set_combine(magical_int_ws, dark_magic_affinity)
     local dark_magic_mnd_ws = set_combine(magical_mnd_ws, dark_magic_affinity)
 
@@ -238,6 +240,10 @@ function init_gear_sets()
         feet="Gendewitha Galoshes +1"
     }
 
+    sets.midcast.StatusRemoval = {
+
+    }
+
     sets.midcast.CureWithLightWeather = set_combine(sets.midcast.Cure, {
         waist="Hachirin-no-obi"
     })
@@ -279,13 +285,14 @@ function init_gear_sets()
     sets.midcast.Storm = set_combine(midcast_enhancing_duration, {feet="Pedagogy Loafers +3"})
 
     local enfeebles = {
-        main="Musa",
+        main="Contemplator +1",
+        sub="Enki strap",
         ammo="Hydrocera",
         head="Academic's mortarboard +3",
         neck="Argute stole +2",
-        ear1="Dignitary's earring",
+        ear1="Regal earring",
         ear2="Malignance earring",
-        body="Academic's gown +3",
+        body="Arbatel gown +3",
         hands="Regal cuffs",
         ring1={name="Stikini Ring +1", bag="wardrobe5"},
         ring2="Kishar ring",
@@ -297,47 +304,82 @@ function init_gear_sets()
 
     -- Custom spell classes
     sets.midcast.MndEnfeebles = set_combine(enfeebles, {
+        hands='Arbatel bracers +3',
+        ring2={name="Stikini Ring +1", bag="wardrobe6"},
         back = mnd_enfeeble_cape
     })
 
     sets.midcast.IntEnfeebles = set_combine(enfeebles, {
+        ammo="Ghastly tathlum +1",
         ring1="Medada's ring",
+        ring2="Metamorph ring +1",
+        waist="Acuity belt +1",
         back = int_enfeeble_cape
     })
 
-    sets.midcast.ElementalEnfeeble = sets.midcast.IntEnfeebles
+    sets.midcast.MaccEnfeebles = set_combine(enfeebles, {
+        sub="Khonsu",
+        ammo="Pemphredo tathlum",
+        hands="Arbatel bracers +3",
+        ring1="Medada's ring",
+        ring2="Metamorph ring +1",
+        waist="Acuity belt +1",
+        feet="Arbatel loafers +3",
+        back=macc_cape
+    })
 
     sets.midcast['Dark Magic'] = {
+        ammo="Pemphredo tathlum",
         head='Pixie hairpin +1',
         neck="Erra pendant",
         ear1="Regal earring",
-        eart2="Malignance earring",
+        ear2="Malignance earring",
         body="Academic's gown +3",
         hands="Arbatel bracers +3",
         ring1={name="Stikini Ring +1", bag="wardrobe5"},
-        ring2={name="Stikini Ring +1", bag="wardrobe6"},
+        ring2="Archon ring",
         back=nuke_cape,
         waist="Acuity belt +1",
         legs="Arbatel pants +3",
         feet="Arbatel loafers +3"
     }
 
+    sets.midcast.Dia = sets.midcast.enfeebling
+    sets.midcast.Bio = sets.midcast['Dark Magic']
+    sets.midcast.Slow = sets.midcast.MndEnfeebles
+    sets.midcast.Paralyze = sets.midcast.MndEnfeebles
+    sets.midcast.Addle = sets.midcast.MndEnfeebles
+    sets.midcast.Distract = sets.midcast.MndEnfeebles
+    sets.midcast.Frazzle = sets.midcast.MndEnfeebles
+    sets.midcast.Sleep = sets.midcast.IntEnfeebles
+    sets.midcast.Blind = sets.midcast.IntEnfeebles
+    sets.midcast.Silence = sets.midcast.MaccEnfeebles
+    sets.midcast.Inundation = sets.midcast.MaccEnfeebles
+    sets.midcast.Dispel = sets.midcast.MaccEnfeebles
+    sets.midcast.Gravity = sets.midcast.MaccEnfeebles
+    sets.midcast.Break = sets.midcast.MaccEnfeebles
+    sets.midcast.Bind = sets.midcast.MaccEnfeebles
+    sets.midcast.Poison = sets.midcast.MaccEnfeebles
+    sets.midcast.Stun = sets.midcast.MaccEnfeebles
+
+    sets.midcast.ElementalEnfeeble = sets.midcast.IntEnfeebles
+
     sets.midcast.Kaustra = {
-        main={ name="Bunzi's Rod", augments={'Path: A'}},
+        main="Bunzi's Rod",
         sub="Ammurapi Shield",
         ammo="Pemphredo Tathlum",
         head="Arbatel Bonnet +3",
-        body={ name="Agwu's Robe", augments={'Path: A',}},
-        hands={ name="Agwu's Gages", augments={'Path: A',}},
-        legs={ name="Agwu's Slops", augments={'Path: A',}},
-        feet="Arbatel Loafers +3",
-        neck={ name="Argute Stole +2", augments={'Path: A',}},
+        neck="Argute Stole +2",
+        ear1="Malignance Earring",
+        ear2="Regal Earring",
+        body="Agwu's Robe",
+        hands="Agwu's Gages",
+        ring1="Medada's ring",
+        ring2="Archon ring",
+        back=nuke_cape,
         waist="Slipor Sash",
-        left_ear="Malignance Earring",
-        right_ear="Regal Earring",
-        left_ring="Warp Ring",
-        right_ring="Stikini Ring +1",
-        back={ name="Lugh's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10','Spell interruption rate down-10%'}},
+        legs="Agwu's Slops",
+        feet="Arbatel Loafers +3"        
     }
 
     sets.midcast.Drain = set_combine(sets.midcast['Dark Magic'], {
@@ -457,6 +499,7 @@ function init_gear_sets()
     }
 
     -- Buff sets: Gear that needs to be worn to actively enhance a current player buff.
+    sets.buff['Dark Arts'] = {body="Academic's gown +3"}
     sets.buff['Ebullience'] = {head="Arbatel bonnet +3"}
     sets.buff['Rapture'] = {head="Arbatel bonnet +3"}
     sets.buff['Perpetuance'] = {hands="Arbatel Bracers +3"}
@@ -489,6 +532,7 @@ function init_gear_sets()
 
     sets.idle = {
         main="Malignance Pole",
+        sub="Khonsu",
         ammo="Homiliary",
         head="Arbatel bonnet +3",
         neck="Loricate torque +1",
@@ -504,12 +548,41 @@ function init_gear_sets()
         feet="Arbatel loafers +3"
     }
 
-    sets.defense.PDT = set_combine(sets.idle, {
+    sets.defense.PDT = {
+        main="Malignance Pole",
+        sub="Irenic strap +1",
+        ammo="Staunch tathlum +1",
+        head="Nyame helm",
+        neck="Unmoving collar +1",
+        ear1="Etiolation earring",
+        ear2="Sanare earring",
+        body="Nyame mail",
+        hands="Nyame gauntlets",
+        ring1={name="Vexer ring +1", bag="wardrobe5"},
+        ring2="Shadow ring",
+        back=idle_cape,
+        waist="Platinum moogle belt",
+        legs="Agwu's slops",
+        feet="Nyame sollerets"
+    }
+
+    sets.defense.MDT = {
+        main="Malignance Pole",
+        sub="Irenic strap +1",
+        ammo="Staunch tathlum +1",
         head="Arbatel bonnet +3",
+        neck="Warder's charm +3",
+        ear1="Etiolation earring",
+        ear2="Sanare earring",
         body="Arbatel gown +3",
-        -- right_ring="Vengeful ring",
-        legs="Arbatel pants +3"
-    })
+        hands="Arbatel bracers +3",
+        ring1="Vengeful ring",
+        ring2="Shadow ring",
+        back=idle_cape,
+        waist="Slipor sash",
+        legs="Arbatel pants +3",
+        feet="Arbatel loafers +3"
+    }
 
     --sets.buff['Sandstorm'] = {feet="Desert Boots"}
     coroutine.schedule(lockstyle,8)
@@ -553,6 +626,7 @@ end
 -- buff == buff gained or lost
 -- gain == true if the buff was gained, false if it was lost.
 function job_buff_change(buff, gain)
+    -- print('buff: ' .. buff .. ' gain: ' .. tostring(gain))
     if buff == "Sublimation: Activated" then
         handle_equipping_gear(player.status)
     end
@@ -569,15 +643,7 @@ end
 
 -- Custom spell mapping.
 function job_get_spell_map(spell, default_spell_map)
-    if spell.action_type == 'Magic' then
-        if spell.skill == 'Enfeebling Magic' then
-            if spell.type == 'WhiteMagic' then
-                return 'MndEnfeebles'
-            else
-                return 'IntEnfeebles'
-            end
-        end
-    end
+
 end
 
 function customize_idle_set(idleSet)
@@ -626,6 +692,7 @@ function update_active_strategems()
     state.Buff['Parsimony'] = buffactive['Parsimony'] or false
     state.Buff['Celerity'] = buffactive['Celerity'] or false
     state.Buff['Alacrity'] = buffactive['Alacrity'] or false
+    state.Buff['Dark Arts'] = buffactive['Dark Arts'] or false
 
     state.Buff['Klimaform'] = buffactive['Klimaform'] or false
 end
@@ -652,6 +719,13 @@ function apply_grimoire_bonuses(spell, action, spellMap)
         if state.Buff.Klimaform and spell.element == world.weather_element then
             equip(sets.buff['Klimaform'])
         end
+        
+    end
+
+    -- print_set(spell)
+    -- print(buffactive['Dark Arts'])
+    if spell.type == 'BlackMagic' and spell.skill == 'Enfeebling Magic' and (state.Buff['Dark Arts'] or state.Buff['Addendum: Black']) then
+        equip(sets.buff['Dark Arts'])
     end
 
     if state.Buff.Penury then equip(sets.buff['Penury']) end

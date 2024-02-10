@@ -20,12 +20,27 @@ function job_setup()
     state.Buff['Afflatus Solace'] = buffactive['Afflatus Solace'] or false
     state.Buff['Afflatus Misery'] = buffactive['Afflatus Misery'] or false
 
+    state.CombatWeapon:set('Carnwenhan')
+    state.CombatMode:options('SwordShield', 'DualWield')
+
+    state.Daybreak = {}
+    state.Daybreak.DualWield = M{['description']='Daybreak Set', 'TP', 'Acc'}
+    state.Daybreak.SwordShield = M{['description']='Daybreak Set', 'Genmei', 'Ammurapi'}  
+
+    state.Yagrush = {}
+    state.Yagrush.DualWield = M{['description']='Yagrush Set', 'TP', 'Acc'}
+    state.Yagrush.SwordShield = M{['description']='Yagrush Set', 'Genmei', 'Ammurapi'}
+
     send_command('bind ^` gs c cycle CureMode')
+    send_command('bind ~f1 gs c set CombatWeapon Daybreak')
+    send_command('bind ~f2 gs c set CombatWeapon Yagrush')    
 end
 
 -- Called when this job file is unloaded (eg: job change)
 function user_unload()
     send_command('unbind ^`')
+    send_command('unbind ~f1')
+    send_command('unbind ~f2')
 end
 
 -------------------------------------------------------------------------------------------------------------------
@@ -41,6 +56,23 @@ function init_gear_sets()
     local attack_cape = { name="Alaunus's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10','Mag. Evasion+15'}}
     local physical_mnd_ws_cape = { name="Alaunus's Cape", augments={'MND+20','Accuracy+20 Attack+20','MND+10','Weapon skill damage +10%','Damage taken-5%'}}
     local dt_cape = { name="Alaunus's Cape", augments={'MND+20','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Enmity-10','Def+50'}}
+    
+    sets.Daybreak = {}
+    sets.Daybreak.DualWield = {}
+    sets.Daybreak.DualWield.TP = {main="Daybreak", sub="Tishtrya"}
+    sets.Daybreak.DualWield.Acc = {main="Daybreak", sub="Bunzi's rod"}
+    sets.Daybreak.SwordShield = {}
+    sets.Daybreak.SwordShield.Genmei = {main="Daybreak", sub="Genmei shield"}
+    sets.Daybreak.SwordShield.Ammurapi = {main="Daybreak", sub="Ammurapi shield"}
+
+    sets.Yagrush = {}
+    sets.Yagrush.DualWield = {}
+    sets.Yagrush.DualWield.TP = {main="Yagrush", sub="Tishtrya"}
+    sets.Yagrush.DualWield.Acc = {main="Yagrush", sub="Bunzi's rod"}
+    sets.Yagrush.SwordShield = {}
+    sets.Yagrush.SwordShield.Genmei = {main="Yagrush", sub="Genmei shield"}
+    sets.Yagrush.SwordShield.Ammurapi = {main="Yagrush", sub="Ammurapi shield"}
+    
     -- Precast Sets
 
     -- Fast cast sets for spells
@@ -268,7 +300,25 @@ function init_gear_sets()
     sets.midcast.Shell = midcast_duration
     sets.midcast.Shellra = midcast_duration
 
-    sets.midcast['Holy'] = {
+    sets.midcast['Divine Magic'] = {
+        main="Yagrush",
+        sub="Ammurapi shield",
+        ammo="Hydrocera",
+        head="Ebers cap +3",
+        neck="Incanter's torque",
+        ear1="Regal earring",
+        ear2="Ebers earring +1",
+        body="Ebers bliaut +3",
+        hands="Piety mitts +3",
+        ring1={name="Stikini Ring +1", bag="wardrobe5"},
+        ring2={name="Stikini Ring +1", bag="wardrobe6"},
+        back=fastcast_cape,
+        waist="Acuity belt +1",
+        legs="Theophany pantaloons +3",
+        feet="Ebers duckbills +3"
+    }
+
+    sets.midcast.Holy = {
         main="Gada",
         sub="Ammurapi shield",
         ammo="Hydrocera",
@@ -295,7 +345,7 @@ function init_gear_sets()
         ear1="Malignance earring",
         ear2="Regal earring",
         body="Ebers bliaut +3",
-        hands="Fanatic gloves",
+        hands="Piety mitts +3",
         ring1={name="Stikini Ring +1", bag="wardrobe5"},
         ring2={name="Stikini Ring +1", bag="wardrobe6"},
         back=fastcast_cape,
@@ -319,40 +369,75 @@ function init_gear_sets()
         waist="Austerity Belt +1",
         left_ear="Regal Earring",
         right_ear="Malignance Earring",
-        left_ring="Medada's Ring",
-        right_ring="Archon Ring",
+        ring1="Medada's Ring",
+        ring2="Archon Ring",
         back=fastcast_cape
     }
 
     sets.midcast.enfeebling = {
-        main="Gada",
+        main="Yagrush",
+        sub="Ammurapi shield",
         ammo="Hydrocera",
         head="Ebers cap +3",
         neck="Erra pendant",
-        ear1="Malignance earring",
-        ear2="Regal earring",
+        ear1="Regal earring",
+        ear2="Ebers earring +1",
         body="Theophany bliaut +3",
         hands="Regal cuffs",
-        ring1={name="Stikini Ring +1", bag="wardrobe5"},
+        ring1="Medada's ring",
         ring2="Kishar ring",
         back=fastcast_cape,
         waist="Obstinate sash",
         legs="Ebers pantaloons +3",
         feet="Theophany duckbills +3"
     }
-
+    
     -- Custom spell classes
-    sets.midcast.MndEnfeebles = sets.midcast.enfeebling
+    sets.midcast.MndEnfeebles = set_combine(sets.midcast.enfeebling, {
+        main="Contemplator +1",
+        sub="Enki strap",
+        ear2="Malignance earring",
+        body="Ebers bliaut +3",
+        hands="Ebers mitts +3",
+        ring1={name="Stikini Ring +1", bag="wardrobe5"},
+        ring2={name="Stikini Ring +1", bag="wardrobe6"}      
+    }) 
 
-    sets.midcast.IntEnfeebles = sets.midcast.enfeebling
+    sets.midcast.IntEnfeebles = set_combine(sets.midcast.enfeebling, {
+        main="Contemplator +1",
+        sub="Enki strap",
+        ammo="Ghastly tathlum +1",
+        body="Ebers bliaut +3",
+        waist="Acuity belt +1",
+        ring2="Metamorph ring +1"
+    })
 
+    sets.midcast.MaccEnfeebles = set_combine(sets.midcast.enfeebling, {
+        hands="Ebers mitts +3",
+    })
+
+    sets.midcast.Dia = sets.midcast.enfeebling
+    sets.midcast.Bio = sets.midcast['Dark Magic']
+    sets.midcast.Slow = sets.midcast.MndEnfeebles
+    sets.midcast.Paralyze = sets.midcast.MndEnfeebles
+    sets.midcast.Addle = sets.midcast.MndEnfeebles
+    sets.midcast.Distract = sets.midcast.MndEnfeebles
+    sets.midcast.Frazzle = sets.midcast.MndEnfeebles
+    sets.midcast.Sleep = sets.midcast.IntEnfeebles
+    sets.midcast.Blind = sets.midcast.IntEnfeebles
+    sets.midcast.Silence = sets.midcast.MaccEnfeebles
+    sets.midcast.Inundation = sets.midcast.MaccEnfeebles
+    sets.midcast.Dispel = sets.midcast.MaccEnfeebles
+    sets.midcast.Gravity = sets.midcast.MaccEnfeebles
+    sets.midcast.Break = sets.midcast.MaccEnfeebles
+    sets.midcast.Bind = sets.midcast.MaccEnfeebles
+    sets.midcast.Poison = sets.midcast.MaccEnfeebles
+    sets.midcast.Stun = sets.midcast.MaccEnfeebles
     
     -- Sets to return to when not performing an action.    
 
     -- Idle sets (default idle set not needed since the other three are defined, but leaving for testing purposes)
     sets.idle = {
-        main="Daybreak", --10% physical
-        sub="Genmei shield", --10% physical
         ammo="Staunch tathlum +1", --3% dmg
         head="Nyame helm", --7% dmg
         neck="Loricate Torque +1", --6% dmg
@@ -369,8 +454,6 @@ function init_gear_sets()
     }
 
     sets.idle.PDT = {
-        main="Daybreak", --10% physical
-        sub="Genmei shield", --10% physical
         ammo="Staunch tathlum +1", --3% dmg
         head="Nyame helm", --7% dmg
         neck="Loricate Torque +1", --6% dmg
@@ -387,8 +470,6 @@ function init_gear_sets()
     }
 
     sets.idle.MDT = {
-        main="Daybreak",
-        sub="Genmei shield",
         ammo="Staunch tathlum +1",
         head="Nyame helm",
         neck="Loricate Torque +1",
@@ -521,6 +602,7 @@ function job_post_midcast(spell, action, spellMap, eventArgs)
     elseif spellMap == 'StatusRemoval' and buffactive['Divine Caress'] then
         equip(sets.buff['Divine Caress'])
     end
+    -- print_set(spell)
 end
 
 -------------------------------------------------------------------------------------------------------------------
@@ -539,15 +621,15 @@ end
 
 -- Custom spell mapping.
 function job_get_spell_map(spell, spell_map)
-    if spell.action_type == 'Magic' then
-        if spell.skill == "Enfeebling Magic" then
-            if spell.type == "WhiteMagic" then
-                return "MndEnfeebles"
-            else
-                return "IntEnfeebles"
-            end
-        end
-    end
+    -- if spell.action_type == 'Magic' then
+    --     if spell.skill == "Enfeebling Magic" then
+    --         if spell.type == "WhiteMagic" then
+    --             return "MndEnfeebles"
+    --         else
+    --             return "IntEnfeebles"
+    --         end
+    --     end
+    -- end
 end
 
 -- Called by the 'update' self-command.
