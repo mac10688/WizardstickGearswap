@@ -20,7 +20,7 @@ function job_setup()
     state.Buff['Afflatus Solace'] = buffactive['Afflatus Solace'] or false
     state.Buff['Afflatus Misery'] = buffactive['Afflatus Misery'] or false
 
-    state.CombatWeapon:set('Carnwenhan')
+    state.CombatWeapon:set('Daybreak')
     state.CombatMode:options('SwordShield', 'DualWield')
 
     state.Daybreak = {}
@@ -94,7 +94,7 @@ function init_gear_sets()
         legs="Ebers pantaloons +3",
     }
 
-    sets.precast.FC.Stoneskin = set_combine(sets.precast.FC['Enhancing Magic'], {head="Umuthi Hat"})
+    sets.precast.FC.Stoneskin = set_combine(sets.precast.FC, {head="Umuthi Hat"})
 
     sets.precast.FC['Healing Magic'] = set_combine(sets.precast.FC, {main="Yagrush", legs="Ebers pantaloons +3"})
 
@@ -117,7 +117,7 @@ function init_gear_sets()
     
     sets.precast.WS = {
         head="Nyame helm",
-        body="Nyame helm",
+        body="Nyame mail",
         hands="Nyame gauntlets",
         legs="Nyame flanchard",
         feet="Nyame sollerets",
@@ -125,17 +125,18 @@ function init_gear_sets()
         waist="Fotia Belt",
         ear1="Moonshade earring",
         ear2="Telos earring",
-        ring1="Chirich Ring +1",
-        ring2="Chirich Ring +1",
+        ring1={name="Chirich Ring +1", bag="wardrobe5"},
+        ring2={name="Chirich Ring +1", bag="wardrobe6"},
         back=physical_mnd_ws_cape
     }
     
     local physical_mnd_ws = {
-        head="Piety cap +3",
-        body="Nyame helm",
+        ammo="Crepuscular pebble",
+        head="Nyame helm",
+        body="Nyame mail",
         hands="Nyame gauntlets",
         legs="Nyame flanchard",
-        feet="Piety duckbills +3",
+        feet="Nyame sollerets",
         neck="Fotia Gorget",
         waist="Grunfeld rope",
         ear1="Regal earring",
@@ -153,13 +154,13 @@ function init_gear_sets()
     sets.precast.WS["Moonlight"] = {neck="Combatant's torque"}
     sets.precast.WS["Skullbreaker"] = physical_mnd_ws
     sets.precast.WS["True Strike"] = physical_mnd_ws
-    sets.precast.WS["Judgment"] = sets.precast.WS
+    sets.precast.WS["Judgment"] = set_combine(physical_mnd_ws, {neck="Republican platinum medal", waist="Grunfeld rope"})
     sets.precast.WS["Hexa Strike"] = set_combine(physical_mnd_ws, {waist="Fotia belt"})
     sets.precast.WS["Black Halo"] = sets.precast.WS
     sets.precast.WS["Flash Nova"] = sets.precast.WS
     sets.precast.WS["Realmrazer"] = set_combine(physical_mnd_ws, {waist="Fotia belt"})
     sets.precast.WS["Dagan"] = physical_mnd_ws
-    sets.precast.WS["Mystic Boon"] = physical_mnd_ws
+    sets.precast.WS["Mystic Boon"] = set_combine(physical_mnd_ws, {neck="Republican platinum medal", waist="Grunfeld rope"})
     
 
     -- Midcast Sets
@@ -262,6 +263,7 @@ function init_gear_sets()
         main="Gada",
         sub="Ammurapi shield",
         head="Telchine cap",
+        neck="Loricate torque +1",
         body="Telchine chasuble",
         hands="Telchine gloves",
         legs="Telchine braconi",
@@ -270,16 +272,42 @@ function init_gear_sets()
     sets.midcast.Stoneskin = midcast_duration
 
     sets.midcast.Auspice = set_combine(midcast_duration, {
+        main="Gada",
+        sub="Ammurapi shield",
+        ammo="Staunch tathlum +1",
+        head="Telchine cap",
+        neck="Loricate torque +1",
+        ear1="Sanare earring", --3% magic dmg
+        ear2="Ebers earring +1",
+        body="Telchine chasuble",
+        hands="Telchine gloves",
+        ring1="Defending ring", --3% dmg
+        ring2="Shadow ring", --10% dmg
+        back=dt_cape,
+        waist="Platinum moogle belt",
+        legs="Telchine braconi",
         feet="Ebers duckbills +3"
     })
 
-    sets.midcast.BarElement = set_combine(sets.midcast['Enhancing Magic'], {
+    sets.midcast.BarElement = {
         main="Beneficus",
         head="Ebers cap +3",
+        ear1="Sanare earring", --3% magic dmg
+        ear2="Ebers earring +1",
+        neck="Loricate torque +1",
         body="Ebers Bliaut +3",
+        hands="Ebers mitts +3",
+        ring1="Ayanmo ring", --3% dmg
+        ring2="Shadow ring", --10% dmg
+        back=dt_cape,
         legs="Piety Pantaloons +3",
         feet="Ebers duckbills +3"
-    })    
+    }
+
+    -- sets.midcast.BarElement = set_combine(midcast_duration, {
+    --     main="Beneficus",
+    --     legs="Piety Pantaloons +3"
+    -- })
 
     sets.midcast.BarStatus = set_combine(midcast_duration, {
         neck="Sroda necklace"
@@ -438,6 +466,8 @@ function init_gear_sets()
 
     -- Idle sets (default idle set not needed since the other three are defined, but leaving for testing purposes)
     sets.idle = {
+        main="Daybreak", --10% physical
+        sub="Genmei shield", --10% physical
         ammo="Staunch tathlum +1", --3% dmg
         head="Nyame helm", --7% dmg
         neck="Loricate Torque +1", --6% dmg
@@ -453,39 +483,7 @@ function init_gear_sets()
         feet="Ebers duckbills +3" --7% dmg
     }
 
-    sets.idle.PDT = {
-        ammo="Staunch tathlum +1", --3% dmg
-        head="Nyame helm", --7% dmg
-        neck="Loricate Torque +1", --6% dmg
-        ear1="Genmei earring", --3% magic dmg
-        ear2="Ebers earring +1",
-        body="Ebers bliaut +3",
-        hands="Bunzi's gloves", --7% dmg
-        ring1="Ayanmo ring", --3% dmg
-        ring2="Shadow ring", --10% dmg
-        back=dt_cape,
-        waist="Platinum moogle belt", --3% magic dmg
-        legs="Bunzi's pants", --8% dmg
-        feet="Ebers duckbills +3" --7% dmg
-    }
-
-    sets.idle.MDT = {
-        ammo="Staunch tathlum +1",
-        head="Nyame helm",
-        neck="Loricate Torque +1",
-        ear1="Genmei earring", --3% magic dmg
-        ear2="Ebers earring +1",
-        body="Ebers bliaut +3",
-        hands="Bunzi's gloves",
-        ring1="Inyanga ring",
-        ring2="Shadow ring",
-        back=dt_cape,
-        waist="Platinum moogle belt", --3% magic dmg
-        legs="Bunzi's pants",
-        feet="Nyame sollerets"
-    }
-
-    sets.idle.Refresh = set_combine(sets.idle.PDT, {
+    sets.idle.Refresh = set_combine(sets.idle, {
         ammo="Homiliary",
         ring1={name="Stikini Ring +1", bag="wardrobe5"},
         ring2={name="Stikini Ring +1", bag="wardrobe6"},
@@ -518,7 +516,7 @@ function init_gear_sets()
         ammo="Staunch tathlum +1",
         head="Nyame helm",
         neck="Loricate Torque +1",
-        ear1="Genmei earring", --3% magic dmg
+        ear1="Sanare earring", --3% magic dmg
         ear2="Ebers earring +1",
         body="Ebers bliaut +3",
         hands="Bunzi's gloves",
@@ -554,8 +552,8 @@ function init_gear_sets()
         waist="Grunfeld Rope",
         ear1="Telos earring",
         ear2="Ebers earring +1",
-        ring1="Petrov Ring",
-        ring2="Chirich ring +1",
+        ring1={name="Chirich Ring +1", bag="wardrobe5"},
+        ring2={name="Chirich Ring +1", bag="wardrobe6"},
         back=attack_cape
     }
 

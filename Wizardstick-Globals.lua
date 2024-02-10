@@ -34,7 +34,7 @@ function equipWeaponSet()
 
         if state.WeaponLock.value then
             disable('main', 'sub', 'ranged')
-        end        
+        end
     end
 end
 
