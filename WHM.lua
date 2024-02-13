@@ -259,7 +259,7 @@ function init_gear_sets()
         feet="Theophany duckbills +3"
     }
 
-    local midcast_duration = set_combine(sets.midcast["Enhancing Magic"], {
+    local midcast_duration = {
         main="Gada",
         sub="Ammurapi shield",
         head="Telchine cap",
@@ -267,9 +267,44 @@ function init_gear_sets()
         body="Telchine chasuble",
         hands="Telchine gloves",
         legs="Telchine braconi",
-    })
+        feet="Theophany duckbills +3"
+    }
 
-    sets.midcast.Stoneskin = midcast_duration
+    local midcast_pdt = {
+        ammo="Staunch tathlum +1",
+        neck="Loricate torque +1",
+        ear1="Sanare earring", --3% magic dmg
+        ear2="Ebers earring +1",
+        ring1="Defending ring", --3% dmg
+        ring2="Shadow ring", --10% dmg
+        back=dt_cape,
+        waist="Platinum moogle belt",
+        feet="Ebers duckbills +3"
+    }
+
+    local five_hundred_skill_enhancing_max_duration = {
+        main="Gada",
+        sub="Ammurapi Shield",
+        ammo="Staunch Tathlum +1",
+        head="Telchine Cap",
+        body="Telchine Chas.",
+        hands="Telchine Gloves",
+        legs="Telchine Braconi",
+        feet="Theo. Duckbills +3",
+        neck="Loricate Torque +1",
+        waist="Plat. Mog. Belt",
+        ear1="Sanare Earring",
+        ear2="Mimir Earring",
+        ring1={name="Stikini Ring +1", bag="wardrobe5"},
+        ring2={name="Stikini Ring +1", bag="wardrobe6"},
+        back=dt_cape
+    }
+
+    local no_skill_midcast = set_combine(midcast_pdt, midcast_duration)
+
+    sets.midcast.Stoneskin = no_skill_midcast
+    sets.midcast.Haste = no_skill_midcast
+    sets.midcast.BoostStat = five_hundred_skill_enhancing_max_duration
 
     sets.midcast.Auspice = set_combine(midcast_duration, {
         main="Gada",
@@ -323,10 +358,12 @@ function init_gear_sets()
         feet="Theophany duckbills +3"
     })
 
-    sets.midcast.Protect = midcast_duration
-    sets.midcast.Protectra = midcast_duration
-    sets.midcast.Shell = midcast_duration
-    sets.midcast.Shellra = midcast_duration
+    sets.midcast.Protect = no_skill_midcast
+    sets.midcast.Protectra = no_skill_midcast
+    sets.midcast.Shell = no_skill_midcast
+    sets.midcast.Shellra = no_skill_midcast
+
+    sets.midcast.Storm = no_skill_midcast
 
     sets.midcast['Divine Magic'] = {
         main="Yagrush",

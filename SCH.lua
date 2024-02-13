@@ -27,16 +27,30 @@ function user_setup()
     state.WeakStratMode = M{['description']="Weak Nuke Mode", 'None', 'DuringImmanence', 'FullTime'}
     state.EatTp = M(false, 'Eat TP')
 
+    state.CombatWeapon:set('MalignancePole')
+
+    state.MalignancePole = M{['description']='Malignance Pole Set', 'Khonsu', 'Irenic'}
+    state.Tupsimati = M{['description']='Tupsimati Set', 'Khonsu', 'Enki'}
+    state.Musa = M{['description']='Musa Set', 'Khonsu', 'Enki'}
+    
+
     send_command('bind ^` gs c toggle MagicBurst')
     send_command('bind !` gs c toggle EatTp')
     send_command('bind ~f7 gs c cycle WeakStratMode')
+
+    send_command('bind ~f1 gs c set CombatWeapon MalignancePole')
+    send_command('bind ~f2 gs c set CombatWeapon Tupsimati')
+    send_command('bind ~f3 gs c set CombatWeapon Musa')
     
 end
 
 function user_unload()
     send_command('unbind ^`')
     send_command('unbind !`')
-    send_command('unbind ~f7')    
+    send_command('unbind ~f1')
+    send_command('unbind ~f2')
+    send_command('unbind ~f3')
+    send_command('unbind ~f7') 
 end
 
 
@@ -64,7 +78,17 @@ function init_gear_sets()
 
     local chironic_refresh_legs = { name="Chironic Hose", augments={'STR+9','CHR+4','"Refresh"+2','Mag. Acc.+14 "Mag.Atk.Bns."+14'}}
 
+    sets.MalignancePole = {main="Malignance pole", sub="Khonsu"}
+    sets.MalignancePole.Khonsu = {main="Malignance pole", sub="Khonsu"}
+    sets.MalignancePole.Irenic = {main="Malignance pole", sub="Irenic strap +1"}
 
+    sets.Tupsimati = {main="Tupsimati", sub="Khonsu"}
+    sets.Tupsimati.Khonsu = {main="Tupsimati", sub="Khonsu"}
+    sets.Tupsimati.Enki = {main="Tupsimati", sub="Enki strap"}
+
+    sets.Musa = {main="Musa", sub="Khonsu"}
+    sets.Musa.Khonsu = {main="Musa", sub="Khonsu"}
+    sets.Musa.Enki = {main="Musa", sub="Enki strap"}
     -- Precast Sets
 
     -- Precast sets to enhance JAs

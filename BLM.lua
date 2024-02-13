@@ -524,6 +524,9 @@ end
 function job_post_midcast(spell, action, spellMap, eventArgs)
     if spell.skill == 'Elemental Magic' and state.MagicBurst.value and spell.english ~= 'Impact' then
         equip(sets.magic_burst)
+        if player.mp < 700 then
+            equip({body="Spaekona's Coat +3"})
+        end
     end
 end
 

@@ -251,7 +251,7 @@ function init_gear_sets()
         waist="Embla sash"
     })
 
-    sets.midcast["Aquaveil"] = set_combine(sets.midcast['Enhancing Magic'], { 
+    sets.midcast.Aquaveil = set_combine(sets.midcast['Enhancing Magic'], { 
         hands="Regal cuffs"
     })
 
@@ -297,7 +297,7 @@ function init_gear_sets()
         main="Idris",
         sub="Genmei shield",
         range="Dunna",
-        head="Agwu's cap",
+        head="Azimuth hood +3",
         neck="Loricate torque +1",
         ear1="Etiolation earring",
         ear2="Hearty earring",
@@ -338,7 +338,7 @@ function init_gear_sets()
     -- Normal melee group
     sets.engaged = {
         head="Nyame Helm",
-        neck="Sanctity necklace",
+        neck="Combatant's torque",
         ear1="Telos earring",
         ear2="Dignitary's earring",
         body="Nyame Mail",
