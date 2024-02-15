@@ -413,14 +413,13 @@ function init_gear_sets()
         ring1="Medada's ring",
         ring2={name="Stikini Ring +1", bag="wardrobe6"},
         waist="Obstinate Sash",
-        back=Cape.Int,
+        back="Aurist's cape +1",
         legs={ name="Chironic Hose", augments={'Mag. Acc.+30','"Cure" potency +7%','INT+12','"Mag.Atk.Bns."+8'}},
         feet="Vitiation Boots +3"
     }
 
     -- Custom spell classes
     sets.midcast.MndEnfeebles = set_combine(sets.midcast['Enfeebling Magic'], {
-        back=Cape.Mnd
     })
 
     sets.midcast.MndEnfeeblesAcc = set_combine(sets.midcast.MndEnfeebles, {

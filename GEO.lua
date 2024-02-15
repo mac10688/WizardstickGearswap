@@ -232,7 +232,7 @@ function init_gear_sets()
         hands="Regal cuffs",
         ring1="Medada's ring",
         ring2={name="Stikini Ring +1", bag="wardrobe6"},
-        back=fc_Cape,
+        back="Aurist's cape +1",
         waist="Luminary sash",
         legs="Geomancy pants +3",
         feet="Bagua sandals +3"

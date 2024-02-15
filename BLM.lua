@@ -294,7 +294,7 @@ function init_gear_sets()
         hands= "Regal cuffs",
         ring1="Medada's ring",
         ring2="Kishar Ring",
-        back=magic_atk_cape,
+        back="Aurist's cape +1",
         waist="Luminary Sash",
         legs="Spaekona's tonban +3",
         feet="Spaekona's sabots +3"

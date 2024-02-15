@@ -31,9 +31,14 @@ function job_setup()
     state.Yagrush.DualWield = M{['description']='Yagrush Set', 'TP', 'Acc'}
     state.Yagrush.SwordShield = M{['description']='Yagrush Set', 'Genmei', 'Ammurapi'}
 
+    state.Maxentius = {}
+    state.Maxentius.DualWield = M{['description']='Yagrush Set', 'TP', 'Acc'}
+    state.Maxentius.SwordShield = M{['description']='Yagrush Set', 'Genmei', 'Ammurapi'}
+
     send_command('bind ^` gs c cycle CureMode')
     send_command('bind ~f1 gs c set CombatWeapon Daybreak')
-    send_command('bind ~f2 gs c set CombatWeapon Yagrush')    
+    send_command('bind ~f2 gs c set CombatWeapon Yagrush') 
+    send_command('bind ~f3 gs c set CombatWeapon Maxentius')
 end
 
 -- Called when this job file is unloaded (eg: job change)
@@ -41,6 +46,7 @@ function user_unload()
     send_command('unbind ^`')
     send_command('unbind ~f1')
     send_command('unbind ~f2')
+    send_command('unbind ~f3')
 end
 
 -------------------------------------------------------------------------------------------------------------------
@@ -72,6 +78,14 @@ function init_gear_sets()
     sets.Yagrush.SwordShield = {}
     sets.Yagrush.SwordShield.Genmei = {main="Yagrush", sub="Genmei shield"}
     sets.Yagrush.SwordShield.Ammurapi = {main="Yagrush", sub="Ammurapi shield"}
+
+    sets.Maxentius = {}
+    sets.Maxentius.DualWield = {}
+    sets.Maxentius.DualWield.TP = {main="Maxentius", sub="Tishtrya"}
+    sets.Maxentius.DualWield.Acc = {main="Maxentius", sub="Bunzi's rod"}
+    sets.Maxentius.SwordShield = {}
+    sets.Maxentius.SwordShield.Genmei = {main="Maxentius", sub="Genmei shield"}
+    sets.Maxentius.SwordShield.Ammurapi = {main="Maxentius", sub="Ammurapi shield"}
     
     -- Precast Sets
 
@@ -115,21 +129,6 @@ function init_gear_sets()
     sets.precast.JA.Benediction = {body="Piety Bliaut +3"}
     sets.precast.JA.Devotion = {head="Piety Cap +3"}
     
-    sets.precast.WS = {
-        head="Nyame helm",
-        body="Nyame mail",
-        hands="Nyame gauntlets",
-        legs="Nyame flanchard",
-        feet="Nyame sollerets",
-        neck="Fotia Gorget",
-        waist="Fotia Belt",
-        ear1="Moonshade earring",
-        ear2="Telos earring",
-        ring1={name="Chirich Ring +1", bag="wardrobe5"},
-        ring2={name="Chirich Ring +1", bag="wardrobe6"},
-        back=physical_mnd_ws_cape
-    }
-    
     local physical_mnd_ws = {
         ammo="Crepuscular pebble",
         head="Nyame helm",
@@ -146,9 +145,10 @@ function init_gear_sets()
         back=physical_mnd_ws_cape,
     }
 
-	
-    sets.precast.WS["Shining Strike"] = sets.precast.WS
-    sets.precast.WS["Seraph Strike"] = sets.precast.WS
+    sets.precast.WS = physical_mnd_ws
+    
+    sets.precast.WS["Shining Strike"] = physical_mnd_ws
+    sets.precast.WS["Seraph Strike"] = physical_mnd_ws
     sets.precast.WS["Brainshaker"] = physical_mnd_ws
     sets.precast.WS["Starlight"] = {neck="Combatant's torque"}
     sets.precast.WS["Moonlight"] = {neck="Combatant's torque"}
@@ -156,8 +156,8 @@ function init_gear_sets()
     sets.precast.WS["True Strike"] = physical_mnd_ws
     sets.precast.WS["Judgment"] = set_combine(physical_mnd_ws, {neck="Republican platinum medal", waist="Grunfeld rope"})
     sets.precast.WS["Hexa Strike"] = set_combine(physical_mnd_ws, {waist="Fotia belt"})
-    sets.precast.WS["Black Halo"] = sets.precast.WS
-    sets.precast.WS["Flash Nova"] = sets.precast.WS
+    sets.precast.WS["Black Halo"] = physical_mnd_ws
+    sets.precast.WS["Flash Nova"] = physical_mnd_ws
     sets.precast.WS["Realmrazer"] = set_combine(physical_mnd_ws, {waist="Fotia belt"})
     sets.precast.WS["Dagan"] = physical_mnd_ws
     sets.precast.WS["Mystic Boon"] = set_combine(physical_mnd_ws, {neck="Republican platinum medal", waist="Grunfeld rope"})
@@ -275,8 +275,8 @@ function init_gear_sets()
         neck="Loricate torque +1",
         ear1="Sanare earring", --3% magic dmg
         ear2="Ebers earring +1",
-        ring1="Defending ring", --3% dmg
-        ring2="Shadow ring", --10% dmg
+        ring2="Defending ring", --3% dmg
+        ring1="Shadow ring", --10% dmg
         back=dt_cape,
         waist="Platinum moogle belt",
         feet="Ebers duckbills +3"
@@ -316,8 +316,8 @@ function init_gear_sets()
         ear2="Ebers earring +1",
         body="Telchine chasuble",
         hands="Telchine gloves",
-        ring1="Defending ring", --3% dmg
-        ring2="Shadow ring", --10% dmg
+        ring2="Defending ring", --3% dmg
+        ring1="Shadow ring", --10% dmg
         back=dt_cape,
         waist="Platinum moogle belt",
         legs="Telchine braconi",
@@ -332,8 +332,8 @@ function init_gear_sets()
         neck="Loricate torque +1",
         body="Ebers Bliaut +3",
         hands="Ebers mitts +3",
-        ring1="Ayanmo ring", --3% dmg
-        ring2="Shadow ring", --10% dmg
+        ring2="Ayanmo ring", --3% dmg
+        ring1="Shadow ring", --10% dmg
         back=dt_cape,
         legs="Piety Pantaloons +3",
         feet="Ebers duckbills +3"
@@ -439,7 +439,7 @@ function init_gear_sets()
         back=fastcast_cape
     }
 
-    sets.midcast.enfeebling = {
+    sets.midcast["Enfeebling Magic"] = {
         main="Yagrush",
         sub="Ammurapi shield",
         ammo="Hydrocera",
@@ -451,14 +451,14 @@ function init_gear_sets()
         hands="Regal cuffs",
         ring1="Medada's ring",
         ring2="Kishar ring",
-        back=fastcast_cape,
+        back="Aurist's cape +1",
         waist="Obstinate sash",
         legs="Ebers pantaloons +3",
         feet="Theophany duckbills +3"
     }
     
     -- Custom spell classes
-    sets.midcast.MndEnfeebles = set_combine(sets.midcast.enfeebling, {
+    sets.midcast.MndEnfeebles = set_combine(sets.midcast["Enfeebling Magic"], {
         main="Contemplator +1",
         sub="Enki strap",
         ear2="Malignance earring",
@@ -468,7 +468,7 @@ function init_gear_sets()
         ring2={name="Stikini Ring +1", bag="wardrobe6"}      
     }) 
 
-    sets.midcast.IntEnfeebles = set_combine(sets.midcast.enfeebling, {
+    sets.midcast.IntEnfeebles = set_combine(sets.midcast["Enfeebling Magic"], {
         main="Contemplator +1",
         sub="Enki strap",
         ammo="Ghastly tathlum +1",
@@ -477,7 +477,7 @@ function init_gear_sets()
         ring2="Metamorph ring +1"
     })
 
-    sets.midcast.MaccEnfeebles = set_combine(sets.midcast.enfeebling, {
+    sets.midcast.MaccEnfeebles = set_combine(sets.midcast["Enfeebling Magic"], {
         hands="Ebers mitts +3",
     })
 
@@ -512,8 +512,8 @@ function init_gear_sets()
         ear2="Ebers earring +1",
         body="Ebers bliaut +3",
         hands="Bunzi's gloves", --7% dmg
-        ring1="Ayanmo ring", --3% dmg
-        ring2="Shadow ring", --10% dmg
+        ring2="Ayanmo ring", --3% dmg
+        ring1="Shadow ring", --10% dmg
         back=dt_cape,
         waist="Platinum moogle belt", --3% magic dmg
         legs="Bunzi's pants", --8% dmg
@@ -539,8 +539,8 @@ function init_gear_sets()
         ear2="Ebers earring +1",
         body="Ebers bliaut +3",
         hands="Bunzi's gloves", --7% dmg
-        ring1="Ayanmo ring", --3% dmg
-        ring2="Shadow ring", --10% dmg
+        ring2="Ayanmo ring", --3% dmg
+        ring1="Shadow ring", --10% dmg
         back=dt_cape,
         waist="Platinum moogle belt", --3% magic dmg
         legs="Bunzi's pants", --8% dmg
@@ -557,8 +557,8 @@ function init_gear_sets()
         ear2="Ebers earring +1",
         body="Ebers bliaut +3",
         hands="Bunzi's gloves",
-        ring1="Inyanga ring",
-        ring2="Shadow ring",
+        ring2="Inyanga ring",
+        ring1="Shadow ring",
         back=dt_cape,
         waist="Platinum moogle belt", --3% magic dmg
         legs="Bunzi's pants",
@@ -585,7 +585,7 @@ function init_gear_sets()
         hands="Bunzi's gloves",
         legs="Nyame flanchard",
         feet="Nyame sollerets",
-        neck="Sanctity Necklace",
+        neck="Combatant's torque",
         waist="Grunfeld Rope",
         ear1="Telos earring",
         ear2="Ebers earring +1",

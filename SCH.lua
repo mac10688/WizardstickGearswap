@@ -264,10 +264,6 @@ function init_gear_sets()
         feet="Gendewitha Galoshes +1"
     }
 
-    sets.midcast.StatusRemoval = {
-
-    }
-
     sets.midcast.CureWithLightWeather = set_combine(sets.midcast.Cure, {
         waist="Hachirin-no-obi"
     })
@@ -320,7 +316,7 @@ function init_gear_sets()
         hands="Regal cuffs",
         ring1={name="Stikini Ring +1", bag="wardrobe5"},
         ring2="Kishar ring",
-        back=nuke_cape,
+        back="Aurist's cape +1",
         waist="Obstinate sash",
         legs="Arbatel pants +3",
         feet="Academic's loafers +3"
@@ -330,7 +326,6 @@ function init_gear_sets()
     sets.midcast.MndEnfeebles = set_combine(enfeebles, {
         hands='Arbatel bracers +3',
         ring2={name="Stikini Ring +1", bag="wardrobe6"},
-        back = mnd_enfeeble_cape
     })
 
     sets.midcast.IntEnfeebles = set_combine(enfeebles, {
@@ -338,7 +333,6 @@ function init_gear_sets()
         ring1="Medada's ring",
         ring2="Metamorph ring +1",
         waist="Acuity belt +1",
-        back = int_enfeeble_cape
     })
 
     sets.midcast.MaccEnfeebles = set_combine(enfeebles, {
@@ -349,7 +343,6 @@ function init_gear_sets()
         ring2="Metamorph ring +1",
         waist="Acuity belt +1",
         feet="Arbatel loafers +3",
-        back=macc_cape
     })
 
     sets.midcast['Dark Magic'] = {
@@ -392,7 +385,7 @@ function init_gear_sets()
         main="Bunzi's Rod",
         sub="Ammurapi Shield",
         ammo="Pemphredo Tathlum",
-        head="Arbatel Bonnet +3",
+        head="Pixie hairpin +1",
         neck="Argute Stole +2",
         ear1="Malignance Earring",
         ear2="Regal Earring",
@@ -401,7 +394,7 @@ function init_gear_sets()
         ring1="Medada's ring",
         ring2="Archon ring",
         back=nuke_cape,
-        waist="Slipor Sash",
+        waist="Sacro cord",
         legs="Agwu's Slops",
         feet="Arbatel Loafers +3"        
     }
@@ -417,6 +410,24 @@ function init_gear_sets()
     })
 
     sets.midcast.Aspir = sets.midcast.Drain
+
+    sets.midcast.Absorb =  {
+        main="Musa",
+        sub="Khonsu Strap",
+        ammo="Pemphredo Tathlum",
+        head="Pixie hairpin +1",
+        body="Acad. Gown +3",
+        hands="Acad. Bracers +3",
+        legs="Acad. Pants +3",
+        feet="Acad. Loafers +3",
+        neck="Argute Stole +2",
+        waist="Sacro cord",
+        ear1="Regal Earring",
+        ear2="Malignance Earring",        
+        ring1="Medada's ring",
+        ring2="Archon ring",
+        back=macc_cape
+    }
 
     -- Elemental Magic sets are default for handling low-tier nukes.
     sets.midcast['Elemental Magic'] = {
