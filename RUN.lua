@@ -353,7 +353,7 @@ function init_gear_sets()
         ring1="Niqmaddu ring",
         ring2="Epona's ring",
         back=atk_cape,
-        waist="Ioskeha belt +1",
+        waist="Sarissaphoroi belt",
         legs="Samnuha tights",
         feet="Nyame sollerets"
     }
@@ -369,7 +369,7 @@ function init_gear_sets()
         ring1="Niqmaddu ring",
         ring2="Epona's ring",
         back=atk_cape,
-        waist="Ioskeha belt +1",
+        waist="Sarissaphoroi belt",
         legs="Samnuha tights",
         feet="Nyame sollerets"
     }

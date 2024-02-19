@@ -32,13 +32,25 @@ function job_setup()
     state.Yagrush.SwordShield = M{['description']='Yagrush Set', 'Genmei', 'Ammurapi'}
 
     state.Maxentius = {}
-    state.Maxentius.DualWield = M{['description']='Yagrush Set', 'TP', 'Acc'}
-    state.Maxentius.SwordShield = M{['description']='Yagrush Set', 'Genmei', 'Ammurapi'}
+    state.Maxentius.DualWield = M{['description']='Maxentius Set', 'TP', 'Acc'}
+    state.Maxentius.SwordShield = M{['description']='Maxentius Set', 'Genmei', 'Ammurapi'}
+
+    state.Raetic = {}
+    state.Raetic.DualWield = M{['description']='Raetic Set', 'TP', 'Acc'}
+    state.Raetic.SwordShield = M{['description']='Raetic Set', 'Genmei', 'Ammurapi'}
+
+    state.Lorg = {}
+    state.Lorg.DualWield = M{['description']='Lorg Mor Set', 'TP', 'Acc'}
+    state.Lorg.SwordShield = M{['description']='Lorg Mor Set', 'Genmei', 'Ammurapi'}
 
     send_command('bind ^` gs c cycle CureMode')
     send_command('bind ~f1 gs c set CombatWeapon Daybreak')
     send_command('bind ~f2 gs c set CombatWeapon Yagrush') 
     send_command('bind ~f3 gs c set CombatWeapon Maxentius')
+    send_command('bind ~f4 gs c set CombatWeapon Raetic')
+    send_command('bind ~f5 gs c set CombatWeapon Lorg')
+
+    send_command('bind ^Numpad1 input /ws "Mystic Boon" <t>')
 end
 
 -- Called when this job file is unloaded (eg: job change)
@@ -47,6 +59,9 @@ function user_unload()
     send_command('unbind ~f1')
     send_command('unbind ~f2')
     send_command('unbind ~f3')
+    send_command('unbind ~f4')
+    send_command('unbind ~f5')
+    send_command('unbind ^Numpad1')
 end
 
 -------------------------------------------------------------------------------------------------------------------
@@ -58,7 +73,7 @@ function init_gear_sets()
     --------------------------------------
     -- Start defining the sets
     --------------------------------------
-    local fastcast_cape = { name="Alaunus's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Magic dmg. taken-10%'}}
+    local fastcast_cape = { name="Alaunus's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Def+50'}}
     local attack_cape = { name="Alaunus's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10','Mag. Evasion+15'}}
     local physical_mnd_ws_cape = { name="Alaunus's Cape", augments={'MND+20','Accuracy+20 Attack+20','MND+10','Weapon skill damage +10%','Damage taken-5%'}}
     local dt_cape = { name="Alaunus's Cape", augments={'MND+20','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Enmity-10','Def+50'}}
@@ -86,7 +101,23 @@ function init_gear_sets()
     sets.Maxentius.SwordShield = {}
     sets.Maxentius.SwordShield.Genmei = {main="Maxentius", sub="Genmei shield"}
     sets.Maxentius.SwordShield.Ammurapi = {main="Maxentius", sub="Ammurapi shield"}
+
+    sets.Raetic = {}
+    sets.Raetic.DualWield = {}
+    sets.Raetic.DualWield.TP = {main="Raetic rod +1", sub="Tishtrya"}
+    sets.Raetic.DualWield.Acc = {main="Raetic rod +1", sub="Bunzi's rod"}
+    sets.Raetic.SwordShield = {}
+    sets.Raetic.SwordShield.Genmei = {main="Raetic rod +1", sub="Genmei shield"}
+    sets.Raetic.SwordShield.Ammurapi = {main="Raetic rod +1", sub="Ammurapi shield"}
     
+    sets.Lorg = {}
+    sets.Lorg.DualWield = {}
+    sets.Lorg.DualWield.TP = {main="Lorg Mor", sub="Tishtrya"}
+    sets.Lorg.DualWield.Acc = {main="Lorg Mor", sub="Bunzi's rod"}
+    sets.Lorg.SwordShield = {}
+    sets.Lorg.SwordShield.Genmei = {main="Lorg Mor", sub="Genmei shield"}
+    sets.Lorg.SwordShield.Ammurapi = {main="Lorg Mor", sub="Ammurapi shield"}
+
     -- Precast Sets
 
     -- Fast cast sets for spells
@@ -94,18 +125,19 @@ function init_gear_sets()
         ammo="Incantor Stone", --2%
         head="Ebers cap +3", --13%
         neck="Cleric's torque +2", --10%
-        ear1="Malignance earring",
+        ear1="Malignance earring", --4%
         -- ear2="Loquacious Earring", --2%
-        ear2="Ebers earring +1",
+        ear2="Odnowa earring +1",
         body="Pinga tunic +1", --15%
-        hands="Fanatic gloves", --7%
+        hands="Nyame gauntlets", --7%
         ring1="Medada's Ring", --10%
         ring2="Defending ring",
-        -- ring2="Kishar ring", --4%        
+        -- ring2="Kishar ring", --4%      
         back=fastcast_cape, --10%
         -- waist="Embla Sash", --5%
         -- legs="Lengo pants", --5%
         legs="Ebers pantaloons +3",
+        feet="Nyame sollerets"
     }
 
     sets.precast.FC.Stoneskin = set_combine(sets.precast.FC, {head="Umuthi Hat"})
@@ -186,21 +218,26 @@ function init_gear_sets()
 
     sets.midcast.Cure.SIRD = sets.midcast.Cure
 
+    -- 1338 defense
+    -- 42 mdb 611 meva
+    -- 35 dt
+    -- Cure potency I: 55%
+    -- Cure potency II: 20%
     sets.midcast.Cure.Pure = {
         main="Raetic Rod +1",
-        ammo="Incantor Stone",
-        head="Ebers cap +3",
+        ammo="Staunch Tathlum +1",
+        head="Ebers cap +3",  --10 mdb 125 meva
         neck="Cleric's torque +2",
         ear1="Glorious earring",
         ear2="Ebers earring +1",
-        body="Theophany bliaut +3",
-        hands="Theophany mitts +3",
+        body="Theophany bliaut +3", -- 8 mdb 100 meva
+        hands="Theophany mitts +3", -- 5 mdb 57 meva
         ring1="Medada's ring",
         ring2="Persis ring",
-        back=fastcast_cape,
-        waist="Plat. Mog. Belt",
-        legs="Ebers pantaloons +3",
-        feet="Ebers duckbills +3"
+        back=fastcast_cape, 
+        waist="Plat. Mog. Belt", -- 15 meva
+        legs="Ebers pantaloons +3", --10 mdb 157 meva
+        feet="Ebers duckbills +3" -- 9 mdb 157 meva
     }
 
     sets.midcast.Cure.Pure.Solace = set_combine(sets.midcast.Cure.Pure, {body="Ebers Bliaut +3"})
@@ -326,17 +363,17 @@ function init_gear_sets()
 
     sets.midcast.BarElement = {
         main="Beneficus",
-        head="Ebers cap +3",
+        head="Telchine cap",
         ear1="Sanare earring", --3% magic dmg
         ear2="Ebers earring +1",
         neck="Loricate torque +1",
-        body="Ebers Bliaut +3",
-        hands="Ebers mitts +3",
-        ring2="Ayanmo ring", --3% dmg
+        body="Ebers Bliaut +3", --Solace
+        hands="Telchine gloves",
         ring1="Shadow ring", --10% dmg
+        ring2="Ayanmo ring", --3% dmg        
         back=dt_cape,
         legs="Piety Pantaloons +3",
-        feet="Ebers duckbills +3"
+        feet="Telchine pigaches"
     }
 
     -- sets.midcast.BarElement = set_combine(midcast_duration, {
@@ -377,14 +414,14 @@ function init_gear_sets()
         hands="Piety mitts +3",
         ring1={name="Stikini Ring +1", bag="wardrobe5"},
         ring2={name="Stikini Ring +1", bag="wardrobe6"},
-        back=fastcast_cape,
-        waist="Acuity belt +1",
+        back="Aurist's cape +1",
+        waist="Obstinate sash",
         legs="Theophany pantaloons +3",
         feet="Ebers duckbills +3"
     }
 
     sets.midcast.Holy = {
-        main="Gada",
+        main="Daybreak",
         sub="Ammurapi shield",
         ammo="Hydrocera",
         head="Bunzi's hat",
@@ -393,8 +430,8 @@ function init_gear_sets()
         ear2="Regal earring",
         body="Bunzi's robe",
         hands="Bunzi's gloves",
-        ring1={name="Stikini Ring +1", bag="wardrobe5"},
-        ring2={name="Stikini Ring +1", bag="wardrobe6"},
+        ring1="Medada's ring",
+        ring2="Freke ring",
         back=fastcast_cape,
         waist="Orpheus's sash",
         legs="Bunzi's pants",
@@ -402,24 +439,30 @@ function init_gear_sets()
     }
 
     sets.midcast.Banish = {
-        main="Gada",
+        main="Daybreak",
         sub="Ammurapi shield",
         ammo="Hydrocera",
         head="Ipoca beret",
         neck="Incanter's torque",
         ear1="Malignance earring",
-        ear2="Regal earring",
+        ear2="Ebers earring +1",
         body="Ebers bliaut +3",
         hands="Piety mitts +3",
         ring1={name="Stikini Ring +1", bag="wardrobe5"},
         ring2={name="Stikini Ring +1", bag="wardrobe6"},
-        back=fastcast_cape,
-        waist="Orpheus's sash",
+        back="Aurist's cape +1",
+        waist="Obstinate sash",
         legs="Theophany pantaloons +3",
-        feet="Medium's Sabots"
+        feet="Ebers duckbills +3"
     }
 
+    sets.midcast.Banish.Resistant = set_combine(sets.midcast.Banish, {
+        head="Ebers cap +3"
+    })
+
     sets.midcast.Banishga = sets.midcast.Banish
+
+    sets.midcast.Banishga.Resistant = sets.midcast.Banish.Resistant
 
     sets.midcast['Dark Magic'] = {
         main="Daybreak",
@@ -434,6 +477,7 @@ function init_gear_sets()
         waist="Austerity Belt +1",
         left_ear="Regal Earring",
         right_ear="Malignance Earring",
+
         ring1="Medada's Ring",
         ring2="Archon Ring",
         back=fastcast_cape
@@ -481,7 +525,7 @@ function init_gear_sets()
         hands="Ebers mitts +3",
     })
 
-    sets.midcast.Dia = sets.midcast.enfeebling
+    sets.midcast.Dia = sets.midcast["Enfeebling Magic"]
     sets.midcast.Bio = sets.midcast['Dark Magic']
     sets.midcast.Slow = sets.midcast.MndEnfeebles
     sets.midcast.Paralyze = sets.midcast.MndEnfeebles
@@ -503,13 +547,11 @@ function init_gear_sets()
 
     -- Idle sets (default idle set not needed since the other three are defined, but leaving for testing purposes)
     sets.idle = {
-        main="Daybreak", --10% physical
-        sub="Genmei shield", --10% physical
         ammo="Staunch tathlum +1", --3% dmg
         head="Nyame helm", --7% dmg
         neck="Loricate Torque +1", --6% dmg
-        ear1="Genmei earring", --3% magic dmg
-        ear2="Ebers earring +1",
+        ear1="Ran earring", --3% magic dmg
+        ear2="Foresti earring",
         body="Ebers bliaut +3",
         hands="Bunzi's gloves", --7% dmg
         ring2="Ayanmo ring", --3% dmg
@@ -529,40 +571,46 @@ function init_gear_sets()
     
     -- Defense sets
 
+    -- 1659 defense
+    -- 29 mdb 716 meva
+    -- definitely > 50% dt
     sets.defense.PDT = {
-        main="Daybreak", --10% physical
-        sub="Genmei shield", --10% physical
-        ammo="Staunch tathlum +1", --3% dmg
-        head="Nyame helm", --7% dmg
-        neck="Loricate Torque +1", --6% dmg
-        ear1="Genmei earring", --3% magic dmg
-        ear2="Ebers earring +1",
-        body="Ebers bliaut +3",
-        hands="Bunzi's gloves", --7% dmg
-        ring2="Ayanmo ring", --3% dmg
-        ring1="Shadow ring", --10% dmg
-        back=dt_cape,
-        waist="Platinum moogle belt", --3% magic dmg
-        legs="Bunzi's pants", --8% dmg
-        feet="Ebers duckbills +3" --7% dmg
+        main="Daybreak",
+        sub="Genmei shield",
+        ammo="Staunch tathlum +1",
+        head="Nyame helm", -- 5 mdb 123 meva
+        neck="Loricate Torque +1",
+        ear1="Ran earring",
+        ear2="Foresti earring",
+        body="Nyame mail", -- 8 mdb 139 meva
+        hands="Nyame gauntlets", -- 4 mdb 112 meva
+        ring1="Inyanga ring", -- 12 meva
+        ring2="Ayanmo ring",
+        back=dt_cape, -- 30 meva
+        waist="Platinum moogle belt",
+        legs="Nyame flanchard", -- 7 mdb 150 meva
+        feet="Nyame sollerets" -- 5 mdb 150 meva
     }
 
+    -- 1412 defense
+    -- 55 mdb 732 meva
+    -- 49% dt
     sets.defense.MDT = {
         main="Daybreak",
         sub="Genmei shield",
         ammo="Staunch tathlum +1",
-        head="Nyame helm",
+        head="Ebers cap +3", --10 mdb 125 meva
         neck="Loricate Torque +1",
-        ear1="Sanare earring", --3% magic dmg
+        ear1="Sanare earring", --4 mdb 6 meva
         ear2="Ebers earring +1",
-        body="Ebers bliaut +3",
-        hands="Bunzi's gloves",
-        ring2="Inyanga ring",
-        ring1="Shadow ring",
-        back=dt_cape,
-        waist="Platinum moogle belt", --3% magic dmg
-        legs="Bunzi's pants",
-        feet="Nyame sollerets"
+        body="Ebers bliaut +3",  -- 11 mdb 130 meva
+        hands="Bunzi's gloves", -- 7 mdb 112 meva
+        ring1="Shadow ring", 
+        ring2={name="Vexer ring +1", bag="wardrobe6"}, --4 mdb
+        back=dt_cape, -- 30 meva
+        waist="Platinum moogle belt", --15 meva
+        legs="Ebers pantaloons +3", -- 10 mdb 157 meva
+        feet="Ebers duckbills +3" -- 9 mdb 157 meva
     }
 
     sets.Kiting = {

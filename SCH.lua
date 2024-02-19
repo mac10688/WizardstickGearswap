@@ -304,7 +304,7 @@ function init_gear_sets()
 
     sets.midcast.Storm = set_combine(midcast_enhancing_duration, {feet="Pedagogy Loafers +3"})
 
-    local enfeebles = {
+    sets.midcast['Enfeebling Magic'] = {
         main="Contemplator +1",
         sub="Enki strap",
         ammo="Hydrocera",
@@ -323,19 +323,19 @@ function init_gear_sets()
     }
 
     -- Custom spell classes
-    sets.midcast.MndEnfeebles = set_combine(enfeebles, {
+    sets.midcast.MndEnfeebles = set_combine(sets.midcast['Enfeebling Magic'], {
         hands='Arbatel bracers +3',
         ring2={name="Stikini Ring +1", bag="wardrobe6"},
     })
 
-    sets.midcast.IntEnfeebles = set_combine(enfeebles, {
+    sets.midcast.IntEnfeebles = set_combine(sets.midcast['Enfeebling Magic'], {
         ammo="Ghastly tathlum +1",
         ring1="Medada's ring",
         ring2="Metamorph ring +1",
         waist="Acuity belt +1",
     })
 
-    sets.midcast.MaccEnfeebles = set_combine(enfeebles, {
+    sets.midcast.MaccEnfeebles = set_combine(sets.midcast['Enfeebling Magic'], {
         sub="Khonsu",
         ammo="Pemphredo tathlum",
         hands="Arbatel bracers +3",
@@ -500,11 +500,99 @@ function init_gear_sets()
         waist="Acuity belt +1"
     })
 
-    sets.midcast.Impact = set_combine(sets.midcast.IntEnfeebles, {
-        head=empty,
-        ring2="Archon ring",
-        body='Crepuscular cloak'
+
+    sets.midcast['Enfeebling Magic'] = {
+        main="Contemplator +1",
+        sub="Enki strap",
+        ammo="Hydrocera",
+        head="Academic's mortarboard +3",
+        neck="Argute stole +2",
+        ear1="Regal earring",
+        ear2="Malignance earring",
+        body="Arbatel gown +3",
+        hands="Regal cuffs",
+        ring1={name="Stikini Ring +1", bag="wardrobe5"},
+        ring2="Kishar ring",
+        back="Aurist's cape +1",
+        waist="Obstinate sash",
+        legs="Arbatel pants +3",
+        feet="Academic's loafers +3"
+    }
+
+    -- Custom spell classes
+    sets.midcast.MndEnfeebles = set_combine(sets.midcast['Enfeebling Magic'], {
+        hands='Arbatel bracers +3',
+        ring2={name="Stikini Ring +1", bag="wardrobe6"},
     })
+
+    sets.midcast.IntEnfeebles = set_combine(sets.midcast['Enfeebling Magic'], {
+        ammo="Ghastly tathlum +1",
+        ring1="Medada's ring",
+        ring2="Metamorph ring +1",
+        waist="Acuity belt +1",
+    })
+
+    sets.midcast.Holy = {
+        main="Daybreak",
+        sub="Ammurapi shield",
+        ammo="Hydrocera",
+        head="Agwu's cap",
+        neck="Argute stole +2",
+        ear1="Regal earring",
+        ear2="Arbatel earring +1",
+        body="Agwu's robe",
+        hands="Agwu's gages",
+        ring1="Medada's ring",
+        ring2="Freke ring",
+        back=fast_cast_cape,
+        waist="Orpheus's sash",
+        legs="Agwu's slops",
+        feet="Agwu's pigaches"
+    }
+
+    sets.midcast.Banish = {
+        main="Daybreak",
+        sub="Ammurapi shield",
+        ammo="Hydrocera",
+        head="Ipoca beret",
+        neck="Argute stole +2",
+        ear1="Regal earring",
+        ear2="Arbatel earring +1",
+        body="Arbatel gown +3",
+        hands="Arbatel bracers +3",
+        ring1={name="Stikini Ring +1", bag="wardrobe5"},
+        ring2={name="Stikini Ring +1", bag="wardrobe6"},
+        back="Aurist's cape +1",
+        waist="Obstinate sash",
+        legs="Arbatel pants +3",
+        feet="Academic's loafers +3"
+    }
+
+    sets.midcast.Banish.Resistant = set_combine(sets.midcast.Banish, {
+        head="Arbatel bonnet +3"
+    })
+
+    sets.midcast.Banishga = sets.midcast.Banish
+
+    sets.midcast.Banishga.Resistant = sets.midcast.Banish.Resistant
+
+    sets.midcast.Impact = {
+        main="Tupsimati",
+        sub="Khonsu",
+        ammo="Pemphredo tathlum",
+        head=empty,
+        neck="Argute stole +2",
+        ear1="Regal earring",
+        ear2="Malignance earring",
+        body='Crepuscular cloak',
+        hands="Arbatel bracers +3",
+        ring1="Medada's ring",
+        ring2="Archon ring",
+        back="Aurist's cape +1",
+        waist="Acuity belt +1",
+        legs="Arbatel pants +3",
+        feet="Academic's loafers +3"
+    }
 
     sets.Kiting = {
         ring2="Shneddick ring +1",
@@ -572,7 +660,7 @@ function init_gear_sets()
         head="Arbatel bonnet +3",
         neck="Loricate torque +1",
         ear1="Etiolation earring",
-        ear2="Hearty earring",
+        ear2="Arete del Luna +1",
         body="Arbatel gown +3",
         hands="Agwu's gages",
         ring1={name="Stikini Ring +1", bag="wardrobe5"},
@@ -601,22 +689,25 @@ function init_gear_sets()
         feet="Nyame sollerets"
     }
 
+    -- 1348 def
+    -- 56 mdb 777 meva
+    -- 48 dt
     sets.defense.MDT = {
         main="Malignance Pole",
-        sub="Irenic strap +1",
+        sub="Irenic strap +1", -- 15 meva
         ammo="Staunch tathlum +1",
-        head="Arbatel bonnet +3",
-        neck="Warder's charm +3",
-        ear1="Etiolation earring",
-        ear2="Sanare earring",
-        body="Arbatel gown +3",
-        hands="Arbatel bracers +3",
-        ring1="Vengeful ring",
+        head="Arbatel bonnet +3", -- 10 mdb 136 meva
+        neck="Warder's charm +1",
+        ear1="Lugalbanda earring",
+        ear2="Sanare earring", -- 4 mdb 6 meva
+        body="Arbatel gown +3", -- 11 mdb 141 meva
+        hands="Arbatel bracers +3", -- 7 mdb 98 meva
+        ring1={name="Vexer ring +1", bag="wardrobe5"}, --4 mdb
         ring2="Shadow ring",
-        back=idle_cape,
-        waist="Slipor sash",
-        legs="Arbatel pants +3",
-        feet="Arbatel loafers +3"
+        back=idle_cape, --30 meva
+        waist="Platinum moogle belt", -- 15 meva
+        legs="Arbatel pants +3", -- 10 mdb 168 meva
+        feet="Arbatel loafers +3" --10 mdb 168 meva
     }
 
     --sets.buff['Sandstorm'] = {feet="Desert Boots"}

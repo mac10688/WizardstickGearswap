@@ -518,7 +518,7 @@ function init_gear_sets()
         head="Lethargy chappel +3",
         neck="Loricate torque +1",
         ear1="Etiolation earring",
-        ear2="Hearty earring",
+        ear2="Arete del Luna +1",
         body="Lethargy sayon +3",
         hands="Malignance gloves",
         ring1="Ayanmo ring",

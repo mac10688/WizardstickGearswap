@@ -14,7 +14,7 @@ end
 -- Setup vars that are user-independent.  state.Buff vars initialized here will automatically be tracked.
 function job_setup()
     state.OffenseMode:options('None', 'Normal')
-    state.CastingMode:options('Normal', 'Occult Acumen')
+    state.CastingMode:options('Normal', 'Occult Acumen', 'DT')
     state.IdleMode:options('Normal', 'PDT')
     
     state.MagicBurst = M(false, 'Magic Burst')
@@ -382,7 +382,7 @@ function init_gear_sets()
         head = "Archmage's petasos +3"
    })
 
-    sets.midcast['Elemental Magic']['Magic Burst'] = set_combine(sets.midcast['Elemental Magic'], {
+    sets.magic_burst = set_combine(sets.midcast['Elemental Magic'], {
         head="Ea hat +1", --MB: 7 MB2: 7
         neck="Sorcerer's stole +2", --MB: 10
         body="Wicce coat +3", --MB2: 5
@@ -390,6 +390,16 @@ function init_gear_sets()
         legs="Ea slops +1", --MB: 8 MB2: 8
         feet="Agwu's pigaches", --MB: 6
         right_ring="Freke ring",
+        back=magic_atk_cape --MB 5
+    })
+
+    sets.midcast['Elemental Magic']['DT'] = set_combine(sets.midcast['Elemental Magic'], {
+        head="Wicce petasos +3", --MB: 7 MB2: 7
+        neck="Sorcerer's stole +2", --MB: 10
+        body="Wicce coat +3", --MB2: 5
+        hands="Wicce gloves +3", --MB: 8 MB2: 5
+        legs="Wicce chausses +3", --MB: 8 MB2: 8
+        feet="Wicce sabots +3", --MB: 6
         back=magic_atk_cape --MB 5
     })
 
@@ -430,17 +440,17 @@ function init_gear_sets()
     -- Idle sets
     sets.defense.PDT = {
         ammo="Staunch tathlum +1",
-        head="Befouled crown",
+        head="Wicce petasos +3",
         neck="Loricate torque +1",
         ear1="Etiolation earring",
-        ear2="Hearty earring",
-        body="Shamash robe",
+        ear2="Arete del luna +1",
+        body="Wicce coat +3",
         hands="Wicce gloves +3",
         ring1="Vengeful ring",
         ring2="Defending ring",
         back=idle_cape,
-        waist="Slipor sash",
-        legs="Agwu's slops",
+        waist="Platinum moogle belt",
+        legs="Wicce chausses +3",
         feet="Wicce sabots +3"
     }
     -- Normal refresh idle set
@@ -522,10 +532,16 @@ function job_midcast(spell, action, spellMap, eventArgs)
 end
 
 function job_post_midcast(spell, action, spellMap, eventArgs)
-    if spell.skill == 'Elemental Magic' and state.MagicBurst.value and spell.english ~= 'Impact' then
-        equip(sets.magic_burst)
+    if spell.skill == 'Elemental Magic' and spell.english ~= 'Impact' then
+        if state.MagicBurst.value then
+            equip(sets.magic_burst)
+        end
         if player.mp < 700 then
             equip({body="Spaekona's Coat +3"})
+        end
+        local obi_or_orpheus = obi_or_orpheus(spell)
+        if obi_or_orpheus then
+            equip({waist=obi_or_orpheus})
         end
     end
 end

@@ -372,7 +372,7 @@ function init_gear_sets()
         ring1={name="Chirich ring +1", bag="wardrobe5"},
         ring2={name="Chirich ring +1", bag="wardrobe6"},
         back=tp_cape,
-        waist="Reiki yotai",
+        waist="Sarissaphoroi belt",
         legs="Nyame flanchard",
         feet="Nyame sollerets"
     }
