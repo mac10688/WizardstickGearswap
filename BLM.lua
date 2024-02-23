@@ -96,6 +96,7 @@ function init_gear_sets()
 
     local magic_atk_cape = { name="Taranus's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10','Spell interruption rate down-10%'}}
     local idle_cape = { name="Taranus's Cape", augments={'VIT+20','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Phys. dmg. taken-10%'}}
+    local idle_mdt_cape = { name="Taranus's Cape", augments={'INT+20','Eva.+20 /Mag. Eva.+20','INT+10','"Fast Cast"+10','Mag. Evasion+15'}}
     local magic_int_ws = { name="Taranus's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','Weapon skill damage +10%','Damage taken-5%'}}
     local death_cape = { name="Taranus's Cape", augments={'MP+60','Mag. Acc+20 /Mag. Dmg.+20','MP+20','"Mag.Atk.Bns."+10','Spell interruption rate down-10%'}}
     local ws_boots = { name="Merlinic Crackows", augments={'Attack+25','Crit.hit rate+3','Weapon skill damage +10%','Mag. Acc.+16 "Mag.Atk.Bns."+16'}}
@@ -439,20 +440,37 @@ function init_gear_sets()
 
     -- Idle sets
     sets.defense.PDT = {
-        ammo="Staunch tathlum +1",
-        head="Wicce petasos +3",
-        neck="Loricate torque +1",
-        ear1="Etiolation earring",
-        ear2="Arete del luna +1",
-        body="Wicce coat +3",
-        hands="Wicce gloves +3",
-        ring1="Vengeful ring",
-        ring2="Defending ring",
+        ammo="Staunch Tathlum +1",
+        head="Nyame Helm",
+        neck="Loricate Torque +1",
+        ear1="Ran Earring",
+        ear2="Tuisto Earring",
+        body="Nyame Mail",
+        hands="Nyame Gauntlets",
+        ring1="Shneddick Ring +1",
+        ring2="Shadow Ring",
         back=idle_cape,
-        waist="Platinum moogle belt",
-        legs="Wicce chausses +3",
-        feet="Wicce sabots +3"
+        waist="Plat. Mog. Belt",
+        legs="Nyame Flanchard",
+        feet="Nyame Sollerets"
     }
+
+    sets.defense.MDT = {
+        ammo="Staunch Tathlum +1",
+        head="Wicce Petasos +3",
+        neck="Loricate Torque +1",
+        ear1="Sanare Earring",
+        ear2="Lugalbanda Earring",
+        body="Wicce Coat +3",
+        hands="Wicce Gloves +3",
+        ring1={name="Vexer ring +1", bag="wardrobe6"}, --4 mdb
+        ring2="Shadow ring",        
+        back=idle_mdt_cape,
+        waist="Plat. Mog. Belt",
+        legs="Wicce Chausses +3",
+        feet="Wicce Sabots +3"
+    }
+
     -- Normal refresh idle set
     sets.idle = set_combine(sets.defense.PDT, {
         ammo="Staunch tathlum +1",

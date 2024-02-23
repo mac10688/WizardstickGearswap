@@ -44,6 +44,8 @@ function init_gear_sets()
     local status_ailment_cape = { name="Ogma's cape", augments={'HP+60','Eva.+20 /Mag. Eva.+20','HP+20','Enmity+10','Occ. inc. resist. to stat. ailments+10'}}
     local fast_cast_cape = { name="Ogma's cape", augments={'HP+60','Eva.+20 /Mag. Eva.+20','HP+20','"Fast Cast"+10','Spell interruption rate down-10%'}}
     local dt_cape = { name="Ogma's cape", augments={'HP+60','Eva.+20 /Mag. Eva.+20','HP+20','Enmity+10','Damage taken-5%'}}
+    local idle_pdt_cape = { name="Ogma's Cape", augments={'VIT+20','Eva.+20 /Mag. Eva.+20','VIT+10','Enmity+10','DEF+50'}}
+    local idle_mdt_cape = { name="Ogma's Cape", augments={'INT+20','Eva.+20 /Mag. Eva.+20','INT+10','"Fast Cast"+10','Mag. Evasion+15'}}
     local atk_cape = { name="Ogma's cape", augments={'STR+20','Accuracy+20 Attack+20','Accuracy+10','"Dbl.Atk."+10','Damage taken-5%'}}
     local dimi_cape = { name="Ogma's cape", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Weapon skill damage +10%','Damage taken-5%'}}
 
@@ -67,40 +69,40 @@ function init_gear_sets()
 
     --DT: 52
     sets.defense.PDT = {
-        ammo="Staunch tathlum +1", --dt: 3
-        head="Nyame helm", --dt: 7
-        neck="Futhark torque +2",--dt: 7
-        ear1="Odnowa earring +1",--dt: 3
-        ear2="Tuisto earring",
-        body="Nyame mail", --dt: 9
-        hands="Turms mittens +1",
-        ring1="Shadow ring", --dt: 10
-        ring2={name="Moonlight ring", bag="wardrobe6"}, --dt: 5
-        back= dt_cape,--dt: 5
-        waist="Flume belt +1",
-        legs="Erilaz leg guards +3",  --dt: 13
-        feet="Turms leggings +1"
+        ammo="Staunch Tathlum +1",
+        head="Nyame Helm",
+        neck="Unmoving Collar +1",
+        ear1="Ran Earring",
+        ear2="Tuisto Earring",
+        body="Nyame Mail",
+        hands="Nyame Gauntlets",
+        ring1="Shadow Ring",
+        ring2="Gelatinous Ring +1",
+        back=idle_pdt_cape,
+        waist="Flume Belt +1",
+        legs="Nyame Flanchard",
+        feet="Nyame Sollerets"
     }
 
-    --dt: 53
-    --mdb: 61
-    --meva: 690
-    --resist elements: 65-75
+    --dt: 50
+    --mdb: 49
+    --meva: 438
+    --resist elements: 55
     --resist status: 19
     sets.defense.MDT = {
-        ammo="Staunch tathlum +1", --dt:3 status: 11
-        head="Erilaz galea +3", --mdb:9 meva:119
-        neck="Warder's charm +1", --resist:20
-        ear1="Sanare earring", --mdb:4 meva:9
-        ear2="Erilaz earring +1", --dt:5 meva:11   
-        body="Erilaz surcoat +3", --mdb:10 meva:130 
-        hands="Erilaz gauntlets +3", --dt:11 mdb:7 meva:87 status:8
-        ring1="Shadow ring",
-        ring2={name="Moonlight ring", bag="wardrobe6"}, --dt:5
-        back=dt_cape, --meva: 20 dt:5
-        waist="Engraved belt", --resist:20
-        legs="Erilaz leg guards +3", --dt:13 mdb: 10 meva:157
-        feet="Erilaz greaves +3" --dt:11 mdb:9 meva:157 resist:35
+        ammo="Yamarang",
+        head="Erilaz Galea +3",
+        neck="Futhark Torque +2",
+        ear1="Sanare Earring",
+        ear2="Erilaz Earring +1",
+        body="Erilaz Surcoat +3",
+        hands="Erilaz Gauntlets +3",
+        ring1="Shadow Ring",
+        ring2="Moonlight Ring",
+        back=idle_mdt_cape,
+        waist="Platinum moogle belt",
+        legs="Erilaz Leg Guards +3",
+        feet="Erilaz Greaves +3"
     }
 
     sets.defense.ResistStatus = set_combine(sets.defense.MDT, {

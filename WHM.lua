@@ -76,7 +76,9 @@ function init_gear_sets()
     local fastcast_cape = { name="Alaunus's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Def+50'}}
     local attack_cape = { name="Alaunus's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10','Mag. Evasion+15'}}
     local physical_mnd_ws_cape = { name="Alaunus's Cape", augments={'MND+20','Accuracy+20 Attack+20','MND+10','Weapon skill damage +10%','Damage taken-5%'}}
-    local dt_cape = { name="Alaunus's Cape", augments={'MND+20','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Enmity-10','Def+50'}}
+    local idle_hybrid_cape = { name="Alaunus's Cape", augments={'VIT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Fast Cast"+10','DEF+50'}}
+    local idle_pdt_cape = { name="Alaunus's Cape", augments={'VIT+20','Eva.+20 /Mag. Eva.+20','VIT+10','"Fast Cast"+10','DEF+50'}}
+    local idle_mdt_cape = { name="Alaunus's Cape", augments={'INT+20','Eva.+20 /Mag. Eva.+20','INT+10','"Fast Cast"+10','Mag. Evasion+15'}}
     
     sets.Daybreak = {}
     sets.Daybreak.DualWield = {}
@@ -223,6 +225,7 @@ function init_gear_sets()
     -- 35 dt
     -- Cure potency I: 55%
     -- Cure potency II: 20%
+    -- -
     sets.midcast.Cure.Pure = {
         main="Raetic Rod +1",
         ammo="Staunch Tathlum +1",
@@ -363,6 +366,7 @@ function init_gear_sets()
 
     sets.midcast.BarElement = {
         main="Beneficus",
+        sub="Ammurapi shield",
         head="Telchine cap",
         ear1="Sanare earring", --3% magic dmg
         ear2="Ebers earring +1",
@@ -372,6 +376,7 @@ function init_gear_sets()
         ring1="Shadow ring", --10% dmg
         ring2="Ayanmo ring", --3% dmg        
         back=dt_cape,
+        waist="Embla sash",
         legs="Piety Pantaloons +3",
         feet="Telchine pigaches"
     }
@@ -556,7 +561,7 @@ function init_gear_sets()
         hands="Bunzi's gloves", --7% dmg
         ring2="Ayanmo ring", --3% dmg
         ring1="Shadow ring", --10% dmg
-        back=dt_cape,
+        back=idle_hybrid_cape,
         waist="Platinum moogle belt", --3% magic dmg
         legs="Bunzi's pants", --8% dmg
         feet="Ebers duckbills +3" --7% dmg
@@ -575,8 +580,6 @@ function init_gear_sets()
     -- 29 mdb 716 meva
     -- definitely > 50% dt
     sets.defense.PDT = {
-        main="Daybreak",
-        sub="Genmei shield",
         ammo="Staunch tathlum +1",
         head="Nyame helm", -- 5 mdb 123 meva
         neck="Loricate Torque +1",
@@ -586,28 +589,26 @@ function init_gear_sets()
         hands="Nyame gauntlets", -- 4 mdb 112 meva
         ring1="Inyanga ring", -- 12 meva
         ring2="Ayanmo ring",
-        back=dt_cape, -- 30 meva
+        back=idle_pdt_cape, -- 30 meva
         waist="Platinum moogle belt",
         legs="Nyame flanchard", -- 7 mdb 150 meva
         feet="Nyame sollerets" -- 5 mdb 150 meva
     }
 
-    -- 1412 defense
-    -- 55 mdb 732 meva
+    -- 1457 defense
+    -- 55 mdb 707 meva
     -- 49% dt
     sets.defense.MDT = {
-        main="Daybreak",
-        sub="Genmei shield",
         ammo="Staunch tathlum +1",
         head="Ebers cap +3", --10 mdb 125 meva
         neck="Loricate Torque +1",
         ear1="Sanare earring", --4 mdb 6 meva
-        ear2="Ebers earring +1",
+        ear2="Foresti earring",
         body="Ebers bliaut +3",  -- 11 mdb 130 meva
-        hands="Bunzi's gloves", -- 7 mdb 112 meva
+        hands="Ebers mitts +3", -- 7 mdb 87 meva
         ring1="Shadow ring", 
         ring2={name="Vexer ring +1", bag="wardrobe6"}, --4 mdb
-        back=dt_cape, -- 30 meva
+        back=idle_mdt_cape, -- 30 meva
         waist="Platinum moogle belt", --15 meva
         legs="Ebers pantaloons +3", -- 10 mdb 157 meva
         feet="Ebers duckbills +3" -- 9 mdb 157 meva
@@ -672,11 +673,6 @@ end
 
 function job_post_midcast(spell, action, spellMap, eventArgs)
     -- Apply Divine Caress boosting items as highest priority over other gear, if applicable.
-    -- sets.midcast.Cure.Pure.Solace = set_combine(sets.midcast.Cure.Pure, {body="Ebers Bliaut +3"})
-    -- sets.midcast.Cure.SIRD.Solace = set_combine(sets.midcast.Cure.SIRD, {body="Ebers Bliaut +3"})
-
-    -- sets.midcast.Curaga.Pure = sets.midcast.Cure.Pure
-    -- sets.midcast.Curaga.SIRD = sets.midcast.Cure.SIRD
     if spellMap == 'Cure' or spellMap == "Curaga" then
         equip(sets.midcast[spellMap][state.CureMode.Value])
         if spellMap == 'Cure' and state.Buff['Afflatus Solace'] then

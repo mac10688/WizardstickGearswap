@@ -60,18 +60,16 @@ function init_gear_sets()
     -- Start defining the sets
     --------------------------------------
 
-    local idle_cape = { name="Lugh's Cape", augments={'MND+20','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','"Fast Cast"+10','Def+50'}}
+    local hybrid_cape = { name="Lugh's Cape", augments={'VIT+20','Eva.+20 /Mag. Eva.+20','INT+10','"Fast Cast"+10','Mag. Evasion+15'}}
+    local pdt_cape = { name="Lugh's Cape", augments={'VIT+20','Eva.+20 /Mag. Eva.+20','VIT+10','"Fast Cast"+10','DEF+50',}}
+    local mdt_cape =  { name="Lugh's Cape", augments={'INT+20','Eva.+20 /Mag. Eva.+20','INT+10','"Fast Cast"+10','Mag. Evasion+15'}}
     local nuke_cape = { name="Lugh's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10','Spell interruption rate down-10%'}}
     local cure_cape = { name="Lugh's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','"Fast Cast"+10','Spell interruption rate down-10%'}}
     local mnd_magic_ws = { name="Lugh's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','Weapon skill damage +10%','Damage taken-5%'}}
     local int_magic_ws = { name="Lugh's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','Weapon skill damage +10%','Damage taken-5%'}}
     local ws_boots = { name="Merlinic Crackows", augments={'Attack+25','Crit.hit rate+3','Weapon skill damage +10%','Mag. Acc.+16 "Mag.Atk.Bns."+16'}}
-    local macc_cape =  {name="Lugh's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Magic dmg. taken-10%',}}
-    
 
-    local fc_cape = idle_cape
-    local int_enfeeble_cape = nuke_cape
-    local mnd_enfeeble_cape = cure_cape
+    local fc_cape = hybrid_cape
 
     local merlinic_legs_mb = { name="Merlinic Shalwar", augments={'Mag. Acc.+22','Magic burst dmg.+10%','MND+2','"Mag.Atk.Bns."+13'}}
     local merlinic_feet_mb = { name="Merlinic Crackows", augments={'"Mag.Atk.Bns."+25','Magic burst dmg.+11%','Mag. Acc.+5'}}
@@ -105,8 +103,8 @@ function init_gear_sets()
         ammo="Staunch tathlum +1",
         head="Arbatel bonnet +3",
         neck="Loricate torque +1",
-        ear1="Etiolation earring", --fast cast 1%
-        ear2="Malignance earring", --fast cast 4%
+        ear1="Malignance earring", --fast cast 4%
+        ear2="Etiolation earring", --fast cast 1%        
         body="Pinga tunic +1", --fast cast 15%
         hands="Academic's bracers +3", --fast cast 8%
         ring1="Medada's ring", --fast cast 10%
@@ -244,13 +242,15 @@ function init_gear_sets()
 
     sets.midcast.Cure = set_combine(sets.precast.FC, {
         main="Musa", -- 25% cure | 10% fc
+        sub="Khonsu",
         -- head="Vanya hood", -- 10% cure | haste: 6%
+        ear2="Arbatel earring +1",
         body="Pinga tunic +1", -- 15% cure | 15% fc
         hands="Pedagogy bracers +3", -- 3% cure II | 3% haste
         back=cure_cape, -- 10% fc
-        ring1={name="Stikini Ring +1", bag="wardrobe5"},
+        ring1="Persis ring",
         ring2="Defending ring",
-        legs="Academic's pants +3", -- 8% cure | 
+        legs="Academic's pants +3", -- 8% cure |
         -- legs="Pinga pants +1",
         feet="Pedagogy loafers +3"
     })
@@ -426,7 +426,7 @@ function init_gear_sets()
         ear2="Malignance Earring",        
         ring1="Medada's ring",
         ring2="Archon ring",
-        back=macc_cape
+        back="Aurist's cape +1"
     }
 
     -- Elemental Magic sets are default for handling low-tier nukes.
@@ -654,8 +654,6 @@ function init_gear_sets()
     }
 
     sets.idle = {
-        main="Malignance Pole",
-        sub="Khonsu",
         ammo="Homiliary",
         head="Arbatel bonnet +3",
         neck="Loricate torque +1",
@@ -665,15 +663,13 @@ function init_gear_sets()
         hands="Agwu's gages",
         ring1={name="Stikini Ring +1", bag="wardrobe5"},
         ring2={name="Stikini Ring +1", bag="wardrobe6"},
-        back=idle_cape,
-        waist="Slipor sash",
+        back=hybrid_cape,
+        waist="Platinum moogle belt",
         legs="Assiduity pants +1",
         feet="Arbatel loafers +3"
     }
 
     sets.defense.PDT = {
-        main="Malignance Pole",
-        sub="Irenic strap +1",
         ammo="Staunch tathlum +1",
         head="Nyame helm",
         neck="Unmoving collar +1",
@@ -683,7 +679,7 @@ function init_gear_sets()
         hands="Nyame gauntlets",
         ring1={name="Vexer ring +1", bag="wardrobe5"},
         ring2="Shadow ring",
-        back=idle_cape,
+        back=pdt_cape,
         waist="Platinum moogle belt",
         legs="Agwu's slops",
         feet="Nyame sollerets"
@@ -693,8 +689,6 @@ function init_gear_sets()
     -- 56 mdb 777 meva
     -- 48 dt
     sets.defense.MDT = {
-        main="Malignance Pole",
-        sub="Irenic strap +1", -- 15 meva
         ammo="Staunch tathlum +1",
         head="Arbatel bonnet +3", -- 10 mdb 136 meva
         neck="Warder's charm +1",
@@ -704,7 +698,7 @@ function init_gear_sets()
         hands="Arbatel bracers +3", -- 7 mdb 98 meva
         ring1={name="Vexer ring +1", bag="wardrobe5"}, --4 mdb
         ring2="Shadow ring",
-        back=idle_cape, --30 meva
+        back=mdt_cape, --30 meva
         waist="Platinum moogle belt", -- 15 meva
         legs="Arbatel pants +3", -- 10 mdb 168 meva
         feet="Arbatel loafers +3" --10 mdb 168 meva
