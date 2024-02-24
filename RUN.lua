@@ -18,10 +18,10 @@ end
 
 -- Setup vars that are user-independent.
 function job_setup()
-    state.OffenseMode:options('MultiHit', 'Acc')
+    state.OffenseMode:options('MultiHit', 'Acc', 'ParryDefense', 'ParryOffense')
     state.WeaponskillMode:options('Normal', 'Acc')
     state.PhysicalDefenseMode:options('PDT')
-    state.MagicalDefenseMode:options('MDT', 'ResistStatus', 'Knockback')
+    state.MagicalDefenseMode:options('MDT', 'ResistStatus', 'KnockBack')
     state.IdleMode:options('Regen', 'Refresh')
     state.CombatWeapon:set('Epeolatry')
 
@@ -41,13 +41,13 @@ function job_file_unload()
 end
 
 function init_gear_sets()
-    local status_ailment_cape = { name="Ogma's cape", augments={'HP+60','Eva.+20 /Mag. Eva.+20','HP+20','Enmity+10','Occ. inc. resist. to stat. ailments+10'}}
+    local status_ailment_cape = { name="Ogma's Cape", augments={'MND+20','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Enmity+10','Occ. inc. resist. to stat. ailments+10'}}
     local fast_cast_cape = { name="Ogma's cape", augments={'HP+60','Eva.+20 /Mag. Eva.+20','HP+20','"Fast Cast"+10','Spell interruption rate down-10%'}}
-    local dt_cape = { name="Ogma's cape", augments={'HP+60','Eva.+20 /Mag. Eva.+20','HP+20','Enmity+10','Damage taken-5%'}}
-    local idle_pdt_cape = { name="Ogma's Cape", augments={'VIT+20','Eva.+20 /Mag. Eva.+20','VIT+10','Enmity+10','DEF+50'}}
-    local idle_mdt_cape = { name="Ogma's Cape", augments={'INT+20','Eva.+20 /Mag. Eva.+20','INT+10','"Fast Cast"+10','Mag. Evasion+15'}}
+    local pdt_cape = { name="Ogma's Cape", augments={'VIT+20','Eva.+20 /Mag. Eva.+20','VIT+10','Enmity+10','DEF+50'}}
+    local mdt_cape = { name="Ogma's Cape", augments={'INT+20','Eva.+20 /Mag. Eva.+20','INT+10','"Fast Cast"+10','Mag. Evasion+15'}}
     local atk_cape = { name="Ogma's cape", augments={'STR+20','Accuracy+20 Attack+20','Accuracy+10','"Dbl.Atk."+10','Damage taken-5%'}}
     local dimi_cape = { name="Ogma's cape", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Weapon skill damage +10%','Damage taken-5%'}}
+    local parry_cape = { name="Ogma's Cape", augments={'VIT+20','Eva.+20 /Mag. Eva.+20','VIT+10','"Dbl.Atk."+10','Parrying rate+5%'}}
 
     sets.Epeolatry = {main="Epeolatry", sub="Utu grip"}
     sets.Epeolatry.Utu = {main="Epeolatry", sub="Utu grip"}
@@ -78,7 +78,7 @@ function init_gear_sets()
         hands="Nyame Gauntlets",
         ring1="Shadow Ring",
         ring2="Gelatinous Ring +1",
-        back=idle_pdt_cape,
+        back=pdt_cape,
         waist="Flume Belt +1",
         legs="Nyame Flanchard",
         feet="Nyame Sollerets"
@@ -99,34 +99,37 @@ function init_gear_sets()
         hands="Erilaz Gauntlets +3",
         ring1="Shadow Ring",
         ring2="Moonlight Ring",
-        back=idle_mdt_cape,
+        back=mdt_cape,
         waist="Platinum moogle belt",
         legs="Erilaz Leg Guards +3",
         feet="Erilaz Greaves +3"
     }
 
     sets.defense.ResistStatus = set_combine(sets.defense.MDT, {
+        ear1="Arete del luna +1",
         back=status_ailment_cape,
         hands="Erilaz gauntlets +3"
     })
 
     sets.defense.KnockBack = set_combine(sets.defense.MDT, {
         back="Repulse mantle",
-        ring2="Vocane ring +1",
+        -- ring2="Vocane ring +1",
         legs="Dashing subligar"
     })
 
+    -- 81 enmity
     sets.enmity = set_combine(sets.defense.PDT, {
         ammo="Aqreqaq bomblet", -- 2 enmity
         head="Halitus helm", -- 8 enmity
         neck="Futhark torque +2", --10 enmity
         ear1="Cryptic earring", --4 enmity
         body="Emet Harness +1", --10 enmity
+        hands="Futhark mitons +3", -- 6 enmity
         -- ear2="Friomisi earring",
-        ring1="Supershear ring", -- 5 enmity
-        hands="Kurys gloves", -- 9 enmity
-        ring2="Vengeful ring", --3 enmity
-        back=dt_cape, -- 10 enmity
+        ring1="Eihwaz ring", -- 5 enmity
+        ring2="Supershear ring", -- 5 enmity        
+        back=pdt_cape, -- 10 enmity
+        waist="Platinum moogle belt",
         legs="Erilaz leg guards +3", --13 enmity
         feet="Erilaz greaves +3" --8 enmity
     })
@@ -139,7 +142,7 @@ function init_gear_sets()
     sets.precast.JA['Vallation'] = set_combine(sets.enmity, {
         body="Runeist coat +3",
         legs="Futhark trousers +3",
-        back=dt_cape
+        back=pdt_cape
     })
     sets.precast.JA['Valiance'] = set_combine(sets.enmity, sets.precast.JA['Vallation'])
     sets.precast.JA['Pflug'] = set_combine(sets.enmity, {feet="Runeist bottes +3"})
@@ -198,9 +201,11 @@ function init_gear_sets()
         head="Halitus helm",
         body="Emet harness +1",
         ear1="Cryptic earring",
+        ear2="Tuisto earring",
         hands="Kurys gloves",
         ring1="Eihwaz ring",
-        back=dt_cape,
+        ring2="Gelatinous ring +1",
+        back=pdt_cape,
         waist="Audumbla sash",
         legs="Erilaz leg guards +3",
         feet="Erilaz greaves +3"
@@ -327,13 +332,13 @@ function init_gear_sets()
         ear1="Odnowa earring +1",--dt: 3
         ear2="Tuisto earring",
         body="Nyame mail", --dt: 9
-        hands="Turms mittens +1",
-        ring1="Shadow ring", --dt: 10
-        ring2={name="Moonlight ring", bag="wardrobe6"}, --dt: 5
-        back= dt_cape,--dt: 5
+        hands="Erilaz gauntlets +3",
+        ring1={name="Moonlight ring", bag="wardrobe5"}, --dt: 5
+        ring2="Gelatinous ring +1", --dt: 10        
+        back= pdt_cape,--dt: 5
         waist="Flume belt +1",
         legs="Erilaz leg guards +3",  --dt: 13
-        feet="Turms leggings +1"
+        feet="Erilaz greaves +3"
     }
 
 	sets.Kiting = {
@@ -391,6 +396,26 @@ function init_gear_sets()
         legs="Nyame flanchard",
         feet="Nyame sollerets"
     }
+
+    sets.engaged.ParryOffense = {
+        ammo="Yamarang",
+        head="Futhark Bandeau +3",
+        neck="Futhark Torque +2",
+        ear1="Sanare Earring",
+        ear2="Erilaz Earring +1",
+        body="Nyame Mail",
+        hands="Turms Mittens +1",
+        ring1="Shadow Ring",
+        ring2="Moonlight Ring",
+        back=parry_cape,
+        waist="Flume Belt +1",
+        legs="Eri. Leg Guards +3",
+        feet="Futhark Boots +3"        
+    }
+
+    sets.engaged.ParryDefense = set_combine(sets.engaged.ParryOffense, {
+        feet="Turms leggings +1"        
+    })
 
     sets.precast.Item['Holy Water'] = {
         neck="Nicander's necklace",
