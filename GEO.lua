@@ -351,6 +351,36 @@ function init_gear_sets()
         feet="Nyame Sollerets"
     }
 
+    sets.defense.PDT = {
+        head="Nyame helm", -- 5 mdb 123 meva
+        neck="Loricate Torque +1",
+        ear1="Ran earring",
+        ear2="Foresti earring",
+        body="Nyame mail", -- 8 mdb 139 meva
+        hands="Nyame gauntlets", -- 4 mdb 112 meva
+        ring1="Gelatinous ring +1",
+        ring2="Mephitas's ring +1",
+        back=pet_Cape, -- 30 meva
+        waist="Flume belt +1",
+        legs="Nyame flanchard", -- 7 mdb 150 meva
+        feet="Nyame sollerets" -- 5 mdb 150 meva
+    }
+
+    sets.defense.MDT = {
+        head="Bagua galero +3",
+        neck="Loricate torque +1",
+        ear1="Lugalbanda earring",
+        ear2="Arete del luna +1",
+        body="Bagua tunic +3",
+        hands="Bagua mitaines +3",
+        ring1="Shadow ring",
+        ring2={name="Vexer ring +1", bag="wardrobe6"},
+        back=pet_Cape,
+        waist="Slipor sash",
+        legs="Bagua pants +3",
+        feet="Bagua sandals +3"
+    }
+
     sets.precast.Item['Holy Water'] = {
         neck="Nicander's necklace",
         ring1={name="Blenmot's ring +1", bag="wardrobe5"},

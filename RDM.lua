@@ -99,6 +99,8 @@ function init_gear_sets()
     Cape.Str_WS = { name="Sucellos's Cape", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%','Damage taken-5%'}}
     Cape.Dex_WS = { name="Sucellos's Cape", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Weapon skill damage +10%','Damage taken-5%'}}
     Cape.Mnd_WS = { name="Sucellos's Cape", augments={'MND+20','Accuracy+20 Attack+20','MND+10','Weapon skill damage +10%','Damage taken-5%'}}
+    local idle_pdt_cape = { name="Sucellos's Cape", augments={'VIT+20','Eva.+20 /Mag. Eva.+20','VIT+10','"Dual Wield"+10','DEF+50'}}
+    local idle_mdt_cape = { name="Sucellos's Cape", augments={'INT+20','Eva.+20 /Mag. Eva.+20','INT+10','"Dual Wield"+10','Mag. Evasion+15'}}
 
 
     sets.Naegling = {main="Naegling"}
@@ -154,6 +156,7 @@ function init_gear_sets()
     --83 total
     sets.precast.FC = {   
         head="Atrophy chapeau +3", --16
+        neck="Unmoving collar +1",
         ear1="Malignance earring", --1
         ear2="Lethargy earring +2", --9
         body="Vitiation tabard +3", --15
@@ -281,8 +284,8 @@ function init_gear_sets()
         neck="Loricate torque +1",
         body="Bunzi's robe",
         hands="Lethargy gantherots +3",
-        ring1="Defending ring",
-        ring2="Menelaus's ring",
+        ring1="Menelaus's ring",
+        ring2="Defending ring",        
         back=Cape.Mnd,
         legs="Atrophy tights +3",
         feet="Kaykaus boots"
@@ -323,6 +326,7 @@ function init_gear_sets()
 
     sets.midcast.EnhancingDuration = set_combine(sets.midcast['Enhancing Magic'], {
         main="Colada",
+        sub="Ammurapi shield",
         head="Telchine cap",
         ear2="Lethargy earring +2",
         neck="Duelist's torque +2",
@@ -336,6 +340,7 @@ function init_gear_sets()
         
     sets.buff.ComposureOther = set_combine(sets.midcast['Enhancing Magic'], {
         main="Colada",
+        sub="Ammurapi shield",
         head="Lethargy Chappel +3",
         neck="Duelist's torque +2",
         ear2="Lethargy earring +2",
@@ -355,21 +360,19 @@ function init_gear_sets()
     sets.midcast.RefreshSelf = set_combine(sets.midcast.refresh, {waist="Gishdubar"})
 
     local SIRD  = {
-        main={ name="Contemplator +1", augments={'Path: A',}},
-        sub="Enki Strap",
         ammo="Staunch Tathlum +1",
         head="Leth. Chappel +3",
+        neck="Loricate Torque +1",
+        ear1="Magnetic Earring",
+        ear2="Sanare Earring",
         body="Lethargy Sayon +3",
         hands={ name="Chironic Gloves", augments={'Mag. Acc.+15 "Mag.Atk.Bns."+15','Spell interruption rate down -11%','INT+8','"Mag.Atk.Bns."+5',}},
-        legs={ name="Carmine Cuisses +1", augments={'HP+80','STR+12','INT+12',}},
-        feet="Leth. Houseaux +3",
-        neck={ name="Loricate Torque +1", augments={'Path: A',}},
+        ring1="Freke Ring",
+        ring2="Defending Ring",
+        back=Cape.Mnd,
         waist="Plat. Mog. Belt",
-        left_ear="Magnetic Earring",
-        right_ear="Sanare Earring",
-        left_ring="Freke Ring",
-        right_ring="Defending Ring",
-        back=Cape.Mnd
+        legs="Carmine Cuisses +1",
+        feet="Leth. Houseaux +3"        
     }
 
     sets.midcast.Stoneskin = SIRD
@@ -385,12 +388,15 @@ function init_gear_sets()
     })    
 
     sets.midcast.Storm = sets.midcast.EnhancingDuration
-    sets.midcast.BoostStat = set_combine(sets.midcast.EnhancingDuration, {
+    sets.midcast.GainStat = set_combine(sets.midcast.EnhancingDuration, {
         hands="Vitiation Gloves +3"
     })
+    sets.midcast.Haste = sets.midcast.EnhancingDuration
+    sets.midcast.Refresh = sets.midcast.EnhancingDuration
+    sets.midcast.Flurry = sets.midcast.EnhancingDuration
     
     --Int during time of casting adds to base dmg but caps at about 250 int
-    sets.midcast.SpikesSpell = set_combine(sets.midcast.enhancing, {
+    sets.midcast.Spikes = set_combine(sets.midcast.EnhancingSkill, {
         legs="Vitiation tights +3"
     })
 
@@ -472,8 +478,8 @@ function init_gear_sets()
         ammo="Pemphredo tathlum",
         head="Lethargy chappel +3",
         neck="Sibyl scarf",
-        ear1="Regal earring",
-        ear2="Malignance earring",
+        ear1="Malignance earring",
+        ear2="Regal earring",        
         body="Lethargy sayon +3",
         hands="Lethargy gantherots +3",
         ring1="Medada's ring",
@@ -523,43 +529,47 @@ function init_gear_sets()
         hands="Malignance gloves",
         ring1="Ayanmo ring",
         ring2="Defending ring",
-        back=Cape.Int,
+        back=idle_pdt_cape,
         waist="Slipor sash",
         legs="Nyame flanchard",
         feet="Malignance boots"
+    }    
+
+    -- -- Defense sets
+    -- 1663 defense
+    -- 29 mdb 704 meva
+    -- definitely > 50% dt
+    sets.defense.PDT = {
+        ammo="Staunch tathlum +1",
+        head="Nyame helm", -- 5 mdb 123 meva
+        neck="Loricate Torque +1",
+        ear1="Ran earring",
+        ear2="Foresti earring",
+        body="Nyame mail", -- 8 mdb 139 meva
+        hands="Nyame gauntlets", -- 4 mdb 112 meva
+        ring1="Ayanmo ring",
+        ring2="Mephitas's ring +1",
+        back=idle_pdt_cape, -- 30 meva
+        waist="Flume belt +1",
+        legs="Nyame flanchard", -- 7 mdb 150 meva
+        feet="Nyame sollerets" -- 5 mdb 150 meva
     }
 
-    -- sets.idle.Town = {main="Bolelabunga",sub="Genbu's Shield",ammo="Impatiens",
-    --     head="Atrophy Chapeau +1",neck="Wiglen Gorget",ear1="Bloodgem Earring",ear2="Loquacious Earring",
-    --     body="Atrophy Tabard +1",hands="Atrophy Gloves +1",ring1="Sheltered Ring",ring2="Paguroidea Ring",
-    --     back="Shadow Mantle",waist="Flume Belt",legs="Crimson Cuisses",feet="Hagondes Sabots"}
-    
-    -- sets.idle.Weak = {main="Bolelabunga",sub="Genbu's Shield",ammo="Impatiens",
-    --     head="Vitivation Chapeau",neck="Wiglen Gorget",ear1="Bloodgem Earring",ear2="Loquacious Earring",
-    --     body="Atrophy Tabard +1",hands="Serpentes Cuffs",ring1="Sheltered Ring",ring2="Paguroidea Ring",
-    --     back="Shadow Mantle",waist="Flume Belt",legs="Crimson Cuisses",feet="Hagondes Sabots"}
-
-    -- sets.idle.PDT = {main="Bolelabunga",sub="Genbu's Shield",ammo="Demonry Stone",
-    --     head="Gendewitha Caubeen +1",neck="Twilight Torque",ear1="Bloodgem Earring",ear2="Loquacious Earring",
-    --     body="Gendewitha Bliaut +1",hands="Gendewitha Gages",ring1="Defending Ring",ring2=gear.DarkRing.physical,
-    --     back="Shadow Mantle",waist="Flume Belt",legs="Osmium Cuisses",feet="Gendewitha Galoshes"}
-
-    -- sets.idle.MDT = {main="Bolelabunga",sub="Genbu's Shield",ammo="Demonry Stone",
-    --     head="Gendewitha Caubeen +1",neck="Twilight Torque",ear1="Bloodgem Earring",ear2="Loquacious Earring",
-    --     body="Gendewitha Caubeen +1",hands="Yaoyotl Gloves",ring1="Defending Ring",ring2="Shadow Ring",
-    --     back="Engulfer Cape",waist="Flume Belt",legs="Osmium Cuisses",feet="Gendewitha Galoshes"}
-    
-    
-    -- -- Defense sets
-    -- sets.defense.PDT = {
-    --     head="Atrophy Chapeau +1",neck="Twilight Torque",ear1="Bloodgem Earring",ear2="Loquacious Earring",
-    --     body="Hagondes Coat",hands="Gendewitha Gages",ring1="Defending Ring",ring2=gear.DarkRing.physical,
-    --     back="Shadow Mantle",waist="Flume Belt",legs="Hagondes Pants",feet="Gendewitha Galoshes"}
-
-    -- sets.defense.MDT = {ammo="Demonry Stone",
-    --     head="Atrophy Chapeau +1",neck="Twilight Torque",ear1="Bloodgem Earring",ear2="Loquacious Earring",
-    --     body="Atrophy Tabard +1",hands="Yaoyotl Gloves",ring1="Defending Ring",ring2="Shadow Ring",
-    --     back="Engulfer Cape",waist="Flume Belt",legs="Bokwus Slops",feet="Gendewitha Galoshes"}
+    sets.defense.MDT = {
+        ammo="Staunch tathlum +1",
+        head="Lethargy chappel +3",
+        neck="Loricate torque +1",
+        ear1="Sanare earring",
+        ear2="Arete del luna +1",
+        body="Lethargy sayon +3",
+        hands="Lethargy gantherots +3",
+        ring1="Shadow ring",
+        ring2={name="Vexer ring +1", bag="wardrobe6"},
+        back=idle_mdt_cape,
+        waist="Slipor sash",
+        legs="Lethargy fuseau +3",
+        feet="Lethargy houseaux +3"
+    }
 
     sets.Kiting = {legs="Carmine cuisses +1"}
 
@@ -665,10 +675,6 @@ function job_post_midcast(spell, action, spellMap, eventArgs)
             end
         elseif skill_spells:contains(spell.english) then
             equip(sets.midcast.EnhancingSkill)
-        elseif spell.english:startswith('Gain') then
-            equip(sets.midcast.GainSpell)
-        elseif spell.english:contains('Spikes') then
-            equip(sets.midcast.SpikesSpell)
         end
         if (spell.target.type == 'PLAYER' or spell.target.type == 'NPC') and buffactive.Composure then
             equip(sets.buff.ComposureOther)

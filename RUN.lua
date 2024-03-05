@@ -181,6 +181,8 @@ function init_gear_sets()
     sets.precast.JA['Weapon Bash'] = sets.enmity
     sets.precast.JA['Souleater'] = sets.enmity
     sets.precast.JA['Last Resort'] = sets.enmity
+
+    sets.precast.JA['Sentinel'] = sets.enmity
 	-- Fast cast sets for spells
     --Fast cast: 28%
     sets.precast.FC = {

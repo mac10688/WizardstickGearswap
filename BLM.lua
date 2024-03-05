@@ -15,7 +15,7 @@ end
 function job_setup()
     state.OffenseMode:options('None', 'Normal')
     state.CastingMode:options('Normal', 'Occult Acumen', 'DT')
-    state.IdleMode:options('Normal', 'PDT')
+    state.IdleMode:options('Normal', "Death")
     
     state.MagicBurst = M(false, 'Magic Burst')
     state.EatTp = M(false, 'Eat TP')
@@ -116,6 +116,7 @@ function init_gear_sets()
 
     sets.precast.FC = {
         head="Merlinic hood", --fast cast 8%
+        neck="Unmoving collar +1",
         body="Agwu's robe", --fast cast 8%
         hands="Agwu's gages", --fast cast 6%
         legs="Lengo pants",
@@ -383,6 +384,15 @@ function init_gear_sets()
         head = "Archmage's petasos +3"
    })
 
+   local deathSet = set_combine(sets.midcast.elemental['Elemental Magic'], {
+        head="Pixie hairpin +1",
+        ring2="Archon ring",
+        back=death_cape
+    })
+
+    sets.precast['Death'] = deathSet
+    sets.midcast['Death'] = deathSet
+
     sets.magic_burst = set_combine(sets.midcast['Elemental Magic'], {
         head="Ea hat +1", --MB: 7 MB2: 7
         neck="Sorcerer's stole +2", --MB: 10
@@ -444,13 +454,13 @@ function init_gear_sets()
         head="Nyame Helm",
         neck="Loricate Torque +1",
         ear1="Ran Earring",
-        ear2="Tuisto Earring",
+        ear2="Lugalbanda earring",
         body="Nyame Mail",
         hands="Nyame Gauntlets",
-        ring1="Shneddick Ring +1",
-        ring2="Shadow Ring",
+        ring1="Shadow Ring",
+        ring2="Shneddick Ring +1",        
         back=idle_cape,
-        waist="Plat. Mog. Belt",
+        waist="Acuity belt +1",
         legs="Nyame Flanchard",
         feet="Nyame Sollerets"
     }
@@ -463,10 +473,10 @@ function init_gear_sets()
         ear2="Lugalbanda Earring",
         body="Wicce Coat +3",
         hands="Wicce Gloves +3",
-        ring1={name="Vexer ring +1", bag="wardrobe6"}, --4 mdb
-        ring2="Shadow ring",        
+        ring1="Shadow ring",
+        ring2={name="Vexer ring +1", bag="wardrobe6"}, --4 mdb  
         back=idle_mdt_cape,
-        waist="Plat. Mog. Belt",
+        waist="Acuity belt +1",
         legs="Wicce Chausses +3",
         feet="Wicce Sabots +3"
     }
@@ -475,11 +485,14 @@ function init_gear_sets()
     sets.idle = set_combine(sets.defense.PDT, {
         ammo="Staunch tathlum +1",
         head="Befouled crown",
+        ear2="Lugalbanda earring",
         body="Shamash robe",
         ring1={name="Stikini Ring +1", bag="wardrobe5"},
         ring2={name="Stikini Ring +1", bag="wardrobe6"},
         legs="Assiduity pants +1"
     })
+
+    sets.idle["Death"] = deathSet
 
     sets.Kiting = {
         ring2="Shneddick ring +1",

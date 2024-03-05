@@ -152,6 +152,7 @@ function init_gear_sets()
         ear2="Ishvara earring",
         body="Bihu Justaucorps +3",
         hands="Nyame gauntlets",
+        ring1="ILabrat ring",
         ring2="Epaminondas's ring",
         waist="Fotia belt",
         feet="Nyame sollerets",
@@ -183,7 +184,9 @@ function init_gear_sets()
         ear1="Regal earring",
         ear2="Ishvara earring",
         body="Bihu justaucorps +3",
+        ring1="Metamorph ring +1",
         back=mordant_rime_cape,
+        waist="Kentarch belt +1"
         -- legs="Bihu cannions +3"
     })
     

@@ -79,6 +79,7 @@ function init_gear_sets()
     local idle_hybrid_cape = { name="Alaunus's Cape", augments={'VIT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Fast Cast"+10','DEF+50'}}
     local idle_pdt_cape = { name="Alaunus's Cape", augments={'VIT+20','Eva.+20 /Mag. Eva.+20','VIT+10','"Fast Cast"+10','DEF+50'}}
     local idle_mdt_cape = { name="Alaunus's Cape", augments={'INT+20','Eva.+20 /Mag. Eva.+20','INT+10','"Fast Cast"+10','Mag. Evasion+15'}}
+    local enmity_cape = { name="Alaunus's Cape", augments={'VIT+20','Eva.+20 /Mag. Eva.+20','VIT+10','Enmity+10','DEF+50'}}
     
     sets.Daybreak = {}
     sets.Daybreak.DualWield = {}
@@ -161,6 +162,25 @@ function init_gear_sets()
     
     -- Precast sets to enhance JAs
     sets.precast.JA.Benediction = {body="Piety Bliaut +3"}
+
+    -- sets.precast.JA.Benediction ={
+    --     main="Mafic Cudgel",
+    --     sub="Genmei Shield",
+    --     ammo="Hydrocera",
+    --     head="Ebers Cap +3",
+    --     neck="Unmoving Collar +1",
+    --     ear1="Cryptic Earring",
+    --     ear2="Trux Earring",
+    --     body="Inyanga Jubbah +2",
+    --     hands="Nyame Gauntlets",
+    --     ring1="Eihwaz Ring",
+    --     ring2="Supershear Ring",
+    --     back=enmity_cape,
+    --     waist="Plat. Mog. Belt",
+    --     legs="Ebers Pant. +3",
+    --     feet="Ebers Duckbills +3"
+    -- }
+
     sets.precast.JA.Devotion = {head="Piety Cap +3"}
     
     local physical_mnd_ws = {
@@ -469,23 +489,41 @@ function init_gear_sets()
 
     sets.midcast.Banishga.Resistant = sets.midcast.Banish.Resistant
 
+    -- 45 enmity
+    sets.midcast.Flash = {
+        main="Mafic Cudgel",
+        sub="Genmei Shield",
+        ammo="Hydrocera",
+        head="Ebers Cap +3",
+        neck="Unmoving Collar +1",
+        ear1="Cryptic Earring",
+        ear2="Trux Earring",
+        body="Inyanga Jubbah +2",
+        hands="Nyame Gauntlets",
+        ring1="Eihwaz Ring",
+        ring2="Supershear Ring",
+        back=enmity_cape,
+        waist="Plat. Mog. Belt",
+        legs="Ebers Pant. +3",
+        feet="Ebers Duckbills +3"
+    }
+
     sets.midcast['Dark Magic'] = {
         main="Daybreak",
         sub="Genmei Shield",
         ammo="Staunch Tathlum +1",
         head="Pixie Hairpin +1",
+        neck="Incanter's Torque",
+        ear1="Regal Earring",
+        ear2="Malignance Earring",
         body="Ebers Bliaut +3",
         hands="Regal Cuffs",
-        legs="Ebers Pant. +3",
-        feet="Ebers Duckbills +3",
-        neck="Incanter's Torque",
-        waist="Austerity Belt +1",
-        left_ear="Regal Earring",
-        right_ear="Malignance Earring",
-
         ring1="Medada's Ring",
         ring2="Archon Ring",
-        back=fastcast_cape
+        back=fastcast_cape,
+        waist="Austerity Belt +1",
+        legs="Ebers Pant. +3",
+        feet="Ebers Duckbills +3"
     }
 
     sets.midcast["Enfeebling Magic"] = {
