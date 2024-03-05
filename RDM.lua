@@ -352,7 +352,7 @@ function init_gear_sets()
         feet="Lethargy houseaux +3"
     })
 
-    sets.midcast.Regen = {}
+    sets.midcast.Regen = sets.midcast.EnhancingDuration
     sets.midcast.Refresh = {
         body="Atrophy tabard +3",
         legs="Lethargy fuseau +3"
