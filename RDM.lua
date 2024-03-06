@@ -471,7 +471,6 @@ function init_gear_sets()
     sets.midcast.ElementalEnfeeble = sets.midcast.IntEnfeebles
     sets.midcast.Dispelga = set_combine(sets.midcast.IntEnfeeblesAcc, {main="Daybreak", sub="Ammurapi Shield"})
 
-    
     sets.midcast['Elemental Magic'] = {
         main="Bunzi's rod",
         sub="Ammurapi shield",

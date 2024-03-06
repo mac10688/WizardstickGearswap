@@ -384,7 +384,7 @@ function init_gear_sets()
         head = "Archmage's petasos +3"
    })
 
-   local deathSet = set_combine(sets.midcast.elemental['Elemental Magic'], {
+   local deathSet = set_combine(sets.midcast['Elemental Magic'], {
         head="Pixie hairpin +1",
         ring2="Archon ring",
         back=death_cape
