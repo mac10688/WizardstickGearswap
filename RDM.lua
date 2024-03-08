@@ -353,10 +353,11 @@ function init_gear_sets()
     })
 
     sets.midcast.Regen = sets.midcast.EnhancingDuration
-    sets.midcast.Refresh = {
+    sets.midcast.Refresh = set_combine(sets.midcast.EnhancingDuration, {
         body="Atrophy tabard +3",
         legs="Lethargy fuseau +3"
-    }
+    })
+
     sets.midcast.RefreshSelf = set_combine(sets.midcast.refresh, {waist="Gishdubar"})
 
     local SIRD  = {
@@ -392,7 +393,6 @@ function init_gear_sets()
         hands="Vitiation Gloves +3"
     })
     sets.midcast.Haste = sets.midcast.EnhancingDuration
-    sets.midcast.Refresh = sets.midcast.EnhancingDuration
     sets.midcast.Flurry = sets.midcast.EnhancingDuration
     
     --Int during time of casting adds to base dmg but caps at about 250 int

@@ -361,7 +361,7 @@ function init_gear_sets()
         ring1="Gelatinous ring +1",
         ring2="Mephitas's ring +1",
         back=pet_Cape, -- 30 meva
-        waist="Flume belt +1",
+        waist="Austerity belt +1",
         legs="Nyame flanchard", -- 7 mdb 150 meva
         feet="Nyame sollerets" -- 5 mdb 150 meva
     }
