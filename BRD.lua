@@ -36,6 +36,7 @@ function job_setup()
 
     -- Additional local binds
     send_command('bind ^` gs c toggle ExtraSongsMode')
+    send_command('bind !` gs c toggle EnmitySongs')
     send_command('bind ~f1 gs c set CombatWeapon Naegling')
     send_command('bind ~f2 gs c set CombatWeapon Carnwenhan')
 end
@@ -47,6 +48,7 @@ end
 -- Called when this job file is unloaded (eg: job change)
 function file_unload()
     send_command('unbind ^`')
+    send_command('unbind !`')
     send_command('unbind ~f1')
     send_command('unbind ~f2')
 end
@@ -452,6 +454,12 @@ function job_midcast(spell, action, spellMap, eventArgs)
                 end
             end
         end
+    end
+end
+
+function job_post_midcast(spell, action, spellMap, eventArgs)
+    if spell.type == 'BardSong' and spell.targets.Enemy and state.EnmitySongs.value and not spell.name:contains("Lullaby") then
+        equip(sets.enmity)
     end
 end
 
