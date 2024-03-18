@@ -268,7 +268,7 @@ function init_gear_sets()
         left_ear="Regal Earring",
         right_ear="Malignance Earring",
         ring1="Medada's ring",
-        ring2="Archon Ring",        
+        ring2="Archon Ring",
         back=fc_Cape
     }
 

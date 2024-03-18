@@ -60,9 +60,13 @@ function init_gear_sets()
     local debuff_cape = { name="Intarabus's Cape", augments={'CHR+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Damage taken-5%'}}
     local tp_cape = { name="Intarabus's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10','Damage taken-5%'}}
     local dw_cape = { name="Intarabus's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Dual Wield"+10','Damage taken-5%'}}
+    local idle_pdt_cape = { name="Intarabus's Cape", augments={'VIT+20','Eva.+20 /Mag. Eva.+20','VIT+10','"Store TP"+10','DEF+50'}}
+    local idle_mdt_cape = { name="Intarabus's Cape", augments={'INT+20','Eva.+20 /Mag. Eva.+20','INT+10','"Store TP"+10','Mag. Evasion+15'}}
+    local enmity_cape = { name="Intarabus's Cape", augments={'VIT+20','Eva.+20 /Mag. Eva.+20','VIT+10','Enmity+10','Phys. dmg. taken-10%'}}
     
     local atk_linos = { name="Linos", augments={'Accuracy+15','"Dbl.Atk."+3','Quadruple Attack +3'}}
     local ws_linos = { name="Linos", augments={'Attack+18','Weapon skill damage +3%','STR+6 DEX+6'}}
+    local def_linos = { name="Linos", augments={'DEF+15','Phys. dmg. taken -5%','VIT+8'}}
     
     local mordant_rime_cape = { name="Intarabus's Cape", augments={'CHR+20','Accuracy+20 Attack+20','CHR+10','Weapon skill damage +10%','Damage taken-5%'}}
     local savage_blade_cape = { name="Intarabus's Cape", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%','Magic dmg. taken-10%'}}
@@ -205,14 +209,7 @@ function init_gear_sets()
         back=savage_blade_cape
     })
     
-    -- Midcast Sets
-
-    -- General set for recast times.
-    -- sets.midcast.FastRecast = {range="Angel Lyre",
-    --     head="Nahtirah Hat",ear2="Loquacious Earring",
-    --     body="Vanir Cotehardie",hands="Gendewitha Gages",ring1="Prolix Ring",
-    --     back="Swith Cape +1",waist="Goading Belt",legs="Gendewitha Spats",feet="Gendewitha Galoshes"}
-        
+    -- Midcast Sets       
 
     sets.midcast.BardSong = {}
     sets.midcast.BardSong.Mazurka = {range=info.ExtraSongInstrument}    
@@ -260,25 +257,13 @@ function init_gear_sets()
     sets.midcast.BardSong.Lullaby = set_combine(sets.midcast.BardSong.SongDebuff, {ranged="Daurdabla", hands="Brioso cuffs +3"})
     sets.midcast.BardSong.Madrigal = set_combine(sets.midcast.BardSong.SongEffect, {head="Fili calot +3"})
     sets.midcast.BardSong.March = set_combine(sets.midcast.BardSong.SongEffect, {hands="Fili Manchettes +3"})
-    sets.midcast.BardSong.Minuet = set_combine(sets.midcast.BardSong.SongEffect, {head="Fili hongreline +3"})
+    sets.midcast.BardSong.Minuet = set_combine(sets.midcast.BardSong.SongEffect, {body="Fili hongreline +3"})
     sets.midcast.BardSong.Minne = set_combine(sets.midcast.BardSong.SongEffect, {legs="Mousai seraweels +1"})
     sets.midcast.BardSong.Paeon = set_combine(sets.midcast.BardSong.SongEffect, {head="Brioso roundlet +3"})
     sets.midcast.BardSong.Carol = set_combine(sets.midcast.BardSong.SongEffect, {hands="Mousai gages +1"})
     sets.midcast.BardSong["Sentinel's Scherzo"] = set_combine(sets.midcast.BardSong.SongEffect, {feet="Fili cothurnes +3"})
         -- sets.midcast['Magic Finale'] = {neck="Wind Torque",waist="Corvax Sash",legs="Aoidos' Rhing. +2"}
 
-    -- For song defbuffs (accuracy primary, duration secondary)
-    -- sets.midcast.ResistantSongDebuff = {main="Lehbrailg +2",sub="Mephitis Grip",range="Gjallarhorn",
-    --     head="Brioso Roundlet +1",neck="Wind Torque",ear1="Psystorm Earring",ear2="Lifestorm Earring",
-    --     body="Brioso Justaucorps +1",hands="Aoidos' Manchettes +2",ring1="Prolix Ring",ring2="Sangoma Ring",
-    --     back="Kumbira Cape",waist="Demonry Sash",legs="Brioso Cannions +1",feet="Bokwus Boots"}
-
-    -- -- Song-specific recast reduction
-    -- sets.midcast.SongRecast = {ear2="Loquacious Earring",
-    --     ring1="Prolix Ring",
-    --     back="Harmony Cape",waist="Corvax Sash",legs="Aoidos' Rhing. +2"}
-
-    --sets.midcast.Daurdabla = set_combine(sets.midcast.FastRecast, sets.midcast.SongRecast, {range=info.ExtraSongInstrument})
 
     -- Dummy song with Daurdabla; minimize duration to make it easy to overwrite.
     sets.midcast.BardSong.DaurdablaDummy = set_combine(sets.precast.FC.BardSong, {
@@ -311,7 +296,7 @@ function init_gear_sets()
     
     -- Idle sets (default idle set not needed since the other three are defined, but leaving for testing purposes)
     sets.idle = {
-        ranged="Gjallarhorn",
+        ranged=def_linos,
         head="Bunzi's hat",
         neck="Bard's charm +2",
         ear1="Etiolation earring",
@@ -320,39 +305,45 @@ function init_gear_sets()
         hands="Bunzi's gloves",
         ring1="Moonlight ring",
         ring2="Defending ring",
-        back=tp_cape,
+        back=idle_pdt_cape,
         waist="Flume belt +1",
         legs="Nyame flanchard",
         feet="Nyame sollerets"
     }
-
-    -- sets.idle.PDT = {main=gear.Staff.PDT, sub="Mephitis Grip",range="Oneiros Harp",
-    --     head="Gendewitha Caubeen",neck="Wiglen Gorget",ear1="Bloodgem Earring",ear2="Loquacious Earring",
-    --     body="Gendewitha Bliaut",hands="Gendewitha Gages",ring1="Defending Ring",ring2="Sangoma Ring",
-    --     back="Umbra Cape",waist="Flume Belt",legs="Gendewitha Spats",feet="Aoidos' Cothurnes +2"}
-
-    -- sets.idle.Town = {main=gear.Staff.PDT, sub="Mephitis Grip",range="Oneiros Harp",
-    --     head="Gendewitha Caubeen",neck="Wiglen Gorget",ear1="Bloodgem Earring",ear2="Loquacious Earring",
-    --     body="Gendewitha Bliaut",hands="Gendewitha Gages",ring1="Paguroidea Ring",ring2="Sangoma Ring",
-    --     back="Umbra Cape",waist="Flume Belt",legs="Nares Trews",feet="Aoidos' Cothurnes +2"}
-    
-    -- sets.idle.Weak = {main=gear.Staff.PDT,sub="Mephitis Grip",range="Oneiros Harp",
-    --     head="Gendewitha Caubeen",neck="Twilight Torque",ear1="Bloodgem Earring",
-    --     body="Gendewitha Bliaut",hands="Gendewitha Gages",ring1="Defending Ring",ring2="Sangoma Ring",
-    --     back="Umbra Cape",waist="Flume Belt",legs="Gendewitha Spats",feet="Gendewitha Galoshes"}
-    
     
     -- Defense sets
 
-    -- sets.defense.PDT = {main=gear.Staff.PDT,sub="Mephitis Grip",
-    --     head="Gendewitha Caubeen",neck="Twilight Torque",
-    --     body="Gendewitha Bliaut",hands="Gendewitha Gages",ring1="Defending Ring",ring2=gear.DarkRing.physical,
-    --     back="Umbra Cape",waist="Flume Belt",legs="Gendewitha Spats",feet="Gendewitha Galoshes"}
+    sets.defense.PDT = {
+        ranged=def_linos,
+        head="Nyame helm", -- 5 mdb 123 meva
+        neck="Loricate Torque +1",
+        ear1="Ran earring",
+        ear2="Foresti earring",
+        body="Nyame mail", -- 8 mdb 139 meva
+        hands="Nyame gauntlets", -- 4 mdb 112 meva
+        ring1="Ayanmo ring",
+        ring2="Mephitas's ring +1",
+        back=idle_pdt_cape, -- 30 meva
+        waist="Flume belt +1",
+        legs="Nyame flanchard", -- 7 mdb 150 meva
+        feet="Nyame sollerets" -- 5 mdb 150 meva
+    }
 
-    -- sets.defense.MDT = {main=gear.Staff.PDT,sub="Mephitis Grip",
-    --     head="Nahtirah Hat",neck="Twilight Torque",
-    --     body="Gendewitha Bliaut",hands="Gendewitha Gages",ring1="Defending Ring",ring2="Shadow Ring",
-    --     back="Engulfer Cape",waist="Flume Belt",legs="Bihu Cannions",feet="Gendewitha Galoshes"}
+    sets.defense.MDT = {
+        ranged=idle_linos,
+        head="Fili calot +3",
+        neck="Loricate torque +1",
+        ear1="Sanare earring",
+        ear2="Arete del luna +1",
+        body="Fili hongreline +3",
+        hands="Fili manchettes +3",
+        ring1="Shadow ring",
+        ring2={name="Vexer ring +1", bag="wardrobe6"},
+        back=idle_mdt_cape,
+        waist="Slipor sash",
+        legs="Fili rhingrave +3",
+        feet="Fili cothurnes +3"
+    }
 
     sets.Kiting = {
         feet='Fili cothurnes +3'
@@ -370,14 +361,14 @@ function init_gear_sets()
         ranged=atk_linos,
         head="Bunzi's hat",
         neck="Bard's charm +2",
-        ear1="Eabani earring",
+        ear1="Telos earring",
         ear2="Dignitary's earring",
-        body="Ayanmo corazza +2",
+        body="Ashera harness",
         hands="Bunzi's gloves",
         ring1={name="Chirich ring +1", bag="wardrobe5"},
         ring2={name="Chirich ring +1", bag="wardrobe6"},
-        back=tp_cape,
-        waist="Sarissaphoroi belt",
+        back=dw_cape,
+        waist="Sailfi belt +1",
         legs="Nyame flanchard",
         feet="Nyame sollerets"
     }
@@ -402,19 +393,19 @@ function init_gear_sets()
     sets.enmity = {
         main="Mafic Cudgel",
         sub="Genmei Shield",
-        range={ name="Linos", augments={'DEF+15','Phys. dmg. taken -5%','VIT+8'}},
+        range=def_linos,
         head="Halitus Helm",
+        neck="Unmoving Collar +1",
+        ear1="Trux Earring",
+        ear2="Tuisto Earring",
         body="Emet Harness +1",
         hands="Fili Manchettes +3",
-        legs="Zoar Subligar +1",
-        feet="Nyame Sollerets",
-        neck="Unmoving Collar +1",
+        ring1="Eihwaz Ring",
+        ring2="Supershear Ring",
+        back=enmity_cape,
         waist="Flume Belt +1",
-        left_ear="Trux Earring",
-        right_ear="Genmei Earring",
-        left_ring="Eihwaz Ring",
-        right_ring="Supershear Ring",
-        back={ name="Intarabus's Cape", augments={'VIT+20','Eva.+20 /Mag. Eva.+20','VIT+10','Enmity+10','Phys. dmg. taken-10%',}},
+        legs="Zoar Subligar +1",
+        feet="Nyame Sollerets"
     }
 
     sets.precast.Item['Holy Water'] = {

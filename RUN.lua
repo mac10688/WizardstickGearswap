@@ -408,7 +408,7 @@ function init_gear_sets()
         body="Nyame Mail",
         hands="Turms Mittens +1",
         ring1="Shadow Ring",
-        ring2="Moonlight Ring",
+        ring2={name="Moonlight ring", bag="wardrobe6"},
         back=parry_cape,
         waist="Flume Belt +1",
         legs="Eri. Leg Guards +3",
