@@ -377,6 +377,21 @@ function init_gear_sets()
     sets.engaged.Hybrid = sets.engaged
     sets.engaged.Accuracy = sets.engaged
     
+    sets.midcast.Absorb = {
+        ranged=idle_linos,
+        head="Fili calot +3",
+        neck="Loricate torque +1",
+        ear1="Enchanter's earring +1",
+        ear2="Fili earring +1",
+        body="Fili hongreline +3",
+        hands="Fili manchettes +3",
+        ring1="Medada's ring",
+        ring2="Kishar ring",
+        back=fast_cast_cape,
+        waist="Acuity belt +1",
+        legs="Fili rhingrave +3",
+        feet="Fili cothurnes +3"
+    }
 
     -- Sets with weapons defined.
     -- sets.engaged.Dagger = {range="Angel Lyre",

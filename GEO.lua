@@ -23,7 +23,7 @@ end
 
 -- Called when this job file is unloaded (eg: job change)
 function user_unload()
-    send_command('unbind ~`')
+    send_command('unbind ^`')
 end
 
 -- Define sets and vars used by this job file.
@@ -34,6 +34,8 @@ function init_gear_sets()
     local mab_Cape = { name="Nantosuelta's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10','Spell interruption rate down-10%'}}
     local pet_Cape = { name="Nantosuelta's Cape", augments={'MND+20','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Pet: "Regen"+10','Pet: "Regen"+5'}}
     local ws_Cape = { name="Nantosuelta's Cape", augments={'MND+20','Accuracy+20 Attack+20','MND+10','Weapon skill damage +10%','Damage taken-5%'}}
+    local idle_pdt_cape = { name="Nantosuelta's Cape", augments={'VIT+20','Eva.+20 /Mag. Eva.+20','VIT+10','Pet: "Regen"+10','DEF+50'}}
+    local idle_mdt_cape = { name="Nantosuelta's Cape", augments={'INT+20','Eva.+20 /Mag. Eva.+20','INT+10','Pet: "Regen"+10','Mag. Evasion+15'}}
 
     --------------------------------------
     -- Precast sets
@@ -360,7 +362,7 @@ function init_gear_sets()
         hands="Nyame gauntlets", -- 4 mdb 112 meva
         ring1="Gelatinous ring +1",
         ring2="Mephitas's ring +1",
-        back=pet_Cape, -- 30 meva
+        back=idle_pdt_cape,
         waist="Austerity belt +1",
         legs="Nyame flanchard", -- 7 mdb 150 meva
         feet="Nyame sollerets" -- 5 mdb 150 meva
@@ -375,7 +377,7 @@ function init_gear_sets()
         hands="Bagua mitaines +3",
         ring1="Shadow ring",
         ring2={name="Vexer ring +1", bag="wardrobe6"},
-        back=pet_Cape,
+        back=idle_mdt_cape,
         waist="Slipor sash",
         legs="Bagua pants +3",
         feet="Bagua sandals +3"

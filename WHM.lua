@@ -13,8 +13,6 @@ end
 -- Setup vars that are user-independent.  state.Buff vars initialized here will automatically be tracked.
 function job_setup()
     state.OffenseMode:options('None', 'Normal')
-    state.CastingMode:options('Normal', 'Resistant')
-    state.IdleMode:options('Normal', 'Refresh')
     state.CureMode = M{['description']='Cure Set', 'Pure', 'SIRD'}
 
     state.Buff['Afflatus Solace'] = buffactive['Afflatus Solace'] or false
@@ -467,7 +465,7 @@ function init_gear_sets()
         main="Daybreak",
         sub="Ammurapi shield",
         ammo="Hydrocera",
-        head="Ipoca beret",
+        head="Ebers cap +3",
         neck="Incanter's torque",
         ear1="Malignance earring",
         ear2="Ebers earring +1",
@@ -481,13 +479,7 @@ function init_gear_sets()
         feet="Ebers duckbills +3"
     }
 
-    sets.midcast.Banish.Resistant = set_combine(sets.midcast.Banish, {
-        head="Ebers cap +3"
-    })
-
     sets.midcast.Banishga = sets.midcast.Banish
-
-    sets.midcast.Banishga.Resistant = sets.midcast.Banish.Resistant
 
     -- 45 enmity
     sets.midcast.Flash = {
@@ -590,27 +582,20 @@ function init_gear_sets()
 
     -- Idle sets (default idle set not needed since the other three are defined, but leaving for testing purposes)
     sets.idle = {
-        ammo="Staunch tathlum +1", --3% dmg
+        ammo="Homiliary",
         head="Nyame helm", --7% dmg
         neck="Loricate Torque +1", --6% dmg
         ear1="Ran earring", --3% magic dmg
         ear2="Foresti earring",
         body="Ebers bliaut +3",
         hands="Bunzi's gloves", --7% dmg
-        ring2="Ayanmo ring", --3% dmg
-        ring1="Shadow ring", --10% dmg
-        back=idle_hybrid_cape,
-        waist="Platinum moogle belt", --3% magic dmg
-        legs="Bunzi's pants", --8% dmg
-        feet="Ebers duckbills +3" --7% dmg
-    }
-
-    sets.idle.Refresh = set_combine(sets.idle, {
-        ammo="Homiliary",
         ring1={name="Stikini Ring +1", bag="wardrobe5"},
         ring2={name="Stikini Ring +1", bag="wardrobe6"},
-        legs={ name="Chironic Hose", augments={'STR+9','CHR+4','"Refresh"+2','Mag. Acc.+14 "Mag.Atk.Bns."+14'}}
-    })
+        back=idle_hybrid_cape,
+        waist="Platinum moogle belt", --3% magic dmg
+        legs={ name="Chironic Hose", augments={'STR+9','CHR+4','"Refresh"+2','Mag. Acc.+14 "Mag.Atk.Bns."+14'}},
+        feet="Ebers duckbills +3" --7% dmg
+    }
     
     -- Defense sets
 
