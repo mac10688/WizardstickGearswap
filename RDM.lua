@@ -90,15 +90,14 @@ function init_gear_sets()
     --------------------------------------
     -- Start defining the sets
     --------------------------------------
-    Cape = {}
-    Cape.Fc = { name="Sucellos's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Damage taken-5%'}}
-    Cape.Int = { name="Sucellos's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10','Mag. Evasion+15'}}
-    Cape.Mnd = { name="Sucellos's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','"Cure" potency +10%','Spell interruption rate down-10%',}}
-    Cape.Tp = { name="Sucellos's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10','Damage taken-5%'}}
-    Cape.Dw = { name="Sucellos's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Dual Wield"+10','Damage taken-5%'}}
-    Cape.Str_WS = { name="Sucellos's Cape", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%','Damage taken-5%'}}
-    Cape.Dex_WS = { name="Sucellos's Cape", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Weapon skill damage +10%','Damage taken-5%'}}
-    Cape.Mnd_WS = { name="Sucellos's Cape", augments={'MND+20','Accuracy+20 Attack+20','MND+10','Weapon skill damage +10%','Damage taken-5%'}}
+    local fc_cape = { name="Sucellos's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Damage taken-5%'}}
+    local int_cape = { name="Sucellos's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10','Mag. Evasion+15'}}
+    local mnd_cape = { name="Sucellos's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','"Cure" potency +10%','Spell interruption rate down-10%',}}
+    local tp_cape = { name="Sucellos's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10','Damage taken-5%'}}
+    local dw_cape = { name="Sucellos's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Dual Wield"+10','Damage taken-5%'}}
+    local str_ws_cape = { name="Sucellos's Cape", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%','Damage taken-5%'}}
+    local dex_ws_cape = { name="Sucellos's Cape", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Weapon skill damage +10%','Damage taken-5%'}}
+    local mnd_cape_WS = { name="Sucellos's Cape", augments={'MND+20','Accuracy+20 Attack+20','MND+10','Weapon skill damage +10%','Damage taken-5%'}}
     local idle_pdt_cape = { name="Sucellos's Cape", augments={'VIT+20','Eva.+20 /Mag. Eva.+20','VIT+10','"Dual Wield"+10','DEF+50'}}
     local idle_mdt_cape = { name="Sucellos's Cape", augments={'INT+20','Eva.+20 /Mag. Eva.+20','INT+10','"Dual Wield"+10','Mag. Evasion+15'}}
 
@@ -163,7 +162,7 @@ function init_gear_sets()
         hands="Lethargy gantherots +3", --8
         ring1="Medada's ring", --10%
         ring2="Defending ring", --4
-        back=Cape.Fc,
+        back=fc_cape,
         waist="Platinum moogle belt", --5
         legs="Malignance tights",
         feet="Lethargy houseaux +3"
@@ -182,7 +181,7 @@ function init_gear_sets()
         hands="Jhakri cuffs +2",
         ring1="Medada's ring",
         ring2="Freke ring",
-        back=Cape.Int,
+        back=int_cape,
         waist="Orpheus's sash",
         legs="Nyame flanchard",
         feet="Lethargy houseaux +3"
@@ -198,7 +197,7 @@ function init_gear_sets()
         hands="Nyame gauntlets",
         ring1="Rufescent ring",
         ring2="Ilabrat ring",
-        back=Cape.Mnd_WS,
+        back=mnd_cape_WS,
         waist="Fotia belt",
         legs="Nyame flanchard",
         feet="Lethargy houseaux +3"
@@ -217,17 +216,17 @@ function init_gear_sets()
 
     sets.precast.WS["Seraph Blade"] = set_combine(ws_magic,{
         ring2="Shukuyu ring",
-        back=Cape.Mnd_WS
+        back=mnd_cape_WS
     })
     
     sets.precast.WS["Circle Blade"] = set_combine(ws_physical, {
         ring2="Shukuyu ring",
-        back=Cape.Str_WS
+        back=str_ws_cape
     })
 
     sets.precast.WS["Vorpal Blade"] = set_combine(ws_physical, {
         ring2="Shukuyu ring",
-        back=Cape.Str_WS
+        back=str_ws_cape
     })
 
     sets.precast.WS["Savage Blade"] = set_combine(ws_physical, {
@@ -236,7 +235,7 @@ function init_gear_sets()
         ring1="Rufescent ring",
         ring2="Shukuyu ring",
         waist="Sailfi belt +1",
-        back=Cape.Str_WS
+        back=str_ws_cape
     })
 
     sets.precast.WS["Death Blossom"] = set_combine(ws_physical, {
@@ -249,11 +248,11 @@ function init_gear_sets()
         head="Pixie Hairpin +1",
         ring1="Medada's ring",
         ring2="Archon ring",
-        back=Cape.Mnd_WS
+        back=mnd_cape_WS
     })
 
     sets.precast.WS["Chant du Cygne"] = set_combine(ws_physical, {
-        back=Cape.Dex_WS
+        back=dex_ws_cape
     })
     
     sets.precast.WS["Requiescat"] = {
@@ -268,7 +267,7 @@ function init_gear_sets()
         right_ear="Lethargy Earring +2",
         left_ring="Rufescent Ring",
         right_ring="Chirich Ring +1",
-        back={ name="Sucellos's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Dbl.Atk."+10','Damage taken-5%',}},
+        back=mnd_cape_WS,
     }
 
     sets.precast.WS["Evisceration"] = ws_physical
@@ -286,12 +285,12 @@ function init_gear_sets()
         hands="Lethargy gantherots +3",
         ring1="Menelaus's ring",
         ring2="Defending ring",        
-        back=Cape.Mnd,
+        back=mnd_cape,
         legs="Atrophy tights +3",
         feet="Kaykaus boots"
     }
 
-    sets.midcast.CureSelf = set_combine(sets.midcast.Cure, {waist="Gishdubar"})
+    sets.midcast.CureSelf = set_combine(sets.midcast.Cure, {waist="Gishdubar sash"})
 
     sets.midcast.CureWeather = set_combine(sets.midcast.Cure, {
         main="Daybreak",
@@ -358,7 +357,7 @@ function init_gear_sets()
         legs="Lethargy fuseau +3"
     })
 
-    sets.midcast.RefreshSelf = set_combine(sets.midcast.refresh, {waist="Gishdubar"})
+    sets.midcast.RefreshSelf = set_combine(sets.midcast.refresh, {waist="Gishdubar sash"})
 
     local SIRD  = {
         ammo="Staunch Tathlum +1",
@@ -370,7 +369,7 @@ function init_gear_sets()
         hands={ name="Chironic Gloves", augments={'Mag. Acc.+15 "Mag.Atk.Bns."+15','Spell interruption rate down -11%','INT+8','"Mag.Atk.Bns."+5',}},
         ring1="Freke Ring",
         ring2="Defending Ring",
-        back=Cape.Mnd,
+        back=mnd_cape,
         waist="Plat. Mog. Belt",
         legs="Carmine Cuisses +1",
         feet="Leth. Houseaux +3"        
@@ -410,7 +409,7 @@ function init_gear_sets()
         sub="Enki strap",
         ranged=empty,
         ammo="Regal gem",                
-        head="Lethargy chapeau +3",
+        head="Lethargy chappel +3",
         neck="Duelist's torque +2",
         ear1="Snotra earring",
         ear2="Lethargy earring +2",
@@ -483,7 +482,7 @@ function init_gear_sets()
         hands="Lethargy gantherots +3",
         ring1="Medada's ring",
         ring2="Metamorph ring +1",
-        back=Cape.Int,
+        back=int_cape,
         waist="Acuity belt +1",
         legs="Lethargy fuseau +3",
         feet="Lethargy houseaux +3"
@@ -591,14 +590,14 @@ function init_gear_sets()
         hands="Malignance gloves",
         ring1={name="Chirich ring +1", bag="wardrobe5"},
         ring2={name="Chirich ring +1", bag="wardrobe6"},
-        back=Cape.Dw,
+        back=dw_cape,
         waist="Grunfeld rope",
         legs="Malignance tights",
         feet="Malignance boots"
     }
 --   sets.engaged[state.CombatMode][state.CombatForm][state.CombatWeapon][state.OffenseMode][state.HybridMode][classes.CustomMeleeGroups (any number)]
-    sets.engaged.SwordShield = set_combine(sets.engaged, {feet="Atrophy boots +3", back=Cape.Tp})
-    sets.engaged.SwordShield.HighAcc = set_combine(sets.engaged.SwordShield, {neck="Combatant's torque", ear1="Dignitary earring"})
+    sets.engaged.SwordShield = set_combine(sets.engaged, {feet="Atrophy boots +3", back=tp_cape})
+    sets.engaged.SwordShield.HighAcc = set_combine(sets.engaged.SwordShield, {neck="Combatant's torque", ear1="Dignitary's earring"})
     sets.engaged.SwordShield.LowHaste = set_combine(sets.engaged.SwordShield, {ring2="Hetairoi ring"})
     sets.engaged.SwordShield.MidHaste = set_combine(sets.engaged.SwordShield.LowHaste, {})
     sets.engaged.SwordShield.HighHaste = set_combine(sets.engaged.SwordShield.MidHaste, {})
@@ -617,7 +616,7 @@ function init_gear_sets()
         feet="Malignance Boots",							
         neck="Loricate Torque +1",
         ring2="Gelatinous Ring +1",							--"Defending Ring", --10/10
-        back="Moonbeam Cape",
+        back=idle_pdt_cape
     }
 
     sets.engaged.Enspell = {
@@ -636,7 +635,7 @@ function init_gear_sets()
         hands="Bunzi's gloves",
         ring1="Medada's ring",
         ring2="Metamorph ring +1",
-        back=Cape.Int,
+        back=int_cape,
         waist="Acuity belt +1",
         legs="Lethargy fuseau +3",
         feet="Lethargy houseaux +3"
