@@ -128,6 +128,7 @@ function init_gear_sets()
     }
 
     sets.precast.FC.BardSong["Honor March"] = set_combine(sets.precast.FC.BardSong, {ranged="Marsyas"})
+    sets.precast.FC.BardSong["Aria of Passion"] = set_combine(sets.precast.FC.BardSong, {ranged="Loughnashade"})
 
     sets.precast.FC.Daurdabla = set_combine(sets.precast.FC.BardSong, {
         ranged=info.ExtraSongInstrument,
@@ -253,6 +254,7 @@ function init_gear_sets()
 
         -- Gear to enhance certain classes of songs.  No instruments added here since Gjallarhorn is being used.
     sets.midcast.BardSong["Honor March"] = set_combine(sets.midcast.BardSong.SongEffect, {ranged="Marsyas"})
+    sets.midcast.BardSong["Aria of Passion"] = set_combine(sets.midcast.BardSong.SongEffect, {ranged="Loughnashade"})
     sets.midcast.BardSong.Ballad = set_combine(sets.midcast.BardSong.SongEffect, {legs="Fili rhingrave +3"})
     sets.midcast.BardSong.Lullaby = set_combine(sets.midcast.BardSong.SongDebuff, {ranged="Daurdabla", hands="Brioso cuffs +3"})
     sets.midcast.BardSong.Madrigal = set_combine(sets.midcast.BardSong.SongEffect, {head="Fili calot +3"})
@@ -330,7 +332,7 @@ function init_gear_sets()
     }
 
     sets.defense.MDT = {
-        ranged=idle_linos,
+        ranged=def_linos,
         head="Fili calot +3",
         neck="Loricate torque +1",
         ear1="Sanare earring",
@@ -378,7 +380,7 @@ function init_gear_sets()
     sets.engaged.Accuracy = sets.engaged
     
     sets.midcast.Absorb = {
-        ranged=idle_linos,
+        ranged=def_linos,
         head="Fili calot +3",
         neck="Loricate torque +1",
         ear1="Enchanter's earring +1",
@@ -387,7 +389,7 @@ function init_gear_sets()
         hands="Fili manchettes +3",
         ring1="Medada's ring",
         ring2="Kishar ring",
-        back=fast_cast_cape,
+        back=debuff_cape ,
         waist="Acuity belt +1",
         legs="Fili rhingrave +3",
         feet="Fili cothurnes +3"

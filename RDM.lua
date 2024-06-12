@@ -31,7 +31,7 @@ function job_setup()
 
     state.Crocea = {}
     state.Crocea.SwordShield = M{['description']='Crocea Set', 'Sacro', 'Genmei'}
-    state.Crocea.DualWield = M{['description']='Crocea Set', 'Daybreak', 'Demersal', 'TP'}
+    state.Crocea.DualWield = M{['description']='Crocea Set', 'Daybreak', 'Demersal', 'TP', 'Bunzi'}
 
     state.Club = {}
     state.Club.SwordShield = M{['description']='Club Set', 'Sacro', 'Genmei'}
@@ -114,6 +114,7 @@ function init_gear_sets()
     sets.Crocea.DualWield = {main="Crocea mors", sub="Daybreak"}
     sets.Crocea.DualWield.Daybreak = {main="Crocea mors", sub="Daybreak"}
     sets.Crocea.DualWield.Demersal = {main="Crocea mors", sub="Demersal degen +1"}
+    sets.Crocea.DualWield.Bunzi = {main="Crocea mors", sub="Bunzi's rod"}
     sets.Crocea.DualWield.TP = {main="Crocea mors", sub="Thibron"}
     sets.Crocea.SwordShield = {main="Crocea mors", sub="Sacro bulwark"}
     sets.Crocea.SwordShield.Sacro = {main="Crocea mors", sub="Sacro bulwark"}
