@@ -76,12 +76,12 @@ function init_gear_sets()
         head="Umuthi hat"
     })
 
-    sets.precast['Impact'] = set_combine(sets.precast.FC, {
+    sets.precast.FC['Impact'] = set_combine(sets.precast.FC, {
         head=empty,
         body='Crepuscular cloak'
     })
 
-    sets.precast["Dispelga"] = {main="Daybreak"}
+    sets.precast.FC["Dispelga"] = set_combine(sets.precast.FC, {main="Daybreak"})
     
     -- Weaponskill sets
     -- Default set for any weaponskill that isn't any more specifically defined
@@ -358,7 +358,7 @@ function init_gear_sets()
         neck="Loricate Torque +1",
         ear1="Ran earring",
         ear2="Foresti earring",
-        body="Nyame mail", -- 8 mdb 139 meva
+        body="Adamantite armor",
         hands="Nyame gauntlets", -- 4 mdb 112 meva
         ring1="Gelatinous ring +1",
         ring2="Mephitas's ring +1",
@@ -373,7 +373,7 @@ function init_gear_sets()
         neck="Loricate torque +1",
         ear1="Lugalbanda earring",
         ear2="Arete del luna +1",
-        body="Bagua tunic +3",
+        body="Adamantite armor",
         hands="Bagua mitaines +3",
         ring1="Shadow ring",
         ring2={name="Vexer ring +1", bag="wardrobe6"},

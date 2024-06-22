@@ -675,7 +675,7 @@ function init_gear_sets()
         neck="Loricate torque +1",
         ear1="Ran earring",
         ear2="Lugalbanda earring",
-        body="Nyame mail",
+        body="Adamantite armor",
         hands="Nyame gauntlets",
         ring1="Mephitas's ring +1",
         ring2="Shadow ring",
@@ -694,7 +694,7 @@ function init_gear_sets()
         neck="Warder's charm +1",
         ear1="Lugalbanda earring",
         ear2="Sanare earring", -- 4 mdb 6 meva
-        body="Arbatel gown +3", -- 11 mdb 141 meva
+        body="Adamantite armor",
         hands="Arbatel bracers +3", -- 7 mdb 98 meva
         ring1={name="Vexer ring +1", bag="wardrobe5"}, --4 mdb
         ring2="Shadow ring",

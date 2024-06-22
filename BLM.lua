@@ -455,7 +455,7 @@ function init_gear_sets()
         neck="Loricate Torque +1",
         ear1="Ran Earring",
         ear2="Lugalbanda earring",
-        body="Nyame Mail",
+        body="Adamantite armor",
         hands="Nyame Gauntlets",
         ring1="Shadow Ring",
         ring2="Shneddick Ring +1",        
@@ -471,7 +471,7 @@ function init_gear_sets()
         neck="Loricate Torque +1",
         ear1="Sanare Earring",
         ear2="Lugalbanda Earring",
-        body="Wicce Coat +3",
+        body="Adamantite armor",
         hands="Wicce Gloves +3",
         ring1="Shadow ring",
         ring2={name="Vexer ring +1", bag="wardrobe6"}, --4 mdb  

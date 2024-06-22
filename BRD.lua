@@ -321,7 +321,7 @@ function init_gear_sets()
         neck="Loricate Torque +1",
         ear1="Ran earring",
         ear2="Foresti earring",
-        body="Nyame mail", -- 8 mdb 139 meva
+        body="Adamantite armor",
         hands="Nyame gauntlets", -- 4 mdb 112 meva
         ring1="Ayanmo ring",
         ring2="Mephitas's ring +1",
@@ -337,7 +337,7 @@ function init_gear_sets()
         neck="Loricate torque +1",
         ear1="Sanare earring",
         ear2="Arete del luna +1",
-        body="Fili hongreline +3",
+        body="Adamantite armor",
         hands="Fili manchettes +3",
         ring1="Shadow ring",
         ring2={name="Vexer ring +1", bag="wardrobe6"},
