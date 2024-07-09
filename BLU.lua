@@ -137,12 +137,12 @@ function init_gear_sets()
     sets.Dagger.SwordShield.Sacro = {main="Gleti's knife", sub="Sacro bulwark"}
     sets.Dagger.SwordShield.Genmei = {main="Gleti's knife", sub="Genmei shield"}
 
-    sets.Zerodmg = {main="Infiltrator"}
-    sets.Zerodmg.DualWield = {main="Infiltrator", sub="Qutrub knife"}
-    sets.Zerodmg.DualWield.Normal = {main="Infiltrator", sub="Qutrub knife"}
-    sets.Zerodmg.SwordShield = {main="Infiltrator", sub="Sacro bulwark"}
-    sets.Zerodmg.SwordShield.Sacro = {main="Infiltrator", sub="Sacro bulwark"}
-    sets.Zerodmg.SwordShield.Genmei = {main="Infiltrator", sub="Genmei shield"}
+    sets.Zerodmg = {main="Aern Dagger"}
+    sets.Zerodmg.DualWield = {main="Aern Dagger", sub="Qutrub knife"}
+    sets.Zerodmg.DualWield.Normal = {main="Aern Dagger", sub="Qutrub knife"}
+    sets.Zerodmg.SwordShield = {main="Aern Dagger", sub="Sacro bulwark"}
+    sets.Zerodmg.SwordShield.Sacro = {main="Aern Dagger", sub="Sacro bulwark"}
+    sets.Zerodmg.SwordShield.Genmei = {main="Aern Dagger", sub="Genmei shield"}
     
     -- Precast Sets
     
@@ -596,6 +596,7 @@ function init_gear_sets()
         legs="Malignance tights",
         feet="Malignance boots"
     }
+    
 --   sets.engaged[state.CombatMode][state.CombatForm][state.CombatWeapon][state.OffenseMode][state.HybridMode][classes.CustomMeleeGroups (any number)]
     sets.engaged.SwordShield = set_combine(sets.engaged, {feet="Atrophy boots +3", back=tp_cape})
     sets.engaged.SwordShield.HighAcc = set_combine(sets.engaged.SwordShield, {neck="Combatant's torque", ear1="Dignitary's earring"})
@@ -756,21 +757,7 @@ function job_state_change(descrip, newVal, oldVal)
 end
 
 function customize_melee_set(meleeSet)
-    if state.EnspellMode.value and IsEnspellActive() then
-        meleeSet = set_combine(meleeSet, sets.engaged.Enspell)
-    end
-
     return meleeSet
-end
-
-function IsEnspellActive()
-    return (
-        buffactive["Enstone"] or buffactive["Enstone II"]
-        or buffactive["Enwater"] or buffactive["Enwater II"]
-        or buffactive["Enaero"] or buffactive["Enaero II"]
-        or buffactive["Enfire"] or buffactive["Enfire II"]
-        or buffactive["Enblizzard"] or buffactive["Enblizzard II"]
-        or buffactive["Enthunder"] or buffactive["Enthunder II"])
 end
 
 function lockstyle()

@@ -32,6 +32,7 @@ function user_setup()
     state.MalignancePole = M{['description']='Malignance Pole Set', 'Khonsu', 'Irenic'}
     state.Tupsimati = M{['description']='Tupsimati Set', 'Khonsu', 'Enki'}
     state.Musa = M{['description']='Musa Set', 'Khonsu', 'Enki'}
+    state.Slaine = M{['description']='Slaine Set', 'Khonsu', 'Enki'}
     
 
     send_command('bind ^` gs c toggle MagicBurst')
@@ -41,6 +42,7 @@ function user_setup()
     send_command('bind ~f1 gs c set CombatWeapon MalignancePole')
     send_command('bind ~f2 gs c set CombatWeapon Tupsimati')
     send_command('bind ~f3 gs c set CombatWeapon Musa')
+    send_command('bind ~f4 gs c set CombatWeapon Slaine')
     
 end
 
@@ -50,6 +52,7 @@ function user_unload()
     send_command('unbind ~f1')
     send_command('unbind ~f2')
     send_command('unbind ~f3')
+    send_command('unbind ~f4')
     send_command('unbind ~f7') 
 end
 
@@ -87,6 +90,10 @@ function init_gear_sets()
     sets.Musa = {main="Musa", sub="Khonsu"}
     sets.Musa.Khonsu = {main="Musa", sub="Khonsu"}
     sets.Musa.Enki = {main="Musa", sub="Enki strap"}
+
+    sets.Slaine = {main="Slaine", sub="Khonsu"}
+    sets.Slaine.Khonsu = {main="Slaine", sub="Khonsu"}
+    sets.Slaine.Enki = {main="Slaine", sub="Enki strap"}
     -- Precast Sets
 
     -- Precast sets to enhance JAs
@@ -385,14 +392,14 @@ function init_gear_sets()
         main="Bunzi's Rod",
         sub="Ammurapi Shield",
         ammo="Pemphredo Tathlum",
-        head="Pixie hairpin +1",
+        head="Arbatel bonnet +3",
         neck="Argute Stole +2",
         ear1="Malignance Earring",
         ear2="Regal Earring",
         body="Agwu's Robe",
         hands="Agwu's Gages",
         ring1="Medada's ring",
-        ring2="Archon ring",
+        ring2="Metamorph ring +1",
         back=nuke_cape,
         waist="Sacro cord",
         legs="Agwu's Slops",
@@ -593,6 +600,8 @@ function init_gear_sets()
         legs="Arbatel pants +3",
         feet="Academic's loafers +3"
     }
+
+    sets.midcast["Dispelga"] = set_combine(sets.midcast['Enfeebling Magic'], {main="Daybreak"})
 
     sets.Kiting = {
         ring2="Shneddick ring +1",

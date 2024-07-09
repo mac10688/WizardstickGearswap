@@ -105,7 +105,7 @@ function init_gear_sets()
         body="Inyanga jubbah +2",
         hands="Leyline gloves",
         ring1="Kishar ring",
-        ring2="Prolix ring",
+        ring2="Medada's ring",
         back=fast_cast_cape,
         waist="Embla sash",
         legs="Lengo pants",
@@ -120,7 +120,7 @@ function init_gear_sets()
         body="Inyanga jubbah +2",
         hands="Leyline gloves",
         ring1="Kishar ring",
-        ring2="Defending ring",
+        ring2="Medada's ring",
         back=fast_cast_cape,
         waist="Embla sash",
         legs="Gendewitha spats +1",
@@ -134,7 +134,11 @@ function init_gear_sets()
         ranged=info.ExtraSongInstrument,
         hands="Bewegt cuffs",
         legs="Fili rhingrave +3"
-    })  
+    })
+
+    --["dummy"] = L{"Gold Capriccio", "Puppet's Operetta"},
+    sets.precast.FC["Gold Capriccio"] = sets.precast.FC.Daurdabla
+    sets.precast.FC["Puppet's Operetta"] = sets.precast.FC.Daurdabla
     
     -- Precast sets to enhance JAs
     
@@ -264,6 +268,7 @@ function init_gear_sets()
     sets.midcast.BardSong.Paeon = set_combine(sets.midcast.BardSong.SongEffect, {head="Brioso roundlet +3"})
     sets.midcast.BardSong.Carol = set_combine(sets.midcast.BardSong.SongEffect, {hands="Mousai gages +1"})
     sets.midcast.BardSong["Sentinel's Scherzo"] = set_combine(sets.midcast.BardSong.SongEffect, {feet="Fili cothurnes +3"})
+    
         -- sets.midcast['Magic Finale'] = {neck="Wind Torque",waist="Corvax Sash",legs="Aoidos' Rhing. +2"}
 
 
@@ -273,6 +278,10 @@ function init_gear_sets()
         hands="Bewegt cuffs",
         legs="Fili rhingrave +3"
     })
+
+    --["dummy"] = L{"Gold Capriccio", "Puppet's Operetta"},
+    sets.midcast["Gold Capriccio"] = sets.midcast.BardSong.DaurdablaDummy
+    sets.midcast["Puppet's Operetta"] = sets.midcast.BardSong.DaurdablaDummy
 
     -- Other general spells and classes.
     sets.midcast.Cure = {main="Arka IV",sub='Achaq Grip',
@@ -376,7 +385,11 @@ function init_gear_sets()
     }
 
     sets.engaged.TP = sets.engaged
-    sets.engaged.Hybrid = sets.engaged
+    sets.engaged.Hybrid = set_combine(sets.engaged, {
+        ring1={name="Moonlight ring", bag="wardrobe5"},
+        ring2={name="Moonlight ring", bag="wardrobe6"}
+    })
+
     sets.engaged.Accuracy = sets.engaged
     
     sets.midcast.Absorb = {

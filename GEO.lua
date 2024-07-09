@@ -143,7 +143,7 @@ function init_gear_sets()
         ear1="Malignance earring",
         ear2="Regal earring",
         body="Bagua tunic +3",
-        hands="Amalric gages +1",
+        hands="Agwu's gages",
         ring1="Medada's ring",
         ring2="Metamorph ring +1",        
         waist="Acuity belt +1",
@@ -169,6 +169,8 @@ function init_gear_sets()
         ring2="Archon ring",
         body='Crepuscular cloak'
     })
+
+    sets.midcast["Dispelga"] = set_combine(sets.midcast['Enfeebling Magic'], {main="Daybreak"})
 
     sets.midcast.Geocolure = set_combine(conserve_mp_set, {
         main="Idris", 
@@ -240,8 +242,6 @@ function init_gear_sets()
         feet="Bagua sandals +3"
     }
 
-    sets.midcast["Dispelga"] = set_combine(sets.midcast['Enfeebling Magic'], {main="Daybreak"})
-
     sets.midcast['Enhancing Magic'] = set_combine(conserve_mp_set, {
         sub="Ammurapi shield",
         head="Befouled crown",
@@ -302,11 +302,11 @@ function init_gear_sets()
         head="Azimuth hood +3",
         neck="Loricate torque +1",
         ear1="Etiolation earring",
-        ear2="Hearty earring",
+        ear2="Arete del luna +1",
         body="Bagua tunic +3",
         hands="Azimuth gloves +3",
         ring1="Defending Ring",
-        ring2="Vengeful ring",
+        ring2={name="Stikini Ring +1", bag="wardrobe6"},
         back=pet_Cape,
         waist="Slipor sash",
         legs="Geomancy pants +3",

@@ -143,6 +143,8 @@ function init_gear_sets()
         body='Crepuscular cloak'
     })
 
+    sets.precast.FC["Dispelga"] = set_combine(sets.precast.FC, {main="Daybreak"})
+
     sets.precast.FC.Cure = set_combine(sets.precast.FC)
 
     sets.precast.FC.Curaga = sets.precast.FC.Cure
@@ -441,6 +443,8 @@ function init_gear_sets()
         ring2="Archon ring",
         body='Crepuscular cloak'
     })
+
+    sets.midcast["Dispelga"] = set_combine(sets.midcast['Enfeebling Magic'], {main="Daybreak"})
 
     -- -- Minimal damage gear for procs.
     -- sets.midcast['Elemental Magic'].Proc = {main="Earth Staff", sub="Mephitis Grip",ammo="Impatiens",

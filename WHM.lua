@@ -156,6 +156,14 @@ function init_gear_sets()
     })
     sets.precast.FC.Curaga = sets.precast.FC.Cure
     sets.precast.FC.CureSolace = sets.precast.FC.Cure
+
+    sets.precast.FC['Impact'] = set_combine(sets.precast.FC, {
+        head=empty,
+        body='Crepuscular cloak'
+    })
+
+    sets.precast.FC["Dispelga"] = set_combine(sets.precast.FC, {main="Daybreak"})
+
     -- CureMelee spell map should default back to Healing Magic.
     
     -- Precast sets to enhance JAs
@@ -577,6 +585,14 @@ function init_gear_sets()
     sets.midcast.Bind = sets.midcast.MaccEnfeebles
     sets.midcast.Poison = sets.midcast.MaccEnfeebles
     sets.midcast.Stun = sets.midcast.MaccEnfeebles
+
+    sets.midcast['Impact'] = set_combine(sets.midcast['Elemental Magic'], {
+        head=empty,
+        ring2="Archon ring",
+        body='Crepuscular cloak'
+    })
+
+    sets.midcast["Dispelga"] = set_combine(sets.midcast['Enfeebling Magic'], {main="Daybreak"})
     
     -- Sets to return to when not performing an action.    
 

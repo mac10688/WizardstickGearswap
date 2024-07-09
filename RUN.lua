@@ -157,7 +157,7 @@ function init_gear_sets()
         body="Agwu's robe",
         hands="Agwu's gages",
         ring1="Metamorph ring +1",
-        ring2="Shiva ring +1",
+        ring2="Medadas ring",
         back="Evasionist's Cape",
         waist="Orpheus's sash",
         legs="Agwu's slops",
@@ -317,8 +317,8 @@ function init_gear_sets()
         ring2="Ilabrat ring",
         back=dimi_cape,
         waist="Fotia belt", 
-        legs="Lustratio subligar +1",
-        feet="Lustratio leggings +1"
+        legs="Nyame flanchard",
+        feet="Nyame sollerets"
     }
     sets.precast.WS['Herculean Slash'] = sets.WS
 
