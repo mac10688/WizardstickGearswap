@@ -13,16 +13,27 @@ end
 -- Setup vars that are user-independent.  state.Buff vars initialized here will automatically be tracked.
 function job_setup()
     state.OffenseMode:options('None', 'Normal')
+    state.CombatMode:options('SwordShield', 'DualWield')
     state.CastingMode:options('Normal', 'Resistant')
     state.IdleMode:options('Normal', 'PDT')
 
+    state.CombatWeapon:set('Idris')
+    
+    state.Idris = {}
+    state.Idris.SwordShield = M{['description']='Idris Set', 'Ammurapi', 'Genmei'}
+    state.Idris.DualWield = M{['description']='Idris Set', 'Bunzi', 'WizardRod'}
+
     state.MagicBurst = M(false, 'Magic Burst')
     data.petJA = S{"Full Circle","Radial Arcana","Mending Helation","Concentric Pulse"}
+    
     send_command('bind ^` gs c toggle MagicBurst')
+    send_command('bind ~f1 gs c set CombatWeapon Idris')
+
 end
 
 -- Called when this job file is unloaded (eg: job change)
 function user_unload()
+    send_command('unbind ~f1')
     send_command('unbind ^`')
 end
 
@@ -36,6 +47,15 @@ function init_gear_sets()
     local ws_Cape = { name="Nantosuelta's Cape", augments={'MND+20','Accuracy+20 Attack+20','MND+10','Weapon skill damage +10%','Damage taken-5%'}}
     local idle_pdt_cape = { name="Nantosuelta's Cape", augments={'VIT+20','Eva.+20 /Mag. Eva.+20','VIT+10','Pet: "Regen"+10','DEF+50'}}
     local idle_mdt_cape = { name="Nantosuelta's Cape", augments={'INT+20','Eva.+20 /Mag. Eva.+20','INT+10','Pet: "Regen"+10','Mag. Evasion+15'}}
+
+    
+    sets.Idris = {main="Idris"}
+    sets.Idris.DualWield = {main="Idris", sub="Bunzi's rod"}
+    sets.Idris.DualWield.Bunzi = {main="Idris", sub="Bunzi's rod"}
+    sets.Idris.DualWield.WizardRod = {main="Idris", sub="Wizard's rod"}
+    sets.Idris.SwordShield = {main="Idris", sub="Ammurapi shield"}
+    sets.Idris.SwordShield.Ammurapi = {main="Idris", sub="Ammurapi shield"}
+    sets.Idris.SwordShield.Genmei = {main="Idris", sub="Genmei shield"}
 
     --------------------------------------
     -- Precast sets
@@ -296,8 +316,6 @@ function init_gear_sets()
     -- Idle sets
 
     sets.idle = {
-        main="Idris",
-        sub="Genmei shield",
         range="Dunna",
         head="Azimuth hood +3",
         neck="Loricate torque +1",
@@ -315,7 +333,6 @@ function init_gear_sets()
 
     -- .Pet sets are for when Luopan is present.
     sets.idle.Pet = set_combine(sets.idle, {
-        main="Idris",
         range="Dunna",
         -- head="Azimuth hood +3",
         neck="Bagua charm +2",

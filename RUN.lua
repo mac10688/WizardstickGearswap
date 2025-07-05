@@ -198,7 +198,7 @@ function init_gear_sets()
     }
     sets.precast.FC['Enhancing Magic'] = set_combine(sets.precast.FC, {legs="Futhark Trousers +3"})
 
-    local enmity_midcast = set_combine(sets.defense.PDT, {
+    sets.enmity_midcast = set_combine(sets.defense.PDT, {
         ammo="Staunch tathlum +1",
         head="Halitus helm",
         body="Emet harness +1",
@@ -214,7 +214,7 @@ function init_gear_sets()
     })
 
     --SIRD
-    local SIRD = set_combine(sets.defense.PDT, {
+    sets.SIRD = set_combine(sets.defense.PDT, {
         ammo="Staunch tathlum +1", --11%
         head="Erilaz galea +3", --20%
         neck="Moonlight necklace", --15%
@@ -227,26 +227,26 @@ function init_gear_sets()
         legs="Carmine cuisses +1", --20%
     })
 
-    local SIRD_enmity = set_combine(SIRD, {
+    sets.SIRD_enmity = set_combine(sets.SIRD, {
         -- head="Halitus helm",
         body="Emet harness +1",
         ring1="Eihwaz ring"
     })
 
     --blu sub
-    sets.midcast["Sheep Song"] = SIRD
-    sets.midcast["Blank Gaze"] = SIRD
-    sets.midcast["Jettatura"] = SIRD
-    sets.midcast["Soporific"] = SIRD
-    sets.midcast["Cursed Sphere"] = SIRD
-    sets.midcast["Geist Wall"] = SIRD
-    sets.midcast["Healing Breeze"] = SIRD
+    sets.midcast["Sheep Song"] = sets.SIRD
+    sets.midcast["Blank Gaze"] = sets.SIRD
+    sets.midcast["Jettatura"] = sets.SIRD
+    sets.midcast["Soporific"] = sets.SIRD
+    sets.midcast["Cursed Sphere"] = sets.SIRD
+    sets.midcast["Geist Wall"] = sets.SIRD
+    sets.midcast["Healing Breeze"] = sets.SIRD
 
     --drk sub
-    sets.midcast["Stun"] = enmity_midcast
+    sets.midcast["Stun"] = sets.enmity_midcast
 
     --Enhancing magic duration: 45%
-    sets.midcast['Enhancing Magic'] = set_combine(SIRD, {
+    sets.midcast['Enhancing Magic'] = set_combine(sets.SIRD, {
         head="Erilaz galea +3", --Enhancing magic effect duration +25%
         neck="Incanter's torque",
         ear1="Andoaa earring",
@@ -255,9 +255,9 @@ function init_gear_sets()
         legs="Futhark trousers +3" --Enhancing magic duration +20%
     })
 
-    sets.midcast["Cocoon"] = SIRD
-    sets.midcast["Flash"] = enmity_midcast
-    sets.midcast["Foil"] = enmity_midcast
+    sets.midcast["Cocoon"] = sets.SIRD
+    sets.midcast["Flash"] = sets.enmity_midcast
+    sets.midcast["Foil"] = sets.enmity_midcast
 
     sets.midcast['Phalanx'] = set_combine(sets.midcast['Enhancing Magic'], {
         head="Futhark bandeau +3",

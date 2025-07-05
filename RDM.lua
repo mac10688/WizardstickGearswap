@@ -24,7 +24,6 @@ function job_setup()
     state.EnspellMode = M(true, 'Enspell Melee Mode')
     state.CombatWeapon:set('Naegling')
 
-    -- state.CombatWeapon = M{['description']='Combat Weapon', 'Naegling', 'Crocea', 'Club', 'Dagger', 'Zerodmg'}
     state.Naegling = {}
     state.Naegling.SwordShield = M{['description']='Naegling Set', 'Sacro', 'Genmei'}
     state.Naegling.DualWield = M{['description']='Naegling Set', 'TP', 'Acc'}
@@ -565,7 +564,7 @@ function init_gear_sets()
         ring1="Shadow ring",
         ring2={name="Vexer ring +1", bag="wardrobe6"},
         back=idle_mdt_cape,
-        waist="Slipor sash",
+        waist="Null belt",
         legs="Lethargy fuseau +3",
         feet="Lethargy houseaux +3"
     }
@@ -625,7 +624,7 @@ function init_gear_sets()
     }
 
     sets.magic_burst = {
-        main="Bunzi's rod",
+        main="Wizard's rod",
         sub="Ammurapi shield",
         ammo="Ghastly tathlum +1",
         head="Ea hat +1",
@@ -783,10 +782,4 @@ end
 
 function job_handle_equipping_gear(playerStatus, eventArgs)
     --Equip the weapons we want to always have on.
-end
-
-function IsDualWield(weaponSet)
-    local sub = windower.ffxi.get_items(weaponSet.sub_bag, weaponSet.sub)
-    local item = res.items[sub.id]
-    return item.category == "Weapon"
 end
