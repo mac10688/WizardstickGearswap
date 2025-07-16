@@ -30,7 +30,11 @@ function job_setup()
 
     state.Crocea = {}
     state.Crocea.SwordShield = M{['description']='Crocea Set', 'Sacro', 'Genmei'}
-    state.Crocea.DualWield = M{['description']='Crocea Set', 'Daybreak', 'Demersal', 'TP', 'Bunzi'}
+    state.Crocea.DualWield = M{['description']='Crocea Set', 'Murgleis', 'Daybreak', 'Demersal', 'TP', 'Bunzi'}
+
+    state.Murgleis = {}
+    state.Murgleis.SwordShield = M{['description']='Murgleis Set', 'Ammurapi', 'Sacro', 'Genmei'}
+    state.Murgleis.DualWield = M{['description']='Murgleis Set', 'Daybreak', 'Demersal', 'TP', 'Bunzi'}
 
     state.Club = {}
     state.Club.SwordShield = M{['description']='Club Set', 'Sacro', 'Genmei'}
@@ -46,9 +50,10 @@ function job_setup()
 
     send_command('bind ~f1 gs c set CombatWeapon Naegling')
     send_command('bind ~f2 gs c set CombatWeapon Crocea')
-    send_command('bind ~f3 gs c set CombatWeapon Club')
-    send_command('bind ~f4 gs c set CombatWeapon Dagger')
-    send_command('bind ~f5 gs c set CombatWeapon Zerodmg')
+    send_command('bind ~f3 gs c set CombatWeapon Murgleis')
+    send_command('bind ~f4 gs c set CombatWeapon Club')
+    send_command('bind ~f5 gs c set CombatWeapon Dagger')
+    send_command('bind ~f6 gs c set CombatWeapon Zerodmg')
     send_command('bind @e gs c toggle EnspellMode')
     send_command('bind ^` gs c toggle MagicBurst')
 
@@ -60,9 +65,9 @@ function job_setup()
     state.Buff.Stymie = buffactive.Stymie or false
 
     enfeebling_magic_acc = S{'Bind', 'Break', 'Dispel', 'Distract', 'Distract II', 'Frazzle',
-        'Frazzle II',  'Gravity', 'Gravity II', 'Silence'}
+        'Frazzle II', 'Silence'}
     enfeebling_magic_skill = S{'Distract III', 'Frazzle III', 'Poison II'}
-    enfeebling_magic_effect = S{'Dia', 'Dia II', 'Dia III', 'Diaga', 'Blind', 'Blind II'}
+    enfeebling_magic_effect = S{'Dia', 'Dia II', 'Dia III', 'Diaga', 'Blind', 'Blind II', 'Gravity', 'Gravity II'}
     enfeebling_magic_sleep = S{'Sleep', 'Sleep II', 'Sleepga'}
 
     skill_spells = S{
@@ -111,6 +116,7 @@ function init_gear_sets()
 
     sets.Crocea = {main="Crocea mors"}
     sets.Crocea.DualWield = {main="Crocea mors", sub="Daybreak"}
+    sets.Crocea.DualWield.Murgleis = {main="Crocea mors", sub="Murgleis"}
     sets.Crocea.DualWield.Daybreak = {main="Crocea mors", sub="Daybreak"}
     sets.Crocea.DualWield.Demersal = {main="Crocea mors", sub="Demersal degen +1"}
     sets.Crocea.DualWield.Bunzi = {main="Crocea mors", sub="Bunzi's rod"}
@@ -118,6 +124,17 @@ function init_gear_sets()
     sets.Crocea.SwordShield = {main="Crocea mors", sub="Sacro bulwark"}
     sets.Crocea.SwordShield.Sacro = {main="Crocea mors", sub="Sacro bulwark"}
     sets.Crocea.SwordShield.Genmei = {main="Crocea mors", sub="Genmei shield"}
+
+    sets.Murgleis = {main="Murgleis"}
+    sets.Murgleis.DualWield = {main="Murgleis", sub="Crocea mors"}
+    sets.Murgleis.DualWield.Crocea = {main="Murgleis", sub="Crocea mors"}
+    sets.Murgleis.DualWield.Demersal = {main="Murgleis", sub="Demersal degen +1"}
+    sets.Murgleis.DualWield.Bunzi = {main="Murgleis", sub="Bunzi's rod"}
+    sets.Murgleis.DualWield.TP = {main="Murgleis", sub="Thibron"}
+    sets.Murgleis.SwordShield = {main="Murgleis", sub="Sacro bulwark"}
+    sets.Murgleis.SwordShield.Ammurapi = {main="Murgleis", sub="Ammurapi shield"}
+    sets.Murgleis.SwordShield.Sacro = {main="Murgleis", sub="Sacro bulwark"}
+    sets.Murgleis.SwordShield.Genmei = {main="Murgleis", sub="Genmei shield"}    
 
     sets.Club = {main="Maxentius"}
     sets.Club.DualWield = {main="Maxentius", sub="Daybreak"}
@@ -191,12 +208,12 @@ function init_gear_sets()
         ammo="Coiste bodhar",
         head="Nyame helm",
         neck="Fotia gorget",
-        ear1="Sherida Earring",
+        ear1="Telos earring",
         ear2="Lethargy earring +2",        
         body="Nyame mail",
         hands="Nyame gauntlets",
         ring1="Rufescent ring",
-        ring2="Ilabrat ring",
+        ring2="Epaminondas's ring",
         back=mnd_cape_WS,
         waist="Fotia belt",
         legs="Nyame flanchard",
@@ -225,7 +242,6 @@ function init_gear_sets()
     })
 
     sets.precast.WS["Vorpal Blade"] = set_combine(ws_physical, {
-        ring2="Shukuyu ring",
         back=str_ws_cape
     })
 
@@ -239,7 +255,9 @@ function init_gear_sets()
     })
 
     sets.precast.WS["Death Blossom"] = set_combine(ws_physical, {
-        ring2="Shukuyu ring"
+        ear2="Regal earring",
+        neck="Republican platinum medal",
+        waist="Sailfi belt +1",
     })
 
     sets.precast.WS["Sanguine Blade"] = set_combine(ws_magic, {
@@ -405,8 +423,8 @@ function init_gear_sets()
     sets.midcast.Shellra = sets.midcast.Shell
     
     sets.midcast['Enfeebling Magic'] = {
-        main="Contemplator +1",
-        sub="Enki strap",
+        main="Murgleis",
+        sub="Ammurapi shield",
         ranged=empty,
         ammo="Regal gem",                
         head="Lethargy chappel +3",
@@ -418,7 +436,7 @@ function init_gear_sets()
         ring1="Medada's ring",
         ring2={name="Stikini Ring +1", bag="wardrobe6"},
         waist="Obstinate Sash",
-        back="Aurist's cape +1",
+        back=int_cape,
         legs={ name="Chironic Hose", augments={'Mag. Acc.+30','"Cure" potency +7%','INT+12','"Mag.Atk.Bns."+8'}},
         feet="Vitiation Boots +3"
     }
@@ -428,8 +446,8 @@ function init_gear_sets()
     })
 
     sets.midcast.MndEnfeeblesAcc = set_combine(sets.midcast.MndEnfeebles, {
-        ranged="Ullr",
-        ammo=empty,
+        -- ranged="Ullr",
+        -- ammo=empty,
         head="Atrophy chapeau +3",
         body="Atrophy Tabard +3"
     })
@@ -441,8 +459,9 @@ function init_gear_sets()
     })
 
     sets.midcast.IntEnfeeblesAcc = set_combine(sets.midcast.IntEnfeebles, {
-        ranged="Ullr",
-        ammo=empty
+        -- ranged="Ullr",
+        -- ammo=empty,
+        back="Aurist's cape +1"
     })
 
     sets.midcast.IntEnfeeblesEffect = set_combine(sets.midcast.IntEnfeebles, {
@@ -528,7 +547,7 @@ function init_gear_sets()
         ring1="Ayanmo ring",
         ring2="Defending ring",
         back=idle_pdt_cape,
-        waist="Slipor sash",
+        waist="Null belt",
         legs="Nyame flanchard",
         feet="Malignance boots"
     }    
@@ -569,7 +588,7 @@ function init_gear_sets()
         feet="Lethargy houseaux +3"
     }
 
-    sets.Kiting = {legs="Carmine cuisses +1"}
+    sets.Kiting = {ring1="Shneddick ring +1"}
 
     -- Engaged sets
 
