@@ -160,7 +160,7 @@ function init_gear_sets()
         head="Nyame helm",
         neck="Fotia gorget",
         ear1="Moonshade earring",
-        ear2="Ishvara earring",
+        ear2="Telos earring",
         body="Bihu Justaucorps +3",
         hands="Nyame gauntlets",
         ring1="ILabrat ring",
@@ -237,7 +237,7 @@ function init_gear_sets()
         feet="Brioso slippers +3"
     }
 
-    -- For song defbuffs (duration primary, accuracy secondary)
+    -- For song debuffs (duration primary, accuracy secondary)
     sets.midcast.BardSong.SongDebuff = {
         ranged="Gjallarhorn",
         head="Brioso roundlet +3",
@@ -249,7 +249,7 @@ function init_gear_sets()
         ring1={name="Stikini Ring +1", bag="wardrobe5"},
         ring2={name="Stikini Ring +1", bag="wardrobe6"},
         back=debuff_cape,
-        waist="Obstinate sash",
+        waist="Null belt",
         legs="Brioso cannions +3",
         feet="Brioso slippers +3"
     }
@@ -351,7 +351,7 @@ function init_gear_sets()
         ring1="Shadow ring",
         ring2={name="Vexer ring +1", bag="wardrobe6"},
         back=idle_mdt_cape,
-        waist="Slipor sash",
+        waist="Null belt",
         legs="Fili rhingrave +3",
         feet="Fili cothurnes +3"
     }
@@ -437,6 +437,9 @@ function init_gear_sets()
         legs="Zoar Subligar +1",
         feet="Nyame Sollerets"
     }
+
+    sets.precast.JA['Sentinel'] = sets.enmity
+    sets.precast.JA['Holy Circle'] = sets.enmity
 
     sets.precast.Item['Holy Water'] = {
         neck="Nicander's necklace",

@@ -21,7 +21,7 @@ function job_setup()
     
     state.Idris = {}
     state.Idris.SwordShield = M{['description']='Idris Set', 'Ammurapi', 'Genmei'}
-    state.Idris.DualWield = M{['description']='Idris Set', 'Bunzi', 'WizardRod'}
+    state.Idris.DualWield = M{['description']='Idris Set', 'Bunzi', 'WizardRod', 'LorgMor'}
 
     state.MagicBurst = M(false, 'Magic Burst')
     data.petJA = S{"Full Circle","Radial Arcana","Mending Helation","Concentric Pulse"}
@@ -53,6 +53,7 @@ function init_gear_sets()
     sets.Idris.DualWield = {main="Idris", sub="Bunzi's rod"}
     sets.Idris.DualWield.Bunzi = {main="Idris", sub="Bunzi's rod"}
     sets.Idris.DualWield.WizardRod = {main="Idris", sub="Wizard's rod"}
+    sets.Idris.DualWield.LorgMor = {main="Idris", sub="Lorg Mor"}
     sets.Idris.SwordShield = {main="Idris", sub="Ammurapi shield"}
     sets.Idris.SwordShield.Ammurapi = {main="Idris", sub="Ammurapi shield"}
     sets.Idris.SwordShield.Genmei = {main="Idris", sub="Genmei shield"}
@@ -326,7 +327,7 @@ function init_gear_sets()
         ring1="Defending Ring",
         ring2={name="Stikini Ring +1", bag="wardrobe6"},
         back=pet_Cape,
-        waist="Slipor sash",
+        waist="Null belt",
         legs="Geomancy pants +3",
         feet="Azimuth gaiters +3"
     }

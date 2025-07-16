@@ -238,7 +238,7 @@ function init_gear_sets()
         neck="Loricate torque +1",
         waist="Plat. Mog. Belt",
         left_ear="Nourish. Earring +1", --Could be 5% but not necessary
-        right_ear="Ebers Earring +1",
+        right_ear="Ebers Earring +2",
         ring1="Freke Ring", --10%
         ring2="Defending Ring",        
         back=fastcast_cape
@@ -258,7 +258,7 @@ function init_gear_sets()
         head="Ebers cap +3",  --10 mdb 125 meva
         neck="Cleric's torque +2",
         ear1="Glorious earring",
-        ear2="Ebers earring +1",
+        ear2="Ebers Earring +2",
         body="Theophany bliaut +3", -- 8 mdb 100 meva
         hands="Theophany mitts +3", -- 5 mdb 57 meva
         ring1="Medada's ring",
@@ -288,7 +288,7 @@ function init_gear_sets()
         feet="Theo. Duckbills +3", --29%        
         waist="Plat. Mog. Belt",
         left_ear="Sanare earring",
-        right_ear="Ebers Earring +1",
+        right_ear="Ebers Earring +2",
         ring1="Freke Ring", --10%
         ring2="Defending Ring",        
         back=fastcast_cape
@@ -340,7 +340,7 @@ function init_gear_sets()
         ammo="Staunch tathlum +1",
         neck="Loricate torque +1",
         ear1="Sanare earring", --3% magic dmg
-        ear2="Ebers earring +1",
+        ear2="Ebers Earring +2",
         ring2="Defending ring", --3% dmg
         ring1="Shadow ring", --10% dmg
         back=dt_cape,
@@ -379,7 +379,7 @@ function init_gear_sets()
         head="Telchine cap",
         neck="Loricate torque +1",
         ear1="Sanare earring", --3% magic dmg
-        ear2="Ebers earring +1",
+        ear2="Ebers Earring +2",
         body="Telchine chasuble",
         hands="Telchine gloves",
         ring2="Defending ring", --3% dmg
@@ -395,7 +395,7 @@ function init_gear_sets()
         sub="Ammurapi shield",
         head="Telchine cap",
         ear1="Sanare earring", --3% magic dmg
-        ear2="Ebers earring +1",
+        ear2="Ebers Earring +2",
         neck="Loricate torque +1",
         body="Ebers Bliaut +3", --Solace
         hands="Telchine gloves",
@@ -440,7 +440,7 @@ function init_gear_sets()
         head="Ebers cap +3",
         neck="Incanter's torque",
         ear1="Regal earring",
-        ear2="Ebers earring +1",
+        ear2="Ebers Earring +2",
         body="Ebers bliaut +3",
         hands="Piety mitts +3",
         ring1={name="Stikini Ring +1", bag="wardrobe5"},
@@ -476,7 +476,7 @@ function init_gear_sets()
         head="Ebers cap +3",
         neck="Incanter's torque",
         ear1="Malignance earring",
-        ear2="Ebers earring +1",
+        ear2="Ebers Earring +2",
         body="Ebers bliaut +3",
         hands="Piety mitts +3",
         ring1={name="Stikini Ring +1", bag="wardrobe5"},
@@ -533,7 +533,7 @@ function init_gear_sets()
         head="Ebers cap +3",
         neck="Erra pendant",
         ear1="Regal earring",
-        ear2="Ebers earring +1",
+        ear2="Ebers Earring +2",
         body="Theophany bliaut +3",
         hands="Regal cuffs",
         ring1="Medada's ring",
@@ -676,7 +676,7 @@ function init_gear_sets()
         neck="Combatant's torque",
         waist="Grunfeld Rope",
         ear1="Telos earring",
-        ear2="Ebers earring +1",
+        ear2="Ebers Earring +2",
         ring1={name="Chirich Ring +1", bag="wardrobe5"},
         ring2={name="Chirich Ring +1", bag="wardrobe6"},
         back=attack_cape

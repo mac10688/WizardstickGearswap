@@ -344,7 +344,7 @@ function init_gear_sets()
     }
 
 	sets.Kiting = {
-        legs="Carmine cuisses +1",
+        ring1="Shneddick ring +1",
         feet="Hippomenes socks +1"
     }
 	--------------------------------------
