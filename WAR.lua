@@ -53,23 +53,23 @@ function init_gear_sets()
     sets.Lycurgos = {main="Lycurgos", sub="Khonsu"}
     sets.AbysseaBlueProcs = {}
     -- sets.AbysseaBlueProcs.Premium = {main="Premium mogti", sub=empty}
-    sets.AbysseaBlueProcs.Infiltrator = {main="Infiltrator", sub="Qutrub knife", range="Ullr", ammo="Stone arrow"}
-    sets.AbysseaBlueProcs.Firetongue = {main="Firetongue", sub="Fermion sword", range="Ullr", ammo="Stone arrow"}
-    sets.AbysseaBlueProcs.Irradiance = {main="Irradiance blade", sub="Khonsu", range="Ullr", ammo="Stone arrow"}
+    sets.AbysseaBlueProcs.Infiltrator = {main="Infiltrator", sub="Qutrub knife", range="Ullr", ammo="Chapuli arrow"}
+    sets.AbysseaBlueProcs.Firetongue = {main="Firetongue", sub="Fermion sword", range="Ullr", ammo="Chapuli arrow"}
+    sets.AbysseaBlueProcs.Irradiance = {main="Irradiance blade", sub="Khonsu", range="Ullr", ammo="Chapuli arrow"}
     -- sets.AbysseaBlueProcs.Dullahan = {main="Dullahan axe", sub="Sacro bulwark"}
     -- sets.AbysseaBlueProcs.Autarch = {main="Autarch's axe", sub="Khonsu"}
-    sets.AbysseaBlueProcs.LostSickle = {main="Lost sickle", sub="Khonsu", range="Ullr", ammo="Stone arrow"}
-    sets.AbysseaBlueProcs.Mizukage = {main="Mizukage-no-naginata", sub="Khonsu", range="Ullr", ammo="Stone arrow"}
-    sets.AbysseaBlueProcs.Yagyu = {main="Yagyu shortblade", sub="Yagyu shortblade", range="Ullr", ammo="Stone arrow"}
-    sets.AbysseaBlueProcs.Zanmato = {main="Zanmato", sub="Khonsu", range="Ullr", ammo="Stone arrow"}
-    sets.AbysseaBlueProcs.Feline = {main="Feline Hagoita", sub="Sacro bulwark", range="Ullr", ammo="Stone arrow"}
-    sets.AbysseaBlueProcs.Sophistry = {main="Sophistry", sub="Khonsu", range="Ullr", ammo="Stone arrow"}
+    sets.AbysseaBlueProcs.LostSickle = {main="Lost sickle", sub="Khonsu", range="Ullr", ammo="Chapuli arrow"}
+    sets.AbysseaBlueProcs.Mizukage = {main="Mizukage-no-naginata", sub="Khonsu", range="Ullr", ammo="Chapuli arrow"}
+    sets.AbysseaBlueProcs.Yagyu = {main="Yagyu shortblade", sub="Yagyu shortblade", range="Ullr", ammo="Chapuli arrow"}
+    sets.AbysseaBlueProcs.Zanmato = {main="Zanmato", sub="Khonsu", range="Ullr", ammo="Chapuli arrow"}
+    sets.AbysseaBlueProcs.Feline = {main="Feline Hagoita", sub="Sacro bulwark", range="Ullr", ammo="Chapuli arrow"}
+    sets.AbysseaBlueProcs.Sophistry = {main="Sophistry", sub="Khonsu", range="Ullr", ammo="Chapuli arrow"}
 
     -- sets.precast.RangedAttack = 
     
     sets.precast.WS = {
         range="Ullr",
-        ammo="Stone arrow",
+        ammo="Chapuli arrow",
         head="Nyame Helm",
         body="Nyame Mail",
         hands="Nyame Gauntlets",
@@ -86,7 +86,7 @@ function init_gear_sets()
 
     sets.precast.WS["Ukko's Fury"] = {
         range="Ullr",
-        ammo="Stone arrow",
+        ammo="Chapuli arrow",
         head="Nyame Helm",
         body="Hjarrandi breastplate",
         hands="Nyame Gauntlets",
@@ -103,7 +103,7 @@ function init_gear_sets()
     
     sets.Weak_Weaponskill = {
         range="Ullr",
-        ammo="Stone arrow",
+        ammo="Chapuli arrow",
         head="Halitus helm",
         body="Adamantite armor",
         hands="Leyline gloves",
@@ -123,7 +123,7 @@ function init_gear_sets()
     -- Idle sets
     sets.idle = {
         range="Ullr",
-        ammo="Stone arrow",
+        ammo="Chapuli arrow",
         head="Hjarrandi Helm",
         body="Hjarrandi breastplate",
         hands="Nyame Gauntlets",
@@ -150,7 +150,7 @@ function init_gear_sets()
     -- Normal melee group
     sets.engaged = {
         range="Ullr",
-        ammo="Stone arrow",
+        ammo="Chapuli arrow",
         head="Hjarrandi Helm",
         body="Hjarrandi breastplate",
         hands="Nyame Gauntlets",
@@ -188,7 +188,7 @@ end
 function job_post_precast(spell, action, spellMap, eventArgs)
     -- print_set(spell)
     -- print(action)
-    if (spell.type == "WeaponSkill" and state.CombatWeapon.value == "AbysseaProcs") then
+    if (spell.type == "WeaponSkill" and state.CombatWeapon.value == "AbysseaBlueProcs") then
         equip(sets.Weak_Weaponskill)
     end
 end
