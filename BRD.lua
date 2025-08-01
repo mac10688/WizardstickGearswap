@@ -67,6 +67,7 @@ function init_gear_sets()
     local atk_linos = { name="Linos", augments={'Accuracy+15','"Dbl.Atk."+3','Quadruple Attack +3'}}
     local ws_linos = { name="Linos", augments={'Attack+18','Weapon skill damage +3%','STR+6 DEX+6'}}
     local def_linos = { name="Linos", augments={'DEF+15','Phys. dmg. taken -5%','VIT+8'}}
+    local fc_linos = { name="Linos", augments={'Mag. Acc.+19','"Fast Cast"+6','INT+6 MND+6'}}
     
     local mordant_rime_cape = { name="Intarabus's Cape", augments={'CHR+20','Accuracy+20 Attack+20','CHR+10','Weapon skill damage +10%','Damage taken-5%'}}
     local savage_blade_cape = { name="Intarabus's Cape", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%','Magic dmg. taken-10%'}}
@@ -100,8 +101,8 @@ function init_gear_sets()
     sets.precast.FC = {
         head="Bunzi's hat",
         neck="Voltsurge torque",
-        ear1="Etiolation earring",
-        ear2="Enchanter's earring +1",
+        ear1="Enchanter's earring +1",
+        ear2="Etiolation earring",        
         body="Inyanga jubbah +2",
         hands="Leyline gloves",
         ring1="Kishar ring",
@@ -215,8 +216,8 @@ function init_gear_sets()
         ranged="Gjallarhorn",
         head="Fili calot +3",
         neck="Moonbow whistle +1",
-        ear1="Etiolation earring",
-        ear2="Genmei earring",        
+        ear1="Genmei earring",
+        ear2="Fili earring +1",        
         body="Fili hongreline +3",
         hands="Fili manchettes +3",
         ring1="Moonlight ring",
@@ -300,7 +301,7 @@ function init_gear_sets()
         ranged=def_linos,
         head="Bunzi's hat",
         neck="Bard's charm +2",
-        ear1="Etiolation earring",
+        ear1="Genmei earring",
         ear2="Fili earring +1",
         body="Bunzi's robe",
         hands="Bunzi's gloves",
@@ -400,17 +401,17 @@ function init_gear_sets()
     sets.engaged.Accuracy = sets.engaged
     
     sets.midcast.Absorb = {
-        ranged=def_linos,
+        ranged=fc_linos,
         head="Fili calot +3",
-        neck="Loricate torque +1",
+        neck="Voltsurge torque",
         ear1="Enchanter's earring +1",
         ear2="Fili earring +1",
         body="Fili hongreline +3",
         hands="Fili manchettes +3",
         ring1="Kishar ring",
         ring2="Medada's ring",
-        back=debuff_cape ,
-        waist="Acuity belt +1",
+        back=debuff_cape,
+        waist="Null belt",
         legs="Fili rhingrave +3",
         feet="Fili cothurnes +3"
     }
