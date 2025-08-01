@@ -21,8 +21,20 @@ function job_setup()
 
     -- state.CombatWeapon = M{['description']='Combat Weapon', 'Naegling', 'Crocea', 'Club', 'Dagger', 'Zerodmg'}
     state.Lycurgos = M{['description']='Great Axe Set', 'Lycurgos'}
-    state.AbysseaBlueProcs = M{['description']='Proc Sets', 'Infiltrator', 'Firetongue', 'Irradiance', 'LostSickle', 'Mizukage', 'Yagyu', 'Zanmato', 'Feline', 'Sophistry'}, 
-
+    state.Dagger = M{['description']='Dagger Set', 'Infiltrator'}
+    state.Sword = M{['description']='Sword Set', 'Firetongue'}
+    state.GreatSword = M{['description']='Great Sword Set', 'Irradiance'}
+    state.Scythe = M{['description']='Scythe Set', 'LostSickle'}
+    state.Polearm = M{['description']='Polearm Set', 'Mizukage'}
+    state.Katana = M{['description']='Katana Set', 'Yagyu'}
+    state.GreatKatana = M{['description']='Katana Set', 'Zanmato'}
+    state.Club = M{['description']='Club Set', 'Feline'}
+    state.Staff = M{['description']='Staff Set', 'Sophistry'}
+    state.HandToHand = M{['description']='Hand-to-hand Set', 'Premium mogti'}
+    state.Axe = M{['description']='Hand-to-hand Set', 'Dullahan axe'}
+    state.GreatAxe = M{['description']='Great Axe Set', "Autarch's axe"}
+    state.Archery = M{['description']='Archery Set', 'Ullr'}
+    state.Marksmanship = M{['description']='Marksmanship Set', 'Silver Gun'}
 
     send_command('bind ~f1 gs c set CombatWeapon Lycurgos')
     send_command('bind ~f2 gs c set CombatWeapon AbysseaBlueProcs')
@@ -50,26 +62,23 @@ function init_gear_sets()
     --------------------------------------
 
 
-    sets.Lycurgos = {main="Lycurgos", sub="Khonsu"}
-    sets.AbysseaBlueProcs = {}
-    -- sets.AbysseaBlueProcs.Premium = {main="Premium mogti", sub=empty}
-    sets.AbysseaBlueProcs.Infiltrator = {main="Infiltrator", sub="Qutrub knife", range="Ullr", ammo="Chapuli arrow"}
-    sets.AbysseaBlueProcs.Firetongue = {main="Firetongue", sub="Fermion sword", range="Ullr", ammo="Chapuli arrow"}
-    sets.AbysseaBlueProcs.Irradiance = {main="Irradiance blade", sub="Khonsu", range="Ullr", ammo="Chapuli arrow"}
-    -- sets.AbysseaBlueProcs.Dullahan = {main="Dullahan axe", sub="Sacro bulwark"}
-    -- sets.AbysseaBlueProcs.Autarch = {main="Autarch's axe", sub="Khonsu"}
-    sets.AbysseaBlueProcs.LostSickle = {main="Lost sickle", sub="Khonsu", range="Ullr", ammo="Chapuli arrow"}
-    sets.AbysseaBlueProcs.Mizukage = {main="Mizukage-no-naginata", sub="Khonsu", range="Ullr", ammo="Chapuli arrow"}
-    sets.AbysseaBlueProcs.Yagyu = {main="Yagyu shortblade", sub="Yagyu shortblade", range="Ullr", ammo="Chapuli arrow"}
-    sets.AbysseaBlueProcs.Zanmato = {main="Zanmato", sub="Khonsu", range="Ullr", ammo="Chapuli arrow"}
-    sets.AbysseaBlueProcs.Feline = {main="Feline Hagoita", sub="Sacro bulwark", range="Ullr", ammo="Chapuli arrow"}
-    sets.AbysseaBlueProcs.Sophistry = {main="Sophistry", sub="Khonsu", range="Ullr", ammo="Chapuli arrow"}
-
-    -- sets.precast.RangedAttack = 
+    sets.Lycurgos = {main="Lycurgos", sub="Khonsu", range="Ullr", ammo="Chapuli arrow"}
+    sets.Dagger = {main="Infiltrator", sub="Qutrub knife"}
+    sets.Sword = {main="Firetongue", sub="Fermion sword"}
+    sets.GreatSword = {main="Irradiance blade", sub="Khonsu"}
+    sets.Scythe = {main="Lost sickle", sub="Khonsu",}
+    sets.Polearm = {main="Mizukage-no-naginata", sub="Khonsu"}
+    sets.Katana = {main="Yagyu shortblade", sub="Yagyu shortblade"}
+    sets.GreatKatana = {main="Zanmato", sub="Khonsu"}
+    sets.Club = {main="Feline Hagoita", sub="Sacro bulwark"}
+    sets.Staff = {main="Sophistry", sub="Khonsu"}
+    sets.HandToHand= {main="Premium mogti", sub=empty}    
+    sets.Axe = {main="Dullahan axe", sub="Sacro bulwark"}
+    sets.GreatAxe = {main="Autarch's axe", sub="Khonsu"}
+    sets.Archery = {range="Ullr", ammo="Chapuli arrow"}
+    sets.Marksmanship = {range="Silver Gun", ammo="Bronze bullet"}
     
     sets.precast.WS = {
-        range="Ullr",
-        ammo="Chapuli arrow",
         head="Nyame Helm",
         body="Nyame Mail",
         hands="Nyame Gauntlets",
@@ -85,8 +94,6 @@ function init_gear_sets()
     }
 
     sets.precast.WS["Ukko's Fury"] = {
-        range="Ullr",
-        ammo="Chapuli arrow",
         head="Nyame Helm",
         body="Hjarrandi breastplate",
         hands="Nyame Gauntlets",
@@ -102,8 +109,6 @@ function init_gear_sets()
     }
     
     sets.Weak_Weaponskill = {
-        range="Ullr",
-        ammo="Chapuli arrow",
         head="Halitus helm",
         body="Adamantite armor",
         hands="Leyline gloves",
@@ -122,8 +127,6 @@ function init_gear_sets()
 
     -- Idle sets
     sets.idle = {
-        range="Ullr",
-        ammo="Chapuli arrow",
         head="Hjarrandi Helm",
         body="Hjarrandi breastplate",
         hands="Nyame Gauntlets",
@@ -135,7 +138,7 @@ function init_gear_sets()
         right_ear="Dedition Earring",
         left_ring="Niqmaddu Ring",
         right_ring={name="Moonlight ring", bag="wardrobe5"}, --dt: 5
-        back="Mecistopins mantle",
+        back="Null shawl",
     }
 
     sets.Kiting = {ring2="Shneddick ring +1"}
@@ -149,20 +152,18 @@ function init_gear_sets()
     
     -- Normal melee group
     sets.engaged = {
-        range="Ullr",
-        ammo="Chapuli arrow",
         head="Hjarrandi Helm",
         body="Hjarrandi breastplate",
         hands="Nyame Gauntlets",
         legs="Nyame flanchard",
         feet="Nyame Sollerets",
         neck="Combatant's Torque",
-        waist="Ioskeha Belt +1",
+        waist="Chaac belt",
         left_ear="Crep. Earring",
         right_ear="Dedition Earring",
         left_ring="Niqmaddu Ring",
         right_ring={name="Moonlight ring", bag="wardrobe5"}, --dt: 5
-        back="Mecistopins mantle",
+        back="Null shawl",
     }
 
     sets.precast.Item['Holy Water'] = {
@@ -188,7 +189,7 @@ end
 function job_post_precast(spell, action, spellMap, eventArgs)
     -- print_set(spell)
     -- print(action)
-    if (spell.type == "WeaponSkill" and state.CombatWeapon.value == "AbysseaBlueProcs") then
+    if (spell.type == "WeaponSkill" and state.CombatWeapon.value ~= "Lycurgos") then
         equip(sets.Weak_Weaponskill)
     end
 end
