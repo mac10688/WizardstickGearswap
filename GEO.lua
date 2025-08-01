@@ -174,7 +174,7 @@ function init_gear_sets()
     }
 
     sets.magic_burst = set_combine(sets.midcast['Elemental Magic'], {
-        main="Bunzi's rod",
+        main="Wizard's rod",
         ammo="Ghastly tathlum +1",
         head="Ea hat +1", --MB: 7 MB2:7
         neck="Sibyl scarf", -- MB: 10
