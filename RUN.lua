@@ -320,7 +320,12 @@ function init_gear_sets()
         legs="Nyame flanchard",
         feet="Nyame sollerets"
     }
-    sets.precast.WS['Herculean Slash'] = sets.WS
+    
+    sets.precast.WS['Fell Cleave'] = set_combine(sets.precast.WS['Resolution'],
+    {
+        neck="Republican platinum medal",
+        waist="Kentarch belt +1"
+    })
 
 
 	--------------------------------------
