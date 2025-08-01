@@ -18,7 +18,7 @@ function job_setup()
     state.OffenseMode:options('TP', 'Hybrid', 'Accuracy')
     state.CombatMode:options('SwordShield', 'DualWield')
     state.CastingMode:options('Normal', 'Resistant')
-    state.IdleMode:options('Normal')
+    state.IdleMode:options('Normal', 'Evasion')
     state.CombatWeapon:set('Carnwenhan')
 
     state.Naegling = {}
@@ -112,20 +112,10 @@ function init_gear_sets()
         feet="Bihu slippers +3"
     }
 
-    sets.precast.FC.BardSong = {
+    sets.precast.FC.BardSong = set_combine(sets.precast.FC, {
         head="Fili calot +3",
-        neck="Voltsurge torque",
-        ear1="Etiolation earring",
-        ear2="Enchanter's earring +1",
-        body="Inyanga jubbah +2",
-        hands="Leyline gloves",
-        ring1="Kishar ring",
-        ring2="Medada's ring",
-        back=fast_cast_cape,
-        waist="Embla sash",
-        legs="Gendewitha spats +1",
-        feet="Bihu slippers +3"
-    }
+        legs="Gendewitha spats +1"
+    })
 
     sets.precast.FC.BardSong["Honor March"] = set_combine(sets.precast.FC.BardSong, {ranged="Marsyas"})
     sets.precast.FC.BardSong["Aria of Passion"] = set_combine(sets.precast.FC.BardSong, {ranged="Loughnashade"})
@@ -226,9 +216,9 @@ function init_gear_sets()
         head="Fili calot +3",
         neck="Moonbow whistle +1",
         ear1="Etiolation earring",
-        ear2="Genmei earring",
+        ear2="Genmei earring",        
         body="Fili hongreline +3",
-        hands="Bewegt cuffs",
+        hands="Fili manchettes +3",
         ring1="Moonlight ring",
         ring2="Defending ring",
         back=fast_cast_cape,
@@ -321,6 +311,22 @@ function init_gear_sets()
         legs="Nyame flanchard",
         feet="Nyame sollerets"
     }
+
+    sets.idle.Evasion = {
+        ranged=def_linos,
+        head="Nyame helm", -- 5 mdb 123 meva
+        neck="Bathy choker +1",
+        ear1="Ran earring",
+        ear2="Eabani earring",
+        body="Adamantite armor",
+        hands="Nyame gauntlets", -- 4 mdb 112 meva
+        ring1="Ayanmo ring",
+        ring2="Mephitas's ring +1",
+        back=idle_pdt_cape, -- 30 meva
+        waist="Null belt",
+        legs="Nyame flanchard", -- 7 mdb 150 meva
+        feet="Nyame sollerets" -- 5 mdb 150 meva
+    }
     
     -- Defense sets
 
@@ -357,7 +363,8 @@ function init_gear_sets()
     }
 
     sets.Kiting = {
-        feet='Fili cothurnes +3'
+        ring1="Shneddick ring +1",
+        feet="Hippomenes socks +1"
     }
 
     -- Engaged sets
@@ -400,8 +407,8 @@ function init_gear_sets()
         ear2="Fili earring +1",
         body="Fili hongreline +3",
         hands="Fili manchettes +3",
-        ring1="Medada's ring",
-        ring2="Kishar ring",
+        ring1="Kishar ring",
+        ring2="Medada's ring",
         back=debuff_cape ,
         waist="Acuity belt +1",
         legs="Fili rhingrave +3",
@@ -496,7 +503,7 @@ function get_song_class(spell)
         else
             return 'SongDebuff'
         end
-    elseif state.ExtraSongsMode.value then
+    elseif state.ExtraSongsMode.value and spell.name ~= "Honor March" and spell.name ~= "Aria of Passion" then
         return 'DaurdablaDummy'
     else
         return 'SongEffect'
