@@ -17,8 +17,8 @@ function job_setup()
     state.EnmitySongs = M(false, 'Use enmity set for songs')
     state.OffenseMode:options('TP', 'Hybrid', 'Accuracy')
     state.CombatMode:options('SwordShield', 'DualWield')
-    state.CastingMode:options('Normal', 'Resistant')
-    state.IdleMode:options('Normal', 'Evasion')
+    state.CastingMode:options('Normal', 'Resistant', 'DT')
+    state.IdleMode:options('Normal', 'Evasion', 'Regain')
     state.CombatWeapon:set('Carnwenhan')
 
     state.Naegling = {}
@@ -74,6 +74,24 @@ function init_gear_sets()
     local rudra_storm_cape = { name="Intarabus's Cape", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Weapon skill damage +10%','Damage taken-5%'}}
 
     local fast_cast_cape = { name="Intarabus's Cape", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','"Fast Cast"+10','Damage taken-5%'}}
+
+	jse.artifact.head = "Brioso Roundlet +3"
+	jse.artifact.body = "Brioso Justaucorps +3"
+	jse.artifact.hands = "Brioso Cuffs +3"
+	jse.artifact.legs = "Brioso Cannions +3"
+	jse.artifact.feet = "Brioso Slippers +3"
+
+	jse.relic.head = "Bihu Roudlet +3"
+	jse.relic.body = "Bihu Roudlet +3"
+	jse.relic.hands = "Bihu Roudlet +3"
+	jse.relic.legs = "Bihu Roudlet +3"
+	jse.relic.feet = "Bihu Roudlet +3"
+
+	jse.empyrean.head = "Fili Calot +3"
+	jse.empyrean.body = "Fili Hongreline +3"
+	jse.empyrean.hands = "Fili Manchettes +3"
+	jse.empyrean.legs = "Fili Rhingrave +3"
+	jse.empyrean.feet = "Fili Cothurnes +3"
 
     --------------------------------------
     -- Start defining the sets
@@ -134,7 +152,7 @@ function init_gear_sets()
     -- Precast sets to enhance JAs
     
     sets.precast.JA.Nightingale = {feet="Bihu slippers +3"}
-    sets.precast.JA.Troubadour = {body="Bihu justaucorps +3"}
+    sets.precast.JA.Troubadour = {body="Bihu justaucorps +4"}
     sets.precast.JA['Soul Voice'] = {legs="Bihu cannions +3"}
 
     -- -- Waltz set (chr and vit)
@@ -152,7 +170,7 @@ function init_gear_sets()
         neck="Fotia gorget",
         ear1="Moonshade earring",
         ear2="Telos earring",
-        body="Bihu Justaucorps +3",
+        body="Bihu justaucorps +4",
         hands="Nyame gauntlets",
         ring1="ILabrat ring",
         ring2="Epaminondas's ring",
@@ -173,10 +191,10 @@ function init_gear_sets()
     })
 
     sets.precast.WS['Evisceration'] = set_combine(sets.precast.WS, {
-        neck="Bard's charm +2",
+        head="Blistering sallet +1",
         ring1="Hetairoi ring",
-        legs="Lustratio subligar +1",
-        feet="Lustratio leggings +1"
+        back=rudra_storm_cape,
+        legs="Zoar subligar +1"
     })
 
     sets.precast.WS['Exenterator'] = set_combine(sets.precast.WS)
@@ -185,10 +203,10 @@ function init_gear_sets()
         neck="Bard's charm +2",
         ear1="Regal earring",
         ear2="Ishvara earring",
-        body="Bihu justaucorps +3",
+        body="Bihu justaucorps +4",
         ring1="Metamorph ring +1",
         back=mordant_rime_cape,
-        waist="Kentarch belt +1"
+        waist="Sailfi Belt +1"
         -- legs="Bihu cannions +3"
     })
     
@@ -197,7 +215,7 @@ function init_gear_sets()
     })
 
     sets.precast.WS['Savage Blade'] = set_combine(sets.precast.WS, {
-        neck="Bard's charm +2",
+        neck="Republican platinum medal",
         ear2="Regal earring",
         ring1="Rufescent ring",
         ring2="Epaminondas's ring",
@@ -229,9 +247,11 @@ function init_gear_sets()
     }
 
     -- For song debuffs (duration primary, accuracy secondary)
-    sets.midcast.BardSong.SongDebuff = {
+    
+
+    sets.midcast.BardSong.ResistantSongDebuff = {
         ranged="Gjallarhorn",
-        head="Brioso roundlet +3",
+        head=jse.artifact.head,
         neck="Moonbow Whistle +1",
         ear1="Regal earring",
         ear2="Fili earring +1",
@@ -245,7 +265,12 @@ function init_gear_sets()
         feet="Brioso slippers +3"
     }
 
-    sets.midcast.BardSong.ResistantSongDebuff = sets.midcast.SongDebuff
+    sets.midcast.BardSong.SongDebuff = set_combine(sets.midcast.BardSong.ResistantSongDebuff, {
+        head="Fili calot +3",
+        body="Fili hongreline +3",
+        legs="Fili rhingrave +3",
+        ring2="Defending ring"
+    })
 
         -- Gear to enhance certain classes of songs.  No instruments added here since Gjallarhorn is being used.
     sets.midcast.BardSong["Honor March"] = set_combine(sets.midcast.BardSong.SongEffect, {ranged="Marsyas"})
@@ -275,10 +300,13 @@ function init_gear_sets()
     sets.midcast["Puppet's Operetta"] = sets.midcast.BardSong.DaurdablaDummy
 
     -- Other general spells and classes.
-    sets.midcast.Cure = {main="Arka IV",sub='Achaq Grip',
-        head="Gendewitha Caubeen",
-        body="Gendewitha Bliaut",hands="Bokwus Gloves",ring1="Ephedra Ring",ring2="Sirona's Ring",
-        legs="Gendewitha Spats",feet="Gendewitha Galoshes"}
+    sets.midcast.Cure = {
+        head="Bunzi's hat",
+        body="Bunzi's robe",
+        hands="Bunzi's gloves",
+        legs={ name="Chironic Hose", augments={'Mag. Acc.+30','"Cure" potency +7%','INT+12','"Mag.Atk.Bns."+8'}},
+        feet="Bunzi's sabots"
+    }
         
     sets.midcast.Curaga = sets.midcast.Cure
         
@@ -300,7 +328,7 @@ function init_gear_sets()
     sets.idle = {
         ranged=def_linos,
         head="Bunzi's hat",
-        neck="Bard's charm +2",
+        neck="Loricate torque +1",
         ear1="Genmei earring",
         ear2="Fili earring +1",
         body="Bunzi's robe",
@@ -328,6 +356,11 @@ function init_gear_sets()
         legs="Nyame flanchard", -- 7 mdb 150 meva
         feet="Nyame sollerets" -- 5 mdb 150 meva
     }
+
+    sets.idle.Regain = set_combine(sets.idle, {
+        neck="Republican platinum medal",
+        ring2="Roller's ring"
+    })
     
     -- Defense sets
 
@@ -380,8 +413,8 @@ function init_gear_sets()
         ranged=atk_linos,
         head="Bunzi's hat",
         neck="Bard's charm +2",
-        ear1="Telos earring",
-        ear2="Dignitary's earring",
+        ear1="Dignitary's earring",
+        ear2="Telos earring",        
         body="Ashera harness",
         hands="Bunzi's gloves",
         ring1={name="Chirich ring +1", bag="wardrobe5"},
