@@ -38,6 +38,59 @@ function job_setup()
 	state.RewardMode = M{['description']='Reward Mode', 'Theta', 'Zeta', 'Eta'}
 	send_command('bind ^backspace gs c cycle RewardMode')
 
+    state.Buff['Killer Instinct'] = buffactive['Killer Instinct'] or false
+	state.Buff["Unleash"] = buffactive["Unleash"] or false
+    
+    -- Standard Ready Moves
+    Ready_Standard = S{'Sic','Whirl Claws','Dust Cloud','Foot Kick','Sheep Song','Sheep Charge','Lamb Chop',
+        'Rage','Head Butt','Scream','Dream Flower','Wild Oats','Leaf Dagger','Claw Cyclone','Razor Fang',
+        'Roar','Gloeosuccus','Palsy Pollen','Soporific','Cursed Sphere','Venom','Geist Wall','Toxic Spit',
+        'Numbing Noise','Nimble Snap','Cyclotail','Spoil','Rhino Guard','Rhino Attack','Power Attack',
+        'Hi-Freq Field','Sandpit','Sandblast','Venom Spray','Mandibular Bite','Metallic Body','Bubble Shower',
+        'Bubble Curtain','Scissor Guard','Big Scissors','Grapple','Spinning Top','Double Claw','Filamented Hold',
+        'Frog Kick','Queasyshroom','Silence Gas','Numbshroom','Spore','Dark Spore','Shakeshroom','Blockhead',
+        'Secretion','Fireball','Tail Blow','Plague Breath','Brain Crush','Infrasonics','??? Needles',
+        'Needleshot','Chaotic Eye','Blaster','Scythe Tail','Ripper Fang','Chomp Rush','Intimidate','Recoil Dive',
+        'Water Wall','Snow Cloud','Wild Carrot','Sudden Lunge','Spiral Spin','Noisome Powder','Wing Slap',
+        'Beak Lunge','Suction','Drainkiss','Acid Mist','TP Drainkiss','Back Heel','Jettatura','Choke Breath',
+        'Fantod','Charged Whisker','Purulent Ooze','Corrosive Ooze','Tortoise Stomp','Harden Shell','Aqua Breath',
+        'Sensilla Blades','Tegmina Buffet','Molting Plumage','Swooping Frenzy','Pentapeck','Sweeping Gouge',
+        'Zealous Snort','Somersault ','Tickling Tendrils','Stink Bomb','Nectarous Deluge','Nepenthic Plunge',
+        'Pecking Flurry','Pestilent Plume','Foul Waters','Spider Web','Sickle Slash','Crossthrash','Predatory Glare',
+        'Hoof Volley','Nihility Song','Frenzied Rage','Venom Shower','Mega Scissors','Fluid Toss','Fluid Spread',
+        'Digest','Rhinowrecker'}
+
+    -- List of Magic-based Ready moves
+    Ready_Magic = S{'Dust Cloud','Sheep Song','Scream','Dream Flower','Roar','Gloeosuccus','Palsy Pollen',
+        'Soporific','Cursed Sphere','Venom','Geist Wall','Toxic Spit','Numbing Noise','Spoil','Hi-Freq Field',
+        'Sandpit','Sandblast','Venom Spray','Bubble Shower','Filamented Hold','Queasyshroom','Silence Gas',
+        'Numbshroom','Spore','Dark Spore','Shakeshroom','Fireball','Plague Breath','Infrasonics','Chaotic Eye',
+        'Blaster','Intimidate','Snow Cloud','Noisome Powder','TP Drainkiss','Jettatura','Charged Whisker',
+        'Purulent Ooze','Corrosive Ooze','Aqua Breath','Molting Plumage','Stink Bomb','Nectarous Deluge',
+        'Nepenthic Plunge','Pestilent Plume','Foul Waters','Spider Web'}
+
+    -- List of TP based Ready moves
+    Ready_TP = S{'Sic','Somersault','Dust Cloud','Foot Kick','Sheep Song','Sheep Charge','Lamb Chop',
+        'Rage','Head Butt','Scream','Dream Flower','Wild Oats','Leaf Dagger','Claw Cyclone','Razor Fang','Roar',
+        'Gloeosuccus','Palsy Pollen','Soporific','Cursed Sphere','Geist Wall','Numbing Noise','Frogkick',
+        'Nimble Snap','Cyclotail','Spoil','Rhino Guard','Rhino Attack','Hi-Freq Field','Sandpit','Sandblast',
+        'Mandibular Bite','Metallic Body','Bubble Shower','Bubble Curtain','Scissor Guard','Grapple','Spinning Top',
+        'Double Claw','Filamented Hold','Spore','Blockhead','Secretion','Fireball','Tail Blow','Plague Breath',
+        'Brain Crush','Infrasonics','Needleshot','Chaotic Eye','Blaster','Ripper Fang','Intimidate','Recoil Dive',
+        'Water Wall','Snow Cloud','Wild Carrot','Sudden Lunge','Noisome Powder','Beak Lunge','Suction',
+        'Drainkiss','Acid Mist','TP Drainkiss','Back Heel','Jettatura','Choke Breath','Fantod','Charged Whisker',
+        'Purulent Ooze','Corrosive Ooze','Tortoise Stomp','Harden Shell','Aqua Breath','Sensilla Blades',
+        'Tegmina Buffet','Zealous Snort','Pestilent Plume','Foul Waters','Spider Web'}
+
+    -- Magic ACC Based Ready moves
+    Ready_Debuff = S{'Dust Cloud','Sheep Song','Scream','Dream Flower','Roar','Gloeosuccus','Palsy Pollen',
+        'Soporific','Geist Wall','Numbing Noise','Spoil','Hi-Freq Field','Sandpit','Sandblast','Filamented Hold',
+        'Spore','Fireball','Infrasonics','Chaotic Eye','Blaster','Intimidate','Noisome Powder','TP Drainkiss',
+        'Jettatura','Purulent Ooze','Corrosive Ooze','Pestilent Plume','Spider Web','Nihility Song'}
+
+    -- Physical Ready moves that have Multi-Hit
+    Ready_Multi = S{'Sweeping Gouge','Tickling Tendrils','Chomp Rush','Pentapeck','Wing Slap','Pecking Flurry'}
+
     -- Additional local binds
     send_command('bind ~f1 gs c set CombatWeapon Naegling')
     send_command('bind ~f2 gs c set CombatWeapon Ikenga')
@@ -65,7 +118,34 @@ function init_gear_sets()
     -- Start defining the sets
     --------------------------------------
 
-    local ws_cape = { name="Artio's Mantle", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%','DEF+50'}}
+	jse.artifact.head = "Totemic Helm +3"
+	jse.artifact.body = "Totemic Jackcoat +3"
+	jse.artifact.hands = "Totemic Gloves +3"
+	jse.artifact.legs = "Totemic Trousers +3"
+	jse.artifact.feet = "Totemic Gaiters +3"
+
+	jse.relic.head = "Ankusa Helm +3"
+	jse.relic.body = "Ankusa Jackcoat +3"
+	jse.relic.hands = "Ankusa Gloves +3"
+	jse.relic.legs = "Ankusa Trousers +3"
+	jse.relic.feet = "Ankusa Gaiters +3"
+
+	jse.empyrean.head = "Nukumi Cabasset +3"
+	jse.empyrean.body = "Nukumi Gausape +3"
+	jse.empyrean.hands = "Nukumi Manoplas +3"
+	jse.empyrean.legs = "Nukumi Quijotes +3"
+	jse.empyrean.feet = "Nukumi Ocreae +3"
+
+    jse.earring = "Nukumi earring +1"
+
+
+    local ws_blitz_mistral_cape = { name="Artio's Mantle", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%','DEF+50'}}
+    local ws_rampage_cape = { name="Artio's Mantle", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Crit.hit rate+10','Damage taken-5%'}}
+    local ws_decimation_ruinator_cape = { name="Artio's Mantle", augments={'STR+20','Accuracy+20 Attack+20','STR+10','"Dbl.Atk."+10','Damage taken-5%'}}
+    local ws_primal_rend_cape = { name="Artio's Mantle", augments={'CHR+20','Mag. Acc+20 /Mag. Dmg.+20','Weapon skill damage +10%','Damage taken-5%'}}
+    local ws_cloudsplitter_cape = { name="Artio's Mantle", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','Weapon skill damage +10%','Damage taken-5%'}}
+    local pet_mag_acc = { name="Artio's Mantle", augments={'Pet: M.Acc.+20 Pet: M.Dmg.+20','Eva.+20 /Mag. Eva.+20','Pet: Mag. Acc.+10','Pet: Haste+10','Damage taken-5%'}}
+
 
     sets.Naegling = {}
     sets.Naegling.DualWield = {}
@@ -107,45 +187,51 @@ function init_gear_sets()
 
     -- Precast sets to enhance JAs
     
-    sets.precast.JA['Killer Instinct'] = {head="Ankusa Helm +1"}
-    sets.precast.JA['Feral Howl'] = {body="Ankusa Jackcoat +1"}
-    sets.precast.JA['Call Beast'] = {hands="Ankusa Gloves +1"}
-    sets.precast.JA['Bestial Loyalty'] = {hands="Ankusa Gloves +1"}
-	sets.precast.JA['Call Beast'] = sets.precast.JA['Bestial Loyalty']
-    sets.precast.JA['Familiar'] = {legs="Ankusa Trousers +1"}
-    sets.precast.JA['Tame'] = {head="Totemic Helm +3"}
-    sets.precast.JA['Spur'] = {feet="Nukumi Ocreae +1", back=ws_cape}
+    sets.precast.JA['Killer Instinct'] = {head=jse.relic.head}
+    sets.precast.JA['Feral Howl'] = {
+        ammo="Pemphredo Tathlum",
+        head="Nuk. Cabasset +3",
+        body="An. Jackcoat +3",
+        hands="Nukumi Manoplas +3",
+        legs="Nukumi Quijotes +3",
+        feet="Nukumi Ocreae +3",
+        neck="Null Loop",
+        waist="Null Belt",
+        left_ear="Digni. Earring",
+        right_ear="Crep. Earring",
+        ring1={name="Stikini Ring +1", bag="wardrobe5"},
+        ring2={name="Stikini Ring +1", bag="wardrobe6"},
+        back="Null Shawl",
+    }
+	sets.precast.JA['Call Beast'] = {hands=jse.relic.hands, ear2=hands=jse.earring}
+    sets.precast.JA['Familiar'] = {legs=jse.relic.legs}
+    sets.precast.JA['Tame'] = {head=jse.artifact.head}
+    sets.precast.JA['Spur'] = {feet=jse.empyrean.feet, back=ws_cape}
     sets.precast.JA.Reward = {
-        body="Totemic jackcoat +2",
+        body=jse.artifact.body,
         back=ws_cape,
-        legs="Ankusa trousers +1",
-        feet="Ankusa gaiters +1"
+        legs=jse.relic.legs,
+        feet=jse.artifact.feet
     }
 
     sets.precast.JA.Charm = {
-        head="Totemic Helm +3",
-        body="An. Jackcoat +1"
-        hands="Ankusa Gloves +1",
-        legs="Ankusa Trousers +1"
-        feet="Ankusa Gaiters +1"
+        head=jse.artifact.head,
+        body=jse.relic.body,
+        hands=jse.relic.hands,
+        legs=jse.relic.legs,
+        feet=jse.relic.feet,
         neck="Unmoving Collar +1",
         waist="Null Belt",
         left_ear="Eabani Earring",
         right_ear="Genmei Earring",
         left_ring="Eihwaz Ring",
         right_ring="Moonlight Ring",
-        back=ws_cape,
+        back=ws_cape
     }
 
     sets.precast.JA.Reward.Theta = set_combine(sets.precast.JA.Reward, {ammo="Pet Food Theta"})
 	sets.precast.JA.Reward.Zeta = set_combine(sets.precast.JA.Reward, {ammo="Pet Food Zeta"})
 	sets.precast.JA.Reward.Eta = set_combine(sets.precast.JA.Reward, {ammo="Pet Food Eta"})
-
-    -- -- Waltz set (chr and vit)
-    -- sets.precast.Waltz = {range="Gjallarhorn",
-    --     head="Nahtirah Hat",
-    --     body="Gendewitha Bliaut",hands="Buremte Gloves",
-    --     back="Kumbira Cape",legs="Gendewitha Spats",feet="Gendewitha Galoshes"}
     
        
     -- Weaponskill sets
@@ -164,6 +250,61 @@ function init_gear_sets()
         right_ring="Rufescent Ring",
         back=ws_cape
     }
+
+    sets.precast.WS["Rampage"] = {
+        ammo="Crepusucular pebble",
+        head="Blistering Sallet +1",
+        body="Gleti's Cuirass",
+        hands="Gleti's Gauntlets",
+        legs="Gleti's Breeches",
+        feet=jse.empyrean.feet,
+        neck="Fotia Gorget",
+        waist="Fotia Belt",
+        left_ear="Moonshade Earring",
+        right_ear="Nukumi Earring +1",
+        left_ring="Ilabrat Ring",
+        right_ring="Gere Ring",
+        back=ws_rampage_cape
+    }
+
+    sets.precast.WS["Mistral Axe"] = {
+        ammo="Crepusucular pebble",
+        head="Blistering Sallet +1",
+        body="Gleti's Cuirass",
+        hands="Gleti's Gauntlets",
+        legs="Gleti's Breeches",
+        feet=jse.empyrean.feet,
+        neck="Fotia Gorget",
+        waist="Fotia Belt",
+        left_ear="Moonshade Earring",
+        right_ear="Nukumi Earring +1",
+        left_ring="Ilabrat Ring",
+        right_ring="Gere Ring",
+        back=ws_rampage_cape
+    }
+
+    sets.midcast.Pet = {
+        main={ name="Ikenga's Axe", augments={'Path: A',}},
+        sub={ name="Agwu's Axe", augments={'Path: A',}},
+        ammo={ name="Hesperiidae", augments={'Path: A',}},
+        head="Nuk. Cabasset +3",
+        body="Nukumi Gausape +3",
+        hands="Nukumi Manoplas +3",
+        legs="Nukumi Quijotes +3",
+        feet="Nukumi Ocreae +3",
+        neck={ name="Bst. Collar +2", augments={'Path: A',}},
+        waist="Incarnation Sash",
+        left_ear="Sroda Earring",
+        right_ear={ name="Nukumi Earring +1", augments={'System: 1 ID: 1676 Val: 0','Accuracy+11','Mag. Acc.+11','Pet: "Dbl. Atk."+5',}},
+        left_ring="Eihwaz Ring",
+        right_ring="Moonlight Ring",
+        back={ name="Artio's Mantle", augments={'Pet: Acc.+20 Pet: R.Acc.+20 Pet: Atk.+20 Pet: R.Atk.+20','Eva.+20 /Mag. Eva.+20','Pet: Attack+10 Pet: Rng.Atk.+10','Pet: Haste+10','Pet: Damage taken -5%',}},
+    }
+    sets.midcast.Pet.TP = sets.midcast.Pet
+    sets.midcast.Pet.MAB = sets.midcast.Pet
+    sets.midcast.Pet.MACC = sets.midcast.Pet
+    sets.midcast.Pet.Multi = sets.midcast.Pet
+    
     
     -- Midcast Sets
     
@@ -226,17 +367,17 @@ function init_gear_sets()
     
     -- Basic set for if no TP weapon is defined.
     sets.engaged = {
-        head="Gleti's Mask",
-        body="Udug Jacket",
-        hands="Gleti's Gauntlets",
-        legs="Gleti's Breeches",
-        feet="Gleti's Boots",
+        head=jse.empyrean.head,
+        body=jse.empyrean.body,
+        hands=jse.empyrean.hands,
+        legs=jse.empyrean.legs,
+        feet=jse.empyrean.feet,
         neck="Anu Torque",
         waist="Sarissapho. Belt",
         left_ear="Telos Earring",
         right_ear="Digni. Earring",
-        left_ring="Chirich Ring +1",
-        right_ring="Chirich Ring +1",
+        ring1={name="Chirich ring +1", bag="wardrobe5"},
+        ring2={name="Chirich ring +1", bag="wardrobe6"},
         back="Null Shawl"
     }
 
@@ -247,9 +388,6 @@ function init_gear_sets()
     })
 
     sets.engaged.Accuracy = sets.engaged
-
-    sets.precast.JA['Sentinel'] = sets.enmity
-    sets.precast.JA['Holy Circle'] = sets.enmity
 
     sets.precast.Item['Holy Water'] = {
         neck="Nicander's necklace",
@@ -343,7 +481,23 @@ end
 -- Set eventArgs.handled to true if we don't want any automatic gear equipping to be done.
 -- Set eventArgs.useMidcastGear to true if we want midcast gear equipped on precast.
 function job_precast(spell, action, spellMap, eventArgs)
-    
+    equipSet = {}
+    if Ready_Standard[spell.name] then
+        equipSet = set_combine(equipSet, sets.midcast.Pet)
+    end
+    if Ready_TP[spell.name] then
+        equipSet = set_combine(equipSet, sets.midcast.Pet.TP)
+    end
+    if Ready_Magic[spell.name] then
+        equipSet = set_combine(equipSet, sets.midcast.Pet.MAB)
+    end
+    if Ready_Debuff[spell.name] then
+        equipSet = set_combine(equipSet, sets.midcast.Pet.MACC)
+    end
+    if Ready_Multi[spell.name] then
+        equipSet = set_combine(equipSet, sets.midcast.Pet.Multi)
+    end
+	return equipSet
 end
 
 -- Set eventArgs.handled to true if we don't want any automatic gear equipping to be done.
@@ -352,6 +506,14 @@ function job_midcast(spell, action, spellMap, eventArgs)
 end
 
 function job_post_midcast(spell, action, spellMap, eventArgs)
+
+end
+
+function job_pet_midcast(spell, action, spellMap, eventArgs)
+    -- Equip monster correlation gear, as appropriate
+    equip(sets.midcast.Pet.WS)
+
+    
 
 end
 
