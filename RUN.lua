@@ -21,7 +21,7 @@ function job_setup()
     state.OffenseMode:options('MultiHit', 'Acc', 'ParryDefense', 'ParryOffense')
     state.WeaponskillMode:options('Normal', 'Acc')
     state.PhysicalDefenseMode:options('PDT')
-    state.MagicalDefenseMode:options('MDT', 'ResistStatus', 'KnockBack')
+    state.MagicalDefenseMode:options('MDT', 'ResistStatus', 'KnockBack', 'Meva')
     state.IdleMode:options('Regen', 'Refresh')
     state.CombatWeapon:set('Epeolatry')
 
@@ -106,6 +106,12 @@ function init_gear_sets()
     }
 
     sets.defense.ResistStatus = set_combine(sets.defense.MDT, {
+        ear1="Arete del luna +1",
+        back=status_ailment_cape,
+        hands="Erilaz gauntlets +3"
+    })
+
+    sets.defense.Meva = set_combine(sets.defense.MDT, {
         ear1="Arete del luna +1",
         back=status_ailment_cape,
         hands="Erilaz gauntlets +3"
