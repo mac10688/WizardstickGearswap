@@ -359,7 +359,11 @@ function init_gear_sets()
 
     sets.idle.Regain = set_combine(sets.idle, {
         neck="Republican platinum medal",
-        ring2="Roller's ring"
+        ear1="Crepuscular earring",
+        ear2="Dedition earring",
+        hands="Regal gloves",
+        ring2="Roller's ring",
+        waist="Reiki yotai"
     })
     
     -- Defense sets
