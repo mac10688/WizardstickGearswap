@@ -13,7 +13,7 @@ end
 
 -- Setup vars that are user-independent.  state.Buff vars initialized here will automatically be tracked.
 function job_setup()
-    state.OffenseMode:options('TP', 'Hybrid', 'Accuracy', 'Malignance')
+    state.OffenseMode:options('TP', 'Hybrid', 'Accuracy', 'Malignance', 'Gleti')
     state.CombatMode:options('SwordShield', 'DualWield')
     state.IdleMode:options('Normal', 'Evasion')
     state.CombatWeapon:set('Ikenga')
@@ -40,56 +40,6 @@ function job_setup()
 
     state.Buff['Killer Instinct'] = buffactive['Killer Instinct'] or false
 	state.Buff["Unleash"] = buffactive["Unleash"] or false
-    
-    -- Standard Ready Moves
-    Ready_Standard = S{'Sic','Whirl Claws','Dust Cloud','Foot Kick','Sheep Song','Sheep Charge','Lamb Chop',
-        'Rage','Head Butt','Scream','Dream Flower','Wild Oats','Leaf Dagger','Claw Cyclone','Razor Fang',
-        'Roar','Gloeosuccus','Palsy Pollen','Soporific','Cursed Sphere','Venom','Geist Wall','Toxic Spit',
-        'Numbing Noise','Nimble Snap','Cyclotail','Spoil','Rhino Guard','Rhino Attack','Power Attack',
-        'Hi-Freq Field','Sandpit','Sandblast','Venom Spray','Mandibular Bite','Metallic Body','Bubble Shower',
-        'Bubble Curtain','Scissor Guard','Big Scissors','Grapple','Spinning Top','Double Claw','Filamented Hold',
-        'Frog Kick','Queasyshroom','Silence Gas','Numbshroom','Spore','Dark Spore','Shakeshroom','Blockhead',
-        'Secretion','Fireball','Tail Blow','Plague Breath','Brain Crush','Infrasonics','??? Needles',
-        'Needleshot','Chaotic Eye','Blaster','Scythe Tail','Ripper Fang','Chomp Rush','Intimidate','Recoil Dive',
-        'Water Wall','Snow Cloud','Wild Carrot','Sudden Lunge','Spiral Spin','Noisome Powder','Wing Slap',
-        'Beak Lunge','Suction','Drainkiss','Acid Mist','TP Drainkiss','Back Heel','Jettatura','Choke Breath',
-        'Fantod','Charged Whisker','Purulent Ooze','Corrosive Ooze','Tortoise Stomp','Harden Shell','Aqua Breath',
-        'Sensilla Blades','Tegmina Buffet','Molting Plumage','Swooping Frenzy','Pentapeck','Sweeping Gouge',
-        'Zealous Snort','Somersault ','Tickling Tendrils','Stink Bomb','Nectarous Deluge','Nepenthic Plunge',
-        'Pecking Flurry','Pestilent Plume','Foul Waters','Spider Web','Sickle Slash','Crossthrash','Predatory Glare',
-        'Hoof Volley','Nihility Song','Frenzied Rage','Venom Shower','Mega Scissors','Fluid Toss','Fluid Spread',
-        'Digest','Rhinowrecker'}
-
-    -- List of Magic-based Ready moves
-    Ready_Magic = S{'Dust Cloud','Sheep Song','Scream','Dream Flower','Roar','Gloeosuccus','Palsy Pollen',
-        'Soporific','Cursed Sphere','Venom','Geist Wall','Toxic Spit','Numbing Noise','Spoil','Hi-Freq Field',
-        'Sandpit','Sandblast','Venom Spray','Bubble Shower','Filamented Hold','Queasyshroom','Silence Gas',
-        'Numbshroom','Spore','Dark Spore','Shakeshroom','Fireball','Plague Breath','Infrasonics','Chaotic Eye',
-        'Blaster','Intimidate','Snow Cloud','Noisome Powder','TP Drainkiss','Jettatura','Charged Whisker',
-        'Purulent Ooze','Corrosive Ooze','Aqua Breath','Molting Plumage','Stink Bomb','Nectarous Deluge',
-        'Nepenthic Plunge','Pestilent Plume','Foul Waters','Spider Web'}
-
-    -- List of TP based Ready moves
-    Ready_TP = S{'Sic','Somersault','Dust Cloud','Foot Kick','Sheep Song','Sheep Charge','Lamb Chop',
-        'Rage','Head Butt','Scream','Dream Flower','Wild Oats','Leaf Dagger','Claw Cyclone','Razor Fang','Roar',
-        'Gloeosuccus','Palsy Pollen','Soporific','Cursed Sphere','Geist Wall','Numbing Noise','Frogkick',
-        'Nimble Snap','Cyclotail','Spoil','Rhino Guard','Rhino Attack','Hi-Freq Field','Sandpit','Sandblast',
-        'Mandibular Bite','Metallic Body','Bubble Shower','Bubble Curtain','Scissor Guard','Grapple','Spinning Top',
-        'Double Claw','Filamented Hold','Spore','Blockhead','Secretion','Fireball','Tail Blow','Plague Breath',
-        'Brain Crush','Infrasonics','Needleshot','Chaotic Eye','Blaster','Ripper Fang','Intimidate','Recoil Dive',
-        'Water Wall','Snow Cloud','Wild Carrot','Sudden Lunge','Noisome Powder','Beak Lunge','Suction',
-        'Drainkiss','Acid Mist','TP Drainkiss','Back Heel','Jettatura','Choke Breath','Fantod','Charged Whisker',
-        'Purulent Ooze','Corrosive Ooze','Tortoise Stomp','Harden Shell','Aqua Breath','Sensilla Blades',
-        'Tegmina Buffet','Zealous Snort','Pestilent Plume','Foul Waters','Spider Web'}
-
-    -- Magic ACC Based Ready moves
-    Ready_Debuff = S{'Dust Cloud','Sheep Song','Scream','Dream Flower','Roar','Gloeosuccus','Palsy Pollen',
-        'Soporific','Geist Wall','Numbing Noise','Spoil','Hi-Freq Field','Sandpit','Sandblast','Filamented Hold',
-        'Spore','Fireball','Infrasonics','Chaotic Eye','Blaster','Intimidate','Noisome Powder','TP Drainkiss',
-        'Jettatura','Purulent Ooze','Corrosive Ooze','Pestilent Plume','Spider Web','Nihility Song'}
-
-    -- Physical Ready moves that have Multi-Hit
-    Ready_Multi = S{'Sweeping Gouge','Tickling Tendrils','Chomp Rush','Pentapeck','Wing Slap','Pecking Flurry'}
 
     -- Additional local binds
     send_command('bind ~f1 gs c set CombatWeapon Naegling')
@@ -241,7 +191,7 @@ function init_gear_sets()
     -- Default set for any weaponskill that isn't any more specifically defined
     sets.precast.WS = {
         head="Nyame Helm",
-        body="Nyame Mail",
+        body=jse.empyrean.body,
         hands="Nyame Gauntlets",
         legs="Nyame Flanchard",
         feet="Nyame Sollerets",
@@ -321,12 +271,198 @@ function init_gear_sets()
         right_ring="Moonlight Ring",
         back=pet_attack
     }
-    sets.midcast.Pet.TP = sets.midcast.Pet
-    sets.midcast.Pet.MAB = sets.midcast.Pet
-    sets.midcast.Pet.MACC = sets.midcast.Pet
+    sets.midcast.Pet.Tp = sets.midcast.Pet
+    sets.midcast.Pet.Mab = sets.midcast.Pet
+    sets.midcast.Pet.Macc = set_combine(sets.midcast.Pet, {back=pet_mag_acc})
     sets.midcast.Pet.Multi = sets.midcast.Pet
+
+    -- Yellow Beetle & Beetle
+    sets.midcast.Pet['Power Attack'] = sets.midcast.Pet.Tp
+    sets.midcast.Pet['High-Frequency Field'] = sets.midcast.Pet.Macc
+    sets.midcast.Pet['Rhino Attack'] = sets.midcast.Pet.Tp
+    sets.midcast.Pet['Rhino Guard'] = sets.midcast.Pet.Tp
+    sets.midcast.Pet['Spoil'] = sets.midcast.Pet.Macc
+    sets.midcast.Pet['Rhinowrecker'] = sets.midcast.Pet.Tp
+
+    -- Mosquito
+    sets.midcast.Pet['Infected Leech'] = sets.midcast.Pet.Macc
+    sets.midcast.Pet['Gloom Spray'] = sets.midcast.Pet.Macc
     
-    
+    -- Hippogryph
+    sets.midcast.Pet['Back Heel'] = sets.midcast.Pet.Tp
+    sets.midcast.Pet['Jettatura'] = sets.midcast.Pet.Macc
+    sets.midcast.Pet['Choke Breath'] = sets.midcast.Pet.Macc
+    sets.midcast.Pet['Fantod'] = sets.midcast.Pet.Tp
+    sets.midcast.Pet['Hoof Volley'] = sets.midcast.Pet.Tp
+    sets.midcast.Pet['Nihility Song'] = sets.midcast.Pet.Macc
+
+    -- Crab
+    sets.midcast.Pet['Bubble Shower'] = sets.midcast.Pet.Mab
+    sets.midcast.Pet['Bubble Curtain'] = sets.midcast.Pet.Tp
+    sets.midcast.Pet['Big Scissors'] = sets.midcast.Pet.Tp
+    sets.midcast.Pet['Scissor Guard'] = sets.midcast.Pet.Tp
+    sets.midcast.Pet['Metallic Body'] = sets.midcast.Pet.Tp
+
+    -- Barnacled Crab
+    sets.midcast.Pet['Venom Shower'] = sets.midcast.Pet.Mab
+    sets.midcast.Pet['Mega Scissors'] = sets.midcast.Pet.Tp
+
+    -- Rabbit
+    sets.midcast.Pet['Foot Kick'] = sets.midcast.Pet.Tp
+    sets.midcast.Pet['Dust Cloud'] = sets.midcast.Pet.Tp
+    sets.midcast.Pet['Whirl Claws'] = sets.midcast.Pet.Tp
+    sets.midcast.Pet['Wild Carrot'] = sets.midcast.Pet.Tp
+
+    -- Colibri
+    sets.midcast.Pet['Pecking Flurry'] = sets.midcast.Pet.Multi
+
+    -- Spider
+    sets.midcast.Pet['Sickle Slash'] = sets.midcast.Pet.Tp
+    sets.midcast.Pet['Acid Spray'] = sets.midcast.Pet.Mab
+    sets.midcast.Pet['Spider Web'] = sets.midcast.Pet.Macc
+
+    -- Chapuli
+    sets.midcast.Pet['Sensilla Blades'] = sets.midcast.Pet.Tp
+    sets.midcast.Pet['Tegmina Buffet'] = sets.midcast.Pet.Tp
+
+    -- Tulfaire
+    sets.midcast.Pet['Molting Plumage'] = sets.midcast.Pet.Macc
+    sets.midcast.Pet['Swooping Frenzy'] = sets.midcast.Pet.Macc
+    sets.midcast.Pet['Pentapeck'] = sets.midcast.Pet.Multi
+
+    -- Mandragora & Citrullus
+    sets.midcast.Pet['Head Butt'] = sets.midcast.Pet.Tp
+    sets.midcast.Pet['Dream Flower'] = sets.midcast.Pet.Macc
+    sets.midcast.Pet['Wild Oats'] = sets.midcast.Pet.Macc
+    sets.midcast.Pet['Leaf Dagger'] = sets.midcast.Pet.Tp
+    sets.midcast.Pet['Scream'] = sets.midcast.Pet.Macc
+
+    -- Raptor
+    sets.midcast.Pet['Scythe Tail'] = sets.midcast.Pet.Tp
+    sets.midcast.Pet['Ripper Fang'] = sets.midcast.Pet.Tp
+    sets.midcast.Pet['Chomp Rush'] = sets.midcast.Pet.Multi
+
+    -- Lucani
+    sets.midcast.Pet['Disembowel'] = sets.midcast.Pet.Tp
+    sets.midcast.Pet['Extirpating Salvo'] = sets.midcast.Pet.Tp
+
+    -- Acuex
+    sets.midcast.Pet['Foul Waters'] = sets.midcast.Pet.Macc
+    sets.midcast.Pet['Pestilent Plume'] = sets.midcast.Pet.Macc
+
+    -- Ladybug
+    sets.midcast.Pet['Sudden Lunge'] = sets.midcast.Pet.Tp
+    sets.midcast.Pet['Spiral Spin'] = sets.midcast.Pet.Tp
+    sets.midcast.Pet['Noisome Powder'] = sets.midcast.Pet.Macc
+
+    -- Tiger
+    sets.midcast.Pet['Roar'] = sets.midcast.Pet.Macc
+    sets.midcast.Pet['Razor Fang'] = sets.midcast.Pet.Tp
+    sets.midcast.Pet['Claw Cyclone'] = sets.midcast.Pet.Tp
+    sets.midcast.Pet['Crossthrash'] = sets.midcast.Pet.Tp
+    sets.midcast.Pet['Predatory Glare'] = sets.midcast.Pet.Macc
+
+    -- Sheep
+    sets.midcast.Pet['Lamb Chop'] = sets.midcast.Pet.Tp
+    sets.midcast.Pet['Rage'] = sets.midcast.Pet.Tp
+    sets.midcast.Pet['Sheep Charge'] = sets.midcast.Pet.Tp
+    sets.midcast.Pet['Sheep Song'] = sets.midcast.Pet.Macc
+
+    -- Hill Lizard
+    sets.midcast.Pet['Tail Blow'] = sets.midcast.Pet.Tp
+    sets.midcast.Pet['Fireball'] = sets.midcast.Pet.Mab
+    sets.midcast.Pet['Blockhead'] = sets.midcast.Pet.Tp
+    sets.midcast.Pet['Brain Crush'] = sets.midcast.Pet.Tp
+    sets.midcast.Pet['Infrasonics'] = sets.midcast.Pet.Macc
+    sets.midcast.Pet['Secretion'] = sets.midcast.Pet.Tp
+
+    -- Apkallu
+    sets.midcast.Pet['Wing Slap'] = sets.midcast.Pet.Multi
+    sets.midcast.Pet['Beak Lunge'] = sets.midcast.Pet.Tp
+
+    -- Eft
+    sets.midcast.Pet['Nimble Snap'] = sets.midcast.Pet.Tp
+    sets.midcast.Pet['Cyclotail'] = sets.midcast.Pet.Tp
+    sets.midcast.Pet['Geist Wall'] = sets.midcast.Pet.Macc
+    sets.midcast.Pet['Numbing Noise'] = sets.midcast.Pet.Macc
+    sets.midcast.Pet['Toxic Spit'] = sets.midcast.Pet.Macc
+
+    -- Raaz
+    sets.midcast.Pet['Sweeping Gouge'] = sets.midcast.Pet.Tp
+    sets.midcast.Pet['Zealous Snort'] = sets.midcast.Pet.Tp
+
+    -- Lynx
+    sets.midcast.Pet['Chaotic Eye'] = sets.midcast.Pet.Macc
+    sets.midcast.Pet['Blaster'] = sets.midcast.Pet.Macc
+    sets.midcast.Pet['Charged Whisker'] = sets.midcast.Pet.Mab
+    sets.midcast.Pet['Frenzied Rage'] = sets.midcast.Pet.Tp
+
+    -- Snapweed
+    sets.midcast.Pet['Tickling Tendrils'] = sets.midcast.Pet.Multi
+    sets.midcast.Pet['Stink Bomb'] = sets.midcast.Pet.Mab
+    sets.midcast.Pet['Nectarous Deluge'] = sets.midcast.Pet.Mab
+    sets.midcast.Pet['Nepenthic Plunge'] = sets.midcast.Pet.Macc
+
+    -- Slug
+    sets.midcast.Pet['Purulent Ooze'] = sets.midcast.Pet.Macc
+    sets.midcast.Pet['Corrosive Ooze'] = sets.midcast.Pet.Macc
+
+    -- Slime
+    sets.midcast.Pet['Fluid Toss'] = sets.midcast.Pet.Tp
+    sets.midcast.Pet['Fluid Spread'] = sets.midcast.Pet.Tp
+    sets.midcast.Pet['Digest'] = sets.midcast.Pet.Macc
+
+    -- Funguar
+    sets.midcast.Pet['Frogkick'] = sets.midcast.Pet.Tp
+    sets.midcast.Pet['Spore'] = sets.midcast.Pet.Macc
+    sets.midcast.Pet['Queasyshroom'] = sets.midcast.Pet.Tp
+    sets.midcast.Pet['Numbshroom'] = sets.midcast.Pet.Macc
+    sets.midcast.Pet['Shakeshroom'] = sets.midcast.Pet.Macc
+    sets.midcast.Pet['Silence Gas'] = sets.midcast.Pet.Macc
+    sets.midcast.Pet['Dark Spore'] = sets.midcast.Pet.Mab
+
+    -- Antlion
+    sets.midcast.Pet['Mandibular Bite'] = sets.midcast.Pet.Tp
+    sets.midcast.Pet['Sandblast'] = sets.midcast.Pet.Macc
+    sets.midcast.Pet['Sandpit'] = sets.midcast.Pet.Macc
+    sets.midcast.Pet['Venom Spray'] = sets.midcast.Pet.Tp
+
+    -- Diremite
+    sets.midcast.Pet['Double Claw'] = sets.midcast.Pet.Tp
+    sets.midcast.Pet['Grapple'] = sets.midcast.Pet.Tp
+    sets.midcast.Pet['Spinning Top'] = sets.midcast.Pet.Tp
+    sets.midcast.Pet['Filamented Hold'] = sets.midcast.Pet.Macc
+
+    -- Fly
+    sets.midcast.Pet['Cursed Sphere'] = sets.midcast.Pet.Mab
+    sets.midcast.Pet['Venom'] = sets.midcast.Pet.Mab
+    sets.midcast.Pet['Somersault'] = sets.midcast.Pet.Tp
+
+    -- Pugil
+    sets.midcast.Pet['Intimidate'] = sets.midcast.Pet.Macc
+    sets.midcast.Pet['Recoil Drive'] = sets.midcast.Pet.Tp
+    sets.midcast.Pet['Water Wall'] = sets.midcast.Pet.Tp
+
+    -- Adamantoise
+    sets.midcast.Pet['Tortoise Stomp'] = sets.midcast.Pet.Tp
+    sets.midcast.Pet['Harden Shell'] = sets.midcast.Pet.Tp
+    sets.midcast.Pet['Aqua Breath'] = sets.midcast.Pet.Mab
+
+    -- Leech
+    sets.midcast.Pet['Suction'] = sets.midcast.Pet.Tp
+    sets.midcast.Pet['Drainkiss'] = sets.midcast.Pet.Mab
+    sets.midcast.Pet['Acid Mist'] = sets.midcast.Pet.Macc
+    sets.midcast.Pet['TP Drainkiss'] = sets.midcast.Pet.Macc
+
+    -- Cactuar
+    sets.midcast.Pet['Needleshot'] = sets.midcast.Pet.Tp
+    sets.midcast.Pet['??? Needles'] = sets.midcast.Pet.Tp
+
+    -- Flytrap
+    sets.midcast.Pet['Sporific'] = sets.midcast.Pet.Macc
+    sets.midcast.Pet['Gloeosuccus'] = sets.midcast.Pet.Macc
+    sets.midcast.Pet['Palsy Pollen'] = sets.midcast.Pet.Macc
+
     -- Midcast Sets
     
     -- sets.midcast['Magic Finale'] = {neck="Wind Torque",waist="Corvax Sash",legs="Aoidos' Rhing. +2"}
@@ -416,6 +552,22 @@ function init_gear_sets()
         right_ear="Sherida earring",
         ring1={name="Chirich ring +1", bag="wardrobe5"},
         ring2={name="Chirich ring +1", bag="wardrobe6"},
+        back="Null Shawl"
+    }
+
+    sets.engaged.Gleti = {
+        ammo="Coiste bodhar",
+        head="Gleti's mask",
+        body="Gleti's cuirass",
+        hands="Gleti's gauntlets",
+        legs="Gleti's breeches",
+        feet="Nukumi ocreae +3",
+        neck="Anu Torque",
+        waist="Sailfi belt +1",
+        left_ear="Dedition earring",
+        right_ear="Sherida earring",
+        ring1="Epona's ring",
+        ring2="Gere ring",
         back="Null Shawl"
     }
 
@@ -519,17 +671,7 @@ end
 -- Set eventArgs.handled to true if we don't want any automatic gear equipping to be done.
 -- Set eventArgs.useMidcastGear to true if we want midcast gear equipped on precast.
 function job_precast(spell, action, spellMap, eventArgs)
-    if Ready_Standard[spell.name] then
-        equip(sets.midcast.Pet)
-    elseif Ready_TP[spell.name] then
-        equip(sets.midcast.Pet.TP)
-    elseif Ready_Magic[spell.name] then
-        equip(sets.midcast.Pet.MAB)
-    elseif Ready_Debuff[spell.name] then
-        equip(sets.midcast.Pet.MACC)
-    elseif Ready_Multi[spell.name] then
-        equip(sets.midcast.Pet.Multi)
-    end
+
 end
 
 function job_post_precast(spell, action, spellMap, eventArgs)
@@ -549,9 +691,7 @@ end
 
 function job_pet_midcast(spell, action, spellMap, eventArgs)
     -- Equip monster correlation gear, as appropriate
-    equip(sets.midcast.Pet.WS)
-
-    
+    -- equip(sets.midcast.Pet.WS)
 
 end
 
