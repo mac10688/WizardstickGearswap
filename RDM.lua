@@ -13,7 +13,7 @@ end
 
 -- Setup vars that are user-independent.  state.Buff vars initialized here will automatically be tracked.
 function job_setup()
-    state.OffenseMode:options('Normal', 'LowHaste', 'MidHaste', 'MaxHaste', 'HighAcc')
+    state.OffenseMode:options('Normal', 'Hybrid', 'HighAcc', 'Enspell')
     state.CombatMode:options('SwordShield', 'DualWield')
     state.HybridMode:options('Normal', 'DT')
     state.CastingMode:options('Normal', 'Resistant')
@@ -26,19 +26,19 @@ function job_setup()
 
     state.Naegling = {}
     state.Naegling.SwordShield = M{['description']='Naegling Set', 'Sacro', 'Genmei'}
-    state.Naegling.DualWield = M{['description']='Naegling Set', 'TP', 'Acc'}
+    state.Naegling.DualWield = M{['description']='Naegling Set', 'TP', 'Sakpata', 'Acc'}
 
     state.Crocea = {}
     state.Crocea.SwordShield = M{['description']='Crocea Set', 'Sacro', 'Genmei'}
-    state.Crocea.DualWield = M{['description']='Crocea Set', 'Murgleis', 'Daybreak', 'Demersal', 'TP', 'Bunzi'}
+    state.Crocea.DualWield = M{['description']='Crocea Set', 'TP', 'Sakpata', 'Daybreak', 'Bunzi'}
 
     state.Murgleis = {}
     state.Murgleis.SwordShield = M{['description']='Murgleis Set', 'Ammurapi', 'Sacro', 'Genmei'}
-    state.Murgleis.DualWield = M{['description']='Murgleis Set', 'Daybreak', 'Demersal', 'TP', 'Bunzi'}
+    state.Murgleis.DualWield = M{['description']='Murgleis Set', 'TP', 'Sakpata'}
 
     state.Club = {}
     state.Club.SwordShield = M{['description']='Club Set', 'Sacro', 'Genmei'}
-    state.Club.DualWield = M{['description']='Club Set', 'Daybreak', 'Gleti', 'TP'}
+    state.Club.DualWield = M{['description']='Club Set', 'TP', 'Sakpata'}
     
     state.Dagger = {}
     state.Dagger.SwordShield = M{['description']='Dagger Set', 'Sacro', 'Genmei'}
@@ -109,6 +109,7 @@ function init_gear_sets()
     sets.Naegling = {main="Naegling"}
     sets.Naegling.DualWield = {main="Naegling", sub="Thibron"}
     sets.Naegling.DualWield.TP = {main="Naegling", sub="Thibron"}
+    sets.Naegling.DualWield.Sakpata = {main="Naegling", sub="Sakpata's sword"}
     sets.Naegling.DualWield.Acc = {main="Naegling", sub="Gleti's knife"}
     sets.Naegling.SwordShield = {main="Naegling", sub="Sacro bulwark"}
     sets.Naegling.SwordShield.Sacro = {main="Naegling", sub="Sacro bulwark"}
@@ -116,21 +117,18 @@ function init_gear_sets()
 
     sets.Crocea = {main="Crocea mors"}
     sets.Crocea.DualWield = {main="Crocea mors", sub="Daybreak"}
-    sets.Crocea.DualWield.Murgleis = {main="Crocea mors", sub="Murgleis"}
-    sets.Crocea.DualWield.Daybreak = {main="Crocea mors", sub="Daybreak"}
-    sets.Crocea.DualWield.Demersal = {main="Crocea mors", sub="Demersal degen +1"}
-    sets.Crocea.DualWield.Bunzi = {main="Crocea mors", sub="Bunzi's rod"}
     sets.Crocea.DualWield.TP = {main="Crocea mors", sub="Thibron"}
+    sets.Crocea.DualWield.Sakpata = {main="Crocea mors", sub="Sakpata's sword"}
+    sets.Crocea.DualWield.Daybreak = {main="Crocea mors", sub="Daybreak"}
+    sets.Crocea.DualWield.Bunzi = {main="Crocea mors", sub="Bunzi's rod"}    
     sets.Crocea.SwordShield = {main="Crocea mors", sub="Sacro bulwark"}
     sets.Crocea.SwordShield.Sacro = {main="Crocea mors", sub="Sacro bulwark"}
     sets.Crocea.SwordShield.Genmei = {main="Crocea mors", sub="Genmei shield"}
 
     sets.Murgleis = {main="Murgleis"}
     sets.Murgleis.DualWield = {main="Murgleis", sub="Crocea mors"}
-    sets.Murgleis.DualWield.Crocea = {main="Murgleis", sub="Crocea mors"}
-    sets.Murgleis.DualWield.Demersal = {main="Murgleis", sub="Demersal degen +1"}
-    sets.Murgleis.DualWield.Bunzi = {main="Murgleis", sub="Bunzi's rod"}
     sets.Murgleis.DualWield.TP = {main="Murgleis", sub="Thibron"}
+    sets.Murgleis.DualWield.Sakpata = {main="Murgleis", sub="Sakpata's sword"}
     sets.Murgleis.SwordShield = {main="Murgleis", sub="Sacro bulwark"}
     sets.Murgleis.SwordShield.Ammurapi = {main="Murgleis", sub="Ammurapi shield"}
     sets.Murgleis.SwordShield.Sacro = {main="Murgleis", sub="Sacro bulwark"}
@@ -138,9 +136,8 @@ function init_gear_sets()
 
     sets.Club = {main="Maxentius"}
     sets.Club.DualWield = {main="Maxentius", sub="Daybreak"}
-    sets.Club.DualWield.Daybreak = {main="Maxentius", sub="Daybreak"}
-    sets.Club.DualWield.Gleti = {main="Maxentius", sub="Gleti's knife"}
     sets.Club.DualWield.TP = {main="Maxentius", sub="Thibron"}
+    sets.Club.DualWield.Sakpata = {main="Maxentius", sub="Sakpata's sword"}
     sets.Club.SwordShield = {main="Maxentius", sub="Sacro bulwark"}
     sets.Club.SwordShield.Sacro = {main="Maxentius", sub="Sacro bulwark"}
     sets.Club.SwordShield.Genmei = {main="Maxentius", sub="Genmei shield"}
@@ -349,6 +346,7 @@ function init_gear_sets()
         neck="Duelist's torque +2",
         body="Vitiation tabard +3",
         hands="Atrophy gloves +3",
+        ring1="Medada's ring",
         waist="Embla sash",
         back="Ghostfyre cape",
         legs="Telchine braconi",
@@ -367,6 +365,10 @@ function init_gear_sets()
         back="Ghostfyre cape",
         legs="Lethargy fuseau +3",
         feet="Lethargy houseaux +3"
+    })
+
+    sets.buff.ComposureOtherLongDuration = set_combine(sets.buff.ComposureOther, {
+        ring1="Medada's ring"
     })
 
     sets.midcast.Regen = sets.midcast.EnhancingDuration
@@ -609,7 +611,7 @@ function init_gear_sets()
         hands="Malignance gloves",
         ring1={name="Chirich ring +1", bag="wardrobe5"},
         ring2={name="Chirich ring +1", bag="wardrobe6"},
-        back=dw_cape,
+        back=tp_cape,
         waist="Grunfeld rope",
         legs="Malignance tights",
         feet="Malignance boots"
@@ -617,15 +619,13 @@ function init_gear_sets()
 --   sets.engaged[state.CombatMode][state.CombatForm][state.CombatWeapon][state.OffenseMode][state.HybridMode][classes.CustomMeleeGroups (any number)]
     sets.engaged.SwordShield = set_combine(sets.engaged, {feet="Atrophy boots +3", back=tp_cape})
     sets.engaged.SwordShield.HighAcc = set_combine(sets.engaged.SwordShield, {neck="Combatant's torque", ear1="Dignitary's earring"})
-    sets.engaged.SwordShield.LowHaste = set_combine(sets.engaged.SwordShield, {ring2="Hetairoi ring"})
-    sets.engaged.SwordShield.MidHaste = set_combine(sets.engaged.SwordShield.LowHaste, {})
-    sets.engaged.SwordShield.HighHaste = set_combine(sets.engaged.SwordShield.MidHaste, {})
+    sets.engaged.SwordShield.Hybrid = set_combine(sets.engaged.SwordShield, {ring2="Defending ring"})
+    sets.engaged.SwordShield.Enspell = set_combine(sets.engaged.SwordShield, {back=dw_cape})
 
     sets.engaged.DualWield = set_combine(sets.engaged, {waist="Reiki yotai", ear2="Eabani earring"})
     sets.engaged.DualWield.HighAcc = set_combine(sets.engaged.DualWield, {ear2 = "Lethargy earring +2"})
-    sets.engaged.DualWield.LowHaste = set_combine(sets.engaged.DualWield, {})
-    sets.engaged.DualWield.MidHaste = set_combine(sets.engaged.DualWield, {})
-    sets.engaged.DualWield.HighHaste = set_combine(sets.engaged.DualWield, {})
+    sets.engaged.DualWield.Hybrid = set_combine(sets.engaged.DualWield, {ring2="Defending ring"})
+    sets.engaged.DualWield.Enspell = set_combine(sets.engaged.DualWield, {back=dw_cape})
 
     sets.engaged.Hybrid = {
         head="Malignance Chapeau",
@@ -683,18 +683,20 @@ end
 function job_post_midcast(spell, action, spellMap, eventArgs)
     if spell.skill == 'Enhancing Magic' then
         if classes.NoSkillSpells:contains(spell.english) then
-            equip(sets.midcast.EnhancingDuration)
-            if spellMap == 'Refresh' then
-                equip(sets.midcast.Refresh)
-                if spell.target.type == 'SELF' then
+            if (spell.target.type == 'PLAYER' or spell.target.type == 'NPC') and buffactive.Composure then
+                equip(sets.buff.ComposureOtherLongDuration)
+            else
+                equip(sets.midcast.EnhancingDuration)
+                if spellMap == 'Refresh' and spell.target.type == 'SELF' then
                     equip (sets.midcast.RefreshSelf)
                 end
             end
         elseif skill_spells:contains(spell.english) then
-            equip(sets.midcast.EnhancingSkill)
-        end
-        if (spell.target.type == 'PLAYER' or spell.target.type == 'NPC') and buffactive.Composure then
-            equip(sets.buff.ComposureOther)
+            if (spell.target.type == 'PLAYER' or spell.target.type == 'NPC') and buffactive.Composure then
+                equip(sets.buff.ComposureOther)
+            else
+                equip(sets.midcast.EnhancingSkill)
+            end
         end
     elseif spell.skill == 'Healing Magic' then
         if spellMap == 'Cure' and spell.target.type == 'SELF' then
