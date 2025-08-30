@@ -242,7 +242,7 @@ function init_gear_sets()
         ear1="Etiolation earring",
         ear2="Loquacious earring",
         neck="Sanctity necklace",
-        body="Spaekona's coat +3",
+        body="Spaekona's coat +4",
         hands="Spaekona's gloves +3",
         ring1="Mephitas's ring +1",
         ring2="Metamorph ring +1",
@@ -294,7 +294,7 @@ function init_gear_sets()
         neck = "Sorcerer's stole +2",
         left_ear = "Regal earring",
         right_ear="Malignance earring",
-        body = "Spaekona's coat +3",
+        body = "Spaekona's coat +4",
         hands= "Regal cuffs",
         ring1="Medada's ring",
         ring2="Kishar Ring",
@@ -307,7 +307,7 @@ function init_gear_sets()
     sets.midcast.ElementalEnfeeble = {
         ammo="Pemphredo tathlum",
         head="Spae. Petasos +3",
-        body="Spaekona's Coat +3",
+        body="Spaekona's coat +4",
         hands="Spae. Gloves +3",
         legs="Arch. Tonban +3",
         feet="Wicce Sabots +3",
@@ -572,7 +572,7 @@ function job_post_midcast(spell, action, spellMap, eventArgs)
             equip(sets.magic_burst)
         end
         if player.mp < 700 then
-            equip({body="Spaekona's Coat +3"})
+            equip({body="Spaekona's coat +4"})
         end
         local obi_or_orpheus = obi_or_orpheus(spell)
         if obi_or_orpheus then
