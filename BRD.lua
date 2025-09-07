@@ -231,7 +231,7 @@ function init_gear_sets()
     -- For song buffs (duration and AF3 set bonus)
     sets.midcast.BardSong.SongEffect = {
         main="Carnwenhan",
-        ranged="Gjallarhorn",
+        ranged="Loughnashade",
         head="Fili calot +3",
         neck="Moonbow whistle +1",
         ear1="Genmei earring",
@@ -250,7 +250,7 @@ function init_gear_sets()
     
 
     sets.midcast.BardSong.ResistantSongDebuff = {
-        ranged="Gjallarhorn",
+        ranged="Loughnashade",
         head=jse.artifact.head,
         neck="Moonbow Whistle +1",
         ear1="Regal earring",
@@ -272,7 +272,7 @@ function init_gear_sets()
         ring2="Defending ring"
     })
 
-        -- Gear to enhance certain classes of songs.  No instruments added here since Gjallarhorn is being used.
+        -- Gear to enhance certain classes of songs.  No instruments added here since Loughnashade is being used.
     sets.midcast.BardSong["Honor March"] = set_combine(sets.midcast.BardSong.SongEffect, {ranged="Marsyas"})
     sets.midcast.BardSong["Aria of Passion"] = set_combine(sets.midcast.BardSong.SongEffect, {ranged="Loughnashade"})
     sets.midcast.BardSong.Ballad = set_combine(sets.midcast.BardSong.SongEffect, {legs="Fili rhingrave +3"})
@@ -361,6 +361,7 @@ function init_gear_sets()
         neck="Republican platinum medal",
         ear1="Crepuscular earring",
         ear2="Dedition earring",
+        body="Ashera harness",
         hands="Regal gloves",
         ring2="Roller's ring",
         waist="Reiki yotai"
