@@ -18,7 +18,7 @@ end
 
 -- Setup vars that are user-independent.
 function job_setup()
-    state.OffenseMode:options('MultiHit', 'Acc', 'ParryDefense', 'ParryOffense')
+    state.OffenseMode:options('ParryDefense', 'ParryOffense', 'MultiHit', 'Acc')
     state.WeaponskillMode:options('Normal', 'Acc')
     state.PhysicalDefenseMode:options('PDT')
     state.MagicalDefenseMode:options('MDT', 'ResistStatus', 'KnockBack', 'Meva')

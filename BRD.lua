@@ -27,9 +27,15 @@ function job_setup()
 
     state.Carnwenhan = {}
     state.Carnwenhan.DualWield = M{['description']='Carnwenhan Set', 'TP', 'Acc'}
-    state.Carnwenhan.SwordShield = M{['description']='Carnwenhan Set', 'Genmei', 'Ammurapi'}    
+    state.Carnwenhan.SwordShield = M{['description']='Carnwenhan Set', 'Genmei', 'Ammurapi'}
 
+    state.Ternion = {}
+    state.Ternion.DualWield = M{['description']='Carnwenhan Set', 'Eva'}
+    state.Ternion.SwordShield = M{['description']='Carnwenhan Set', 'Genmei'}
 
+    state.Xoanon = {}
+    state.Xoanon.SwordShield = M{['description']='Xoanon Set', 'Enki'}
+    state.Xoanon.DualWield = M{['description']='Xoanon Set', 'Enki'}
     
     -- Adjust this if using the Terpander (new +song instrument)
     info.ExtraSongInstrument = 'Daurdabla'
@@ -39,6 +45,8 @@ function job_setup()
     send_command('bind !` gs c toggle EnmitySongs')
     send_command('bind ~f1 gs c set CombatWeapon Naegling')
     send_command('bind ~f2 gs c set CombatWeapon Carnwenhan')
+    send_command('bind ~f3 gs c set CombatWeapon Ternion')
+    send_command('bind ~f4 gs c set CombatWeapon Xoanon')
 end
 
 -------------------------------------------------------------------------------------------------------------------
@@ -51,6 +59,8 @@ function file_unload()
     send_command('unbind !`')
     send_command('unbind ~f1')
     send_command('unbind ~f2')
+    send_command('unbind ~f3')
+    send_command('unbind ~f4')
 end
 
 
@@ -112,6 +122,18 @@ function init_gear_sets()
     sets.Carnwenhan.SwordShield = {}
     sets.Carnwenhan.SwordShield.Genmei = {main="Carnwenhan", sub="Genmei shield"}
     sets.Carnwenhan.SwordShield.Ammurapi = {main="Carnwenhan", sub="Ammurapi shield"}
+
+    sets.Ternion = {}
+    sets.Ternion.DualWield = {}
+    sets.Ternion.DualWield.Eva = {main="Ternion dagger +1", sub="Gleti's knife"}
+    sets.Ternion.SwordShield = {}
+    sets.Ternion.SwordShield.Genmei = {main="Ternion dagger +1", sub="Genmei shield"}
+
+    sets.Xoanon = {}
+    sets.Xoanon.SwordShield = {}
+    sets.Xoanon.SwordShield.Enki = {main="Xoanon", sub="Enki strap"}
+    sets.Xoanon.DualWield = {}
+    sets.Xoanon.DualWield.Enki = {main="Xoanon", sub="Enki strap"}
 
     -- Precast Sets
 
@@ -350,7 +372,7 @@ function init_gear_sets()
         body="Adamantite armor",
         hands="Nyame gauntlets", -- 4 mdb 112 meva
         ring1="Ayanmo ring",
-        ring2="Mephitas's ring +1",
+        ring2="Defending ring",
         back=idle_pdt_cape, -- 30 meva
         waist="Null belt",
         legs="Nyame flanchard", -- 7 mdb 150 meva
@@ -440,7 +462,7 @@ function init_gear_sets()
     
     sets.midcast.Absorb = {
         ranged=fc_linos,
-        head="Fili calot +3",
+        head="Cath Palug crown",
         neck="Voltsurge torque",
         ear1="Enchanter's earring +1",
         ear2="Fili earring +1",
@@ -453,18 +475,6 @@ function init_gear_sets()
         legs="Fili rhingrave +3",
         feet="Fili cothurnes +3"
     }
-
-    -- Sets with weapons defined.
-    -- sets.engaged.Dagger = {range="Angel Lyre",
-    --     head="Nahtirah Hat",neck="Asperity Necklace",ear1="Bladeborn Earring",ear2="Steelflash Earring",
-    --     body="Bihu Justaucorps",hands="Buremte Gloves",ring1="Rajas Ring",ring2="K'ayres Ring",
-    --     back="Atheling Mantle",waist="Goading Belt",legs="Brioso Cannions +1",feet="Gendewitha Galoshes"}
-
-    -- -- Set if dual-wielding
-    -- sets.engaged.DW = {range="Angel Lyre",
-    --     head="Nahtirah Hat",neck="Asperity Necklace",ear1="Dudgeon Earring",ear2="Heartseeker Earring",
-    --     body="Bihu Justaucorps",hands="Buremte Gloves",ring1="Rajas Ring",ring2="K'ayres Ring",
-    --     back="Atheling Mantle",waist="Goading Belt",legs="Brioso Cannions +1",feet="Gendewitha Galoshes"}
 
     sets.enmity = {
         main="Mafic Cudgel",

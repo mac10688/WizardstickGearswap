@@ -26,6 +26,10 @@ function job_setup()
     state.Ikenga.DualWield = M{['description']='Ikenga Set', 'Pet'}
     state.Ikenga.SwordShield = M{['description']='Ikenga Set', 'Sacro'}
 
+    state.Agwu = {}
+    state.Agwu.DualWield = M{['description']='Agwu Set', 'Pet'}
+    state.Agwu.SwordShield = M{['description']='Agwu Set', 'Sacro'}
+
     state.Dolichenus = {}
     state.Dolichenus.DualWield = M{['description']='Dolichenus Set', 'TP', 'Pet'}
     state.Dolichenus.SwordShield = M{['description']='Dolichenus Set', 'Sacro'}
@@ -44,8 +48,9 @@ function job_setup()
     -- Additional local binds
     send_command('bind ~f1 gs c set CombatWeapon Naegling')
     send_command('bind ~f2 gs c set CombatWeapon Ikenga')
-    send_command('bind ~f3 gs c set CombatWeapon Dolichenus')
-    send_command('bind ~f4 gs c set CombatWeapon Drepanum')
+    send_command('bind ~f3 gs c set CombatWeapon Agwu')
+    send_command('bind ~f4 gs c set CombatWeapon Dolichenus')
+    send_command('bind ~f5 gs c set CombatWeapon Drepanum')
 end
 
 -------------------------------------------------------------------------------------------------------------------
@@ -58,6 +63,7 @@ function file_unload()
     send_command('unbind ~f2')
     send_command('unbind ~f3')
     send_command('unbind ~f4')
+    send_command('unbind ~f5')
 end
 
 
@@ -74,7 +80,7 @@ function init_gear_sets()
 	jse.artifact.legs = "Totemic Trousers +3"
 	jse.artifact.feet = "Totemic Gaiters +3"
 
-	jse.relic.head = "Ankusa Helm +3"
+	jse.relic.head = "Ankusa Helm +4"
 	jse.relic.body = "Ankusa Jackcoat +3"
 	jse.relic.hands = "Ankusa Gloves +3"
 	jse.relic.legs = "Ankusa Trousers +3"
@@ -107,10 +113,17 @@ function init_gear_sets()
 
     sets.Ikenga = {}
     sets.Ikenga.DualWield = {}
-    sets.Ikenga.DualWield.Pet = {main="Ikenga's axe", sub="Agwu's axe"}
+    sets.Ikenga.DualWield.Pet = {main="Ikenga's axe", sub="Ikenga's axe"}
 
     sets.Ikenga.SwordShield = {}
     sets.Ikenga.SwordShield.Sacro = {main="Ikenga's axe", sub="Sacro bulwark"}
+
+    sets.Agwu = {}
+    sets.Agwu.DualWield = {}
+    sets.Agwu.DualWield.Pet = {main="Agwu's axe", main="Agwu's axe", sub="Ikenga's axe"}
+
+    sets.Agwu.SwordShield = {}
+    sets.Agwu.SwordShield.Sacro = {main="Agwu's axe", sub="Sacro bulwark"}
 
     sets.Dolichenus = {}
     sets.Dolichenus.DualWield = {} 
@@ -257,23 +270,29 @@ function init_gear_sets()
     }
 
     sets.midcast.Pet = {
-        ammo={ name="Hesperiidae", augments={'Path: A',}},
+        ammo="Hesperiidae",
         head="Nuk. Cabasset +3",
         body="Nukumi Gausape +3",
         hands="Nukumi Manoplas +3",
         legs="Nukumi Quijotes +3",
         feet="Nukumi Ocreae +3",
-        neck={ name="Bst. Collar +2", augments={'Path: A',}},
+        neck="Bst. Collar +2",
         waist="Incarnation Sash",
         left_ear="Sroda Earring",
-        right_ear={ name=jse.earring, augments={'System: 1 ID: 1676 Val: 0','Accuracy+11','Mag. Acc.+11','Pet: "Dbl. Atk."+5',}},
-        left_ring="Eihwaz Ring",
+        right_ear=jse.earring,
+        left_ring="Cath Palug ring",
         right_ring="Moonlight Ring",
         back=pet_attack
     }
     sets.midcast.Pet.Tp = sets.midcast.Pet
-    sets.midcast.Pet.Mab = sets.midcast.Pet
-    sets.midcast.Pet.Macc = set_combine(sets.midcast.Pet, {back=pet_mag_acc})
+    sets.midcast.Pet.Mab = set_combine(sets.midcast.Pet, {
+        body="Udug Jacket",
+        back=pet_mag_acc
+    })
+    sets.midcast.Pet.Macc = set_combine(sets.midcast.Pet, {
+        left_ear="Alabaster earring",
+        back=pet_mag_acc
+    })
     sets.midcast.Pet.Multi = sets.midcast.Pet
 
     -- Yellow Beetle & Beetle

@@ -29,7 +29,7 @@ function get_sets()
         waist="Flume Belt +1",
         left_ear="Hearty Earring",
         right_ear="Genmei earring",
-        left_ring="Moonbeam ring",
+        left_ring="Shneddick ring +1",
         right_ring="Defending Ring",
         back={ name="Toutatis's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Attack+10','Haste+10','Damage taken-5%'}},
     }
@@ -38,6 +38,7 @@ function get_sets()
     sets.idle['mdt'] = {}
     sets.idle['regen'] = {}
 
+    sets.ws = {}
     sets.ws = {
         -- head={ name="Herculean Helm", augments={'DEX+1','CHR+3','Weapon skill damage +5%','Accuracy+17 Attack+17','Mag. Acc.+20 "Mag.Atk.Bns."+20'}},
         -- body={ name="Herculean Vest", augments={'Accuracy+28','Weapon skill damage +4%','DEX+10','Attack+3'}},

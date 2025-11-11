@@ -395,7 +395,9 @@ function init_gear_sets()
     sets.precast['Death'] = deathSet
     sets.midcast['Death'] = deathSet
 
-    sets.magic_burst = set_combine(sets.midcast['Elemental Magic'], {
+    sets.midcast.MagicBurst = set_combine(sets.midcast['Elemental Magic'], {
+        main="Wizard's rod",
+        sub="Ammurapi shield",
         head="Ea hat +1", --MB: 7 MB2: 7
         neck="Sorcerer's stole +2", --MB: 10
         body="Wicce coat +3", --MB2: 5
@@ -569,7 +571,7 @@ end
 function job_post_midcast(spell, action, spellMap, eventArgs)
     if spell.skill == 'Elemental Magic' and spell.english ~= 'Impact' then
         if state.MagicBurst.value then
-            equip(sets.magic_burst)
+            equip(sets.midcast.MagicBurst)
         end
         if player.mp < 700 then
             equip({body="Spaekona's coat +4"})

@@ -64,11 +64,9 @@ function job_setup()
     state.Buff.Saboteur = buffactive.Saboteur or false
     state.Buff.Stymie = buffactive.Stymie or false
 
-    enfeebling_magic_acc = S{'Bind', 'Break', 'Dispel', 'Distract', 'Distract II', 'Frazzle',
-        'Frazzle II', 'Silence'}
-    enfeebling_magic_skill = S{'Distract III', 'Frazzle III', 'Poison II'}
-    enfeebling_magic_effect = S{'Dia', 'Dia II', 'Dia III', 'Diaga', 'Blind', 'Blind II', 'Gravity', 'Gravity II'}
-    enfeebling_magic_sleep = S{'Sleep', 'Sleep II', 'Sleepga'}
+    enfeebling_magic_acc = S{'Dispel','Frazzle','Frazzle II','Stun','Poison','Poison II','Poisonga'}
+    enfeebling_magic_effect =  S{'Paralyze','Paralyze II','Slow','Slow II','Addle','Addle II','Distract','Distract II','Distract III','Frazzle III','Blind','Blind II','Gravity','Gravity II'}
+    enfeebling_magic_duration = S{'Sleep','Sleep II','Sleepga','Sleepga II','Diaga','Dia','Dia II','Dia III','Bio','Bio II','Bio III','Silence','Inundation','Break','Breakaga','Bind','Bind II'}
 
     skill_spells = S{
         'Temper', 'Temper II', 'Enfire', 'Enfire II', 'Enblizzard', 'Enblizzard II', 'Enaero', 'Enaero II',
@@ -450,8 +448,9 @@ function init_gear_sets()
     sets.midcast.MndEnfeeblesAcc = set_combine(sets.midcast.MndEnfeebles, {
         -- ranged="Ullr",
         -- ammo=empty,
-        head="Atrophy chapeau +3",
-        body="Atrophy Tabard +3"
+        hands="Lethargy gantherots +3",
+        legs="Leth. Fuseau +3",
+        back="Null Shawl"
     })
 
     sets.midcast.MndEnfeeblesEffect = set_combine(sets.midcast.MndEnfeebles, {
@@ -463,29 +462,22 @@ function init_gear_sets()
     sets.midcast.IntEnfeeblesAcc = set_combine(sets.midcast.IntEnfeebles, {
         -- ranged="Ullr",
         -- ammo=empty,
-        back="Aurist's cape +1"
+        hands="Lethargy gantherots +3",
+        legs="Leth. Fuseau +3",
+        waist="Acuity belt +1",
+        back="Null Shawl"
     })
 
     sets.midcast.IntEnfeeblesEffect = set_combine(sets.midcast.IntEnfeebles, {
         body="Lethargy sayon +3"
     })
 
-    sets.midcast.SkillEnfeebles = set_combine(sets.midcast['Enfeebling Magic'], {
-    })
-
-    sets.midcast.Sleep = set_combine(sets.midcast.IntEnfeeblesAcc, {
-
-    })
-
-    sets.midcast.SleepMaxDuration = set_combine(sets.midcast.Sleep, {
+    sets.midcast.MaxDuration = set_combine(sets.midcast['Enfeebling Magic'], {
         head="Leth. Chappel +3",
         body="Lethargy Sayon +3",
         legs="Leth. Fuseau +3",
         feet="Leth. Houseaux +3",
-    })
-		
-	sets.midcast.Silence = set_combine(sets.midcast['Enfeebling Magic'], {
-
+        ring2="Kishar ring"
     })
 
     sets.midcast.ElementalEnfeeble = sets.midcast.IntEnfeebles
@@ -724,13 +716,13 @@ function job_get_spell_map(spell, default_spell_map)
             end
         end
         if spell.skill == 'Enfeebling Magic' then
-            if enfeebling_magic_skill:contains(spell.english) then
-                return "SkillEnfeebles"
-            elseif spell.type == "WhiteMagic" then
+            if spell.type == "WhiteMagic" then
                 if enfeebling_magic_acc:contains(spell.english) and not buffactive.Stymie then
                     return "MndEnfeeblesAcc"
                 elseif enfeebling_magic_effect:contains(spell.english) then
                     return "MndEnfeeblesEffect"
+                elseif enfeebling_magic_duration:contains(spell.english) then
+                    return "MaxDuration"
                 else
                     return "MndEnfeebles"
               end
@@ -739,10 +731,8 @@ function job_get_spell_map(spell, default_spell_map)
                     return "IntEnfeeblesAcc"
                 elseif enfeebling_magic_effect:contains(spell.english) then
                     return "IntEnfeeblesEffect"
-                elseif enfeebling_magic_sleep:contains(spell.english) and ((buffactive.Stymie and buffactive.Composure) or state.SleepMode.value == 'MaxDuration') then
-                    return "SleepMaxDuration"
-                elseif enfeebling_magic_sleep:contains(spell.english) then
-                    return "Sleep"
+                elseif enfeebling_magic_duration:contains(spell.english) then
+                    return "MaxDuration"
                 else
                     return "IntEnfeebles"
                 end

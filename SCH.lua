@@ -74,9 +74,6 @@ function init_gear_sets()
 
     local fc_cape = hybrid_cape
 
-    local merlinic_legs_mb = { name="Merlinic Shalwar", augments={'Mag. Acc.+22','Magic burst dmg.+10%','MND+2','"Mag.Atk.Bns."+13'}}
-    local merlinic_feet_mb = { name="Merlinic Crackows", augments={'"Mag.Atk.Bns."+25','Magic burst dmg.+11%','Mag. Acc.+5'}}
-
     local chironic_refresh_legs = { name="Chironic Hose", augments={'STR+9','CHR+4','"Refresh"+2','Mag. Acc.+14 "Mag.Atk.Bns."+14'}}
 
     sets.MalignancePole = {main="Malignance pole", sub="Khonsu"}
@@ -279,7 +276,7 @@ function init_gear_sets()
 
     local midcast_enhancing_duration = {
         main="Musa",
-        ammo="Staunch tathlum +3",
+        ammo="Staunch tathlum +1",
         head="Telchine cap",
         neck="Loricate torque +1",
         ear2="Magnetic earring",
@@ -420,7 +417,7 @@ function init_gear_sets()
 
     sets.midcast.Absorb =  {
         main="Musa",
-        sub="Khonsu Strap",
+        sub="Khonsu",
         ammo="Pemphredo Tathlum",
         head="Pixie hairpin +1",
         body="Acad. Gown +3",
@@ -476,7 +473,7 @@ function init_gear_sets()
         ammo="Incantor Stone",
         head="Pedagogy mortarboard +3",
         neck="Bathy choker +1",
-        ear1="Dignitary earring",
+        ear1="Dignitary's earring",
         ear2="Loquac. Earring",
         body="Pinga tunic +1",
         hands="Academic's bracers +3",
@@ -489,7 +486,7 @@ function init_gear_sets()
     }
 
     sets.midcast.MagicBurst = set_combine(sets.midcast['Elemental Magic'], {
-        main="Bunzi's rod",
+        main="Wizard's rod",
         sub="Ammurapi shield",
         head="Agwu's cap", --MB2: 4
         neck="Argute stole +2", --MB: 7
@@ -726,7 +723,7 @@ function job_post_midcast(spell, action, spellMap, eventArgs)
     if spell.action_type == 'Magic' then
         if state.MagicBurst.value and spell.skill == 'Elemental Magic' and spellMap ~= 'ElementalEnfeeble' and spell.english ~= 'Impact' then
             if spellMap ~= 'Helix' then
-                equip(sets.midcast.magic_burst)
+                equip(sets.midcast.MagicBurst)
             elseif spellMap == 'Helix' then
                 equip(sets.midcast['Elemental Magic'].Helix)
             end

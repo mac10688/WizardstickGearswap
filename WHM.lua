@@ -33,9 +33,9 @@ function job_setup()
     state.Maxentius.DualWield = M{['description']='Maxentius Set', 'TP', 'Acc'}
     state.Maxentius.SwordShield = M{['description']='Maxentius Set', 'Genmei', 'Ammurapi'}
 
-    state.Raetic = {}
-    state.Raetic.DualWield = M{['description']='Raetic Set', 'TP', 'Acc'}
-    state.Raetic.SwordShield = M{['description']='Raetic Set', 'Genmei', 'Ammurapi'}
+    state.Palug = {}
+    state.Palug.DualWield = M{['description']='Cath Palug Hammer Set', 'TP', 'Acc'}
+    state.Palug.SwordShield = M{['description']='Cath Palug Hammer', 'Genmei', 'Ammurapi'}
 
     state.Lorg = {}
     state.Lorg.DualWield = M{['description']='Lorg Mor Set', 'TP', 'Acc'}
@@ -45,7 +45,7 @@ function job_setup()
     send_command('bind ~f1 gs c set CombatWeapon Daybreak')
     send_command('bind ~f2 gs c set CombatWeapon Yagrush') 
     send_command('bind ~f3 gs c set CombatWeapon Maxentius')
-    send_command('bind ~f4 gs c set CombatWeapon Raetic')
+    send_command('bind ~f4 gs c set CombatWeapon Palug')
     send_command('bind ~f5 gs c set CombatWeapon Lorg')
 
     send_command('bind ^Numpad1 input /ws "Mystic Boon" <t>')
@@ -103,13 +103,13 @@ function init_gear_sets()
     sets.Maxentius.SwordShield.Genmei = {main="Maxentius", sub="Genmei shield"}
     sets.Maxentius.SwordShield.Ammurapi = {main="Maxentius", sub="Ammurapi shield"}
 
-    sets.Raetic = {}
-    sets.Raetic.DualWield = {}
-    sets.Raetic.DualWield.TP = {main="Raetic rod +1", sub="Tishtrya"}
-    sets.Raetic.DualWield.Acc = {main="Raetic rod +1", sub="Bunzi's rod"}
-    sets.Raetic.SwordShield = {}
-    sets.Raetic.SwordShield.Genmei = {main="Raetic rod +1", sub="Genmei shield"}
-    sets.Raetic.SwordShield.Ammurapi = {main="Raetic rod +1", sub="Ammurapi shield"}
+    sets.Palug = {}
+    sets.Palug.DualWield = {}
+    sets.Palug.DualWield.TP = {main="Cath Palug hammer", sub="Tishtrya"}
+    sets.Palug.DualWield.Acc = {main="Cath Palug hammer", sub="Bunzi's rod"}
+    sets.Palug.SwordShield = {}
+    sets.Palug.SwordShield.Genmei = {main="Cath Palug hammer", sub="Genmei shield"}
+    sets.Palug.SwordShield.Ammurapi = {main="Cath Palug hammer", sub="Ammurapi shield"}
     
     sets.Lorg = {}
     sets.Lorg.DualWield = {}
@@ -231,7 +231,7 @@ function init_gear_sets()
         sub="Genmei Shield",
         ammo="Staunch Tathlum +1", --11%
         head="Ebers Cap +3", --12%
-        body="Ebers Bliaut +3",
+        body="Pinga tunic +1",
         hands={ name="Chironic Gloves", augments={'Mag. Acc.+15 "Mag.Atk.Bns."+15','Spell interruption rate down -11%','INT+8','"Mag.Atk.Bns."+5',}}, --31%
         legs="Ebers Pant. +3",
         feet="Theo. Duckbills +3", --29%
