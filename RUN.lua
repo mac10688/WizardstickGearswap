@@ -163,7 +163,7 @@ function init_gear_sets()
         body="Agwu's robe",
         hands="Agwu's gages",
         ring1="Metamorph ring +1",
-        ring2="Medadas ring",
+        ring2="Medada's ring",
         back="Evasionist's Cape",
         waist="Orpheus's sash",
         legs="Agwu's slops",
@@ -435,11 +435,39 @@ function init_gear_sets()
         ring1={name="Blenmot's ring +1", bag="wardrobe5"},
         ring2={name="Blenmot's ring +1", bag="wardrobe6"} 
     }
+
     sets.precast.Item['Hallowed Water'] = {
         neck="Nicander's necklace",
         ring1={name="Blenmot's ring +1", bag="wardrobe5"},
         ring2={name="Blenmot's ring +1", bag="wardrobe6"} 
     }
+
+    -- 45% DT
+    -- 6% MDT
+    -- 7% PDT
+    -- 25% PDT II
+    -- 75 enmity
+    -- 3705 HP
+    -- 1501 DEF
+    -- 
+    sets.midcast.Arebati = {
+        main="Epeolatry",
+        sub="Irenic strap +1",
+        ammo="Staunch tathlum +1",
+        head="Nyame helm",
+        neck="Unmoving collar +1",
+        ear1="Odnowa earring +1",
+        ear2="Alabaster earring",
+        body="Erilaz surcoat +3",
+        hands="Futhark mitons +3",
+        ring1="Eihwaz ring",
+        ring2="Gelatinous ring +1",
+        back=pdt_cape,
+        waist="Platinum moogle belt",
+        legs="Erilaz leg guards +3",
+        feet="Erilaz greaves +3"
+    }
+
     coroutine.schedule(lockstyle,8)
 end
 
