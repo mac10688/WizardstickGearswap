@@ -21,7 +21,8 @@ function job_setup()
     state.OffenseMode:options('ParryDefense', 'ParryOffense', 'MultiHit', 'Acc')
     state.WeaponskillMode:options('Normal', 'Acc')
     state.PhysicalDefenseMode:options('PDT')
-    state.MagicalDefenseMode:options('MDT', 'ResistStatus', 'KnockBack', 'Meva')
+    state.MagicalDefenseMode:options('MDT', 'ResistStatus', 'KnockBack', 'Meva', 'IceMagic')
+    state.CastingMode:options('Normal', 'Defensive')
     state.IdleMode:options('Regen', 'Refresh')
     state.CombatWeapon:set('Epeolatry')
 
@@ -123,6 +124,34 @@ function init_gear_sets()
         legs="Dashing subligar"
     })
 
+    -- 45% DT
+    -- 5% MDT
+    -- 25% PDT II
+    -- 21 enmity
+    -- 2937 HP
+    -- 1322 DEF
+    -- 52 MDB
+    -- 756 MEVA
+    -- Boosts enmity retention when taking damage +14
+    -- 5% chance of converting damage taken to HP restored. Good for fetters.
+    -- 8% chance to absorb magic
+    -- 12% chance to annul magic damage
+    sets.defense.IceMagic = {
+        ammo="Snow sachet",
+        head="Erilaz galea +3",
+        neck="Warder's charm +1",
+        ear1="Sanare earring",
+        ear2="Alabaster earring",
+        body="Erilaz surcoat +3",
+        hands="Erilaz gauntlets +3",
+        ring1="Shadow ring",
+        ring2="Defending ring",
+        back=mdt_cape,
+        waist="Null belt",
+        legs="Erilaz leg guards +3",
+        feet="Erilaz greaves +3"
+    }
+
     -- 81 enmity
     sets.enmity = set_combine(sets.defense.PDT, {
         ammo="Aqreqaq bomblet", -- 2 enmity
@@ -140,6 +169,36 @@ function init_gear_sets()
         feet="Erilaz greaves +3" --8 enmity
     })
 
+    -- 45% DT
+    -- 6% MDT
+    -- 7% PDT
+    -- 25% PDT II
+    -- 75 enmity
+    -- 3616 HP
+    -- 1465 DEF
+    -- 46 MDB
+    -- 700 MEVA
+    -- With 5/5 merits sleight of hand, 35 subtle blow
+    -- Boosts enmity retention when taking damage +14
+    -- 4% chance of converting damage taken to HP restored. Good for fetters.
+    sets.enmity.Hybrid = {
+        main="Epeolatry",
+        sub="Irenic strap +1",
+        ammo="Staunch tathlum +1",
+        head="Erilaz galea +3",
+        neck="Futhark torque +2",
+        ear1="Odnowa earring +1",
+        ear2="Alabaster earring",
+        body="Erilaz surcoat +3",
+        hands="Futhark mitons +3",
+        ring1="Eihwaz ring",
+        ring2="Gelatinous ring +1",
+        back=pdt_cape,
+        waist="Platinum moogle belt",
+        legs="Erilaz leg guards +3",
+        feet="Erilaz greaves +3"
+    }
+
 	--------------------------------------
 	-- Precast sets
 	--------------------------------------
@@ -150,10 +209,20 @@ function init_gear_sets()
         legs="Futhark trousers +3",
         back=pdt_cape
     })
+    sets.precast.JA['Vallation'].Hybrid = sets.enmity.Hybrid
+
     sets.precast.JA['Valiance'] = set_combine(sets.enmity, sets.precast.JA['Vallation'])
-    sets.precast.JA['Pflug'] = set_combine(sets.enmity, {feet="Runeist bottes +3"})
+    sets.precast.JA['Valiance'].Hybrid = sets.enmity.Hybrid
+
+    sets.precast.JA['Pflug'] = set_combine(sets.enmity)
+    sets.precast.JA['Pflug'].Hybrid = sets.enmity.Hybrid
+
     sets.precast.JA['Battuta'] = set_combine(sets.enmity, {head="Futhark bandeau +3"})
+    sets.precast.JA['Battuta'].Hybrid = sets.enmity.Hybrid
+
     sets.precast.JA['Liement'] = set_combine(sets.enmity, {body="Futhark Coat +3"})
+    sets.precast.JA['Liement'].Hybrid = set_combine(sets.enmity.Hybrid, {body="Futhark Coat +3"})
+
     sets.precast.JA['Lunge'] = set_combine(sets.enmity, {
         ammo="Yamarang",
         head="Agwu's cap",
@@ -172,12 +241,20 @@ function init_gear_sets()
     sets.precast.JA['Swipe'] = sets.precast.JA['Lunge']
     sets.precast.JA['Gambit'] = set_combine(sets.enmity, {hands="Runeist Mitons +3"})
     sets.precast.JA['Rayke'] = set_combine(sets.enmity, {feet="Futhark Boots +3"})
+
     sets.precast.JA['Elemental Sforzo'] = set_combine(sets.enmity, {body="Futhark Coat +3"})
+    sets.precast.JA['Elemental Sforzo'].Hybrid = set_combine(sets.enmity.Hybrid, {body="Futhark Coat +3"})
+
     sets.precast.JA['Swordplay'] = set_combine(sets.enmity, {hands="Futhark Mitons +3"})
+    sets.precast.JA['Swordplay'].Hybrid = set_combine(sets.enmity.Hybrid, {hands="Futhark Mitons +3"})
+
     sets.precast.JA['Embolden'] = {}
     sets.buff.Embolden = {back="Evasionist's cape"}
     sets.precast.JA['Vivacious Pulse'] = set_combine(sets.enmity, {head="Erilaz galea +3"})
-    sets.precast.JA['One For All'] = set_combine(sets.enmity, {})
+    sets.precast.JA['Vivacious Pulse'].Hybrid = set_combine(sets.enmity.Hybrid, {head="Erilaz galea +3"})
+
+    sets.precast.JA['One for All'] = set_combine(sets.enmity, {})
+    sets.precast.JA['One for All'].Hybrid = set_combine(sets.enmity.Hybrid, {})
 
     sets.precast.JA['Provoke'] = sets.enmity
     sets.precast.JA['Warcry'] = sets.enmity
@@ -202,7 +279,15 @@ function init_gear_sets()
         back=fast_cast_cape,
         feet="Carmine greaves +1"
     }
+
+    sets.precast.FC.Defensive = {
+        head="Runeist bandeau +3", --fc 12%
+        body="Erilaz surcoat +3", --fc 13%
+        back=fast_cast_cape,
+    }
+
     sets.precast.FC['Enhancing Magic'] = set_combine(sets.precast.FC, {legs="Futhark Trousers +3"})
+    sets.precast.FC['Enhancing Magic'].Defensive = set_combine(sets.precast.FC.Defensive, {legs="Futhark Trousers +3"})
 
     sets.enmity_midcast = set_combine(sets.defense.PDT, {
         ammo="Staunch tathlum +1",
@@ -261,6 +346,11 @@ function init_gear_sets()
         legs="Futhark trousers +3" --Enhancing magic duration +20%
     })
 
+    sets.midcast['Enhancing Magic'].Defensive = set_combine(sets.defense.IceMagic, {
+        head="Erilaz galea +3", --Enhancing magic effect duration +25%
+        legs="Futhark trousers +3" --Enhancing magic duration +20%
+    })
+
     sets.midcast["Cocoon"] = sets.SIRD
     sets.midcast["Flash"] = sets.enmity_midcast
     sets.midcast["Foil"] = sets.enmity_midcast
@@ -274,6 +364,12 @@ function init_gear_sets()
         legs="Taeon tights",
         feet="Taeon boots"
     })
+
+    sets.midcast.Phalanx.Defensive = set_combine(sets.defense.IceMagic, {
+        head="Futhark bandeau +3",
+    })
+
+    sets.midcast.Foil.Defensive = sets.enmity.Hybrid
     
     sets.midcast['Regen'] = set_combine(sets.midcast['Enhancing Magic'], {
         head="Runeist bandeau +3"
@@ -442,38 +538,18 @@ function init_gear_sets()
         ring2={name="Blenmot's ring +1", bag="wardrobe6"} 
     }
 
-    -- 45% DT
-    -- 6% MDT
-    -- 7% PDT
-    -- 25% PDT II
-    -- 75 enmity
-    -- 3705 HP
-    -- 1501 DEF
-    -- 
-    sets.midcast.Arebati = {
-        main="Epeolatry",
-        sub="Irenic strap +1",
-        ammo="Staunch tathlum +1",
-        head="Nyame helm",
-        neck="Unmoving collar +1",
-        ear1="Odnowa earring +1",
-        ear2="Alabaster earring",
-        body="Erilaz surcoat +3",
-        hands="Futhark mitons +3",
-        ring1="Eihwaz ring",
-        ring2="Gelatinous ring +1",
-        back=pdt_cape,
-        waist="Platinum moogle belt",
-        legs="Erilaz leg guards +3",
-        feet="Erilaz greaves +3"
-    }
-
     coroutine.schedule(lockstyle,8)
 end
 
 ------------------------------------------------------------------
 -- Action events
 ------------------------------------------------------------------
+
+function job_precast(spell)
+    if state.DefenseMode.value == 'Magical' then
+        classes.JAMode = 'Hybrid'
+    end
+end
 
 -- Run after the default midcast() is done.
 -- eventArgs is the same one used in job_midcast, in case information needs to be persisted.
