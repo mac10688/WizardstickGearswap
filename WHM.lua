@@ -235,10 +235,10 @@ function init_gear_sets()
         hands={ name="Chironic Gloves", augments={'Mag. Acc.+15 "Mag.Atk.Bns."+15','Spell interruption rate down -11%','INT+8','"Mag.Atk.Bns."+5',}}, --31%
         legs="Ebers Pant. +3",
         feet="Theo. Duckbills +3", --29%
-        neck="Loricate torque +1",
+        neck="Cleric's torque +2",
         waist="Plat. Mog. Belt",
         left_ear="Nourish. Earring +1", --Could be 5% but not necessary
-        right_ear="Ebers Earring +2",
+        right_ear="Magnetic earring",
         ring1="Freke Ring", --10%
         ring2="Defending Ring",        
         back=fastcast_cape
