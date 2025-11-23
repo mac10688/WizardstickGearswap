@@ -1,12 +1,3 @@
--- NOTE: I do not play run, so this will not be maintained for 'active' use. 
--- It is added to the repository to allow people to have a baseline to build from,
--- and make sure it is up-to-date with the library API.
-
-
--------------------------------------------------------------------------------------------------------------------
--- Setup functions for this job.  Generally should not be modified.
--------------------------------------------------------------------------------------------------------------------
-
 -- Initialization function for this job file.
 function get_sets()
     mote_include_version = 2
@@ -50,6 +41,24 @@ function init_gear_sets()
     local dimi_cape = { name="Ogma's cape", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Weapon skill damage +10%','Damage taken-5%'}}
     local parry_cape = { name="Ogma's Cape", augments={'VIT+20','Eva.+20 /Mag. Eva.+20','VIT+10','"Dbl.Atk."+10','Parrying rate+5%'}}
 
+    jse.artifact.head = "Runeist Bandeau +3"
+	jse.artifact.body = "Runeist Coat +3"
+	jse.artifact.hands = "Runeist Mitons +3"
+	jse.artifact.legs = "Runeist Trousers +3"
+	jse.artifact.feet = "Runeist Bottes +3"
+
+	jse.relic.head = "Futhark Bandeau +4"
+	jse.relic.body = "Futhark Coat +3"
+	jse.relic.hands = "Futhark Mitons +4"
+	jse.relic.legs = "Futhark Trousers +3"
+	jse.relic.feet = "Futhark Boots +3"
+
+	jse.empyrean.head = "Erilaz Galea +3"
+	jse.empyrean.body = "Erilaz Surcoat +3"
+	jse.empyrean.hands = "Erilaz Gauntlets +3"
+	jse.empyrean.legs = "Erilaz Leg Guards +3"
+	jse.empyrean.feet = "Erilaz Greaves +3"
+
     sets.Epeolatry = {main="Epeolatry", sub="Utu grip"}
     sets.Epeolatry.Utu = {main="Epeolatry", sub="Utu grip"}
     sets.Epeolatry.Khonsu = {main="Epeolatry", sub="Khonsu"}
@@ -92,30 +101,30 @@ function init_gear_sets()
     --resist status: 19
     sets.defense.MDT = {
         ammo="Yamarang",
-        head="Erilaz Galea +3",
+        head=jse.empyrean.head,
         neck="Futhark Torque +2",
         ear1="Sanare Earring",
         ear2="Erilaz Earring +1",
         body="Adamantite armor",
-        hands="Erilaz Gauntlets +3",
+        hands=jse.empyrean.hands,
         ring1="Shadow Ring",
         ring2="Moonlight Ring",
         back=mdt_cape,
         waist="Platinum moogle belt",
-        legs="Erilaz Leg Guards +3",
-        feet="Erilaz Greaves +3"
+        legs=jse.empyrean.legs,
+        feet=jse.empyrean.feet
     }
 
     sets.defense.ResistStatus = set_combine(sets.defense.MDT, {
         ear1="Arete del luna +1",
         back=status_ailment_cape,
-        hands="Erilaz gauntlets +3"
+        hands=jse.empyrean.hands
     })
 
     sets.defense.Meva = set_combine(sets.defense.MDT, {
         ear1="Arete del luna +1",
         back=status_ailment_cape,
-        hands="Erilaz gauntlets +3"
+        hands=jse.empyrean.hands
     })
 
     sets.defense.KnockBack = set_combine(sets.defense.MDT, {
@@ -124,32 +133,32 @@ function init_gear_sets()
         legs="Dashing subligar"
     })
 
-    -- 45% DT
+    -- 48% DT
     -- 5% MDT
     -- 25% PDT II
     -- 21 enmity
-    -- 2937 HP
+    -- 3230 HP
     -- 1322 DEF
-    -- 52 MDB
-    -- 756 MEVA
+    -- 49 MDB
+    -- 741 MEVA
     -- Boosts enmity retention when taking damage +14
     -- 5% chance of converting damage taken to HP restored. Good for fetters.
     -- 8% chance to absorb magic
     -- 12% chance to annul magic damage
     sets.defense.IceMagic = {
         ammo="Snow sachet",
-        head="Erilaz galea +3",
+        head=jse.empyrean.head,
         neck="Warder's charm +1",
         ear1="Sanare earring",
         ear2="Alabaster earring",
-        body="Erilaz surcoat +3",
-        hands="Erilaz gauntlets +3",
+        body=jse.empyrean.body,
+        hands=jse.empyrean.hands,
         ring1="Shadow ring",
         ring2="Defending ring",
         back=mdt_cape,
-        waist="Null belt",
-        legs="Erilaz leg guards +3",
-        feet="Erilaz greaves +3"
+        waist="Platinum moogle belt",
+        legs=jse.empyrean.legs,
+        feet=jse.empyrean.feet
     }
 
     -- 81 enmity
@@ -159,14 +168,14 @@ function init_gear_sets()
         neck="Futhark torque +2", --10 enmity
         ear1="Cryptic earring", --4 enmity
         body="Emet Harness +1", --10 enmity
-        hands="Futhark mitons +3", -- 6 enmity
+        hands=jse.relic.hands, -- 6 enmity
         -- ear2="Friomisi earring",
         ring1="Eihwaz ring", -- 5 enmity
         ring2="Supershear ring", -- 5 enmity        
         back=pdt_cape, -- 10 enmity
         waist="Platinum moogle belt",
-        legs="Erilaz leg guards +3", --13 enmity
-        feet="Erilaz greaves +3" --8 enmity
+        legs=jse.empyrean.legs, --13 enmity
+        feet=jse.empyrean.feet --8 enmity
     })
 
     -- 45% DT
@@ -185,18 +194,18 @@ function init_gear_sets()
         main="Epeolatry",
         sub="Irenic strap +1",
         ammo="Staunch tathlum +1",
-        head="Erilaz galea +3",
+        head=jse.empyrean.head,
         neck="Futhark torque +2",
         ear1="Odnowa earring +1",
         ear2="Alabaster earring",
-        body="Erilaz surcoat +3",
-        hands="Futhark mitons +3",
+        body=jse.empyrean.body,
+        hands=jse.relic.hands,
         ring1="Eihwaz ring",
         ring2="Gelatinous ring +1",
         back=pdt_cape,
         waist="Platinum moogle belt",
-        legs="Erilaz leg guards +3",
-        feet="Erilaz greaves +3"
+        legs=jse.empyrean.legs,
+        feet=jse.empyrean.feet
     }
 
 	--------------------------------------
@@ -205,8 +214,8 @@ function init_gear_sets()
 
 	-- Precast sets to enhance JAs
     sets.precast.JA['Vallation'] = set_combine(sets.enmity, {
-        body="Runeist coat +3",
-        legs="Futhark trousers +3",
+        body=jse.artifact.body,
+        legs=jse.relic.legs,
         back=pdt_cape
     })
     sets.precast.JA['Vallation'].Hybrid = sets.enmity.Hybrid
@@ -217,11 +226,11 @@ function init_gear_sets()
     sets.precast.JA['Pflug'] = set_combine(sets.enmity)
     sets.precast.JA['Pflug'].Hybrid = sets.enmity.Hybrid
 
-    sets.precast.JA['Battuta'] = set_combine(sets.enmity, {head="Futhark bandeau +3"})
+    sets.precast.JA['Battuta'] = set_combine(sets.enmity, {head=jse.relic.head})
     sets.precast.JA['Battuta'].Hybrid = sets.enmity.Hybrid
 
-    sets.precast.JA['Liement'] = set_combine(sets.enmity, {body="Futhark Coat +3"})
-    sets.precast.JA['Liement'].Hybrid = set_combine(sets.enmity.Hybrid, {body="Futhark Coat +3"})
+    sets.precast.JA['Liement'] = set_combine(sets.enmity, {body=jse.relic.body})
+    sets.precast.JA['Liement'].Hybrid = set_combine(sets.enmity.Hybrid, {body=jse.relic.body})
 
     sets.precast.JA['Lunge'] = set_combine(sets.enmity, {
         ammo="Yamarang",
@@ -239,19 +248,19 @@ function init_gear_sets()
         feet="Agwu's pigaches"
     })
     sets.precast.JA['Swipe'] = sets.precast.JA['Lunge']
-    sets.precast.JA['Gambit'] = set_combine(sets.enmity, {hands="Runeist Mitons +3"})
-    sets.precast.JA['Rayke'] = set_combine(sets.enmity, {feet="Futhark Boots +3"})
+    sets.precast.JA['Gambit'] = set_combine(sets.enmity, {hands=jse.artifact.hands})
+    sets.precast.JA['Rayke'] = set_combine(sets.enmity, {feet=jse.relic.feet})
 
-    sets.precast.JA['Elemental Sforzo'] = set_combine(sets.enmity, {body="Futhark Coat +3"})
-    sets.precast.JA['Elemental Sforzo'].Hybrid = set_combine(sets.enmity.Hybrid, {body="Futhark Coat +3"})
+    sets.precast.JA['Elemental Sforzo'] = set_combine(sets.enmity, {body=jse.relic.body})
+    sets.precast.JA['Elemental Sforzo'].Hybrid = set_combine(sets.enmity.Hybrid, {body=jse.relic.body})
 
-    sets.precast.JA['Swordplay'] = set_combine(sets.enmity, {hands="Futhark Mitons +3"})
-    sets.precast.JA['Swordplay'].Hybrid = set_combine(sets.enmity.Hybrid, {hands="Futhark Mitons +3"})
+    sets.precast.JA['Swordplay'] = set_combine(sets.enmity, {hands=jse.relic.hands})
+    sets.precast.JA['Swordplay'].Hybrid = set_combine(sets.enmity.Hybrid, {hands=jse.relic.hands})
 
     sets.precast.JA['Embolden'] = {}
     sets.buff.Embolden = {back="Evasionist's cape"}
-    sets.precast.JA['Vivacious Pulse'] = set_combine(sets.enmity, {head="Erilaz galea +3"})
-    sets.precast.JA['Vivacious Pulse'].Hybrid = set_combine(sets.enmity.Hybrid, {head="Erilaz galea +3"})
+    sets.precast.JA['Vivacious Pulse'] = set_combine(sets.enmity, {head=jse.empyrean.head})
+    sets.precast.JA['Vivacious Pulse'].Hybrid = set_combine(sets.enmity.Hybrid, {head=jse.empyrean.head})
 
     sets.precast.JA['One for All'] = set_combine(sets.enmity, {})
     sets.precast.JA['One for All'].Hybrid = set_combine(sets.enmity.Hybrid, {})
@@ -269,10 +278,10 @@ function init_gear_sets()
 	-- Fast cast sets for spells
     --Fast cast: 28%
     sets.precast.FC = {
-        head="Runeist bandeau +3", --fc 12%
+        head=jse.artifact.head, --fc 12%
         neck="Voltsurge torque", --fc 4%
         ear1="Etiolation earring",
-        body="Erilaz surcoat +3", --fc 13%
+        body=jse.empyrean.body, --fc 13%
         hands="Leyline gloves", --fc 8%
         ring1="Kishar ring",
         -- legs="Ayanmo cosciales +2", --fc 6%
@@ -281,13 +290,13 @@ function init_gear_sets()
     }
 
     sets.precast.FC.Defensive = {
-        head="Runeist bandeau +3", --fc 12%
-        body="Erilaz surcoat +3", --fc 13%
-        back=fast_cast_cape,
+        head=jse.artifact.head, --fc 12%
+        body=jse.empyrean.body, --fc 13%
+        back=fast_cast_cape
     }
 
-    sets.precast.FC['Enhancing Magic'] = set_combine(sets.precast.FC, {legs="Futhark Trousers +3"})
-    sets.precast.FC['Enhancing Magic'].Defensive = set_combine(sets.precast.FC.Defensive, {legs="Futhark Trousers +3"})
+    sets.precast.FC['Enhancing Magic'] = set_combine(sets.precast.FC, {legs=jse.empyrean.legs})
+    sets.precast.FC['Enhancing Magic'].Defensive = set_combine(sets.precast.FC.Defensive, {legs=jse.empyrean.legs})
 
     sets.enmity_midcast = set_combine(sets.defense.PDT, {
         ammo="Staunch tathlum +1",
@@ -300,14 +309,14 @@ function init_gear_sets()
         ring2="Gelatinous ring +1",
         back=pdt_cape,
         waist="Audumbla sash",
-        legs="Erilaz leg guards +3",
-        feet="Erilaz greaves +3"
+        legs=jse.empyrean.legs,
+        feet=jse.empyrean.feet
     })
 
     --SIRD
     sets.SIRD = set_combine(sets.defense.PDT, {
         ammo="Staunch tathlum +1", --11%
-        head="Erilaz galea +3", --20%
+        head=jse.empyrean.head, --20%
         neck="Moonlight necklace", --15%
         ear1="Magnetic earring", --8%
         ring1={name="Moonlight ring", bag="wardrobe5"},
@@ -338,25 +347,28 @@ function init_gear_sets()
 
     --Enhancing magic duration: 45%
     sets.midcast['Enhancing Magic'] = set_combine(sets.SIRD, {
-        head="Erilaz galea +3", --Enhancing magic effect duration +25%
+        head=jse.empyrean.head, --Enhancing magic effect duration +25%
         neck="Incanter's torque",
         ear1="Andoaa earring",
         ear2="Mimir earring",
         waist="Audumbla sash",
-        legs="Futhark trousers +3" --Enhancing magic duration +20%
+        legs=jse.relic.legs --Enhancing magic duration +20%
     })
 
     sets.midcast['Enhancing Magic'].Defensive = set_combine(sets.defense.IceMagic, {
-        head="Erilaz galea +3", --Enhancing magic effect duration +25%
-        legs="Futhark trousers +3" --Enhancing magic duration +20%
+        head=jse.empyrean.head, --Enhancing magic effect duration +25%
+        legs=jse.relic.legs, --Enhancing magic duration +20%
+        back=fast_cast_cape
     })
 
     sets.midcast["Cocoon"] = sets.SIRD
     sets.midcast["Flash"] = sets.enmity_midcast
+    sets.midcast["Flash"].Defensive = sets.enmity.Hybrid
     sets.midcast["Foil"] = sets.enmity_midcast
+    sets.midcast["Foil"].Defensive = sets.enmity.Hybrid
 
     sets.midcast['Phalanx'] = set_combine(sets.midcast['Enhancing Magic'], {
-        head="Futhark bandeau +3",
+        head=jse.relic.head,
         body={ name="Herculean Vest", augments={'STR+2','AGI+2','Phalanx +4','Mag. Acc.+10 "Mag.Atk.Bns."+10'}},
         hands="Herculean gloves",
         ring1={name="Stikini Ring +1", bag="wardrobe5"},
@@ -366,13 +378,12 @@ function init_gear_sets()
     })
 
     sets.midcast.Phalanx.Defensive = set_combine(sets.defense.IceMagic, {
-        head="Futhark bandeau +3",
+        head=jse.relic.head,
+        back=fast_cast_cape
     })
-
-    sets.midcast.Foil.Defensive = sets.enmity.Hybrid
-    
+        
     sets.midcast['Regen'] = set_combine(sets.midcast['Enhancing Magic'], {
-        head="Runeist bandeau +3"
+        head=jse.artifact.head
     })
 
 	-- Weaponskill sets
@@ -441,13 +452,13 @@ function init_gear_sets()
         ear1="Odnowa earring +1",--dt: 3
         ear2="Tuisto earring",
         body="Nyame mail", --dt: 9
-        hands="Erilaz gauntlets +3",
+        hands=jse.empyrean.hands,
         ring1={name="Moonlight ring", bag="wardrobe5"}, --dt: 5
         ring2="Gelatinous ring +1", --dt: 10        
         back= pdt_cape,--dt: 5
         waist="Flume belt +1",
-        legs="Erilaz leg guards +3",  --dt: 13
-        feet="Erilaz greaves +3"
+        legs=jse.empyrean.legs,  --dt: 13
+        feet=jse.empyrean.feet
     }
 
 	sets.Kiting = {
@@ -492,7 +503,7 @@ function init_gear_sets()
 
     sets.engaged.Acc = {
         ammo="Yamarang",
-        head="Runeist bandeau +3",
+        head=jse.artifact.head,
         neck="Sanctity necklace",
         ear1="Telos earring",
         ear2="Dignitary's earring",
@@ -508,7 +519,7 @@ function init_gear_sets()
 
     sets.engaged.ParryOffense = {
         ammo="Yamarang",
-        head="Futhark Bandeau +3",
+        head=jse.relic.head,
         neck="Futhark Torque +2",
         ear1="Sanare Earring",
         ear2="Erilaz Earring +1",
@@ -518,8 +529,8 @@ function init_gear_sets()
         ring2={name="Moonlight ring", bag="wardrobe6"},
         back=parry_cape,
         waist="Flume Belt +1",
-        legs="Eri. Leg Guards +3",
-        feet="Futhark Boots +3"        
+        legs=jse.empyrean.legs,
+        feet=jse.relic.feet        
     }
 
     sets.engaged.ParryDefense = set_combine(sets.engaged.ParryOffense, {
