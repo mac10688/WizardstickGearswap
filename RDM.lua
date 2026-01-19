@@ -159,6 +159,7 @@ function init_gear_sets()
     
     -- Precast sets to enhance JAs
     sets.precast.JA['Chainspell'] = {body="Vitiation tabard +3"}
+    sets.precast.JA['Convert'] = {main="Murgleis"}
         
     -- Fast cast sets for spells
     
@@ -204,7 +205,7 @@ function init_gear_sets()
         head="Nyame helm",
         neck="Fotia gorget",
         ear1="Telos earring",
-        ear2="Lethargy earring +2",        
+        ear2="Lethargy earring +2",
         body="Nyame mail",
         hands="Nyame gauntlets",
         ring1="Rufescent ring",
@@ -286,19 +287,28 @@ function init_gear_sets()
     sets.precast.WS["Evisceration"] = ws_physical
     sets.precast.WS["Aeolian Edge"] = ws_magic
     sets.precast.WS["Exenterator"] = ws_physical
-    sets.precast.WS["Black Halo"] = ws_physical
+    sets.precast.WS["Black Halo"] = set_combine(ws_physical, {
+        neck="Republican platinum medal",
+        ear1="Moonshade earring",
+        ring1="Rufescent ring",
+        waist="Sailfi belt +1",
+        back=str_ws_cape
+    })
 
     
     -- Midcast Sets
 
     sets.midcast.Cure = {
-        head="Lethargy chappel +3",
+        head="Atrophy chapeau +3",
         neck="Loricate torque +1",
+        ear1="Malignance earring",
+        ear2="Lethargy earring +2",
         body="Bunzi's robe",
         hands="Lethargy gantherots +3",
-        ring1="Menelaus's ring",
+        ring1="Medada's ring",
         ring2="Defending ring",        
         back=mnd_cape,
+        waist="Austerity belt +1",
         legs="Atrophy tights +3",
         feet="Kaykaus boots"
     }
@@ -397,10 +407,12 @@ function init_gear_sets()
     sets.midcast.Utsusemi = SIRD
     sets.midcast.Phalanx = set_combine(sets.midcast['Enhancing Magic'],
     {
+        main="Sakpata's sword", --really should just be equipped for hasting myself
         hands="Taeon gloves",
         legs="Taeon tights",
         feet="Taeon boots"
     })
+
     sets.midcast.Aquaveil = set_combine(SIRD, {
         hands="Regal cuffs"
     })    
@@ -409,6 +421,7 @@ function init_gear_sets()
     sets.midcast.GainStat = set_combine(sets.midcast.EnhancingDuration, {
         hands="Vitiation Gloves +3"
     })
+
     sets.midcast.Haste = sets.midcast.EnhancingDuration
     sets.midcast.Flurry = sets.midcast.EnhancingDuration
     
@@ -511,6 +524,10 @@ function init_gear_sets()
         waist="Fucho-no-obi",
     })
 
+    sets.midcast['Absorb-TP'] = {
+
+    }
+
     sets.midcast.Stun = set_combine(sets.midcast['Dark Magic'], {})
 
     sets.midcast.Drain = set_combine(sets.midcast['Dark Magic'], {
@@ -604,14 +621,14 @@ function init_gear_sets()
         ring1={name="Chirich ring +1", bag="wardrobe5"},
         ring2={name="Chirich ring +1", bag="wardrobe6"},
         back=tp_cape,
-        waist="Grunfeld rope",
+        waist="Sailfi belt +1",
         legs="Malignance tights",
         feet="Malignance boots"
     }
 --   sets.engaged[state.CombatMode][state.CombatForm][state.CombatWeapon][state.OffenseMode][state.HybridMode][classes.CustomMeleeGroups (any number)]
     sets.engaged.SwordShield = set_combine(sets.engaged, {feet="Atrophy boots +3", back=tp_cape})
     sets.engaged.SwordShield.HighAcc = set_combine(sets.engaged.SwordShield, {neck="Combatant's torque", ear1="Dignitary's earring"})
-    sets.engaged.SwordShield.Hybrid = set_combine(sets.engaged.SwordShield, {ring2="Defending ring"})
+    sets.engaged.SwordShield.Hybrid = set_combine(sets.engaged.SwordShield, {feet="Malignance boots"})
     sets.engaged.SwordShield.Enspell = set_combine(sets.engaged.SwordShield, {back=dw_cape})
 
     sets.engaged.DualWield = set_combine(sets.engaged, {waist="Reiki yotai", ear2="Eabani earring"})
@@ -761,10 +778,6 @@ function customize_idle_set(idleSet)
     return idleSet
 end
 
-function job_state_change(descrip, newVal, oldVal)
-
-end
-
 function customize_melee_set(meleeSet)
     if state.EnspellMode.value and IsEnspellActive() then
         meleeSet = set_combine(meleeSet, sets.engaged.Enspell)
@@ -791,6 +804,10 @@ function sub_job_change()
     coroutine.schedule(lockstyle,8)
 end
 
-function job_handle_equipping_gear(playerStatus, eventArgs)
-    --Equip the weapons we want to always have on.
+function job_status_change(newStatus, oldStatus, eventArgs)
+
+end
+
+function job_buff_change(buff, gain)  
+
 end

@@ -290,7 +290,8 @@ function init_gear_sets()
     }
 
     sets.midcast.Regen = set_combine(midcast_enhancing_duration, {
-        head="Arbatel bonnet +3"
+        head="Arbatel bonnet +3",
+        back="Bookworm's cape"
     })
 
     sets.midcast['Enhancing Magic'] = set_combine(midcast_enhancing_duration, {

@@ -21,14 +21,13 @@ function job_setup()
     
     state.Idris = {}
     state.Idris.SwordShield = M{['description']='Idris Set', 'Ammurapi', 'Genmei'}
-    state.Idris.DualWield = M{['description']='Idris Set', 'Bunzi', 'WizardRod', 'LorgMor'}
+    state.Idris.DualWield = M{['description']='Idris Set', 'CathPalug', 'Bunzi', 'WizardRod', 'LorgMor'}
 
     state.MagicBurst = M(false, 'Magic Burst')
     data.petJA = S{"Full Circle","Radial Arcana","Mending Helation","Concentric Pulse"}
     
     send_command('bind ^` gs c toggle MagicBurst')
     send_command('bind ~f1 gs c set CombatWeapon Idris')
-
 end
 
 -- Called when this job file is unloaded (eg: job change)
@@ -51,9 +50,11 @@ function init_gear_sets()
     
     sets.Idris = {main="Idris"}
     sets.Idris.DualWield = {main="Idris", sub="Bunzi's rod"}
+    sets.Idris.DualWield.CathPalug = {main="Idris", sub="Cath Palug hammer"}
     sets.Idris.DualWield.Bunzi = {main="Idris", sub="Bunzi's rod"}
     sets.Idris.DualWield.WizardRod = {main="Idris", sub="Wizard's rod"}
     sets.Idris.DualWield.LorgMor = {main="Idris", sub="Lorg Mor"}
+
     sets.Idris.SwordShield = {main="Idris", sub="Ammurapi shield"}
     sets.Idris.SwordShield.Ammurapi = {main="Idris", sub="Ammurapi shield"}
     sets.Idris.SwordShield.Genmei = {main="Idris", sub="Genmei shield"}
@@ -295,6 +296,24 @@ function init_gear_sets()
         back=fc_Cape
     }
 
+    -- 42% FC
+    sets.midcast["Absorb-TP"] = {
+        sub="Ammurapi Shield",
+        range="Dunna", -- 3% FC
+        head="Azimuth Hood +3",
+        body="Geomancy Tunic +3",
+        hands="Geo. Mitaines +3",
+        legs="Geomancy pants +3", --15% FC
+        feet="Azimuth Gaiters +3",
+        neck="Erra Pendant",
+        waist="Null belt",
+        left_ear="Regal earring",
+        right_ear="Malignance Earring", --4% FC
+        ring1="Medada's ring", --10% FC
+        ring2="Archon Ring",
+        back=fc_Cape -- 10% FC
+    }
+
     sets.midcast.Stun = {
         sub="Ammurapi shield",
         head="Bagua galero +3",
@@ -363,8 +382,8 @@ function init_gear_sets()
         ear2="Dignitary's earring",
         body="Nyame Mail",
         hands="Gazu bracelets +1",
-        ring1="Chirich ring +1",
-        ring2="Chirich ring +1",
+        ring1={name="Chirich ring +1", bag="wardrobe5"},
+        ring2={name="Chirich ring +1", bag="wardrobe6"},
         back=tp_Cape,
         waist="Grunfeld rope",
         legs="Nyame Flanchard",

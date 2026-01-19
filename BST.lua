@@ -13,9 +13,9 @@ end
 
 -- Setup vars that are user-independent.  state.Buff vars initialized here will automatically be tracked.
 function job_setup()
-    state.OffenseMode:options('TP', 'Hybrid', 'Accuracy', 'Malignance', 'Gleti')
+    state.OffenseMode:options('TP', 'Hybrid', 'Accuracy')
     state.CombatMode:options('SwordShield', 'DualWield')
-    state.IdleMode:options('Normal', 'Evasion')
+    state.IdleMode:options('Normal', 'Pet')
     state.CombatWeapon:set('Ikenga')
 
     state.Naegling = {}
@@ -93,7 +93,6 @@ function init_gear_sets()
 	jse.empyrean.feet = "Nukumi Ocreae +3"
 
     jse.earring = "Nukumi earring +1"
-
 
     local ws_blitz_mistral_cape = { name="Artio's Mantle", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%','DEF+50'}}
     local ws_rampage_cape = { name="Artio's Mantle", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Crit.hit rate+10','Damage taken-5%'}}
@@ -521,13 +520,55 @@ function init_gear_sets()
 
     sets.idle.Evasion = {
     }
+
+    sets.idle.Pet = {
+        ammo="Hesperiidae",
+        head=jse.empyrean.head,
+        body=jse.artifact.body,
+        hands="Gleti's gauntlets",
+        legs=jse.empyrean.legs,
+        feet="Gleti's boots",
+        neck="Loricate Torque +1",
+        waist="Null Belt",
+        left_ear="Alabaster Earring",
+        right_ear="Nukumi earring +1",
+        left_ring="Cath Palug Ring",
+        right_ring={name="Moonlight ring", bag="wardrobe6"},
+        back=pet_attack,
+    }
     
     -- Defense sets
 
     sets.defense.PDT = {
+        ammo="Staunch Tathlum +1",
+        head="Nyame Helm",
+        body="Adamantite Armor",
+        hands="Nyame Gauntlets",
+        legs="Nyame Flanchard",
+        feet="Nyame Sollerets",
+        neck="Loricate Torque +1",
+        waist="Null Belt",
+        left_ear="Eabani Earring",
+        right_ear="Genmei Earring",
+        left_ring="Gelatinous Ring +1",
+        right_ring="Moonlight Ring",
+        back="Null Shawl",
     }
 
     sets.defense.MDT = {
+        ammo="Staunch Tathlum +1",
+        head="Nyame Helm",
+        body="Adamantite Armor",
+        hands="Nyame Gauntlets",
+        legs="Nyame Flanchard",
+        feet="Nyame Sollerets",
+        neck="Loricate Torque +1",
+        waist="Null Belt",
+        left_ear="Eabani Earring",
+        right_ear="Genmei Earring",
+        left_ring="Gelatinous Ring +1",
+        right_ring="Moonlight Ring",
+        back="Null Shawl",
     }
 
     sets.Kiting = {
@@ -544,42 +585,10 @@ function init_gear_sets()
     -- Basic set for if no TP weapon is defined.
     sets.engaged = {
         ammo="Coiste bodhar",
-        head=jse.empyrean.head,
-        body=jse.empyrean.body,
-        hands=jse.empyrean.hands,
-        legs=jse.empyrean.legs,
-        feet=jse.empyrean.feet,
-        neck="Anu Torque",
-        waist="Sarissapho. Belt",
-        left_ear="Telos Earring",
-        right_ear="Digni. Earring",
-        ring1={name="Chirich ring +1", bag="wardrobe5"},
-        ring2={name="Chirich ring +1", bag="wardrobe6"},
-        back="Null Shawl"
-    }
-
-    sets.engaged.Malignance = {
-        ammo="Coiste bodhar",
         head="Malignance chapeau",
-        body="Malignance tabard",
+        body="Gleti's cuirass",
         hands="Malignance gloves",
         legs="Malignance tights",
-        feet="Malignance boots",
-        neck="Anu Torque",
-        waist="Sarissapho. Belt",
-        left_ear="Dedition earring",
-        right_ear="Sherida earring",
-        ring1={name="Chirich ring +1", bag="wardrobe5"},
-        ring2={name="Chirich ring +1", bag="wardrobe6"},
-        back="Null Shawl"
-    }
-
-    sets.engaged.Gleti = {
-        ammo="Coiste bodhar",
-        head="Gleti's mask",
-        body="Gleti's cuirass",
-        hands="Gleti's gauntlets",
-        legs="Gleti's breeches",
         feet="Nukumi ocreae +3",
         neck="Anu Torque",
         waist="Sailfi belt +1",
@@ -587,7 +596,7 @@ function init_gear_sets()
         right_ear="Sherida earring",
         ring1="Epona's ring",
         ring2="Gere ring",
-        back="Null Shawl"
+        back="Null shawl"
     }
 
     sets.engaged.TP = sets.engaged
@@ -596,7 +605,10 @@ function init_gear_sets()
         ring2={name="Moonlight ring", bag="wardrobe6"}
     })
 
-    sets.engaged.Accuracy = sets.engaged
+    sets.engaged.Accuracy = set_combine(sets.engaged, {
+        ring1={name="Chirich ring +1", bag="wardrobe5"},
+        ring2={name="Chirich ring +1", bag="wardrobe6"}
+    })
 
     sets.precast.Item['Holy Water'] = {
         neck="Nicander's necklace",

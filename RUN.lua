@@ -102,13 +102,13 @@ function init_gear_sets()
     sets.defense.MDT = {
         ammo="Yamarang",
         head=jse.empyrean.head,
-        neck="Futhark Torque +2",
-        ear1="Sanare Earring",
-        ear2="Erilaz Earring +1",
-        body="Adamantite armor",
+        neck="Warder's charm +1",
+        ear1="Sanare earring",
+        ear2="Alabaster earring",
+        body=jse.empyrean.body,
         hands=jse.empyrean.hands,
-        ring1="Shadow Ring",
-        ring2="Moonlight Ring",
+        ring1="Shadow ring",
+        ring2="Defending ring",
         back=mdt_cape,
         waist="Platinum moogle belt",
         legs=jse.empyrean.legs,
@@ -178,30 +178,24 @@ function init_gear_sets()
         feet=jse.empyrean.feet --8 enmity
     })
 
-    -- 45% DT
-    -- 6% MDT
-    -- 7% PDT
-    -- 25% PDT II
-    -- 75 enmity
-    -- 3616 HP
-    -- 1465 DEF
-    -- 46 MDB
-    -- 700 MEVA
+    -- 51% DT
+    -- 76 enmity (+23 from epeo + 5 from merits = 104 total)
+    -- 3433 HP
+    -- 1469 DEF
+    -- 50 MDB
+    -- 611 MEVA
     -- With 5/5 merits sleight of hand, 35 subtle blow
-    -- Boosts enmity retention when taking damage +14
-    -- 4% chance of converting damage taken to HP restored. Good for fetters.
+    -- 2% chance of converting damage taken to HP restored. Good for fetters.
     sets.enmity.Hybrid = {
-        main="Epeolatry",
-        sub="Irenic strap +1",
-        ammo="Staunch tathlum +1",
-        head=jse.empyrean.head,
-        neck="Futhark torque +2",
-        ear1="Odnowa earring +1",
+        ammo="Aqreqaq bomblet",
+        head="Halitus helm",
+        neck="Moonlight necklace",
+        ear1="Cryptic earring",
         ear2="Alabaster earring",
-        body=jse.empyrean.body,
+        body={name="Adamantite armor", priority=20},
         hands=jse.relic.hands,
         ring1="Eihwaz ring",
-        ring2="Gelatinous ring +1",
+        ring2="Supershear ring",
         back=pdt_cape,
         waist="Platinum moogle belt",
         legs=jse.empyrean.legs,
@@ -218,10 +212,14 @@ function init_gear_sets()
         legs=jse.relic.legs,
         back=pdt_cape
     })
-    sets.precast.JA['Vallation'].Hybrid = sets.enmity.Hybrid
+    sets.precast.JA['Vallation'].Hybrid = set_combine(sets.enmity.Hybrid, {
+        body=jse.artifact.body
+    })
 
     sets.precast.JA['Valiance'] = set_combine(sets.enmity, sets.precast.JA['Vallation'])
-    sets.precast.JA['Valiance'].Hybrid = sets.enmity.Hybrid
+    sets.precast.JA['Valiance'].Hybrid = set_combine( sets.enmity.Hybrid, {
+        body=jse.artifact.body
+    })
 
     sets.precast.JA['Pflug'] = set_combine(sets.enmity)
     sets.precast.JA['Pflug'].Hybrid = sets.enmity.Hybrid
@@ -252,18 +250,22 @@ function init_gear_sets()
     sets.precast.JA['Rayke'] = set_combine(sets.enmity, {feet=jse.relic.feet})
 
     sets.precast.JA['Elemental Sforzo'] = set_combine(sets.enmity, {body=jse.relic.body})
-    sets.precast.JA['Elemental Sforzo'].Hybrid = set_combine(sets.enmity.Hybrid, {body=jse.relic.body})
+    sets.precast.JA['Elemental Sforzo'].Hybrid = set_combine(sets.enmity.Hybrid, {head="Halitus helm", body=jse.relic.body})
+
+    sets.precast.JA['Odyllic Subterfuge'] = set_combine(sets.enmity, {})
+    sets.precast.JA['Odyllic Subterfuge'].Hybrid = set_combine(sets.enmity.Hybrid, {})
 
     sets.precast.JA['Swordplay'] = set_combine(sets.enmity, {hands=jse.relic.hands})
     sets.precast.JA['Swordplay'].Hybrid = set_combine(sets.enmity.Hybrid, {hands=jse.relic.hands})
 
     sets.precast.JA['Embolden'] = {}
     sets.buff.Embolden = {back="Evasionist's cape"}
+
     sets.precast.JA['Vivacious Pulse'] = set_combine(sets.enmity, {head=jse.empyrean.head})
     sets.precast.JA['Vivacious Pulse'].Hybrid = set_combine(sets.enmity.Hybrid, {head=jse.empyrean.head})
 
     sets.precast.JA['One for All'] = set_combine(sets.enmity, {})
-    sets.precast.JA['One for All'].Hybrid = set_combine(sets.enmity.Hybrid, {})
+    sets.precast.JA['One for All'].Hybrid = set_combine(sets.enmity.Hybrid, {head="Halitus helm", body=""})
 
     sets.precast.JA['Provoke'] = sets.enmity
     sets.precast.JA['Warcry'] = sets.enmity
@@ -486,8 +488,8 @@ function init_gear_sets()
     }
 
     sets.engaged.MultiHit = {
-        ammo="Yamarang",
-        head="Dampening tam",
+        ammo="Coiste Bodhar",
+        head="Nyame helm",
         neck="Anu torque",
         body="Nyame mail",
         hands="Nyame gauntlets",
@@ -496,8 +498,8 @@ function init_gear_sets()
         ring1="Niqmaddu ring",
         ring2="Epona's ring",
         back=atk_cape,
-        waist="Sarissaphoroi belt",
-        legs="Samnuha tights",
+        waist="Ioskeha belt +1",
+        legs="Nyame flanchard",
         feet="Nyame sollerets"
     }
 
@@ -521,14 +523,14 @@ function init_gear_sets()
         ammo="Yamarang",
         head=jse.relic.head,
         neck="Futhark Torque +2",
-        ear1="Sanare Earring",
-        ear2="Erilaz Earring +1",
+        ear1="Alabaster earring",
+        ear2="Sherida earring",
         body="Nyame Mail",
         hands="Turms Mittens +1",
-        ring1="Shadow Ring",
+        ring1={name="Moonlight ring", bag="wardrobe5"},
         ring2={name="Moonlight ring", bag="wardrobe6"},
         back=parry_cape,
-        waist="Flume Belt +1",
+        waist="Ioskeha belt +1",
         legs=jse.empyrean.legs,
         feet=jse.relic.feet        
     }
