@@ -14,32 +14,36 @@ end
 -- Setup vars that are user-independent.  state.Buff vars initialized here will automatically be tracked.
 function job_setup()
     state.OffenseMode:options('None', 'Normal')
-    state.CastingMode:options('Normal', 'Occult Acumen', 'DT')
+    state.CastingMode:options('Normal', 'Occult Acumen', 'DT', 'MB Low Int', 'MB High Int')
     state.IdleMode:options('Normal', "Death")
     
     state.MagicBurst = M(false, 'Magic Burst')
     state.EatTp = M(false, 'Eat TP')
+    state.UseObi = M(true, 'Use Obi')
     state.CombatWeapon:set('Laevateinn')
 
     
     state.Laevateinn = M{['description']='Laevateinn Set', 'Khonsu', 'Enki'}
     state.Kaumodaki = M{['description']='Kaumodaki Set', 'Khonsu', 'Enki'}
-    state.Marin = M{['description']='Marin staff +1 Set', 'Khonsu', 'Enki'}
+    state.WizardRod = M{['description']='Wizard Rod Set', 'Ammurapi', 'Genmei'}
     state.Khatvanga = M{['description']='Khatvanga Set', 'Khonsu', 'Enki'}
     state.Drepanum = M{['description']='Drepanum Set', 'Khonsu', 'Enki'}
     state.Bunzi = M{['description']='Bunzi rod Set', 'Ammurapi', 'Genmei'}
     state.Opashoro = M{['description']='Drepanum Set', 'Khonsu', 'Enki'}
+    state.Marin = M{['description']='Marin staff +1 Set', 'Khonsu', 'Enki'}
 
     -- Additional local binds
     send_command('bind ^` gs c toggle MagicBurst')
     send_command('bind !` gs c toggle EatTp')
+    send_command('bind @` gs c toggle UseObi')
     send_command('bind ~f1 gs c set CombatWeapon Laevateinn')
     send_command('bind ~f2 gs c set CombatWeapon Kaumodaki')
-    send_command('bind ~f3 gs c set CombatWeapon Marin')
+    send_command('bind ~f3 gs c set CombatWeapon WizardRod')
     send_command('bind ~f4 gs c set CombatWeapon Khatvanga')
     send_command('bind ~f5 gs c set CombatWeapon Drepanum')
     send_command('bind ~f6 gs c set CombatWeapon Bunzi')
     send_command('bind ~f7 gs c set CombatWeapon Opashoro')
+    send_command('bind ~f8 gs c set CombatWeapon Marin')
 end
 
 -------------------------------------------------------------------------------------------------------------------
@@ -50,6 +54,7 @@ end
 function user_unload()
     send_command('unbind ^`')
     send_command('unbind !`')
+    send_command('unbind @`')
     send_command('unbind ~f1')
     send_command('unbind ~f2')
     send_command('unbind ~f3')
@@ -57,6 +62,7 @@ function user_unload()
     send_command('unbind ~f5')
     send_command('unbind ~f6')
     send_command('unbind ~f7')
+    send_command('unbind ~f8')
 end
 
 
@@ -71,9 +77,9 @@ function init_gear_sets()
     sets.Kaumodaki.Khonsu = {main="Kaumodaki", sub="Khonsu"}
     sets.Kaumodaki.Enki = {main="Kaumodaki", sub="Enki strap"}
 
-    sets.Marin = {}
-    sets.Marin.Khonsu = {main="Marin staff +1", sub="Khonsu"}
-    sets.Marin.Enki = {main="Marin staff +1", sub="Enki strap"}
+    sets.WizardRod = {}
+    sets.WizardRod.Ammurapi = {main="Wizard's rod", sub="Ammurapi shield"}
+    sets.WizardRod.Genmei = {main="Wizard's rod", sub="Genmei shield"}
 
     sets.Khatvanga = {}
     sets.Khatvanga.Khonsu = {main="Khatvanga", sub="Khonsu"}
@@ -90,6 +96,10 @@ function init_gear_sets()
     sets.Opashoro = {}
     sets.Opashoro.Khonsu = {main="Opashoro", sub="Khonsu"}
     sets.Opashoro.Enki = {main="Opashoro", sub="Enki strap"}
+
+    sets.Marin = {}
+    sets.Marin.Khonsu = {main="Marin staff +1", sub="Khonsu"}
+    sets.Marin.Enki = {main="Marin staff +1", sub="Enki strap"}
     --------------------------------------
     -- Start defining the sets
     --------------------------------------
@@ -364,17 +374,17 @@ function init_gear_sets()
     
     sets.midcast['Elemental Magic'] = {
         ammo="Pemphredo tathlum",
-        head="Archmage's petasos +3",
+        head="Wicce petasos +3",
         body="Wicce coat +3",
-        hands="Archmage's gloves +3",
-        legs="Archmage's tonban +3",
+        hands="Wicce gloves +3",
+        legs="Wicce chausses +3",
         feet="Archmage's sabots +3",
         neck="Sorcerer's stole +2",
         waist="Acuity belt +1",
         ear1="Malignance earring",
         ear2="Regal earring",
         left_ring="Medada's ring",
-        right_ring="Metamorph ring +1",
+        right_ring="Freke ring",
         back=magic_atk_cape,
     }
 
@@ -389,7 +399,8 @@ function init_gear_sets()
    local deathSet = set_combine(sets.midcast['Elemental Magic'], {
         head="Pixie hairpin +1",
         ring2="Archon ring",
-        back=death_cape
+        back=death_cape,
+        feet="Wicce sabots +3"
     })
 
     sets.precast['Death'] = deathSet
@@ -398,13 +409,43 @@ function init_gear_sets()
     sets.midcast.MagicBurst = set_combine(sets.midcast['Elemental Magic'], {
         main="Wizard's rod",
         sub="Ammurapi shield",
+        ammo="Ghastly tathlum +1",
         head="Ea hat +1", --MB: 7 MB2: 7
         neck="Sorcerer's stole +2", --MB: 10
         body="Wicce coat +3", --MB2: 5
         hands="Agwu's gages", --MB: 8 MB2: 5
         legs="Ea slops +1", --MB: 8 MB2: 8
         feet="Agwu's pigaches", --MB: 6
+        right_ring="Metamorph ring +1",
+        back=magic_atk_cape --MB 5
+    })
+
+    sets.midcast['Elemental Magic']['MB Low Int'] = set_combine(sets.midcast['Elemental Magic'], {
+        main="Wizard's rod",
+        sub="Ammurapi shield",
+        ammo="Ghastly tathlum +1",
+        head="Ea hat +1", --MB: 7 MB2: 7
+        neck="Sorcerer's stole +2", --MB: 10
+        body="Wicce coat +3", --MB2: 5
+        hands="Agwu's gages", --MB: 8 MB2: 5
+        waist="Sacro cord",
+        legs="Ea slops +1", --MB: 8 MB2: 8
+        feet="Agwu's pigaches", --MB: 6
         right_ring="Freke ring",
+        back=magic_atk_cape --MB 5
+    })
+
+    sets.midcast['Elemental Magic']['MB High Int'] = set_combine(sets.midcast['Elemental Magic'], {
+        main="Wizard's rod",
+        sub="Ammurapi shield",
+        ammo="Ghastly tathlum +1",
+        head="Ea hat +1", --MB: 7 MB2: 7
+        neck="Sorcerer's stole +2", --MB: 10
+        body="Wicce coat +3", --MB2: 5
+        hands="Agwu's gages", --MB: 8 MB2: 5
+        legs="Ea slops +1", --MB: 8 MB2: 8
+        feet="Agwu's pigaches", --MB: 6
+        right_ring="Metamorph ring +1",
         back=magic_atk_cape --MB 5
     })
 
@@ -442,8 +483,10 @@ function init_gear_sets()
 
     sets.midcast['Impact'] = set_combine(sets.midcast['Elemental Magic'], {
         head=empty,
-        ring2="Archon ring",
-        body='Crepuscular cloak'
+        ring2={name="Stikini Ring +1", bag="wardrobe6"},
+        body="Crepuscular cloak",
+        back="Null shawl",
+        waist="Null belt"
     })
 
     sets.midcast["Dispelga"] = set_combine(sets.midcast['Enfeebling Magic'], {main="Daybreak"})
@@ -573,12 +616,14 @@ function job_post_midcast(spell, action, spellMap, eventArgs)
         if state.MagicBurst.value then
             equip(sets.midcast.MagicBurst)
         end
-        if player.mp < 700 then
+        if player.mp < 400 then
             equip({body="Spaekona's coat +4"})
         end
-        local obi_or_orpheus = obi_or_orpheus(spell)
-        if obi_or_orpheus then
-            equip({waist=obi_or_orpheus})
+        if state.UseObi.value then
+            local obi_or_orpheus = obi_or_orpheus(spell)
+            if obi_or_orpheus then
+                equip({waist=obi_or_orpheus})
+            end
         end
     end
 end

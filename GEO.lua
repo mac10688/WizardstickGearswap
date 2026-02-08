@@ -307,7 +307,7 @@ function init_gear_sets()
         feet="Azimuth Gaiters +3",
         neck="Erra Pendant",
         waist="Null belt",
-        left_ear="Regal earring",
+        left_ear="Alabaster earring",
         right_ear="Malignance Earring", --4% FC
         ring1="Medada's ring", --10% FC
         ring2="Archon Ring",

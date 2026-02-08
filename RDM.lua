@@ -381,6 +381,7 @@ function init_gear_sets()
 
     sets.midcast.Regen = sets.midcast.EnhancingDuration
     sets.midcast.Refresh = set_combine(sets.midcast.EnhancingDuration, {
+        head="Amalric coif +1",
         body="Atrophy tabard +3",
         legs="Lethargy fuseau +3"
     })
@@ -414,6 +415,7 @@ function init_gear_sets()
     })
 
     sets.midcast.Aquaveil = set_combine(SIRD, {
+        head="Amalric coif +1",
         hands="Regal cuffs"
     })    
 
@@ -514,7 +516,26 @@ function init_gear_sets()
         feet="Lethargy houseaux +3"
     }
         
-    sets.midcast.Impact = set_combine(sets.midcast['Elemental Magic'], {head=empty,body='Crepuscular cloak'})
+    -- sets.midcast.Impact = set_combine(sets.midcast['Elemental Magic'], {head=empty,body='Crepuscular cloak'})
+
+    sets.midcast.Impact = {
+        main="Murgleis",
+        sub="Ammurapi shield",
+        ranged="Ullr",
+        ammo=empty,
+        head=empty,
+        neck="Null loop",
+        ear1="Malignance earring",
+        ear2="Lethargy earring +2",        
+        body="Crepuscular cloak",
+        hands="Lethargy gantherots +3",
+        ring1="Medada's ring",
+        ring2={name="Stikini ring +1", bag="wardrobe6"},
+        back="Null shawl",
+        waist="Null belt",
+        legs="Lethargy fuseau +3",
+        feet="Lethargy houseaux +3"
+    }
 
     sets.midcast['Dark Magic'] = set_combine(sets.midcast['Elemental Magic'], {
         head="Pixie hairpin +1",

@@ -10,10 +10,10 @@ function get_sets()
     include('Wiz-Include.lua')
 end
 
-
 -- Setup vars that are user-independent.  state.Buff vars initialized here will automatically be tracked.
 function job_setup()
-    state.OffenseMode:options('TP', 'Hybrid', 'Accuracy')
+    state.WeaponskillMode:options('Normal','SubtleBlow')
+    state.OffenseMode:options('TP', 'Hybrid', 'Accuracy', 'Pet')
     state.CombatMode:options('SwordShield', 'DualWield')
     state.IdleMode:options('Normal', 'Pet')
     state.CombatWeapon:set('Ikenga')
@@ -30,9 +30,13 @@ function job_setup()
     state.Agwu.DualWield = M{['description']='Agwu Set', 'Pet'}
     state.Agwu.SwordShield = M{['description']='Agwu Set', 'Sacro'}
 
-    state.Dolichenus = {}
-    state.Dolichenus.DualWield = M{['description']='Dolichenus Set', 'TP', 'Pet'}
-    state.Dolichenus.SwordShield = M{['description']='Dolichenus Set', 'Sacro'}
+    state.Pangu = {}
+    state.Pangu.DualWield = M{['description']='Pangu Set', 'Pet'}
+    state.Pangu.SwordShield = M{['description']='Pangu Set', 'Sacro'}
+
+    state.Spalirisos = {}
+    state.Spalirisos.DualWield = M{['description']='Spalirisos Set', 'TP', 'Pet'}
+    state.Spalirisos.SwordShield = M{['description']='Spalirisos Set', 'Sacro'}
 
     state.Drepanum = {}
     state.Drepanum.DualWield = M{['description']='Drepanum Set', 'Grip'}
@@ -49,8 +53,9 @@ function job_setup()
     send_command('bind ~f1 gs c set CombatWeapon Naegling')
     send_command('bind ~f2 gs c set CombatWeapon Ikenga')
     send_command('bind ~f3 gs c set CombatWeapon Agwu')
-    send_command('bind ~f4 gs c set CombatWeapon Dolichenus')
-    send_command('bind ~f5 gs c set CombatWeapon Drepanum')
+    send_command('bind ~f4 gs c set CombatWeapon Pangu')
+    send_command('bind ~f5 gs c set CombatWeapon Spalirisos')
+    send_command('bind ~f6 gs c set CombatWeapon Drepanum')
 end
 
 -------------------------------------------------------------------------------------------------------------------
@@ -75,7 +80,7 @@ function init_gear_sets()
     --------------------------------------
 
 	jse.artifact.head = "Totemic Helm +3"
-	jse.artifact.body = "Totemic Jackcoat +3"
+	jse.artifact.body = "Totemic Jackcoat +2"
 	jse.artifact.hands = "Totemic Gloves +3"
 	jse.artifact.legs = "Totemic Trousers +3"
 	jse.artifact.feet = "Totemic Gaiters +3"
@@ -106,31 +111,33 @@ function init_gear_sets()
     sets.Naegling.DualWield = {}
     sets.Naegling.DualWield.TP = {main="Naegling", sub="Ikenga's axe"}
     sets.Naegling.DualWield.Pet = {main="Naegling", sub="Agwu's axe"}
-
     sets.Naegling.SwordShield = {}
     sets.Naegling.SwordShield.Sacro = {main="Naegling", sub="Sacro bulwark"}
 
     sets.Ikenga = {}
     sets.Ikenga.DualWield = {}
     sets.Ikenga.DualWield.Pet = {main="Ikenga's axe", sub="Ikenga's axe"}
-
     sets.Ikenga.SwordShield = {}
     sets.Ikenga.SwordShield.Sacro = {main="Ikenga's axe", sub="Sacro bulwark"}
 
     sets.Agwu = {}
-    sets.Agwu.DualWield = {}
-    sets.Agwu.DualWield.Pet = {main="Agwu's axe", main="Agwu's axe", sub="Ikenga's axe"}
-
-    sets.Agwu.SwordShield = {}
+    sets.Agwu.DualWield = {main="Agwu's axe", sub="Ikenga's axe"}
+    sets.Agwu.DualWield.Pet = {main="Agwu's axe", sub="Ikenga's axe"}
+    sets.Agwu.SwordShield = {main="Agwu's axe", sub="Sacro bulwark"}
     sets.Agwu.SwordShield.Sacro = {main="Agwu's axe", sub="Sacro bulwark"}
 
-    sets.Dolichenus = {}
-    sets.Dolichenus.DualWield = {} 
-    sets.Dolichenus.DualWield.TP = {main="Dolichenus", sub="Ikenga's axe"}
-    sets.Dolichenus.DualWield.Pet = {main="Dolichenus", sub="Agwu's axe"}
+    sets.Pangu = {}
+    sets.Pangu.DualWield = {main="Pangu", sub="Ikenga's axe"}
+    sets.Pangu.DualWield.Pet = {main="Pangu", sub="Ikenga's axe"}
+    sets.Pangu.SwordShield = {main="Pangu", sub="Sacro bulwark"}
+    sets.Pangu.SwordShield.Sacro = {main="Pangu", sub="Sacro bulwark"}
 
-    sets.Dolichenus.SwordShield = {}
-    sets.Dolichenus.SwordShield.Sacro = {main="Dolichenus", sub="Sacro bulwark"}
+    sets.Spalirisos = {}
+    sets.Spalirisos.DualWield = {} 
+    sets.Spalirisos.DualWield.TP = {main="Spalirisos", sub="Ikenga's axe"}
+    sets.Spalirisos.DualWield.Pet = {main="Spalirisos", sub="Agwu's axe"}
+    sets.Spalirisos.SwordShield = {}
+    sets.Spalirisos.SwordShield.Sacro = {main="Spalirisos", sub="Sacro bulwark"}
 
     sets.Drepanum = {}
     sets.Drepanum.DualWield = {}
@@ -152,11 +159,11 @@ function init_gear_sets()
     sets.precast.JA['Killer Instinct'] = {head=jse.relic.head}
     sets.precast.JA['Feral Howl'] = {
         ammo="Pemphredo Tathlum",
-        head="Nuk. Cabasset +3",
-        body="An. Jackcoat +3",
-        hands="Nukumi Manoplas +3",
-        legs="Nukumi Quijotes +3",
-        feet="Nukumi Ocreae +3",
+        head=jse.empyrean.head,
+        body=jse.relic.body,
+        hands=jse.empyrean.hands,
+        legs=jse.empyrean.legs,
+        feet=jse.empyrean.feet,
         neck="Null Loop",
         waist="Null Belt",
         left_ear="Digni. Earring",
@@ -166,17 +173,19 @@ function init_gear_sets()
         back="Null Shawl"
     }
 
-	sets.precast.JA['Call Beast'] = {hands=jse.relic.hands, ear2=jse.earring, feet="Gleti's boots"}
-    sets.precast.JA['Bestial Loyalty'] = {ear2=jse.earring, feet="Gleti's boots"}
+	sets.precast.JA['Call Beast'] = {hands=jse.relic.hands}
+    sets.precast.JA['Bestial Loyalty'] = sets.precast.JA['Call Beast']
     sets.precast.JA['Familiar'] = {legs=jse.relic.legs}
     sets.precast.JA['Tame'] = {head=jse.artifact.head}
     sets.precast.JA['Spur'] = {feet=jse.empyrean.feet, back=ws_cape}
     
     sets.precast.JA.Reward = {
         body=jse.artifact.body,
-        back=ws_cape,
+        ring1="Defending ring",
+        back=pet_attack,
+        waist="Platinum moogle belt",
         legs=jse.relic.legs,
-        feet=jse.artifact.feet
+        feet="Nyame sollerets"
     }
 
     sets.precast.JA.Reward.Theta = set_combine(sets.precast.JA.Reward, {ammo="Pet Food Theta biscuit"})
@@ -216,8 +225,22 @@ function init_gear_sets()
         back=ws_blitz_mistral_cape
     }
 
+    sets.precast.WS.SubtleBlow = set_combine(sets.precast.WS, {
+        neck="Bathy choker +1",
+        ring1={name="Chirich ring +1", bag="wardrobe5"},
+        ring2={name="Chirich ring +1", bag="wardrobe6"}
+    })
+
+    sets.precast.WS['Blitz'] = set_combine(sets.precast.WS, {
+        ammo="Coiste bodhar",
+        neck="Beastmaster collar +2",
+        ear1="Moonshade earring",
+        ring1="Gere ring",
+        ring2="Regal ring"
+    })
+
     sets.precast.WS["Rampage"] = {
-        ammo="Crepusucular pebble",
+        ammo="Crepuscular pebble",
         head="Blistering Sallet +1",
         body="Gleti's Cuirass",
         hands="Gleti's Gauntlets",
@@ -253,7 +276,7 @@ function init_gear_sets()
     })
 
     sets.precast.WS["Mistral Axe"] = {
-        ammo="Crepusucular pebble",
+        ammo="Crepuscular pebble",
         head="Blistering Sallet +1",
         body="Gleti's Cuirass",
         hands="Gleti's Gauntlets",
@@ -268,13 +291,17 @@ function init_gear_sets()
         back=ws_blitz_mistral_cape
     }
 
+    sets.precast.Monster = {
+        legs="Gleti's Breeches"
+    }
+
     sets.midcast.Pet = {
         ammo="Hesperiidae",
-        head="Nuk. Cabasset +3",
-        body="Nukumi Gausape +3",
-        hands="Nukumi Manoplas +3",
-        legs="Nukumi Quijotes +3",
-        feet="Nukumi Ocreae +3",
+        head=jse.empyrean.head,
+        body=jse.empyrean.body,
+        hands=jse.empyrean.hands,
+        legs=jse.empyrean.legs,
+        feet=jse.empyrean.feet,
         neck="Bst. Collar +2",
         waist="Incarnation Sash",
         left_ear="Sroda Earring",
@@ -491,13 +518,6 @@ function init_gear_sets()
     sets.midcast.Curaga = sets.midcast.Cure
         
     sets.midcast.Stoneskin = {}
-        
-    sets.midcast.Cursna = {
-        neck="Malison Medallion",
-        hands="Hieros Mittens",
-        ring1="Ephedra Ring"
-    }
-
     
     -- Sets to return to when not performing an action.
     
@@ -534,7 +554,7 @@ function init_gear_sets()
         right_ear="Nukumi earring +1",
         left_ring="Cath Palug Ring",
         right_ring={name="Moonlight ring", bag="wardrobe6"},
-        back=pet_attack,
+        back=pet_attack
     }
     
     -- Defense sets
@@ -592,7 +612,7 @@ function init_gear_sets()
         feet="Nukumi ocreae +3",
         neck="Anu Torque",
         waist="Sailfi belt +1",
-        left_ear="Dedition earring",
+        left_ear="Sroda earring",
         right_ear="Sherida earring",
         ring1="Epona's ring",
         ring2="Gere ring",
@@ -600,6 +620,9 @@ function init_gear_sets()
     }
 
     sets.engaged.TP = sets.engaged
+
+    sets.engaged.Pet = sets.idle.Pet
+
     sets.engaged.Hybrid = set_combine(sets.engaged, {
         ring1={name="Moonlight ring", bag="wardrobe5"},
         ring2={name="Moonlight ring", bag="wardrobe6"}
@@ -702,7 +725,7 @@ end
 -- Set eventArgs.handled to true if we don't want any automatic gear equipping to be done.
 -- Set eventArgs.useMidcastGear to true if we want midcast gear equipped on precast.
 function job_precast(spell, action, spellMap, eventArgs)
-
+    
 end
 
 function job_post_precast(spell, action, spellMap, eventArgs)
