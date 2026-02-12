@@ -16,7 +16,15 @@ function job_setup()
     state.OffenseMode:options('TP', 'Hybrid', 'Accuracy', 'Pet')
     state.CombatMode:options('SwordShield', 'DualWield')
     state.IdleMode:options('Normal', 'Pet')
-    state.CombatWeapon:set('Ikenga')
+    state.CombatWeapon:set('Spalirisos')
+
+    state.Spalirisos = {}
+    state.Spalirisos.DualWield = M{['description']='Spalirisos Set', 'TP', 'Pet'}
+    state.Spalirisos.SwordShield = M{['description']='Spalirisos Set', 'Sacro'}
+
+    state.Pangu = {}
+    state.Pangu.DualWield = M{['description']='Pangu Set', 'Pet'}
+    state.Pangu.SwordShield = M{['description']='Pangu Set', 'Sacro'}
 
     state.Naegling = {}
     state.Naegling.DualWield = M{['description']='Naegling Set', 'TP', 'Pet'}
@@ -30,14 +38,6 @@ function job_setup()
     state.Agwu.DualWield = M{['description']='Agwu Set', 'Pet'}
     state.Agwu.SwordShield = M{['description']='Agwu Set', 'Sacro'}
 
-    state.Pangu = {}
-    state.Pangu.DualWield = M{['description']='Pangu Set', 'Pet'}
-    state.Pangu.SwordShield = M{['description']='Pangu Set', 'Sacro'}
-
-    state.Spalirisos = {}
-    state.Spalirisos.DualWield = M{['description']='Spalirisos Set', 'TP', 'Pet'}
-    state.Spalirisos.SwordShield = M{['description']='Spalirisos Set', 'Sacro'}
-
     state.Drepanum = {}
     state.Drepanum.DualWield = M{['description']='Drepanum Set', 'Grip'}
     state.Drepanum.SwordShield = M{['description']='Drepanum Set', 'Grip'}
@@ -50,11 +50,11 @@ function job_setup()
 	state.Buff["Unleash"] = buffactive["Unleash"] or false
 
     -- Additional local binds
-    send_command('bind ~f1 gs c set CombatWeapon Naegling')
-    send_command('bind ~f2 gs c set CombatWeapon Ikenga')
-    send_command('bind ~f3 gs c set CombatWeapon Agwu')
-    send_command('bind ~f4 gs c set CombatWeapon Pangu')
-    send_command('bind ~f5 gs c set CombatWeapon Spalirisos')
+    send_command('bind ~f1 gs c set CombatWeapon Spalirisos')
+    send_command('bind ~f2 gs c set CombatWeapon Pangu')
+    send_command('bind ~f3 gs c set CombatWeapon Naegling')
+    send_command('bind ~f4 gs c set CombatWeapon Ikenga')
+    send_command('bind ~f5 gs c set CombatWeapon Agwu')    
     send_command('bind ~f6 gs c set CombatWeapon Drepanum')
 end
 
@@ -80,7 +80,7 @@ function init_gear_sets()
     --------------------------------------
 
 	jse.artifact.head = "Totemic Helm +3"
-	jse.artifact.body = "Totemic Jackcoat +2"
+	jse.artifact.body = "Totemic Jackcoat +3"
 	jse.artifact.hands = "Totemic Gloves +3"
 	jse.artifact.legs = "Totemic Trousers +3"
 	jse.artifact.feet = "Totemic Gaiters +3"
@@ -107,6 +107,19 @@ function init_gear_sets()
     local pet_mag_acc = { name="Artio's Mantle", augments={'Pet: M.Acc.+20 Pet: M.Dmg.+20','Eva.+20 /Mag. Eva.+20','Pet: Mag. Acc.+10','Pet: Haste+10','Damage taken-5%'}}
     local pet_attack = { name="Artio's Mantle", augments={'Pet: Acc.+20 Pet: R.Acc.+20 Pet: Atk.+20 Pet: R.Atk.+20','Eva.+20 /Mag. Eva.+20','Pet: Attack+10 Pet: Rng.Atk.+10','Pet: Haste+10','Pet: Damage taken -5%'}}
 
+    sets.Spalirisos = {}
+    sets.Spalirisos.DualWield = {} 
+    sets.Spalirisos.DualWield.TP = {main="Spalirisos", sub="Ikenga's axe"}
+    sets.Spalirisos.DualWield.Pet = {main="Spalirisos", sub="Agwu's axe"}
+    sets.Spalirisos.SwordShield = {}
+    sets.Spalirisos.SwordShield.Sacro = {main="Spalirisos", sub="Sacro bulwark"}
+
+    sets.Pangu = {}
+    sets.Pangu.DualWield = {main="Pangu", sub="Ikenga's axe"}
+    sets.Pangu.DualWield.Pet = {main="Pangu", sub="Spalirisos"}
+    sets.Pangu.SwordShield = {main="Pangu", sub="Sacro bulwark"}
+    sets.Pangu.SwordShield.Sacro = {main="Pangu", sub="Sacro bulwark"}
+
     sets.Naegling = {}
     sets.Naegling.DualWield = {}
     sets.Naegling.DualWield.TP = {main="Naegling", sub="Ikenga's axe"}
@@ -116,7 +129,7 @@ function init_gear_sets()
 
     sets.Ikenga = {}
     sets.Ikenga.DualWield = {}
-    sets.Ikenga.DualWield.Pet = {main="Ikenga's axe", sub="Ikenga's axe"}
+    sets.Ikenga.DualWield.Pet = {main="Ikenga's axe", sub="Agwu's axe"}
     sets.Ikenga.SwordShield = {}
     sets.Ikenga.SwordShield.Sacro = {main="Ikenga's axe", sub="Sacro bulwark"}
 
@@ -125,19 +138,6 @@ function init_gear_sets()
     sets.Agwu.DualWield.Pet = {main="Agwu's axe", sub="Ikenga's axe"}
     sets.Agwu.SwordShield = {main="Agwu's axe", sub="Sacro bulwark"}
     sets.Agwu.SwordShield.Sacro = {main="Agwu's axe", sub="Sacro bulwark"}
-
-    sets.Pangu = {}
-    sets.Pangu.DualWield = {main="Pangu", sub="Ikenga's axe"}
-    sets.Pangu.DualWield.Pet = {main="Pangu", sub="Ikenga's axe"}
-    sets.Pangu.SwordShield = {main="Pangu", sub="Sacro bulwark"}
-    sets.Pangu.SwordShield.Sacro = {main="Pangu", sub="Sacro bulwark"}
-
-    sets.Spalirisos = {}
-    sets.Spalirisos.DualWield = {} 
-    sets.Spalirisos.DualWield.TP = {main="Spalirisos", sub="Ikenga's axe"}
-    sets.Spalirisos.DualWield.Pet = {main="Spalirisos", sub="Agwu's axe"}
-    sets.Spalirisos.SwordShield = {}
-    sets.Spalirisos.SwordShield.Sacro = {main="Spalirisos", sub="Sacro bulwark"}
 
     sets.Drepanum = {}
     sets.Drepanum.DualWield = {}
@@ -166,8 +166,8 @@ function init_gear_sets()
         feet=jse.empyrean.feet,
         neck="Null Loop",
         waist="Null Belt",
-        left_ear="Digni. Earring",
-        right_ear="Crep. Earring",
+        ear1="Digni. Earring",
+        ear2="Crep. Earring",
         ring1={name="Stikini Ring +1", bag="wardrobe5"},
         ring2={name="Stikini Ring +1", bag="wardrobe6"},
         back="Null Shawl"
@@ -201,10 +201,10 @@ function init_gear_sets()
         feet=jse.relic.feet,
         neck="Unmoving Collar +1",
         waist="Null Belt",
-        left_ear="Eabani Earring",
-        right_ear="Genmei Earring",
-        left_ring="Eihwaz Ring",
-        right_ring="Moonlight Ring",
+        ear1="Eabani Earring",
+        ear2="Genmei Earring",
+        ring1="Eihwaz Ring",
+        ring2="Moonlight Ring",
         back=ws_cape
     }
        
@@ -218,10 +218,10 @@ function init_gear_sets()
         feet="Nyame Sollerets",
         neck="Rep. Plat. Medal",
         waist="Sailfi Belt +1",
-        left_ear="Ishvara Earring",
-        right_ear=jse.earring,
-        left_ring="Shukuyu Ring",
-        right_ring="Rufescent Ring",
+        ear1="Ishvara Earring",
+        ear2=jse.earring,
+        ring1="Shukuyu Ring",
+        ring2="Rufescent Ring",
         back=ws_blitz_mistral_cape
     }
 
@@ -248,10 +248,10 @@ function init_gear_sets()
         feet=jse.empyrean.feet,
         neck="Fotia Gorget",
         waist="Fotia Belt",
-        left_ear="Moonshade Earring",
-        right_ear=jse.earring,
-        left_ring="Ilabrat Ring",
-        right_ring="Gere Ring",
+        ear1="Moonshade Earring",
+        ear2=jse.earring,
+        ring1="Ilabrat Ring",
+        ring2="Gere Ring",
         back=ws_rampage_cape
     }
 
@@ -264,10 +264,10 @@ function init_gear_sets()
         feet="Nyame Sollerets",
         neck="Baetyl Pendant",
         waist="Orpheus's Sash",
-        left_ear="Moonshade Earring",
-        right_ear="Nukumi Earring +1",
-        left_ring="Epaminondas's Ring",
-        right_ring="Metamor. Ring +1",
+        ear1="Moonshade Earring",
+        ear2=jse.earring,
+        ring1="Epaminondas's Ring",
+        ring2="Metamor. Ring +1",
         back=ws_cloudsplitter_cape
     }
 
@@ -284,13 +284,14 @@ function init_gear_sets()
         feet=jse.empyrean.feet,
         neck="Fotia Gorget",
         waist="Fotia Belt",
-        left_ear="Moonshade Earring",
-        right_ear=jse.earring,
-        left_ring="Ilabrat Ring",
-        right_ring="Gere Ring",
+        ear1="Moonshade Earring",
+        ear2=jse.earring,
+        ring1="Ilabrat Ring",
+        ring2="Gere Ring",
         back=ws_blitz_mistral_cape
     }
 
+    -- Equipping tp bonus and ready recast
     sets.precast.Monster = {
         legs="Gleti's Breeches"
     }
@@ -304,10 +305,10 @@ function init_gear_sets()
         feet=jse.empyrean.feet,
         neck="Bst. Collar +2",
         waist="Incarnation Sash",
-        left_ear="Sroda Earring",
-        right_ear=jse.earring,
-        left_ring="Cath Palug ring",
-        right_ring="Moonlight Ring",
+        ear1="Sroda Earring",
+        ear2=jse.earring,
+        ring1="Cath Palug ring",
+        ring2="Moonlight Ring",
         back=pet_attack
     }
     sets.midcast.Pet.Tp = sets.midcast.Pet
@@ -506,24 +507,11 @@ function init_gear_sets()
     -- Flytrap
     sets.midcast.Pet['Sporific'] = sets.midcast.Pet.Macc
     sets.midcast.Pet['Gloeosuccus'] = sets.midcast.Pet.Macc
-    sets.midcast.Pet['Palsy Pollen'] = sets.midcast.Pet.Macc
-
-    -- Midcast Sets
-    
-    -- sets.midcast['Magic Finale'] = {neck="Wind Torque",waist="Corvax Sash",legs="Aoidos' Rhing. +2"}
-
-    -- Other general spells and classes.
-    sets.midcast.Cure = {}
-        
-    sets.midcast.Curaga = sets.midcast.Cure
-        
-    sets.midcast.Stoneskin = {}
-    
-    -- Sets to return to when not performing an action.
-    
+    sets.midcast.Pet['Palsy Pollen'] = sets.midcast.Pet.Macc   
     
     -- Idle sets (default idle set not needed since the other three are defined, but leaving for testing purposes)
     sets.idle = {
+        ammo="Staunch tathlum +1",
         head="Nyame Helm",
         body="Udug Jacket",
         hands="Nyame Gauntlets",
@@ -531,14 +519,11 @@ function init_gear_sets()
         feet="Nyame Sollerets",
         neck="Loricate Torque +1",
         waist="Null Belt",
-        left_ear="Eabani Earring",
-        right_ear="Genmei Earring",
-        left_ring="Eihwaz Ring",
-        right_ring="Moonlight Ring",
+        ear1="Eabani Earring",
+        ear2="Genmei Earring",
+        ring1={name="Moonlight ring", bag="wardrobe5"},
+        ring2={name="Moonlight ring", bag="wardrobe6"},
         back="Null Shawl",
-    }
-
-    sets.idle.Evasion = {
     }
 
     sets.idle.Pet = {
@@ -550,10 +535,10 @@ function init_gear_sets()
         feet="Gleti's boots",
         neck="Loricate Torque +1",
         waist="Null Belt",
-        left_ear="Alabaster Earring",
-        right_ear="Nukumi earring +1",
-        left_ring="Cath Palug Ring",
-        right_ring={name="Moonlight ring", bag="wardrobe6"},
+        ear1="Alabaster Earring",
+        ear2="Nukumi earring +1",
+        ring1="Cath Palug Ring",
+        ring2={name="Moonlight ring", bag="wardrobe6"},
         back=pet_attack
     }
     
@@ -568,10 +553,10 @@ function init_gear_sets()
         feet="Nyame Sollerets",
         neck="Loricate Torque +1",
         waist="Null Belt",
-        left_ear="Eabani Earring",
-        right_ear="Genmei Earring",
-        left_ring="Gelatinous Ring +1",
-        right_ring="Moonlight Ring",
+        ear1="Eabani Earring",
+        ear2="Genmei Earring",
+        ring1="Gelatinous Ring +1",
+        ring2="Moonlight Ring",
         back="Null Shawl",
     }
 
@@ -584,10 +569,10 @@ function init_gear_sets()
         feet="Nyame Sollerets",
         neck="Loricate Torque +1",
         waist="Null Belt",
-        left_ear="Eabani Earring",
-        right_ear="Genmei Earring",
-        left_ring="Gelatinous Ring +1",
-        right_ring="Moonlight Ring",
+        ear1="Eabani Earring",
+        ear2="Genmei Earring",
+        ring1="Gelatinous Ring +1",
+        ring2="Moonlight Ring",
         back="Null Shawl",
     }
 
@@ -609,7 +594,7 @@ function init_gear_sets()
         body="Gleti's cuirass",
         hands="Malignance gloves",
         legs="Malignance tights",
-        feet="Nukumi ocreae +3",
+        feet=jse.empyrean.feet,
         neck="Anu Torque",
         waist="Sailfi belt +1",
         left_ear="Sroda earring",
@@ -643,76 +628,6 @@ function init_gear_sets()
         ring1={name="Blenmot's ring +1", bag="wardrobe5"},
         ring2={name="Blenmot's ring +1", bag="wardrobe6"} 
     }
-
-    -------------------------------------------------------------------------------------------------------------------
--- Complete Lvl 76-99 Jug Pet Precast List +Funguar +Courier +Amigo
--------------------------------------------------------------------------------------------------------------------
-
-	-- sets.precast.JA['Bestial Loyalty'].FunguarFamiliar = set_combine(sets.precast.JA['Bestial Loyalty'], {ammo="Seedbed Soil"})
-	-- sets.precast.JA['Bestial Loyalty'].CourierCarrie = set_combine(sets.precast.JA['Bestial Loyalty'], {ammo="Fish Oil Broth"})
-	-- sets.precast.JA['Bestial Loyalty'].AmigoSabotender = set_combine(sets.precast.JA['Bestial Loyalty'], {ammo="Sun Water"})
-	-- sets.precast.JA['Bestial Loyalty'].NurseryNazuna = set_combine(sets.precast.JA['Bestial Loyalty'], {ammo="D. Herbal Broth"})
-	-- sets.precast.JA['Bestial Loyalty'].CraftyClyvonne = set_combine(sets.precast.JA['Bestial Loyalty'], {ammo="Cng. Brain Broth"})
-	-- sets.precast.JA['Bestial Loyalty'].PrestoJulio = set_combine(sets.precast.JA['Bestial Loyalty'], {ammo="C. Grass. Broth"})
-	-- sets.precast.JA['Bestial Loyalty'].SwiftSieghard = set_combine(sets.precast.JA['Bestial Loyalty'], {ammo="Mlw. Bird Broth"})
-	-- sets.precast.JA['Bestial Loyalty'].MailbusterCetas = set_combine(sets.precast.JA['Bestial Loyalty'], {ammo="Gob. Bug Broth"})
-	-- sets.precast.JA['Bestial Loyalty'].AudaciousAnna = set_combine(sets.precast.JA['Bestial Loyalty'], {ammo="B. Carrion Broth"})
-	-- sets.precast.JA['Bestial Loyalty'].TurbidToloi = set_combine(sets.precast.JA['Bestial Loyalty'], {ammo="Auroral Broth"})
-	-- sets.precast.JA['Bestial Loyalty'].LuckyLulush = set_combine(sets.precast.JA['Bestial Loyalty'], {ammo="L. Carrot Broth"})
-	-- sets.precast.JA['Bestial Loyalty'].DipperYuly = set_combine(sets.precast.JA['Bestial Loyalty'], {ammo="Wool Grease"})
-	-- sets.precast.JA['Bestial Loyalty'].FlowerpotMerle = set_combine(sets.precast.JA['Bestial Loyalty'], {ammo="Vermihumus"})
-	-- sets.precast.JA['Bestial Loyalty'].DapperMac = set_combine(sets.precast.JA['Bestial Loyalty'], {ammo="Briny Broth"})
-	-- sets.precast.JA['Bestial Loyalty'].DiscreetLouise = set_combine(sets.precast.JA['Bestial Loyalty'], {ammo="Deepbed Soil"})
-	-- sets.precast.JA['Bestial Loyalty'].FatsoFargann = set_combine(sets.precast.JA['Bestial Loyalty'], {ammo="C. Plasma Broth"})
-	-- sets.precast.JA['Bestial Loyalty'].FaithfulFalcorr = set_combine(sets.precast.JA['Bestial Loyalty'], {ammo="Lucky Broth"})
-	-- sets.precast.JA['Bestial Loyalty'].BugeyedBroncha = set_combine(sets.precast.JA['Bestial Loyalty'], {ammo="Svg. Mole Broth"})
-	-- sets.precast.JA['Bestial Loyalty'].BloodclawShasra = set_combine(sets.precast.JA['Bestial Loyalty'], {ammo="Rzr. Brain Broth"})
-	-- sets.precast.JA['Bestial Loyalty'].GorefangHobs = set_combine(sets.precast.JA['Bestial Loyalty'], {ammo="B. Carrion Broth"})
-	-- sets.precast.JA['Bestial Loyalty'].GooeyGerard = set_combine(sets.precast.JA['Bestial Loyalty'], {ammo="Cl. Wheat Broth"})
-	-- sets.precast.JA['Bestial Loyalty'].CrudeRaphie = set_combine(sets.precast.JA['Bestial Loyalty'], {ammo="Shadowy Broth"})
-
-	-------------------------------------------------------------------------------------------------------------------
-	-- Complete iLvl Jug Pet Precast List
-	-------------------------------------------------------------------------------------------------------------------
-
-	-- sets.precast.JA['Bestial Loyalty'].DroopyDortwin = set_combine(sets.precast.JA['Bestial Loyalty'], {ammo="Swirling Broth"})
-	-- sets.precast.JA['Bestial Loyalty'].PonderingPeter = set_combine(sets.precast.JA['Bestial Loyalty'], {ammo="Vis. Broth"})
-	-- sets.precast.JA['Bestial Loyalty'].SunburstMalfik = set_combine(sets.precast.JA['Bestial Loyalty'], {ammo="Shimmering Broth"})
-	-- sets.precast.JA['Bestial Loyalty'].AgedAngus = set_combine(sets.precast.JA['Bestial Loyalty'], {ammo="Ferm. Broth"})
-	-- sets.precast.JA['Bestial Loyalty'].WarlikePatrick = set_combine(sets.precast.JA['Bestial Loyalty'], {ammo="Livid Broth"})
-	-- sets.precast.JA['Bestial Loyalty'].ScissorlegXerin = set_combine(sets.precast.JA['Bestial Loyalty'], {ammo="Spicy Broth"})
-	-- sets.precast.JA['Bestial Loyalty'].BouncingBertha = set_combine(sets.precast.JA['Bestial Loyalty'], {ammo="Bubbly Broth"})
-	-- sets.precast.JA['Bestial Loyalty'].RhymingShizuna = set_combine(sets.precast.JA['Bestial Loyalty'], {ammo="Lyrical Broth"})
-	-- sets.precast.JA['Bestial Loyalty'].AttentiveIbuki = set_combine(sets.precast.JA['Bestial Loyalty'], {ammo="Salubrious Broth"})
-	-- sets.precast.JA['Bestial Loyalty'].SwoopingZhivago = set_combine(sets.precast.JA['Bestial Loyalty'], {ammo="Windy Greens"})
-	-- sets.precast.JA['Bestial Loyalty'].AmiableRoche = set_combine(sets.precast.JA['Bestial Loyalty'], {ammo="Airy Broth"})
-	-- sets.precast.JA['Bestial Loyalty'].HeraldHenry = set_combine(sets.precast.JA['Bestial Loyalty'], {ammo="Trans. Broth"})
-	-- sets.precast.JA['Bestial Loyalty'].BrainyWaluis = set_combine(sets.precast.JA['Bestial Loyalty'], {ammo="Crumbly Soil"})
-	-- sets.precast.JA['Bestial Loyalty'].HeadbreakerKen = set_combine(sets.precast.JA['Bestial Loyalty'], {ammo="Blackwater Broth"})
-	-- sets.precast.JA['Bestial Loyalty'].SuspiciousAlice = set_combine(sets.precast.JA['Bestial Loyalty'], {ammo="Furious Broth"})
-	-- sets.precast.JA['Bestial Loyalty'].AnklebiterJedd = set_combine(sets.precast.JA['Bestial Loyalty'], {ammo="Crackling Broth"})
-	-- sets.precast.JA['Bestial Loyalty'].FleetReinhard = set_combine(sets.precast.JA['Bestial Loyalty'], {ammo="Rapid Broth"})
-	-- sets.precast.JA['Bestial Loyalty'].CursedAnnabelle = set_combine(sets.precast.JA['Bestial Loyalty'], {ammo="Creepy Broth"})
-	-- sets.precast.JA['Bestial Loyalty'].SurgingStorm = set_combine(sets.precast.JA['Bestial Loyalty'], {ammo="Insipid Broth"})
-	-- sets.precast.JA['Bestial Loyalty'].SubmergedIyo = set_combine(sets.precast.JA['Bestial Loyalty'], {ammo="Deepwater Broth"})
-	-- sets.precast.JA['Bestial Loyalty'].RedolentCandi = set_combine(sets.precast.JA['Bestial Loyalty'], {ammo="Electrified Broth"})
-	-- sets.precast.JA['Bestial Loyalty'].AlluringHoney = set_combine(sets.precast.JA['Bestial Loyalty'], {ammo="Bug-Ridden Broth"})
-	-- sets.precast.JA['Bestial Loyalty'].CaringKiyomaro = set_combine(sets.precast.JA['Bestial Loyalty'], {ammo="Fizzy Broth"})
-	-- sets.precast.JA['Bestial Loyalty'].VivaciousVickie = set_combine(sets.precast.JA['Bestial Loyalty'], {ammo="Tant. Broth"})
-	-- sets.precast.JA['Bestial Loyalty'].HurlerPercival = set_combine(sets.precast.JA['Bestial Loyalty'], {ammo="Pale Sap"})
-	-- sets.precast.JA['Bestial Loyalty'].BlackbeardRandy = set_combine(sets.precast.JA['Bestial Loyalty'], {ammo="Meaty Broth"})
-	-- sets.precast.JA['Bestial Loyalty'].GenerousArthur = set_combine(sets.precast.JA['Bestial Loyalty'], {ammo="Dire Broth"})
-	-- sets.precast.JA['Bestial Loyalty'].ThreestarLynn = set_combine(sets.precast.JA['Bestial Loyalty'], {ammo="Muddy Broth"})
-	-- sets.precast.JA['Bestial Loyalty'].MosquitoFamiliar = set_combine(sets.precast.JA['Bestial Loyalty'], {ammo="Wetlands Broth"})
-	-- sets.precast.JA['Bestial Loyalty']['Left-HandedYoko'] = set_combine(sets.precast.JA['Bestial Loyalty'], {ammo="Heavenly Broth"})
-	-- sets.precast.JA['Bestial Loyalty'].BraveHeroGlenn = set_combine(sets.precast.JA['Bestial Loyalty'], {ammo="Wispy Broth"})
-	-- sets.precast.JA['Bestial Loyalty'].SharpwitHermes = set_combine(sets.precast.JA['Bestial Loyalty'], {ammo="Saline Broth"})
-	-- sets.precast.JA['Bestial Loyalty'].ColibriFamiliar = set_combine(sets.precast.JA['Bestial Loyalty'], {ammo="Sugary Broth"})
-	-- sets.precast.JA['Bestial Loyalty'].ChoralLeera = set_combine(sets.precast.JA['Bestial Loyalty'], {ammo="Glazed Broth"})
-	-- sets.precast.JA['Bestial Loyalty'].SpiderFamiliar = set_combine(sets.precast.JA['Bestial Loyalty'], {ammo="Sticky Webbing"})
-	-- sets.precast.JA['Bestial Loyalty'].GussyHachirobe = set_combine(sets.precast.JA['Bestial Loyalty'], {ammo="Slimy Webbing"})
-	-- sets.precast.JA['Bestial Loyalty'].AcuexFamiliar = set_combine(sets.precast.JA['Bestial Loyalty'], {ammo="Poisonous Broth"})
-	-- sets.precast.JA['Bestial Loyalty'].FluffyBredo = set_combine(sets.precast.JA['Bestial Loyalty'], {ammo="Venomous Broth"})
 
     coroutine.schedule(lockstyle,8)
 end
