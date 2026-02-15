@@ -12,18 +12,21 @@ end
 
 -- Setup vars that are user-independent.  state.Buff vars initialized here will automatically be tracked.
 function job_setup()
+    state.PhysicalDefenseMode:options('PDT', 'Pet')
+    state.MagicalDefenseMode:options('MDT')
     state.WeaponskillMode:options('Normal','SubtleBlow')
-    state.OffenseMode:options('TP', 'Hybrid', 'Accuracy', 'Pet')
+    state.OffenseMode:options('TP', 'Hybrid', 'Accuracy', 'Pet', 'SubtleBlow')
     state.CombatMode:options('SwordShield', 'DualWield')
-    state.IdleMode:options('Normal', 'Pet')
+    -- state.IdleMode:options('Normal', 'Pet')
     state.CombatWeapon:set('Spalirisos')
+    state.MonsterCorrelation = M(false, 'Monster Correlation')
 
     state.Spalirisos = {}
     state.Spalirisos.DualWield = M{['description']='Spalirisos Set', 'TP', 'Pet'}
     state.Spalirisos.SwordShield = M{['description']='Spalirisos Set', 'Sacro'}
 
     state.Pangu = {}
-    state.Pangu.DualWield = M{['description']='Pangu Set', 'Pet'}
+    state.Pangu.DualWield = M{['description']='Pangu Set', 'Spalirisos', 'Ikenga', 'Agwu'}
     state.Pangu.SwordShield = M{['description']='Pangu Set', 'Sacro'}
 
     state.Naegling = {}
@@ -50,6 +53,7 @@ function job_setup()
 	state.Buff["Unleash"] = buffactive["Unleash"] or false
 
     -- Additional local binds
+    send_command('bind ^` gs c toggle MonsterCorrelation')
     send_command('bind ~f1 gs c set CombatWeapon Spalirisos')
     send_command('bind ~f2 gs c set CombatWeapon Pangu')
     send_command('bind ~f3 gs c set CombatWeapon Naegling')
@@ -64,11 +68,13 @@ end
 
 -- Called when this job file is unloaded (eg: job change)
 function file_unload()
+    send_command('unbind ^`')
     send_command('unbind ~f1')
     send_command('unbind ~f2')
     send_command('unbind ~f3')
     send_command('unbind ~f4')
     send_command('unbind ~f5')
+    send_command('unbind ~f6')
 end
 
 
@@ -116,7 +122,9 @@ function init_gear_sets()
 
     sets.Pangu = {}
     sets.Pangu.DualWield = {main="Pangu", sub="Ikenga's axe"}
-    sets.Pangu.DualWield.Pet = {main="Pangu", sub="Spalirisos"}
+    sets.Pangu.DualWield.Spalirisos = {main="Pangu", sub="Spalirisos"}
+    sets.Pangu.DualWield.Ikenga = {main="Pangu", sub="Ikenga's Axe"}
+    sets.Pangu.DualWield.Agwu = {main="Pangu", sub="Agwu's Axe"}
     sets.Pangu.SwordShield = {main="Pangu", sub="Sacro bulwark"}
     sets.Pangu.SwordShield.Sacro = {main="Pangu", sub="Sacro bulwark"}
 
@@ -228,7 +236,7 @@ function init_gear_sets()
     sets.precast.WS.SubtleBlow = set_combine(sets.precast.WS, {
         neck="Bathy choker +1",
         ring1={name="Chirich ring +1", bag="wardrobe5"},
-        ring2={name="Chirich ring +1", bag="wardrobe6"}
+        ring2={name="Chirich ring +1", bag="wardrobe6"},
     })
 
     sets.precast.WS['Blitz'] = set_combine(sets.precast.WS, {
@@ -526,14 +534,17 @@ function init_gear_sets()
         back="Null Shawl",
     }
 
-    sets.idle.Pet = {
+    sets.idle.Pet = set_combine(sets.idle, {
+    })
+
+    sets.idle.Pet.Engaged = {
         ammo="Hesperiidae",
         head=jse.empyrean.head,
         body=jse.artifact.body,
         hands="Gleti's gauntlets",
         legs=jse.empyrean.legs,
         feet="Gleti's boots",
-        neck="Loricate Torque +1",
+        neck="Beastmaster collar +2",
         waist="Null Belt",
         ear1="Alabaster Earring",
         ear2="Nukumi earring +1",
@@ -549,15 +560,31 @@ function init_gear_sets()
         head="Nyame Helm",
         body="Adamantite Armor",
         hands="Nyame Gauntlets",
-        legs="Nyame Flanchard",
+        legs=jse.empyrean.legs,
         feet="Nyame Sollerets",
         neck="Loricate Torque +1",
         waist="Null Belt",
-        ear1="Eabani Earring",
+        ear1="Alabaster earring",
         ear2="Genmei Earring",
         ring1="Gelatinous Ring +1",
         ring2="Moonlight Ring",
         back="Null Shawl",
+    }
+
+    sets.defense.Pet = {
+        ammo="Staunch Tathlum +1",
+        head="Nyame Helm",
+        body=jse.artifact.body,
+        hands="Gleti's Gauntlets",
+        legs=jse.empyrean.legs,
+        feet="Nyame Sollerets",
+        neck="Loricate Torque +1",
+        waist="Null Belt",
+        ear1="Alabaster earring",
+        ear2="Genmei Earring",
+        ring1="Gelatinous Ring +1",
+        ring2="Moonlight Ring",
+        back=pet_attack,
     }
 
     sets.defense.MDT = {
@@ -606,17 +633,45 @@ function init_gear_sets()
 
     sets.engaged.TP = sets.engaged
 
-    sets.engaged.Pet = sets.idle.Pet
+    sets.engaged.Pet = sets.idle.Pet.Engaged
 
     sets.engaged.Hybrid = set_combine(sets.engaged, {
         ring1={name="Moonlight ring", bag="wardrobe5"},
-        ring2={name="Moonlight ring", bag="wardrobe6"}
+        ring2={name="Moonlight ring", bag="wardrobe6"},
+        back=ws_decimation_ruinator_cape
     })
 
     sets.engaged.Accuracy = set_combine(sets.engaged, {
         ring1={name="Chirich ring +1", bag="wardrobe5"},
         ring2={name="Chirich ring +1", bag="wardrobe6"}
     })
+
+    sets.engaged.SubtleBlow = set_combine(sets.engaged, {
+        ear2="Sherida earring",
+        ring1={name="Chirich ring +1", bag="wardrobe5"},
+        ring2={name="Chirich ring +1", bag="wardrobe6"},
+        waist="Sarissaphoroi belt",
+        back=ws_decimation_ruinator_cape,
+        legs="Gleti's breeches"
+    })
+
+--     {
+--     main={ name="Pangu", augments={'Path: C',}},
+--     sub="Spalirisos",
+--     ammo="Coiste Bodhar",
+--     head="Malignance Chapeau",
+--     body="Gleti's Cuirass",
+--     hands="Gleti's Gauntlets",
+--     legs="Gleti's Breeches",
+--     feet="Malignance Boots",
+--     neck={ name="Bst. Collar +2", augments={'Path: A',}},
+--     waist="Sarissapho. Belt",
+--     left_ear="Alabaster Earring",
+--     right_ear="Sherida Earring",
+--     left_ring="Chirich Ring +1",
+--     right_ring="Chirich Ring +1",
+--     back={ name="Artio's Mantle", augments={'STR+20','Accuracy+20 Attack+20','STR+10','"Dbl.Atk."+10','Damage taken-5%',}},
+-- }
 
     sets.precast.Item['Holy Water'] = {
         neck="Nicander's necklace",
@@ -661,6 +716,14 @@ end
 function job_pet_midcast(spell, action, spellMap, eventArgs)
     -- Equip monster correlation gear, as appropriate
     -- equip(sets.midcast.Pet.WS)
+
+end
+
+function job_pet_change(pet, gain, eventArgs)
+
+end
+
+function job_pet_status_change(newStatus, oldStatus, eventArgs)
 
 end
 
