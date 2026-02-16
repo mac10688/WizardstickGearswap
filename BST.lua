@@ -15,8 +15,9 @@ function job_setup()
     state.PhysicalDefenseMode:options('PDT', 'Pet')
     state.MagicalDefenseMode:options('MDT')
     state.WeaponskillMode:options('Normal','SubtleBlow')
-    state.OffenseMode:options('TP', 'Hybrid', 'Accuracy', 'Pet', 'SubtleBlow')
+    state.OffenseMode:options('TP', 'DT', 'SubtleBlow')
     state.CombatMode:options('SwordShield', 'DualWield')
+    state.HybridMode:options('Normal','Pet')
     -- state.IdleMode:options('Normal', 'Pet')
     state.CombatWeapon:set('Spalirisos')
     state.MonsterCorrelation = M(false, 'Monster Correlation')
@@ -86,7 +87,7 @@ function init_gear_sets()
     --------------------------------------
 
 	jse.artifact.head = "Totemic Helm +3"
-	jse.artifact.body = "Totemic Jackcoat +3"
+	jse.artifact.body = "Totemic Jackcoat +4"
 	jse.artifact.hands = "Totemic Gloves +3"
 	jse.artifact.legs = "Totemic Trousers +3"
 	jse.artifact.feet = "Totemic Gaiters +3"
@@ -234,9 +235,12 @@ function init_gear_sets()
     }
 
     sets.precast.WS.SubtleBlow = set_combine(sets.precast.WS, {
-        neck="Bathy choker +1",
+        ear2="Sherida earring",
         ring1={name="Chirich ring +1", bag="wardrobe5"},
         ring2={name="Chirich ring +1", bag="wardrobe6"},
+        legs="Gleti's breeches",
+        waist="Sarissaphoroi belt",
+        back=ws_decimation_ruinator_cape
     })
 
     sets.precast.WS['Blitz'] = set_combine(sets.precast.WS, {
@@ -246,6 +250,7 @@ function init_gear_sets()
         ring1="Gere ring",
         ring2="Regal ring"
     })
+    sets.precast.WS['Blitz'].SubtleBlow = set_combine(sets.precast.WS['Blitz'], sets.precast.WS.SubtleBlow)
 
     sets.precast.WS["Rampage"] = {
         ammo="Crepuscular pebble",
@@ -262,6 +267,7 @@ function init_gear_sets()
         ring2="Gere Ring",
         back=ws_rampage_cape
     }
+    sets.precast.WS['Rampage'].SubtleBlow = set_combine(sets.precast.WS['Rampage'], sets.precast.WS.SubtleBlow)
 
     sets.precast.WS["Cloudsplitter"] = {
         ammo="Oshasha's Treatise",
@@ -278,10 +284,12 @@ function init_gear_sets()
         ring2="Metamor. Ring +1",
         back=ws_cloudsplitter_cape
     }
+    sets.precast.WS['Cloudsplitter'].SubtleBlow = set_combine(sets.precast.WS['Cloudsplitter'], sets.precast.WS.SubtleBlow)
 
     sets.precast.WS["Primal Rend"] = set_combine(sets.precast.WS["Cloudsplitter"], {
         back=ws_primal_rend_cape
     })
+    sets.precast.WS['Primal Rend'].SubtleBlow = set_combine(sets.precast.WS['Primal Rend'], sets.precast.WS.SubtleBlow)
 
     sets.precast.WS["Mistral Axe"] = {
         ammo="Crepuscular pebble",
@@ -298,6 +306,7 @@ function init_gear_sets()
         ring2="Gere Ring",
         back=ws_blitz_mistral_cape
     }
+    sets.precast.WS['Mistral Axe'].SubtleBlow = set_combine(sets.precast.WS['Mistral Axe'], sets.precast.WS.SubtleBlow)
 
     -- Equipping tp bonus and ready recast
     sets.precast.Monster = {
@@ -615,12 +624,12 @@ function init_gear_sets()
     -- EG: sets.engaged.Dagger.Accuracy.Evasion
     
     -- Basic set for if no TP weapon is defined.
-    sets.engaged = {
+    sets.engaged.TP = {
         ammo="Coiste bodhar",
         head="Malignance chapeau",
         body="Gleti's cuirass",
         hands="Malignance gloves",
-        legs="Malignance tights",
+        legs="Gleti's breeches",
         feet=jse.empyrean.feet,
         neck="Anu Torque",
         waist="Sailfi belt +1",
@@ -631,47 +640,31 @@ function init_gear_sets()
         back="Null shawl"
     }
 
-    sets.engaged.TP = sets.engaged
-
-    sets.engaged.Pet = sets.idle.Pet.Engaged
-
-    sets.engaged.Hybrid = set_combine(sets.engaged, {
-        ring1={name="Moonlight ring", bag="wardrobe5"},
-        ring2={name="Moonlight ring", bag="wardrobe6"},
-        back=ws_decimation_ruinator_cape
+    sets.engaged.TP.Pet = set_combine(sets.engaged.TP, {
+        body=jse.artifact.body
     })
 
-    sets.engaged.Accuracy = set_combine(sets.engaged, {
-        ring1={name="Chirich ring +1", bag="wardrobe5"},
-        ring2={name="Chirich ring +1", bag="wardrobe6"}
-    })
-
-    sets.engaged.SubtleBlow = set_combine(sets.engaged, {
+    sets.engaged.SubtleBlow = set_combine(sets.engaged.TP, {
         ear2="Sherida earring",
         ring1={name="Chirich ring +1", bag="wardrobe5"},
         ring2={name="Chirich ring +1", bag="wardrobe6"},
+        legs="Gleti's breeches",
         waist="Sarissaphoroi belt",
-        back=ws_decimation_ruinator_cape,
-        legs="Gleti's breeches"
+        back=ws_decimation_ruinator_cape
     })
 
---     {
---     main={ name="Pangu", augments={'Path: C',}},
---     sub="Spalirisos",
---     ammo="Coiste Bodhar",
---     head="Malignance Chapeau",
---     body="Gleti's Cuirass",
---     hands="Gleti's Gauntlets",
---     legs="Gleti's Breeches",
---     feet="Malignance Boots",
---     neck={ name="Bst. Collar +2", augments={'Path: A',}},
---     waist="Sarissapho. Belt",
---     left_ear="Alabaster Earring",
---     right_ear="Sherida Earring",
---     left_ring="Chirich Ring +1",
---     right_ring="Chirich Ring +1",
---     back={ name="Artio's Mantle", augments={'STR+20','Accuracy+20 Attack+20','STR+10','"Dbl.Atk."+10','Damage taken-5%',}},
--- }
+    sets.engaged.SubtleBlow.Pet = set_combine(sets.engaged.SubtleBlow, {
+        body=jse.artifact.body
+    })
+
+    sets.engaged.DT = set_combine(sets.engaged.TP, {
+        ring1={name="Moonlight ring", bag="wardrobe5"},
+        ring2={name="Moonlight ring", bag="wardrobe6"}
+    })
+
+    sets.engaged.DT.Pet = set_combine(sets.engaged.DT, {
+        body=jse.artifact.body
+    })
 
     sets.precast.Item['Holy Water'] = {
         neck="Nicander's necklace",
