@@ -20,8 +20,8 @@ function job_setup()
     state.MagicBurst = M(false, 'Magic Burst')
     state.EatTp = M(false, 'Eat TP')
     state.UseObi = M(true, 'Use Obi')
+    state.LockMpReturn = M(false, 'Lock MP Return')
     state.CombatWeapon:set('Laevateinn')
-
     
     state.Laevateinn = M{['description']='Laevateinn Set', 'Khonsu', 'Enki'}
     state.Kaumodaki = M{['description']='Kaumodaki Set', 'Khonsu', 'Enki'}
@@ -30,12 +30,13 @@ function job_setup()
     state.Drepanum = M{['description']='Drepanum Set', 'Khonsu', 'Enki'}
     state.Bunzi = M{['description']='Bunzi rod Set', 'Ammurapi', 'Genmei'}
     state.Opashoro = M{['description']='Drepanum Set', 'Khonsu', 'Enki'}
-    state.Marin = M{['description']='Marin staff +1 Set', 'Khonsu', 'Enki'}
+    state.Marin = M{['description']='Marin staff Set', 'Khonsu', 'Enki'}
 
     -- Additional local binds
     send_command('bind ^` gs c toggle MagicBurst')
     send_command('bind !` gs c toggle EatTp')
     send_command('bind @` gs c toggle UseObi')
+    send_command('bind ^f8 gs c toggle LockMpReturn')
     send_command('bind ~f1 gs c set CombatWeapon Laevateinn')
     send_command('bind ~f2 gs c set CombatWeapon Kaumodaki')
     send_command('bind ~f3 gs c set CombatWeapon WizardRod')
@@ -55,6 +56,7 @@ function user_unload()
     send_command('unbind ^`')
     send_command('unbind !`')
     send_command('unbind @`')
+    send_command('unbind ^f8')
     send_command('unbind ~f1')
     send_command('unbind ~f2')
     send_command('unbind ~f3')
@@ -316,18 +318,18 @@ function init_gear_sets()
         
     sets.midcast.ElementalEnfeeble = {
         ammo="Pemphredo tathlum",
-        head="Spae. Petasos +3",
+        head="Wicce petasos +3",
         body="Spaekona's coat +4",
         hands="Spae. Gloves +3",
         legs="Arch. Tonban +3",
-        feet="Wicce Sabots +3",
+        feet="Archmage's sabots +3",
         neck="Src. Stole +2",
-        waist="Sacro cord",
+        waist="Acuity belt +1",
         ear1="Regal Earring",
         ear2="Malignance earring",
         ring1="Medada's ring",
         ring2="Metamorph ring +1",
-        back=magic_atk_cape
+        back="Aurist's cape +1"
     }
 
     sets.midcast['Dark Magic'] = {
@@ -616,7 +618,7 @@ function job_post_midcast(spell, action, spellMap, eventArgs)
         if state.MagicBurst.value then
             equip(sets.midcast.MagicBurst)
         end
-        if player.mp < 400 then
+        if player.mp < 400 or state.LockMpReturn.value then
             equip({body="Spaekona's coat +4"})
         end
         if state.UseObi.value then
