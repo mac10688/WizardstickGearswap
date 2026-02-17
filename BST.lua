@@ -15,7 +15,7 @@ function job_setup()
     state.PhysicalDefenseMode:options('PDT', 'Pet')
     state.MagicalDefenseMode:options('MDT')
     state.WeaponskillMode:options('Normal','SubtleBlow')
-    state.OffenseMode:options('TP', 'DT', 'SubtleBlow')
+    state.OffenseMode:options('TP', 'DT', 'Mid-SubtleBlow', 'Max-SubtleBlow')
     state.CombatMode:options('SwordShield', 'DualWield')
     state.HybridMode:options('Normal','Pet')
     -- state.IdleMode:options('Normal', 'Pet')
@@ -46,6 +46,10 @@ function job_setup()
     state.Drepanum.DualWield = M{['description']='Drepanum Set', 'Grip'}
     state.Drepanum.SwordShield = M{['description']='Drepanum Set', 'Grip'}
 
+    state.Tauret = {}
+    state.Tauret.DualWield = M{['description']='Tauret Set', 'Ternion'}
+    state.Tauret.SwordShield = M{['description']='Tauret Set', 'Sacro'}
+
     -- Set up Reward Modes and keybind Ctrl+Backspace
 	state.RewardMode = M{['description']='Reward Mode', 'Theta', 'Zeta', 'Epsilon', 'Beta'}
 	send_command('bind ^backspace gs c cycle RewardMode')
@@ -61,6 +65,7 @@ function job_setup()
     send_command('bind ~f4 gs c set CombatWeapon Ikenga')
     send_command('bind ~f5 gs c set CombatWeapon Agwu')    
     send_command('bind ~f6 gs c set CombatWeapon Drepanum')
+    send_command('bind ~f7 gs c set CombatWeapon Tauret')
 end
 
 -------------------------------------------------------------------------------------------------------------------
@@ -76,6 +81,7 @@ function file_unload()
     send_command('unbind ~f4')
     send_command('unbind ~f5')
     send_command('unbind ~f6')
+    send_command('unbind ~f7')
 end
 
 
@@ -153,6 +159,16 @@ function init_gear_sets()
     sets.Drepanum.DualWield.Grip = {main="Drepanum", sub="Rigorous grip"}
     sets.Drepanum.SwordShield = {}
     sets.Drepanum.SwordShield.Grip = {main="Drepanum", sub="Rigorous grip"}
+
+    sets.Tauret = {}
+    sets.Tauret.DualWield = {}
+    sets.Tauret.DualWield.Ternion = {main="Tauret", sub="Ternion dagger +1"}
+    sets.Tauret.SwordShield = {}
+    sets.Tauret.SwordShield.Sacro = {main="Tauret", sub="Sacro bulwark"}
+
+    state.Tauret = {}
+    state.Tauret.DualWield = M{['description']='Tauret Set', 'Ternion'}
+    state.Tauret.SwordShield = M{['description']='Tauret Set', 'Sacro'}
 
     -- Precast Sets
 
@@ -616,14 +632,21 @@ function init_gear_sets()
         ring1="Shneddick ring +1"
     }
 
-    -- Engaged sets
-
-    -- Variations for TP weapon and (optional) offense/defense modes.  Code will fall back on previous
-    -- sets if more refined versions aren't defined.
-    -- If you create a set with both offense and defense modes, the offense mode should be first.
-    -- EG: sets.engaged.Dagger.Accuracy.Evasion
-    
-    -- Basic set for if no TP weapon is defined.
+    --[[
+    Store TP: 42
+    Double Attack: 46%
+    Triple Attack: 15%
+    Subtle Blow I: 15
+    Subtle Blow II: 5
+    Defense: 1289
+    Evasion: 1019
+    Magic Evasion: 619
+    DT: 22
+    PDT: 17
+    MDT: 0
+    Haste: 30%
+    Accuracy: 320
+    ]]
     sets.engaged.TP = {
         ammo="Coiste bodhar",
         head="Malignance chapeau",
@@ -633,18 +656,61 @@ function init_gear_sets()
         feet=jse.empyrean.feet,
         neck="Anu Torque",
         waist="Sailfi belt +1",
-        left_ear="Sroda earring",
-        right_ear="Sherida earring",
+        ear1="Sroda earring",
+        ear2="Sherida earring",
         ring1="Epona's ring",
         ring2="Gere ring",
         back="Null shawl"
     }
 
+    --[[
+    Store TP: 42
+    Double Attack: 36%
+    Triple Attack: 15%
+    Subtle Blow I: 15
+    Subtle Blow II: 5
+    Defense: 1254
+    Evasion: 1043
+    Magic Evasion: 626
+    DT: 22
+    PDT: 8
+    MDT: 0
+    Haste: 31%
+    Accuracy: 325
+    ]]
     sets.engaged.TP.Pet = set_combine(sets.engaged.TP, {
         body=jse.artifact.body
     })
 
-    sets.engaged.SubtleBlow = set_combine(sets.engaged.TP, {
+    --[[
+    Store TP: 50
+    Double Attack: 36%
+    Triple Attack: 7%
+    Subtle Blow I: 45
+    Subtle Blow II: 5
+    Defense: 1321
+    Evasion: 969
+    Magic Evasion: 529
+    DT: 16
+    PDT: 17
+    MDT: 0
+    Haste: 24%
+    Accuracy: 310
+    ]]
+    sets.engaged["Mid-SubtleBlow"] = set_combine(sets.engaged.TP, {
+        ear2="Sherida earring",
+        ring1={name="Chirich ring +1", bag="wardrobe5"},
+        ring2={name="Chirich ring +1", bag="wardrobe6"},
+        legs="Gleti's breeches",
+        back=ws_decimation_ruinator_cape
+    })
+
+    sets.engaged["Mid-SubtleBlow"].Pet = set_combine(sets.engaged["Mid-SubtleBlow"], {
+        body=jse.artifact.body
+    })
+
+    sets.engaged["Max-SubtleBlow"] = set_combine(sets.engaged["Mid-SubtleBlow"], {
+        ear1="Dignitary's earring",
         ear2="Sherida earring",
         ring1={name="Chirich ring +1", bag="wardrobe5"},
         ring2={name="Chirich ring +1", bag="wardrobe6"},
@@ -653,14 +719,25 @@ function init_gear_sets()
         back=ws_decimation_ruinator_cape
     })
 
-    sets.engaged.SubtleBlow.Pet = set_combine(sets.engaged.SubtleBlow, {
+    sets.engaged["Max-SubtleBlow"].Pet = set_combine(sets.engaged["Max-SubtleBlow"], {
         body=jse.artifact.body
     })
 
-    sets.engaged.DT = set_combine(sets.engaged.TP, {
+    sets.engaged.DT = {
+        ammo="Coiste bodhar",
+        head="Malignance chapeau",
+        body="Malignance tabard",
+        hands="Malignance gloves",
+        legs="Malignance tights",
+        feet="Malignance boots",
+        neck="Anu Torque",
+        waist="Sailfi belt +1",
+        ear1="Sroda earring",
+        ear2="Sherida earring",
         ring1={name="Moonlight ring", bag="wardrobe5"},
-        ring2={name="Moonlight ring", bag="wardrobe6"}
-    })
+        ring2={name="Moonlight ring", bag="wardrobe6"},
+        back=ws_decimation_ruinator_cape
+    }
 
     sets.engaged.DT.Pet = set_combine(sets.engaged.DT, {
         body=jse.artifact.body
