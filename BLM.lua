@@ -485,20 +485,17 @@ function init_gear_sets()
 
     sets.midcast['Impact'] = set_combine(sets.midcast['Elemental Magic'], {
         head=empty,
+        neck="Null loop",
+        ear1="Crepuscular earring",
         ring2={name="Stikini Ring +1", bag="wardrobe6"},
         body="Crepuscular cloak",
         back="Null shawl",
-        waist="Null belt"
+        waist="Null belt",
+        feet="wicce sabots +3"
     })
 
     sets.midcast["Dispelga"] = set_combine(sets.midcast['Enfeebling Magic'], {main="Daybreak"})
-
-    -- -- Minimal damage gear for procs.
-    -- sets.midcast['Elemental Magic'].Proc = {main="Earth Staff", sub="Mephitis Grip",ammo="Impatiens",
-    --     head="Nahtirah Hat",neck="Twilight Torque",ear1="Bloodgem Earring",ear2="Loquacious Earring",
-    --     body="Manasa Chasuble",hands="Serpentes Cuffs",ring1="Sheltered Ring",ring2="Paguroidea Ring",
-    --     back="Swith Cape +1",waist="Witful Belt",legs="Nares Trews",feet="Chelona Boots +1"}
-
+    
     -- Idle sets
     sets.defense.PDT = {
         ammo="Staunch Tathlum +1",
