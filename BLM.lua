@@ -317,19 +317,21 @@ function init_gear_sets()
     }
         
     sets.midcast.ElementalDebuff = {
+        main="Laevateinn",
+        sub="Khonsu",
         ammo="Pemphredo tathlum",
         head="Wicce petasos +3",
         body="Spaekona's coat +4",
         hands="Spae. Gloves +3",
         legs="Arch. Tonban +3",
         feet="Archmage's sabots +3",
-        neck="Src. Stole +2",
-        waist="Acuity belt +1",
+        neck="Null loop",
+        waist="Null belt",
         ear1="Regal Earring",
         ear2="Malignance earring",
         ring1="Medada's ring",
-        ring2="Metamorph ring +1",
-        back="Aurist's cape +1"
+        ring2={name="Stikini Ring +1", bag="wardrobe6"},
+        back="Null shawl"
     }
 
     sets.midcast['Dark Magic'] = {
@@ -416,7 +418,7 @@ function init_gear_sets()
         neck="Sorcerer's stole +2", --MB: 10
         body="Wicce coat +3", --MB2: 5
         hands="Agwu's gages", --MB: 8 MB2: 5
-        legs="Ea slops +1", --MB: 8 MB2: 8
+        legs="Wicce chausses +3", --MB: 15
         feet="Agwu's pigaches", --MB: 6
         right_ring="Metamorph ring +1",
         back=magic_atk_cape --MB 5
@@ -487,6 +489,7 @@ function init_gear_sets()
         head=empty,
         neck="Null loop",
         ear1="Crepuscular earring",
+        ear1="Malignance earring",
         ring2={name="Stikini Ring +1", bag="wardrobe6"},
         body="Crepuscular cloak",
         back="Null shawl",
