@@ -316,7 +316,7 @@ function init_gear_sets()
         feet="Spaekona's sabots +3"
     }
         
-    sets.midcast.ElementalEnfeeble = {
+    sets.midcast.ElementalDebuff = {
         ammo="Pemphredo tathlum",
         head="Wicce petasos +3",
         body="Spaekona's coat +4",
@@ -495,7 +495,7 @@ function init_gear_sets()
     })
 
     sets.midcast["Dispelga"] = set_combine(sets.midcast['Enfeebling Magic'], {main="Daybreak"})
-    
+    403
     -- Idle sets
     sets.defense.PDT = {
         ammo="Staunch Tathlum +1",
