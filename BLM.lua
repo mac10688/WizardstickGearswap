@@ -495,7 +495,7 @@ function init_gear_sets()
     })
 
     sets.midcast["Dispelga"] = set_combine(sets.midcast['Enfeebling Magic'], {main="Daybreak"})
-    403
+
     -- Idle sets
     sets.defense.PDT = {
         ammo="Staunch Tathlum +1",
