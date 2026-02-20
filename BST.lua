@@ -572,7 +572,7 @@ function init_gear_sets()
         neck="Beastmaster collar +2",
         waist="Null Belt",
         ear1="Alabaster Earring",
-        ear2="Nukumi earring +1",
+        ear2=jse.earring,
         ring1="Cath Palug Ring",
         ring2={name="Moonlight ring", bag="wardrobe6"},
         back=pet_attack

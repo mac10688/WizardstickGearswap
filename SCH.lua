@@ -63,6 +63,26 @@ function init_gear_sets()
     -- Start defining the sets
     --------------------------------------
 
+    jse.artifact.head = "Academic's Mortarboard +3"
+	jse.artifact.body = "Academic's Gown +3"
+	jse.artifact.hands = "Academic's Bracers +3"
+	jse.artifact.legs = "Academic's Pants +3"
+	jse.artifact.feet = "Academic's Loafers +3"
+
+	jse.relic.head = "Pedagogy Mortarboard +3"
+	jse.relic.body = "Pedagogy Gown +3"
+	jse.relic.hands = "Pedagogy Bracers +3"
+	jse.relic.legs = "Pedagogy Pants +3"
+	jse.relic.feet = "Pedagogy Loafers +3"
+
+	jse.empyrean.head = "Arbatel Bonnet +3"
+	jse.empyrean.body = "Arbatel Gown +3"
+	jse.empyrean.hands = "Arbatel Bracers +3"
+	jse.empyrean.legs = "Arbatel Pants +3"
+	jse.empyrean.feet = "Arbatel Loafers +3"
+
+    jse.earring = "Arbatel earring +1"
+
     local hybrid_cape = { name="Lugh's Cape", augments={'VIT+20','Eva.+20 /Mag. Eva.+20','INT+10','"Fast Cast"+10','Mag. Evasion+15'}}
     local pdt_cape = { name="Lugh's Cape", augments={'VIT+20','Eva.+20 /Mag. Eva.+20','VIT+10','"Fast Cast"+10','DEF+50',}}
     local mdt_cape =  { name="Lugh's Cape", augments={'INT+20','Eva.+20 /Mag. Eva.+20','INT+10','"Fast Cast"+10','Mag. Evasion+15'}}
@@ -94,8 +114,8 @@ function init_gear_sets()
     -- Precast Sets
 
     -- Precast sets to enhance JAs
-    sets.precast.JA['Tabula Rasa'] = { legs="Pedagogy Pants +3" }
-    sets.precast.JA['Enlightenment'] = {body="Pedagogy gown +3"}
+    sets.precast.JA['Tabula Rasa'] = { legs=jse.relic.legs }
+    sets.precast.JA['Enlightenment'] = {body=jse.relic.body}
 
     -- Fast cast sets for spells
     --10% from arts
@@ -105,18 +125,18 @@ function init_gear_sets()
     --54 dt
     sets.precast.FC = {
         ammo="Staunch tathlum +1",
-        head="Arbatel bonnet +3",
+        head=jse.empyrean.head,
         neck="Loricate torque +1",
         ear1="Malignance earring", --fast cast 4%
         ear2="Etiolation earring", --fast cast 1%        
         body="Pinga tunic +1", --fast cast 15%
-        hands="Academic's bracers +3", --fast cast 8%
+        hands=jse.artifact.hands, --fast cast 8%
         ring1="Medada's ring", --fast cast 10%
         ring2="Defending ring",
         back=fc_cape, --fast cast 10%
         waist="Platinum moogle belt",
         legs="Agwu's slops", --fast cast 6%
-        feet="Pedagogy loafers +3" --fast cast 8%
+        feet=jse.relic.feet --fast cast 8%
     }
 
     sets.precast.FC['Enhancing Magic'] = set_combine(sets.precast.FC)
@@ -142,7 +162,7 @@ function init_gear_sets()
     })
 
     local physical_int_ws = {
-        head="Pedagogy mortarboard +3",
+        head=jse.relic.head ,
         neck="Fotia gorget",
         ear1="Regal earring",
         ear2="Barkarole earring",
@@ -157,7 +177,7 @@ function init_gear_sets()
     }
 
     local magical_int_ws = {
-        head="Pedagogy mortarboard +3",
+        head=jse.relic.head ,
         neck="Argute stole +2",
         ear1="Regal earring",
         ear2="Malignance earring",
@@ -167,7 +187,7 @@ function init_gear_sets()
         ring2="Metamorph ring +1",
         back=int_magic_ws,
         waist="Orpheus's sash",
-        legs="Pedagogy pants +3",
+        legs=jse.relic.legs,
         feet=ws_boots
     }
 
@@ -233,12 +253,12 @@ function init_gear_sets()
         ear1="Etiolation earring",
         ear2="Loquacious earring",
         neck="Sanctity necklace",
-        body="Pedagogy gown +3",
+        body=jse.relic.body,
         hands="Kaykaus cuffs",
         ring1="Mephitas's ring +1",
         ring2="Persis ring",
         waist="Luminary sash",
-        legs="Pedagogy pants +3",
+        legs=jse.relic.legs,
         feet="Kaykaus boots"
     }
 
@@ -248,21 +268,21 @@ function init_gear_sets()
         main="Musa", -- 25% cure | 10% fc
         sub="Khonsu",
         -- head="Vanya hood", -- 10% cure | haste: 6%
-        ear2="Arbatel earring +1",
+        ear2=jse.earring,
         body="Pinga tunic +1", -- 15% cure | 15% fc
-        hands="Pedagogy bracers +3", -- 3% cure II | 3% haste
+        hands=jse.relic.hands, -- 3% cure II | 3% haste
         back=cure_cape, -- 10% fc
         ring1="Persis ring",
         ring2="Defending ring",
-        legs="Academic's pants +3", -- 8% cure |
+        legs=jse.artifact.legs, -- 8% cure |
         -- legs="Pinga pants +1",
-        feet="Pedagogy loafers +3"
+        feet=jse.relic.feet
     })
 
     sets.midcast.Cursna = {
         neck="Debilis Medallion",
-        body="Pedagogy gown +3",
-        hands="Pedagogy bracers +3",
+        body=jse.relic.body,
+        hands=jse.relic.hands,
         ring1="Haoma's ring",
         ring2="Menelaus's ring",
         feet="Gendewitha Galoshes +1"
@@ -290,7 +310,7 @@ function init_gear_sets()
     }
 
     sets.midcast.Regen = set_combine(midcast_enhancing_duration, {
-        head="Arbatel bonnet +3",
+        head=jse.empyrean.head,
         back="Bookworm's cape"
     })
 
@@ -298,7 +318,7 @@ function init_gear_sets()
         neck="Incanter's torque",
         ear1="Andoaa earring",
         ear2="Mimir earring",
-        body="Pedagogy gown +3",
+        body=jse.relic.body,
         hands="Telchine gloves",
         waist="Embla sash",
         ring1={name="Stikini Ring +1", bag="wardrobe5"},
@@ -307,24 +327,24 @@ function init_gear_sets()
 
     sets.midcast.Stoneskin = set_combine(sets.midcast['Enhancing Magic'])
 
-    sets.midcast.Storm = set_combine(midcast_enhancing_duration, {feet="Pedagogy Loafers +3"})
+    sets.midcast.Storm = set_combine(midcast_enhancing_duration, {feet=jse.relic.feet})
 
     sets.midcast['Enfeebling Magic'] = {
         main="Contemplator +1",
         sub="Enki strap",
         ammo="Hydrocera",
-        head="Academic's mortarboard +3",
+        head=jse.artifact.head,
         neck="Argute stole +2",
         ear1="Regal earring",
         ear2="Malignance earring",
-        body="Arbatel gown +3",
+        body=jse.empyrean.body,
         hands="Regal cuffs",
         ring1={name="Stikini Ring +1", bag="wardrobe5"},
         ring2="Kishar ring",
         back="Aurist's cape +1",
         waist="Obstinate sash",
-        legs="Arbatel pants +3",
-        feet="Academic's loafers +3"
+        legs=jse.empyrean.legs,
+        feet=jse.artifact.feet
     }
 
     -- Custom spell classes
@@ -343,11 +363,11 @@ function init_gear_sets()
     sets.midcast.MaccEnfeebles = set_combine(sets.midcast['Enfeebling Magic'], {
         sub="Khonsu",
         ammo="Pemphredo tathlum",
-        hands="Arbatel bracers +3",
+        hands=jse.empyrean.hands,
         ring1="Medada's ring",
         ring2="Metamorph ring +1",
         waist="Acuity belt +1",
-        feet="Arbatel loafers +3",
+        feet=jse.empyrean.feet,
     })
 
     sets.midcast['Dark Magic'] = {
@@ -356,14 +376,14 @@ function init_gear_sets()
         neck="Erra pendant",
         ear1="Regal earring",
         ear2="Malignance earring",
-        body="Academic's gown +3",
-        hands="Arbatel bracers +3",
+        body=jse.artifact.body,
+        hands=jse.empyrean.hands,
         ring1={name="Stikini Ring +1", bag="wardrobe5"},
         ring2="Archon ring",
         back=nuke_cape,
         waist="Acuity belt +1",
-        legs="Arbatel pants +3",
-        feet="Arbatel loafers +3"
+        legs=jse.empyrean.legs,
+        feet=jse.empyrean.feet
     }
 
     sets.midcast.Dia = sets.midcast.enfeebling
@@ -390,7 +410,7 @@ function init_gear_sets()
         main="Bunzi's Rod",
         sub="Ammurapi Shield",
         ammo="Pemphredo Tathlum",
-        head="Arbatel bonnet +3",
+        head=jse.empyrean.head,
         neck="Argute Stole +2",
         ear1="Malignance Earring",
         ear2="Regal Earring",
@@ -401,7 +421,7 @@ function init_gear_sets()
         back=nuke_cape,
         waist="Sacro cord",
         legs="Agwu's Slops",
-        feet="Arbatel Loafers +3"        
+        feet=jse.empyrean.feet        
     }
 
     sets.midcast.Drain = set_combine(sets.midcast['Dark Magic'], {
@@ -410,7 +430,7 @@ function init_gear_sets()
         ring1="Excelsis ring",
         ring2="Archon ring",
         waist="Fucho-no-obi",
-        legs="Pedagogy pants +3",
+        legs=jse.relic.legs,
         feet="Agwu's pigaches"
     })
 
@@ -439,18 +459,18 @@ function init_gear_sets()
         main="Tupsimati",
         sub="Enki strap",
         ammo="Pemphredo tathlum",
-        head="Arbatel bonnet +3",
+        head=jse.empyrean.head,
         neck="Argute stole +2",
         ear1="Regal earring",
         ear2="Malignance earring",
-        body="Arbatel gown +3",
-        hands="Arbatel bracers +3",
+        body=jse.empyrean.body,
+        hands=jse.empyrean.hands,
         ring1="Medada's ring",
         ring2="Metamorph ring +1",
         back=nuke_cape,
         waist="Sacro cord",
-        legs="Arbatel pants +3",
-        feet="Arbatel loafers +3"
+        legs=jse.empyrean.legs,
+        feet=jse.empyrean.feet
     }
 
     sets.midcast['Elemental Magic'].Occult = set_combine(sets.midcast['Elemental Magic'], {
@@ -472,18 +492,18 @@ function init_gear_sets()
         main="Malignance pole",
         sub="Khonsu",
         ammo="Incantor Stone",
-        head="Pedagogy mortarboard +3",
+        head=jse.relic.head ,
         neck="Bathy choker +1",
         ear1="Dignitary's earring",
         ear2="Loquac. Earring",
         body="Pinga tunic +1",
-        hands="Academic's bracers +3",
+        hands=jse.artifact.hands,
         ring1={name="Chirich Ring +1", bag="wardrobe5"},
         ring2={name="Chirich Ring +1", bag="wardrobe6"},
         back=idle_cape,
         waist="Embla sash",
         legs={ name="Lengo Pants", augments={'INT+5','Mag. Acc.+13'}},
-        feet="Academic's loafers +3"
+        feet=jse.artifact.feet
     }
 
     sets.midcast.MagicBurst = set_combine(sets.midcast['Elemental Magic'], {
@@ -494,7 +514,7 @@ function init_gear_sets()
         body="Agwu's robe", --MB: 10
         hands="Agwu's gages", --MB2: 5
         legs="Agwu's slops", --MB: 9
-        feet="Arbatel loafers +3",
+        feet=jse.empyrean.feet,
         -- feet="Agwu's pigaches", --MB: 6
         ring2="Mujin band" --MB2: 5
     })
@@ -510,18 +530,18 @@ function init_gear_sets()
         main="Contemplator +1",
         sub="Enki strap",
         ammo="Hydrocera",
-        head="Academic's mortarboard +3",
+        head=jse.artifact.head,
         neck="Argute stole +2",
         ear1="Regal earring",
         ear2="Malignance earring",
-        body="Arbatel gown +3",
+        body=jse.empyrean.body,
         hands="Regal cuffs",
         ring1={name="Stikini Ring +1", bag="wardrobe5"},
         ring2="Kishar ring",
         back="Aurist's cape +1",
         waist="Obstinate sash",
-        legs="Arbatel pants +3",
-        feet="Academic's loafers +3"
+        legs=jse.empyrean.legs,
+        feet=jse.artifact.feet
     }
 
     -- Custom spell classes
@@ -544,7 +564,7 @@ function init_gear_sets()
         head="Agwu's cap",
         neck="Argute stole +2",
         ear1="Regal earring",
-        ear2="Arbatel earring +1",
+        ear2=jse.earring,
         body="Agwu's robe",
         hands="Agwu's gages",
         ring1="Medada's ring",
@@ -562,19 +582,19 @@ function init_gear_sets()
         head="Ipoca beret",
         neck="Argute stole +2",
         ear1="Regal earring",
-        ear2="Arbatel earring +1",
-        body="Arbatel gown +3",
-        hands="Arbatel bracers +3",
+        ear2=jse.earring,
+        body=jse.empyrean.body,
+        hands=jse.empyrean.hands,
         ring1={name="Stikini Ring +1", bag="wardrobe5"},
         ring2={name="Stikini Ring +1", bag="wardrobe6"},
         back="Aurist's cape +1",
         waist="Obstinate sash",
-        legs="Arbatel pants +3",
-        feet="Academic's loafers +3"
+        legs=jse.empyrean.legs,
+        feet=jse.artifact.feet
     }
 
     sets.midcast.Banish.Resistant = set_combine(sets.midcast.Banish, {
-        head="Arbatel bonnet +3"
+        head=jse.empyrean.head
     })
 
     sets.midcast.Banishga = sets.midcast.Banish
@@ -590,13 +610,13 @@ function init_gear_sets()
         ear1="Regal earring",
         ear2="Malignance earring",
         body='Crepuscular cloak',
-        hands="Arbatel bracers +3",
+        hands=jse.empyrean.hands,
         ring1="Medada's ring",
         ring2="Archon ring",
         back="Aurist's cape +1",
         waist="Acuity belt +1",
-        legs="Arbatel pants +3",
-        feet="Academic's loafers +3"
+        legs=jse.empyrean.legs,
+        feet=jse.artifact.feet
     }
 
     sets.midcast["Dispelga"] = set_combine(sets.midcast['Enfeebling Magic'], {main="Daybreak"})
@@ -618,7 +638,7 @@ function init_gear_sets()
         neck="Sanctity necklace",
         ear1="Telos earring",
         ear2="Dignitary's earring",
-        body="Pedagogy gown +3",
+        body=jse.relic.body,
         hands="Gazu bracelets +1",
         ring1="Chirich Ring +1",
         ring2="Chirich Ring +1",
@@ -629,25 +649,25 @@ function init_gear_sets()
     }
 
     -- Buff sets: Gear that needs to be worn to actively enhance a current player buff.
-    sets.buff['Dark Arts'] = {body="Academic's gown +3"}
-    sets.buff['Ebullience'] = {head="Arbatel bonnet +3"}
-    sets.buff['Rapture'] = {head="Arbatel bonnet +3"}
-    sets.buff['Perpetuance'] = {hands="Arbatel Bracers +3"}
+    sets.buff['Dark Arts'] = {body=jse.artifact.body}
+    sets.buff['Ebullience'] = {head=jse.empyrean.head}
+    sets.buff['Rapture'] = {head=jse.empyrean.head}
+    sets.buff['Perpetuance'] = {hands=jse.empyrean.hands}
     sets.buff['Immanence'] = {
         head="Nyame helm",
         body="Nyame mail",
-        hands="Arbatel Bracers +3"        
+        hands=jse.empyrean.hands        
     }
-    sets.buff['Penury'] = {legs="Arbatel Pants +3"}
-    sets.buff['Parsimony'] = {legs="Arbatel Pants +3"}
-    sets.buff['Celerity'] = {feet="Pedagogy Loafers +3"}
-    sets.buff['Alacrity'] = {feet="Pedagogy Loafers +3"}
+    sets.buff['Penury'] = {legs=jse.empyrean.legs}
+    sets.buff['Parsimony'] = {legs=jse.empyrean.legs}
+    sets.buff['Celerity'] = {feet=jse.relic.feet}
+    sets.buff['Alacrity'] = {feet=jse.relic.feet}
 
-    sets.buff['Klimaform'] = {feet="Arbatel loafers +3"}
-    sets.buff['Focalization'] = {head="Pedagogy mortarboard +3"}
+    sets.buff['Klimaform'] = {feet=jse.empyrean.feet}
+    sets.buff['Focalization'] = {head=jse.relic.head }
 
-    sets.buff.FullSublimation = {head="Academic's mortarboard +3", body="Pedagogy gown +3", waist="Embla sash"}
-    sets.buff.PDTSublimation = {head="Academic's mortarboard +3", body="Pedagogy gown +3", waist="Embla sash"}
+    sets.buff.FullSublimation = {head=jse.artifact.head, body=jse.relic.body, waist="Embla sash"}
+    sets.buff.PDTSublimation = {head=jse.artifact.head, body=jse.relic.body, waist="Embla sash"}
 
     sets.precast.Item['Holy Water'] = {
         neck="Nicander's necklace",
@@ -662,18 +682,18 @@ function init_gear_sets()
 
     sets.idle = {
         ammo="Homiliary",
-        head="Arbatel bonnet +3",
+        head=jse.empyrean.head,
         neck="Loricate torque +1",
         ear1="Etiolation earring",
         ear2="Arete del Luna +1",
-        body="Arbatel gown +3",
+        body=jse.empyrean.body,
         hands="Agwu's gages",
         ring1={name="Stikini Ring +1", bag="wardrobe5"},
         ring2={name="Stikini Ring +1", bag="wardrobe6"},
         back=hybrid_cape,
         waist="Platinum moogle belt",
         legs="Assiduity pants +1",
-        feet="Arbatel loafers +3"
+        feet=jse.empyrean.feet
     }
 
     sets.defense.PDT = {
@@ -697,18 +717,18 @@ function init_gear_sets()
     -- 48 dt
     sets.defense.MDT = {
         ammo="Staunch tathlum +1",
-        head="Arbatel bonnet +3", -- 10 mdb 136 meva
+        head=jse.empyrean.head, -- 10 mdb 136 meva
         neck="Warder's charm +1",
         ear1="Lugalbanda earring",
         ear2="Sanare earring", -- 4 mdb 6 meva
         body="Adamantite armor",
-        hands="Arbatel bracers +3", -- 7 mdb 98 meva
+        hands=jse.empyrean.hands, -- 7 mdb 98 meva
         ring1={name="Vexer ring +1", bag="wardrobe5"}, --4 mdb
         ring2="Shadow ring",
         back=mdt_cape, --30 meva
         waist="Platinum moogle belt", -- 15 meva
-        legs="Arbatel pants +3", -- 10 mdb 168 meva
-        feet="Arbatel loafers +3" --10 mdb 168 meva
+        legs=jse.empyrean.legs, -- 10 mdb 168 meva
+        feet=jse.empyrean.feet --10 mdb 168 meva
     }
 
     --sets.buff['Sandstorm'] = {feet="Desert Boots"}

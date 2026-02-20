@@ -59,6 +59,8 @@ function init_gear_sets()
 	jse.empyrean.legs = "Erilaz Leg Guards +3"
 	jse.empyrean.feet = "Erilaz Greaves +3"
 
+    jse.earring = "Erilaz earring +1"
+
     sets.Epeolatry = {main="Epeolatry", sub="Utu grip"}
     sets.Epeolatry.Utu = {main="Epeolatry", sub="Utu grip"}
     sets.Epeolatry.Khonsu = {main="Epeolatry", sub="Khonsu"}
@@ -397,13 +399,14 @@ function init_gear_sets()
         ear2="Ishvara earring",
         body="Nyame mail",
         hands="Nyame gauntlets",
-        ring1="Petrov ring",
+        ring1="Niqmaddu ring",
         ring2="Regal ring",
         back=atk_cape,
         waist="Fotia belt",        
         legs="Nyame flanchard",
         feet="Nyame sollerets"
     }
+    
     sets.precast.WS['Resolution'] = { 
         ammo="Knobkierrie",
         head="Nyame helm",

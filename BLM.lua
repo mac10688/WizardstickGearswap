@@ -71,6 +71,26 @@ end
 -- Define sets and vars used by this job file.
 function init_gear_sets()
 
+    jse.artifact.head = "Spaekona's Petasos +3"
+	jse.artifact.body = "Spaekona's Coat +4"
+	jse.artifact.hands = "Spaekona's Gloves +3"
+	jse.artifact.legs = "Spaekona's Tonban +3"
+	jse.artifact.feet = "Spaekona's Sabots +3"
+
+	jse.relic.head = "Archmage's Petasos +3"
+	jse.relic.body = "Archmage's Coat +3"
+	jse.relic.hands = "Archmage's Gloves +3"
+	jse.relic.legs = "Archmage's Tonbon +3"
+	jse.relic.feet = "Archmage's Sabots +3"
+
+	jse.empyrean.head = "Wicce Petasos +3"
+	jse.empyrean.body = "Wicce Coat +3"
+	jse.empyrean.hands = "Wicce Gloves +3"
+	jse.empyrean.legs = "Wicce Chausses +3"
+	jse.empyrean.feet = "Wicce Sabots +3"
+
+    jse.earring = "Wicce earring +1"
+
     sets.Laevateinn = {}
     sets.Laevateinn.Khonsu = {main="Laevateinn", sub="Khonsu"}
     sets.Laevateinn.Enki = {main="Laevateinn", sub="Enki strap"}
@@ -116,9 +136,9 @@ function init_gear_sets()
     ---- Precast Sets ----
     
     -- Precast sets to enhance JAs
-    sets.precast.JA['Mana Wall'] = { feet = "Wicce sabots +3" }
+    sets.precast.JA['Mana Wall'] = { feet = jse.empyrean.feet }
 
-    sets.precast.JA.Manafont = { body = "Archmage's coat +3"}
+    sets.precast.JA.Manafont = { body = jse.relic.body}
     
     -- equip to maximize HP (for Tarus) and minimize MP loss before using convert
     sets.precast.JA.Convert = {}
@@ -143,11 +163,11 @@ function init_gear_sets()
     sets.precast.FC['Enhancing Magic'] = set_combine(sets.precast.FC)
 
     sets.precast.FC['Elemental Magic'] = set_combine(sets.precast.FC, {
-        head="Wicce petasos +3",
+        head=jse.empyrean.head,
         ear2="Barkarole earring",
         ring1="Mallquis Ring",
         legs="Mallquis trews +2",
-        feet="Spaekona's sabots +3"
+        feet=jse.artifact.feet
     })
 
     sets.precast.FC['Impact'] = set_combine(sets.precast.FC, {
@@ -162,11 +182,11 @@ function init_gear_sets()
     sets.precast.FC.Curaga = sets.precast.FC.Cure
 
     local physical_int_ws = {
-        head="Archmage's petasos +3",
+        head=jse.relic.head,
         neck="Sorcerer's stole +2",
         ear1="Regal earring",
         ear2="Ishvara earring",
-        body="Archmage's coat +3",
+        body=jse.relic.coat,
         hands="Jhakri cuffs +2",
         ring1="Medada's ring",
         ring2="Metamorph ring +1",  
@@ -177,11 +197,11 @@ function init_gear_sets()
     }
 
     local magical_int_ws = {
-        head="Archmage's petasos +3",
+        head=jse.relic.head,
         neck="Sorcerer's stole +2",
         ear1="Regal earring",
         ear2="Malignance earring",
-        body="Archmage's coat +3",
+        body=jse.relic.coat,
         hands="Jhakri cuffs +2",
         ring1="Medada's ring",
         ring2="Metamorph ring +1",        
@@ -237,8 +257,8 @@ function init_gear_sets()
     sets.precast.WS["Cataclysm"] = set_combine(dark_magic_int_ws, {
         -- legs="Jhakri slops +2",
         -- feet="Jhakri pigaches +2"
-        -- hands="Archmage's gloves +3"
-        -- head="Archmage's petasos +3",
+        -- hands=jse.relic.hands
+        -- head=jse.relic.head,
         -- ring1="Metamorph ring +1"
         -- neck="Fotia gorget"
         -- belt="Fotia belt"
@@ -254,14 +274,14 @@ function init_gear_sets()
         ear1="Etiolation earring",
         ear2="Loquacious earring",
         neck="Sanctity necklace",
-        body="Spaekona's coat +4",
-        hands="Spaekona's gloves +3",
+        body=jse.artifact.body,
+        hands=jse.artifact.hands,
         ring1="Mephitas's ring +1",
         ring2="Metamorph ring +1",
         back=death_cape,
         waist="Luminary sash",
-        legs="Spaekona's tonban +3",
-        feet="Spaekona's sabots +3"
+        legs=jse.artifact.legs,
+        feet=jse.artifact.feet
     }
     
     
@@ -306,25 +326,25 @@ function init_gear_sets()
         neck = "Sorcerer's stole +2",
         left_ear = "Regal earring",
         right_ear="Malignance earring",
-        body = "Spaekona's coat +4",
+        body = jse.artifact.body,
         hands= "Regal cuffs",
         ring1="Medada's ring",
         ring2="Kishar Ring",
         back="Aurist's cape +1",
         waist="Luminary Sash",
-        legs="Spaekona's tonban +3",
-        feet="Spaekona's sabots +3"
+        legs=jse.artifact.legs,
+        feet=jse.artifact.feet
     }
         
     sets.midcast.ElementalDebuff = {
         main="Laevateinn",
         sub="Khonsu",
         ammo="Pemphredo tathlum",
-        head="Wicce petasos +3",
-        body="Spaekona's coat +4",
+        head=jse.empyrean.head,
+        body=jse.artifact.body,
         hands="Spae. Gloves +3",
         legs="Arch. Tonban +3",
-        feet="Archmage's sabots +3",
+        feet=jse.relic.feet,
         neck="Null loop",
         waist="Null belt",
         ear1="Regal Earring",
@@ -338,11 +358,11 @@ function init_gear_sets()
         main="Laevateinn",
         sub="Khonsu",
         ammo="Pemphredo Tathlum",
-        head="Wicce petasos +3",
-        body="Wicce coat +3",
-        hands="Archmage's gloves +3",
-        legs="Spaekona's tonban +3",
-        feet="Wicce sabots +3",
+        head=jse.empyrean.head,
+        body=jse.empyrean.body,
+        hands=jse.relic.hands,
+        legs=jse.artifact.legs,
+        feet=jse.empyrean.feet,
         neck="Erra Pendant",
         waist="Acuity belt +1",
         ear1="Regal Earring",
@@ -357,12 +377,12 @@ function init_gear_sets()
     sets.midcast.Drain = set_combine(sets.midcast['Dark Magic'], {
         head="Pixie Hairpin +1",
         neck="Erra pendant",
-        legs="Spaekona's tonban +3",
+        legs=jse.artifact.legs,
         feet="Agwu's pigaches"
     })
     
     sets.midcast.Aspir = set_combine(sets.midcast.Drain, {
-        feet="Archmage's sabots +3"
+        feet=jse.relic.feet
     })
 
     sets.midcast.Aquaveil = set_combine(sets.midcast['Enhancing Magic'], { 
@@ -378,11 +398,11 @@ function init_gear_sets()
     
     sets.midcast['Elemental Magic'] = {
         ammo="Pemphredo tathlum",
-        head="Wicce petasos +3",
-        body="Wicce coat +3",
-        hands="Wicce gloves +3",
-        legs="Wicce chausses +3",
-        feet="Archmage's sabots +3",
+        head=jse.empyrean.head,
+        body=jse.empyrean.body,
+        hands=jse.empyrean.hands,
+        legs=jse.empyrean.legs,
+        feet=jse.relic.feet,
         neck="Sorcerer's stole +2",
         waist="Acuity belt +1",
         ear1="Malignance earring",
@@ -393,18 +413,18 @@ function init_gear_sets()
     }
 
     sets.midcast['Elemental Magic'].JaSpell = set_combine(sets.midcast['Elemental Magic'], {
-        legs="Wicce chausses +3"
+        legs=jse.empyrean.legs
     })
 
     sets.midcast['Elemental Magic'].AncientMagic = set_combine(sets.midcast['Elemental Magic'], {
-        head = "Archmage's petasos +3"
+        head = jse.relic.head
    })
 
    local deathSet = set_combine(sets.midcast['Elemental Magic'], {
         head="Pixie hairpin +1",
         ring2="Archon ring",
         back=death_cape,
-        feet="Wicce sabots +3"
+        feet=jse.empyrean.feet
     })
 
     sets.precast['Death'] = deathSet
@@ -416,9 +436,9 @@ function init_gear_sets()
         ammo="Ghastly tathlum +1",
         head="Ea hat +1", --MB: 7 MB2: 7
         neck="Sorcerer's stole +2", --MB: 10
-        body="Wicce coat +3", --MB2: 5
+        body=jse.empyrean.body, --MB2: 5
         hands="Agwu's gages", --MB: 8 MB2: 5
-        legs="Wicce chausses +3", --MB: 15
+        legs=jse.empyrean.legs, --MB: 15
         feet="Agwu's pigaches", --MB: 6
         right_ring="Metamorph ring +1",
         back=magic_atk_cape --MB 5
@@ -430,7 +450,7 @@ function init_gear_sets()
         ammo="Ghastly tathlum +1",
         head="Ea hat +1", --MB: 7 MB2: 7
         neck="Sorcerer's stole +2", --MB: 10
-        body="Wicce coat +3", --MB2: 5
+        body=jse.empyrean.body, --MB2: 5
         hands="Agwu's gages", --MB: 8 MB2: 5
         waist="Sacro cord",
         legs="Ea slops +1", --MB: 8 MB2: 8
@@ -445,7 +465,7 @@ function init_gear_sets()
         ammo="Ghastly tathlum +1",
         head="Ea hat +1", --MB: 7 MB2: 7
         neck="Sorcerer's stole +2", --MB: 10
-        body="Wicce coat +3", --MB2: 5
+        body=jse.empyrean.body, --MB2: 5
         hands="Agwu's gages", --MB: 8 MB2: 5
         legs="Ea slops +1", --MB: 8 MB2: 8
         feet="Agwu's pigaches", --MB: 6
@@ -454,12 +474,12 @@ function init_gear_sets()
     })
 
     sets.midcast['Elemental Magic']['DT'] = set_combine(sets.midcast['Elemental Magic'], {
-        head="Wicce petasos +3", --MB: 7 MB2: 7
+        head=jse.empyrean.head, --MB: 7 MB2: 7
         neck="Sorcerer's stole +2", --MB: 10
-        body="Wicce coat +3", --MB2: 5
-        hands="Wicce gloves +3", --MB: 8 MB2: 5
-        legs="Wicce chausses +3", --MB: 8 MB2: 8
-        feet="Wicce sabots +3", --MB: 6
+        body=jse.empyrean.body, --MB2: 5
+        hands=jse.empyrean.hands, --MB: 8 MB2: 5
+        legs=jse.empyrean.legs, --MB: 8 MB2: 8
+        feet=jse.empyrean.feet, --MB: 6
         back=magic_atk_cape --MB 5
     })
 
@@ -494,7 +514,7 @@ function init_gear_sets()
         body="Crepuscular cloak",
         back="Null shawl",
         waist="Null belt",
-        feet="wicce sabots +3"
+        feet=jse.empyrean.feet
     })
 
     sets.midcast["Dispelga"] = set_combine(sets.midcast['Enfeebling Magic'], {main="Daybreak"})
@@ -518,18 +538,18 @@ function init_gear_sets()
 
     sets.defense.MDT = {
         ammo="Staunch Tathlum +1",
-        head="Wicce Petasos +3",
+        head=jse.empyrean.head,
         neck="Loricate Torque +1",
         ear1="Sanare Earring",
         ear2="Lugalbanda Earring",
         body="Adamantite armor",
-        hands="Wicce Gloves +3",
+        hands=jse.empyrean.hands,
         ring1="Shadow ring",
         ring2={name="Vexer ring +1", bag="wardrobe6"}, --4 mdb  
         back=idle_mdt_cape,
         waist="Acuity belt +1",
-        legs="Wicce Chausses +3",
-        feet="Wicce Sabots +3"
+        legs=jse.empyrean.legs,
+        feet=jse.empyrean.feet
     }
 
     -- Normal refresh idle set
@@ -552,7 +572,7 @@ function init_gear_sets()
 
     -- Buff sets: Gear that needs to be worn to actively enhance a current player buff.
     
-    sets.buff['Mana Wall'] = { feet = "Wicce sabots +3" }
+    sets.buff['Mana Wall'] = { feet = jse.empyrean.feet }
 
     -- Engaged sets
 
@@ -618,8 +638,8 @@ function job_post_midcast(spell, action, spellMap, eventArgs)
         if state.MagicBurst.value then
             equip(sets.midcast.MagicBurst)
         end
-        if player.mp < 400 or state.LockMpReturn.value then
-            equip({body="Spaekona's coat +4"})
+        if player.mp < 600 or state.LockMpReturn.value then
+            equip({body=jse.artifact.body})
         end
         if state.UseObi.value then
             local obi_or_orpheus = obi_or_orpheus(spell)

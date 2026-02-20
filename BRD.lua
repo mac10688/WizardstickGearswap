@@ -92,16 +92,18 @@ function init_gear_sets()
 	jse.artifact.feet = "Brioso Slippers +3"
 
 	jse.relic.head = "Bihu Roudlet +3"
-	jse.relic.body = "Bihu Roudlet +3"
-	jse.relic.hands = "Bihu Roudlet +3"
-	jse.relic.legs = "Bihu Roudlet +3"
-	jse.relic.feet = "Bihu Roudlet +3"
+	jse.relic.body = "Bihu Justaucorps +4"
+	jse.relic.hands = "Bihu Cuffs +3"
+	jse.relic.legs = "Bihu Cannions +3"
+	jse.relic.feet = "Bihu Slippers +3"
 
 	jse.empyrean.head = "Fili Calot +3"
 	jse.empyrean.body = "Fili Hongreline +3"
 	jse.empyrean.hands = "Fili Manchettes +3"
 	jse.empyrean.legs = "Fili Rhingrave +3"
 	jse.empyrean.feet = "Fili Cothurnes +3"
+
+    jse.earring = "Fili Earring +1"
 
     --------------------------------------
     -- Start defining the sets
@@ -150,11 +152,11 @@ function init_gear_sets()
         back=fast_cast_cape,
         waist="Embla sash",
         legs="Lengo pants",
-        feet="Bihu slippers +3"
+        feet=jse.relic.feet
     }
 
     sets.precast.FC.BardSong = set_combine(sets.precast.FC, {
-        head="Fili calot +3",
+        head=jse.empyrean.head,
         legs="Gendewitha spats +1"
     })
 
@@ -164,7 +166,7 @@ function init_gear_sets()
     sets.precast.FC.Daurdabla = set_combine(sets.precast.FC.BardSong, {
         ranged=info.ExtraSongInstrument,
         hands="Bewegt cuffs",
-        legs="Fili rhingrave +3"
+        legs=jse.empyrean.legs
     })
 
     --["dummy"] = L{"Gold Capriccio", "Puppet's Operetta"},
@@ -173,9 +175,9 @@ function init_gear_sets()
     
     -- Precast sets to enhance JAs
     
-    sets.precast.JA.Nightingale = {feet="Bihu slippers +3"}
-    sets.precast.JA.Troubadour = {body="Bihu justaucorps +4"}
-    sets.precast.JA['Soul Voice'] = {legs="Bihu cannions +3"}
+    sets.precast.JA.Nightingale = {feet=jse.relic.feet}
+    sets.precast.JA.Troubadour = {body=jse.relic.body}
+    sets.precast.JA['Soul Voice'] = {legs=jse.relic.legs}
 
     -- -- Waltz set (chr and vit)
     -- sets.precast.Waltz = {range="Gjallarhorn",
@@ -192,7 +194,7 @@ function init_gear_sets()
         neck="Fotia gorget",
         ear1="Moonshade earring",
         ear2="Telos earring",
-        body="Bihu justaucorps +4",
+        body=jse.relic.body,
         hands="Nyame gauntlets",
         ring1="ILabrat ring",
         ring2="Epaminondas's ring",
@@ -225,11 +227,11 @@ function init_gear_sets()
         neck="Bard's charm +2",
         ear1="Regal earring",
         ear2="Ishvara earring",
-        body="Bihu justaucorps +4",
+        body=jse.relic.body,
         ring1="Metamorph ring +1",
         back=mordant_rime_cape,
         waist="Sailfi Belt +1"
-        -- legs="Bihu cannions +3"
+        -- legs=jse.relic.legs
     })
     
     sets.precast.WS['Aeolian Edge'] = set_combine(sets.precast.WS, {
@@ -254,18 +256,18 @@ function init_gear_sets()
     sets.midcast.BardSong.SongEffect = {
         main="Carnwenhan",
         ranged="Loughnashade",
-        head="Fili calot +3",
+        head=jse.empyrean.head,
         neck="Moonbow whistle +1",
         ear1="Genmei earring",
-        ear2="Fili earring +1",        
-        body="Fili hongreline +3",
-        hands="Fili manchettes +3",
+        ear2=jse.earring,        
+        body=jse.empyrean.body,
+        hands=jse.empyrean.hands,
         ring1="Moonlight ring",
         ring2="Defending ring",
         back=fast_cast_cape,
         waist="Flume belt +1",
         legs="Inyanga shalwar +2",
-        feet="Brioso slippers +3"
+        feet=jse.artifact.feet
     }
 
     -- For song debuffs (duration primary, accuracy secondary)
@@ -276,36 +278,36 @@ function init_gear_sets()
         head=jse.artifact.head,
         neck="Moonbow Whistle +1",
         ear1="Regal earring",
-        ear2="Fili earring +1",
-        body="Brioso justaucorps +3",
-        hands="Fili Manchettes +3",
+        ear2=jse.earring,
+        body=jse.artifact.body,
+        hands=jse.empyrean.hands,
         ring1={name="Stikini Ring +1", bag="wardrobe5"},
         ring2={name="Stikini Ring +1", bag="wardrobe6"},
         back=debuff_cape,
         waist="Null belt",
-        legs="Brioso cannions +3",
-        feet="Brioso slippers +3"
+        legs=jse.artifact.legs,
+        feet=jse.artifact.feet
     }
 
     sets.midcast.BardSong.SongDebuff = set_combine(sets.midcast.BardSong.ResistantSongDebuff, {
-        head="Fili calot +3",
-        body="Fili hongreline +3",
-        legs="Fili rhingrave +3",
+        head=jse.empyrean.head,
+        body=jse.empyrean.body,
+        legs=jse.empyrean.legs,
         ring2="Defending ring"
     })
 
         -- Gear to enhance certain classes of songs.  No instruments added here since Loughnashade is being used.
     sets.midcast.BardSong["Honor March"] = set_combine(sets.midcast.BardSong.SongEffect, {ranged="Marsyas"})
     sets.midcast.BardSong["Aria of Passion"] = set_combine(sets.midcast.BardSong.SongEffect, {ranged="Loughnashade"})
-    sets.midcast.BardSong.Ballad = set_combine(sets.midcast.BardSong.SongEffect, {legs="Fili rhingrave +3"})
-    sets.midcast.BardSong.Lullaby = set_combine(sets.midcast.BardSong.SongDebuff, {ranged="Daurdabla", hands="Brioso cuffs +3"})
-    sets.midcast.BardSong.Madrigal = set_combine(sets.midcast.BardSong.SongEffect, {head="Fili calot +3"})
-    sets.midcast.BardSong.March = set_combine(sets.midcast.BardSong.SongEffect, {hands="Fili Manchettes +3"})
-    sets.midcast.BardSong.Minuet = set_combine(sets.midcast.BardSong.SongEffect, {body="Fili hongreline +3"})
+    sets.midcast.BardSong.Ballad = set_combine(sets.midcast.BardSong.SongEffect, {legs=jse.empyrean.legs})
+    sets.midcast.BardSong.Lullaby = set_combine(sets.midcast.BardSong.SongDebuff, {ranged="Daurdabla", hands=jse.artifact.hands})
+    sets.midcast.BardSong.Madrigal = set_combine(sets.midcast.BardSong.SongEffect, {head=jse.empyrean.head})
+    sets.midcast.BardSong.March = set_combine(sets.midcast.BardSong.SongEffect, {hands=jse.empyrean.hands})
+    sets.midcast.BardSong.Minuet = set_combine(sets.midcast.BardSong.SongEffect, {body=jse.empyrean.body})
     sets.midcast.BardSong.Minne = set_combine(sets.midcast.BardSong.SongEffect, {legs="Mousai seraweels +1"})
-    sets.midcast.BardSong.Paeon = set_combine(sets.midcast.BardSong.SongEffect, {head="Brioso roundlet +3"})
+    sets.midcast.BardSong.Paeon = set_combine(sets.midcast.BardSong.SongEffect, {head=jse.artifact.head})
     sets.midcast.BardSong.Carol = set_combine(sets.midcast.BardSong.SongEffect, {hands="Mousai gages +1"})
-    sets.midcast.BardSong["Sentinel's Scherzo"] = set_combine(sets.midcast.BardSong.SongEffect, {feet="Fili cothurnes +3"})
+    sets.midcast.BardSong["Sentinel's Scherzo"] = set_combine(sets.midcast.BardSong.SongEffect, {feet=jse.empyrean.feet})
     
         -- sets.midcast['Magic Finale'] = {neck="Wind Torque",waist="Corvax Sash",legs="Aoidos' Rhing. +2"}
 
@@ -314,7 +316,7 @@ function init_gear_sets()
     sets.midcast.BardSong.DaurdablaDummy = set_combine(sets.precast.FC.BardSong, {
         ranged="Daurdabla",
         hands="Bewegt cuffs",
-        legs="Fili rhingrave +3"
+        legs=jse.empyrean.legs
     })
 
     --["dummy"] = L{"Gold Capriccio", "Puppet's Operetta"},
@@ -331,17 +333,6 @@ function init_gear_sets()
     }
         
     sets.midcast.Curaga = sets.midcast.Cure
-        
-    sets.midcast.Stoneskin = {
-        head="Nahtirah Hat",
-        body="Gendewitha Bliaut",hands="Gendewitha Gages",
-        legs="Gendewitha Spats",feet="Gendewitha Galoshes"}
-        
-    sets.midcast.Cursna = {
-        neck="Malison Medallion",
-        hands="Hieros Mittens",ring1="Ephedra Ring"
-    }
-
     
     -- Sets to return to when not performing an action.
     
@@ -352,7 +343,7 @@ function init_gear_sets()
         head="Bunzi's hat",
         neck="Loricate torque +1",
         ear1="Genmei earring",
-        ear2="Fili earring +1",
+        ear2=jse.earring,
         body="Bunzi's robe",
         hands="Bunzi's gloves",
         ring1="Moonlight ring",
@@ -409,18 +400,18 @@ function init_gear_sets()
 
     sets.defense.MDT = {
         ranged=def_linos,
-        head="Fili calot +3",
+        head=jse.empyrean.head,
         neck="Loricate torque +1",
         ear1="Sanare earring",
         ear2="Arete del luna +1",
         body="Adamantite armor",
-        hands="Fili manchettes +3",
+        hands=jse.empyrean.hands,
         ring1="Shadow ring",
         ring2={name="Vexer ring +1", bag="wardrobe6"},
         back=idle_mdt_cape,
         waist="Null belt",
-        legs="Fili rhingrave +3",
-        feet="Fili cothurnes +3"
+        legs=jse.empyrean.legs,
+        feet=jse.empyrean.feet
     }
 
     sets.Kiting = {
@@ -465,15 +456,15 @@ function init_gear_sets()
         head="Cath Palug crown",
         neck="Voltsurge torque",
         ear1="Enchanter's earring +1",
-        ear2="Fili earring +1",
-        body="Fili hongreline +3",
-        hands="Fili manchettes +3",
+        ear2=jse.earring,
+        body=jse.empyrean.body,
+        hands=jse.empyrean.hands,
         ring1="Kishar ring",
         ring2="Medada's ring",
         back=debuff_cape,
         waist="Null belt",
-        legs="Fili rhingrave +3",
-        feet="Fili cothurnes +3"
+        legs=jse.empyrean.legs,
+        feet=jse.empyrean.feet
     }
 
     sets.enmity = {
@@ -485,7 +476,7 @@ function init_gear_sets()
         ear1="Trux Earring",
         ear2="Tuisto Earring",
         body="Emet Harness +1",
-        hands="Fili Manchettes +3",
+        hands=jse.empyrean.hands,
         ring1="Eihwaz Ring",
         ring2="Supershear Ring",
         back=enmity_cape,

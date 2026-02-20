@@ -71,7 +71,28 @@ function init_gear_sets()
     --------------------------------------
     -- Start defining the sets
     --------------------------------------
-    local fastcast_cape = { name="Alaunus's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Def+50'}}
+
+    jse.artifact.head = "Theophany Cap +3"
+	jse.artifact.body = "Theophany Bliaut +3"
+	jse.artifact.hands = "Theophany Mitts +3"
+	jse.artifact.legs = "Theophany Pantaloons +3"
+	jse.artifact.feet = "Theophany Duckbills +3"
+
+	jse.relic.head = "Piety Cap +3"
+	jse.relic.body = "Piety Bliaut +3"
+	jse.relic.hands = "Piety Mitts +3"
+	jse.relic.legs = "Piety Pantaloons +3"
+	jse.relic.feet = "Piety Duckbills +3"
+
+	jse.empyrean.head = "Ebers Cap +3"
+	jse.empyrean.body = "Ebers Bliaut +3"
+	jse.empyrean.hands = "Ebers Mitts +3"
+	jse.empyrean.legs = "Ebers Pantaloons +3"
+	jse.empyrean.feet = "Ebers Duckbills +3"
+
+    jse.earring = "Ebers Earring +2"
+
+    local fastcast_cape = { name="Alaunus's Cape", augments={'VIT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Fast Cast"+10','DEF+50'}}
     local attack_cape = { name="Alaunus's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10','Mag. Evasion+15'}}
     local physical_mnd_ws_cape = { name="Alaunus's Cape", augments={'MND+20','Accuracy+20 Attack+20','MND+10','Weapon skill damage +10%','Damage taken-5%'}}
     local idle_hybrid_cape = { name="Alaunus's Cape", augments={'VIT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Fast Cast"+10','DEF+50'}}
@@ -124,7 +145,7 @@ function init_gear_sets()
     -- Fast cast sets for spells
     sets.precast.FC = {
         ammo="Incantor Stone", --2%
-        head="Ebers cap +3", --13%
+        head=jse.empyrean.head, --13%
         neck="Cleric's torque +2", --10%
         ear1="Malignance earring", --4%
         -- ear2="Loquacious Earring", --2%
@@ -137,22 +158,22 @@ function init_gear_sets()
         back=fastcast_cape, --10%
         -- waist="Embla Sash", --5%
         -- legs="Lengo pants", --5%
-        legs="Ebers pantaloons +3",
+        legs=jse.empyrean.legs,
         feet="Nyame sollerets"
     }
 
     sets.precast.FC.Stoneskin = set_combine(sets.precast.FC, {head="Umuthi Hat"})
 
-    sets.precast.FC['Healing Magic'] = set_combine(sets.precast.FC, {main="Yagrush", legs="Ebers pantaloons +3"})
+    sets.precast.FC['Healing Magic'] = set_combine(sets.precast.FC, {main="Yagrush", legs=jse.empyrean.legs})
 
     sets.precast.FC.StatusRemoval = sets.precast.FC['Healing Magic']
 
     sets.precast.FC.Cure = set_combine(sets.precast.FC, {
         -- sub="Sors shield",
         ammo="Incantor stone",
-        head="Ebers cap +3",
+        head=jse.empyrean.head,
         ear1="Nourishing earring +1",
-        feet="Ebers duckbills +3"
+        feet=jse.empyrean.feet
     })
     sets.precast.FC.Curaga = sets.precast.FC.Cure
     sets.precast.FC.CureSolace = sets.precast.FC.Cure
@@ -167,13 +188,13 @@ function init_gear_sets()
     -- CureMelee spell map should default back to Healing Magic.
     
     -- Precast sets to enhance JAs
-    sets.precast.JA.Benediction = {body="Piety Bliaut +3"}
+    sets.precast.JA.Benediction = {body=jse.relic.body}
 
     -- sets.precast.JA.Benediction ={
     --     main="Mafic Cudgel",
     --     sub="Genmei Shield",
     --     ammo="Hydrocera",
-    --     head="Ebers Cap +3",
+    --     head=jse.empyrean.head,
     --     neck="Unmoving Collar +1",
     --     ear1="Cryptic Earring",
     --     ear2="Trux Earring",
@@ -184,10 +205,10 @@ function init_gear_sets()
     --     back=enmity_cape,
     --     waist="Plat. Mog. Belt",
     --     legs="Ebers Pant. +3",
-    --     feet="Ebers Duckbills +3"
+    --     feet=jse.empyrean.feet
     -- }
 
-    sets.precast.JA.Devotion = {head="Piety Cap +3"}
+    sets.precast.JA.Devotion = {head=jse.relic.head}
     
     local physical_mnd_ws = {
         ammo="Crepuscular pebble",
@@ -230,7 +251,7 @@ function init_gear_sets()
         main="Raetic Rod +1",
         sub="Genmei Shield",
         ammo="Staunch Tathlum +1", --11%
-        head="Ebers Cap +3", --12%
+        head=jse.empyrean.head, --12%
         body="Pinga tunic +1",
         hands={ name="Chironic Gloves", augments={'Mag. Acc.+15 "Mag.Atk.Bns."+15','Spell interruption rate down -11%','INT+8','"Mag.Atk.Bns."+5',}}, --31%
         legs="Ebers Pant. +3",
@@ -255,22 +276,22 @@ function init_gear_sets()
     sets.midcast.Cure.Pure = {
         main="Raetic Rod +1",
         ammo="Staunch Tathlum +1",
-        head="Ebers cap +3",  --10 mdb 125 meva
+        head=jse.empyrean.head,  --10 mdb 125 meva
         neck="Cleric's torque +2",
         ear1="Glorious earring",
-        ear2="Ebers Earring +2",
-        body="Theophany bliaut +3", -- 8 mdb 100 meva
-        hands="Theophany mitts +3", -- 5 mdb 57 meva
+        ear2=jse.earring,
+        body=jse.artifact.body, -- 8 mdb 100 meva
+        hands=jse.artifact.hands, -- 5 mdb 57 meva
         ring1="Medada's ring",
         ring2="Persis ring",
         back=fastcast_cape, 
         waist="Plat. Mog. Belt", -- 15 meva
-        legs="Ebers pantaloons +3", --10 mdb 157 meva
-        feet="Ebers duckbills +3" -- 9 mdb 157 meva
+        legs=jse.empyrean.legs, --10 mdb 157 meva
+        feet=jse.empyrean.feet -- 9 mdb 157 meva
     }
 
-    sets.midcast.Cure.Pure.Solace = set_combine(sets.midcast.Cure.Pure, {body="Ebers Bliaut +3"})
-    sets.midcast.Cure.SIRD.Solace = set_combine(sets.midcast.Cure.SIRD, {body="Ebers Bliaut +3"})
+    sets.midcast.Cure.Pure.Solace = set_combine(sets.midcast.Cure.Pure, {body=jse.empyrean.body})
+    sets.midcast.Cure.SIRD.Solace = set_combine(sets.midcast.Cure.SIRD, {body=jse.empyrean.body})
 
     sets.midcast.Curaga = sets.midcast.Cure
     sets.midcast.Curaga.Pure = sets.midcast.Cure.Pure
@@ -280,15 +301,15 @@ function init_gear_sets()
         main="Yagrush",
         sub="Genmei Shield",
         ammo="Staunch Tathlum +1", --11%
-        head="Ebers Cap +3", --12%
+        head=jse.empyrean.head, --12%
         neck="Loricate torque +1",
-        body="Ebers Bliaut +3",
+        body=jse.empyrean.body,
         hands={ name="Chironic Gloves", augments={'Mag. Acc.+15 "Mag.Atk.Bns."+15','Spell interruption rate down -11%','INT+8','"Mag.Atk.Bns."+5',}}, --31%
         legs="Ebers Pant. +3",
         feet="Theo. Duckbills +3", --29%        
         waist="Plat. Mog. Belt",
         left_ear="Sanare earring",
-        right_ear="Ebers Earring +2",
+        right_ear=jse.earring,
         ring1="Freke Ring", --10%
         ring2="Defending Ring",        
         back=fastcast_cape
@@ -303,7 +324,7 @@ function init_gear_sets()
         hands="Fanatic gloves",
         ring1="Haoma's ring",
         ring2="Menelaus's Ring",
-        legs="Theophany pantaloons +3",
+        legs=jse.artifact.legs,
         feet="Gendewitha Galoshes +1"
     })
 
@@ -319,10 +340,10 @@ function init_gear_sets()
         hands="Inyanga dastanas +2",
         ring1={name="Stikini Ring +1", bag="wardrobe5"},
         ring2={name="Stikini Ring +1", bag="wardrobe6"},
-        back="Fi follet cape +1",
+        back=fastcast_cape,
         waist="Embla sash",
-        legs="Piety Pantaloons +3",
-        feet="Theophany duckbills +3"
+        legs=jse.relic.legs,
+        feet=jse.artifact.feet
     }
 
     local midcast_duration = {
@@ -333,19 +354,19 @@ function init_gear_sets()
         body="Telchine chasuble",
         hands="Telchine gloves",
         legs="Telchine braconi",
-        feet="Theophany duckbills +3"
+        feet=jse.artifact.feet
     }
 
     local midcast_pdt = {
         ammo="Staunch tathlum +1",
         neck="Loricate torque +1",
         ear1="Sanare earring", --3% magic dmg
-        ear2="Ebers Earring +2",
+        ear2=jse.earring,
         ring2="Defending ring", --3% dmg
         ring1="Shadow ring", --10% dmg
         back=dt_cape,
         waist="Platinum moogle belt",
-        feet="Ebers duckbills +3"
+        feet=jse.empyrean.feet
     }
 
     local five_hundred_skill_enhancing_max_duration = {
@@ -379,7 +400,7 @@ function init_gear_sets()
         head="Telchine cap",
         neck="Loricate torque +1",
         ear1="Sanare earring", --3% magic dmg
-        ear2="Ebers Earring +2",
+        ear2=jse.earring,
         body="Telchine chasuble",
         hands="Telchine gloves",
         ring2="Defending ring", --3% dmg
@@ -387,7 +408,7 @@ function init_gear_sets()
         back=dt_cape,
         waist="Platinum moogle belt",
         legs="Telchine braconi",
-        feet="Ebers duckbills +3"
+        feet=jse.empyrean.feet
     })
 
     sets.midcast.BarElement = {
@@ -395,21 +416,21 @@ function init_gear_sets()
         sub="Ammurapi shield",
         head="Telchine cap",
         ear1="Sanare earring", --3% magic dmg
-        ear2="Ebers Earring +2",
+        ear2=jse.earring,
         neck="Loricate torque +1",
-        body="Ebers Bliaut +3", --Solace
+        body=jse.empyrean.body, --Solace
         hands="Telchine gloves",
         ring1="Shadow ring", --10% dmg
         ring2="Ayanmo ring", --3% dmg        
         back=dt_cape,
         waist="Embla sash",
-        legs="Piety Pantaloons +3",
+        legs=jse.relic.legs,
         feet="Telchine pigaches"
     }
 
     -- sets.midcast.BarElement = set_combine(midcast_duration, {
     --     main="Beneficus",
-    --     legs="Piety Pantaloons +3"
+    --     legs=jse.relic.legs
     -- })
 
     sets.midcast.BarStatus = set_combine(midcast_duration, {
@@ -420,10 +441,10 @@ function init_gear_sets()
         main="Bolelabunga",
         sub="Ammurapi shield",
         head="Inyanga tiara +2",
-        body="Piety bliaut +3",
-        hands="Ebers mitts +3",
-        legs="Theophany pantaloons +3",
-        feet="Theophany duckbills +3"
+        body=jse.relic.body,
+        hands=jse.empyrean.hands,
+        legs=jse.artifact.legs,
+        feet=jse.artifact.feet
     })
 
     sets.midcast.Protect = no_skill_midcast
@@ -437,18 +458,18 @@ function init_gear_sets()
         main="Yagrush",
         sub="Ammurapi shield",
         ammo="Hydrocera",
-        head="Ebers cap +3",
+        head=jse.empyrean.head,
         neck="Incanter's torque",
         ear1="Regal earring",
-        ear2="Ebers Earring +2",
-        body="Ebers bliaut +3",
-        hands="Piety mitts +3",
+        ear2=jse.earring,
+        body=jse.empyrean.body,
+        hands=jse.relic.hands,
         ring1={name="Stikini Ring +1", bag="wardrobe5"},
         ring2={name="Stikini Ring +1", bag="wardrobe6"},
         back="Aurist's cape +1",
         waist="Obstinate sash",
-        legs="Theophany pantaloons +3",
-        feet="Ebers duckbills +3"
+        legs=jse.artifact.legs,
+        feet=jse.empyrean.feet
     }
 
     sets.midcast.Holy = {
@@ -473,18 +494,18 @@ function init_gear_sets()
         main="Daybreak",
         sub="Ammurapi shield",
         ammo="Hydrocera",
-        head="Ebers cap +3",
+        head=jse.empyrean.head,
         neck="Incanter's torque",
         ear1="Malignance earring",
-        ear2="Ebers Earring +2",
-        body="Ebers bliaut +3",
-        hands="Piety mitts +3",
+        ear2=jse.earring,
+        body=jse.empyrean.body,
+        hands=jse.relic.hands,
         ring1={name="Stikini Ring +1", bag="wardrobe5"},
         ring2={name="Stikini Ring +1", bag="wardrobe6"},
         back="Aurist's cape +1",
         waist="Obstinate sash",
-        legs="Theophany pantaloons +3",
-        feet="Ebers duckbills +3"
+        legs=jse.artifact.legs,
+        feet=jse.empyrean.feet
     }
 
     sets.midcast.Banishga = sets.midcast.Banish
@@ -494,7 +515,7 @@ function init_gear_sets()
         main="Mafic Cudgel",
         sub="Genmei Shield",
         ammo="Hydrocera",
-        head="Ebers Cap +3",
+        head=jse.empyrean.head,
         neck="Unmoving Collar +1",
         ear1="Cryptic Earring",
         ear2="Trux Earring",
@@ -505,7 +526,7 @@ function init_gear_sets()
         back=enmity_cape,
         waist="Plat. Mog. Belt",
         legs="Ebers Pant. +3",
-        feet="Ebers Duckbills +3"
+        feet=jse.empyrean.feet
     }
 
     sets.midcast['Dark Magic'] = {
@@ -516,32 +537,32 @@ function init_gear_sets()
         neck="Incanter's Torque",
         ear1="Regal Earring",
         ear2="Malignance Earring",
-        body="Ebers Bliaut +3",
+        body=jse.empyrean.body,
         hands="Regal Cuffs",
         ring1="Medada's Ring",
         ring2="Archon Ring",
         back=fastcast_cape,
         waist="Austerity Belt +1",
         legs="Ebers Pant. +3",
-        feet="Ebers Duckbills +3"
+        feet=jse.empyrean.feet
     }
 
     sets.midcast["Enfeebling Magic"] = {
         main="Yagrush",
         sub="Ammurapi shield",
         ammo="Hydrocera",
-        head="Ebers cap +3",
+        head=jse.empyrean.head,
         neck="Erra pendant",
         ear1="Regal earring",
-        ear2="Ebers Earring +2",
-        body="Theophany bliaut +3",
+        ear2=jse.earring,
+        body=jse.artifact.body,
         hands="Regal cuffs",
         ring1="Medada's ring",
         ring2="Kishar ring",
         back="Aurist's cape +1",
         waist="Obstinate sash",
-        legs="Ebers pantaloons +3",
-        feet="Theophany duckbills +3"
+        legs=jse.empyrean.legs,
+        feet=jse.artifact.feet
     }
     
     -- Custom spell classes
@@ -549,8 +570,8 @@ function init_gear_sets()
         main="Contemplator +1",
         sub="Enki strap",
         ear2="Malignance earring",
-        body="Ebers bliaut +3",
-        hands="Ebers mitts +3",
+        body=jse.empyrean.body,
+        hands=jse.empyrean.hands,
         ring1={name="Stikini Ring +1", bag="wardrobe5"},
         ring2={name="Stikini Ring +1", bag="wardrobe6"}      
     }) 
@@ -559,13 +580,13 @@ function init_gear_sets()
         main="Contemplator +1",
         sub="Enki strap",
         ammo="Ghastly tathlum +1",
-        body="Ebers bliaut +3",
+        body=jse.empyrean.body,
         waist="Acuity belt +1",
         ring2="Metamorph ring +1"
     })
 
     sets.midcast.MaccEnfeebles = set_combine(sets.midcast["Enfeebling Magic"], {
-        hands="Ebers mitts +3",
+        hands=jse.empyrean.hands,
     })
 
     sets.midcast.Dia = sets.midcast["Enfeebling Magic"]
@@ -603,14 +624,14 @@ function init_gear_sets()
         neck="Loricate Torque +1", --6% dmg
         ear1="Ran earring", --3% magic dmg
         ear2="Foresti earring",
-        body="Ebers bliaut +3",
+        body=jse.empyrean.body,
         hands="Bunzi's gloves", --7% dmg
         ring1={name="Stikini Ring +1", bag="wardrobe5"},
         ring2={name="Stikini Ring +1", bag="wardrobe6"},
         back=idle_hybrid_cape,
         waist="Platinum moogle belt", --3% magic dmg
         legs={ name="Chironic Hose", augments={'STR+9','CHR+4','"Refresh"+2','Mag. Acc.+14 "Mag.Atk.Bns."+14'}},
-        feet="Ebers duckbills +3" --7% dmg
+        feet=jse.empyrean.feet --7% dmg
     }
     
     -- Defense sets
@@ -639,18 +660,18 @@ function init_gear_sets()
     -- 49% dt
     sets.defense.MDT = {
         ammo="Staunch tathlum +1",
-        head="Ebers cap +3", --10 mdb 125 meva
+        head=jse.empyrean.head, --10 mdb 125 meva
         neck="Loricate Torque +1",
         ear1="Sanare earring", --4 mdb 6 meva
         ear2="Foresti earring",
         body="Adamantite armor",
-        hands="Ebers mitts +3", -- 7 mdb 87 meva
+        hands=jse.empyrean.hands, -- 7 mdb 87 meva
         ring1="Shadow ring", 
         ring2={name="Vexer ring +1", bag="wardrobe6"}, --4 mdb
         back=idle_mdt_cape, -- 30 meva
         waist="Platinum moogle belt", --15 meva
-        legs="Ebers pantaloons +3", -- 10 mdb 157 meva
-        feet="Ebers duckbills +3" -- 9 mdb 157 meva
+        legs=jse.empyrean.legs, -- 10 mdb 157 meva
+        feet=jse.empyrean.feet -- 9 mdb 157 meva
     }
 
     sets.Kiting = {
@@ -676,15 +697,15 @@ function init_gear_sets()
         neck="Combatant's torque",
         waist="Grunfeld Rope",
         ear1="Telos earring",
-        ear2="Ebers Earring +2",
+        ear2=jse.earring,
         ring1={name="Chirich Ring +1", bag="wardrobe5"},
         ring2={name="Chirich Ring +1", bag="wardrobe6"},
         back=attack_cape
     }
 
     -- Buff sets: Gear that needs to be worn to actively enhance a current player buff.
-    sets.buff['Divine Caress'] = {hands="Ebers mitts +3"}
-    sets.buff['Afflatus Solace'] = {body="Ebers Bliaut +3"}
+    sets.buff['Divine Caress'] = {hands=jse.empyrean.hands}
+    sets.buff['Afflatus Solace'] = {body=jse.empyrean.body}
 
     sets.precast.Item['Holy Water'] = {
         neck="Nicander's necklace",

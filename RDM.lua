@@ -103,6 +103,25 @@ function init_gear_sets()
     local idle_pdt_cape = { name="Sucellos's Cape", augments={'VIT+20','Eva.+20 /Mag. Eva.+20','VIT+10','"Dual Wield"+10','DEF+50'}}
     local idle_mdt_cape = { name="Sucellos's Cape", augments={'INT+20','Eva.+20 /Mag. Eva.+20','INT+10','"Dual Wield"+10','Mag. Evasion+15'}}
 
+    jse.artifact.head = "Atrophy Chapeau +3"
+	jse.artifact.body = "Atrophy Tabard +3"
+	jse.artifact.hands = "Atrophy Gloves +3"
+	jse.artifact.legs = "Atrophy Tights +3"
+	jse.artifact.feet = "Atrophy Boots +3"
+
+	jse.relic.head = "Vitiation Chapeau +3"
+	jse.relic.body = "Vitiation Tabard +3"
+	jse.relic.hands = "Vitiation Gloves +3"
+	jse.relic.legs = "Vitiation Tights +3"
+	jse.relic.feet = "Vitiation Boots +3"
+
+	jse.empyrean.head = "Lethargy Chappel +3"
+	jse.empyrean.body = "Lethargy Sayon +3"
+	jse.empyrean.hands = "Lethargy Gantherots +3"
+	jse.empyrean.legs = "Lethargy Fuseau +3"
+	jse.empyrean.feet = "Lethargy Houseaux +3"
+
+    jse.earring = "Lethargy earring +2"
 
     sets.Naegling = {main="Naegling"}
     sets.Naegling.DualWield = {main="Naegling", sub="Thibron"}
@@ -158,7 +177,7 @@ function init_gear_sets()
     -- Precast Sets
     
     -- Precast sets to enhance JAs
-    sets.precast.JA['Chainspell'] = {body="Vitiation tabard +3"}
+    sets.precast.JA['Chainspell'] = {body=jse.relic.body}
     sets.precast.JA['Convert'] = {main="Murgleis"}
         
     -- Fast cast sets for spells
@@ -167,18 +186,18 @@ function init_gear_sets()
     --50
     --83 total
     sets.precast.FC = {   
-        head="Atrophy chapeau +3", --16
+        head=jse.artifact.head, --16
         neck="Unmoving collar +1",
         ear1="Malignance earring", --1
-        ear2="Lethargy earring +2", --9
-        body="Vitiation tabard +3", --15
-        hands="Lethargy gantherots +3", --8
+        ear2=jse.earring, --9
+        body=jse.relic.body, --15
+        hands=jse.empyrean.hands, --8
         ring1="Medada's ring", --10%
         ring2="Defending ring", --4
         back=fc_cape,
         waist="Platinum moogle belt", --5
         legs="Malignance tights",
-        feet="Lethargy houseaux +3"
+        feet=jse.empyrean.feet
     }
 
     sets.precast.FC.Impact = set_combine(sets.precast.FC, {head=empty,body='Crepuscular cloak'})
@@ -186,7 +205,7 @@ function init_gear_sets()
 
     local ws_magic = {
         ammo="Sroda tathlum",
-        head="Lethargy chappel +3",
+        head=jse.empyrean.head,
         neck="Sibyl Scarf",
         ear1="Moonshade earring",
         ear2="Regal earring",
@@ -197,7 +216,7 @@ function init_gear_sets()
         back=int_cape,
         waist="Orpheus's sash",
         legs="Nyame flanchard",
-        feet="Lethargy houseaux +3"
+        feet=jse.empyrean.feet
     }
 
     local ws_physical = {
@@ -205,7 +224,7 @@ function init_gear_sets()
         head="Nyame helm",
         neck="Fotia gorget",
         ear1="Telos earring",
-        ear2="Lethargy earring +2",
+        ear2=jse.earring,
         body="Nyame mail",
         hands="Nyame gauntlets",
         ring1="Rufescent ring",
@@ -213,7 +232,7 @@ function init_gear_sets()
         back=mnd_cape_WS,
         waist="Fotia belt",
         legs="Nyame flanchard",
-        feet="Lethargy houseaux +3"
+        feet=jse.empyrean.feet
     }
        
     -- Weaponskill sets
@@ -271,14 +290,14 @@ function init_gear_sets()
     
     sets.precast.WS["Requiescat"] = {
         head="Leth. Chappel +3",
-        body="Lethargy Sayon +3",
+        body=jse.empyrean.body,
         hands="Leth. Ganth. +3",
         legs="Leth. Fuseau +3",
         feet="Leth. Houseaux +3",
         neck="Sanctity Necklace",
         waist="Kentarch Belt +1",
         left_ear="Crep. Earring",
-        right_ear="Lethargy Earring +2",
+        right_ear=jse.earring,
         left_ring="Rufescent Ring",
         right_ring="Chirich Ring +1",
         back=mnd_cape_WS,
@@ -299,17 +318,17 @@ function init_gear_sets()
     -- Midcast Sets
 
     sets.midcast.Cure = {
-        head="Atrophy chapeau +3",
+        head=jse.artifact.head,
         neck="Loricate torque +1",
         ear1="Malignance earring",
-        ear2="Lethargy earring +2",
+        ear2=jse.earring,
         body="Bunzi's robe",
-        hands="Lethargy gantherots +3",
+        hands=jse.empyrean.hands,
         ring1="Medada's ring",
         ring2="Defending ring",        
         back=mnd_cape,
         waist="Austerity belt +1",
-        legs="Atrophy tights +3",
+        legs=jse.artifact.legs,
         feet="Kaykaus boots"
     }
 
@@ -331,14 +350,14 @@ function init_gear_sets()
         head="Befouled Crown",
         neck="Incanter's torque",
         ear1="Mimir earring",
-        ear2="Lethargy earring +2",
-        body="Vitiation Tabard +3",
-        hands="Vitiation gloves +3",
+        ear2=jse.earring,
+        body=jse.relic.body,
+        hands=jse.relic.hands,
         ring1={name="Stikini Ring +1", bag="wardrobe5"},
         ring2={name="Stikini Ring +1", bag="wardrobe6"},
         waist="Embla sash",
-        legs="Atrophy Tights +3",
-        feet="Lethargy Houseaux +3",
+        legs=jse.artifact.legs,
+        feet=jse.empyrean.feet,
         back="Ghostfyre cape"
     }
 
@@ -350,29 +369,29 @@ function init_gear_sets()
         main="Colada",
         sub="Ammurapi shield",
         head="Telchine cap",
-        ear2="Lethargy earring +2",
+        ear2=jse.earring,
         neck="Duelist's torque +2",
-        body="Vitiation tabard +3",
-        hands="Atrophy gloves +3",
+        body=jse.relic.body,
+        hands=jse.artifact.hands,
         ring1="Medada's ring",
         waist="Embla sash",
         back="Ghostfyre cape",
         legs="Telchine braconi",
-        feet="Lethargy houseaux +3"
+        feet=jse.empyrean.feet
     })
         
     sets.buff.ComposureOther = set_combine(sets.midcast['Enhancing Magic'], {
         main="Colada",
         sub="Ammurapi shield",
-        head="Lethargy Chappel +3",
+        head=jse.empyrean.head,
         neck="Duelist's torque +2",
-        ear2="Lethargy earring +2",
-        hands="Atrophy gloves +3",
-        body="Lethargy sayon +3",
+        ear2=jse.earring,
+        hands=jse.artifact.hands,
+        body=jse.empyrean.body,
         waist="Embla sash",
         back="Ghostfyre cape",
-        legs="Lethargy fuseau +3",
-        feet="Lethargy houseaux +3"
+        legs=jse.empyrean.legs,
+        feet=jse.empyrean.feet
     })
 
     sets.buff.ComposureOtherLongDuration = set_combine(sets.buff.ComposureOther, {
@@ -382,8 +401,8 @@ function init_gear_sets()
     sets.midcast.Regen = sets.midcast.EnhancingDuration
     sets.midcast.Refresh = set_combine(sets.midcast.EnhancingDuration, {
         head="Amalric coif +1",
-        body="Atrophy tabard +3",
-        legs="Lethargy fuseau +3"
+        body=jse.artifact.body,
+        legs=jse.empyrean.legs
     })
 
     sets.midcast.RefreshSelf = set_combine(sets.midcast.refresh, {waist="Gishdubar sash"})
@@ -394,7 +413,7 @@ function init_gear_sets()
         neck="Loricate Torque +1",
         ear1="Magnetic Earring",
         ear2="Sanare Earring",
-        body="Lethargy Sayon +3",
+        body=jse.empyrean.body,
         hands={ name="Chironic Gloves", augments={'Mag. Acc.+15 "Mag.Atk.Bns."+15','Spell interruption rate down -11%','INT+8','"Mag.Atk.Bns."+5',}},
         ring1="Freke Ring",
         ring2="Defending Ring",
@@ -421,7 +440,7 @@ function init_gear_sets()
 
     sets.midcast.Storm = sets.midcast.EnhancingDuration
     sets.midcast.GainStat = set_combine(sets.midcast.EnhancingDuration, {
-        hands="Vitiation Gloves +3"
+        hands=jse.relic.hands
     })
 
     sets.midcast.Haste = sets.midcast.EnhancingDuration
@@ -429,7 +448,7 @@ function init_gear_sets()
     
     --Int during time of casting adds to base dmg but caps at about 250 int
     sets.midcast.Spikes = set_combine(sets.midcast.EnhancingSkill, {
-        legs="Vitiation tights +3"
+        legs=jse.relic.legs
     })
 
     sets.midcast.Protect = set_combine(sets.midcast.EnhancingDuration)
@@ -442,18 +461,18 @@ function init_gear_sets()
         sub="Ammurapi shield",
         ranged=empty,
         ammo="Regal gem",                
-        head="Lethargy chappel +3",
+        head=jse.empyrean.head,
         neck="Duelist's torque +2",
         ear1="Snotra earring",
-        ear2="Lethargy earring +2",
-        body="Lethargy sayon +3",
+        ear2=jse.earring,
+        body=jse.empyrean.body,
         hands="Regal cuffs",
         ring1="Medada's ring",
         ring2={name="Stikini Ring +1", bag="wardrobe6"},
         waist="Obstinate Sash",
         back=int_cape,
         legs={ name="Chironic Hose", augments={'Mag. Acc.+30','"Cure" potency +7%','INT+12','"Mag.Atk.Bns."+8'}},
-        feet="Vitiation Boots +3"
+        feet=jse.relic.feet
     }
 
     -- Custom spell classes
@@ -463,7 +482,7 @@ function init_gear_sets()
     sets.midcast.MndEnfeeblesAcc = set_combine(sets.midcast.MndEnfeebles, {
         -- ranged="Ullr",
         -- ammo=empty,
-        hands="Lethargy gantherots +3",
+        hands=jse.empyrean.hands,
         legs="Leth. Fuseau +3",
         back="Null Shawl"
     })
@@ -477,19 +496,19 @@ function init_gear_sets()
     sets.midcast.IntEnfeeblesAcc = set_combine(sets.midcast.IntEnfeebles, {
         -- ranged="Ullr",
         -- ammo=empty,
-        hands="Lethargy gantherots +3",
+        hands=jse.empyrean.hands,
         legs="Leth. Fuseau +3",
         waist="Acuity belt +1",
         back="Null Shawl"
     })
 
     sets.midcast.IntEnfeeblesEffect = set_combine(sets.midcast.IntEnfeebles, {
-        body="Lethargy sayon +3"
+        body=jse.empyrean.body
     })
 
     sets.midcast.MaxDuration = set_combine(sets.midcast['Enfeebling Magic'], {
         head="Leth. Chappel +3",
-        body="Lethargy Sayon +3",
+        body=jse.empyrean.body,
         legs="Leth. Fuseau +3",
         feet="Leth. Houseaux +3",
         ring2="Kishar ring"
@@ -502,18 +521,18 @@ function init_gear_sets()
         main="Bunzi's rod",
         sub="Ammurapi shield",
         ammo="Pemphredo tathlum",
-        head="Lethargy chappel +3",
+        head=jse.empyrean.head,
         neck="Sibyl scarf",
         ear1="Malignance earring",
         ear2="Regal earring",        
-        body="Lethargy sayon +3",
-        hands="Lethargy gantherots +3",
+        body=jse.empyrean.body,
+        hands=jse.empyrean.hands,
         ring1="Medada's ring",
         ring2="Metamorph ring +1",
         back=int_cape,
         waist="Acuity belt +1",
-        legs="Lethargy fuseau +3",
-        feet="Lethargy houseaux +3"
+        legs=jse.empyrean.legs,
+        feet=jse.empyrean.feet
     }
         
     -- sets.midcast.Impact = set_combine(sets.midcast['Elemental Magic'], {head=empty,body='Crepuscular cloak'})
@@ -526,15 +545,15 @@ function init_gear_sets()
         head=empty,
         neck="Null loop",
         ear1="Malignance earring",
-        ear2="Lethargy earring +2",        
+        ear2=jse.earring,        
         body="Crepuscular cloak",
-        hands="Lethargy gantherots +3",
+        hands=jse.empyrean.hands,
         ring1="Medada's ring",
         ring2={name="Stikini ring +1", bag="wardrobe6"},
         back="Null shawl",
         waist="Null belt",
-        legs="Lethargy fuseau +3",
-        feet="Lethargy houseaux +3"
+        legs=jse.empyrean.legs,
+        feet=jse.empyrean.feet
     }
 
     sets.midcast['Dark Magic'] = set_combine(sets.midcast['Elemental Magic'], {
@@ -562,7 +581,7 @@ function init_gear_sets()
 
     -- Sets for special buff conditions on spells.
 
-    sets.buff.Saboteur = {hands="Lethargy gantherots +3"}
+    sets.buff.Saboteur = {hands=jse.empyrean.hands}
     
 
     -- Sets to return to when not performing an action.    
@@ -570,11 +589,11 @@ function init_gear_sets()
     -- Idle sets
     sets.idle = {
         ammo="Staunch tathlum +1",
-        head="Lethargy chappel +3",
+        head=jse.empyrean.head,
         neck="Loricate torque +1",
         ear1="Etiolation earring",
         ear2="Arete del Luna +1",
-        body="Lethargy sayon +3",
+        body=jse.empyrean.body,
         hands="Malignance gloves",
         ring1="Ayanmo ring",
         ring2="Defending ring",
@@ -606,18 +625,18 @@ function init_gear_sets()
 
     sets.defense.MDT = {
         ammo="Staunch tathlum +1",
-        head="Lethargy chappel +3",
+        head=jse.empyrean.head,
         neck="Loricate torque +1",
         ear1="Sanare earring",
         ear2="Arete del luna +1",
         body="Adamantite armor",
-        hands="Lethargy gantherots +3",
+        hands=jse.empyrean.hands,
         ring1="Shadow ring",
         ring2={name="Vexer ring +1", bag="wardrobe6"},
         back=idle_mdt_cape,
         waist="Null belt",
-        legs="Lethargy fuseau +3",
-        feet="Lethargy houseaux +3"
+        legs=jse.empyrean.legs,
+        feet=jse.empyrean.feet
     }
 
     sets.Kiting = {ring1="Shneddick ring +1"}
@@ -636,7 +655,7 @@ function init_gear_sets()
         head="Malignance chapeau",
         neck="Anu Torque",
         ear1="Sherida Earring",
-        ear2="Lethargy earring +2",
+        ear2=jse.earring,
         body="Malignance tabard",
         hands="Malignance gloves",
         ring1={name="Chirich ring +1", bag="wardrobe5"},
@@ -647,13 +666,13 @@ function init_gear_sets()
         feet="Malignance boots"
     }
 --   sets.engaged[state.CombatMode][state.CombatForm][state.CombatWeapon][state.OffenseMode][state.HybridMode][classes.CustomMeleeGroups (any number)]
-    sets.engaged.SwordShield = set_combine(sets.engaged, {feet="Atrophy boots +3", back=tp_cape})
+    sets.engaged.SwordShield = set_combine(sets.engaged, {feet=jse.artifact.feet, back=tp_cape})
     sets.engaged.SwordShield.HighAcc = set_combine(sets.engaged.SwordShield, {neck="Combatant's torque", ear1="Dignitary's earring"})
     sets.engaged.SwordShield.Hybrid = set_combine(sets.engaged.SwordShield, {feet="Malignance boots"})
     sets.engaged.SwordShield.Enspell = set_combine(sets.engaged.SwordShield, {back=dw_cape})
 
     sets.engaged.DualWield = set_combine(sets.engaged, {waist="Reiki yotai", ear2="Eabani earring"})
-    sets.engaged.DualWield.HighAcc = set_combine(sets.engaged.DualWield, {ear2 = "Lethargy earring +2"})
+    sets.engaged.DualWield.HighAcc = set_combine(sets.engaged.DualWield, {ear2 = jse.earring})
     sets.engaged.DualWield.Hybrid = set_combine(sets.engaged.DualWield, {ring2="Defending ring"})
     sets.engaged.DualWield.Enspell = set_combine(sets.engaged.DualWield, {back=dw_cape})
 
@@ -686,8 +705,8 @@ function init_gear_sets()
         ring2="Metamorph ring +1",
         back=int_cape,
         waist="Acuity belt +1",
-        legs="Lethargy fuseau +3",
-        feet="Lethargy houseaux +3"
+        legs=jse.empyrean.legs,
+        feet=jse.empyrean.feet
     }
 
     sets.precast.Item['Holy Water'] = {

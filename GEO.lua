@@ -47,6 +47,25 @@ function init_gear_sets()
     local idle_pdt_cape = { name="Nantosuelta's Cape", augments={'VIT+20','Eva.+20 /Mag. Eva.+20','VIT+10','Pet: "Regen"+10','DEF+50'}}
     local idle_mdt_cape = { name="Nantosuelta's Cape", augments={'INT+20','Eva.+20 /Mag. Eva.+20','INT+10','Pet: "Regen"+10','Mag. Evasion+15'}}
 
+    jse.artifact.head = "Geomancy Galero +1"
+	jse.artifact.body = "Geomancy Tunic +3"
+	jse.artifact.hands = "Geomancy Mitaines +3"
+	jse.artifact.legs = "Geomancy Pants +3"
+	jse.artifact.feet = "Geomancy Sandals +3"
+
+	jse.relic.head = "Bagua Galero +3"
+	jse.relic.body = "Bagua Tunic +3"
+	jse.relic.hands = "Bagua Mitaines +3"
+	jse.relic.legs = "Bagua Pants +3"
+	jse.relic.feet = "Bagua Sandals +3"
+
+	jse.empyrean.head = "Azimuth Hood +3"
+	jse.empyrean.body = "Azimuth Coat +3"
+	jse.empyrean.hands = "Azimuth Gloves +3"
+	jse.empyrean.legs = "Azimuth Tights +3"
+	jse.empyrean.feet = "Azimuth Gaiters +3"
+
+    jse.earring = "Azimuth earring +1"
     
     sets.Idris = {main="Idris"}
     sets.Idris.DualWield = {main="Idris", sub="Bunzi's rod"}
@@ -64,14 +83,14 @@ function init_gear_sets()
     --------------------------------------
 
     -- Precast sets to enhance JAs
-    sets.precast.JA.Bolster = {body="Bagua tunic +3"}
-    sets.precast.JA['Life cycle'] = {body="Geomancy tunic +3", back=pet_Cape}
+    sets.precast.JA.Bolster = {body=jse.relic.body}
+    sets.precast.JA['Life cycle'] = {body=jse.artifact.body, back=pet_Cape}
     sets.precast.JA['Full Circle'] = {
-        head="Azimuth hood +3",
-        hands="Bagua mitaines +3"
+        head=jse.empyrean.head,
+        hands=jse.relic.hands
     }
-    sets.precast.JA['Concentric Pulse'] = { head="Bagua galero +3" }
-    sets.precast.JA['Radial Arcana'] = { feet="Bagua sandals +3" }
+    sets.precast.JA['Concentric Pulse'] = { head=jse.relic.head }
+    sets.precast.JA['Radial Arcana'] = { feet=jse.relic.feet }
 
     -- Fast cast sets for spells
 
@@ -86,13 +105,13 @@ function init_gear_sets()
         ring2="Kishar ring",
         back=fc_Cape,
         waist="Embla sash",
-        legs="Geomancy pants +3",
+        legs=jse.artifact.legs,
         feet="Merlinic crackows"
     }
 
     sets.precast.FC.Cure = set_combine(sets.precast.FC)
 
-    sets.precast.FC['Elemental Magic'] = set_combine(sets.precast.FC, {hands="Bagua mitaines +3"})
+    sets.precast.FC['Elemental Magic'] = set_combine(sets.precast.FC, {hands=jse.relic.hands})
 
     sets.precast.FC['Stoneskin'] = set_combine(sets.precast.FC, {
         head="Umuthi hat"
@@ -154,23 +173,23 @@ function init_gear_sets()
     local conserve_mp_set = {
         head="Vanya hood",
         waist="Austerity belt +1",
-        legs="Geomancy pants +3",
+        legs=jse.artifact.legs,
         feet="Medium's sabots"
     }
 
     sets.midcast['Elemental Magic'] = {
         sub="Ammurapi shield",
-        head="Bagua galero +3",
+        head=jse.relic.head,
         neck="Sanctity necklace",
         ear1="Malignance earring",
         ear2="Regal earring",
-        body="Bagua tunic +3",
+        body=jse.relic.body,
         hands="Agwu's gages",
         ring1="Medada's ring",
         ring2="Metamorph ring +1",        
         waist="Acuity belt +1",
-        legs="Bagua pants +3",
-        feet="Bagua sandals +3",
+        legs=jse.relic.legs,
+        feet=jse.relic.feet,
         back=mab_Cape
     }
 
@@ -179,10 +198,10 @@ function init_gear_sets()
         ammo="Ghastly tathlum +1",
         head="Ea hat +1", --MB: 7 MB2:7
         neck="Sibyl scarf", -- MB: 10
-        body="Azimuth coat +3", --MB: 9 MB2:9
+        body=jse.empyrean.body, --MB: 9 MB2:9
         hands="Agwu's gages", --MB2: 5
         -- ring1="Mujin band", --MB2: 5
-        legs="Azimuth tights +3", --MB: 8 MB2:8
+        legs=jse.empyrean.legs, --MB: 8 MB2:8
         feet="Agwu's pigaches" --MB: 6
     })
 
@@ -198,8 +217,8 @@ function init_gear_sets()
         main="Idris", 
         range="Dunna",
         neck="Bagua charm +2",
-        body="Bagua tunic +3",
-        hands="Geomancy mitaines +3",
+        body=jse.relic.body,
+        hands=jse.artifact.hands,
         ring1="Medada's ring",
         back=fc_Cape,
     })
@@ -207,18 +226,18 @@ function init_gear_sets()
     sets.midcast.Indicolure = set_combine(sets.midcast.Geocolure, {
         main="Idris",
         range="Dunna",
-        head="Azimuth hood +3",
-        body="Bagua tunic +3",
-        hands="Geomancy mitaines +3",
+        head=jse.empyrean.head,
+        body=jse.relic.body,
+        hands=jse.artifact.hands,
         back="Lifestream cape",
-        legs="Bagua pants +3",
-        feet="Azimuth gaiters +3"
+        legs=jse.relic.legs,
+        feet=jse.empyrean.feet
     })
 
     sets.midcast.Cure = set_combine(conserve_mp_set, {
         head="Vanya hood", --10%
         body="Vrikodara Jupon", --13%
-        hands="Geomancy mitaines +3", --Mnd +43
+        hands=jse.artifact.hands, --Mnd +43
         ring1={name="Stikini Ring +1", bag="wardrobe5"},
         ring2={name="Stikini Ring +1", bag="wardrobe6"},
         back="Solemnity cape", --7%
@@ -230,11 +249,11 @@ function init_gear_sets()
 
     sets.midcast['Dark Magic'] = set_combine(conserve_mp_set, {
         neck="Erra pendant",
-        body="Geomancy tunic +3",
+        body=jse.artifact.body,
         ring1="Evanescence ring",
         ring2="Archon ring",
         waist="Fucho-no-obi",
-        legs="Azimuth tights +3"
+        legs=jse.empyrean.legs
     })
 
     sets.midcast.Drain = set_combine(sets.midcast['Dark Magic'], {
@@ -254,14 +273,14 @@ function init_gear_sets()
         neck="Incanter's torque",
         ear1="Regal earring",
         ear2="Malignance earring",
-        body="Geomancy tunic +3",
+        body=jse.artifact.body,
         hands="Regal cuffs",
         ring1="Medada's ring",
         ring2={name="Stikini Ring +1", bag="wardrobe6"},
         back="Aurist's cape +1",
         waist="Luminary sash",
-        legs="Geomancy pants +3",
-        feet="Bagua sandals +3"
+        legs=jse.artifact.legs,
+        feet=jse.relic.feet
     }
 
     sets.midcast['Enhancing Magic'] = set_combine(conserve_mp_set, {
@@ -282,11 +301,11 @@ function init_gear_sets()
     sets.midcast.Absorb = {
         sub="Ammurapi Shield",
         range="Dunna",
-        head="Azimuth Hood +3",
-        body="Geomancy Tunic +3",
+        head=jse.empyrean.head,
+        body=jse.artifact.body,
         hands="Geo. Mitaines +3",
-        legs="Azimuth Tights +3",
-        feet="Azimuth Gaiters +3",
+        legs=jse.empyrean.legs,
+        feet=jse.empyrean.feet,
         neck="Bagua charm +2",
         waist="Null belt",
         left_ear="Regal Earring",
@@ -300,11 +319,11 @@ function init_gear_sets()
     sets.midcast["Absorb-TP"] = {
         sub="Ammurapi Shield",
         range="Dunna", -- 3% FC
-        head="Azimuth Hood +3",
-        body="Geomancy Tunic +3",
+        head=jse.empyrean.head,
+        body=jse.artifact.body,
         hands="Geo. Mitaines +3",
-        legs="Geomancy pants +3", --15% FC
-        feet="Azimuth Gaiters +3",
+        legs=jse.artifact.legs, --15% FC
+        feet=jse.empyrean.feet,
         neck="Erra Pendant",
         waist="Null belt",
         left_ear="Alabaster earring",
@@ -316,17 +335,17 @@ function init_gear_sets()
 
     sets.midcast.Stun = {
         sub="Ammurapi shield",
-        head="Bagua galero +3",
+        head=jse.relic.head,
         neck="Erra pendant",
         ear1="Malignance earring",
         ear2="Regal earring",
-        body="Geomancy tunic +3",
-        hands="Geomancy mitaines +3",
+        body=jse.artifact.body,
+        hands=jse.artifact.hands,
         ring1="Medada's ring",
         ring2={name="Stikini Ring +1", bag="wardrobe6"},
         waist="Luminary sash",
-        legs="Geomancy pants +3",
-        feet="Geomancy sandals +3",
+        legs=jse.artifact.legs,
+        feet=jse.artifact.feet,
     }
     --------------------------------------
     -- Idle/resting/defense/etc sets
@@ -337,32 +356,32 @@ function init_gear_sets()
 
     sets.idle = {
         range="Dunna",
-        head="Azimuth hood +3",
+        head=jse.empyrean.head,
         neck="Loricate torque +1",
         ear1="Etiolation earring",
         ear2="Arete del luna +1",
-        body="Bagua tunic +3",
-        hands="Azimuth gloves +3",
+        body=jse.relic.body,
+        hands=jse.empyrean.hands,
         ring1="Defending Ring",
         ring2={name="Stikini Ring +1", bag="wardrobe6"},
         back=pet_Cape,
         waist="Null belt",
-        legs="Geomancy pants +3",
-        feet="Azimuth gaiters +3"
+        legs=jse.artifact.legs,
+        feet=jse.empyrean.feet
     }
 
     -- .Pet sets are for when Luopan is present.
     sets.idle.Pet = set_combine(sets.idle, {
         range="Dunna",
-        -- head="Azimuth hood +3",
+        -- head=jse.empyrean.head,
         neck="Bagua charm +2",
-        hands="Geomancy mitaines +3",
+        hands=jse.artifact.hands,
         back=pet_Cape,
-        -- feet="Bagua sandals +3"
+        -- feet=jse.relic.feet
     })
 
     sets.Kiting = {
-        feet="Geomancy sandals +3"
+        feet=jse.artifact.feet
     }
 
     --------------------------------------
@@ -406,18 +425,18 @@ function init_gear_sets()
     }
 
     sets.defense.MDT = {
-        head="Bagua galero +3",
+        head=jse.relic.head,
         neck="Loricate torque +1",
         ear1="Lugalbanda earring",
         ear2="Arete del luna +1",
         body="Adamantite armor",
-        hands="Bagua mitaines +3",
+        hands=jse.relic.hands,
         ring1="Shadow ring",
         ring2={name="Vexer ring +1", bag="wardrobe6"},
         back=idle_mdt_cape,
-        waist="Slipor sash",
-        legs="Bagua pants +3",
-        feet="Bagua sandals +3"
+        waist="Null belt",
+        legs=jse.relic.legs,
+        feet=jse.relic.feet
     }
 
     sets.precast.Item['Holy Water'] = {
