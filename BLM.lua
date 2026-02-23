@@ -81,7 +81,7 @@ function init_gear_sets()
 	jse.relic.body = "Archmage's Coat +3"
 	jse.relic.hands = "Archmage's Gloves +3"
 	jse.relic.legs = "Archmage's Tonbon +3"
-	jse.relic.feet = "Archmage's Sabots +3"
+	jse.relic.feet = "Archmage's Sabots +4"
 
 	jse.empyrean.head = "Wicce Petasos +3"
 	jse.empyrean.body = "Wicce Coat +3"
@@ -192,7 +192,7 @@ function init_gear_sets()
         ring2="Metamorph ring +1",  
         back=magic_int_ws,
         waist="Fotia belt",
-        legs="Archmage's tonban +3",
+        legs=jse.relic.legs,
         feet=ws_boots
     }
 
@@ -207,7 +207,7 @@ function init_gear_sets()
         ring2="Metamorph ring +1",        
         back=magic_int_ws,
         waist="Orpheus's sash",
-        legs="Archmage's tonban +3",
+        legs=jse.relic.legs,
         feet=ws_boots
     }
 
@@ -322,7 +322,7 @@ function init_gear_sets()
 
     sets.midcast['Enfeebling Magic'] = {
         ammo="Pemphredo tathlum",
-        head = "Spaekona's petasos +3",
+        head = sets.artifact.head,
         neck = "Sorcerer's stole +2",
         left_ear = "Regal earring",
         right_ear="Malignance earring",
@@ -634,7 +634,7 @@ function job_midcast(spell, action, spellMap, eventArgs)
 end
 
 function job_post_midcast(spell, action, spellMap, eventArgs)
-    if spell.skill == 'Elemental Magic' and spell.english ~= 'Impact' then
+    if spell.skill == 'Elemental Magic' and spell.english ~= 'Impact' and spellMap ~= "ElementalDebuff" then
         if state.MagicBurst.value then
             equip(sets.midcast.MagicBurst)
         end

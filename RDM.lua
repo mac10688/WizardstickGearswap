@@ -289,11 +289,11 @@ function init_gear_sets()
     })
     
     sets.precast.WS["Requiescat"] = {
-        head="Leth. Chappel +3",
+        head=jse.empyrean.head,
         body=jse.empyrean.body,
-        hands="Leth. Ganth. +3",
-        legs="Leth. Fuseau +3",
-        feet="Leth. Houseaux +3",
+        hands=jse.empyrean.hands,
+        legs=jse.empyrean.legs,
+        feet=jse.empyrean.feet,
         neck="Sanctity Necklace",
         waist="Kentarch Belt +1",
         left_ear="Crep. Earring",
@@ -409,7 +409,7 @@ function init_gear_sets()
 
     local SIRD  = {
         ammo="Staunch Tathlum +1",
-        head="Leth. Chappel +3",
+        head=jse.empyrean.head,
         neck="Loricate Torque +1",
         ear1="Magnetic Earring",
         ear2="Sanare Earring",
@@ -420,7 +420,7 @@ function init_gear_sets()
         back=mnd_cape,
         waist="Plat. Mog. Belt",
         legs="Carmine Cuisses +1",
-        feet="Leth. Houseaux +3"        
+        feet=jse.empyrean.feet        
     }
 
     sets.midcast.Stoneskin = SIRD
@@ -483,7 +483,7 @@ function init_gear_sets()
         -- ranged="Ullr",
         -- ammo=empty,
         hands=jse.empyrean.hands,
-        legs="Leth. Fuseau +3",
+        legs=jse.empyrean.legs,
         back="Null Shawl"
     })
 
@@ -497,7 +497,7 @@ function init_gear_sets()
         -- ranged="Ullr",
         -- ammo=empty,
         hands=jse.empyrean.hands,
-        legs="Leth. Fuseau +3",
+        legs=jse.empyrean.legs,
         waist="Acuity belt +1",
         back="Null Shawl"
     })
@@ -507,10 +507,10 @@ function init_gear_sets()
     })
 
     sets.midcast.MaxDuration = set_combine(sets.midcast['Enfeebling Magic'], {
-        head="Leth. Chappel +3",
+        head=jse.empyrean.head,
         body=jse.empyrean.body,
-        legs="Leth. Fuseau +3",
-        feet="Leth. Houseaux +3",
+        legs=jse.empyrean.legs,
+        feet=jse.empyrean.feet,
         ring2="Kishar ring"
     })
 

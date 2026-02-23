@@ -204,7 +204,7 @@ function init_gear_sets()
     --     ring2="Supershear Ring",
     --     back=enmity_cape,
     --     waist="Plat. Mog. Belt",
-    --     legs="Ebers Pant. +3",
+    --     legs=jse.empyrean.legs,
     --     feet=jse.empyrean.feet
     -- }
 
@@ -254,8 +254,8 @@ function init_gear_sets()
         head=jse.empyrean.head, --12%
         body="Pinga tunic +1",
         hands={ name="Chironic Gloves", augments={'Mag. Acc.+15 "Mag.Atk.Bns."+15','Spell interruption rate down -11%','INT+8','"Mag.Atk.Bns."+5',}}, --31%
-        legs="Ebers Pant. +3",
-        feet="Theo. Duckbills +3", --29%
+        legs=jse.empyrean.legs,
+        feet=jse.artifact.feet, --29%
         neck="Cleric's torque +2",
         waist="Plat. Mog. Belt",
         left_ear="Nourish. Earring +1", --Could be 5% but not necessary
@@ -305,8 +305,8 @@ function init_gear_sets()
         neck="Loricate torque +1",
         body=jse.empyrean.body,
         hands={ name="Chironic Gloves", augments={'Mag. Acc.+15 "Mag.Atk.Bns."+15','Spell interruption rate down -11%','INT+8','"Mag.Atk.Bns."+5',}}, --31%
-        legs="Ebers Pant. +3",
-        feet="Theo. Duckbills +3", --29%        
+        legs=jse.empyrean.legs,
+        feet=jse.artifact.feet, --29%        
         waist="Plat. Mog. Belt",
         left_ear="Sanare earring",
         right_ear=jse.earring,
@@ -377,7 +377,7 @@ function init_gear_sets()
         body="Telchine Chas.",
         hands="Telchine Gloves",
         legs="Telchine Braconi",
-        feet="Theo. Duckbills +3",
+        feet=jse.artifact.feet,
         neck="Loricate Torque +1",
         waist="Plat. Mog. Belt",
         ear1="Sanare Earring",
@@ -525,7 +525,7 @@ function init_gear_sets()
         ring2="Supershear Ring",
         back=enmity_cape,
         waist="Plat. Mog. Belt",
-        legs="Ebers Pant. +3",
+        legs=jse.empyrean.legs,
         feet=jse.empyrean.feet
     }
 
@@ -543,7 +543,7 @@ function init_gear_sets()
         ring2="Archon Ring",
         back=fastcast_cape,
         waist="Austerity Belt +1",
-        legs="Ebers Pant. +3",
+        legs=jse.empyrean.legs,
         feet=jse.empyrean.feet
     }
 

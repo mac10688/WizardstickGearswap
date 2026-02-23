@@ -349,7 +349,7 @@ function init_gear_sets()
 
     -- Custom spell classes
     sets.midcast.MndEnfeebles = set_combine(sets.midcast['Enfeebling Magic'], {
-        hands='Arbatel bracers +3',
+        hands=jse.empyrean.hands,
         ring2={name="Stikini Ring +1", bag="wardrobe6"},
     })
 
@@ -441,10 +441,10 @@ function init_gear_sets()
         sub="Khonsu",
         ammo="Pemphredo Tathlum",
         head="Pixie hairpin +1",
-        body="Acad. Gown +3",
-        hands="Acad. Bracers +3",
-        legs="Acad. Pants +3",
-        feet="Acad. Loafers +3",
+        body=jse.artifact.body,
+        hands=jse.artifact.hands,
+        legs=jse.artifact.legs,
+        feet=jse.artifact.feet,
         neck="Argute Stole +2",
         waist="Sacro cord",
         ear1="Regal Earring",
@@ -546,7 +546,7 @@ function init_gear_sets()
 
     -- Custom spell classes
     sets.midcast.MndEnfeebles = set_combine(sets.midcast['Enfeebling Magic'], {
-        hands='Arbatel bracers +3',
+        hands=jse.empyrean.hands,
         ring2={name="Stikini Ring +1", bag="wardrobe6"},
     })
 
