@@ -103,7 +103,7 @@ function init_gear_sets()
     local idle_pdt_cape = { name="Sucellos's Cape", augments={'VIT+20','Eva.+20 /Mag. Eva.+20','VIT+10','"Dual Wield"+10','DEF+50'}}
     local idle_mdt_cape = { name="Sucellos's Cape", augments={'INT+20','Eva.+20 /Mag. Eva.+20','INT+10','"Dual Wield"+10','Mag. Evasion+15'}}
 
-    jse.artifact.head = "Atrophy Chapeau +3"
+  jse.artifact.head = "Atrophy Chapeau +3"
 	jse.artifact.body = "Atrophy Tabard +3"
 	jse.artifact.hands = "Atrophy Gloves +3"
 	jse.artifact.legs = "Atrophy Tights +3"
@@ -111,7 +111,7 @@ function init_gear_sets()
 
 	jse.relic.head = "Vitiation Chapeau +3"
 	jse.relic.body = "Vitiation Tabard +3"
-	jse.relic.hands = "Vitiation Gloves +3"
+	jse.relic.hands = "Vitiation Gloves +4"
 	jse.relic.legs = "Vitiation Tights +3"
 	jse.relic.feet = "Vitiation Boots +3"
 

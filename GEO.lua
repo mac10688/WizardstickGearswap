@@ -15,10 +15,10 @@ function job_setup()
     state.OffenseMode:options('None', 'Normal')
     state.CombatMode:options('SwordShield', 'DualWield')
     state.CastingMode:options('Normal', 'Resistant')
-    state.IdleMode:options('Normal', 'PDT')
+    state.IdleMode:options('Normal', 'PDT', 'Refresh')
 
     state.CombatWeapon:set('Idris')
-    
+
     state.Idris = {}
     state.Idris.SwordShield = M{['description']='Idris Set', 'Ammurapi', 'Genmei'}
     state.Idris.DualWield = M{['description']='Idris Set', 'CathPalug', 'Bunzi', 'WizardRod', 'LorgMor'}
@@ -369,6 +369,13 @@ function init_gear_sets()
         legs=jse.artifact.legs,
         feet=jse.empyrean.feet
     }
+
+    sets.idle.Refresh = set_combine(sets.idle, {
+        head="Befouled crown",
+        body=jse.empyrean.body,
+        ring1= {name="Stikini Ring +1", bag="wardrobe5"},
+        legs="Assiduity pants +1"
+    })
 
     -- .Pet sets are for when Luopan is present.
     sets.idle.Pet = set_combine(sets.idle, {

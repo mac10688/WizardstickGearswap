@@ -105,8 +105,8 @@ function init_gear_sets()
         ammo="Yamarang",
         head=jse.empyrean.head,
         neck="Warder's charm +1",
-        ear1="Sanare earring",
-        ear2="Alabaster earring",
+        ear1="Alabaster earring",
+        ear2="Sanare earring",
         body=jse.empyrean.body,
         hands=jse.empyrean.hands,
         ring1="Shadow ring",
@@ -118,15 +118,14 @@ function init_gear_sets()
     }
 
     sets.defense.ResistStatus = set_combine(sets.defense.MDT, {
-        ear1="Arete del luna +1",
         back=status_ailment_cape,
         hands=jse.empyrean.hands
     })
 
     sets.defense.Meva = set_combine(sets.defense.MDT, {
-        ear1="Arete del luna +1",
-        back=status_ailment_cape,
-        hands=jse.empyrean.hands
+        ear2=jse.earring,
+        back=mdt_cape,
+        hands="Turms mittens +1"
     })
 
     sets.defense.KnockBack = set_combine(sets.defense.MDT, {

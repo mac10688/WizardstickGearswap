@@ -72,22 +72,22 @@ end
 function init_gear_sets()
 
     jse.artifact.head = "Spaekona's Petasos +3"
-	jse.artifact.body = "Spaekona's Coat +4"
-	jse.artifact.hands = "Spaekona's Gloves +3"
-	jse.artifact.legs = "Spaekona's Tonban +3"
-	jse.artifact.feet = "Spaekona's Sabots +3"
+    jse.artifact.body = "Spaekona's Coat +4"
+    jse.artifact.hands = "Spaekona's Gloves +3"
+    jse.artifact.legs = "Spaekona's Tonban +3"
+    jse.artifact.feet = "Spaekona's Sabots +3"
 
-	jse.relic.head = "Archmage's Petasos +3"
-	jse.relic.body = "Archmage's Coat +3"
-	jse.relic.hands = "Archmage's Gloves +3"
-	jse.relic.legs = "Archmage's Tonbon +3"
-	jse.relic.feet = "Archmage's Sabots +4"
+    jse.relic.head = "Archmage's Petasos +3"
+    jse.relic.body = "Archmage's Coat +3"
+    jse.relic.hands = "Archmage's Gloves +3"
+    jse.relic.legs = "Archmage's Tonban +3"
+    jse.relic.feet = "Archmage's Sabots +4"
 
-	jse.empyrean.head = "Wicce Petasos +3"
-	jse.empyrean.body = "Wicce Coat +3"
-	jse.empyrean.hands = "Wicce Gloves +3"
-	jse.empyrean.legs = "Wicce Chausses +3"
-	jse.empyrean.feet = "Wicce Sabots +3"
+    jse.empyrean.head = "Wicce Petasos +3"
+    jse.empyrean.body = "Wicce Coat +3"
+    jse.empyrean.hands = "Wicce Gloves +3"
+    jse.empyrean.legs = "Wicce Chausses +3"
+    jse.empyrean.feet = "Wicce Sabots +3"
 
     jse.earring = "Wicce earring +1"
 
@@ -132,14 +132,13 @@ function init_gear_sets()
     local magic_int_ws = { name="Taranus's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','Weapon skill damage +10%','Damage taken-5%'}}
     local death_cape = { name="Taranus's Cape", augments={'MP+60','Mag. Acc+20 /Mag. Dmg.+20','MP+20','"Mag.Atk.Bns."+10','Spell interruption rate down-10%'}}
     local ws_boots = { name="Merlinic Crackows", augments={'Attack+25','Crit.hit rate+3','Weapon skill damage +10%','Mag. Acc.+16 "Mag.Atk.Bns."+16'}}
-    
+
     ---- Precast Sets ----
-    
     -- Precast sets to enhance JAs
     sets.precast.JA['Mana Wall'] = { feet = jse.empyrean.feet }
 
     sets.precast.JA.Manafont = { body = jse.relic.body}
-    
+
     -- equip to maximize HP (for Tarus) and minimize MP loss before using convert
     sets.precast.JA.Convert = {}
 
@@ -204,7 +203,7 @@ function init_gear_sets()
         body=jse.relic.coat,
         hands="Jhakri cuffs +2",
         ring1="Medada's ring",
-        ring2="Metamorph ring +1",        
+        ring2="Metamorph ring +1",
         back=magic_int_ws,
         waist="Orpheus's sash",
         legs=jse.relic.legs,
@@ -283,9 +282,8 @@ function init_gear_sets()
         legs=jse.artifact.legs,
         feet=jse.artifact.feet
     }
-    
-    
-    ---- Midcast Sets ----
+
+        ---- Midcast Sets ----
 
     sets.midcast.FastRecast = sets.precast.FC
 
@@ -322,7 +320,7 @@ function init_gear_sets()
 
     sets.midcast['Enfeebling Magic'] = {
         ammo="Pemphredo tathlum",
-        head = sets.artifact.head,
+        head = jse.artifact.head,
         neck = "Sorcerer's stole +2",
         left_ear = "Regal earring",
         right_ear="Malignance earring",
@@ -342,8 +340,8 @@ function init_gear_sets()
         ammo="Pemphredo tathlum",
         head=jse.empyrean.head,
         body=jse.artifact.body,
-        hands="Spae. Gloves +3",
-        legs="Arch. Tonban +3",
+        hands=jse.artifact.hands,
+        legs=jse.relic.legs,
         feet=jse.relic.feet,
         neck="Null loop",
         waist="Null belt",
