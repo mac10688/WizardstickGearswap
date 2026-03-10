@@ -18,7 +18,8 @@ function job_setup()
     state.HybridMode:options('Normal', 'DT')
     state.CastingMode:options('Normal', 'Resistant')
     state.IdleMode:options('Normal', 'PDT', 'MDT')
-    
+    state.WeaponskillMode:options('Normal','Acc')
+
     state.MagicBurst = M(true, 'Magic Burst')
     state.SleepMode = M{['description']='Sleep Mode', 'Normal', 'MaxDuration'}
     state.EnspellMode = M(true, 'Enspell Melee Mode')
@@ -103,23 +104,23 @@ function init_gear_sets()
     local idle_pdt_cape = { name="Sucellos's Cape", augments={'VIT+20','Eva.+20 /Mag. Eva.+20','VIT+10','"Dual Wield"+10','DEF+50'}}
     local idle_mdt_cape = { name="Sucellos's Cape", augments={'INT+20','Eva.+20 /Mag. Eva.+20','INT+10','"Dual Wield"+10','Mag. Evasion+15'}}
 
-  jse.artifact.head = "Atrophy Chapeau +3"
-	jse.artifact.body = "Atrophy Tabard +3"
-	jse.artifact.hands = "Atrophy Gloves +3"
-	jse.artifact.legs = "Atrophy Tights +3"
-	jse.artifact.feet = "Atrophy Boots +3"
+    jse.artifact.head = "Atrophy Chapeau +3"
+    jse.artifact.body = "Atrophy Tabard +3"
+    jse.artifact.hands = "Atrophy Gloves +3"
+    jse.artifact.legs = "Atrophy Tights +3"
+    jse.artifact.feet = "Atrophy Boots +3"
 
-	jse.relic.head = "Vitiation Chapeau +3"
-	jse.relic.body = "Vitiation Tabard +3"
-	jse.relic.hands = "Vitiation Gloves +4"
-	jse.relic.legs = "Vitiation Tights +3"
-	jse.relic.feet = "Vitiation Boots +3"
+    jse.relic.head = "Vitiation Chapeau +3"
+    jse.relic.body = "Vitiation Tabard +3"
+    jse.relic.hands = "Vitiation Gloves +4"
+    jse.relic.legs = "Vitiation Tights +3"
+    jse.relic.feet = "Vitiation Boots +3"
 
-	jse.empyrean.head = "Lethargy Chappel +3"
-	jse.empyrean.body = "Lethargy Sayon +3"
-	jse.empyrean.hands = "Lethargy Gantherots +3"
-	jse.empyrean.legs = "Lethargy Fuseau +3"
-	jse.empyrean.feet = "Lethargy Houseaux +3"
+    jse.empyrean.head = "Lethargy Chappel +3"
+    jse.empyrean.body = "Lethargy Sayon +3"
+    jse.empyrean.hands = "Lethargy Gantherots +3"
+    jse.empyrean.legs = "Lethargy Fuseau +3"
+    jse.empyrean.feet = "Lethargy Houseaux +3"
 
     jse.earring = "Lethargy earring +2"
 
@@ -269,6 +270,11 @@ function init_gear_sets()
         back=str_ws_cape
     })
 
+    sets.precast.WS["Savage Blade"].Acc = set_combine(sets.precast.WS["Savage Blade"], {
+        neck="Null loop",
+        waist="Null belt"
+    })
+
     sets.precast.WS["Death Blossom"] = set_combine(ws_physical, {
         ear2="Regal earring",
         neck="Republican platinum medal",
@@ -314,7 +320,11 @@ function init_gear_sets()
         back=str_ws_cape
     })
 
-    
+    sets.precast.WS["Black Halo"].Acc = set_combine(sets.precast.WS["Black Halo"], {
+        neck="Null loop",
+        waist="Null belt"
+    })
+
     -- Midcast Sets
 
     sets.midcast.Cure = {
@@ -565,10 +575,24 @@ function init_gear_sets()
     })
 
     sets.midcast['Absorb-TP'] = {
+        main="Naegling",
+        sub="Sacro Bulwark",
+        ammo="Regal Gem",
+        head=jse.artifact.head,
+        body=jse.empyrean.body,
+        hands=jse.empyrean.hands,
+        legs=jse.empyrean.legs,
+        feet=jse.empyrean.feet,
+        neck="Erra Pendant",
+        waist="Null Belt",
+        ear1="Malignance Earring",
+        ear2=jse.earring,
+        left_ring="Medada's Ring",
+        right_ring="Kishar Ring",
+        back=fc_cape,
+}
 
-    }
-
-    sets.midcast.Stun = set_combine(sets.midcast['Dark Magic'], {})
+     sets.midcast.Stun = set_combine(sets.midcast['Dark Magic'], {})
 
     sets.midcast.Drain = set_combine(sets.midcast['Dark Magic'], {
         ring2="Excelsis ring",
@@ -652,12 +676,12 @@ function init_gear_sets()
     sets.engaged = {
         ranged=empty,
         ammo="Coiste bodhar",
-        head="Malignance chapeau",
+        head="Bunzi's hate",
         neck="Anu Torque",
         ear1="Sherida Earring",
         ear2=jse.earring,
         body="Malignance tabard",
-        hands="Malignance gloves",
+        hands="Bunzi's gloves",
         ring1={name="Chirich ring +1", bag="wardrobe5"},
         ring2={name="Chirich ring +1", bag="wardrobe6"},
         back=tp_cape,
@@ -667,7 +691,7 @@ function init_gear_sets()
     }
 --   sets.engaged[state.CombatMode][state.CombatForm][state.CombatWeapon][state.OffenseMode][state.HybridMode][classes.CustomMeleeGroups (any number)]
     sets.engaged.SwordShield = set_combine(sets.engaged, {feet=jse.artifact.feet, back=tp_cape})
-    sets.engaged.SwordShield.HighAcc = set_combine(sets.engaged.SwordShield, {neck="Combatant's torque", ear1="Dignitary's earring"})
+    sets.engaged.SwordShield.HighAcc = set_combine(sets.engaged.SwordShield, {neck="Null loop", ear1="Dignitary's earring", back="Null shawl", waist="Null belt"})
     sets.engaged.SwordShield.Hybrid = set_combine(sets.engaged.SwordShield, {feet="Malignance boots"})
     sets.engaged.SwordShield.Enspell = set_combine(sets.engaged.SwordShield, {back=dw_cape})
 

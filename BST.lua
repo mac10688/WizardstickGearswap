@@ -51,11 +51,11 @@ function job_setup()
     state.Tauret.SwordShield = M{['description']='Tauret Set', 'Sacro'}
 
     -- Set up Reward Modes and keybind Ctrl+Backspace
-	state.RewardMode = M{['description']='Reward Mode', 'Theta', 'Zeta', 'Epsilon', 'Beta'}
-	send_command('bind ^backspace gs c cycle RewardMode')
+    state.RewardMode = M{['description']='Reward Mode', 'Theta', 'Zeta', 'Epsilon', 'Beta'}
+    send_command('bind ^backspace gs c cycle RewardMode')
 
     state.Buff['Killer Instinct'] = buffactive['Killer Instinct'] or false
-	state.Buff["Unleash"] = buffactive["Unleash"] or false
+    state.Buff["Unleash"] = buffactive["Unleash"] or false
 
     -- Additional local binds
     send_command('bind ^` gs c toggle MonsterCorrelation')
@@ -92,23 +92,23 @@ function init_gear_sets()
     -- Start defining the sets
     --------------------------------------
 
-	jse.artifact.head = "Totemic Helm +3"
-	jse.artifact.body = "Totemic Jackcoat +4"
-	jse.artifact.hands = "Totemic Gloves +3"
-	jse.artifact.legs = "Totemic Trousers +3"
-	jse.artifact.feet = "Totemic Gaiters +3"
+    jse.artifact.head = "Totemic Helm +3"
+    jse.artifact.body = "Totemic Jackcoat +4"
+    jse.artifact.hands = "Totemic Gloves +3"
+    jse.artifact.legs = "Totemic Trousers +3"
+    jse.artifact.feet = "Totemic Gaiters +3"
 
-	jse.relic.head = "Ankusa Helm +4"
-	jse.relic.body = "Ankusa Jackcoat +3"
-	jse.relic.hands = "Ankusa Gloves +3"
-	jse.relic.legs = "Ankusa Trousers +3"
-	jse.relic.feet = "Ankusa Gaiters +3"
+    jse.relic.head = "Ankusa Helm +4"
+    jse.relic.body = "Ankusa Jackcoat +3"
+    jse.relic.hands = "Ankusa Gloves +3"
+    jse.relic.legs = "Ankusa Trousers +3"
+    jse.relic.feet = "Ankusa Gaiters +3"
 
-	jse.empyrean.head = "Nukumi Cabasset +3"
-	jse.empyrean.body = "Nukumi Gausape +3"
-	jse.empyrean.hands = "Nukumi Manoplas +3"
-	jse.empyrean.legs = "Nukumi Quijotes +3"
-	jse.empyrean.feet = "Nukumi Ocreae +3"
+    jse.empyrean.head = "Nukumi Cabasset +3"
+    jse.empyrean.body = "Nukumi Gausape +3"
+    jse.empyrean.hands = "Nukumi Manoplas +3"
+    jse.empyrean.legs = "Nukumi Quijotes +3"
+    jse.empyrean.feet = "Nukumi Ocreae +3"
 
     jse.earring = "Nukumi earring +1"
 

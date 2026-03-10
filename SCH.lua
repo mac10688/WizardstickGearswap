@@ -33,7 +33,6 @@ function user_setup()
     state.Tupsimati = M{['description']='Tupsimati Set', 'Khonsu', 'Enki'}
     state.Musa = M{['description']='Musa Set', 'Khonsu', 'Enki'}
     state.Slaine = M{['description']='Slaine Set', 'Khonsu', 'Enki'}
-    
 
     send_command('bind ^` gs c toggle MagicBurst')
     send_command('bind !` gs c toggle EatTp')
@@ -64,22 +63,22 @@ function init_gear_sets()
     --------------------------------------
 
     jse.artifact.head = "Academic's Mortarboard +3"
-	jse.artifact.body = "Academic's Gown +3"
-	jse.artifact.hands = "Academic's Bracers +3"
-	jse.artifact.legs = "Academic's Pants +3"
-	jse.artifact.feet = "Academic's Loafers +3"
+    jse.artifact.body = "Academic's Gown +3"
+    jse.artifact.hands = "Academic's Bracers +3"
+    jse.artifact.legs = "Academic's Pants +3"
+    jse.artifact.feet = "Academic's Loafers +3"
 
-	jse.relic.head = "Pedagogy Mortarboard +3"
-	jse.relic.body = "Pedagogy Gown +3"
-	jse.relic.hands = "Pedagogy Bracers +3"
-	jse.relic.legs = "Pedagogy Pants +3"
-	jse.relic.feet = "Pedagogy Loafers +3"
+    jse.relic.head = "Pedagogy Mortarboard +3"
+    jse.relic.body = "Pedagogy Gown +3"
+    jse.relic.hands = "Pedagogy Bracers +3"
+    jse.relic.legs = "Pedagogy Pants +3"
+    jse.relic.feet = "Pedagogy Loafers +3"
 
-	jse.empyrean.head = "Arbatel Bonnet +3"
-	jse.empyrean.body = "Arbatel Gown +3"
-	jse.empyrean.hands = "Arbatel Bracers +3"
-	jse.empyrean.legs = "Arbatel Pants +3"
-	jse.empyrean.feet = "Arbatel Loafers +3"
+    jse.empyrean.head = "Arbatel Bonnet +3"
+    jse.empyrean.body = "Arbatel Gown +3"
+    jse.empyrean.hands = "Arbatel Bracers +3"
+    se.empyrean.legs = "Arbatel Pants +3"
+    jse.empyrean.feet = "Arbatel Loafers +3"
 
     jse.earring = "Arbatel earring +1"
 

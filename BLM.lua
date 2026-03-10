@@ -16,13 +16,13 @@ function job_setup()
     state.OffenseMode:options('None', 'Normal')
     state.CastingMode:options('Normal', 'Occult Acumen', 'DT', 'MB Low Int', 'MB High Int')
     state.IdleMode:options('Normal', "Death")
-    
+
     state.MagicBurst = M(false, 'Magic Burst')
     state.EatTp = M(false, 'Eat TP')
     state.UseObi = M(true, 'Use Obi')
     state.LockMpReturn = M(false, 'Lock MP Return')
     state.CombatWeapon:set('Laevateinn')
-    
+
     state.Laevateinn = M{['description']='Laevateinn Set', 'Khonsu', 'Enki'}
     state.Kaumodaki = M{['description']='Kaumodaki Set', 'Khonsu', 'Enki'}
     state.WizardRod = M{['description']='Wizard Rod Set', 'Ammurapi', 'Genmei'}

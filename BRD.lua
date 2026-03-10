@@ -85,23 +85,23 @@ function init_gear_sets()
 
     local fast_cast_cape = { name="Intarabus's Cape", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','"Fast Cast"+10','Damage taken-5%'}}
 
-	jse.artifact.head = "Brioso Roundlet +3"
-	jse.artifact.body = "Brioso Justaucorps +3"
-	jse.artifact.hands = "Brioso Cuffs +3"
-	jse.artifact.legs = "Brioso Cannions +3"
-	jse.artifact.feet = "Brioso Slippers +3"
+    jse.artifact.head = "Brioso Roundlet +3"
+    jse.artifact.body = "Brioso Justaucorps +3"
+    jse.artifact.hands = "Brioso Cuffs +3"
+    jse.artifact.legs = "Brioso Cannions +3"
+    jse.artifact.feet = "Brioso Slippers +3"
 
-	jse.relic.head = "Bihu Roudlet +3"
-	jse.relic.body = "Bihu Justaucorps +4"
-	jse.relic.hands = "Bihu Cuffs +3"
-	jse.relic.legs = "Bihu Cannions +3"
-	jse.relic.feet = "Bihu Slippers +3"
+    jse.relic.head = "Bihu Roudlet +3"
+    jse.relic.body = "Bihu Justaucorps +4"
+    jse.relic.hands = "Bihu Cuffs +3"
+    jse.relic.legs = "Bihu Cannions +3"
+    jse.relic.feet = "Bihu Slippers +3"
 
-	jse.empyrean.head = "Fili Calot +3"
-	jse.empyrean.body = "Fili Hongreline +3"
-	jse.empyrean.hands = "Fili Manchettes +3"
-	jse.empyrean.legs = "Fili Rhingrave +3"
-	jse.empyrean.feet = "Fili Cothurnes +3"
+    jse.empyrean.head = "Fili Calot +3"
+    jse.empyrean.body = "Fili Hongreline +3"
+    jse.empyrean.hands = "Fili Manchettes +3"
+    jse.empyrean.legs = "Fili Rhingrave +3"
+    jse.empyrean.feet = "Fili Cothurnes +3"
 
     jse.earring = "Fili Earring +1"
 

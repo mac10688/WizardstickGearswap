@@ -48,25 +48,25 @@ function init_gear_sets()
     local idle_mdt_cape = { name="Nantosuelta's Cape", augments={'INT+20','Eva.+20 /Mag. Eva.+20','INT+10','Pet: "Regen"+10','Mag. Evasion+15'}}
 
     jse.artifact.head = "Geomancy Galero +1"
-	jse.artifact.body = "Geomancy Tunic +3"
-	jse.artifact.hands = "Geomancy Mitaines +3"
-	jse.artifact.legs = "Geomancy Pants +3"
-	jse.artifact.feet = "Geomancy Sandals +3"
+    jse.artifact.body = "Geomancy Tunic +3"
+    jse.artifact.hands = "Geomancy Mitaines +3"
+    jse.artifact.legs = "Geomancy Pants +3"
+    jse.artifact.feet = "Geomancy Sandals +3"
 
-	jse.relic.head = "Bagua Galero +3"
-	jse.relic.body = "Bagua Tunic +3"
-	jse.relic.hands = "Bagua Mitaines +3"
-	jse.relic.legs = "Bagua Pants +3"
-	jse.relic.feet = "Bagua Sandals +3"
+    jse.relic.head = "Bagua Galero +3"
+    jse.relic.body = "Bagua Tunic +3"
+    jse.relic.hands = "Bagua Mitaines +3"
+    jse.relic.legs = "Bagua Pants +3"
+    jse.relic.feet = "Bagua Sandals +3"
 
-	jse.empyrean.head = "Azimuth Hood +3"
-	jse.empyrean.body = "Azimuth Coat +3"
-	jse.empyrean.hands = "Azimuth Gloves +3"
-	jse.empyrean.legs = "Azimuth Tights +3"
-	jse.empyrean.feet = "Azimuth Gaiters +3"
+    jse.empyrean.head = "Azimuth Hood +3"
+    jse.empyrean.body = "Azimuth Coat +3"
+    jse.empyrean.hands = "Azimuth Gloves +3"
+    jse.empyrean.legs = "Azimuth Tights +3"
+    jse.empyrean.feet = "Azimuth Gaiters +3"
 
     jse.earring = "Azimuth earring +1"
-    
+
     sets.Idris = {main="Idris"}
     sets.Idris.DualWield = {main="Idris", sub="Bunzi's rod"}
     sets.Idris.DualWield.CathPalug = {main="Idris", sub="Cath Palug hammer"}

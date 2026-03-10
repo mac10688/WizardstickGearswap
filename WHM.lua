@@ -73,22 +73,22 @@ function init_gear_sets()
     --------------------------------------
 
     jse.artifact.head = "Theophany Cap +3"
-	jse.artifact.body = "Theophany Bliaut +3"
-	jse.artifact.hands = "Theophany Mitts +3"
-	jse.artifact.legs = "Theophany Pantaloons +3"
-	jse.artifact.feet = "Theophany Duckbills +3"
+    jse.artifact.body = "Theophany Bliaut +3"
+    jse.artifact.hands = "Theophany Mitts +3"
+    jse.artifact.legs = "Theophany Pantaloons +3"
+    jse.artifact.feet = "Theophany Duckbills +3"
 
-	jse.relic.head = "Piety Cap +3"
-	jse.relic.body = "Piety Bliaut +3"
-	jse.relic.hands = "Piety Mitts +3"
-	jse.relic.legs = "Piety Pantaloons +3"
-	jse.relic.feet = "Piety Duckbills +3"
+    jse.relic.head = "Piety Cap +3"
+    jse.relic.body = "Piety Bliaut +3"
+    jse.relic.hands = "Piety Mitts +3"
+    jse.relic.legs = "Piety Pantaloons +3"
+    jse.relic.feet = "Piety Duckbills +3"
 
-	jse.empyrean.head = "Ebers Cap +3"
-	jse.empyrean.body = "Ebers Bliaut +3"
-	jse.empyrean.hands = "Ebers Mitts +3"
-	jse.empyrean.legs = "Ebers Pantaloons +3"
-	jse.empyrean.feet = "Ebers Duckbills +3"
+    jse.empyrean.head = "Ebers Cap +3"
+    jse.empyrean.body = "Ebers Bliaut +3"
+    jse.empyrean.hands = "Ebers Mitts +3"
+    jse.empyrean.legs = "Ebers Pantaloons +3"
+    jse.empyrean.feet = "Ebers Duckbills +3"
 
     jse.earring = "Ebers Earring +2"
 

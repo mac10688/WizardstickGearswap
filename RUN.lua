@@ -42,22 +42,22 @@ function init_gear_sets()
     local parry_cape = { name="Ogma's Cape", augments={'VIT+20','Eva.+20 /Mag. Eva.+20','VIT+10','"Dbl.Atk."+10','Parrying rate+5%'}}
 
     jse.artifact.head = "Runeist Bandeau +3"
-	jse.artifact.body = "Runeist Coat +3"
-	jse.artifact.hands = "Runeist Mitons +3"
-	jse.artifact.legs = "Runeist Trousers +3"
-	jse.artifact.feet = "Runeist Bottes +3"
+    jse.artifact.body = "Runeist Coat +3"
+    jse.artifact.hands = "Runeist Mitons +3"
+    jse.artifact.legs = "Runeist Trousers +3"
+    jse.artifact.feet = "Runeist Bottes +3"
 
-	jse.relic.head = "Futhark Bandeau +4"
-	jse.relic.body = "Futhark Coat +3"
-	jse.relic.hands = "Futhark Mitons +4"
-	jse.relic.legs = "Futhark Trousers +3"
-	jse.relic.feet = "Futhark Boots +3"
+    jse.relic.head = "Futhark Bandeau +4"
+    jse.relic.body = "Futhark Coat +3"
+    jse.relic.hands = "Futhark Mitons +4"
+    jse.relic.legs = "Futhark Trousers +3"
+    jse.relic.feet = "Futhark Boots +3"
 
-	jse.empyrean.head = "Erilaz Galea +3"
-	jse.empyrean.body = "Erilaz Surcoat +3"
-	jse.empyrean.hands = "Erilaz Gauntlets +3"
-	jse.empyrean.legs = "Erilaz Leg Guards +3"
-	jse.empyrean.feet = "Erilaz Greaves +3"
+    jse.empyrean.head = "Erilaz Galea +3"
+    jse.empyrean.body = "Erilaz Surcoat +3"
+    jse.empyrean.hands = "Erilaz Gauntlets +3"
+    jse.empyrean.legs = "Erilaz Leg Guards +3"
+    jse.empyrean.feet = "Erilaz Greaves +3"
 
     jse.earring = "Erilaz earring +1"
 
