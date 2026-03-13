@@ -103,7 +103,7 @@ function init_gear_sets()
     jse.empyrean.legs = "Fili Rhingrave +3"
     jse.empyrean.feet = "Fili Cothurnes +3"
 
-    jse.earring = "Fili Earring +1"
+    jse.earring = "Fili Earring +2"
 
     --------------------------------------
     -- Start defining the sets
@@ -226,7 +226,7 @@ function init_gear_sets()
     sets.precast.WS['Mordant Rime'] = set_combine(sets.precast.WS, {
         neck="Bard's charm +2",
         ear1="Regal earring",
-        ear2="Ishvara earring",
+        ear2=jse.earring,
         body=jse.relic.body,
         ring1="Metamorph ring +1",
         back=mordant_rime_cape,
@@ -259,7 +259,7 @@ function init_gear_sets()
         head=jse.empyrean.head,
         neck="Moonbow whistle +1",
         ear1="Genmei earring",
-        ear2=jse.earring,        
+        ear2=jse.earring,
         body=jse.empyrean.body,
         hands=jse.empyrean.hands,
         ring1="Moonlight ring",
@@ -432,7 +432,7 @@ function init_gear_sets()
         head="Bunzi's hat",
         neck="Bard's charm +2",
         ear1="Dignitary's earring",
-        ear2="Telos earring",        
+        ear2="Telos earring",
         body="Ashera harness",
         hands="Bunzi's gloves",
         ring1={name="Chirich ring +1", bag="wardrobe5"},
@@ -449,8 +449,8 @@ function init_gear_sets()
         ring2={name="Moonlight ring", bag="wardrobe6"}
     })
 
-    sets.engaged.Accuracy = sets.engaged
-    
+    sets.engaged.Accuracy = set_combine(sets.engaged, {ear2=jse.earring})
+
     sets.midcast.Absorb = {
         ranged=fc_linos,
         head="Cath Palug crown",
