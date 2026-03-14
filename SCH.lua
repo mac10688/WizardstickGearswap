@@ -77,7 +77,7 @@ function init_gear_sets()
     jse.empyrean.head = "Arbatel Bonnet +3"
     jse.empyrean.body = "Arbatel Gown +3"
     jse.empyrean.hands = "Arbatel Bracers +3"
-    se.empyrean.legs = "Arbatel Pants +3"
+    jse.empyrean.legs = "Arbatel Pants +3"
     jse.empyrean.feet = "Arbatel Loafers +3"
 
     jse.earring = "Arbatel earring +1"
