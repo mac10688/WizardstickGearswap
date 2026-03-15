@@ -12,10 +12,11 @@ end
 
 -- Setup vars that are user-independent.  state.Buff vars initialized here will automatically be tracked.
 function job_setup()
-    state.OffenseMode:options('None', 'Normal')
+    state.OffenseMode:options('Normal', 'Acc', 'HighAcc')
     state.CombatMode:options('SwordShield', 'DualWield')
     state.CastingMode:options('Normal', 'Resistant')
     state.IdleMode:options('Normal', 'PDT', 'Refresh')
+    state.WeaponskillMode:options('Normal','Acc')
 
     state.CombatWeapon:set('Idris')
 
@@ -156,6 +157,7 @@ function init_gear_sets()
     sets.precast.WS['Skullbreaker'] = set_combine(sets.precast.WS, {})
     sets.precast.WS['True Strike'] = set_combine(sets.precast.WS, {})
     sets.precast.WS['Judgment'] = set_combine(sets.precast.WS, {waist="Fotia belt"})
+    sets.precast.WS['Judgment'].Acc = set_combine(sets.precast.WS, {waist="Null belt", neck="Null loop"})
     sets.precast.WS['Hexa Strike'] = set_combine(sets.precast.WS, {waist="Fotia belt"})
     sets.precast.WS['Black Halo'] = set_combine(sets.precast.WS, {})
     sets.precast.WS['Flash Nova'] = set_combine(ws_magic, {})
@@ -403,7 +405,7 @@ function init_gear_sets()
     -- Normal melee group
     sets.engaged = {
         head="Nyame Helm",
-        neck="Combatant's torque",
+        neck="Null loop",
         ear1="Telos earring",
         ear2="Dignitary's earring",
         body="Nyame Mail",
@@ -411,10 +413,21 @@ function init_gear_sets()
         ring1={name="Chirich ring +1", bag="wardrobe5"},
         ring2={name="Chirich ring +1", bag="wardrobe6"},
         back=tp_Cape,
-        waist="Grunfeld rope",
+        waist="Null belt",
         legs="Nyame Flanchard",
         feet="Nyame Sollerets"
     }
+
+    sets.engaged.Acc = set_combine(sets.engaged, {
+        back="Null shawl"
+    })
+
+    sets.engaged.HighAcc = set_combine(sets.engaged.Acc, {
+        head="Azimuth hood +3",
+        body="Azimuth coat +3",
+        legs="Azimuth tights +3",
+        feet="Azimuth gaiters +3"
+    })
 
     sets.defense.PDT = {
         head="Nyame helm", -- 5 mdb 123 meva
