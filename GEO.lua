@@ -24,16 +24,22 @@ function job_setup()
     state.Idris.SwordShield = M{['description']='Idris Set', 'Ammurapi', 'Genmei'}
     state.Idris.DualWield = M{['description']='Idris Set', 'CathPalug', 'Bunzi', 'WizardRod', 'LorgMor'}
 
+    state.Tishtrya = {}
+    state.Tishtrya.SwordShield = M{['description']='Tishtrya Set', 'Ammurapi', 'Genmei'}
+    state.Tishtrya.DualWield = M{['description']='Tishtrya Set', 'CathPalug', 'Bunzi', 'WizardRod', 'LorgMor'}
+
     state.MagicBurst = M(false, 'Magic Burst')
     data.petJA = S{"Full Circle","Radial Arcana","Mending Helation","Concentric Pulse"}
     
     send_command('bind ^` gs c toggle MagicBurst')
     send_command('bind ~f1 gs c set CombatWeapon Idris')
+    send_command('bind ~f2 gs c set CombatWeapon Tishtrya')
 end
 
 -- Called when this job file is unloaded (eg: job change)
 function user_unload()
     send_command('unbind ~f1')
+    send_command('unbind ~f2')
     send_command('unbind ^`')
 end
 
@@ -78,6 +84,18 @@ function init_gear_sets()
     sets.Idris.SwordShield = {main="Idris", sub="Ammurapi shield"}
     sets.Idris.SwordShield.Ammurapi = {main="Idris", sub="Ammurapi shield"}
     sets.Idris.SwordShield.Genmei = {main="Idris", sub="Genmei shield"}
+
+
+    sets.Tishtrya = {main="Tishtrya "}
+    sets.Tishtrya.DualWield = {main="Tishtrya", sub="Bunzi's rod"}
+    sets.Tishtrya.DualWield.CathPalug = {main="Tishtrya", sub="Cath Palug hammer"}
+    sets.Tishtrya.DualWield.Bunzi = {main="Tishtrya", sub="Bunzi's rod"}
+    sets.Tishtrya.DualWield.WizardRod = {main="Tishtrya", sub="Wizard's rod"}
+    sets.Tishtrya.DualWield.LorgMor = {main="Tishtrya", sub="Lorg Mor"}
+
+    sets.Tishtrya.SwordShield = {main="Tishtrya", sub="Ammurapi shield"}
+    sets.Tishtrya.SwordShield.Ammurapi = {main="Tishtrya", sub="Ammurapi shield"}
+    sets.Tishtrya.SwordShield.Genmei = {main="Tishtrya", sub="Genmei shield"}
 
     --------------------------------------
     -- Precast sets
