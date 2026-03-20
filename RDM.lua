@@ -674,7 +674,7 @@ function init_gear_sets()
 
     sets.idle.Refresh = set_combine(sets.idle, {
         ammo="Homiliary",
-        head="Befouled crown",
+        head=jse.relic.head,
         body=jse.artifact.body,
         ring1={name="Stikini Ring +1", bag="wardrobe5"},
         ring2={name="Stikini Ring +1", bag="wardrobe6"},
