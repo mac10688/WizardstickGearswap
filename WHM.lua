@@ -634,12 +634,7 @@ function init_gear_sets()
         feet=jse.empyrean.feet --7% dmg
     }
     
-    -- Defense sets
-
-    -- 1659 defense
-    -- 29 mdb 716 meva
-    -- definitely > 50% dt
-    sets.defense.PDT = {
+    sets.idle.PDT = {
         ammo="Staunch tathlum +1",
         head="Nyame helm", -- 5 mdb 123 meva
         neck="Loricate Torque +1",
@@ -655,10 +650,7 @@ function init_gear_sets()
         feet="Nyame sollerets" -- 5 mdb 150 meva
     }
 
-    -- 1457 defense
-    -- 55 mdb 707 meva
-    -- 49% dt
-    sets.defense.MDT = {
+    sets.idle.MDT = {
         ammo="Staunch tathlum +1",
         head=jse.empyrean.head, --10 mdb 125 meva
         neck="Loricate Torque +1",
@@ -673,6 +665,25 @@ function init_gear_sets()
         legs=jse.empyrean.legs, -- 10 mdb 157 meva
         feet=jse.empyrean.feet -- 9 mdb 157 meva
     }
+
+    sets.idle.Refresh = set_combine(sets.idle, {
+        ammo="Homiliary",
+        body=jse.empyrean.body,
+        ring1={name="Stikini Ring +1", bag="wardrobe5"},
+        ring2={name="Stikini Ring +1", bag="wardrobe6"},
+        waist="Fucho-no-obi",
+        legs={ name="Chironic Hose", augments={'STR+9','CHR+4','"Refresh"+2','Mag. Acc.+14 "Mag.Atk.Bns."+14'}}
+    })
+    -- Defense sets
+
+    -- 1659 defense
+    -- 29 mdb 716 meva
+    -- definitely > 50% dt
+    sets.defense.PDT = sets.idle.PDT
+    -- 1457 defense
+    -- 55 mdb 707 meva
+    -- 49% dt
+    sets.defense.MDT = sets.idle.MDT
 
     sets.Kiting = {
         ring2="Shneddick ring +1",
