@@ -658,10 +658,10 @@ function init_gear_sets()
         feet=jse.empyrean.feet
     }
 
-    sets.idle.Refresh = set_combine(sets.idel, {
+    sets.idle.Refresh = set_combine(sets.idle, {
         ammo="Homiliary",
         head="Befouled crown",
-        body=jse.artifact.head,
+        body=jse.artifact.body,
         ring1={name="Stikini Ring +1", bag="wardrobe5"},
         ring2={name="Stikini Ring +1", bag="wardrobe6"},
         waist="Fucho-no-obi"
