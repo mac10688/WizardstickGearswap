@@ -42,7 +42,7 @@ function init_gear_sets()
     local parry_cape = { name="Ogma's Cape", augments={'VIT+20','Eva.+20 /Mag. Eva.+20','VIT+10','"Dbl.Atk."+10','Parrying rate+5%'}}
 
     jse.artifact.head = "Runeist Bandeau +3"
-    jse.artifact.body = "Runeist Coat +3"
+    jse.artifact.body = "Runeist Coat +4"
     jse.artifact.hands = "Runeist Mitons +3"
     jse.artifact.legs = "Runeist Trousers +3"
     jse.artifact.feet = "Runeist Bottes +3"
