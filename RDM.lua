@@ -17,7 +17,7 @@ function job_setup()
     state.CombatMode:options('SwordShield', 'DualWield')
     state.HybridMode:options('Normal', 'DT')
     state.CastingMode:options('Normal', 'Resistant')
-    state.IdleMode:options('Normal', 'PDT', 'MDT')
+    state.IdleMode:options('Normal', 'PDT', 'MDT', 'Refresh')
     state.WeaponskillMode:options('Normal','Acc')
 
     state.MagicBurst = M(true, 'Magic Burst')
@@ -470,7 +470,7 @@ function init_gear_sets()
         main="Murgleis",
         sub="Ammurapi shield",
         ranged=empty,
-        ammo="Regal gem",                
+        ammo="Regal gem",
         head=jse.empyrean.head,
         neck="Duelist's torque +2",
         ear1="Snotra earring",
@@ -534,7 +534,7 @@ function init_gear_sets()
         head=jse.empyrean.head,
         neck="Sibyl scarf",
         ear1="Malignance earring",
-        ear2="Regal earring",        
+        ear2="Regal earring",
         body=jse.empyrean.body,
         hands=jse.empyrean.hands,
         ring1="Medada's ring",
@@ -625,13 +625,9 @@ function init_gear_sets()
         waist="Null belt",
         legs="Nyame flanchard",
         feet="Malignance boots"
-    }    
+    }
 
-    -- -- Defense sets
-    -- 1663 defense
-    -- 29 mdb 704 meva
-    -- definitely > 50% dt
-    sets.defense.PDT = {
+    sets.idle.PDT = {
         ammo="Staunch tathlum +1",
         head="Nyame helm", -- 5 mdb 123 meva
         neck="Loricate Torque +1",
@@ -646,8 +642,7 @@ function init_gear_sets()
         legs="Nyame flanchard", -- 7 mdb 150 meva
         feet="Nyame sollerets" -- 5 mdb 150 meva
     }
-
-    sets.defense.MDT = {
+    sets.idle.MDT = {
         ammo="Staunch tathlum +1",
         head=jse.empyrean.head,
         neck="Loricate torque +1",
@@ -663,6 +658,23 @@ function init_gear_sets()
         feet=jse.empyrean.feet
     }
 
+    sets.idle.Refresh = set_combine(sets.idel, {
+        ammo="Homiliary",
+        head="Befouled crown",
+        body=jse.artifact.head,
+        ring1={name="Stikini Ring +1", bag="wardrobe5"},
+        ring2={name="Stikini Ring +1", bag="wardrobe6"},
+        waist="Fucho-no-obi"
+    })
+
+    -- -- Defense sets
+    -- 1663 defense
+    -- 29 mdb 704 meva
+    -- definitely > 50% dt
+    sets.defense.PDT = sets.idle.PDT
+
+    sets.defense.MDT = sets.idle.MDT
+ 
     sets.Kiting = {ring1="Shneddick ring +1"}
 
     -- Engaged sets
@@ -676,7 +688,7 @@ function init_gear_sets()
     sets.engaged = {
         ranged=empty,
         ammo="Coiste bodhar",
-        head="Bunzi's hate",
+        head="Bunzi's hat",
         neck="Anu Torque",
         ear1="Sherida Earring",
         ear2=jse.earring,
@@ -689,6 +701,7 @@ function init_gear_sets()
         legs="Malignance tights",
         feet="Malignance boots"
     }
+
 --   sets.engaged[state.CombatMode][state.CombatForm][state.CombatWeapon][state.OffenseMode][state.HybridMode][classes.CustomMeleeGroups (any number)]
     sets.engaged.SwordShield = set_combine(sets.engaged, {feet=jse.artifact.feet, back=tp_cape})
     sets.engaged.SwordShield.HighAcc = set_combine(sets.engaged.SwordShield, {neck="Null loop", ear1="Dignitary's earring", back="Null shawl", waist="Null belt"})
