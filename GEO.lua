@@ -393,7 +393,9 @@ function init_gear_sets()
     sets.idle.Refresh = set_combine(sets.idle, {
         head="Befouled crown",
         body=jse.empyrean.body,
+        hands=jse.relic.hands,
         ring1= {name="Stikini Ring +1", bag="wardrobe5"},
+        ring2={name="Stikini Ring +1", bag="wardrobe6"},
         legs="Assiduity pants +1"
     })
 
