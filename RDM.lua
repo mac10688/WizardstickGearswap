@@ -40,10 +40,14 @@ function job_setup()
     state.Club = {}
     state.Club.SwordShield = M{['description']='Club Set', 'Sacro', 'Genmei'}
     state.Club.DualWield = M{['description']='Club Set', 'TP', 'Sakpata'}
-    
+
     state.Dagger = {}
     state.Dagger.SwordShield = M{['description']='Dagger Set', 'Sacro', 'Genmei'}
     state.Dagger.DualWield = M{['description']='Dagger Set', 'Malevolence', 'Gleti'}
+
+    state.Sakpata = {}
+    state.Sakpata.SwordShield = M{['description']='Sakpata Set', 'Sacro', 'Genmei'}
+    state.Sakpata.DualWield = M{['description']='Sakpata Set', 'TP', 'Acc'}
 
     state.Zerodmg = {}
     state.Zerodmg.SwordShield = M{['description']='Dagger Set', 'Sacro', 'Genmei'}
@@ -53,8 +57,9 @@ function job_setup()
     send_command('bind ~f2 gs c set CombatWeapon Crocea')
     send_command('bind ~f3 gs c set CombatWeapon Murgleis')
     send_command('bind ~f4 gs c set CombatWeapon Club')
-    send_command('bind ~f5 gs c set CombatWeapon Dagger')
-    send_command('bind ~f6 gs c set CombatWeapon Zerodmg')
+    send_command('bind ~f5 gs c set CombatWeapon Sakpata')
+    send_command('bind ~f6 gs c set CombatWeapon Dagger')
+    send_command('bind ~f7 gs c set CombatWeapon Zerodmg')
     send_command('bind @e gs c toggle EnspellMode')
     send_command('bind ^` gs c toggle MagicBurst')
 
@@ -159,6 +164,15 @@ function init_gear_sets()
     sets.Club.SwordShield = {main="Maxentius", sub="Sacro bulwark"}
     sets.Club.SwordShield.Sacro = {main="Maxentius", sub="Sacro bulwark"}
     sets.Club.SwordShield.Genmei = {main="Maxentius", sub="Genmei shield"}
+
+    sets.Sakpata = {main="Sakpata's sword"}
+    sets.Sakpata.DualWield = {main="Sakpata's sword", sub="Thibron"}
+    sets.Sakpata.DualWield.TP = {main="Sakpata's sword", sub="Thibron"}
+    sets.Sakpata.DualWield.Sakpata = {main="Sakpata's sword", sub="Sakpata's sword"}
+    sets.Sakpata.DualWield.Acc = {main="Sakpata's sword", sub="Gleti's knife"}
+    sets.Sakpata.SwordShield = {main="Sakpata's sword", sub="Sacro bulwark"}
+    sets.Sakpata.SwordShield.Sacro = {main="Sakpata's sword", sub="Sacro bulwark"}
+    sets.Sakpata.SwordShield.Genmei = {main="Sakpata's sword", sub="Genmei shield"}
 
     sets.Dagger = {main='Tauret'}
     sets.Dagger.DualWield = {main='Tauret', sub='Malevolence'}
@@ -664,7 +678,8 @@ function init_gear_sets()
         body=jse.artifact.body,
         ring1={name="Stikini Ring +1", bag="wardrobe5"},
         ring2={name="Stikini Ring +1", bag="wardrobe6"},
-        waist="Fucho-no-obi"
+        waist="Fucho-no-obi",
+        legs={ name="Chironic Hose", augments={'STR+9','CHR+4','"Refresh"+2','Mag. Acc.+14 "Mag.Atk.Bns."+14'}}
     })
 
     -- -- Defense sets
