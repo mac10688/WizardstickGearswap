@@ -236,14 +236,14 @@ function init_gear_sets()
     -- Weaponskill sets
     -- Default set for any weaponskill that isn't any more specifically defined
     sets.precast.WS = {
-        head="Nyame Helm",
+        head=jse.relic.head,
         body=jse.empyrean.body,
         hands="Nyame Gauntlets",
         legs="Nyame Flanchard",
         feet="Nyame Sollerets",
         neck="Rep. Plat. Medal",
         waist="Sailfi Belt +1",
-        ear1="Ishvara Earring",
+        ear1="Thrud earring",
         ear2=jse.earring,
         ring1="Shukuyu Ring",
         ring2="Rufescent Ring",
@@ -263,10 +263,16 @@ function init_gear_sets()
         ammo="Coiste bodhar",
         neck="Beastmaster collar +2",
         ear1="Moonshade earring",
+        ear2="Thrud earring",
         ring1="Gere ring",
         ring2="Regal ring"
     })
     sets.precast.WS['Blitz'].SubtleBlow = set_combine(sets.precast.WS['Blitz'], sets.precast.WS.SubtleBlow)
+
+    sets.precast.WS['Calamity'] = set_combine(sets.precast.WS, {
+        ear1="Thrud earring",
+    })
+    sets.precast.WS['Calamity'].SubtleBlow = set_combine(sets.precast.WS['Calamity'], sets.precast.WS.SubtleBlow)
 
     sets.precast.WS["Rampage"] = {
         ammo="Crepuscular pebble",

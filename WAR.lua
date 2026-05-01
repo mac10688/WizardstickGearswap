@@ -45,7 +45,7 @@ function job_setup()
 
 end
 
-function job_file_unload()
+function file_unload()
     send_command('unbind ~f1')
     send_command('unbind ~f2')
 end

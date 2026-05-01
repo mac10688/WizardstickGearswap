@@ -1,3 +1,11 @@
+function user_setup()
+    gear.chironic_head_phalanx = { name="Chironic Hat", augments={'"Conserve MP"+1','Pet: Accuracy+10 Pet: Rng. Acc.+10','Phalanx +4','Mag. Acc.+6 "Mag.Atk.Bns."+6'}}
+    gear.chironic_body_phalanx = { name="Chironic Doublet", augments={'STR+14','INT+10','Phalanx +4',}}
+    gear.chironic_hands_phalanx = { name="Chironic Gloves", augments={'Chance of successful block +1','"Mag.Atk.Bns."+24','Phalanx +4','Accuracy+12 Attack+12'}}
+    gear.chironic_legs_phalanx = { name="Chironic Hose", augments={'"Waltz" potency +6%','STR+10','Phalanx +3',}}
+    gear.chironic_feet_phalanx = { name="Chironic Slippers", augments={'Pet: Mag. Acc.+19','Pet: DEX+3','Phalanx +4','Accuracy+9 Attack+9','Mag. Acc.+7 "Mag.Atk.Bns."+7'}}
+end
+
 function user_state_change(descrip, newVal, oldVal)
     if descrip == 'Combat Weapon' then
         if newVal == oldVal then

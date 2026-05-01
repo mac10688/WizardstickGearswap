@@ -15,7 +15,7 @@ end
 function job_setup()
     state.ExtraSongsMode = M(false, 'Use daurdabla for extra songs')
     state.EnmitySongs = M(false, 'Use enmity set for songs')
-    state.OffenseMode:options('TP', 'Hybrid', 'Accuracy')
+    state.OffenseMode:options('TP', 'Hybrid', 'Accuracy', 'SubtleBlow')
     state.CombatMode:options('SwordShield', 'DualWield')
     state.CastingMode:options('Normal', 'Resistant', 'DT')
     state.IdleMode:options('Normal', 'Evasion', 'Regain')
@@ -450,6 +450,15 @@ function init_gear_sets()
     })
 
     sets.engaged.Accuracy = set_combine(sets.engaged, {ear2=jse.earring})
+    sets.engaged.SubtleBlow = set_combine(sets.engaged, {
+        neck="Bathy choker +1",
+        ear1="Dignitary's earring",
+        ring1={name="Chirich ring +1", bag="wardrobe5"},
+        ring2={name="Chirich ring +1", bag="wardrobe6"},
+        waist="Sarissaphoroi belt",
+        legs=jse.empyrean.legs,
+        feet="Volte spats"
+    })
 
     sets.midcast.Absorb = {
         ranged=fc_linos,
@@ -483,6 +492,22 @@ function init_gear_sets()
         waist="Flume Belt +1",
         legs="Zoar Subligar +1",
         feet="Nyame Sollerets"
+    }
+
+    sets.midcast.Phalanx =  {
+        range={ name="Linos", augments={'DEF+15','Phys. dmg. taken -5%','VIT+8',}},
+        head=gear.chironic_head_phalanx,
+        body=gear.chironic_body_phalanx,
+        hands=gear.chironic_hands_phalanx,
+        legs=gear.chironic_legs_phalanx,
+        feet=gear.chironic_feet_phalanx ,
+        neck="Unmoving Collar +1",
+        waist="Plat. Mog. Belt",
+        left_ear="Alabaster Earring",
+        right_ear="Tuisto Earring",
+        left_ring="Moonlight Ring",
+        right_ring="Moonlight Ring",
+        back={ name="Intarabus's Cape", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','"Fast Cast"+10','Damage taken-5%',}},
     }
 
     sets.precast.JA['Sentinel'] = sets.enmity

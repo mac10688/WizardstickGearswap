@@ -13,10 +13,10 @@ end
 
 -- Setup vars that are user-independent.  state.Buff vars initialized here will automatically be tracked.
 function job_setup()
-    state.OffenseMode:options('Normal', 'Hybrid', 'HighAcc', 'Enspell')
+    state.OffenseMode:options('Normal', 'HighAcc', 'Enspell')
     state.CombatMode:options('SwordShield', 'DualWield')
-    state.HybridMode:options('Normal', 'DT')
-    state.CastingMode:options('Normal', 'Resistant')
+    state.HybridMode:options('Normal', 'AbsorbMagic')
+    state.CastingMode:options('Normal', 'Resistant', 'Occult Acumen')
     state.IdleMode:options('Normal', 'PDT', 'MDT', 'Refresh')
     state.WeaponskillMode:options('Normal','Acc')
 
@@ -79,7 +79,7 @@ function job_setup()
         'Enstone', 'Enstone II', 'Enthunder', 'Enthunder II', 'Enwater', 'Enwater II'}
 end
 
-function job_file_unload()
+function file_unload()
     send_command('unbind ~f1')
     send_command('unbind ~f2')
     send_command('unbind ~f3')
@@ -119,7 +119,7 @@ function init_gear_sets()
     jse.relic.body = "Vitiation Tabard +3"
     jse.relic.hands = "Vitiation Gloves +4"
     jse.relic.legs = "Vitiation Tights +3"
-    jse.relic.feet = "Vitiation Boots +3"
+    jse.relic.feet = "Vitiation Boots +4"
 
     jse.empyrean.head = "Lethargy Chappel +3"
     jse.empyrean.body = "Lethargy Sayon +3"
@@ -349,7 +349,7 @@ function init_gear_sets()
         body="Bunzi's robe",
         hands=jse.empyrean.hands,
         ring1="Medada's ring",
-        ring2="Defending ring",        
+        ring2="Defending ring",
         back=mnd_cape,
         waist="Austerity belt +1",
         legs=jse.artifact.legs,
@@ -403,7 +403,7 @@ function init_gear_sets()
         legs="Telchine braconi",
         feet=jse.empyrean.feet
     })
-        
+
     sets.buff.ComposureOther = set_combine(sets.midcast['Enhancing Magic'], {
         main="Colada",
         sub="Ammurapi shield",
@@ -417,19 +417,6 @@ function init_gear_sets()
         legs=jse.empyrean.legs,
         feet=jse.empyrean.feet
     })
-
-    sets.buff.ComposureOtherLongDuration = set_combine(sets.buff.ComposureOther, {
-        ring1="Medada's ring"
-    })
-
-    sets.midcast.Regen = sets.midcast.EnhancingDuration
-    sets.midcast.Refresh = set_combine(sets.midcast.EnhancingDuration, {
-        head="Amalric coif +1",
-        body=jse.artifact.body,
-        legs=jse.empyrean.legs
-    })
-
-    sets.midcast.RefreshSelf = set_combine(sets.midcast.refresh, {waist="Gishdubar sash"})
 
     local SIRD  = {
         ammo="Staunch Tathlum +1",
@@ -447,38 +434,70 @@ function init_gear_sets()
         feet=jse.empyrean.feet        
     }
 
+    sets.midcast.Raise = SIRD
+    sets.midcast.Reraise = set_combine(sets.buff.ComposureOther)
+    sets.midcast.StatusRemoval = SIRD
+    sets.midcast.Protect = set_combine(sets.midcast.EnhancingDuration)
+    sets.midcast.Protect.Others = set_combine(sets.buff.ComposureOther)
+    sets.midcast.Shell = set_combine(sets.midcast.EnhancingDuration)
+    sets.midcast.Shell.Others = set_combine(sets.buff.ComposureOther)
+    sets.midcast.Blink = SIRD
     sets.midcast.Stoneskin = SIRD
-    sets.midcast.Utsusemi = SIRD
-    sets.midcast.Phalanx = set_combine(sets.midcast['Enhancing Magic'],
-    {
-        main="Sakpata's sword", --really should just be equipped for hasting myself
-        hands="Taeon gloves",
-        legs="Taeon tights",
-        feet="Taeon boots"
-    })
-
     sets.midcast.Aquaveil = set_combine(SIRD, {
         head="Amalric coif +1",
         hands="Regal cuffs"
-    })    
+    })
 
-    sets.midcast.Storm = sets.midcast.EnhancingDuration
+    sets.midcast.Phalanx = set_combine(sets.midcast.EnhancingDuration, {
+            main="Sakpata's Sword",
+            head=gear.chironic_head_phalanx,
+            body=gear.chironic_body_phalanx,
+            hands=gear.chironic_hands_phalanx,
+            legs=gear.chironic_legs_phalanx,
+            feet=gear.chironic_feet_phalanx
+    })
+
+    sets.midcast.Phalanx.Others = set_combine(sets.buff.ComposureOther)
+    sets.midcast.Haste = set_combine(sets.midcast.EnhancingDuration)
+    sets.midcast.Haste.Others = set_combine(sets.buff.ComposureOther)
+    sets.midcast.Flurry = set_combine(sets.midcast.EnhancingDuration)
+    sets.midcast.Flurry.Others = set_combine(sets.buff.ComposureOther)
+    sets.midcast.BarElement = set_combine(sets.midcast.EnhancingSkill)
+    sets.midcast.BarStatus = set_combine(sets.midcast.EnhancingSkill)
+    sets.midcast.Enspell = set_combine(sets.midcast.EnhancingSkill)
+    sets.midcast.Auspice = set_combine(sets.midcast.EnhancingDuration)
+    sets.midcast.Temper = set_combine(sets.midcast.EnhancingSkill)
+    sets.midcast.Regen = set_combine(sets.midcast.EnhancingDuration)
+    sets.midcast.Regen.Others = set_combine(sets.buff.ComposureOther)
+    sets.midcast.Refresh = set_combine(sets.midcast.EnhancingDuration, {
+        head="Amalric coif +1",
+        body=jse.artifact.body,
+        waist="Gishdubar sash",
+        legs=jse.empyrean.legs
+    })
+    sets.midcast.Refresh.Others = set_combine(sets.buff.ComposureOther, {
+        head="Amalric coif +1",
+        body=jse.artifact.body,
+        legs=jse.empyrean.legs
+    })
+
     sets.midcast.GainStat = set_combine(sets.midcast.EnhancingDuration, {
         hands=jse.relic.hands
     })
-
-    sets.midcast.Haste = sets.midcast.EnhancingDuration
-    sets.midcast.Flurry = sets.midcast.EnhancingDuration
-    
-    --Int during time of casting adds to base dmg but caps at about 250 int
+    sets.midcast.BoostStat = set_combine(sets.midcast.EnhancingSkill)
+    sets.midcast.Teleport = SIRD
+    sets.midcast.Invisible = set_combine(sets.midcast.EnhancingDuration)
+    sets.midcast.Invisible.Others = set_combine(sets.buff.ComposureOther)
+    sets.midcast.Sneak = set_combine(sets.midcast.EnhancingDuration)
+    sets.midcast.Sneak.Others = set_combine(sets.buff.ComposureOther)
+    sets.midcast.Deodorize = set_combine(sets.midcast.EnhancingDuration)
+    sets.midcast.Deodorize.Others = set_combine(sets.buff.ComposureOther)
     sets.midcast.Spikes = set_combine(sets.midcast.EnhancingSkill, {
         legs=jse.relic.legs
     })
-
-    sets.midcast.Protect = set_combine(sets.midcast.EnhancingDuration)
-    sets.midcast.Protectra = sets.midcast.Protect
-    sets.midcast.Shell = sets.midcast.Protect
-    sets.midcast.Shellra = sets.midcast.Shell
+    sets.midcast.Utsusemi = SIRD
+    
+    --Int during time of casting adds to base dmg but caps at about 250 int
     
     sets.midcast['Enfeebling Magic'] = {
         main="Murgleis",
@@ -558,8 +577,16 @@ function init_gear_sets()
         legs=jse.empyrean.legs,
         feet=jse.empyrean.feet
     }
-        
-    -- sets.midcast.Impact = set_combine(sets.midcast['Elemental Magic'], {head=empty,body='Crepuscular cloak'})
+
+    sets.midcast['Elemental Magic']['Occult Acumen'] = set_combine(sets.midcast['Elemental Magic'], {
+        neck="Combatant's torque",
+        ear1="Dedition earring",
+        ear2="Crepuscular earring",
+        ring1={name="Chirich Ring +1", bag="wardrobe5"},
+        ring2={name="Chirich Ring +1", bag="wardrobe6"},
+        waist="Oneiros rope",
+        legs="Perdition slops"
+    })
 
     sets.midcast.Impact = {
         main="Murgleis",
@@ -718,26 +745,20 @@ function init_gear_sets()
     }
 
 --   sets.engaged[state.CombatMode][state.CombatForm][state.CombatWeapon][state.OffenseMode][state.HybridMode][classes.CustomMeleeGroups (any number)]
-    sets.engaged.SwordShield = set_combine(sets.engaged, {feet=jse.artifact.feet, back=tp_cape})
+    sets.NullifyMagic = {neck="Warder's charm +1", ring1="Shadow ring", waist={name="Platinum moogle belt", priority=30}}
+    sets.engaged.SwordShield = set_combine(sets.engaged, {back=tp_cape})
+    sets.engaged.SwordShield.AbsorbMagic = set_combine(sets.engaged.SwordShield, sets.NullifyMagic)
     sets.engaged.SwordShield.HighAcc = set_combine(sets.engaged.SwordShield, {neck="Null loop", ear1="Dignitary's earring", back="Null shawl", waist="Null belt"})
-    sets.engaged.SwordShield.Hybrid = set_combine(sets.engaged.SwordShield, {feet="Malignance boots"})
+    sets.engaged.SwordShield.HighAcc.AbsorbMagic = set_combine(sets.engaged.SwordShield.HighAcc, sets.NullifyMagic)
     sets.engaged.SwordShield.Enspell = set_combine(sets.engaged.SwordShield, {back=dw_cape})
+    sets.engaged.SwordShield.Enspell.AbsorbMagic = set_combine(sets.engaged.SwordShield.Enspell, sets.NullifyMagic)
 
     sets.engaged.DualWield = set_combine(sets.engaged, {waist="Reiki yotai", ear2="Eabani earring"})
+    sets.engaged.DualWield.AbsorbMagic = set_combine(sets.engaged.DualWield, sets.NullifyMagic)
     sets.engaged.DualWield.HighAcc = set_combine(sets.engaged.DualWield, {ear2 = jse.earring})
-    sets.engaged.DualWield.Hybrid = set_combine(sets.engaged.DualWield, {ring2="Defending ring"})
+    sets.engaged.DualWield.HighAcc.AbsorbMagic = set_combine(sets.engaged.DualWield.HighAcc, sets.NullifyMagic)
     sets.engaged.DualWield.Enspell = set_combine(sets.engaged.DualWield, {back=dw_cape})
-
-    sets.engaged.Hybrid = {
-        head="Malignance Chapeau",
-        body="Malignance Tabard",
-        hands="Malignance Gloves",
-        legs="Malignance Tights",
-        feet="Malignance Boots",							
-        neck="Loricate Torque +1",
-        ring2="Gelatinous Ring +1",							--"Defending Ring", --10/10
-        back=idle_pdt_cape
-    }
+    sets.engaged.DualWield.Enspell.AbsorbMagic = set_combine(sets.engaged.DualWield.Enspell, sets.NullifyMagic)
 
     sets.engaged.Enspell = {
         waist="Orpheus's Sash",
@@ -783,20 +804,17 @@ end
 -- eventArgs is the same one used in job_midcast, in case information needs to be persisted.
 function job_post_midcast(spell, action, spellMap, eventArgs)
     if spell.skill == 'Enhancing Magic' then
-        if classes.NoSkillSpells:contains(spell.english) then
-            if (spell.target.type == 'PLAYER' or spell.target.type == 'NPC') and buffactive.Composure then
-                equip(sets.buff.ComposureOtherLongDuration)
+        if sets.midcast[spellMap] then
+            if (spell.target.type == 'PLAYER' or spell.target.type == 'NPC') and buffactive.Composure and sets.midcast[spellMap].Others then
+                equip(sets.midcast[spellMap].Others)
             else
-                equip(sets.midcast.EnhancingDuration)
-                if spellMap == 'Refresh' and spell.target.type == 'SELF' then
-                    equip (sets.midcast.RefreshSelf)
-                end
+                equip(sets.midcast[spellMap])
             end
-        elseif skill_spells:contains(spell.english) then
-            if (spell.target.type == 'PLAYER' or spell.target.type == 'NPC') and buffactive.Composure then
-                equip(sets.buff.ComposureOther)
+        elseif sets.midcast[spell.name] then
+            if (spell.target.type == 'PLAYER' or spell.target.type == 'NPC') and buffactive.Composure and sets.midcast[spell.name].Others then
+                equip(sets.midcast[spell.name].Others)
             else
-                equip(sets.midcast.EnhancingSkill)
+                equip(sets.midcast[spell.name])
             end
         end
     elseif spell.skill == 'Healing Magic' then

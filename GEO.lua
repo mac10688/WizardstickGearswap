@@ -15,7 +15,7 @@ function job_setup()
     state.OffenseMode:options('Normal', 'Acc', 'HighAcc')
     state.CombatMode:options('SwordShield', 'DualWield')
     state.CastingMode:options('Normal', 'Resistant')
-    state.IdleMode:options('Normal', 'PDT', 'Refresh')
+    state.IdleMode:options('Normal', 'PDT', 'Refresh', 'Pet')
     state.WeaponskillMode:options('Normal','Acc')
 
     state.CombatWeapon:set('Idris')
@@ -37,7 +37,7 @@ function job_setup()
 end
 
 -- Called when this job file is unloaded (eg: job change)
-function user_unload()
+function file_unload()
     send_command('unbind ~f1')
     send_command('unbind ~f2')
     send_command('unbind ^`')
@@ -86,7 +86,7 @@ function init_gear_sets()
     sets.Idris.SwordShield.Genmei = {main="Idris", sub="Genmei shield"}
 
 
-    sets.Tishtrya = {main="Tishtrya "}
+    sets.Tishtrya = {main="Tishtrya"}
     sets.Tishtrya.DualWield = {main="Tishtrya", sub="Bunzi's rod"}
     sets.Tishtrya.DualWield.CathPalug = {main="Tishtrya", sub="Cath Palug hammer"}
     sets.Tishtrya.DualWield.Bunzi = {main="Tishtrya", sub="Bunzi's rod"}
@@ -380,7 +380,7 @@ function init_gear_sets()
         neck="Loricate torque +1",
         ear1="Etiolation earring",
         ear2="Arete del luna +1",
-        body=jse.relic.body,
+        body=jse.empyrean.body,
         hands=jse.empyrean.hands,
         ring1="Defending Ring",
         ring2={name="Stikini Ring +1", bag="wardrobe6"},

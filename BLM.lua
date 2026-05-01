@@ -52,7 +52,7 @@ end
 -------------------------------------------------------------------------------------------------------------------
 
 -- Called when this job file is unloaded (eg: job change)
-function user_unload()
+function file_unload()
     send_command('unbind ^`')
     send_command('unbind !`')
     send_command('unbind @`')
@@ -80,7 +80,7 @@ function init_gear_sets()
     jse.relic.head = "Archmage's Petasos +3"
     jse.relic.body = "Archmage's Coat +3"
     jse.relic.hands = "Archmage's Gloves +3"
-    jse.relic.legs = "Archmage's Tonban +3"
+    jse.relic.legs = "Archmage's Tonban +4"
     jse.relic.feet = "Archmage's Sabots +4"
 
     jse.empyrean.head = "Wicce Petasos +3"

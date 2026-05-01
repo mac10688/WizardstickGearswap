@@ -17,7 +17,7 @@ end
 -------------------------------------------------------------------------------------------------------------------
 
 -- Setup vars that are user-dependent.  Can override this function in a sidecar file.
-function user_setup()
+function job_setup()
     state.OffenseMode:options('None', 'Normal')
     state.CastingMode:options('Normal', 'Occult')
     state.IdleMode:options('Normal', 'PDT')
@@ -45,7 +45,7 @@ function user_setup()
     
 end
 
-function user_unload()
+function file_unload()
     send_command('unbind ^`')
     send_command('unbind !`')
     send_command('unbind ~f1')
@@ -591,6 +591,14 @@ function init_gear_sets()
         legs=jse.empyrean.legs,
         feet=jse.artifact.feet
     }
+
+    sets.midcast.Phalanx = set_combine(midcast_enhancing_duration, {
+        head=gear.chironic_head_phalanx,
+        body=gear.chironic_body_phalanx,
+        hands=gear.chironic_hands_phalanx,
+        legs=gear.chironic_legs_phalanx,
+        feet=gear.chironic_feet_phalanx
+    })
 
     sets.midcast.Banish.Resistant = set_combine(sets.midcast.Banish, {
         head=jse.empyrean.head

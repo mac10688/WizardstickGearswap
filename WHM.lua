@@ -52,7 +52,7 @@ function job_setup()
 end
 
 -- Called when this job file is unloaded (eg: job change)
-function user_unload()
+function file_unload()
     send_command('unbind ^`')
     send_command('unbind ~f1')
     send_command('unbind ~f2')
@@ -357,6 +357,14 @@ function init_gear_sets()
         feet=jse.artifact.feet
     }
 
+    sets.midcast.Phalanx = set_combine(midcast_duration, {
+        head=gear.chironic_head_phalanx,
+        body=gear.chironic_body_phalanx,
+        hands=gear.chironic_hands_phalanx,
+        legs=gear.chironic_legs_phalanx,
+        feet=gear.chironic_feet_phalanx
+    })
+
     local midcast_pdt = {
         ammo="Staunch tathlum +1",
         neck="Loricate torque +1",
@@ -445,6 +453,11 @@ function init_gear_sets()
         hands=jse.empyrean.hands,
         legs=jse.artifact.legs,
         feet=jse.artifact.feet
+    })
+
+    sets.midcast.Aquaveil = set_combine(five_hundred_skill_enhancing_max_duration, {
+        head="Chironic hat",
+        hands="Regal cuffs"
     })
 
     sets.midcast.Protect = no_skill_midcast
@@ -622,7 +635,7 @@ function init_gear_sets()
         ammo="Homiliary",
         head="Nyame helm", --7% dmg
         neck="Loricate Torque +1", --6% dmg
-        ear1="Ran earring", --3% magic dmg
+        ear1="Alabaster earring",
         ear2="Foresti earring",
         body=jse.empyrean.body,
         hands="Bunzi's gloves", --7% dmg
@@ -630,7 +643,7 @@ function init_gear_sets()
         ring2={name="Stikini Ring +1", bag="wardrobe6"},
         back=idle_hybrid_cape,
         waist="Platinum moogle belt", --3% magic dmg
-        legs={ name="Chironic Hose", augments={'STR+9','CHR+4','"Refresh"+2','Mag. Acc.+14 "Mag.Atk.Bns."+14'}},
+        legs="Ebers pantaloons +3",
         feet=jse.empyrean.feet --7% dmg
     }
     

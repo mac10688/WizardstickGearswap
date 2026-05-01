@@ -26,7 +26,7 @@ function job_setup()
     send_command('bind ~f3 gs c set CombatWeapon Lycurgos')
 end
 
-function job_file_unload()
+function file_unload()
     send_command('unbind ~f1')
     send_command('unbind ~f2')
     send_command('unbind ~f3')
