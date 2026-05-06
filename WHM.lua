@@ -73,7 +73,7 @@ function init_gear_sets()
     --------------------------------------
 
     jse.artifact.head = "Theophany Cap +3"
-    jse.artifact.body = "Theophany Bliaut +3"
+    jse.artifact.body = "Theophany Bliaut +4"
     jse.artifact.hands = "Theophany Mitts +3"
     jse.artifact.legs = "Theophany Pantaloons +3"
     jse.artifact.feet = "Theophany Duckbills +3"
@@ -631,19 +631,20 @@ function init_gear_sets()
     -- Sets to return to when not performing an action.    
 
     -- Idle sets (default idle set not needed since the other three are defined, but leaving for testing purposes)
+
     sets.idle = {
         ammo="Homiliary",
-        head="Nyame helm", --7% dmg
-        neck="Loricate Torque +1", --6% dmg
-        ear1="Alabaster earring",
+        head="Nyame helm", --7% dt
+        neck="Yngvi choker",
+        ear1="Alabaster earring", -- 5% dt
         ear2="Foresti earring",
         body=jse.empyrean.body,
-        hands="Bunzi's gloves", --7% dmg
+        hands="Bunzi's gloves", --8% dt
         ring1={name="Stikini Ring +1", bag="wardrobe5"},
         ring2={name="Stikini Ring +1", bag="wardrobe6"},
         back=idle_hybrid_cape,
         waist="Platinum moogle belt", --3% magic dmg
-        legs="Ebers pantaloons +3",
+        legs="Ebers pantaloons +3", -- 13% dt
         feet=jse.empyrean.feet --7% dmg
     }
     

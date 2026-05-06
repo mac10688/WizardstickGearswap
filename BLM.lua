@@ -21,15 +21,15 @@ function job_setup()
     state.EatTp = M(false, 'Eat TP')
     state.UseObi = M(true, 'Use Obi')
     state.LockMpReturn = M(false, 'Lock MP Return')
-    state.CombatWeapon:set('Laevateinn')
+    state.CombatWeapon:set('Opashoro')
 
-    state.Laevateinn = M{['description']='Laevateinn Set', 'Khonsu', 'Enki'}
+    state.Opashoro = M{['description']='Drepanum Set', 'Khonsu', 'Enki'}
     state.Kaumodaki = M{['description']='Kaumodaki Set', 'Khonsu', 'Enki'}
     state.WizardRod = M{['description']='Wizard Rod Set', 'Ammurapi', 'Genmei'}
     state.Khatvanga = M{['description']='Khatvanga Set', 'Khonsu', 'Enki'}
     state.Drepanum = M{['description']='Drepanum Set', 'Khonsu', 'Enki'}
     state.Bunzi = M{['description']='Bunzi rod Set', 'Ammurapi', 'Genmei'}
-    state.Opashoro = M{['description']='Drepanum Set', 'Khonsu', 'Enki'}
+    state.Laevateinn = M{['description']='Laevateinn Set', 'Khonsu', 'Enki'}
     state.Marin = M{['description']='Marin staff Set', 'Khonsu', 'Enki'}
 
     -- Additional local binds
@@ -37,13 +37,13 @@ function job_setup()
     send_command('bind !` gs c toggle EatTp')
     send_command('bind @` gs c toggle UseObi')
     send_command('bind ^f8 gs c toggle LockMpReturn')
-    send_command('bind ~f1 gs c set CombatWeapon Laevateinn')
+    send_command('bind ~f1 gs c set CombatWeapon Opashoro')
     send_command('bind ~f2 gs c set CombatWeapon Kaumodaki')
     send_command('bind ~f3 gs c set CombatWeapon WizardRod')
     send_command('bind ~f4 gs c set CombatWeapon Khatvanga')
     send_command('bind ~f5 gs c set CombatWeapon Drepanum')
     send_command('bind ~f6 gs c set CombatWeapon Bunzi')
-    send_command('bind ~f7 gs c set CombatWeapon Opashoro')
+    send_command('bind ~f7 gs c set CombatWeapon Laevateinn')
     send_command('bind ~f8 gs c set CombatWeapon Marin')
 end
 
