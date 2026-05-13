@@ -72,7 +72,7 @@ function init_gear_sets()
     jse.empyrean.legs = "Azimuth Tights +3"
     jse.empyrean.feet = "Azimuth Gaiters +3"
 
-    jse.earring = "Azimuth earring +1"
+    jse.earring = "Azimuth earring +2"
 
     sets.Idris = {main="Idris"}
     sets.Idris.DualWield = {main="Idris", sub="Bunzi's rod"}
@@ -116,8 +116,8 @@ function init_gear_sets()
     sets.precast.FC = {
         head="Merlinic hood",
         neck="Voltsurge torque",
-        ear2="Loquacious Earring",
         ear1="Etiolation earring",
+        ear2="Loquacious Earring",
         body="Shango robe",
         hands="Agwu's gages",
         ring1="Medada's ring",
@@ -237,6 +237,7 @@ function init_gear_sets()
         main="Idris", 
         range="Dunna",
         neck="Bagua charm +2",
+        ear2=jse.earring,
         body=jse.relic.body,
         hands=jse.artifact.hands,
         ring1="Medada's ring",
@@ -291,8 +292,8 @@ function init_gear_sets()
         ammo="Dunna",
         head="Befouled crown",
         neck="Incanter's torque",
-        ear1="Regal earring",
-        ear2="Malignance earring",
+        ear1="Malignance earring",
+        ear2=jse.earring,
         body=jse.artifact.body,
         hands="Regal cuffs",
         ring1="Medada's ring",
@@ -328,8 +329,8 @@ function init_gear_sets()
         feet=jse.empyrean.feet,
         neck="Bagua charm +2",
         waist="Null belt",
-        left_ear="Regal Earring",
-        right_ear="Malignance Earring",
+        left_ear="Malignance Earring",
+        right_ear=jse.earring,
         ring1="Medada's ring",
         ring2="Archon Ring",
         back=fc_Cape
@@ -379,7 +380,7 @@ function init_gear_sets()
         head=jse.empyrean.head,
         neck="Loricate torque +1",
         ear1="Etiolation earring",
-        ear2="Arete del luna +1",
+        ear2=jse.earring,
         body=jse.empyrean.body,
         hands=jse.empyrean.hands,
         ring1="Defending Ring",
