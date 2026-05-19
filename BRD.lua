@@ -19,6 +19,7 @@ function job_setup()
     state.CombatMode:options('SwordShield', 'DualWield')
     state.CastingMode:options('Normal', 'Resistant', 'DT')
     state.IdleMode:options('Normal', 'Evasion', 'Regain')
+    state.WeaponskillMode:options('Normal','Acc')
     state.CombatWeapon:set('Carnwenhan')
 
     state.Naegling = {}
@@ -232,6 +233,10 @@ function init_gear_sets()
         back=mordant_rime_cape,
         waist="Sailfi Belt +1"
         -- legs=jse.relic.legs
+    })
+
+    sets.precast.WS['Mordant Rime'].Acc = set_combine(sets.precast.WS['Mordant Rime'], {
+        waist="Null belt"
     })
     
     sets.precast.WS['Aeolian Edge'] = set_combine(sets.precast.WS, {

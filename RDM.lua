@@ -26,7 +26,7 @@ function job_setup()
     state.CombatWeapon:set('Naegling')
 
     state.Naegling = {}
-    state.Naegling.SwordShield = M{['description']='Naegling Set', 'Sacro', 'Genmei'}
+    state.Naegling.SwordShield = M{['description']='Naegling Set', 'Sacro', 'Genmei', 'Ammurapi'}
     state.Naegling.DualWield = M{['description']='Naegling Set', 'TP', 'Sakpata', 'Acc'}
 
     state.Crocea = {}
@@ -38,7 +38,7 @@ function job_setup()
     state.Murgleis.DualWield = M{['description']='Murgleis Set', 'TP', 'Sakpata'}
 
     state.Club = {}
-    state.Club.SwordShield = M{['description']='Club Set', 'Sacro', 'Genmei'}
+    state.Club.SwordShield = M{['description']='Club Set', 'Sacro', 'Genmei', 'Ammurapi'}
     state.Club.DualWield = M{['description']='Club Set', 'TP', 'Sakpata'}
 
     state.Dagger = {}
@@ -46,7 +46,7 @@ function job_setup()
     state.Dagger.DualWield = M{['description']='Dagger Set', 'Malevolence', 'Gleti'}
 
     state.Sakpata = {}
-    state.Sakpata.SwordShield = M{['description']='Sakpata Set', 'Sacro', 'Genmei'}
+    state.Sakpata.SwordShield = M{['description']='Sakpata Set', 'Sacro', 'Genmei', 'Ammurapi'}
     state.Sakpata.DualWield = M{['description']='Sakpata Set', 'TP', 'Acc'}
 
     state.Zerodmg = {}
@@ -137,6 +137,7 @@ function init_gear_sets()
     sets.Naegling.SwordShield = {main="Naegling", sub="Sacro bulwark"}
     sets.Naegling.SwordShield.Sacro = {main="Naegling", sub="Sacro bulwark"}
     sets.Naegling.SwordShield.Genmei = {main="Naegling", sub="Genmei shield"}
+    sets.Naegling.SwordShield.Ammurapi = {main="Naegling", sub="Ammurapi shield"}
 
     sets.Crocea = {main="Crocea mors"}
     sets.Crocea.DualWield = {main="Crocea mors", sub="Daybreak"}
@@ -164,6 +165,7 @@ function init_gear_sets()
     sets.Club.SwordShield = {main="Maxentius", sub="Sacro bulwark"}
     sets.Club.SwordShield.Sacro = {main="Maxentius", sub="Sacro bulwark"}
     sets.Club.SwordShield.Genmei = {main="Maxentius", sub="Genmei shield"}
+    sets.Club.SwordShield.Ammurapi = {main="Maxentius", sub="Ammurapi shield"}
 
     sets.Sakpata = {main="Sakpata's sword"}
     sets.Sakpata.DualWield = {main="Sakpata's sword", sub="Thibron"}
@@ -173,6 +175,7 @@ function init_gear_sets()
     sets.Sakpata.SwordShield = {main="Sakpata's sword", sub="Sacro bulwark"}
     sets.Sakpata.SwordShield.Sacro = {main="Sakpata's sword", sub="Sacro bulwark"}
     sets.Sakpata.SwordShield.Genmei = {main="Sakpata's sword", sub="Genmei shield"}
+    sets.Sakpata.SwordShield.Ammurapi = {main="Sakpata's sword", sub="Ammurapi shield"}
 
     sets.Dagger = {main='Tauret'}
     sets.Dagger.DualWield = {main='Tauret', sub='Malevolence'}
@@ -579,13 +582,18 @@ function init_gear_sets()
     }
 
     sets.midcast['Elemental Magic']['Occult Acumen'] = set_combine(sets.midcast['Elemental Magic'], {
+        head="Merlinic hood",
         neck="Combatant's torque",
         ear1="Dedition earring",
         ear2="Crepuscular earring",
+        body={name="Adamantite armor", priority=20},
+        hands={ name="Merlinic Dastanas", augments={'"Mag.Atk.Bns."+23','"Occult Acumen"+10','Mag. Acc.+3'}},
         ring1={name="Chirich Ring +1", bag="wardrobe5"},
         ring2={name="Chirich Ring +1", bag="wardrobe6"},
+        back=tp_cape,
         waist="Oneiros rope",
-        legs="Perdition slops"
+        legs="Perdition slops",
+        feet={ name="Merlinic Crackows", augments={'"Occult Acumen"+11','Mag. Acc.+15'}}
     })
 
     sets.midcast.Impact = {
