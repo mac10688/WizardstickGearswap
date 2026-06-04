@@ -6,12 +6,6 @@ function get_sets()
     include('Wiz-Include.lua')
 end
 
--- Setup vars that are user-independent.  state.Buff vars initialized here will automatically be tracked.
-function job_setup()
-    update_sublimation()
-    update_active_strategems()
-end
-
 -------------------------------------------------------------------------------------------------------------------
 -- User setup functions for this job.  Recommend that these be overridden in a sidecar file.
 -------------------------------------------------------------------------------------------------------------------
@@ -43,6 +37,8 @@ function job_setup()
     send_command('bind ~f3 gs c set CombatWeapon Musa')
     send_command('bind ~f4 gs c set CombatWeapon Slaine')
     
+    update_sublimation()
+    update_active_strategems()
 end
 
 function file_unload()
@@ -124,7 +120,7 @@ function init_gear_sets()
     --54 dt
     sets.precast.FC = {
         ammo="Staunch tathlum +1",
-        head=jse.empyrean.head,
+        head=jse.artifact.head,
         neck="Loricate torque +1",
         ear1="Malignance earring", --fast cast 4%
         ear2="Etiolation earring", --fast cast 1%        
@@ -144,6 +140,10 @@ function init_gear_sets()
         legs="Mallquis trews +2",
         ring2="Mallquis Ring",
         ear1="Barkarole earring"
+    })
+
+    sets.precast.FC['Elemental Magic'].Grimoire = set_combine(sets.precast.FC['Elemental Magic'], {
+        head=jse.relic.head
     })
 
     sets.precast.FC.Cure = set_combine(sets.precast.FC)
@@ -746,6 +746,14 @@ end
 -- Job-specific hooks for standard casting events.
 -------------------------------------------------------------------------------------------------------------------
 
+function job_post_precast(spell, action, spellMap, eventArgs)
+    if spell.type == 'BlackMagic' and (state.Buff['Dark Arts'] or state.Buff['Addendum: Black']) then
+        equip(sets.precast.FC['Elemental Magic'].Grimoire)
+    elseif spell.type == 'WhiteMagic' and (state.Buff['Light Arts'] or state.Buff['Addendum: White']) then
+        equip(sets.precast.FC['Elemental Magic'].Grimoire)
+    end
+end
+
 -- Run after the general midcast() is done.
 function job_post_midcast(spell, action, spellMap, eventArgs)
     if spell.action_type == 'Magic' then
@@ -847,6 +855,9 @@ function update_active_strategems()
     state.Buff['Celerity'] = buffactive['Celerity'] or false
     state.Buff['Alacrity'] = buffactive['Alacrity'] or false
     state.Buff['Dark Arts'] = buffactive['Dark Arts'] or false
+    state.Buff['Light Arts'] = buffactive['Light Arts'] or false
+    state.Buff['Addendum: Black'] = buffactive['Addendum: Black'] or false
+    state.Buff['Addendum: White'] = buffactive['Addendum: White'] or false
 
     state.Buff['Klimaform'] = buffactive['Klimaform'] or false
 end
