@@ -129,7 +129,7 @@ function init_gear_sets()
         ring1="Medada's ring", --fast cast 10%
         ring2="Defending ring",
         back=fc_cape, --fast cast 10%
-        waist="Platinum moogle belt",
+        waist={name="Platinum moogle belt", priority=20},
         legs="Agwu's slops", --fast cast 6%
         feet=jse.relic.feet --fast cast 8%
     }
@@ -748,9 +748,9 @@ end
 
 function job_post_precast(spell, action, spellMap, eventArgs)
     if spell.type == 'BlackMagic' and (state.Buff['Dark Arts'] or state.Buff['Addendum: Black']) then
-        equip(sets.precast.FC['Elemental Magic'].Grimoire)
+        equip({head=jse.relic.head})
     elseif spell.type == 'WhiteMagic' and (state.Buff['Light Arts'] or state.Buff['Addendum: White']) then
-        equip(sets.precast.FC['Elemental Magic'].Grimoire)
+        equip({head=jse.relic.head})
     end
 end
 
