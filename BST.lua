@@ -712,7 +712,8 @@ function init_gear_sets()
     })
 
     sets.engaged["Mid-SubtleBlow"].Pet = set_combine(sets.engaged["Mid-SubtleBlow"], {
-        body=jse.artifact.body
+        body=jse.artifact.body,
+        hands="Gleti's gauntlets"
     })
 
     sets.engaged["Max-SubtleBlow"] = set_combine(sets.engaged["Mid-SubtleBlow"], {

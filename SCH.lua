@@ -675,6 +675,7 @@ function init_gear_sets()
 
     sets.buff.FullSublimation = {head=jse.artifact.head, body=jse.relic.body, waist="Embla sash"}
     sets.buff.PDTSublimation = {head=jse.artifact.head, body=jse.relic.body, waist="Embla sash"}
+    sets.buff.GrimoireCasting = {head=jse.relic.head, feet=jse.artifact.feet}
 
     sets.precast.Item['Holy Water'] = {
         neck="Nicander's necklace",
@@ -748,9 +749,9 @@ end
 
 function job_post_precast(spell, action, spellMap, eventArgs)
     if spell.type == 'BlackMagic' and (state.Buff['Dark Arts'] or state.Buff['Addendum: Black']) then
-        equip({head=jse.relic.head})
+        equip(sets.buff.GrimoireCasting)
     elseif spell.type == 'WhiteMagic' and (state.Buff['Light Arts'] or state.Buff['Addendum: White']) then
-        equip({head=jse.relic.head})
+        equip(sets.buff.GrimoireCasting)
     end
 end
 

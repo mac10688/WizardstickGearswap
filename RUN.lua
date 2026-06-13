@@ -59,7 +59,7 @@ function init_gear_sets()
     jse.empyrean.legs = "Erilaz Leg Guards +3"
     jse.empyrean.feet = "Erilaz Greaves +3"
 
-    jse.earring = "Erilaz earring +1"
+    jse.earring = "Erilaz earring +2"
 
     sets.Epeolatry = {main="Epeolatry", sub="Utu grip"}
     sets.Epeolatry.Utu = {main="Epeolatry", sub="Utu grip"}
