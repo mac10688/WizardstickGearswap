@@ -17,13 +17,14 @@ function job_setup()
     state.CastingMode:options('Normal', 'Occult Acumen', 'DT', 'MB Low Int', 'MB High Int')
     state.IdleMode:options('Normal', "Death")
 
-    state.MagicBurst = M(false, 'Magic Burst')
+    state.MagicBurst = M(true, 'Magic Burst')
     state.EatTp = M(false, 'Eat TP')
     state.UseObi = M(true, 'Use Obi')
-    state.LockMpReturn = M(false, 'Lock MP Return')
+    state.MpReturn = M{['description'] = 'MP Return', 'Always', 'Low MP', 'Never'}
+    state.MpReturn:set('Low MP')
     state.CombatWeapon:set('Opashoro')
 
-    state.Opashoro = M{['description']='Drepanum Set', 'Khonsu', 'Enki'}
+    state.Opashoro = M{['description']='Opashoro Set', 'Khonsu', 'Enki'}
     state.Kaumodaki = M{['description']='Kaumodaki Set', 'Khonsu', 'Enki'}
     state.WizardRod = M{['description']='Wizard Rod Set', 'Ammurapi', 'Genmei'}
     state.Khatvanga = M{['description']='Khatvanga Set', 'Khonsu', 'Enki'}
@@ -36,7 +37,7 @@ function job_setup()
     send_command('bind ^` gs c toggle MagicBurst')
     send_command('bind !` gs c toggle EatTp')
     send_command('bind @` gs c toggle UseObi')
-    send_command('bind ^f8 gs c toggle LockMpReturn')
+    send_command('bind ^f8 gs c cycle MpReturn')
     send_command('bind ~f1 gs c set CombatWeapon Opashoro')
     send_command('bind ~f2 gs c set CombatWeapon Kaumodaki')
     send_command('bind ~f3 gs c set CombatWeapon WizardRod')
@@ -73,7 +74,7 @@ function init_gear_sets()
 
     jse.artifact.head = "Spaekona's Petasos +3"
     jse.artifact.body = "Spaekona's Coat +4"
-    jse.artifact.hands = "Spaekona's Gloves +3"
+    jse.artifact.hands = "Spaekona's Gloves"
     jse.artifact.legs = "Spaekona's Tonban +3"
     jse.artifact.feet = "Spaekona's Sabots +3"
 
@@ -636,7 +637,7 @@ function job_post_midcast(spell, action, spellMap, eventArgs)
         if state.MagicBurst.value then
             equip(sets.midcast.MagicBurst)
         end
-        if player.mp < 600 or state.LockMpReturn.value then
+        if state.MpReturn == 'Always' or (state.MpReturn == 'Low MP' and player.mp < 600) then
             equip({body=jse.artifact.body})
         end
         if state.UseObi.value then
