@@ -637,7 +637,7 @@ function job_post_midcast(spell, action, spellMap, eventArgs)
         if state.MagicBurst.value then
             equip(sets.midcast.MagicBurst)
         end
-        if state.MpReturn == 'Always' or (state.MpReturn == 'Low MP' and player.mp < 600) then
+        if state.MpReturn.value == 'Always' or (state.MpReturn.value == 'Low MP' and player.mp < 600) then
             equip({body=jse.artifact.body})
         end
         if state.UseObi.value then
