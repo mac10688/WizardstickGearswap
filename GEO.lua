@@ -324,7 +324,7 @@ function init_gear_sets()
         range="Dunna",
         head=jse.empyrean.head,
         body=jse.artifact.body,
-        hands="Geo. Mitaines +3",
+        hands=jse.artifact.hands,
         legs=jse.empyrean.legs,
         feet=jse.empyrean.feet,
         neck="Bagua charm +2",
@@ -342,7 +342,7 @@ function init_gear_sets()
         range="Dunna", -- 3% FC
         head=jse.empyrean.head,
         body=jse.artifact.body,
-        hands="Geo. Mitaines +3",
+        hands=jse.artifact.hands,
         legs=jse.artifact.legs, --15% FC
         feet=jse.empyrean.feet,
         neck="Erra Pendant",
