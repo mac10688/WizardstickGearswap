@@ -26,31 +26,31 @@ function job_setup()
     state.CombatWeapon:set('Naegling')
 
     state.Naegling = {}
-    state.Naegling.SwordShield = M{['description']='Naegling Set', 'Sacro', 'Genmei', 'Ammurapi'}
+    state.Naegling.SwordShield = M{['description']='Naegling Set', 'Sacro', 'Genmei', 'Ammurapi', 'Archduke'}
     state.Naegling.DualWield = M{['description']='Naegling Set', 'TP', 'Sakpata', 'Acc'}
 
     state.Crocea = {}
-    state.Crocea.SwordShield = M{['description']='Crocea Set', 'Sacro', 'Genmei'}
+    state.Crocea.SwordShield = M{['description']='Crocea Set', 'Sacro', 'Genmei', 'Archduke'}
     state.Crocea.DualWield = M{['description']='Crocea Set', 'TP', 'Sakpata', 'Daybreak', 'Bunzi'}
 
     state.Murgleis = {}
-    state.Murgleis.SwordShield = M{['description']='Murgleis Set', 'Ammurapi', 'Sacro', 'Genmei'}
+    state.Murgleis.SwordShield = M{['description']='Murgleis Set', 'Ammurapi', 'Sacro', 'Genmei', 'Archduke'}
     state.Murgleis.DualWield = M{['description']='Murgleis Set', 'TP', 'Sakpata'}
 
     state.Club = {}
-    state.Club.SwordShield = M{['description']='Club Set', 'Sacro', 'Genmei', 'Ammurapi'}
+    state.Club.SwordShield = M{['description']='Club Set', 'Sacro', 'Genmei', 'Ammurapi', 'Archduke'}
     state.Club.DualWield = M{['description']='Club Set', 'TP', 'Sakpata'}
 
     state.Dagger = {}
-    state.Dagger.SwordShield = M{['description']='Dagger Set', 'Sacro', 'Genmei'}
+    state.Dagger.SwordShield = M{['description']='Dagger Set', 'Sacro', 'Genmei', 'Archduke'}
     state.Dagger.DualWield = M{['description']='Dagger Set', 'Malevolence', 'Gleti'}
 
     state.Sakpata = {}
-    state.Sakpata.SwordShield = M{['description']='Sakpata Set', 'Sacro', 'Genmei', 'Ammurapi'}
+    state.Sakpata.SwordShield = M{['description']='Sakpata Set', 'Sacro', 'Genmei', 'Ammurapi', 'Archduke'}
     state.Sakpata.DualWield = M{['description']='Sakpata Set', 'TP', 'Acc'}
 
     state.Zerodmg = {}
-    state.Zerodmg.SwordShield = M{['description']='Dagger Set', 'Sacro', 'Genmei'}
+    state.Zerodmg.SwordShield = M{['description']='Dagger Set', 'Sacro', 'Genmei', 'Archduke'}
     state.Zerodmg.DualWield = M{['description']="Zero Set", 'Normal'}
 
     send_command('bind ~f1 gs c set CombatWeapon Naegling')
@@ -138,6 +138,7 @@ function init_gear_sets()
     sets.Naegling.SwordShield.Sacro = {main="Naegling", sub="Sacro bulwark"}
     sets.Naegling.SwordShield.Genmei = {main="Naegling", sub="Genmei shield"}
     sets.Naegling.SwordShield.Ammurapi = {main="Naegling", sub="Ammurapi shield"}
+    sets.Naegling.SwordShield.Archduke = {main="Naegling", sub="Archduke's shield"}
 
     sets.Crocea = {main="Crocea mors"}
     sets.Crocea.DualWield = {main="Crocea mors", sub="Daybreak"}
@@ -148,6 +149,7 @@ function init_gear_sets()
     sets.Crocea.SwordShield = {main="Crocea mors", sub="Sacro bulwark"}
     sets.Crocea.SwordShield.Sacro = {main="Crocea mors", sub="Sacro bulwark"}
     sets.Crocea.SwordShield.Genmei = {main="Crocea mors", sub="Genmei shield"}
+    sets.Crocea.SwordShield.Archduke = {main="Crocea mors", sub="Archduke's shield"}
 
     sets.Murgleis = {main="Murgleis"}
     sets.Murgleis.DualWield = {main="Murgleis", sub="Crocea mors"}
@@ -156,7 +158,8 @@ function init_gear_sets()
     sets.Murgleis.SwordShield = {main="Murgleis", sub="Sacro bulwark"}
     sets.Murgleis.SwordShield.Ammurapi = {main="Murgleis", sub="Ammurapi shield"}
     sets.Murgleis.SwordShield.Sacro = {main="Murgleis", sub="Sacro bulwark"}
-    sets.Murgleis.SwordShield.Genmei = {main="Murgleis", sub="Genmei shield"}    
+    sets.Murgleis.SwordShield.Genmei = {main="Murgleis", sub="Genmei shield"}
+    sets.Murgleis.SwordShield.Archduke = {main="Murgleis", sub="Archduke's shield"}
 
     sets.Club = {main="Maxentius"}
     sets.Club.DualWield = {main="Maxentius", sub="Daybreak"}
@@ -166,6 +169,7 @@ function init_gear_sets()
     sets.Club.SwordShield.Sacro = {main="Maxentius", sub="Sacro bulwark"}
     sets.Club.SwordShield.Genmei = {main="Maxentius", sub="Genmei shield"}
     sets.Club.SwordShield.Ammurapi = {main="Maxentius", sub="Ammurapi shield"}
+    sets.Club.SwordShield.Archduke = {main="Maxentius", sub="Archduke's shield"}
 
     sets.Sakpata = {main="Sakpata's sword"}
     sets.Sakpata.DualWield = {main="Sakpata's sword", sub="Thibron"}
@@ -176,6 +180,7 @@ function init_gear_sets()
     sets.Sakpata.SwordShield.Sacro = {main="Sakpata's sword", sub="Sacro bulwark"}
     sets.Sakpata.SwordShield.Genmei = {main="Sakpata's sword", sub="Genmei shield"}
     sets.Sakpata.SwordShield.Ammurapi = {main="Sakpata's sword", sub="Ammurapi shield"}
+    sets.Sakpata.SwordShield.Archduke = {main="Sakpata's sword", sub="Archduke's shield"}
 
     sets.Dagger = {main='Tauret'}
     sets.Dagger.DualWield = {main='Tauret', sub='Malevolence'}
@@ -184,6 +189,7 @@ function init_gear_sets()
     sets.Dagger.SwordShield = {main="Gleti's knife", sub="Sacro bulwark"}
     sets.Dagger.SwordShield.Sacro = {main="Gleti's knife", sub="Sacro bulwark"}
     sets.Dagger.SwordShield.Genmei = {main="Gleti's knife", sub="Genmei shield"}
+    sets.Dagger.SwordShield.Archduke = {main="Gleti's knife", sub="Archduke's shield"}
 
     sets.Zerodmg = {main="Infiltrator"}
     sets.Zerodmg.DualWield = {main="Infiltrator", sub="Qutrub knife"}
@@ -191,6 +197,7 @@ function init_gear_sets()
     sets.Zerodmg.SwordShield = {main="Infiltrator", sub="Sacro bulwark"}
     sets.Zerodmg.SwordShield.Sacro = {main="Infiltrator", sub="Sacro bulwark"}
     sets.Zerodmg.SwordShield.Genmei = {main="Infiltrator", sub="Genmei shield"}
+    sets.Zerodmg.SwordShield.Archduke = {main="Infiltrator", sub="Archduke's shield"}
     
     -- Precast Sets
     

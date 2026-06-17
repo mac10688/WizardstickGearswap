@@ -23,23 +23,23 @@ function job_setup()
 
     state.Daybreak = {}
     state.Daybreak.DualWield = M{['description']='Daybreak Set', 'TP', 'Acc'}
-    state.Daybreak.SwordShield = M{['description']='Daybreak Set', 'Genmei', 'Ammurapi'}  
+    state.Daybreak.SwordShield = M{['description']='Daybreak Set', 'Genmei', 'Ammurapi', 'Archduke'}
 
     state.Yagrush = {}
     state.Yagrush.DualWield = M{['description']='Yagrush Set', 'TP', 'Acc'}
-    state.Yagrush.SwordShield = M{['description']='Yagrush Set', 'Genmei', 'Ammurapi'}
+    state.Yagrush.SwordShield = M{['description']='Yagrush Set', 'Genmei', 'Ammurapi', 'Archduke'}
 
     state.Maxentius = {}
     state.Maxentius.DualWield = M{['description']='Maxentius Set', 'TP', 'Acc'}
-    state.Maxentius.SwordShield = M{['description']='Maxentius Set', 'Genmei', 'Ammurapi'}
+    state.Maxentius.SwordShield = M{['description']='Maxentius Set', 'Genmei', 'Ammurapi', 'Archduke'}
 
     state.Palug = {}
     state.Palug.DualWield = M{['description']='Cath Palug Hammer Set', 'TP', 'Acc'}
-    state.Palug.SwordShield = M{['description']='Cath Palug Hammer', 'Genmei', 'Ammurapi'}
+    state.Palug.SwordShield = M{['description']='Cath Palug Hammer', 'Genmei', 'Ammurapi', 'Archduke'}
 
     state.Lorg = {}
     state.Lorg.DualWield = M{['description']='Lorg Mor Set', 'TP', 'Acc'}
-    state.Lorg.SwordShield = M{['description']='Lorg Mor Set', 'Genmei', 'Ammurapi'}
+    state.Lorg.SwordShield = M{['description']='Lorg Mor Set', 'Genmei', 'Ammurapi', 'Archduke'}
 
     send_command('bind ^` gs c cycle CureMode')
     send_command('bind ~f1 gs c set CombatWeapon Daybreak')
@@ -107,6 +107,7 @@ function init_gear_sets()
     sets.Daybreak.SwordShield = {}
     sets.Daybreak.SwordShield.Genmei = {main="Daybreak", sub="Genmei shield"}
     sets.Daybreak.SwordShield.Ammurapi = {main="Daybreak", sub="Ammurapi shield"}
+    sets.Daybreak.SwordShield.Archduke = {main="Daybreak", sub="Archduke's shield"}
 
     sets.Yagrush = {}
     sets.Yagrush.DualWield = {}
@@ -115,6 +116,7 @@ function init_gear_sets()
     sets.Yagrush.SwordShield = {}
     sets.Yagrush.SwordShield.Genmei = {main="Yagrush", sub="Genmei shield"}
     sets.Yagrush.SwordShield.Ammurapi = {main="Yagrush", sub="Ammurapi shield"}
+    sets.Yagrush.SwordShield.Archduke = {main="Yagrush", sub="Archduke's shield"}
 
     sets.Maxentius = {}
     sets.Maxentius.DualWield = {}
@@ -123,6 +125,7 @@ function init_gear_sets()
     sets.Maxentius.SwordShield = {}
     sets.Maxentius.SwordShield.Genmei = {main="Maxentius", sub="Genmei shield"}
     sets.Maxentius.SwordShield.Ammurapi = {main="Maxentius", sub="Ammurapi shield"}
+    sets.Maxentius.SwordShield.Archduke = {main="Maxentius", sub="Archduke's shield"}
 
     sets.Palug = {}
     sets.Palug.DualWield = {}
@@ -131,6 +134,7 @@ function init_gear_sets()
     sets.Palug.SwordShield = {}
     sets.Palug.SwordShield.Genmei = {main="Cath Palug hammer", sub="Genmei shield"}
     sets.Palug.SwordShield.Ammurapi = {main="Cath Palug hammer", sub="Ammurapi shield"}
+    sets.Palug.SwordShield.Archduke = {main="Cath Palug hammer", sub="Archduke's shield"}
     
     sets.Lorg = {}
     sets.Lorg.DualWield = {}
@@ -139,6 +143,7 @@ function init_gear_sets()
     sets.Lorg.SwordShield = {}
     sets.Lorg.SwordShield.Genmei = {main="Lorg Mor", sub="Genmei shield"}
     sets.Lorg.SwordShield.Ammurapi = {main="Lorg Mor", sub="Ammurapi shield"}
+    sets.Lorg.SwordShield.Archduke = {main="Lorg Mor", sub="Archduke's shield"}
 
     -- Precast Sets
 
