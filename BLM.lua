@@ -14,7 +14,7 @@ end
 -- Setup vars that are user-independent.  state.Buff vars initialized here will automatically be tracked.
 function job_setup()
     state.OffenseMode:options('None', 'Normal')
-    state.CastingMode:options('Normal', 'Occult Acumen', 'DT', 'MB Low Int', 'MB High Int')
+    state.CastingMode:options('Normal', 'Occult Acumen', 'DT', 'Magic Accuracy', 'Magic Attack Bonus')
     state.IdleMode:options('Normal', "Death")
 
     state.MagicBurst = M(true, 'Magic Burst')
@@ -39,13 +39,14 @@ function job_setup()
     send_command('bind @` gs c toggle UseObi')
     send_command('bind ^f8 gs c cycle MpReturn')
     send_command('bind ~f1 gs c set CombatWeapon Opashoro')
-    send_command('bind ~f2 gs c set CombatWeapon Kaumodaki')
-    send_command('bind ~f3 gs c set CombatWeapon WizardRod')
-    send_command('bind ~f4 gs c set CombatWeapon Khatvanga')
-    send_command('bind ~f5 gs c set CombatWeapon Drepanum')
-    send_command('bind ~f6 gs c set CombatWeapon Bunzi')
-    send_command('bind ~f7 gs c set CombatWeapon Laevateinn')
+    send_command('bind ~f2 gs c set CombatWeapon Laevateinn')
+    send_command('bind ~f3 gs c set CombatWeapon Kaumodaki')
+    send_command('bind ~f4 gs c set CombatWeapon WizardRod')
+    send_command('bind ~f5 gs c set CombatWeapon Khatvanga')
+    send_command('bind ~f6 gs c set CombatWeapon Drepanum')
+    send_command('bind ~f7 gs c set CombatWeapon Bunzi')
     send_command('bind ~f8 gs c set CombatWeapon Marin')
+
 end
 
 -------------------------------------------------------------------------------------------------------------------
@@ -72,7 +73,7 @@ end
 -- Define sets and vars used by this job file.
 function init_gear_sets()
 
-    jse.artifact.head = "Spaekona's Petasos +3"
+    jse.artifact.head = "Spaekona's Petasos +4"
     jse.artifact.body = "Spaekona's Coat +4"
     jse.artifact.hands = "Spaekona's Gloves"
     jse.artifact.legs = "Spaekona's Tonban +3"
@@ -138,7 +139,7 @@ function init_gear_sets()
     -- Precast sets to enhance JAs
     sets.precast.JA['Mana Wall'] = { feet = jse.empyrean.feet }
 
-    sets.precast.JA.Manafont = { body = jse.relic.body}
+    sets.precast.JA.Manafont = { body = jse.relic.body }
 
     -- equip to maximize HP (for Tarus) and minimize MP loss before using convert
     sets.precast.JA.Convert = {}
@@ -148,7 +149,7 @@ function init_gear_sets()
 
     sets.precast.FC = {
         head="Merlinic hood", --fast cast 8%
-        neck="Unmoving collar +1",
+        neck={name="Unmoving collar +1", priority=30},
         body="Agwu's robe", --fast cast 8%
         hands="Agwu's gages", --fast cast 6%
         legs="Lengo pants",
@@ -165,7 +166,6 @@ function init_gear_sets()
     sets.precast.FC['Elemental Magic'] = set_combine(sets.precast.FC, {
         head=jse.empyrean.head,
         ear2="Barkarole earring",
-        ring1="Mallquis Ring",
         legs="Mallquis trews +2",
         feet=jse.artifact.feet
     })
@@ -197,18 +197,19 @@ function init_gear_sets()
     }
 
     local magical_int_ws = {
+        ammo="Pemphredo tathlum",
         head=jse.relic.head,
         neck="Sorcerer's stole +2",
         ear1="Regal earring",
         ear2="Malignance earring",
-        body=jse.relic.coat,
-        hands="Jhakri cuffs +2",
+        body=jse.empyrean.body,
+        hands=jse.empyrean.hands,
         ring1="Medada's ring",
         ring2="Metamorph ring +1",
         back=magic_int_ws,
         waist="Orpheus's sash",
-        legs=jse.relic.legs,
-        feet=ws_boots
+        legs=jse.empyrean.legs,
+        feet="Nyame sollerets"
     }
 
     local dark_magic_affinity = {head="Pixie hairpin +1", ring2="Archon ring"}
@@ -339,7 +340,7 @@ function init_gear_sets()
         main="Laevateinn",
         sub="Khonsu",
         ammo="Pemphredo tathlum",
-        head=jse.empyrean.head,
+        head=jse.artifact.head,
         body=jse.artifact.body,
         hands=jse.artifact.hands,
         legs=jse.relic.legs,
@@ -430,8 +431,6 @@ function init_gear_sets()
     sets.midcast['Death'] = deathSet
 
     sets.midcast.MagicBurst = set_combine(sets.midcast['Elemental Magic'], {
-        main="Wizard's rod",
-        sub="Ammurapi shield",
         ammo="Ghastly tathlum +1",
         head="Ea hat +1", --MB: 7 MB2: 7
         neck="Sorcerer's stole +2", --MB: 10
@@ -443,32 +442,33 @@ function init_gear_sets()
         back=magic_atk_cape --MB 5
     })
 
-    sets.midcast['Elemental Magic']['MB Low Int'] = set_combine(sets.midcast['Elemental Magic'], {
+    sets.midcast['Elemental Magic']['Magic Accuracy'] = set_combine(sets.midcast['Elemental Magic'], {
         main="Wizard's rod",
         sub="Ammurapi shield",
-        ammo="Ghastly tathlum +1",
-        head="Ea hat +1", --MB: 7 MB2: 7
+        ammo="Pemphredo tathlum",
+        head=jse.artifact.head, --MB: 7 MB2: 7
         neck="Sorcerer's stole +2", --MB: 10
-        body=jse.empyrean.body, --MB2: 5
-        hands="Agwu's gages", --MB: 8 MB2: 5
+        body=jse.artifact.body, --MB2: 5
+        hands=jse.artifact.hands, --MB: 8 MB2: 5
         waist="Sacro cord",
-        legs="Ea slops +1", --MB: 8 MB2: 8
-        feet="Agwu's pigaches", --MB: 6
-        right_ring="Freke ring",
+        legs=jse.empyrean.legs, --MB: 8 MB2: 8
+        feet=jse.artifact.feet, --MB: 6
+        right_ring="Metamorph ring +1",
         back=magic_atk_cape --MB 5
     })
 
-    sets.midcast['Elemental Magic']['MB High Int'] = set_combine(sets.midcast['Elemental Magic'], {
+    sets.midcast['Elemental Magic']['Magic Attack Bonus'] = set_combine(sets.midcast['Elemental Magic'], {
         main="Wizard's rod",
         sub="Ammurapi shield",
-        ammo="Ghastly tathlum +1",
-        head="Ea hat +1", --MB: 7 MB2: 7
+        ammo="Pemphredo tathlum",
+        head=jse.empyrean.head, --MB: 7 MB2: 7
         neck="Sorcerer's stole +2", --MB: 10
         body=jse.empyrean.body, --MB2: 5
-        hands="Agwu's gages", --MB: 8 MB2: 5
-        legs="Ea slops +1", --MB: 8 MB2: 8
-        feet="Agwu's pigaches", --MB: 6
-        right_ring="Metamorph ring +1",
+        hands=jse.empyrean.hands, --MB: 8 MB2: 5
+        waist="Sacro cord",
+        legs=jse.empyrean.legs, --MB: 8 MB2: 8
+        feet=jse.empyrean.feet, --MB: 6
+        right_ring="Freke ring",
         back=magic_atk_cape --MB 5
     })
 
@@ -637,7 +637,7 @@ function job_post_midcast(spell, action, spellMap, eventArgs)
         if state.MagicBurst.value then
             equip(sets.midcast.MagicBurst)
         end
-        if state.MpReturn.value == 'Always' or (state.MpReturn.value == 'Low MP' and player.mp < 600) then
+        if state.MpReturn.value == 'Always' or (state.MpReturn.value == 'Low MP' and player.mp < 400) then
             equip({body=jse.artifact.body})
         end
         if state.UseObi.value then

@@ -528,8 +528,16 @@ function init_gear_sets()
         feet=jse.relic.feet
     }
 
+    sets.midcast['Enfeebling Magic'].Stymie = set_combine(sets.midcast["Enfeebling Magic"], {
+        legs=jse.empyrean.legs
+    })
+
     -- Custom spell classes
     sets.midcast.MndEnfeebles = set_combine(sets.midcast['Enfeebling Magic'], {
+    })
+
+    sets.midcast.MndEnfeebles.Stymie = set_combine(sets.midcast.MndEnfeebles, {
+        legs=jse.empyrean.legs
     })
 
     sets.midcast.MndEnfeeblesAcc = set_combine(sets.midcast.MndEnfeebles, {
@@ -541,9 +549,22 @@ function init_gear_sets()
     })
 
     sets.midcast.MndEnfeeblesEffect = set_combine(sets.midcast.MndEnfeebles, {
+        ammo="Regal gem",
+        neck="Duelist's torque +2",
+        body=jse.empyrean.body,
+        back=mnd_cape,
+        feet=jse.relic.feet
+    })
+
+    sets.midcast.MndEnfeeblesEffect.Stymie = set_combine(sets.midcast.MndEnfeeblesEffect, {
+        legs=jse.empyrean.legs
     })
 
     sets.midcast.IntEnfeebles = set_combine(sets.midcast['Enfeebling Magic'], {
+    })
+
+    sets.midcast.IntEnfeebles.Stymie = set_combine(sets.midcast.IntEnfeebles, {
+        legs=jse.empyrean.legs
     })
 
     sets.midcast.IntEnfeeblesAcc = set_combine(sets.midcast.IntEnfeebles, {
@@ -556,7 +577,15 @@ function init_gear_sets()
     })
 
     sets.midcast.IntEnfeeblesEffect = set_combine(sets.midcast.IntEnfeebles, {
-        body=jse.empyrean.body
+        ammo="Regal gem",
+        neck="Duelist's torque +2",
+        body=jse.empyrean.body,
+        back=mnd_cape,
+        feet=jse.relic.feet
+    })
+
+    sets.midcast.IntEnfeeblesEffect.Stymie = set_combine(sets.midcast.IntEnfeeblesEffect, {
+        legs=jse.empyrean.legs
     })
 
     sets.midcast.MaxDuration = set_combine(sets.midcast['Enfeebling Magic'], {
@@ -844,8 +873,13 @@ function job_post_midcast(spell, action, spellMap, eventArgs)
         if obi_or_orpheus then
             equip({waist=obi_or_orpheus})
         end
-    elseif spell.skill == 'Enfeebling Magic' and state.Buff.Saboteur then
-        equip(sets.buff.Saboteur)
+    elseif spell.skill == 'Enfeebling Magic' then
+        if state.Buff.Stymie and sets.midcast[spellMap].Stymie then
+            equip(sets.midcast[spellMap].Stymie)
+        end
+        if state.Buff.Saboteur then
+            equip(sets.buff.Saboteur)
+        end
     end
 end
 
