@@ -80,7 +80,7 @@ function init_gear_sets()
     jse.artifact.feet = "Spaekona's Sabots +3"
 
     jse.relic.head = "Archmage's Petasos +3"
-    jse.relic.body = "Archmage's Coat +3"
+    jse.relic.body = "Archmage's Coat +4"
     jse.relic.hands = "Archmage's Gloves +3"
     jse.relic.legs = "Archmage's Tonban +4"
     jse.relic.feet = "Archmage's Sabots +4"
