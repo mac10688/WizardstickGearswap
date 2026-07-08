@@ -309,13 +309,14 @@ function init_gear_sets()
     sets.midcast.BardSong.Madrigal = set_combine(sets.midcast.BardSong.SongEffect, {head=jse.empyrean.head})
     sets.midcast.BardSong.March = set_combine(sets.midcast.BardSong.SongEffect, {hands=jse.empyrean.hands})
     sets.midcast.BardSong.Minuet = set_combine(sets.midcast.BardSong.SongEffect, {body=jse.empyrean.body})
-    sets.midcast.BardSong.Minne = set_combine(sets.midcast.BardSong.SongEffect, {legs="Mousai seraweels +1"})
     sets.midcast.BardSong.Paeon = set_combine(sets.midcast.BardSong.SongEffect, {head=jse.artifact.head})
-    sets.midcast.BardSong.Carol = set_combine(sets.midcast.BardSong.SongEffect, {hands="Mousai gages +1"})
     sets.midcast.BardSong["Sentinel's Scherzo"] = set_combine(sets.midcast.BardSong.SongEffect, {feet=jse.empyrean.feet})
-    
-        -- sets.midcast['Magic Finale'] = {neck="Wind Torque",waist="Corvax Sash",legs="Aoidos' Rhing. +2"}
 
+    sets.midcast.BardSong.Etude = set_combine(sets.midcast.BardSong.SongEffect, {head="Mousai Turban +1"})
+    sets.midcast.BardSong.Threnody = set_combine(sets.midcast.BardSong.SongEffect, {body="Mousai manteel +1"})
+    sets.midcast.BardSong.Carol = set_combine(sets.midcast.BardSong.SongEffect, {hands="Mousai gages +1"})
+    sets.midcast.BardSong.Minne = set_combine(sets.midcast.BardSong.SongEffect, {legs="Mousai seraweels +1"})
+    sets.midcast.BardSong.Mambo = set_combine(sets.midcast.BardSong.SongEffect, {feet="Mousai Crackows +1"})
 
     -- Dummy song with Daurdabla; minimize duration to make it easy to overwrite.
     sets.midcast.BardSong.DaurdablaDummy = set_combine(sets.precast.FC.BardSong, {
