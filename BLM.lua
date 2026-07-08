@@ -134,6 +134,7 @@ function init_gear_sets()
     local magic_int_ws = { name="Taranus's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','Weapon skill damage +10%','Damage taken-5%'}}
     local death_cape = { name="Taranus's Cape", augments={'MP+60','Mag. Acc+20 /Mag. Dmg.+20','MP+20','"Mag.Atk.Bns."+10','Spell interruption rate down-10%'}}
     local ws_boots = { name="Merlinic Crackows", augments={'Attack+25','Crit.hit rate+3','Weapon skill damage +10%','Mag. Acc.+16 "Mag.Atk.Bns."+16'}}
+    local fast_cast_cape = { name="Taranus's Cape", augments={'INT+20','Eva.+20 /Mag. Eva.+20','INT+10','"Fast Cast"+10','Mag. Evasion+15'}}
 
     ---- Precast Sets ----
     -- Precast sets to enhance JAs
@@ -158,7 +159,8 @@ function init_gear_sets()
         ear1="Malignance earring", --fast cast 4%
         ear2="Loquacious Earring", --fast cast 2%
         ring1="Medada's Ring", --fast cast 10%
-        ring2="Kishar ring" --fast cast 4%
+        ring2="Kishar ring", --fast cast 4%
+        back=fast_cast_cape
     } 
 
     sets.precast.FC['Enhancing Magic'] = set_combine(sets.precast.FC)
@@ -457,6 +459,10 @@ function init_gear_sets()
         back=magic_atk_cape --MB 5
     })
 
+    sets.midcast['Elemental Magic'].JaSpell['Magic Accuracy'] = set_combine(sets.midcast['Elemental Magic']['Magic Accuracy'], {
+        legs=jse.empyrean.legs
+    })
+
     sets.midcast['Elemental Magic']['Magic Attack Bonus'] = set_combine(sets.midcast['Elemental Magic'], {
         main="Wizard's rod",
         sub="Ammurapi shield",
@@ -472,6 +478,10 @@ function init_gear_sets()
         back=magic_atk_cape --MB 5
     })
 
+    sets.midcast['Elemental Magic'].JaSpell['Magic Attack Bonus'] = set_combine(sets.midcast['Elemental Magic']['Magic Attack Bonus'], {
+        legs=jse.empyrean.legs
+    })
+
     sets.midcast['Elemental Magic']['DT'] = set_combine(sets.midcast['Elemental Magic'], {
         head=jse.empyrean.head, --MB: 7 MB2: 7
         neck="Sorcerer's stole +2", --MB: 10
@@ -480,6 +490,10 @@ function init_gear_sets()
         legs=jse.empyrean.legs, --MB: 8 MB2: 8
         feet=jse.empyrean.feet, --MB: 6
         back=magic_atk_cape --MB 5
+    })
+
+    sets.midcast['Elemental Magic'].JaSpell['DT'] = set_combine(sets.midcast['Elemental Magic']['DT'], {
+        legs=jse.empyrean.legs
     })
 
     sets.midcast['Elemental Magic']['Occult Acumen'] = set_combine(sets.midcast['Elemental Magic'], {
@@ -496,6 +510,8 @@ function init_gear_sets()
         legs="Perdition slops",
         feet={ name="Merlinic Crackows", augments={'"Occult Acumen"+11','Mag. Acc.+15'}}
     })
+
+    sets.midcast['Elemental Magic'].JaSpell['Occult Acumen'] = set_combine(sets.midcast['Elemental Magic']['Occult Acumen'], {})
 
     sets.midcast['Comet'] = set_combine(sets.midcast['Elemental Magic'], {
         head="Pixie hairpin +1",
