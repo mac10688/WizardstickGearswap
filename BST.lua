@@ -92,7 +92,7 @@ function init_gear_sets()
     -- Start defining the sets
     --------------------------------------
 
-    jse.artifact.head = "Totemic Helm +3"
+    jse.artifact.head = "Totemic Helm +4"
     jse.artifact.body = "Totemic Jackcoat +4"
     jse.artifact.hands = "Totemic Gloves +3"
     jse.artifact.legs = "Totemic Trousers +3"
