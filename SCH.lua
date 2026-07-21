@@ -23,19 +23,27 @@ function job_setup()
 
     state.CombatWeapon:set('MalignancePole')
 
-    state.MalignancePole = M{['description']='Malignance Pole Set', 'Khonsu', 'Irenic'}
-    state.Tupsimati = M{['description']='Tupsimati Set', 'Khonsu', 'Enki'}
-    state.Musa = M{['description']='Musa Set', 'Khonsu', 'Enki'}
-    state.Slaine = M{['description']='Slaine Set', 'Khonsu', 'Enki'}
+    state.MalignancePole = M{['description']='Malignance Pole Set', 'Khonsu', 'Enki', 'Irenic'}
+    state.Opashoro = M{['description']='Opashoro Set', 'Khonsu', 'Enki', 'Irenic'}
+    state.Tupsimati = M{['description']='Tupsimati Set', 'Khonsu', 'Enki', 'Irenic'}
+    state.Musa = M{['description']='Musa Set', 'Khonsu', 'Enki', 'Irenic'}
+    state.WizardRod = M{['description']='WizardRod Set', 'Ammurapi', 'Culminus', 'Genmei'}
+    state.Bunzi = M{['description']='Bunzi Set', 'Ammurapi', 'Culminus', 'Genmei'}
+    state.Daybreak = M{['description']='Daybreak Set', 'Ammurapi', 'Culminus', 'Genmei'}
+    state.Slaine = M{['description']='Slaine Set', 'Khonsu', 'Enki', 'Irenic'}
 
     send_command('bind ^` gs c toggle MagicBurst')
     send_command('bind !` gs c toggle EatTp')
-    send_command('bind ~f7 gs c cycle WeakStratMode')
+    send_command('bind @` gs c cycle WeakStratMode')
 
     send_command('bind ~f1 gs c set CombatWeapon MalignancePole')
-    send_command('bind ~f2 gs c set CombatWeapon Tupsimati')
-    send_command('bind ~f3 gs c set CombatWeapon Musa')
-    send_command('bind ~f4 gs c set CombatWeapon Slaine')
+    send_command('bind ~f2 gs c set CombatWeapon Opashoro')
+    send_command('bind ~f3 gs c set CombatWeapon Tupsimati')
+    send_command('bind ~f4 gs c set CombatWeapon Musa')
+    send_command('bind ~f5 gs c set CombatWeapon WizardRod')
+    send_command('bind ~f6 gs c set CombatWeapon Bunzi')
+    send_command('bind ~f7 gs c set CombatWeapon Daybreak')
+    send_command('bind ~f8 gs c set CombatWeapon Slaine')
     
     update_sublimation()
     update_active_strategems()
@@ -44,11 +52,14 @@ end
 function file_unload()
     send_command('unbind ^`')
     send_command('unbind !`')
+    send_command('unbind @`')
     send_command('unbind ~f1')
     send_command('unbind ~f2')
     send_command('unbind ~f3')
-    send_command('unbind ~f4')
-    send_command('unbind ~f7') 
+    send_command('unbind ~f5')
+    send_command('unbind ~f6')
+    send_command('unbind ~f7')
+    send_command('unbind ~f8')
 end
 
 
@@ -93,19 +104,43 @@ function init_gear_sets()
 
     sets.MalignancePole = {main="Malignance pole", sub="Khonsu"}
     sets.MalignancePole.Khonsu = {main="Malignance pole", sub="Khonsu"}
+    sets.MalignancePole.Enki = {main="Malignance pole", sub="Enki strap"}
     sets.MalignancePole.Irenic = {main="Malignance pole", sub="Irenic strap +1"}
+
+    sets.Opashoro = {main="Opashoro", sub="Khonsu"}
+    sets.Opashoro.Khonsu = {main="Opashoro", sub="Khonsu"}
+    sets.Opashoro.Enki = {main="Opashoro", sub="Enki strap"}
+    sets.Opashoro.Irenic = {main="Opashoro", sub="Irenic strap +1"}
 
     sets.Tupsimati = {main="Tupsimati", sub="Khonsu"}
     sets.Tupsimati.Khonsu = {main="Tupsimati", sub="Khonsu"}
     sets.Tupsimati.Enki = {main="Tupsimati", sub="Enki strap"}
+    sets.Tupsimati.Irenic = {main="Tupsimati", sub="Irenic strap +1"}
 
     sets.Musa = {main="Musa", sub="Khonsu"}
     sets.Musa.Khonsu = {main="Musa", sub="Khonsu"}
     sets.Musa.Enki = {main="Musa", sub="Enki strap"}
+    sets.Musa.Irenic = {main="Musa", sub="Irenic strap +1"}
+
+    sets.WizardRod = {main="Wizard's Rod", sub="Genmei Shield"}
+    sets.WizardRod.Ammurapi = {main="Wizard's Rod", sub="Ammurapi shield"}
+    sets.WizardRod.Culminus = {main="Wizard's Rod", sub="Culminus"}
+    sets.WizardRod.Genmei = {main="Wizard's Rod", sub="Genmei shield"}
+
+    sets.Bunzi = {main="Bunzi's Rod", sub="Genmei Shield"}
+    sets.Bunzi.Ammurapi = {main="Bunzi's Rod", sub="Ammurapi shield"}
+    sets.Bunzi.Culminus = {main="Bunzi's Rod", sub="Culminus"}
+    sets.Bunzi.Genmei = {main="Bunzi's Rod", sub="Genmei shield"}
+
+    sets.Daybreak = {main="Daybreak", sub="Genmei Shield"}
+    sets.Daybreak.Ammurapi = {main="Daybreak", sub="Ammurapi shield"}
+    sets.Daybreak.Culminus = {main="Daybreak", sub="Culminus"}
+    sets.Daybreak.Genmei = {main="Daybreak", sub="Genmei shield"}
 
     sets.Slaine = {main="Slaine", sub="Khonsu"}
     sets.Slaine.Khonsu = {main="Slaine", sub="Khonsu"}
     sets.Slaine.Enki = {main="Slaine", sub="Enki strap"}
+    sets.Slaine.Irenic = {main="Slaine", sub="Irenic strap +1"}
     -- Precast Sets
 
     -- Precast sets to enhance JAs

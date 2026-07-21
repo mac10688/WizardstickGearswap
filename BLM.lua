@@ -25,13 +25,12 @@ function job_setup()
     state.CombatWeapon:set('Opashoro')
 
     state.Opashoro = M{['description']='Opashoro Set', 'Khonsu', 'Enki'}
+    state.Laevateinn = M{['description']='Laevateinn Set', 'Khonsu', 'Enki'}
     state.Kaumodaki = M{['description']='Kaumodaki Set', 'Khonsu', 'Enki'}
     state.WizardRod = M{['description']='Wizard Rod Set', 'Ammurapi', 'Genmei'}
     state.Khatvanga = M{['description']='Khatvanga Set', 'Khonsu', 'Enki'}
     state.Drepanum = M{['description']='Drepanum Set', 'Khonsu', 'Enki'}
     state.Bunzi = M{['description']='Bunzi rod Set', 'Ammurapi', 'Genmei'}
-    state.Laevateinn = M{['description']='Laevateinn Set', 'Khonsu', 'Enki'}
-    state.Marin = M{['description']='Marin staff Set', 'Khonsu', 'Enki'}
 
     -- Additional local binds
     send_command('bind ^` gs c toggle MagicBurst')
@@ -45,7 +44,6 @@ function job_setup()
     send_command('bind ~f5 gs c set CombatWeapon Khatvanga')
     send_command('bind ~f6 gs c set CombatWeapon Drepanum')
     send_command('bind ~f7 gs c set CombatWeapon Bunzi')
-    send_command('bind ~f8 gs c set CombatWeapon Marin')
 
 end
 
@@ -66,7 +64,6 @@ function file_unload()
     send_command('unbind ~f5')
     send_command('unbind ~f6')
     send_command('unbind ~f7')
-    send_command('unbind ~f8')
 end
 
 
@@ -93,6 +90,10 @@ function init_gear_sets()
 
     jse.earring = "Wicce earring +1"
 
+    sets.Opashoro = {}
+    sets.Opashoro.Khonsu = {main="Opashoro", sub="Khonsu"}
+    sets.Opashoro.Enki = {main="Opashoro", sub="Enki strap"}
+
     sets.Laevateinn = {}
     sets.Laevateinn.Khonsu = {main="Laevateinn", sub="Khonsu"}
     sets.Laevateinn.Enki = {main="Laevateinn", sub="Enki strap"}
@@ -117,13 +118,6 @@ function init_gear_sets()
     sets.Bunzi.Ammurapi = {main="Bunzi's rod", sub="Ammurapi shield"}
     sets.Bunzi.Genmei = {main="Bunzi's rod", sub="Genmei shield"}
 
-    sets.Opashoro = {}
-    sets.Opashoro.Khonsu = {main="Opashoro", sub="Khonsu"}
-    sets.Opashoro.Enki = {main="Opashoro", sub="Enki strap"}
-
-    sets.Marin = {}
-    sets.Marin.Khonsu = {main="Marin staff +1", sub="Khonsu"}
-    sets.Marin.Enki = {main="Marin staff +1", sub="Enki strap"}
     --------------------------------------
     -- Start defining the sets
     --------------------------------------
