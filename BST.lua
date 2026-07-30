@@ -12,9 +12,10 @@ end
 
 -- Setup vars that are user-independent.  state.Buff vars initialized here will automatically be tracked.
 function job_setup()
+    state.IdleMode:options('Normal', 'Pet')
     state.PhysicalDefenseMode:options('PDT', 'Pet')
     state.MagicalDefenseMode:options('MDT')
-    state.WeaponskillMode:options('Normal','SubtleBlow')
+    state.WeaponskillMode:options('Normal','Mid-SubtleBlow', 'Max-SubtleBlow')
     state.OffenseMode:options('TP', 'DT', 'Mid-SubtleBlow', 'Max-SubtleBlow')
     state.CombatMode:options('SwordShield', 'DualWield')
     state.HybridMode:options('Normal','Pet')
@@ -94,13 +95,13 @@ function init_gear_sets()
 
     jse.artifact.head = "Totemic Helm +4"
     jse.artifact.body = "Totemic Jackcoat +4"
-    jse.artifact.hands = "Totemic Gloves +3"
+    jse.artifact.hands = "Totemic Gloves +4"
     jse.artifact.legs = "Totemic Trousers +3"
     jse.artifact.feet = "Totemic Gaiters +3"
 
     jse.relic.head = "Ankusa Helm +4"
     jse.relic.body = "Ankusa Jackcoat +3"
-    jse.relic.hands = "Ankusa Gloves +3"
+    jse.relic.hands = "Ankusa Gloves +4"
     jse.relic.legs = "Ankusa Trousers +3"
     jse.relic.feet = "Ankusa Gaiters +3"
 
@@ -236,6 +237,7 @@ function init_gear_sets()
     -- Weaponskill sets
     -- Default set for any weaponskill that isn't any more specifically defined
     sets.precast.WS = {
+        ammo="Coiste Bodhar",
         head=jse.relic.head,
         body=jse.empyrean.body,
         hands="Nyame Gauntlets",
@@ -250,13 +252,18 @@ function init_gear_sets()
         back=ws_blitz_mistral_cape
     }
 
-    sets.precast.WS.SubtleBlow = set_combine(sets.precast.WS, {
+    sets.precast.WS['Mid-SubtleBlow'] = set_combine(sets.precast.WS, {
+        ear2="Sherida earring",
+        ring1={name="Chirich ring +1", bag="wardrobe5"},
+        ring2={name="Chirich ring +1", bag="wardrobe6"},
+    })
+
+    sets.precast.WS['Max-SubtleBlow'] = set_combine(sets.precast.WS, {
         ear2="Sherida earring",
         ring1={name="Chirich ring +1", bag="wardrobe5"},
         ring2={name="Chirich ring +1", bag="wardrobe6"},
         legs="Gleti's breeches",
         waist="Sarissaphoroi belt",
-        back=ws_decimation_ruinator_cape
     })
 
     sets.precast.WS['Blitz'] = set_combine(sets.precast.WS, {
@@ -267,12 +274,14 @@ function init_gear_sets()
         ring1="Gere ring",
         ring2="Regal ring"
     })
-    sets.precast.WS['Blitz'].SubtleBlow = set_combine(sets.precast.WS['Blitz'], sets.precast.WS.SubtleBlow)
+    sets.precast.WS['Blitz']['Mid-SubtleBlow'] = set_combine(sets.precast.WS['Blitz'], sets.precast.WS['Mid-SubtleBlow'])
+    sets.precast.WS['Blitz']['Max-SubtleBlow'] = set_combine(sets.precast.WS['Blitz'], sets.precast.WS['Max-SubtleBlow'])
 
     sets.precast.WS['Calamity'] = set_combine(sets.precast.WS, {
         ear1="Thrud earring",
     })
-    sets.precast.WS['Calamity'].SubtleBlow = set_combine(sets.precast.WS['Calamity'], sets.precast.WS.SubtleBlow)
+    sets.precast.WS['Calamity']['Mid-SubtleBlow'] = set_combine(sets.precast.WS['Calamity'], sets.precast.WS['Mid-SubtleBlow'])
+    sets.precast.WS['Calamity']['Max-SubtleBlow'] = set_combine(sets.precast.WS['Calamity'], sets.precast.WS['Max-SubtleBlow'])
 
     sets.precast.WS["Rampage"] = {
         ammo="Crepuscular pebble",
@@ -289,7 +298,8 @@ function init_gear_sets()
         ring2="Gere Ring",
         back=ws_rampage_cape
     }
-    sets.precast.WS['Rampage'].SubtleBlow = set_combine(sets.precast.WS['Rampage'], sets.precast.WS.SubtleBlow)
+    sets.precast.WS['Rampage']['Mid-SubtleBlow'] = set_combine(sets.precast.WS['Rampage'], sets.precast.WS['Mid-SubtleBlow'])
+    sets.precast.WS['Rampage']['Max-SubtleBlow'] = set_combine(sets.precast.WS['Rampage'], sets.precast.WS['Max-SubtleBlow'])
 
     sets.precast.WS["Cloudsplitter"] = {
         ammo="Oshasha's Treatise",
@@ -306,12 +316,14 @@ function init_gear_sets()
         ring2="Metamor. Ring +1",
         back=ws_cloudsplitter_cape
     }
-    sets.precast.WS['Cloudsplitter'].SubtleBlow = set_combine(sets.precast.WS['Cloudsplitter'], sets.precast.WS.SubtleBlow)
+    sets.precast.WS['Cloudsplitter']['Mid-SubtleBlow'] = set_combine(sets.precast.WS['Cloudsplitter'], sets.precast.WS['Mid-SubtleBlow'])
+    sets.precast.WS['Cloudsplitter']['Max-SubtleBlow'] = set_combine(sets.precast.WS['Cloudsplitter'], sets.precast.WS['Max-SubtleBlow'])
 
     sets.precast.WS["Primal Rend"] = set_combine(sets.precast.WS["Cloudsplitter"], {
         back=ws_primal_rend_cape
     })
-    sets.precast.WS['Primal Rend'].SubtleBlow = set_combine(sets.precast.WS['Primal Rend'], sets.precast.WS.SubtleBlow)
+    sets.precast.WS['Primal Rend']['Mid-SubtleBlow'] = set_combine(sets.precast.WS['Primal Rend'], sets.precast.WS['Mid-SubtleBlow'])
+    sets.precast.WS['Primal Rend']['Max-SubtleBlow'] = set_combine(sets.precast.WS['Primal Rend'], sets.precast.WS['Max-SubtleBlow'])
 
     sets.precast.WS["Mistral Axe"] = {
         ammo="Crepuscular pebble",
@@ -328,7 +340,8 @@ function init_gear_sets()
         ring2="Gere Ring",
         back=ws_blitz_mistral_cape
     }
-    sets.precast.WS['Mistral Axe'].SubtleBlow = set_combine(sets.precast.WS['Mistral Axe'], sets.precast.WS.SubtleBlow)
+    sets.precast.WS['Mistral Axe']['Mid-SubtleBlow'] = set_combine(sets.precast.WS['Mistral Axe'], sets.precast.WS['Mid-SubtleBlow'])
+    sets.precast.WS['Mistral Axe']['Max-SubtleBlow'] = set_combine(sets.precast.WS['Mistral Axe'], sets.precast.WS['Max-SubtleBlow'])
 
     -- Equipping tp bonus and ready recast
     sets.precast.Monster = {
@@ -566,6 +579,10 @@ function init_gear_sets()
     }
 
     sets.idle.Pet = set_combine(sets.idle, {
+        body=jse.artifact.body,
+        hands="Gleti's Gauntlets",
+        legs=jse.empyrean.legs,
+        back=pet_attack,
     })
 
     sets.idle.Pet.Engaged = {
@@ -708,12 +725,12 @@ function init_gear_sets()
         ring1={name="Chirich ring +1", bag="wardrobe5"},
         ring2={name="Chirich ring +1", bag="wardrobe6"},
         legs="Gleti's breeches",
-        back=ws_decimation_ruinator_cape
     })
 
     sets.engaged["Mid-SubtleBlow"].Pet = set_combine(sets.engaged["Mid-SubtleBlow"], {
         body=jse.artifact.body,
-        hands="Gleti's gauntlets"
+        hands="Gleti's gauntlets",
+        legs=jse.empyrean.legs
     })
 
     sets.engaged["Max-SubtleBlow"] = set_combine(sets.engaged["Mid-SubtleBlow"], {
@@ -723,7 +740,6 @@ function init_gear_sets()
         ring2={name="Chirich ring +1", bag="wardrobe6"},
         legs="Gleti's breeches",
         waist="Sarissaphoroi belt",
-        back=ws_decimation_ruinator_cape
     })
 
     sets.engaged["Max-SubtleBlow"].Pet = set_combine(sets.engaged["Max-SubtleBlow"], {
