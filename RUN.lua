@@ -386,7 +386,10 @@ function init_gear_sets()
     })
         
     sets.midcast['Regen'] = set_combine(sets.midcast['Enhancing Magic'], {
-        head=jse.artifact.head
+        head=jse.artifact.head,
+        neck="Sacro gorget",
+        ear2=jse.earring,
+        waist="Sroda belt"
     })
 
 	-- Weaponskill sets
