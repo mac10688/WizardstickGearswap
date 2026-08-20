@@ -182,7 +182,7 @@ function init_gear_sets()
         neck="Sorcerer's stole +2",
         ear1="Regal earring",
         ear2="Ishvara earring",
-        body=jse.relic.coat,
+        body=jse.relic.body,
         hands="Jhakri cuffs +2",
         ring1="Medada's ring",
         ring2="Metamorph ring +1",  
@@ -214,6 +214,22 @@ function init_gear_sets()
     -- Weaponskill sets
     -- Default set for any weaponskill that isn't any more specifically defined
     sets.precast.WS = magical_int_ws
+
+    sets.precast.WS['Oshala'] = {
+        ammo="Ghastly Tathlum +1",
+        head="Nyame Helm",
+        body="Nyame Mail",
+        hands="Nyame Gauntlets",
+        legs="Nyame Flanchard",
+        feet="Nyame Sollerets",
+        neck="Rep. Plat. Medal",
+        waist="Acuity Belt +1",
+        left_ear="Regal Earring",
+        right_ear="Moonshade Earring",
+        left_ring="Epaminondas's Ring",
+        right_ring="Metamor. Ring +1",
+        back=magic_int_ws
+    }
 
     -- Specific weaponskill sets.  Uses the base set if an appropriate WSMod version isn't found.
     -- STR 40% | Physical
@@ -439,8 +455,6 @@ function init_gear_sets()
     })
 
     sets.midcast['Elemental Magic']['Magic Accuracy'] = set_combine(sets.midcast['Elemental Magic'], {
-        main="Wizard's rod",
-        sub="Ammurapi shield",
         ammo="Pemphredo tathlum",
         head=jse.artifact.head, --MB: 7 MB2: 7
         neck="Sorcerer's stole +2", --MB: 10
@@ -458,8 +472,6 @@ function init_gear_sets()
     })
 
     sets.midcast['Elemental Magic']['Magic Attack Bonus'] = set_combine(sets.midcast['Elemental Magic'], {
-        main="Wizard's rod",
-        sub="Ammurapi shield",
         ammo="Pemphredo tathlum",
         head=jse.empyrean.head, --MB: 7 MB2: 7
         neck="Sorcerer's stole +2", --MB: 10
