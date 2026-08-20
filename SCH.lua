@@ -541,8 +541,6 @@ function init_gear_sets()
     }
 
     sets.midcast.MagicBurst = set_combine(sets.midcast['Elemental Magic'], {
-        main="Wizard's rod",
-        sub="Ammurapi shield",
         head="Agwu's cap", --MB2: 4
         neck="Argute stole +2", --MB: 7
         body="Agwu's robe", --MB: 10
@@ -554,7 +552,6 @@ function init_gear_sets()
     })
 
     sets.midcast['Elemental Magic'].Helix = set_combine(sets.midcast.MagicBurst, {
-        sub="Culminus",
         ammo="Ghastly tathlum +1",
         waist="Acuity belt +1"
     })
