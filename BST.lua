@@ -16,7 +16,7 @@ function job_setup()
     state.PhysicalDefenseMode:options('PDT', 'Pet')
     state.MagicalDefenseMode:options('MDT')
     state.WeaponskillMode:options('Normal','Mid-SubtleBlow', 'Max-SubtleBlow')
-    state.OffenseMode:options('TP', 'DT', 'Mid-SubtleBlow', 'Max-SubtleBlow')
+    state.OffenseMode:options('TP', 'DT', 'Mid-SubtleBlow', 'Max-SubtleBlow', 'Trusts')
     state.CombatMode:options('SwordShield', 'DualWield')
     state.HybridMode:options('Normal','Pet')
     -- state.IdleMode:options('Normal', 'Pet')
@@ -30,6 +30,10 @@ function job_setup()
     state.Pangu = {}
     state.Pangu.DualWield = M{['description']='Pangu Set', 'Spalirisos', 'Ikenga', 'Agwu'}
     state.Pangu.SwordShield = M{['description']='Pangu Set', 'Sacro'}
+
+    state.Aymur = {}
+    state.Aymur.DualWield = M{['description']='Aymur Set', 'Spalirisos', 'Ikenga', 'Agwu'}
+    state.Aymur.SwordShield = M{['description']='Aymur Set', 'Sacro'}
 
     state.Naegling = {}
     state.Naegling.DualWield = M{['description']='Naegling Set', 'TP', 'Pet'}
@@ -62,11 +66,12 @@ function job_setup()
     send_command('bind ^` gs c toggle MonsterCorrelation')
     send_command('bind ~f1 gs c set CombatWeapon Spalirisos')
     send_command('bind ~f2 gs c set CombatWeapon Pangu')
-    send_command('bind ~f3 gs c set CombatWeapon Naegling')
-    send_command('bind ~f4 gs c set CombatWeapon Ikenga')
-    send_command('bind ~f5 gs c set CombatWeapon Agwu')    
-    send_command('bind ~f6 gs c set CombatWeapon Drepanum')
-    send_command('bind ~f7 gs c set CombatWeapon Tauret')
+    send_command('bind ~f3 gs c set CombatWeapon Aymur')
+    send_command('bind ~f4 gs c set CombatWeapon Naegling')
+    send_command('bind ~f5 gs c set CombatWeapon Ikenga')
+    send_command('bind ~f6 gs c set CombatWeapon Agwu')
+    send_command('bind ~f7 gs c set CombatWeapon Drepanum')
+    send_command('bind ~f8 gs c set CombatWeapon Tauret')
 end
 
 -------------------------------------------------------------------------------------------------------------------
@@ -83,6 +88,7 @@ function file_unload()
     send_command('unbind ~f5')
     send_command('unbind ~f6')
     send_command('unbind ~f7')
+    send_command('unbind ~f8')
 end
 
 
@@ -103,7 +109,7 @@ function init_gear_sets()
     jse.relic.body = "Ankusa Jackcoat +3"
     jse.relic.hands = "Ankusa Gloves +4"
     jse.relic.legs = "Ankusa Trousers +3"
-    jse.relic.feet = "Ankusa Gaiters +3"
+    jse.relic.feet = "Ankusa Gaiters +4"
 
     jse.empyrean.head = "Nukumi Cabasset +3"
     jse.empyrean.body = "Nukumi Gausape +3"
@@ -120,6 +126,7 @@ function init_gear_sets()
     local ws_cloudsplitter_cape = { name="Artio's Mantle", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','Weapon skill damage +10%','Damage taken-5%'}}
     local pet_mag_acc = { name="Artio's Mantle", augments={'Pet: M.Acc.+20 Pet: M.Dmg.+20','Eva.+20 /Mag. Eva.+20','Pet: Mag. Acc.+10','Pet: Haste+10','Damage taken-5%'}}
     local pet_attack = { name="Artio's Mantle", augments={'Pet: Acc.+20 Pet: R.Acc.+20 Pet: Atk.+20 Pet: R.Atk.+20','Eva.+20 /Mag. Eva.+20','Pet: Attack+10 Pet: Rng.Atk.+10','Pet: Haste+10','Pet: Damage taken -5%'}}
+    local pet_hybrid = { name="Artio's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10','Pet: Damage taken -5%'}}
 
     sets.Spalirisos = {}
     sets.Spalirisos.DualWield = {} 
@@ -135,6 +142,14 @@ function init_gear_sets()
     sets.Pangu.DualWield.Agwu = {main="Pangu", sub="Agwu's Axe"}
     sets.Pangu.SwordShield = {main="Pangu", sub="Sacro bulwark"}
     sets.Pangu.SwordShield.Sacro = {main="Pangu", sub="Sacro bulwark"}
+
+    sets.Aymur = {}
+    sets.Aymur.DualWield = {main="Aymur", sub="Ikenga's axe"}
+    sets.Aymur.DualWield.Spalirisos = {main="Aymur", sub="Spalirisos"}
+    sets.Aymur.DualWield.Ikenga = {main="Aymur", sub="Ikenga's Axe"}
+    sets.Aymur.DualWield.Agwu = {main="Aymur", sub="Agwu's Axe"}
+    sets.Aymur.SwordShield = {main="Aymur", sub="Sacro bulwark"}
+    sets.Aymur.SwordShield.Sacro = {main="Aymur", sub="Sacro bulwark"}
 
     sets.Naegling = {}
     sets.Naegling.DualWield = {}
@@ -170,6 +185,98 @@ function init_gear_sets()
     state.Tauret = {}
     state.Tauret.DualWield = M{['description']='Tauret Set', 'Ternion'}
     state.Tauret.SwordShield = M{['description']='Tauret Set', 'Sacro'}
+
+    -- Idle sets (default idle set not needed since the other three are defined, but leaving for testing purposes)
+    sets.idle = {
+        ammo="Staunch tathlum +1",
+        head="Nyame Helm",
+        body="Udug Jacket",
+        hands="Nyame Gauntlets",
+        legs="Nyame Flanchard",
+        feet="Nyame Sollerets",
+        neck="Loricate Torque +1",
+        waist="Null Belt",
+        ear1="Eabani Earring",
+        ear2="Genmei Earring",
+        ring1={name="Moonlight ring", bag="wardrobe5"},
+        ring2={name="Moonlight ring", bag="wardrobe6"},
+        back="Null Shawl",
+    }
+
+    sets.idle.Pet = set_combine(sets.idle, {
+        head=jse.empyrean.head,
+        body=jse.artifact.body,
+        hands="Gleti's Gauntlets",
+        back=pet_attack,
+        legs=jse.empyrean.legs,
+        feet=jse.relic.feet
+    })
+
+    sets.idle.Pet.Engaged = {
+        ammo="Hesperiidae",
+        head=jse.empyrean.head,
+        body=jse.artifact.body,
+        hands="Gleti's gauntlets",
+        legs=jse.empyrean.legs,
+        feet="Gleti's boots",
+        neck="Beastmaster collar +2",
+        waist="Isa belt",
+        ear1="Alabaster Earring",
+        ear2=jse.earring,
+        ring1="Cath Palug Ring",
+        ring2={name="Moonlight ring", bag="wardrobe6"},
+        back=pet_attack
+    }
+
+    -- Defense sets
+
+    sets.defense.PDT = {
+        ammo="Staunch Tathlum +1",
+        head="Nyame Helm",
+        body="Adamantite Armor",
+        hands="Nyame Gauntlets",
+        legs=jse.empyrean.legs,
+        feet="Nyame Sollerets",
+        neck="Loricate Torque +1",
+        waist="Null Belt",
+        ear1="Alabaster earring",
+        ear2="Genmei Earring",
+        ring1="Gelatinous Ring +1",
+        ring2="Moonlight Ring",
+        back="Null Shawl",
+    }
+
+    sets.defense.Pet = {
+        ammo="Staunch Tathlum +1",
+        head=jse.empyrean.head,
+        body=jse.artifact.body,
+        hands="Gleti's Gauntlets",
+        legs=jse.empyrean.legs,
+        feet=jse.relic.feet,
+        neck="Loricate Torque +1",
+        waist="Isa belt",
+        ear1="Alabaster earring",
+        ear2="Genmei Earring",
+        ring1="Gelatinous Ring +1",
+        ring2="Moonlight Ring",
+        back=pet_attack,
+    }
+
+    sets.defense.MDT = {
+        ammo="Staunch Tathlum +1",
+        head="Nyame Helm",
+        body="Adamantite Armor",
+        hands="Nyame Gauntlets",
+        legs="Nyame Flanchard",
+        feet="Nyame Sollerets",
+        neck="Loricate Torque +1",
+        waist="Null Belt",
+        ear1="Eabani Earring",
+        ear2="Genmei Earring",
+        ring1="Gelatinous Ring +1",
+        ring2="Moonlight Ring",
+        back="Null Shawl",
+    }
 
     -- Precast Sets
 
@@ -207,11 +314,12 @@ function init_gear_sets()
     
     sets.precast.JA.Reward = {
         body=jse.artifact.body,
-        ring1="Defending ring",
-        back=pet_attack,
-        waist="Platinum moogle belt",
+        ring1={name="Stikini Ring +1", bag="wardrobe5"},
+        ring2="Metamorph ring +1",
+        back=ws_cloudsplitter_cape,
+        waist={name = "Platinum moogle belt", priority=30},
         legs=jse.relic.legs,
-        feet="Nyame sollerets"
+        feet=jse.relic.feet
     }
 
     sets.precast.JA.Reward.Theta = set_combine(sets.precast.JA.Reward, {ammo="Pet Food Theta biscuit"})
@@ -550,7 +658,10 @@ function init_gear_sets()
     sets.midcast.Pet['Suction'] = sets.midcast.Pet.Tp
     sets.midcast.Pet['Drainkiss'] = sets.midcast.Pet.Mab
     sets.midcast.Pet['Acid Mist'] = sets.midcast.Pet.Macc
-    sets.midcast.Pet['TP Drainkiss'] = sets.midcast.Pet.Macc
+    sets.midcast.Pet['TP Drainkiss'] = set_combine(sets.defense.Pet, {
+        main="Aymur",
+        hands=jse.empyrean.hands
+    })
 
     -- Cactuar
     sets.midcast.Pet['Needleshot'] = sets.midcast.Pet.Tp
@@ -561,95 +672,6 @@ function init_gear_sets()
     sets.midcast.Pet['Gloeosuccus'] = sets.midcast.Pet.Macc
     sets.midcast.Pet['Palsy Pollen'] = sets.midcast.Pet.Macc   
     
-    -- Idle sets (default idle set not needed since the other three are defined, but leaving for testing purposes)
-    sets.idle = {
-        ammo="Staunch tathlum +1",
-        head="Nyame Helm",
-        body="Udug Jacket",
-        hands="Nyame Gauntlets",
-        legs="Nyame Flanchard",
-        feet="Nyame Sollerets",
-        neck="Loricate Torque +1",
-        waist="Null Belt",
-        ear1="Eabani Earring",
-        ear2="Genmei Earring",
-        ring1={name="Moonlight ring", bag="wardrobe5"},
-        ring2={name="Moonlight ring", bag="wardrobe6"},
-        back="Null Shawl",
-    }
-
-    sets.idle.Pet = set_combine(sets.idle, {
-        body=jse.artifact.body,
-        hands="Gleti's Gauntlets",
-        legs=jse.empyrean.legs,
-        back=pet_attack,
-    })
-
-    sets.idle.Pet.Engaged = {
-        ammo="Hesperiidae",
-        head=jse.empyrean.head,
-        body=jse.artifact.body,
-        hands="Gleti's gauntlets",
-        legs=jse.empyrean.legs,
-        feet="Gleti's boots",
-        neck="Beastmaster collar +2",
-        waist="Null Belt",
-        ear1="Alabaster Earring",
-        ear2=jse.earring,
-        ring1="Cath Palug Ring",
-        ring2={name="Moonlight ring", bag="wardrobe6"},
-        back=pet_attack
-    }
-    
-    -- Defense sets
-
-    sets.defense.PDT = {
-        ammo="Staunch Tathlum +1",
-        head="Nyame Helm",
-        body="Adamantite Armor",
-        hands="Nyame Gauntlets",
-        legs=jse.empyrean.legs,
-        feet="Nyame Sollerets",
-        neck="Loricate Torque +1",
-        waist="Null Belt",
-        ear1="Alabaster earring",
-        ear2="Genmei Earring",
-        ring1="Gelatinous Ring +1",
-        ring2="Moonlight Ring",
-        back="Null Shawl",
-    }
-
-    sets.defense.Pet = {
-        ammo="Staunch Tathlum +1",
-        head="Nyame Helm",
-        body=jse.artifact.body,
-        hands="Gleti's Gauntlets",
-        legs=jse.empyrean.legs,
-        feet="Nyame Sollerets",
-        neck="Loricate Torque +1",
-        waist="Null Belt",
-        ear1="Alabaster earring",
-        ear2="Genmei Earring",
-        ring1="Gelatinous Ring +1",
-        ring2="Moonlight Ring",
-        back=pet_attack,
-    }
-
-    sets.defense.MDT = {
-        ammo="Staunch Tathlum +1",
-        head="Nyame Helm",
-        body="Adamantite Armor",
-        hands="Nyame Gauntlets",
-        legs="Nyame Flanchard",
-        feet="Nyame Sollerets",
-        neck="Loricate Torque +1",
-        waist="Null Belt",
-        ear1="Eabani Earring",
-        ear2="Genmei Earring",
-        ring1="Gelatinous Ring +1",
-        ring2="Moonlight Ring",
-        back="Null Shawl",
-    }
 
     sets.Kiting = {
         ring1="Shneddick ring +1"
@@ -679,10 +701,10 @@ function init_gear_sets()
         feet=jse.empyrean.feet,
         neck="Anu Torque",
         waist="Sailfi belt +1",
-        ear1="Sroda earring",
+        ear1="Dedition earring",
         ear2="Sherida earring",
-        ring1="Epona's ring",
-        ring2="Gere ring",
+        ring1={name="Moonlight ring", bag="wardrobe5"},
+        ring2={name="Moonlight ring", bag="wardrobe6"},
         back="Null shawl"
     }
 
@@ -702,7 +724,10 @@ function init_gear_sets()
     Accuracy: 325
     ]]
     sets.engaged.TP.Pet = set_combine(sets.engaged.TP, {
-        body=jse.artifact.body
+        body=jse.artifact.body,
+        hands="Gleti's gauntlets",
+        legs=jse.empyrean.legs,
+        back=pet_hybrid
     })
 
     --[[
@@ -730,7 +755,8 @@ function init_gear_sets()
     sets.engaged["Mid-SubtleBlow"].Pet = set_combine(sets.engaged["Mid-SubtleBlow"], {
         body=jse.artifact.body,
         hands="Gleti's gauntlets",
-        legs=jse.empyrean.legs
+        legs=jse.empyrean.legs,
+        back=pet_hybrid
     })
 
     sets.engaged["Max-SubtleBlow"] = set_combine(sets.engaged["Mid-SubtleBlow"], {
@@ -743,7 +769,8 @@ function init_gear_sets()
     })
 
     sets.engaged["Max-SubtleBlow"].Pet = set_combine(sets.engaged["Max-SubtleBlow"], {
-        body=jse.artifact.body
+        body=jse.artifact.body,
+        back=pet_hybrid
     })
 
     sets.engaged.DT = {
@@ -763,8 +790,12 @@ function init_gear_sets()
     }
 
     sets.engaged.DT.Pet = set_combine(sets.engaged.DT, {
-        body=jse.artifact.body
+        body=jse.artifact.body,
+        hands="Gleti's gauntlets",
+        legs=jse.empyrean.legs,
+        back=pet_hybrid
     })
+
 
     sets.precast.Item['Holy Water'] = {
         neck="Nicander's necklace",
