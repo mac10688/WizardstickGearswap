@@ -16,6 +16,7 @@ function job_setup()
     state.CombatMode:options('SwordShield', 'DualWield')
     state.CastingMode:options('Normal', 'Resistant')
     state.IdleMode:options('Normal', 'PDT', 'Refresh', 'Pet')
+    state.PhysicalDefenseMode:options('PDT', 'Pet')
     state.WeaponskillMode:options('Normal','Acc')
 
     state.CombatWeapon:set('Idris')
@@ -407,7 +408,8 @@ function init_gear_sets()
         neck="Bagua charm +2",
         hands=jse.artifact.hands,
         back=pet_Cape,
-        -- feet=jse.relic.feet
+        waist="Isa belt",
+        feet=jse.relic.feet
     })
 
     sets.Kiting = {
@@ -463,6 +465,22 @@ function init_gear_sets()
         waist="Austerity belt +1",
         legs="Nyame flanchard", -- 7 mdb 150 meva
         feet="Nyame sollerets" -- 5 mdb 150 meva
+    }
+
+    sets.defense.Pet = {
+        range="Dunna",
+        head="Azimuth Hood +3",
+        body="Adamantite Armor",
+        hands="Geo. Mitaines +3",
+        legs="Geomancy Pants +3",
+        feet="Bagua Sandals +3",
+        neck="Bagua Charm +2",
+        waist="Isa Belt",
+        left_ear="Etiolation Earring",
+        right_ear=jse.earring,
+        left_ring="Defending Ring",
+        right_ring="Stikini Ring +1",
+        back=pet_Cape
     }
 
     sets.defense.MDT = {
