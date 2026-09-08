@@ -14,7 +14,7 @@ end
 function job_setup()
     state.IdleMode:options('Normal', 'Pet')
     state.PhysicalDefenseMode:options('PDT', 'Pet')
-    state.MagicalDefenseMode:options('MDT')
+    state.MagicalDefenseMode:options('MDT', 'PetMeva')
     state.WeaponskillMode:options('Normal','Mid-SubtleBlow', 'Max-SubtleBlow')
     state.OffenseMode:options('TP', 'DT', 'Mid-SubtleBlow', 'Max-SubtleBlow', 'Trusts')
     state.CombatMode:options('SwordShield', 'DualWield')
@@ -248,18 +248,18 @@ function init_gear_sets()
 
     sets.defense.Pet = {
         ammo="Staunch Tathlum +1",
-        head=jse.empyrean.head,
-        body=jse.artifact.body,
+        head="Nyame Helm",
+        body="Tot. Jackcoat +4",
         hands="Gleti's Gauntlets",
-        legs=jse.empyrean.legs,
-        feet=jse.relic.feet,
-        neck="Loricate Torque +1",
-        waist="Isa belt",
-        ear1="Alabaster earring",
-        ear2="Genmei Earring",
-        ring1="Gelatinous Ring +1",
-        ring2="Moonlight Ring",
-        back=pet_attack,
+        legs="Nukumi Quijotes +3",
+        feet="Gleti's Boots",
+        neck="Warder's Charm +1",
+        waist="Null Belt",
+        left_ear="Eabani Earring",
+        right_ear={ name="Nukumi Earring +1", augments={'System: 1 ID: 1676 Val: 0','Accuracy+12','Mag. Acc.+12','Pet: "Dbl. Atk."+6',}},
+        left_ring="Shukuyu Ring",
+        right_ring="Moonlight Ring",
+        back=pet_attack
     }
 
     sets.defense.MDT = {
@@ -276,6 +276,22 @@ function init_gear_sets()
         ring1="Gelatinous Ring +1",
         ring2="Moonlight Ring",
         back="Null Shawl",
+    }
+
+    sets.defense.PetMeva = {
+        ammo="Staunch Tathlum +1",
+        head="Nyame Helm",
+        body="Tot. Jackcoat +4",
+        hands="Gleti's Gauntlets",
+        legs="Nukumi Quijotes +3",
+        feet="Gleti's Boots",
+        neck="Warder's Charm +1",
+        waist="Null Belt",
+        left_ear="Eabani Earring",
+        right_ear={ name="Nukumi Earring +1", augments={'System: 1 ID: 1676 Val: 0','Accuracy+12','Mag. Acc.+12','Pet: "Dbl. Atk."+6',}},
+        left_ring="Shukuyu Ring",
+        right_ring="Moonlight Ring",
+        back=pet_attack
     }
 
     -- Precast Sets
@@ -361,13 +377,13 @@ function init_gear_sets()
     }
 
     sets.precast.WS['Mid-SubtleBlow'] = set_combine(sets.precast.WS, {
-        ear2="Sherida earring",
+        ear1="Sherida earring",
         ring1={name="Chirich ring +1", bag="wardrobe5"},
         ring2={name="Chirich ring +1", bag="wardrobe6"},
     })
 
     sets.precast.WS['Max-SubtleBlow'] = set_combine(sets.precast.WS, {
-        ear2="Sherida earring",
+        ear1="Sherida earring",
         ring1={name="Chirich ring +1", bag="wardrobe5"},
         ring2={name="Chirich ring +1", bag="wardrobe6"},
         legs="Gleti's breeches",
@@ -701,8 +717,8 @@ function init_gear_sets()
         feet=jse.empyrean.feet,
         neck="Anu Torque",
         waist="Sailfi belt +1",
-        ear1="Dedition earring",
-        ear2="Sherida earring",
+        ear1="Sherida earring",
+        ear2="Dedition earring",
         ring1={name="Moonlight ring", bag="wardrobe5"},
         ring2={name="Moonlight ring", bag="wardrobe6"},
         back="Null shawl"
@@ -725,9 +741,11 @@ function init_gear_sets()
     ]]
     sets.engaged.TP.Pet = set_combine(sets.engaged.TP, {
         body=jse.artifact.body,
+        ear2=jse.earring,
         hands="Gleti's gauntlets",
         legs=jse.empyrean.legs,
-        back=pet_hybrid
+        back=pet_hybrid,
+        feet="Gleti's boots"
     })
 
     --[[
@@ -746,17 +764,19 @@ function init_gear_sets()
     Accuracy: 310
     ]]
     sets.engaged["Mid-SubtleBlow"] = set_combine(sets.engaged.TP, {
-        ear2="Sherida earring",
+        ear1="Sherida earring",
         ring1={name="Chirich ring +1", bag="wardrobe5"},
         ring2={name="Chirich ring +1", bag="wardrobe6"},
         legs="Gleti's breeches",
     })
 
     sets.engaged["Mid-SubtleBlow"].Pet = set_combine(sets.engaged["Mid-SubtleBlow"], {
+        ear2=jse.earring,
         body=jse.artifact.body,
         hands="Gleti's gauntlets",
         legs=jse.empyrean.legs,
-        back=pet_hybrid
+        back=pet_hybrid,
+        feet="Gleti's boots"
     })
 
     sets.engaged["Max-SubtleBlow"] = set_combine(sets.engaged["Mid-SubtleBlow"], {
@@ -790,12 +810,13 @@ function init_gear_sets()
     }
 
     sets.engaged.DT.Pet = set_combine(sets.engaged.DT, {
+        ear2=jse.earring,
         body=jse.artifact.body,
         hands="Gleti's gauntlets",
         legs=jse.empyrean.legs,
-        back=pet_hybrid
+        back=pet_hybrid,
+        feet="Gleti's boots"
     })
-
 
     sets.precast.Item['Holy Water'] = {
         neck="Nicander's necklace",
