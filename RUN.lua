@@ -198,7 +198,7 @@ function init_gear_sets()
         ring1="Eihwaz ring",
         ring2="Supershear ring",
         back=pdt_cape,
-        waist="Platinum moogle belt",
+        waist={name="Platinum moogle belt", priority=19},
         legs=jse.empyrean.legs,
         feet=jse.empyrean.feet
     }
