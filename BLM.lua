@@ -127,7 +127,6 @@ function init_gear_sets()
     local idle_mdt_cape = { name="Taranus's Cape", augments={'INT+20','Eva.+20 /Mag. Eva.+20','INT+10','"Fast Cast"+10','Mag. Evasion+15'}}
     local magic_int_ws = { name="Taranus's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','Weapon skill damage +10%','Damage taken-5%'}}
     local death_cape = { name="Taranus's Cape", augments={'MP+60','Mag. Acc+20 /Mag. Dmg.+20','MP+20','"Mag.Atk.Bns."+10','Spell interruption rate down-10%'}}
-    local ws_boots = { name="Merlinic Crackows", augments={'Attack+25','Crit.hit rate+3','Weapon skill damage +10%','Mag. Acc.+16 "Mag.Atk.Bns."+16'}}
     local fast_cast_cape = { name="Taranus's Cape", augments={'INT+20','Eva.+20 /Mag. Eva.+20','INT+10','"Fast Cast"+10','Mag. Evasion+15'}}
 
     ---- Precast Sets ----
@@ -189,7 +188,7 @@ function init_gear_sets()
         back=magic_int_ws,
         waist="Fotia belt",
         legs=jse.relic.legs,
-        feet=ws_boots
+        feet="Nyame sollerets"
     }
 
     local magical_int_ws = {
