@@ -4,6 +4,7 @@ function user_setup()
     gear.chironic_hands_phalanx = { name="Chironic Gloves", augments={'Chance of successful block +1','"Mag.Atk.Bns."+24','Phalanx +4','Accuracy+12 Attack+12'}}
     gear.chironic_legs_phalanx = { name="Chironic Hose", augments={'STR+7','"Fast Cast"+1','Phalanx +4','Accuracy+1 Attack+1'}}
     gear.chironic_feet_phalanx = { name="Chironic Slippers", augments={'Pet: Mag. Acc.+19','Pet: DEX+3','Phalanx +4','Accuracy+9 Attack+9','Mag. Acc.+7 "Mag.Atk.Bns."+7'}}
+    gear.merlinic_feet_th = { name="Merlinic Crackows", augments={'DEX+6','INT+3','"Treasure Hunter"+2','Accuracy+10 Attack+10'}}
 end
 
 function user_state_change(descrip, newVal, oldVal)

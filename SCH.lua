@@ -16,9 +16,9 @@ function job_setup()
     state.CastingMode:options('Normal', 'Occult')
     state.IdleMode:options('Normal', 'PDT')
 
+    state.ImmanenceMode = M{['description']="Immanence Mode", 'None', 'TreasureHunter'}
     state.MagicBurst = M(true, 'Magic Burst')
 
-    state.WeakStratMode = M{['description']="Weak Nuke Mode", 'None', 'DuringImmanence', 'FullTime'}
     state.EatTp = M(false, 'Eat TP')
 
     state.CombatWeapon:set('MalignancePole')
@@ -34,7 +34,7 @@ function job_setup()
 
     send_command('bind ^` gs c toggle MagicBurst')
     send_command('bind !` gs c toggle EatTp')
-    send_command('bind @` gs c cycle WeakStratMode')
+    send_command('bind @` gs c cycle ImmanenceMode')
 
     send_command('bind ~f1 gs c set CombatWeapon MalignancePole')
     send_command('bind ~f2 gs c set CombatWeapon Opashoro')
@@ -96,7 +96,6 @@ function init_gear_sets()
     local cure_cape = { name="Lugh's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','"Fast Cast"+10','Spell interruption rate down-10%'}}
     local mnd_magic_ws = { name="Lugh's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','Weapon skill damage +10%','Damage taken-5%'}}
     local int_magic_ws = { name="Lugh's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','Weapon skill damage +10%','Damage taken-5%'}}
-    local ws_boots = { name="Merlinic Crackows", augments={'Attack+25','Crit.hit rate+3','Weapon skill damage +10%','Mag. Acc.+16 "Mag.Atk.Bns."+16'}}
 
     local fc_cape = hybrid_cape
 
@@ -158,7 +157,7 @@ function init_gear_sets()
         head=jse.artifact.head,
         neck="Loricate torque +1",
         ear1="Malignance earring", --fast cast 4%
-        ear2="Etiolation earring", --fast cast 1%        
+        ear2="Malignance earring", --fast cast 1%
         body="Pinga tunic +1", --fast cast 15%
         hands=jse.artifact.hands, --fast cast 8%
         ring1="Medada's ring", --fast cast 10%
@@ -174,7 +173,7 @@ function init_gear_sets()
     sets.precast.FC['Elemental Magic'] = set_combine(sets.precast.FC, {
         legs="Mallquis trews +2",
         ring2="Mallquis Ring",
-        ear1="Barkarole earring"
+        ear2="Barkarole earring"
     })
 
     sets.precast.FC['Elemental Magic'].Grimoire = set_combine(sets.precast.FC['Elemental Magic'], {
@@ -207,14 +206,14 @@ function init_gear_sets()
         back=int_magic_ws,
         waist="Fotia belt",
         legs="Nyame flanchard",
-        feet=ws_boots
+        feet="Nyame sollerets"
     }
 
     local magical_int_ws = {
         head=jse.relic.head ,
         neck="Argute stole +2",
-        ear1="Regal earring",
-        ear2="Malignance earring",
+        ear1="Malignance earring",
+        ear2="Regal earring",
         body="Nyame mail",
         hands="Jhakri cuffs +2",
         ring1="Medada's ring",
@@ -222,14 +221,14 @@ function init_gear_sets()
         back=int_magic_ws,
         waist="Orpheus's sash",
         legs=jse.relic.legs,
-        feet=ws_boots
+        feet="Nyame sollerets"
     }
 
     local magical_mnd_ws = {
         head="Nyame helm",
         neck="Argute stole +2",
-        ear1="Regal earring",
-        ear2="Malignance earring",
+        ear1="Malignance earring",
+        ear2="Regal earring",
         body="Nyame mail",
         hands="Jhakri cuffs +2",
         ring1="Medada's ring",
@@ -237,7 +236,7 @@ function init_gear_sets()
         back=mnd_magic_ws,
         waist="Orpheus's sash",
         legs="Nyame flanchard",
-        feet=ws_boots
+        feet="Nyame sollerets"
     }
 
     local dark_magic_affinity = {head="Pixie hairpin +1", ring2="Archon ring"}
@@ -369,8 +368,8 @@ function init_gear_sets()
         ammo="Hydrocera",
         head=jse.artifact.head,
         neck="Argute stole +2",
-        ear1="Regal earring",
-        ear2="Malignance earring",
+        ear1="Malignance earring",
+        ear2="Regal earring",
         body=jse.empyrean.body,
         hands="Regal cuffs",
         ring1={name="Stikini Ring +1", bag="wardrobe5"},
@@ -408,8 +407,8 @@ function init_gear_sets()
         ammo="Pemphredo tathlum",
         head='Pixie hairpin +1',
         neck="Erra pendant",
-        ear1="Regal earring",
-        ear2="Malignance earring",
+        ear1="Malignance earring",
+        ear2="Regal earring",
         body=jse.artifact.body,
         hands=jse.empyrean.hands,
         ring1={name="Stikini Ring +1", bag="wardrobe5"},
@@ -481,8 +480,8 @@ function init_gear_sets()
         feet=jse.artifact.feet,
         neck="Argute Stole +2",
         waist="Sacro cord",
-        ear1="Regal Earring",
-        ear2="Malignance Earring",        
+        ear1="Malignance Earring",
+        ear2="Regal Earring",
         ring1="Medada's ring",
         ring2="Archon ring",
         back="Aurist's cape +1"
@@ -490,13 +489,11 @@ function init_gear_sets()
 
     -- Elemental Magic sets are default for handling low-tier nukes.
     sets.midcast['Elemental Magic'] = {
-        main="Tupsimati",
-        sub="Enki strap",
         ammo="Pemphredo tathlum",
         head=jse.empyrean.head,
         neck="Argute stole +2",
-        ear1="Regal earring",
-        ear2="Malignance earring",
+        ear1="Malignance earring",
+        ear2="Regal earring",
         body=jse.empyrean.body,
         hands=jse.empyrean.hands,
         ring1="Medada's ring",
@@ -540,6 +537,28 @@ function init_gear_sets()
         feet=jse.artifact.feet
     }
 
+    sets.midcast.Immanence = {
+        ammo="Incantor Stone",
+        head="Acad. Mortar. +3",
+        body="Pinga Tunic +1",
+        hands="Acad. Bracers +3",
+        legs="Agwu's Slops",
+        feet="Peda. Loafers +3",
+        neck="Voltsurge Torque",
+        waist="Plat. Mog. Belt",
+        left_ear="Malignance Earring",
+        right_ear="Alabaster Earring",
+        left_ring="Medada's Ring",
+        right_ring="Kishar Ring",
+        back={ name="Lugh's Cape", augments={'VIT+20','Eva.+20 /Mag. Eva.+20','INT+10','"Fast Cast"+10','Mag. Evasion+15',}},
+    }
+
+    sets.midcast.Immanence.TreasureHunter = set_combine(sets.midcast.Immanence, {
+        ammo="Per. Lucky Egg",
+        waist="Chaac Belt",
+        feet=gear.merlinic_feet_th
+    })
+
     sets.midcast.MagicBurst = set_combine(sets.midcast['Elemental Magic'], {
         head="Agwu's cap", --MB2: 4
         neck="Argute stole +2", --MB: 7
@@ -556,15 +575,14 @@ function init_gear_sets()
         waist="Acuity belt +1"
     })
 
-
     sets.midcast['Enfeebling Magic'] = {
         main="Contemplator +1",
         sub="Enki strap",
         ammo="Hydrocera",
         head=jse.artifact.head,
         neck="Argute stole +2",
-        ear1="Regal earring",
-        ear2="Malignance earring",
+        ear1="Malignance earring",
+        ear2="Regal earring",
         body=jse.empyrean.body,
         hands="Regal cuffs",
         ring1={name="Stikini Ring +1", bag="wardrobe5"},
@@ -641,13 +659,11 @@ function init_gear_sets()
     sets.midcast.Banishga.Resistant = sets.midcast.Banish.Resistant
 
     sets.midcast.Impact = {
-        main="Tupsimati",
-        sub="Khonsu",
         ammo="Pemphredo tathlum",
         head=empty,
         neck="Argute stole +2",
-        ear1="Regal earring",
-        ear2="Malignance earring",
+        ear1="Malignance earring",
+        ear2="Regal earring",
         body='Crepuscular cloak',
         hands=jse.empyrean.hands,
         ring1="Medada's ring",
@@ -693,8 +709,6 @@ function init_gear_sets()
     sets.buff['Rapture'] = {head=jse.empyrean.head}
     sets.buff['Perpetuance'] = {hands=jse.empyrean.hands}
     sets.buff['Immanence'] = {
-        head="Nyame helm",
-        body="Nyame mail",
         hands=jse.empyrean.hands        
     }
     sets.buff['Penury'] = {legs=jse.empyrean.legs}
@@ -797,6 +811,7 @@ function job_post_midcast(spell, action, spellMap, eventArgs)
                 equip(sets.midcast['Elemental Magic'].Helix)
             end
         end
+
         apply_grimoire_bonuses(spell, action, spellMap, eventArgs)        
 
         local obi_or_orpheus = obi_or_orpheus(spell)
@@ -804,10 +819,13 @@ function job_post_midcast(spell, action, spellMap, eventArgs)
             equip({waist=obi_or_orpheus})
         end
 
-        if spell.skill == 'Elemental Magic' and state.WeakStratMode.value == 'DuringImmanence' and state.Buff.Immanence then
-            equip(sets.WeakNuke)
-        elseif spell.skill == 'Elemental Magic' and state.WeakStratMode.value == 'FullTime' then
-            equip(sets.WeakNuke)
+        if spell.skill == 'Elemental Magic' and state.Buff.Immanence then
+            if sets.midcast.Immanence[state.ImmanenceMode.value] then
+                equip(sets.midcast.Immanence[state.ImmanenceMode.value])
+            else
+                equip(sets.midcast.Immanence)
+            end
+
         end
 
     end
@@ -901,20 +919,20 @@ end
 
 -- Equip sets appropriate to the active buffs, relative to the spell being cast.
 function apply_grimoire_bonuses(spell, action, spellMap)
-    if state.Buff.Perpetuance and spell.type =='WhiteMagic' and spell.skill == 'Enhancing Magic' then
+    if state.Buff.Perpetuance and spell.type =='WhiteMagic' and spell.skill == 'Enhancing Magic' and sets.buff['Perpetuance'] then
         equip(sets.buff['Perpetuance'])
     end
-    if state.Buff.Rapture and (spellMap == 'Cure' or spellMap == 'Curaga') then
+    if state.Buff.Rapture and (spellMap == 'Cure' or spellMap == 'Curaga') and sets.buff['Rapture'] then
         equip(sets.buff['Rapture'])
     end
     if spell.skill == 'Elemental Magic' and spellMap ~= 'ElementalEnfeeble' then
-        if state.Buff.Ebullience and spell.english ~= 'Impact' then
+        if state.Buff.Ebullience and spell.english ~= 'Impact' and sets.buff['Ebullience'] then
             equip(sets.buff['Ebullience'])
         end
-        if state.Buff.Immanence then
+        if state.Buff.Immanence and sets.buff['Immanence'] then
             equip(sets.buff['Immanence'])
         end
-        if state.Buff.Klimaform and spell.element == world.weather_element then
+        if state.Buff.Klimaform and spell.element == world.weather_element and sets.buff['Klimaform'] then
             equip(sets.buff['Klimaform'])
         end
         
