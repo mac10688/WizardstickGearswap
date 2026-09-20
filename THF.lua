@@ -18,19 +18,19 @@ function init_gear_sets()
 
     sets.idle = {
         -- ammo="Yamarang",
-        ammo="Barthrum",
+        ammo="Barathrum",
         head="Malignance chapeau",
         body="Malignance Tabard",
         hands="Malignance Gloves",
         legs="Malignance Tights",
         feet="Malignance Boots",
-        neck={ name="Loricate Torque +1", augments={'Path: A'}},
+        neck="Loricate Torque +1",
         waist="Flume Belt +1",
         left_ear="Hearty Earring",
         right_ear="Genmei earring",
         left_ring="Shneddick ring +1",
         right_ring="Defending Ring",
-        back={ name="Toutatis's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Attack+10','Haste+10','Damage taken-5%'}},
+        back="Null shawl",
     }
 
     sets.precast.WS = {
@@ -42,7 +42,7 @@ function init_gear_sets()
         neck="Fotia Gorget",
         waist="Fotia Belt",
         back={ name="Toutatis's Cape", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Weapon skill damage +10%','Damage taken-5%'}},
-        left_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
+        left_ear="Moonshade Earring",
         right_ear="Ishvara Earring",
         left_ring="Regal Ring",
         right_ring="Ilabrat ring",
@@ -51,21 +51,13 @@ function init_gear_sets()
     sets.precast.WS['Evisceration'] = sets.ws
     sets.precast.WS['Shark Bite'] = sets.ws
     sets.precast.WS['Dancing Edge'] = sets.ws
-    sets.precast.WS['Aeolian Edge'] = set_combine(sets.ws, {
-        -- legs = 
-        --     { name="Herculean Trousers", 
-        --        augments={'Potency of "Cure" effect received+4%','STR+1','Weapon skill damage +8%','Accuracy+13 Attack+13','Mag. Acc.+14 "Mag.Atk.Bns."+14'}
-        --     }
-            legs="Nyame flanchard",
-            feet="Nyame sollerets"
-        }
-    )
+    sets.precast.WS['Aeolian Edge'] = sets.ws
     
     -- sets.melee = 
 
     sets.engaged.TP = {
         -- ammo="Yamarang",
-        ammo="Barthrum",
+        ammo="Barathrum",
         head="Malignance chapeau",
         body="Malignance Tabard",
         hands="Malignance Gloves",
@@ -77,7 +69,7 @@ function init_gear_sets()
         right_ear="Skulker's earring +1",
         ring1={name="Moonlight ring", bag="wardrobe5"},
         ring2={name="Moonlight ring", bag="wardrobe6"},
-        back={ name="Toutatis's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Attack+10','Haste+10','Damage taken-5%'}},
+        back="Null shawl"
     }
 
     sets.engaged['Treasure Hunter'] = set_combine(sets.engaged.TP, {
