@@ -36,7 +36,7 @@ function init_gear_sets()
     local status_ailment_cape = { name="Ogma's Cape", augments={'MND+20','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Enmity+10','Occ. inc. resist. to stat. ailments+10'}}
     local fast_cast_cape = { name="Ogma's cape", augments={'HP+60','Eva.+20 /Mag. Eva.+20','HP+20','"Fast Cast"+10','Spell interruption rate down-10%'}}
     local pdt_cape = { name="Ogma's Cape", augments={'VIT+20','Eva.+20 /Mag. Eva.+20','VIT+10','Enmity+10','DEF+50'}}
-    local mdt_cape = { name="Ogma's Cape", augments={'INT+20','Eva.+20 /Mag. Eva.+20','INT+10','"Fast Cast"+10','Mag. Evasion+15'}}
+    local mdt_cape = { name="Ogma's Cape", augments={'INT+20','Eva.+20 /Mag. Eva.+20','INT+10','"Store TP"+10','Mag. Evasion+15'}}
     local atk_cape = { name="Ogma's cape", augments={'STR+20','Accuracy+20 Attack+20','Accuracy+10','"Dbl.Atk."+10','Damage taken-5%'}}
     local dimi_cape = { name="Ogma's cape", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Weapon skill damage +10%','Damage taken-5%'}}
     local parry_cape = { name="Ogma's Cape", augments={'VIT+20','Eva.+20 /Mag. Eva.+20','VIT+10','"Dbl.Atk."+10','Parrying rate+5%'}}
@@ -407,6 +407,22 @@ function init_gear_sets()
         waist="Fotia belt",        
         legs="Nyame flanchard",
         feet="Nyame sollerets"
+    }
+
+    sets.precast.WS['Armor Break'] = {
+        ammo="Yamarang",
+        head=jse.empyrean.head,
+        body=jse.empyrean.body,
+        hands=jse.empyrean.hands,
+        legs=jse.empyrean.legs,
+        feet=jse.empyrean.feet,
+        neck="Null Loop",
+        waist="Null Belt",
+        left_ear="Crep. Earring",
+        right_ear=jse.earring,
+        ring1={name="Stikini Ring +1", bag="wardrobe5"},
+        ring2="Medada's ring",
+        back="Null Shawl"
     }
     
     sets.precast.WS['Resolution'] = { 
