@@ -493,9 +493,9 @@ function init_gear_sets()
     sets.midcast.Holy = {
         main="Daybreak",
         sub="Ammurapi shield",
-        ammo="Hydrocera",
+        ammo="Pemphredo tathlum",
         head="Bunzi's hat",
-        neck="Incanter's torque",
+        neck="Mizukage-no-Kubikazari",
         ear1="Malignance earring",
         ear2="Regal earring",
         body="Bunzi's robe",
