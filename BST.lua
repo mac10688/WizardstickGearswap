@@ -714,7 +714,7 @@ function init_gear_sets()
         body="Gleti's cuirass",
         hands="Malignance gloves",
         legs="Gleti's breeches",
-        feet=jse.empyrean.feet,
+        feet="Malignance boots",
         neck="Anu Torque",
         waist="Sailfi belt +1",
         ear1="Sherida earring",
