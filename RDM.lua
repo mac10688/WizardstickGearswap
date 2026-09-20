@@ -596,6 +596,12 @@ function init_gear_sets()
         ring2="Kishar ring"
     })
 
+    sets.midcast['Dia'] = set_combine(sets.midcast.MaxDuration, {
+        ammo="Perfect Lucky egg",
+        waist="Chaac belt",
+        feet=gear.merlinic_feet_th
+    })
+
     sets.midcast.ElementalEnfeeble = sets.midcast.IntEnfeebles
     sets.midcast.Dispelga = set_combine(sets.midcast.IntEnfeeblesAcc, {main="Daybreak", sub="Ammurapi Shield"})
 
