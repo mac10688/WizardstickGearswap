@@ -19,7 +19,7 @@ function job_setup()
     state.CombatMode:options('SwordShield', 'DualWield')
     state.CastingMode:options('Normal', 'Resistant', 'DT')
     state.IdleMode:options('Normal', 'Evasion', 'Regain')
-    state.WeaponskillMode:options('Normal','Acc')
+    state.WeaponskillMode:options('Normal','Acc', 'Max-SubtleBlow')
     state.CombatWeapon:set('Carnwenhan')
 
     state.Naegling = {}
@@ -92,7 +92,7 @@ function init_gear_sets()
     jse.artifact.legs = "Brioso Cannions +3"
     jse.artifact.feet = "Brioso Slippers +3"
 
-    jse.relic.head = "Bihu Roudlet +3"
+    jse.relic.head = "Bihu Roundlet +3"
     jse.relic.body = "Bihu Justaucorps +4"
     jse.relic.hands = "Bihu Cuffs +3"
     jse.relic.legs = "Bihu Cannions +3"
@@ -250,6 +250,17 @@ function init_gear_sets()
         ring2="Epaminondas's ring",
         waist="Sailfi belt +1",
         back=savage_blade_cape
+    })
+
+    -- 42 SB
+    -- 5 SB II
+    sets.precast.WS['Savage Blade']['Max-SubtleBlow'] = set_combine(sets.precast.WS['Savage Blade'], {
+        neck="Bathy choker +1",
+        ear1="Dignitary's earring",
+        ring1={name="Chirich ring +1", bag="wardrobe5"},
+        ring2={name="Chirich ring +1", bag="wardrobe6"},
+        waist="Sarissaphoroi belt",
+        feet="Volte spats"
     })
     
     -- Midcast Sets       
