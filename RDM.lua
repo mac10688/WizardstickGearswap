@@ -85,7 +85,10 @@ function file_unload()
     send_command('unbind ~f3')
     send_command('unbind ~f4')
     send_command('unbind ~f5')
+    send_command('unbind ~f6')
+    send_command('unbind ~f7')
     send_command('unbind @e')
+    send_command('unbind ^`')
 end
 
 -------------------------------------------------------------------------------------------------------------------
