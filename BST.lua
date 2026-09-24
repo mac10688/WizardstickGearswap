@@ -872,6 +872,13 @@ function job_pet_status_change(newStatus, oldStatus, eventArgs)
 
 end
 
+function job_aftercast(spell, action, spellMap, eventArgs)
+    if spell.type == 'Monster' and sets.midcast.Pet[spell.name] and not spell.interrupted then
+        equip(sets.midcast.Pet[spell.name])
+        eventArgs.handled = true
+    end
+end
+
 -------------------------------------------------------------------------------------------------------------------
 -- Job-specific hooks for non-casting events.
 -------------------------------------------------------------------------------------------------------------------

@@ -46,11 +46,11 @@ function init_gear_sets()
     jse.artifact.legs = "Convoker's Spats +3"
     jse.artifact.feet = "Convoker's Pigaches +3"
 
-    jse.relic.head = "Glyphic Horn +3"
-    jse.relic.body = "Glyphic Doublet +3"
-    jse.relic.hands = "Glyphic Bracers +4"
-    jse.relic.legs = "Glyphic Spats +3"
-    jse.relic.feet = "Glyphic Pigaches +4"
+    jse.relic.head = "Glyphic Horn +1"
+    jse.relic.body = "Glyphic Doublet +1"
+    jse.relic.hands = "Glyphic Bracers +2"
+    jse.relic.legs = "Glyphic Spats +2"
+    jse.relic.feet = "Glyphic Pigaches +2"
 
     jse.empyrean.head = "Beckoner's Horn +3"
     jse.empyrean.body = "Beckoner's Doublet +3"
@@ -65,16 +65,17 @@ function init_gear_sets()
 
     local summoning_skill_set = {
         head=jse.empyrean.head,
-        neck="Incanter's Torque",
+        neck="Hoxne Torque",
         ear1="C. Palug Earring",
         ear2="Lodurr Earring",
         body=jse.empyrean.body,
-        hands="Lamassu Mitts +1",
+        hands=jse.relic.hands,
         ring1={name="Stikini Ring +1", bag="wardrobe5"},
         ring2={name="Stikini Ring +1", bag="wardrobe6"},
         back="Conveyance Cape",
         waist="Lucidity sash",
         legs=jse.empyrean.legs,
+        feet="Baayami sabots"
     }
 
     sets.precast.JA['Elemental Siphon'] = set_combine( summoning_skill_set, {
@@ -83,7 +84,8 @@ function init_gear_sets()
 
     -- Pact delay reduction gear
     sets.precast.BloodPactWard = {
-        body=jse.artifact.body
+        body=jse.artifact.body,
+        feet=jse.relic.feet
     }
 
     sets.precast.BloodPactRage = sets.precast.BloodPactWard
@@ -120,7 +122,7 @@ function init_gear_sets()
     -- Avatar pact sets.  All pacts are Ability type.
 
     sets.midcast.Pet.BloodPactWard = summoning_skill_set
-    sets.midcast.Pet.DebuffBloodPactWard = {}
+    sets.midcast.Pet.DebuffBloodPactWard = summoning_skill_set
 
     sets.midcast.Pet.PhysicalBloodPactRage = {
         head="Cath Palug crown",
@@ -138,11 +140,6 @@ function init_gear_sets()
     }
 
     sets.midcast.Pet.MagicalBloodPactRage = set_combine( sets.midcast.Pet.PhysicalBloodPactRage, {
-        main="Grioavolr",
-        head="C. Palug Crown",
-        neck="Smn. Collar +2",
-        body="Apo. Dalmatica +1",
-        hands=gear.PetMABhands,
         ring2="Speaker's Ring",
         back=PetMABCape,
         --waist="Regal Belt",
@@ -165,12 +162,12 @@ function init_gear_sets()
     sets.idle = {
         head=jse.empyrean.head,
         neck="Summoner's collar +2",
-        ear1="Sroda earring",
+        ear1="Lodurr earring",
         ear2="Lugalbanda earring",
         body=jse.empyrean.body,
         hands=jse.artifact.hands,
-        ring1={ name="Varar Ring +1",bag="Wardrobe7"},
-        ring2={ name="Varar Ring +1",bag="Wardrobe8"},
+        ring1={name="Stikini Ring +1", bag="wardrobe5"},
+        ring2={name="Stikini Ring +1", bag="wardrobe6"},
         back="Null shawl",
         waist="Incarnation sash",
         legs=jse.artifact.legs,
@@ -185,8 +182,8 @@ function init_gear_sets()
         ear2="Crep. Earring",
         body=jse.empyrean.body,
         hands="Bunzi's Gloves",
-        ring1={ name="Chirich Ring +1",bag="Wardrobe5"},
-        ring2={ name="Chirich Ring +1",bag="Wardrobe6"},
+        ring1={ name="Varar Ring +1",bag="Wardrobe7"},
+        ring2={ name="Varar Ring +1",bag="Wardrobe8"},
         back="Null Shawl",
         waist="Null Belt",
         legs=jse.empyrean.legs,
@@ -201,6 +198,13 @@ end
 -------------------------------------------------------------------------------------------------------------------
 -- User code that supplements standard library decisions.
 -------------------------------------------------------------------------------------------------------------------
+
+function job_aftercast(spell, action, spellMap, eventArgs)
+    if spell.type:startswith("BloodPact") and sets.midcast.Pet[spellMap] and not spell.interrupted then
+        equip(sets.midcast.Pet[spellMap])
+        eventArgs.handled = true
+    end
+end
 
 -- Custom spell mapping.
 function job_get_spell_map(spell)
