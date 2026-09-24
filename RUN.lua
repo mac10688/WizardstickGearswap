@@ -557,7 +557,9 @@ function init_gear_sets()
     }
 
     sets.engaged.ParryDefense = set_combine(sets.engaged.ParryOffense, {
-        feet="Turms leggings +1"        
+        ear2="Tuisto earring",
+        feet="Turms leggings +1",
+        waist="Flume belt +1"
     })
 
     sets.precast.Item['Holy Water'] = {
