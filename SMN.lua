@@ -27,6 +27,9 @@ function job_setup()
     state.Buff["Avatar's Favor"] = buffactive["Avatar's Favor"] or false
     state.Buff["Astral Conduit"] = buffactive["Astral Conduit"] or false
 
+    state.Opashoro = M{['description']='Opashoro Set', 'Elan'}
+    state.CombatWeapon:set('Opashoro')
+
 end
 
 function file_unload()
@@ -34,6 +37,10 @@ function file_unload()
 end
 
 function init_gear_sets()
+    gear.PetMabHands = { name="Merlinic Dastanas", augments={'Pet: "Mag.Atk.Bns."+30','Blood Pact Dmg.+8','Pet: DEX+8'}}
+
+    sets.Opashoro = {}
+    sets.Opashoro.Elan = {main="Opashoro", sub="Elan Strap +1"}
 
     local PetPhysCape = { name="Campestres's Cape", augments={'Pet: Acc.+20 Pet: R.Acc.+20 Pet: Atk.+20 Pet: R.Atk.+20','Eva.+20 /Mag. Eva.+20','Pet: Accuracy+10 Pet: Rng. Acc.+10','Pet: Haste+10','Pet: Damage taken -5%'}}
     local PetMABCape = { name="Campestres's Cape", augments={'Pet: M.Acc.+20 Pet: M.Dmg.+20','Eva.+20 /Mag. Eva.+20','Pet: Magic Damage+10','Pet: "Regen"+10','Pet: Damage taken -5%'}}
@@ -46,11 +53,11 @@ function init_gear_sets()
     jse.artifact.legs = "Convoker's Spats +3"
     jse.artifact.feet = "Convoker's Pigaches +3"
 
-    jse.relic.head = "Glyphic Horn +1"
-    jse.relic.body = "Glyphic Doublet +1"
+    jse.relic.head = "Glyphic Horn +3"
+    jse.relic.body = "Glyphic Doublet +3"
     jse.relic.hands = "Glyphic Bracers +2"
-    jse.relic.legs = "Glyphic Spats +2"
-    jse.relic.feet = "Glyphic Pigaches +2"
+    jse.relic.legs = "Glyphic Spats +3"
+    jse.relic.feet = "Glyphic Pigaches +3"
 
     jse.empyrean.head = "Beckoner's Horn +3"
     jse.empyrean.body = "Beckoner's Doublet +3"
@@ -66,8 +73,8 @@ function init_gear_sets()
     local summoning_skill_set = {
         head=jse.empyrean.head,
         neck="Hoxne Torque",
-        ear1="C. Palug Earring",
-        ear2="Lodurr Earring",
+        ear2="C. Palug Earring",
+        ear1="Lodurr Earring",
         body=jse.empyrean.body,
         hands=jse.relic.hands,
         ring1={name="Stikini Ring +1", bag="wardrobe5"},
@@ -121,7 +128,35 @@ function init_gear_sets()
 
     -- Avatar pact sets.  All pacts are Ability type.
 
-    sets.midcast.Pet.BloodPactWard = summoning_skill_set
+    local mpb = {
+        head="Cath Palug crown",
+        neck="Smn. Collar +2",
+        ear2="Lugalbanda Earring",
+        ear1="Gelos earring",
+        body=jse.artifact.body,
+        ring1={ name="Varar Ring +1",bag="Wardrobe7"},
+        ring2={ name="Varar Ring +1",bag="Wardrobe8"},
+        back=PetMABCape,
+        waist="",
+        legs="",
+        feet=""
+    }
+
+    local macc = {
+        head=jse.empyrean.head,
+        neck="Smn. Collar +2",
+        ear1="Lugalbanda Earring",
+        ear2="Gelos earring",
+        body=jse.artifact.body,
+        ring1={ name="Varar Ring +1",bag="Wardrobe7"},
+        ring2={ name="Varar Ring +1",bag="Wardrobe8"},
+        back=PetMABCape,
+        waist="",
+        legs="",
+        feet=""
+    }
+
+    sets.midcast.Pet.BuffBloodPactWard = summoning_skill_set
     sets.midcast.Pet.DebuffBloodPactWard = summoning_skill_set
 
     sets.midcast.Pet.PhysicalBloodPactRage = {
@@ -135,15 +170,18 @@ function init_gear_sets()
         ring2={ name="Varar Ring +1",bag="Wardrobe8"},
         back=PetPhysCape,
         waist="Incarnation Sash",
-        --legs=gear.PetPhyslegs,
+        legs=jse.empyrean.legs,
         feet=jse.empyrean.feet
     }
 
     sets.midcast.Pet.MagicalBloodPactRage = set_combine( sets.midcast.Pet.PhysicalBloodPactRage, {
+        ear1="Gelos earring",
+        ear2="Lugalbanda earring",
+        hands=gear.PetMabHands,
         ring2="Speaker's Ring",
         back=PetMABCape,
         --waist="Regal Belt",
-        --legs=gear.PetMABlegs,
+        legs=jse.relic.legs,
     })
 
     sets.midcast.Pet["Wind's Blessing"] = set_combine( summoning_skill_set, {
@@ -157,6 +195,15 @@ function init_gear_sets()
     sets.midcast.Pet.WhiteMagic = {}
 
     sets.midcast.Pet['Elemental Magic'] = set_combine(sets.midcast.Pet.BloodPactRage, {})
+
+    sets.midcast.Cure = {
+        head={ name="Vanya Hood", augments={'Healing magic skill +20','"Cure" spellcasting time -7%','Magic dmg. taken -3',}},
+        body="Bunzi's Robe",
+        hands={ name="Telchine Gloves", augments={'Spell interruption rate down -10%','Enh. Mag. eff. dur. +10',}},
+        legs="Gyve Trousers",
+        feet={ name="Medium's Sabots", augments={'MP+50','MND+10','"Conserve MP"+7','"Cure" potency +5%',}},
+        back=CureCape
+    }
 
     -- Idle sets
     sets.idle = {
@@ -200,7 +247,7 @@ end
 -------------------------------------------------------------------------------------------------------------------
 
 function job_aftercast(spell, action, spellMap, eventArgs)
-    if spell.type:startswith("BloodPact") and sets.midcast.Pet[spellMap] and not spell.interrupted then
+    if type(spell.type) == 'string' and spell.type:startswith("BloodPact") and sets.midcast.Pet[spellMap] and not spell.interrupted then
         equip(sets.midcast.Pet[spellMap])
         eventArgs.handled = true
     end
@@ -216,6 +263,8 @@ function job_get_spell_map(spell)
         end
     elseif spell.type == 'BloodPactWard' and spell.target.type == 'MONSTER' then
         return 'DebuffBloodPactWard'
+    elseif spell.type == 'BloodPactWard' then
+        return 'BuffBloodPactWard'
     end
 end
 
