@@ -55,7 +55,7 @@ function init_gear_sets()
 
     jse.relic.head = "Glyphic Horn +3"
     jse.relic.body = "Glyphic Doublet +3"
-    jse.relic.hands = "Glyphic Bracers +2"
+    jse.relic.hands = "Glyphic Bracers +3"
     jse.relic.legs = "Glyphic Spats +3"
     jse.relic.feet = "Glyphic Pigaches +3"
 
@@ -73,8 +73,8 @@ function init_gear_sets()
     local summoning_skill_set = {
         head=jse.empyrean.head,
         neck="Hoxne Torque",
-        ear2="C. Palug Earring",
-        ear1="Lodurr Earring",
+        ear1="Andoaa earring",
+        ear2="Lodurr Earring",
         body=jse.empyrean.body,
         hands=jse.relic.hands,
         ring1={name="Stikini Ring +1", bag="wardrobe5"},
@@ -110,7 +110,21 @@ function init_gear_sets()
         feet="Merlinic crackows"
     }
 
-    sets.precast.WS = {}
+    sets.precast.WS = {
+        head="Nyame Helm",
+        neck="Sibyl Scarf",
+        ear1="Moonshade Earring",
+        ear2="Hoxne Earring",
+        body="Nyame Mail",
+        hands="Nyame Gauntlets",
+        ring1="Ephramad's Ring",
+        ring2="Metamor. Ring +1",
+        back=MndWsdCape,
+        waist="Acuity Belt +1",
+        legs="Nyame Flanchard",
+        feet="Nyame Sollerets"
+    }
+
     sets.precast.WS['Oshala'] = {
         head="Nyame Helm",
         neck="Sibyl Scarf",
@@ -128,39 +142,15 @@ function init_gear_sets()
 
     -- Avatar pact sets.  All pacts are Ability type.
 
-    local mpb = {
-        head="Cath Palug crown",
-        neck="Smn. Collar +2",
-        ear2="Lugalbanda Earring",
-        ear1="Gelos earring",
-        body=jse.artifact.body,
-        ring1={ name="Varar Ring +1",bag="Wardrobe7"},
-        ring2={ name="Varar Ring +1",bag="Wardrobe8"},
+    sets.midcast.Pet.BuffBloodPactWard = set_combine(summoning_skill_set, {})
+    sets.midcast.Pet.DebuffBloodPactWard = set_combine(summoning_skill_set, {
+        hands=jse.empyrean.hands,
         back=PetMABCape,
-        waist="",
-        legs="",
-        feet=""
-    }
-
-    local macc = {
-        head=jse.empyrean.head,
-        neck="Smn. Collar +2",
-        ear1="Lugalbanda Earring",
-        ear2="Gelos earring",
-        body=jse.artifact.body,
-        ring1={ name="Varar Ring +1",bag="Wardrobe7"},
-        ring2={ name="Varar Ring +1",bag="Wardrobe8"},
-        back=PetMABCape,
-        waist="",
-        legs="",
-        feet=""
-    }
-
-    sets.midcast.Pet.BuffBloodPactWard = summoning_skill_set
-    sets.midcast.Pet.DebuffBloodPactWard = summoning_skill_set
+        feet=jse.empyrean.feet
+    })
 
     sets.midcast.Pet.PhysicalBloodPactRage = {
-        head="Cath Palug crown",
+        head=jse.relic.head,
         neck="Smn. Collar +2",
         ear1="Lugalbanda Earring",
         ear2="Sroda earring",
@@ -171,17 +161,18 @@ function init_gear_sets()
         back=PetPhysCape,
         waist="Incarnation Sash",
         legs=jse.empyrean.legs,
-        feet=jse.empyrean.feet
+        feet="Apogee pumps +1"
     }
 
     sets.midcast.Pet.MagicalBloodPactRage = set_combine( sets.midcast.Pet.PhysicalBloodPactRage, {
-        ear1="Gelos earring",
-        ear2="Lugalbanda earring",
+        ear2="Gelos earring",
+        ear1="Lugalbanda earring",
         hands=gear.PetMabHands,
         ring2="Speaker's Ring",
         back=PetMABCape,
         --waist="Regal Belt",
-        legs=jse.relic.legs,
+        legs={ name="Apogee Slacks +1", augments={'MP+80','Pet: "Mag.Atk.Bns."+35','Blood Pact Dmg.+8'}},
+        feet="Apogee pumps +1"
     })
 
     sets.midcast.Pet["Wind's Blessing"] = set_combine( summoning_skill_set, {
@@ -192,16 +183,16 @@ function init_gear_sets()
         feet="Bunzi's Sabots"
     })
 
-    sets.midcast.Pet.WhiteMagic = {}
+    sets.midcast.Pet.WhiteMagic = sets.midcast.Pet.BuffBloodPactWard
 
-    sets.midcast.Pet['Elemental Magic'] = set_combine(sets.midcast.Pet.BloodPactRage, {})
+    sets.midcast.Pet['Elemental Magic'] = set_combine(sets.midcast.Pet.MagicalBloodPactRage, {})
 
     sets.midcast.Cure = {
-        head={ name="Vanya Hood", augments={'Healing magic skill +20','"Cure" spellcasting time -7%','Magic dmg. taken -3',}},
+        head="Vanya Hood",
         body="Bunzi's Robe",
-        hands={ name="Telchine Gloves", augments={'Spell interruption rate down -10%','Enh. Mag. eff. dur. +10',}},
+        hands="Telchine Gloves",
         legs="Gyve Trousers",
-        feet={ name="Medium's Sabots", augments={'MP+50','MND+10','"Conserve MP"+7','"Cure" potency +5%',}},
+        feet="Medium's Sabots",
         back=CureCape
     }
 
@@ -209,8 +200,8 @@ function init_gear_sets()
     sets.idle = {
         head=jse.empyrean.head,
         neck="Summoner's collar +2",
-        ear1="Lodurr earring",
-        ear2="Lugalbanda earring",
+        ear2="Lodurr earring",
+        ear1="Lugalbanda earring",
         body=jse.empyrean.body,
         hands=jse.artifact.hands,
         ring1={name="Stikini Ring +1", bag="wardrobe5"},
@@ -220,6 +211,26 @@ function init_gear_sets()
         legs=jse.artifact.legs,
         feet=jse.empyrean.feet
     }
+
+    sets.idle.Refresh = sets.idle
+
+    sets.idle.Defense = sets.idle
+
+            -- Need -14 perp --
+
+    sets.idle.Refresh.Avatar = sets.idle
+
+    sets.idle.Defense.Avatar = sets.idle
+
+
+
+    sets.perp = {}
+    sets.perp.Alexander = sets.midcast.Pet.BloodPactWard
+
+    -- Defense sets
+    sets.defense.PDT = {}
+
+    sets.defense.MDT = {}
 
     -- Normal melee group
     sets.engaged = {
@@ -246,10 +257,29 @@ end
 -- User code that supplements standard library decisions.
 -------------------------------------------------------------------------------------------------------------------
 
+-- Called when a player gains or loses a pet.
+-- pet == pet structure
+-- gain == true if the pet was gained, false if it was lost.
+function job_pet_change(petparam, gain)
+    classes.CustomIdleGroups:clear()
+    if gain then
+        if avatars:contains(pet.name) then
+            classes.CustomIdleGroups:append('Avatar')
+        elseif spirits:contains(pet.name) then
+            classes.CustomIdleGroups:append('Spirit')
+        end
+    end
+end
+
 function job_aftercast(spell, action, spellMap, eventArgs)
-    if type(spell.type) == 'string' and spell.type:startswith("BloodPact") and sets.midcast.Pet[spellMap] and not spell.interrupted then
-        equip(sets.midcast.Pet[spellMap])
-        eventArgs.handled = true
+    if type(spell.type) == 'string' and spell.type:startswith("BloodPact") and not spell.interrupted then
+        if sets.midcast.Pet[spell.name] then
+            equip(sets.midcast.Pet[spell.name])
+            eventArgs.handled = true
+        elseif sets.midcast.Pet[spellMap] then
+            equip(sets.midcast.Pet[spellMap])
+            eventArgs.handled = true
+        end
     end
 end
 
