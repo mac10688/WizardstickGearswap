@@ -37,7 +37,8 @@ function file_unload()
 end
 
 function init_gear_sets()
-    gear.PetMabHands = { name="Merlinic Dastanas", augments={'Pet: "Mag.Atk.Bns."+30','Blood Pact Dmg.+8','Pet: DEX+8'}}
+    gear.PetMabHands = { name="Merlinic Dastanas", augments={'Pet: "Mag.Atk.Bns."+26','Blood Pact Dmg.+10','Pet: STR+8','Pet: Mag. Acc.+6'}}
+    gear.PetPhysHands = { name="Merlinic Dastanas", augments={'Pet: Attack+15 Pet: Rng.Atk.+15','Blood Pact Dmg.+10','Pet: STR+8','Pet: Mag. Acc.+11'}}
 
     sets.Opashoro = {}
     sets.Opashoro.Elan = {main="Opashoro", sub="Elan Strap +1"}
@@ -155,7 +156,7 @@ function init_gear_sets()
         ear1="Lugalbanda Earring",
         ear2="Sroda earring",
         body=jse.artifact.body,
-        hands=jse.empyrean.hands,
+        hands=gear.PetPhysHands,
         ring1={ name="Varar Ring +1",bag="Wardrobe7"},
         ring2={ name="Varar Ring +1",bag="Wardrobe8"},
         back=PetPhysCape,
@@ -212,19 +213,24 @@ function init_gear_sets()
         feet=jse.empyrean.feet
     }
 
-    sets.idle.Refresh = sets.idle
+    sets.idle.Refresh = set_combine(sets.idle, {})
 
-    sets.idle.Defense = sets.idle
+    sets.idle.Defense = set_combine(sets.idle, {})
 
-            -- Need -14 perp --
+    -- Need -14 perp --
+    sets.idle.Refresh.Avatar = set_combine(sets.idle, {})
 
-    sets.idle.Refresh.Avatar = sets.idle
+    sets.idle.Defense.Avatar = set_combine(sets.idle, {})
 
-    sets.idle.Defense.Avatar = sets.idle
+    sets.idle.Refresh.Spirit = set_combine(sets.idle, {})
 
-
+    sets.idle.Refresh.Spirit = set_combine(sets.idle, {})
 
     sets.perp = {}
+    sets.perp['Cait Sith'] = {
+        hands="Lamassu mitts +1"
+    }
+
     sets.perp.Alexander = sets.midcast.Pet.BloodPactWard
 
     -- Defense sets
@@ -256,6 +262,15 @@ end
 -------------------------------------------------------------------------------------------------------------------
 -- User code that supplements standard library decisions.
 -------------------------------------------------------------------------------------------------------------------
+
+-- Modify the default idle set after it was constructed.
+function customize_idle_set(idleSet)
+    if pet.isvalid and sets.perp[pet.name] then
+        idleSet = set_combine(idleSet, sets.perp[pet.name])
+    end
+
+    return idleSet
+end
 
 -- Called when a player gains or loses a pet.
 -- pet == pet structure
