@@ -302,7 +302,7 @@ function init_gear_sets()
 
     sets.midcast.Cure = set_combine(sets.midcast.FastRecast, {
         head = "Vanya hood",
-        neck="Incanter's torque",
+        neck="Hoxne torque",
         body = "Vrikodara jupon",
         hands = "Telchine gloves",
         ring1 = "Haoma's ring",
@@ -317,7 +317,7 @@ function init_gear_sets()
 
     sets.midcast['Enhancing Magic'] = {
         head="Telchine cap",
-        neck="Incanter's torque",
+        neck="Hoxne torque",
         ear1="Andoaa earring",
         ear2="Mimir earring",
         body="Telchine chasuble",

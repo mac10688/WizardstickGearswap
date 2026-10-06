@@ -247,8 +247,27 @@ function init_gear_sets()
         feet="Agwu's pigaches"
     })
     sets.precast.JA['Swipe'] = sets.precast.JA['Lunge']
-    sets.precast.JA['Gambit'] = set_combine(sets.enmity, {hands=jse.artifact.hands})
-    sets.precast.JA['Rayke'] = set_combine(sets.enmity, {feet=jse.relic.feet})
+    -- sets.precast.JA['Gambit'] = set_combine(sets.enmity, {hands=jse.artifact.hands})
+    sets.precast.JA['Gambit'] = {
+        head="Agwu's cap",
+        body="Agwu's robe",
+        neck='Yngvi choker',
+        ring1="Mephitas's ring +1",
+        back=parry_cape,
+        hands=jse.artifact.hands,
+        legs="Herculean trousers",
+        feet=jse.relic.feet
+    }
+
+    --sets.precast.JA['Rayke'] = set_combine(sets.enmity, {feet=jse.relic.feet})
+    sets.precast.JA['Rayke'] = {
+        head="Agwu's cap",
+        body="Agwu's robe",
+        neck='Yngvi choker',
+        ring1="Mephitas's ring +1",
+        back=parry_cape,
+        legs="Herculean trousers",
+        feet=jse.relic.feet}
 
     sets.precast.JA['Elemental Sforzo'] = set_combine(sets.enmity, {body=jse.relic.body})
     sets.precast.JA['Elemental Sforzo'].Hybrid = set_combine(sets.enmity.Hybrid, {head="Halitus helm", body=jse.relic.body})
@@ -351,7 +370,7 @@ function init_gear_sets()
     --Enhancing magic duration: 45%
     sets.midcast['Enhancing Magic'] = set_combine(sets.SIRD, {
         head=jse.empyrean.head, --Enhancing magic effect duration +25%
-        neck="Incanter's torque",
+        neck="Hoxne torque",
         ear1="Andoaa earring",
         ear2="Mimir earring",
         waist="Audumbla sash",

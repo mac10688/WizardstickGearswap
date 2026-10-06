@@ -292,7 +292,7 @@ function init_gear_sets()
         sub="Ammurapi shield",
         ammo="Dunna",
         head="Befouled crown",
-        neck="Incanter's torque",
+        neck="Hoxne torque",
         ear1="Malignance earring",
         ear2=jse.earring,
         body=jse.artifact.body,
@@ -308,7 +308,7 @@ function init_gear_sets()
     sets.midcast['Enhancing Magic'] = set_combine(conserve_mp_set, {
         sub="Ammurapi shield",
         head="Befouled crown",
-        neck="Incanter's torque",
+        neck="Hoxne torque",
         ear1="Andoaa earring",
         ear2="Mimir earring",
         ring1={name="Stikini Ring +1", bag="wardrobe5"},

@@ -385,7 +385,7 @@ function init_gear_sets()
 
     sets.midcast['Enhancing Magic'] = {
         head="Befouled Crown",
-        neck="Incanter's torque",
+        neck="Hoxne torque",
         ear1="Mimir earring",
         ear2=jse.earring,
         body=jse.relic.body,
@@ -399,7 +399,7 @@ function init_gear_sets()
     }
 
     sets.midcast.EnhancingSkill = set_combine(sets.midcast['Enhancing Magic'], {
-        neck="Incanter's torque"
+        neck="Hoxne torque"
     })
 
     sets.midcast.EnhancingDuration = set_combine(sets.midcast['Enhancing Magic'], {
