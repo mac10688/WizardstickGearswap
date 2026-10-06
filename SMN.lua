@@ -49,12 +49,12 @@ function init_gear_sets()
     local MndWsdCape = { name="Campestres's Cape", augments={'MND+20','Accuracy+20 Attack+20','MND+10','Weapon skill damage +10%','Phys. dmg. taken-10%'}}
 
     jse.artifact.head = "Convoker's Horn +3"
-    jse.artifact.body = "Convoker's Doublet +3"
+    jse.artifact.body = "Convoker's Doublet +4"
     jse.artifact.hands = "Convoker's Bracers +3"
     jse.artifact.legs = "Convoker's Spats +3"
     jse.artifact.feet = "Convoker's Pigaches +3"
 
-    jse.relic.head = "Glyphic Horn +3"
+    jse.relic.head = "Glyphic Horn +4"
     jse.relic.body = "Glyphic Doublet +3"
     jse.relic.hands = "Glyphic Bracers +3"
     jse.relic.legs = "Glyphic Spats +3"
@@ -119,6 +119,21 @@ function init_gear_sets()
         body="Nyame Mail",
         hands="Nyame Gauntlets",
         ring1="Ephramad's Ring",
+        ring2="Metamor. Ring +1",
+        back=MndWsdCape,
+        waist="Acuity Belt +1",
+        legs="Nyame Flanchard",
+        feet="Nyame Sollerets"
+    }
+
+    sets.precast.WS['Earth Crusher'] = {
+        head="Nyame Helm",
+        neck="Sibyl Scarf",
+        ear1="Moonshade Earring",
+        ear2="Malignance earring",
+        body="Nyame Mail",
+        hands="Nyame Gauntlets",
+        ring1="Freke ring",
         ring2="Metamor. Ring +1",
         back=MndWsdCape,
         waist="Acuity Belt +1",
