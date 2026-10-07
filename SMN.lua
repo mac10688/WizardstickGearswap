@@ -76,7 +76,7 @@ function init_gear_sets()
         neck="Hoxne Torque",
         ear1="Andoaa earring",
         ear2="Lodurr Earring",
-        body=jse.empyrean.body,
+        body="Baayami robe",
         hands=jse.relic.hands,
         ring1={name="Stikini Ring +1", bag="wardrobe5"},
         ring2={name="Stikini Ring +1", bag="wardrobe6"},
@@ -103,7 +103,7 @@ function init_gear_sets()
         neck="Voltsurge torque",
         ear1="Etiolation earring",
         ear2="Malignance earring",
-        body="Shango robe",
+        body="Baayami robe",
         ring1="Kishar ring",
         ring2="Medada's ring",
         waist="Embla sash",
@@ -134,7 +134,7 @@ function init_gear_sets()
         body="Nyame Mail",
         hands="Nyame Gauntlets",
         ring1="Freke ring",
-        ring2="Metamor. Ring +1",
+        ring2="Medada's ring",
         back=MndWsdCape,
         waist="Acuity Belt +1",
         legs="Nyame Flanchard",
@@ -155,6 +155,8 @@ function init_gear_sets()
         legs="Nyame Flanchard",
         feet="Nyame Sollerets"
     }
+
+    sets.midcast['Summoning Magic'] = {body="Baayami robe"}
 
     -- Avatar pact sets.  All pacts are Ability type.
 
@@ -210,6 +212,23 @@ function init_gear_sets()
         legs="Gyve Trousers",
         feet="Medium's Sabots",
         back=CureCape
+    }
+
+    sets.midcast.Curaga = sets.midcast.Cure
+
+    sets.midcast['Absorb-TP'] = {
+        head="C. Palug Crown",
+        body="Inyanga Jubbah +2",
+        hands="Inyan. Dastanas +2",
+        legs="Bunzi's Pants",
+        feet={ name="Merlinic Crackows", augments={'"Occult Acumen"+11','Mag. Acc.+15',}},
+        neck="Erra Pendant",
+        waist="Null Belt",
+        left_ear="Malignance Earring",
+        right_ear="Alabaster Earring",
+        left_ring="Kishar Ring",
+        right_ring="Medada's Ring",
+        back="Null Shawl"
     }
 
     -- Idle sets
@@ -302,6 +321,7 @@ function job_pet_change(petparam, gain)
 end
 
 function job_aftercast(spell, action, spellMap, eventArgs)
+    -- print_set(spell)
     if type(spell.type) == 'string' and spell.type:startswith("BloodPact") and not spell.interrupted then
         if sets.midcast.Pet[spell.name] then
             equip(sets.midcast.Pet[spell.name])
