@@ -800,6 +800,7 @@ function init_gear_sets()
 --   sets.engaged[state.CombatMode][state.CombatForm][state.CombatWeapon][state.OffenseMode][state.HybridMode][classes.CustomMeleeGroups (any number)]
     sets.NullifyMagic = {neck="Warder's charm +1", ring1="Shadow ring", waist={name="Platinum moogle belt", priority=30}}
     sets.engaged.SwordShield = set_combine(sets.engaged, {back=tp_cape})
+
     sets.engaged.SwordShield.AbsorbMagic = set_combine(sets.engaged.SwordShield, sets.NullifyMagic)
     sets.engaged.SwordShield.HighAcc = set_combine(sets.engaged.SwordShield, {neck="Null loop", ear1="Dignitary's earring", back="Null shawl", waist="Null belt"})
     sets.engaged.SwordShield.HighAcc.AbsorbMagic = set_combine(sets.engaged.SwordShield.HighAcc, sets.NullifyMagic)
@@ -807,6 +808,7 @@ function init_gear_sets()
     sets.engaged.SwordShield.Enspell.AbsorbMagic = set_combine(sets.engaged.SwordShield.Enspell, sets.NullifyMagic)
 
     sets.engaged.DualWield = set_combine(sets.engaged, {waist="Reiki yotai", ear2="Eabani earring"})
+    sets.engaged.DualWield.DT = set_combine(sets.engaged, {})
     sets.engaged.DualWield.AbsorbMagic = set_combine(sets.engaged.DualWield, sets.NullifyMagic)
     sets.engaged.DualWield.HighAcc = set_combine(sets.engaged.DualWield, {ear2 = jse.earring})
     sets.engaged.DualWield.HighAcc.AbsorbMagic = set_combine(sets.engaged.DualWield.HighAcc, sets.NullifyMagic)
