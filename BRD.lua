@@ -479,11 +479,11 @@ function init_gear_sets()
 
     sets.midcast.Absorb = {
         ranged=fc_linos,
-        head="Cath Palug crown",
+        head="Bunzi's hat",
         neck="Voltsurge torque",
-        ear1="Enchanter's earring +1",
+        ear1="Alabaster earring",
         ear2=jse.earring,
-        body=jse.empyrean.body,
+        body="Inyanga jubbah +2",
         hands=jse.empyrean.hands,
         ring1="Kishar ring",
         ring2="Medada's ring",
