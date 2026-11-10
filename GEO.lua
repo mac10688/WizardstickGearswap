@@ -29,7 +29,7 @@ function job_setup()
     state.Tishtrya.SwordShield = M{['description']='Tishtrya Set', 'Ammurapi', 'Genmei'}
     state.Tishtrya.DualWield = M{['description']='Tishtrya Set', 'CathPalug', 'Bunzi', 'WizardRod', 'LorgMor'}
 
-    state.MagicBurst = M(false, 'Magic Burst')
+    state.MagicBurst = M(true, 'Magic Burst')
     data.petJA = S{"Full Circle","Radial Arcana","Mending Helation","Concentric Pulse"}
     
     send_command('bind ^` gs c toggle MagicBurst')
@@ -428,7 +428,7 @@ function init_gear_sets()
     -- Normal melee group
     sets.engaged = {
         head="Nyame Helm",
-        neck="Null loop",
+        neck="Bagua charm +2",
         ear1="Telos earring",
         ear2="Dignitary's earring",
         body="Nyame Mail",
