@@ -323,6 +323,7 @@ function init_gear_sets()
         head=jse.empyrean.head,
         neck="Hoxne torque",
         body=jse.artifact.body,
+        ear1="Njordr earring",
         ring1={name="Stikini Ring +1", bag="wardrobe5"},
         ring2={name="Stikini Ring +1", bag="wardrobe6"},
         back="Cornflower cape",
