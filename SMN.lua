@@ -47,6 +47,7 @@ function init_gear_sets()
     local PetMABCape = { name="Campestres's Cape", augments={'Pet: M.Acc.+20 Pet: M.Dmg.+20','Eva.+20 /Mag. Eva.+20','Pet: Magic Damage+10','Pet: "Regen"+10','Pet: Damage taken -5%'}}
     local CureCape = { name="Campestres's Cape", augments={'MND+20','Eva.+20 /Mag. Eva.+20','MND+10','"Cure" potency +10%','Pet: Phys. dmg. taken-10%'}}
     local MndWsdCape = { name="Campestres's Cape", augments={'MND+20','Accuracy+20 Attack+20','MND+10','Weapon skill damage +10%','Phys. dmg. taken-10%'}}
+    local IntWsdCape = { name="Campestres's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','Weapon skill damage +10%','Damage taken-5%'}}
 
     jse.artifact.head = "Convoker's Horn +3"
     jse.artifact.body = "Convoker's Doublet +4"
@@ -128,18 +129,23 @@ function init_gear_sets()
 
     sets.precast.WS['Earth Crusher'] = {
         head="Nyame Helm",
-        neck="Sibyl Scarf",
+        neck="Quanpur necklace",
         ear1="Moonshade Earring",
         ear2="Malignance earring",
         body="Nyame Mail",
         hands="Nyame Gauntlets",
         ring1="Freke ring",
         ring2="Medada's ring",
-        back=MndWsdCape,
-        waist="Acuity Belt +1",
+        back=IntWsdCape,
+        waist="Orpheus's sash",
         legs="Nyame Flanchard",
         feet="Nyame Sollerets"
     }
+
+    sets.precast.WS['Cataclysm'] = set_combine(sets.precast.WS['Earth Crusher'], {
+        head="Pixie hairpin +1",
+        ring1="Archon ring"
+    })
 
     sets.precast.WS['Oshala'] = {
         head="Nyame Helm",
