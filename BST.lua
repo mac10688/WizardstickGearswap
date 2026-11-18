@@ -259,7 +259,7 @@ function init_gear_sets()
         right_ear={ name="Nukumi Earring +1", augments={'System: 1 ID: 1676 Val: 0','Accuracy+12','Mag. Acc.+12','Pet: "Dbl. Atk."+6',}},
         left_ring="Shukuyu Ring",
         right_ring="Moonlight Ring",
-        back=pet_attack
+        back=pet_hybrid
     }
 
     sets.defense.MDT = {
@@ -281,17 +281,17 @@ function init_gear_sets()
     sets.defense.PetMeva = {
         ammo="Staunch Tathlum +1",
         head="Nyame Helm",
-        body="Tot. Jackcoat +4",
+        body=jse.artifact.body,
         hands="Gleti's Gauntlets",
-        legs="Nukumi Quijotes +3",
+        legs=jse.empyrean.legs,
         feet="Gleti's Boots",
         neck="Warder's Charm +1",
         waist="Null Belt",
         left_ear="Eabani Earring",
-        right_ear={ name="Nukumi Earring +1", augments={'System: 1 ID: 1676 Val: 0','Accuracy+12','Mag. Acc.+12','Pet: "Dbl. Atk."+6',}},
+        right_ear="Nukumi Earring +1",
         left_ring="Shukuyu Ring",
         right_ring="Moonlight Ring",
-        back=pet_attack
+        back=pet_hybrid
     }
 
     -- Precast Sets
@@ -372,7 +372,7 @@ function init_gear_sets()
         ear1="Thrud earring",
         ear2=jse.earring,
         ring1="Shukuyu Ring",
-        ring2="Rufescent Ring",
+        ring2="Epaminondas's Ring",
         back=ws_blitz_mistral_cape
     }
 
@@ -389,7 +389,7 @@ function init_gear_sets()
         legs="Gleti's breeches",
         waist="Sarissaphoroi belt",
     })
-
+--[[
     sets.precast.WS['Blitz'] = set_combine(sets.precast.WS, {
         ammo="Coiste bodhar",
         neck="Beastmaster collar +2",
@@ -400,7 +400,7 @@ function init_gear_sets()
     })
     sets.precast.WS['Blitz']['Mid-SubtleBlow'] = set_combine(sets.precast.WS['Blitz'], sets.precast.WS['Mid-SubtleBlow'])
     sets.precast.WS['Blitz']['Max-SubtleBlow'] = set_combine(sets.precast.WS['Blitz'], sets.precast.WS['Max-SubtleBlow'])
-
+]]
     sets.precast.WS['Calamity'] = set_combine(sets.precast.WS, {
         ear1="Thrud earring",
     })
@@ -424,6 +424,24 @@ function init_gear_sets()
     }
     sets.precast.WS['Rampage']['Mid-SubtleBlow'] = set_combine(sets.precast.WS['Rampage'], sets.precast.WS['Mid-SubtleBlow'])
     sets.precast.WS['Rampage']['Max-SubtleBlow'] = set_combine(sets.precast.WS['Rampage'], sets.precast.WS['Max-SubtleBlow'])
+
+    sets.precast.WS["Decimation"] = {
+        ammo="Coiste Bodhar",
+        head=jse.relic.head,
+        body=jse.empyrean.body,
+        hands="Nyame gauntlets",
+        legs="Nyame flanchard//gs ",
+        feet="Nyame sollerets",
+        neck="Fotia Gorget",
+        waist="Fotia belt",
+        ear1="Moonshade Earring",
+        ear2="Thrud earring",
+        ring1="Ilabrat Ring",
+        ring2="Epaminondas's Ring",
+        back=ws_decimation_ruinator_cape
+    }
+    sets.precast.WS['Decimation']['Mid-SubtleBlow'] = set_combine(sets.precast.WS['Rampage'], sets.precast.WS['Mid-SubtleBlow'])
+    sets.precast.WS['Decimation']['Max-SubtleBlow'] = set_combine(sets.precast.WS['Rampage'], sets.precast.WS['Max-SubtleBlow'])
 
     sets.precast.WS["Cloudsplitter"] = {
         ammo="Oshasha's Treatise",
