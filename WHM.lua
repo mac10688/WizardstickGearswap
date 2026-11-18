@@ -345,7 +345,7 @@ function init_gear_sets()
         hands="Inyanga dastanas +2",
         ring1={name="Stikini Ring +1", bag="wardrobe5"},
         ring2={name="Stikini Ring +1", bag="wardrobe6"},
-        back=fastcast_cape,
+        back="Mending cape",
         waist="Embla sash",
         legs=jse.relic.legs,
         feet=jse.artifact.feet
@@ -366,6 +366,7 @@ function init_gear_sets()
         head=gear.chironic_head_phalanx,
         body=gear.chironic_body_phalanx,
         hands=gear.chironic_hands_phalanx,
+        back="Mending cape",
         legs=gear.chironic_legs_phalanx,
         feet=gear.chironic_feet_phalanx
     })
@@ -397,7 +398,7 @@ function init_gear_sets()
         ear2="Mimir Earring",
         ring1={name="Stikini Ring +1", bag="wardrobe5"},
         ring2={name="Stikini Ring +1", bag="wardrobe6"},
-        back=dt_cape
+        back="Mending cape"
     }
 
     local no_skill_midcast = set_combine(midcast_pdt, midcast_duration)
@@ -734,7 +735,7 @@ function init_gear_sets()
     }
 
     -- Buff sets: Gear that needs to be worn to actively enhance a current player buff.
-    sets.buff['Divine Caress'] = {hands=jse.empyrean.hands}
+    sets.buff['Divine Caress'] = {hands=jse.empyrean.hands, back="Mending cape"}
     sets.buff['Afflatus Solace'] = {body=jse.empyrean.body}
 
     sets.precast.Item['Holy Water'] = {
