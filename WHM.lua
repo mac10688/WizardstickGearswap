@@ -514,7 +514,7 @@ function init_gear_sets()
         sub="Ammurapi shield",
         ammo="Hydrocera",
         head=jse.empyrean.head,
-        neck="Hoxnee torque",
+        neck="Hoxne torque",
         ear1="Malignance earring",
         ear2=jse.earring,
         body=jse.empyrean.body,
